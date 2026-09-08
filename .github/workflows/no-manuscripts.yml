@@ -1,0 +1,19 @@
+name: Manuscript exclusion check
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Verify that no manuscript source or PDF is present
+        run: python tools/check_no_manuscripts.py --root .

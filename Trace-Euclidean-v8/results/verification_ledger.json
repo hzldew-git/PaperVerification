@@ -1,0 +1,102 @@
+[
+  {
+    "module": "analytic_bounds",
+    "title": "Analytic functions, derivatives, and extrema",
+    "code": "checks/analytic_bounds.wl",
+    "manuscript_anchors": [
+      "eq:def-g",
+      "lem:fix-y",
+      "lem:fix-x",
+      "lem:max-g",
+      "lem:gs-fix-y",
+      "lem:gs-fix-x",
+      "lem:max-gs",
+      "lem:gn-fix-y",
+      "lem:gn-fix-x",
+      "lem:max-gn"
+    ],
+    "manuscript_locations": [
+      "Equation (4.1), p. 13",
+      "Lemma 4.1, p. 14",
+      "Lemma 4.2, p. 15",
+      "Lemma 4.3, p. 16",
+      "Lemma 4.4, p. 17",
+      "Lemma 4.5, p. 17",
+      "Lemma 4.6, p. 18",
+      "Lemma 4.7, p. 18",
+      "Lemma 4.8, p. 18",
+      "Lemma 4.9, p. 19"
+    ],
+    "evidence": "exact symbolic identities, certified rational intervals, and high-precision approximations",
+    "test_count": 139,
+    "counts": {
+      "PASS": 139
+    },
+    "result_records": "results/tests.json and results/tests.csv"
+  },
+  {
+    "module": "admissible_tables",
+    "title": "Admissible-pair tables and excluded tails",
+    "code": "checks/admissible_tables.wl",
+    "manuscript_anchors": [
+      "tab:admissible-classical",
+      "tab:max-rank-degree-classical",
+      "tab:admissible-norm",
+      "tab:max-rank-degree-norm"
+    ],
+    "manuscript_locations": [
+      "Table 1, p. 26",
+      "Table 2, p. 26",
+      "Table 3, p. 27",
+      "Table 4, p. 27"
+    ],
+    "evidence": "certified finite enumeration plus analytic tail conditions from the manuscript",
+    "test_count": 1677,
+    "counts": {
+      "PASS": 1677
+    },
+    "result_records": "results/tests.json and results/tests.csv"
+  },
+  {
+    "module": "trace_geometry",
+    "title": "Trace Gram matrices and quadratic-field Voronoi cells",
+    "code": "checks/trace_geometry.wl",
+    "manuscript_anchors": [
+      "lem:gram-det",
+      "prop:trace-euclidean-quadratic",
+      "eq:voronoi-vertex-norm",
+      "thm:trace-euclidean-quadratic"
+    ],
+    "manuscript_locations": [
+      "Lemma 3.1, p. 9",
+      "Proposition 6.1, p. 22",
+      "Equation (6.2), p. 24",
+      "Theorem 1.8, p. 5"
+    ],
+    "evidence": "exact algebra, exact Voronoi vertices, and bounded finite diagnostics",
+    "test_count": 272,
+    "counts": {
+      "PASS": 272
+    },
+    "result_records": "results/tests.json and results/tests.csv"
+  },
+  {
+    "module": "gamma_diagnostics",
+    "title": "Gamma-function boundary diagnostics",
+    "code": "checks/gamma_diagnostics.wl",
+    "manuscript_anchors": [
+      "eq:gamma-upper",
+      "eq:gamma-lower"
+    ],
+    "manuscript_locations": [
+      "Equation (3.12), p. 12",
+      "Equation (3.13), p. 12"
+    ],
+    "evidence": "finite high-precision diagnostics; the cited analytic inequalities remain external inputs",
+    "test_count": 81,
+    "counts": {
+      "PASS": 81
+    },
+    "result_records": "results/tests.json and results/tests.csv"
+  }
+]

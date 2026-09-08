@@ -1,0 +1,21 @@
+{
+  "source_sha256": "281808d305e1ee2c150f5c0e428b5ff02afc51232c8dba8d21bdfc850e816c97",
+  "source_hash_consistent": true,
+  "private_snapshot_checked": false,
+  "public_manuscript_artifacts_absent": true,
+  "test_counts": {
+    "PASS": 2170
+  },
+  "tests_match_summary": true,
+  "module_ledger_complete": true,
+  "numeric_claims_mapped": 24,
+  "table_rows_mapped": 42,
+  "manuscript_numbering_available": true,
+  "section4_coverage_entries": 22,
+  "section4_analytic_tests_covered": 135,
+  "section4_coverage_complete": true,
+  "latex_log_clean": true,
+  "manual_pdf_present": true,
+  "private_manuscript_pdf_checked": false,
+  "errors": []
+}

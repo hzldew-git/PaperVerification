@@ -1,0 +1,11 @@
+# Verification-document sources and rendered verification documents.
+# Manuscript sources and manuscript PDFs must never be added here.
+Trace-Euclidean-v8/docs/verification_manual_v8.tex
+Trace-Euclidean-v8/generated/category_summary.tex
+Trace-Euclidean-v8/generated/issues.tex
+Trace-Euclidean-v8/generated/manuscript_refs.tex
+Trace-Euclidean-v8/generated/module_map.tex
+Trace-Euclidean-v8/generated/numeric_claims.tex
+Trace-Euclidean-v8/generated/run_summary.tex
+Trace-Euclidean-v8/generated/section4_coverage.tex
+Trace-Euclidean-v8/output/pdf/verification_manual_v8.pdf

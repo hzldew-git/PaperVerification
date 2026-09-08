@@ -1,0 +1,242 @@
+[
+	{
+		"id":"b",
+		"actual_key":"b",
+		"value":"0.17600480292812978909414623586904451089`24.",
+		"reported":"0.176",
+		"digits":3,
+		"anchor":"sec:analytic-bounds",
+		"source_line":1107,
+		"description":"the constant b"
+	},
+	{
+		"id":"y0",
+		"actual_key":"y0",
+		"value":"25.19381609115167611458497258707731981432`24.",
+		"reported":"25.194",
+		"digits":3,
+		"anchor":"lem:fix-y",
+		"source_line":1137,
+		"description":"the threshold y_0"
+	},
+	{
+		"id":"y1",
+		"actual_key":"y1",
+		"value":"5.65799394345055689093100637005707622068`24.",
+		"reported":"5.7",
+		"digits":1,
+		"anchor":"lem:fix-y",
+		"source_line":1173,
+		"description":"the auxiliary critical point y_1"
+	},
+	{
+		"id":"x0",
+		"actual_key":"x0",
+		"value":"4.37455212873927985428481967655854084093`24.",
+		"reported":"4.375",
+		"digits":3,
+		"anchor":"lem:fix-x",
+		"source_line":1183,
+		"description":"the threshold x_0"
+	},
+	{
+		"id":"z-minus",
+		"actual_key":"z_minus",
+		"value":"0.47658655522048061906766242668987731788`24.",
+		"reported":"0.477",
+		"digits":3,
+		"anchor":"lem:fix-x",
+		"source_line":1209,
+		"description":"the smaller root z_-"
+	},
+	{
+		"id":"z-plus",
+		"actual_key":"z_plus",
+		"value":"0.69941824770764917002648380917916719302`24.",
+		"reported":"0.699",
+		"digits":3,
+		"anchor":"lem:fix-x",
+		"source_line":1209,
+		"description":"the larger root z_+"
+	},
+	{
+		"id":"g-maximum",
+		"actual_key":"g_max",
+		"value":"3.32864227711045005744969922922186563079`24.",
+		"reported":"3.329",
+		"digits":3,
+		"anchor":"lem:max-g",
+		"source_line":1256,
+		"description":"the maximum of g on x >= 3, y >= 1"
+	},
+	{
+		"id":"x-boundary",
+		"actual_key":"x_boundary",
+		"value":"5.25343855014948410723852337726150658805`24.",
+		"reported":"5.253",
+		"digits":3,
+		"anchor":"lem:max-g",
+		"source_line":1258,
+		"description":"the boundary maximizer x_0(1)"
+	},
+	{
+		"id":"stationary-y-small",
+		"actual_key":"stationary_y_small",
+		"value":"0.05197461499788410550817503197707923742`24.",
+		"reported":"0.052",
+		"digits":3,
+		"anchor":"lem:max-g",
+		"source_line":1278,
+		"description":"the smaller root in the stationary-point analysis"
+	},
+	{
+		"id":"stationary-y-large",
+		"actual_key":"stationary_y_large",
+		"value":"0.5960157791458563163035324962848317408`24.",
+		"reported":"0.596",
+		"digits":3,
+		"anchor":"lem:max-g",
+		"source_line":1278,
+		"description":"the larger root in the stationary-point analysis"
+	},
+	{
+		"id":"stationary-y",
+		"actual_key":"stationary_y",
+		"value":"1.41015679091031810147517864967846167086`24.",
+		"reported":"1.410",
+		"digits":3,
+		"anchor":"lem:max-g",
+		"source_line":1278,
+		"description":"the y-coordinate of the interior stationary point"
+	},
+	{
+		"id":"stationary-x",
+		"actual_key":"stationary_x",
+		"value":"3.61111889156802043164178083079734228951`24.",
+		"reported":"3.611",
+		"digits":3,
+		"anchor":"lem:max-g",
+		"source_line":1278,
+		"description":"the x-coordinate of the interior stationary point"
+	},
+	{
+		"id":"stationary-gxx",
+		"actual_key":"stationary_gxx",
+		"value":"-0.32295138408428892876341032390337540809`24.",
+		"reported":"-0.323",
+		"digits":3,
+		"anchor":"lem:max-g",
+		"source_line":1280,
+		"description":"the xx-entry of the Hessian"
+	},
+	{
+		"id":"stationary-gyy",
+		"actual_key":"stationary_gyy",
+		"value":"-0.99232630238725829547338784915764922501`24.",
+		"reported":"-0.992",
+		"digits":3,
+		"anchor":"lem:max-g",
+		"source_line":1280,
+		"description":"the yy-entry of the Hessian"
+	},
+	{
+		"id":"stationary-gxy",
+		"actual_key":"stationary_gxy",
+		"value":"-0.82701147251290543230333463100735110284`24.",
+		"reported":"-0.827",
+		"digits":3,
+		"anchor":"lem:max-g",
+		"source_line":1280,
+		"description":"the xy-entry of the Hessian"
+	},
+	{
+		"id":"stationary-hessian",
+		"actual_key":"stationary_hessian",
+		"value":"-0.36347482284875444589443670232010227022`24.",
+		"reported":"-0.363",
+		"digits":3,
+		"anchor":"lem:max-g",
+		"source_line":1281,
+		"description":"the Hessian determinant"
+	},
+	{
+		"id":"y-rank3",
+		"actual_key":"y_rank3",
+		"value":"2.34711863831433630162401835220343931309`24.",
+		"reported":"2.347",
+		"digits":3,
+		"anchor":"lem:max-g",
+		"source_line":1291,
+		"description":"the boundary maximizer y_0(3)"
+	},
+	{
+		"id":"g-rank3-max",
+		"actual_key":"g_rank3_max",
+		"value":"3.31141083289092035635923744194109553559`24.",
+		"reported":"3.311",
+		"digits":3,
+		"anchor":"lem:max-g",
+		"source_line":1292,
+		"description":"the maximum of g(3,y)"
+	},
+	{
+		"id":"gs-max",
+		"actual_key":"gs_max",
+		"value":"1.1038036109636401187864124806470318452`24.",
+		"reported":"1.104",
+		"digits":3,
+		"anchor":"lem:max-gs",
+		"source_line":1354,
+		"description":"the maximum of g_s"
+	},
+	{
+		"id":"two-pi-over-e",
+		"actual_key":"two_pi_over_e",
+		"value":"2.31145469958184343582018636662539259824`24.",
+		"reported":"2.311",
+		"digits":3,
+		"anchor":"lem:max-gs",
+		"source_line":1366,
+		"description":"2 pi\/e"
+	},
+	{
+		"id":"xn",
+		"actual_key":"xn",
+		"value":"9.8031890569203605653182440969096686405`24.",
+		"reported":"9.803",
+		"digits":3,
+		"anchor":"lem:gn-fix-x",
+		"source_line":1382,
+		"description":"the threshold x_n"
+	},
+	{
+		"id":"gn-max",
+		"actual_key":"gn_max",
+		"value":"2.36109341116505917836965009179206885927`24.",
+		"reported":"2.361",
+		"digits":3,
+		"anchor":"lem:max-gn",
+		"source_line":1451,
+		"description":"the maximum of g_n"
+	},
+	{
+		"id":"yn-rank5",
+		"actual_key":"yn_rank5",
+		"value":"9.99859181238470255054297641340855106169`24.",
+		"reported":"9.999",
+		"digits":3,
+		"anchor":"lem:max-gn",
+		"source_line":1453,
+		"description":"the boundary maximizer y_n(5)"
+	},
+	{
+		"id":"four-pi-over-e",
+		"actual_key":"four_pi_over_e",
+		"value":"4.62290939916368687164037273325078519648`24.",
+		"reported":"4.623",
+		"digits":3,
+		"anchor":"lem:max-gn",
+		"source_line":1461,
+		"description":"4 pi\/e"
+	}
+]

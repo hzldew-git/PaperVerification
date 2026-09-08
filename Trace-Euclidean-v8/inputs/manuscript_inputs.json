@@ -1,0 +1,1927 @@
+{
+  "schema_version": 2,
+  "manuscript": {
+    "filename": "Trace-Euclidean-v8.tex",
+    "title": "Trace-Euclidean-v8",
+    "version": "v8"
+  },
+  "source_sha256": "281808d305e1ee2c150f5c0e428b5ff02afc51232c8dba8d21bdfc850e816c97",
+  "aux_sha256": "2aa961eee959a8a58e2d0d97fdcfa2ba759fb9b9f13bd16eec8a38ea28cf78fa",
+  "source_line_count": 2358,
+  "labels": {
+    "eq:def-g": {
+      "line": 1118,
+      "number": "4.1",
+      "page": "13",
+      "kind": "Equation",
+      "display": "Equation (4.1)"
+    },
+    "eq:gamma-lower": {
+      "line": 1067,
+      "number": "3.13",
+      "page": "12",
+      "kind": "Equation",
+      "display": "Equation (3.13)"
+    },
+    "eq:gamma-upper": {
+      "line": 1048,
+      "number": "3.12",
+      "page": "12",
+      "kind": "Equation",
+      "display": "Equation (3.12)"
+    },
+    "eq:voronoi-vertex-norm": {
+      "line": 1884,
+      "number": "6.2",
+      "page": "24",
+      "kind": "Equation",
+      "display": "Equation (6.2)"
+    },
+    "lem:fix-x": {
+      "line": 1182,
+      "number": "4.2",
+      "page": "15",
+      "kind": "Lemma",
+      "display": "Lemma 4.2"
+    },
+    "lem:fix-y": {
+      "line": 1136,
+      "number": "4.1",
+      "page": "14",
+      "kind": "Lemma",
+      "display": "Lemma 4.1"
+    },
+    "lem:gn-fix-x": {
+      "line": 1381,
+      "number": "4.8",
+      "page": "18",
+      "kind": "Lemma",
+      "display": "Lemma 4.8"
+    },
+    "lem:gn-fix-y": {
+      "line": 1375,
+      "number": "4.7",
+      "page": "18",
+      "kind": "Lemma",
+      "display": "Lemma 4.7"
+    },
+    "lem:gram-det": {
+      "line": 760,
+      "number": "3.1",
+      "page": "9",
+      "kind": "Lemma",
+      "display": "Lemma 3.1"
+    },
+    "lem:gs-fix-x": {
+      "line": 1333,
+      "number": "4.5",
+      "page": "17",
+      "kind": "Lemma",
+      "display": "Lemma 4.5"
+    },
+    "lem:gs-fix-y": {
+      "line": 1305,
+      "number": "4.4",
+      "page": "17",
+      "kind": "Lemma",
+      "display": "Lemma 4.4"
+    },
+    "lem:max-g": {
+      "line": 1252,
+      "number": "4.3",
+      "page": "16",
+      "kind": "Lemma",
+      "display": "Lemma 4.3"
+    },
+    "lem:max-gn": {
+      "line": 1448,
+      "number": "4.9",
+      "page": "19",
+      "kind": "Lemma",
+      "display": "Lemma 4.9"
+    },
+    "lem:max-gs": {
+      "line": 1351,
+      "number": "4.6",
+      "page": "18",
+      "kind": "Lemma",
+      "display": "Lemma 4.6"
+    },
+    "prop:trace-euclidean-quadratic": {
+      "line": 1682,
+      "number": "6.1",
+      "page": "22",
+      "kind": "Proposition",
+      "display": "Proposition 6.1"
+    },
+    "sec:analytic-bounds": {
+      "line": 1100,
+      "number": "4",
+      "page": "13",
+      "kind": "Section",
+      "display": "Section 4"
+    },
+    "tab:admissible-classical": {
+      "line": 2040,
+      "number": "1",
+      "page": "26",
+      "kind": "Table",
+      "display": "Table 1"
+    },
+    "tab:admissible-norm": {
+      "line": 2105,
+      "number": "3",
+      "page": "27",
+      "kind": "Table",
+      "display": "Table 3"
+    },
+    "tab:max-rank-degree-classical": {
+      "line": 2084,
+      "number": "2",
+      "page": "26",
+      "kind": "Table",
+      "display": "Table 2"
+    },
+    "tab:max-rank-degree-norm": {
+      "line": 2144,
+      "number": "4",
+      "page": "27",
+      "kind": "Table",
+      "display": "Table 4"
+    },
+    "thm:trace-euclidean-quadratic": {
+      "line": 328,
+      "number": "1.8",
+      "page": "5",
+      "kind": "Theorem",
+      "display": "Theorem 1.8"
+    }
+  },
+  "modules": [
+    {
+      "id": "analytic_bounds",
+      "title": "Analytic functions, derivatives, and extrema",
+      "code": "checks/analytic_bounds.wl",
+      "anchors": [
+        "eq:def-g",
+        "lem:fix-y",
+        "lem:fix-x",
+        "lem:max-g",
+        "lem:gs-fix-y",
+        "lem:gs-fix-x",
+        "lem:max-gs",
+        "lem:gn-fix-y",
+        "lem:gn-fix-x",
+        "lem:max-gn"
+      ],
+      "evidence": "exact symbolic identities, certified rational intervals, and high-precision approximations"
+    },
+    {
+      "id": "admissible_tables",
+      "title": "Admissible-pair tables and excluded tails",
+      "code": "checks/admissible_tables.wl",
+      "anchors": [
+        "tab:admissible-classical",
+        "tab:max-rank-degree-classical",
+        "tab:admissible-norm",
+        "tab:max-rank-degree-norm"
+      ],
+      "evidence": "certified finite enumeration plus analytic tail conditions from the manuscript"
+    },
+    {
+      "id": "trace_geometry",
+      "title": "Trace Gram matrices and quadratic-field Voronoi cells",
+      "code": "checks/trace_geometry.wl",
+      "anchors": [
+        "lem:gram-det",
+        "prop:trace-euclidean-quadratic",
+        "eq:voronoi-vertex-norm",
+        "thm:trace-euclidean-quadratic"
+      ],
+      "evidence": "exact algebra, exact Voronoi vertices, and bounded finite diagnostics"
+    },
+    {
+      "id": "gamma_diagnostics",
+      "title": "Gamma-function boundary diagnostics",
+      "code": "checks/gamma_diagnostics.wl",
+      "anchors": [
+        "eq:gamma-upper",
+        "eq:gamma-lower"
+      ],
+      "evidence": "finite high-precision diagnostics; the cited analytic inequalities remain external inputs"
+    }
+  ],
+  "section4_checks": [
+    {
+      "id": "s4-constants",
+      "anchor": "sec:analytic-bounds",
+      "description": "The printed value of b=e^2/(2 pi)-1.",
+      "evidence": "80-digit evaluation and comparison with the printed decimal",
+      "test_ids": [
+        "numeric-b"
+      ]
+    },
+    {
+      "id": "s4-definitions-derivatives",
+      "anchor": "eq:def-g",
+      "description": "The formulas for g, g_s, and g_n, all five displayed first and second partial derivatives, and the substitution leading to G_t.",
+      "evidence": "exact symbolic identities plus rational certificates for 0<b<1/4<2a",
+      "test_ids": [
+        "section4-g-definition",
+        "section4-gs-definition",
+        "section4-gn-definition",
+        "gx",
+        "gy",
+        "gxx",
+        "gyy",
+        "gxy",
+        "gamma-ratio-simplification",
+        "b-positive",
+        "b-less-than-2a",
+        "b-less-than-one-quarter"
+      ]
+    },
+    {
+      "id": "s4-lemma41-concavity",
+      "anchor": "lem:fix-y",
+      "description": "The factorization, intermediate square identity, positive coefficient, and strict negativity of the second x-derivative of g.",
+      "evidence": "exact symbolic identities and quantified sign check",
+      "test_ids": [
+        "gxx-factor",
+        "gxx-amgm-reduction",
+        "gxx-coefficient-positive",
+        "gxx-negative"
+      ]
+    },
+    {
+      "id": "s4-lemma41-f-calculus",
+      "anchor": "lem:fix-y",
+      "description": "The definition of f(y)=partial_x g(1,y), its first two derivatives, and the expression of f'' through h.",
+      "evidence": "exact symbolic identities",
+      "test_ids": [
+        "fix-y-f-definition",
+        "fix-y-f-prime",
+        "fix-y-f-second",
+        "fix-y-fsecond-h-identity"
+      ]
+    },
+    {
+      "id": "s4-lemma41-h-calculus",
+      "anchor": "lem:fix-y",
+      "description": "The derivatives of h, the three displayed constant identities, and positivity of h'(1) and h(1).",
+      "evidence": "exact identities, quantified sign check, and outward rational intervals",
+      "test_ids": [
+        "fix-y-h-prime",
+        "fix-y-h-second",
+        "fix-y-h-second-positive",
+        "fix-y-constant-identity",
+        "fix-y-constant-positive",
+        "fix-y-hprime-one-identity",
+        "fix-y-hprime-one-positive",
+        "fix-y-h-one-identity",
+        "fix-y-h-one-positive"
+      ]
+    },
+    {
+      "id": "s4-lemma41-endpoints-limits",
+      "anchor": "lem:fix-y",
+      "description": "The displayed values f'(1) and f(1), their signs, the limiting sign of f', and the limits of f and partial_x g.",
+      "evidence": "exact identities, symbolic limits, and outward rational intervals",
+      "test_ids": [
+        "fix-y-fprime-one-identity",
+        "fix-y-fprime-one-positive",
+        "fix-y-f-one-identity",
+        "fix-y-f-one-positive",
+        "fix-y-fprime-tail-negative",
+        "fix-y-f-limit",
+        "fix-y-gx-asymptotic"
+      ]
+    },
+    {
+      "id": "s4-lemma41-roots",
+      "anchor": "lem:fix-y",
+      "description": "The roots y_1 and y_0, including strict rational brackets and the decimals printed in the manuscript.",
+      "evidence": "outward rational root brackets and 80-digit approximations",
+      "test_ids": [
+        "y1-left",
+        "y1-right",
+        "y0-left",
+        "y0-right",
+        "numeric-y1",
+        "numeric-y0"
+      ]
+    },
+    {
+      "id": "s4-lemma42-h-monotonicity",
+      "anchor": "lem:fix-x",
+      "description": "The formula h=partial_y g/x, its y-derivative, its strict negative sign, and its limit K(x).",
+      "evidence": "exact identities, quantified sign check, and symbolic limit",
+      "test_ids": [
+        "fix-x-h-definition",
+        "fix-x-h-y-derivative",
+        "fix-x-h-y-negative",
+        "fix-x-h-y-limit"
+      ]
+    },
+    {
+      "id": "s4-lemma42-critical-equation",
+      "anchor": "lem:fix-x",
+      "description": "The critical-point formula after x=z^2, its equivalent quadratic inequality, and the two printed quadratic roots below 1.",
+      "evidence": "exact identities, rational endpoint sign, and 80-digit approximations",
+      "test_ids": [
+        "fix-x-critical-root",
+        "fix-x-critical-condition",
+        "fix-x-q-prime",
+        "fix-x-q-one-positive",
+        "fix-x-quadratic-positive-after-one",
+        "numeric-z-minus",
+        "numeric-z-plus"
+      ]
+    },
+    {
+      "id": "s4-lemma42-first-case",
+      "anchor": "lem:fix-x",
+      "description": "The threshold K(2 pi/e)=0, the inequality 2 pi/e>1, monotonicity of K, and positivity of the reciprocal difference used in case (i).",
+      "evidence": "exact identities, quantified sign check, and outward rational interval",
+      "test_ids": [
+        "fix-x-k-threshold",
+        "fix-x-two-pi-over-e-above-one",
+        "fix-x-k-prime",
+        "fix-x-reciprocal-positive",
+        "fix-x-reciprocal-at-one-positive"
+      ]
+    },
+    {
+      "id": "s4-lemma42-threshold",
+      "anchor": "lem:fix-x",
+      "description": "The definition and derivative of f(x)=h(x,1), its strict decrease and limit, the positivity at 2 pi/e, and the unique threshold x_0.",
+      "evidence": "exact identities, symbolic sign and limit, rational root bracket, and 80-digit approximation",
+      "test_ids": [
+        "fix-x-f-definition",
+        "fix-x-f-prime",
+        "fix-x-f-prime-negative",
+        "fix-x-f-limit",
+        "fix-x-threshold-positive",
+        "x0-left",
+        "x0-right",
+        "numeric-x0"
+      ]
+    },
+    {
+      "id": "s4-lemma43-stationary-equations",
+      "anchor": "lem:max-g",
+      "description": "Elimination of the stationary equations, the derivative polynomial, its sign for y>=1, the endpoint and limiting signs, and the stationary point coordinates.",
+      "evidence": "exact identities, quantified sign, rational root bracket, and 80-digit approximations",
+      "test_ids": [
+        "stationary-elimination",
+        "stationary-f-prime",
+        "stationary-polynomial-positive",
+        "stationary-f-one-identity",
+        "stationary-f-one-positive",
+        "stationary-f-limit",
+        "stationary-y-left",
+        "stationary-y-right",
+        "numeric-stationary-y-small",
+        "numeric-stationary-y-large",
+        "numeric-stationary-y",
+        "numeric-stationary-x"
+      ]
+    },
+    {
+      "id": "s4-lemma43-hessian",
+      "anchor": "lem:max-g",
+      "description": "The three Hessian entries and determinant at the interior stationary point, including certified coordinate brackets and a negative determinant on their rational box.",
+      "evidence": "exact reduction, outward rational root and Hessian intervals, and 80-digit approximations",
+      "test_ids": [
+        "stationary-hessian-reduction",
+        "stationary-x-left",
+        "stationary-x-right",
+        "stationary-hessian-negative",
+        "numeric-stationary-gxx",
+        "numeric-stationary-gyy",
+        "numeric-stationary-gxy",
+        "numeric-stationary-hessian"
+      ]
+    },
+    {
+      "id": "s4-lemma43-boundaries",
+      "anchor": "lem:max-g",
+      "description": "Both boundary equations, their root brackets, the two boundary maxima, and the certified comparison selecting g(x_0(1),1).",
+      "evidence": "exact identities, outward rational intervals, and 80-digit approximations",
+      "test_ids": [
+        "max-g-boundary-x3-equation",
+        "max-g-boundary-y1-equation",
+        "y-at-rank3-left",
+        "y-at-rank3-right",
+        "x-boundary-left",
+        "x-boundary-right",
+        "numeric-y-rank3",
+        "numeric-g-rank3-max",
+        "numeric-x-boundary",
+        "numeric-g-maximum",
+        "boundary-comparison",
+        "boundary-left-below-3.325",
+        "boundary-right-above-3.328"
+      ]
+    },
+    {
+      "id": "s4-lemma43-asymptotics",
+      "anchor": "lem:max-g",
+      "description": "The leading asymptotic terms as x or y tends to infinity and the sign K(3)<0 used on the boundary of the domain.",
+      "evidence": "exact symbolic limits and outward rational interval",
+      "test_ids": [
+        "max-g-x-asymptotic",
+        "max-g-y-asymptotic",
+        "max-g-k-at-three-negative"
+      ]
+    },
+    {
+      "id": "s4-lemma44-derivative",
+      "anchor": "lem:gs-fix-y",
+      "description": "The x-derivative of g_s, the reduction to f_s(z), the derivative of f_s, z>=4/3, positivity of 3z^2-3z+1, and f_s(4/3)<0.",
+      "evidence": "exact identities, quantified inequalities, and outward rational interval",
+      "test_ids": [
+        "gs-x-derivative",
+        "gs-derivative-numerator",
+        "gs-f-prime",
+        "gs-z-lower-bound",
+        "gs-monotonicity-polynomial",
+        "gs-f-at-4/3-negative"
+      ]
+    },
+    {
+      "id": "s4-lemma45-transfer",
+      "anchor": "lem:gs-fix-x",
+      "description": "The identity partial_y g_s=(partial_y g)/x transferring the signs and zeros from Lemma 4.2.",
+      "evidence": "exact symbolic identity",
+      "test_ids": [
+        "gs-y-derivative"
+      ]
+    },
+    {
+      "id": "s4-lemma46-maximum",
+      "anchor": "lem:max-gs",
+      "description": "The ordering 2 pi/e<3<x_0 needed at x=3, together with the printed threshold and maximum of g_s.",
+      "evidence": "outward rational interval and 80-digit approximations",
+      "test_ids": [
+        "gs-threshold-order",
+        "gs-two-pi-below-three",
+        "gs-three-below-x0",
+        "numeric-two-pi-over-e",
+        "numeric-gs-max"
+      ]
+    },
+    {
+      "id": "s4-lemma47-transfer",
+      "anchor": "lem:gn-fix-y",
+      "description": "The identity partial_x g_n=partial_x g_s transferring strict decrease in x.",
+      "evidence": "exact symbolic identity",
+      "test_ids": [
+        "gn-x-derivative"
+      ]
+    },
+    {
+      "id": "s4-lemma48-y-calculus",
+      "anchor": "lem:gn-fix-x",
+      "description": "The first and second y-derivatives of g_n and the limiting value log(4 pi/(xe)).",
+      "evidence": "exact symbolic identities and symbolic limit",
+      "test_ids": [
+        "gn-y-derivative",
+        "gn-y-second",
+        "gn-y-limit"
+      ]
+    },
+    {
+      "id": "s4-lemma48-threshold",
+      "anchor": "lem:gn-fix-x",
+      "description": "The definition and derivative of f_n(x), strict decrease and limit, positivity at 4 pi/e, and the unique threshold x_n.",
+      "evidence": "exact identities, symbolic sign and limit, rational root bracket, and 80-digit approximation",
+      "test_ids": [
+        "gn-f-definition",
+        "gn-f-prime",
+        "gn-f-prime-negative",
+        "gn-f-denominator-inequality",
+        "gn-f-limit",
+        "gn-threshold-positive",
+        "xn-left",
+        "xn-right",
+        "numeric-xn"
+      ]
+    },
+    {
+      "id": "s4-lemma49-maximum",
+      "anchor": "lem:max-gn",
+      "description": "The ordering 4 pi/e<5<x_n, the root y_n(5), and the printed maximum of g_n.",
+      "evidence": "outward rational intervals and 80-digit approximations",
+      "test_ids": [
+        "gn-four-pi-below-five",
+        "gn-five-below-xn",
+        "numeric-four-pi-over-e",
+        "yn-at-rank5-left",
+        "yn-at-rank5-right",
+        "numeric-yn-rank5",
+        "numeric-gn-max"
+      ]
+    }
+  ],
+  "source_checks": [
+    {
+      "id": "definition-gd",
+      "anchor": "eq:def-g",
+      "fragment": "g(n,d)=\\log G_d(n,d)",
+      "module": "analytic_bounds",
+      "source_line": 1120,
+      "present": true
+    },
+    {
+      "id": "definition-gs",
+      "anchor": "eq:def-g",
+      "fragment": "g_{\\mathfrak{s}}(n,d)=\\log (G_{d}(n,d))/n",
+      "module": "analytic_bounds",
+      "source_line": 1121,
+      "present": true
+    },
+    {
+      "id": "definition-gn",
+      "anchor": "eq:def-g",
+      "fragment": "g_{\\mathfrak{n}}(n,d)=d\\log 2+(\\log G_{d}(n,d))/n",
+      "module": "analytic_bounds",
+      "source_line": 1121,
+      "present": true
+    },
+    {
+      "id": "positive-bound-repair",
+      "anchor": "lem:fix-x",
+      "fragment": "b<2a",
+      "module": "analytic_bounds",
+      "source_line": 1235,
+      "present": true
+    },
+    {
+      "id": "trace-voronoi-radius",
+      "anchor": "prop:trace-euclidean-quadratic",
+      "fragment": "(m+1)^{2}/(8m)",
+      "module": "trace_geometry",
+      "source_line": 1688,
+      "present": true
+    }
+  ],
+  "numeric_claims": [
+    {
+      "id": "b",
+      "anchor": "sec:analytic-bounds",
+      "actual_key": "b",
+      "reported": "0.176",
+      "digits": 3,
+      "description": "the constant b",
+      "source_line": 1107
+    },
+    {
+      "id": "y0",
+      "anchor": "lem:fix-y",
+      "actual_key": "y0",
+      "reported": "25.194",
+      "digits": 3,
+      "description": "the threshold y_0",
+      "source_line": 1137
+    },
+    {
+      "id": "y1",
+      "anchor": "lem:fix-y",
+      "actual_key": "y1",
+      "reported": "5.7",
+      "digits": 1,
+      "description": "the auxiliary critical point y_1",
+      "source_line": 1173
+    },
+    {
+      "id": "x0",
+      "anchor": "lem:fix-x",
+      "actual_key": "x0",
+      "reported": "4.375",
+      "digits": 3,
+      "description": "the threshold x_0",
+      "source_line": 1183
+    },
+    {
+      "id": "z-minus",
+      "anchor": "lem:fix-x",
+      "actual_key": "z_minus",
+      "reported": "0.477",
+      "digits": 3,
+      "description": "the smaller root z_-",
+      "source_line": 1209
+    },
+    {
+      "id": "z-plus",
+      "anchor": "lem:fix-x",
+      "actual_key": "z_plus",
+      "reported": "0.699",
+      "digits": 3,
+      "description": "the larger root z_+",
+      "source_line": 1209
+    },
+    {
+      "id": "g-maximum",
+      "anchor": "lem:max-g",
+      "actual_key": "g_max",
+      "reported": "3.329",
+      "digits": 3,
+      "description": "the maximum of g on x >= 3, y >= 1",
+      "source_line": 1256
+    },
+    {
+      "id": "x-boundary",
+      "anchor": "lem:max-g",
+      "actual_key": "x_boundary",
+      "reported": "5.253",
+      "digits": 3,
+      "description": "the boundary maximizer x_0(1)",
+      "source_line": 1258
+    },
+    {
+      "id": "stationary-y-small",
+      "anchor": "lem:max-g",
+      "actual_key": "stationary_y_small",
+      "reported": "0.052",
+      "digits": 3,
+      "description": "the smaller root in the stationary-point analysis",
+      "source_line": 1278
+    },
+    {
+      "id": "stationary-y-large",
+      "anchor": "lem:max-g",
+      "actual_key": "stationary_y_large",
+      "reported": "0.596",
+      "digits": 3,
+      "description": "the larger root in the stationary-point analysis",
+      "source_line": 1278
+    },
+    {
+      "id": "stationary-y",
+      "anchor": "lem:max-g",
+      "actual_key": "stationary_y",
+      "reported": "1.410",
+      "digits": 3,
+      "description": "the y-coordinate of the interior stationary point",
+      "source_line": 1278
+    },
+    {
+      "id": "stationary-x",
+      "anchor": "lem:max-g",
+      "actual_key": "stationary_x",
+      "reported": "3.611",
+      "digits": 3,
+      "description": "the x-coordinate of the interior stationary point",
+      "source_line": 1278
+    },
+    {
+      "id": "stationary-gxx",
+      "anchor": "lem:max-g",
+      "actual_key": "stationary_gxx",
+      "reported": "-0.323",
+      "digits": 3,
+      "description": "the xx-entry of the Hessian",
+      "source_line": 1280
+    },
+    {
+      "id": "stationary-gyy",
+      "anchor": "lem:max-g",
+      "actual_key": "stationary_gyy",
+      "reported": "-0.992",
+      "digits": 3,
+      "description": "the yy-entry of the Hessian",
+      "source_line": 1280
+    },
+    {
+      "id": "stationary-gxy",
+      "anchor": "lem:max-g",
+      "actual_key": "stationary_gxy",
+      "reported": "-0.827",
+      "digits": 3,
+      "description": "the xy-entry of the Hessian",
+      "source_line": 1280
+    },
+    {
+      "id": "stationary-hessian",
+      "anchor": "lem:max-g",
+      "actual_key": "stationary_hessian",
+      "reported": "-0.363",
+      "digits": 3,
+      "description": "the Hessian determinant",
+      "source_line": 1281
+    },
+    {
+      "id": "y-rank3",
+      "anchor": "lem:max-g",
+      "actual_key": "y_rank3",
+      "reported": "2.347",
+      "digits": 3,
+      "description": "the boundary maximizer y_0(3)",
+      "source_line": 1291
+    },
+    {
+      "id": "g-rank3-max",
+      "anchor": "lem:max-g",
+      "actual_key": "g_rank3_max",
+      "reported": "3.311",
+      "digits": 3,
+      "description": "the maximum of g(3,y)",
+      "source_line": 1292
+    },
+    {
+      "id": "gs-max",
+      "anchor": "lem:max-gs",
+      "actual_key": "gs_max",
+      "reported": "1.104",
+      "digits": 3,
+      "description": "the maximum of g_s",
+      "source_line": 1354
+    },
+    {
+      "id": "two-pi-over-e",
+      "anchor": "lem:max-gs",
+      "actual_key": "two_pi_over_e",
+      "reported": "2.311",
+      "digits": 3,
+      "description": "2 pi/e",
+      "source_line": 1366
+    },
+    {
+      "id": "xn",
+      "anchor": "lem:gn-fix-x",
+      "actual_key": "xn",
+      "reported": "9.803",
+      "digits": 3,
+      "description": "the threshold x_n",
+      "source_line": 1382
+    },
+    {
+      "id": "gn-max",
+      "anchor": "lem:max-gn",
+      "actual_key": "gn_max",
+      "reported": "2.361",
+      "digits": 3,
+      "description": "the maximum of g_n",
+      "source_line": 1451
+    },
+    {
+      "id": "yn-rank5",
+      "anchor": "lem:max-gn",
+      "actual_key": "yn_rank5",
+      "reported": "9.999",
+      "digits": 3,
+      "description": "the boundary maximizer y_n(5)",
+      "source_line": 1453
+    },
+    {
+      "id": "four-pi-over-e",
+      "anchor": "lem:max-gn",
+      "actual_key": "four_pi_over_e",
+      "reported": "4.623",
+      "digits": 3,
+      "description": "4 pi/e",
+      "source_line": 1461
+    }
+  ],
+  "tables": [
+    {
+      "table_id": "admissible-classical",
+      "label": "tab:admissible-classical",
+      "kind": "classical",
+      "row_id": "admissible-classical:r01",
+      "source_line": 2047,
+      "degrees": [
+        1
+      ],
+      "ranks": [
+        3
+      ],
+      "displayed": [
+        "0.956"
+      ],
+      "bound": "17.7",
+      "source": "& 3  & 0.956 & 17.7 \\\\"
+    },
+    {
+      "table_id": "admissible-classical",
+      "label": "tab:admissible-classical",
+      "kind": "classical",
+      "row_id": "admissible-classical:r02",
+      "source_line": 2048,
+      "degrees": [
+        1
+      ],
+      "ranks": [
+        4
+      ],
+      "displayed": [
+        "0.799"
+      ],
+      "bound": "24.5",
+      "source": "& 4  & 0.799 & 24.5 \\\\"
+    },
+    {
+      "table_id": "admissible-classical",
+      "label": "tab:admissible-classical",
+      "kind": "classical",
+      "row_id": "admissible-classical:r03",
+      "source_line": 2049,
+      "degrees": [
+        1
+      ],
+      "ranks": [
+        5
+      ],
+      "displayed": [
+        "0.665"
+      ],
+      "bound": "27.8",
+      "source": "& 5  & 0.665 & 27.8 \\\\"
+    },
+    {
+      "table_id": "admissible-classical",
+      "label": "tab:admissible-classical",
+      "kind": "classical",
+      "row_id": "admissible-classical:r04",
+      "source_line": 2050,
+      "degrees": [
+        1
+      ],
+      "ranks": [
+        6
+      ],
+      "displayed": [
+        "0.548"
+      ],
+      "bound": "26.8",
+      "source": "& 6  & 0.548 & 26.8 \\\\"
+    },
+    {
+      "table_id": "admissible-classical",
+      "label": "tab:admissible-classical",
+      "kind": "classical",
+      "row_id": "admissible-classical:r05",
+      "source_line": 2051,
+      "degrees": [
+        1
+      ],
+      "ranks": [
+        7
+      ],
+      "displayed": [
+        "0.444"
+      ],
+      "bound": "22.4",
+      "source": "& 7  & 0.444 & 22.4 \\\\"
+    },
+    {
+      "table_id": "admissible-classical",
+      "label": "tab:admissible-classical",
+      "kind": "classical",
+      "row_id": "admissible-classical:r06",
+      "source_line": 2052,
+      "degrees": [
+        1
+      ],
+      "ranks": [
+        8
+      ],
+      "displayed": [
+        "0.350"
+      ],
+      "bound": "16.5",
+      "source": "& 8  & 0.350 & 16.5 \\\\"
+    },
+    {
+      "table_id": "admissible-classical",
+      "label": "tab:admissible-classical",
+      "kind": "classical",
+      "row_id": "admissible-classical:r07",
+      "source_line": 2053,
+      "degrees": [
+        1
+      ],
+      "ranks": [
+        9
+      ],
+      "displayed": [
+        "0.265"
+      ],
+      "bound": "10.9",
+      "source": "& 9  & 0.265 & 10.9 \\\\"
+    },
+    {
+      "table_id": "admissible-classical",
+      "label": "tab:admissible-classical",
+      "kind": "classical",
+      "row_id": "admissible-classical:r08",
+      "source_line": 2054,
+      "degrees": [
+        1
+      ],
+      "ranks": [
+        10
+      ],
+      "displayed": [
+        "0.187"
+      ],
+      "bound": "6.51",
+      "source": "& 10 & 0.187 & 6.51 \\\\"
+    },
+    {
+      "table_id": "admissible-classical",
+      "label": "tab:admissible-classical",
+      "kind": "classical",
+      "row_id": "admissible-classical:r09",
+      "source_line": 2055,
+      "degrees": [
+        1
+      ],
+      "ranks": [
+        11
+      ],
+      "displayed": [
+        "0.115"
+      ],
+      "bound": "3.56",
+      "source": "& 11 & 0.115 & 3.56 \\\\"
+    },
+    {
+      "table_id": "admissible-classical",
+      "label": "tab:admissible-classical",
+      "kind": "classical",
+      "row_id": "admissible-classical:r10",
+      "source_line": 2056,
+      "degrees": [
+        1
+      ],
+      "ranks": [
+        12
+      ],
+      "displayed": [
+        "0.048"
+      ],
+      "bound": "1.79",
+      "source": "& 12 & 0.048 & 1.79 \\\\"
+    },
+    {
+      "table_id": "admissible-classical",
+      "label": "tab:admissible-classical",
+      "kind": "classical",
+      "row_id": "admissible-classical:r11",
+      "source_line": 2059,
+      "degrees": [
+        2
+      ],
+      "ranks": [
+        3
+      ],
+      "displayed": [
+        "1.097"
+      ],
+      "bound": "26.9",
+      "source": "& 3 & 1.097 & 26.9 \\\\"
+    },
+    {
+      "table_id": "admissible-classical",
+      "label": "tab:admissible-classical",
+      "kind": "classical",
+      "row_id": "admissible-classical:r12",
+      "source_line": 2060,
+      "degrees": [
+        2
+      ],
+      "ranks": [
+        4
+      ],
+      "displayed": [
+        "0.702"
+      ],
+      "bound": "16.6",
+      "source": "& 4 & 0.702 & 16.6 \\\\"
+    },
+    {
+      "table_id": "admissible-classical",
+      "label": "tab:admissible-classical",
+      "kind": "classical",
+      "row_id": "admissible-classical:r13",
+      "source_line": 2061,
+      "degrees": [
+        2
+      ],
+      "ranks": [
+        5
+      ],
+      "displayed": [
+        "0.376"
+      ],
+      "bound": "6.57",
+      "source": "& 5 & 0.376 & 6.57 \\\\"
+    },
+    {
+      "table_id": "admissible-classical",
+      "label": "tab:admissible-classical",
+      "kind": "classical",
+      "row_id": "admissible-classical:r14",
+      "source_line": 2062,
+      "degrees": [
+        2
+      ],
+      "ranks": [
+        6
+      ],
+      "displayed": [
+        "0.098"
+      ],
+      "bound": "1.81",
+      "source": "& 6 & 0.098 & 1.81 \\\\"
+    },
+    {
+      "table_id": "admissible-classical",
+      "label": "tab:admissible-classical",
+      "kind": "classical",
+      "row_id": "admissible-classical:r15",
+      "source_line": 2065,
+      "degrees": [
+        3
+      ],
+      "ranks": [
+        3
+      ],
+      "displayed": [
+        "1.085"
+      ],
+      "bound": "26.0",
+      "source": "& 3 & 1.085 & 26.0 \\\\"
+    },
+    {
+      "table_id": "admissible-classical",
+      "label": "tab:admissible-classical",
+      "kind": "classical",
+      "row_id": "admissible-classical:r16",
+      "source_line": 2066,
+      "degrees": [
+        3
+      ],
+      "ranks": [
+        4
+      ],
+      "displayed": [
+        "0.434"
+      ],
+      "bound": "5.68",
+      "source": "& 4 & 0.434 & 5.68 \\\\"
+    },
+    {
+      "table_id": "admissible-classical",
+      "label": "tab:admissible-classical",
+      "kind": "classical",
+      "row_id": "admissible-classical:r17",
+      "source_line": 2069,
+      "degrees": [
+        4
+      ],
+      "ranks": [
+        3
+      ],
+      "displayed": [
+        "1.005"
+      ],
+      "bound": "20.5",
+      "source": "& 3 & 1.005 & 20.5 \\\\"
+    },
+    {
+      "table_id": "admissible-classical",
+      "label": "tab:admissible-classical",
+      "kind": "classical",
+      "row_id": "admissible-classical:r18",
+      "source_line": 2070,
+      "degrees": [
+        4
+      ],
+      "ranks": [
+        4
+      ],
+      "displayed": [
+        "0.089"
+      ],
+      "bound": "1.43",
+      "source": "& 4 & 0.089 & 1.43 \\\\"
+    },
+    {
+      "table_id": "admissible-classical",
+      "label": "tab:admissible-classical",
+      "kind": "classical",
+      "row_id": "admissible-classical:r19",
+      "source_line": 2072,
+      "degrees": [
+        5
+      ],
+      "ranks": [
+        3
+      ],
+      "displayed": [
+        "0.887"
+      ],
+      "bound": "14.3",
+      "source": "5  & 3 & 0.887 & 14.3 \\\\"
+    },
+    {
+      "table_id": "admissible-classical",
+      "label": "tab:admissible-classical",
+      "kind": "classical",
+      "row_id": "admissible-classical:r20",
+      "source_line": 2073,
+      "degrees": [
+        6
+      ],
+      "ranks": [
+        3
+      ],
+      "displayed": [
+        "0.743"
+      ],
+      "bound": "9.30",
+      "source": "6  & 3 & 0.743 & 9.30 \\\\"
+    },
+    {
+      "table_id": "admissible-classical",
+      "label": "tab:admissible-classical",
+      "kind": "classical",
+      "row_id": "admissible-classical:r21",
+      "source_line": 2074,
+      "degrees": [
+        7
+      ],
+      "ranks": [
+        3
+      ],
+      "displayed": [
+        "0.582"
+      ],
+      "bound": "5.73",
+      "source": "7  & 3 & 0.582 & 5.73 \\\\"
+    },
+    {
+      "table_id": "admissible-classical",
+      "label": "tab:admissible-classical",
+      "kind": "classical",
+      "row_id": "admissible-classical:r22",
+      "source_line": 2075,
+      "degrees": [
+        8
+      ],
+      "ranks": [
+        3
+      ],
+      "displayed": [
+        "0.408"
+      ],
+      "bound": "3.40",
+      "source": "8  & 3 & 0.408 & 3.40 \\\\"
+    },
+    {
+      "table_id": "admissible-classical",
+      "label": "tab:admissible-classical",
+      "kind": "classical",
+      "row_id": "admissible-classical:r23",
+      "source_line": 2076,
+      "degrees": [
+        9
+      ],
+      "ranks": [
+        3
+      ],
+      "displayed": [
+        "0.224"
+      ],
+      "bound": "1.96",
+      "source": "9  & 3 & 0.224 & 1.96 \\\\"
+    },
+    {
+      "table_id": "admissible-classical",
+      "label": "tab:admissible-classical",
+      "kind": "classical",
+      "row_id": "admissible-classical:r24",
+      "source_line": 2077,
+      "degrees": [
+        10
+      ],
+      "ranks": [
+        3
+      ],
+      "displayed": [
+        "0.032"
+      ],
+      "bound": "1.10",
+      "source": "10 & 3 & 0.032 & 1.10 \\\\"
+    },
+    {
+      "table_id": "admissible-integral",
+      "label": "tab:admissible-norm",
+      "kind": "integral",
+      "row_id": "admissible-integral:r01",
+      "source_line": 2112,
+      "degrees": [
+        1
+      ],
+      "ranks": [
+        5
+      ],
+      "displayed": [
+        "1.358"
+      ],
+      "bound": "27.8",
+      "source": "& 5  & 1.358 & 27.8 \\\\"
+    },
+    {
+      "table_id": "admissible-integral",
+      "label": "tab:admissible-norm",
+      "kind": "integral",
+      "row_id": "admissible-integral:r02",
+      "source_line": 2113,
+      "degrees": [
+        1
+      ],
+      "ranks": [
+        6
+      ],
+      "displayed": [
+        "1.241"
+      ],
+      "bound": "26.8",
+      "source": "& 6  & 1.241 & 26.8 \\\\"
+    },
+    {
+      "table_id": "admissible-integral",
+      "label": "tab:admissible-norm",
+      "kind": "integral",
+      "row_id": "admissible-integral:r03",
+      "source_line": 2114,
+      "degrees": [
+        1
+      ],
+      "ranks": [
+        7
+      ],
+      "displayed": [
+        "1.137"
+      ],
+      "bound": "22.4",
+      "source": "& 7  & 1.137 & 22.4 \\\\"
+    },
+    {
+      "table_id": "admissible-integral",
+      "label": "tab:admissible-norm",
+      "kind": "integral",
+      "row_id": "admissible-integral:r04",
+      "source_line": 2115,
+      "degrees": [
+        1
+      ],
+      "ranks": [
+        8
+      ],
+      "displayed": [
+        "1.043"
+      ],
+      "bound": "16.5",
+      "source": "& 8  & 1.043 & 16.5 \\\\"
+    },
+    {
+      "table_id": "admissible-integral",
+      "label": "tab:admissible-norm",
+      "kind": "integral",
+      "row_id": "admissible-integral:r05",
+      "source_line": 2116,
+      "degrees": [
+        1
+      ],
+      "ranks": [
+        9
+      ],
+      "displayed": [
+        "0.958"
+      ],
+      "bound": "10.9",
+      "source": "& 9  & 0.958 & 10.9 \\\\"
+    },
+    {
+      "table_id": "admissible-integral",
+      "label": "tab:admissible-norm",
+      "kind": "integral",
+      "row_id": "admissible-integral:r06",
+      "source_line": 2117,
+      "degrees": [
+        1
+      ],
+      "ranks": [
+        10
+      ],
+      "displayed": [
+        "0.880"
+      ],
+      "bound": "6.51",
+      "source": "& 10 & 0.880 & 6.51 \\\\"
+    },
+    {
+      "table_id": "admissible-integral",
+      "label": "tab:admissible-norm",
+      "kind": "integral",
+      "row_id": "admissible-integral:r07",
+      "source_line": 2118,
+      "degrees": [
+        1
+      ],
+      "ranks": [
+        11
+      ],
+      "displayed": [
+        "0.808"
+      ],
+      "bound": "3.56",
+      "source": "& 11 & 0.808 & 3.56 \\\\"
+    },
+    {
+      "table_id": "admissible-integral",
+      "label": "tab:admissible-norm",
+      "kind": "integral",
+      "row_id": "admissible-integral:r08",
+      "source_line": 2119,
+      "degrees": [
+        1
+      ],
+      "ranks": [
+        12
+      ],
+      "displayed": [
+        "0.741"
+      ],
+      "bound": "1.79",
+      "source": "& 12 & 0.741 & 1.79 \\\\"
+    },
+    {
+      "table_id": "admissible-integral",
+      "label": "tab:admissible-norm",
+      "kind": "integral",
+      "row_id": "admissible-integral:r09",
+      "source_line": 2120,
+      "degrees": [
+        1
+      ],
+      "ranks": [
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29
+      ],
+      "displayed": [
+        "0.007",
+        "0.679"
+      ],
+      "bound": "<1",
+      "source": "& $13\\le n\\le 29$ & $0.007\\le g_{\\mathfrak{n}}\\le 0.679$ & $<1$ \\\\"
+    },
+    {
+      "table_id": "admissible-integral",
+      "label": "tab:admissible-norm",
+      "kind": "integral",
+      "row_id": "admissible-integral:r10",
+      "source_line": 2123,
+      "degrees": [
+        2
+      ],
+      "ranks": [
+        5
+      ],
+      "displayed": [
+        "1.763"
+      ],
+      "bound": "6.57",
+      "source": "& 5  & 1.763 & 6.57 \\\\"
+    },
+    {
+      "table_id": "admissible-integral",
+      "label": "tab:admissible-norm",
+      "kind": "integral",
+      "row_id": "admissible-integral:r11",
+      "source_line": 2124,
+      "degrees": [
+        2
+      ],
+      "ranks": [
+        6
+      ],
+      "displayed": [
+        "1.484"
+      ],
+      "bound": "1.81",
+      "source": "& 6  & 1.484 & 1.81 \\\\"
+    },
+    {
+      "table_id": "admissible-integral",
+      "label": "tab:admissible-norm",
+      "kind": "integral",
+      "row_id": "admissible-integral:r12",
+      "source_line": 2125,
+      "degrees": [
+        2
+      ],
+      "ranks": [
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14
+      ],
+      "displayed": [
+        "0.078",
+        "1.242"
+      ],
+      "bound": "<1",
+      "source": "& $7\\le n\\le 14 $ & $0.078\\le g_{\\mathfrak{n}}\\le 1.242$ & $<1$ \\\\"
+    },
+    {
+      "table_id": "admissible-integral",
+      "label": "tab:admissible-norm",
+      "kind": "integral",
+      "row_id": "admissible-integral:r13",
+      "source_line": 2127,
+      "degrees": [
+        3
+      ],
+      "ranks": [
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "displayed": [
+        "0.223",
+        "1.984"
+      ],
+      "bound": "<1",
+      "source": "3 & $5\\le n\\le 10$ & $0.223\\le g_{\\mathfrak{n}}\\le 1.984$ &  $<1$  \\\\"
+    },
+    {
+      "table_id": "admissible-integral",
+      "label": "tab:admissible-norm",
+      "kind": "integral",
+      "row_id": "admissible-integral:r14",
+      "source_line": 2129,
+      "degrees": [
+        4
+      ],
+      "ranks": [
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "displayed": [
+        "0.076",
+        "2.123"
+      ],
+      "bound": "<1",
+      "source": "4 & $5\\le n\\le 9$ & $0.076\\le g_{\\mathfrak{n}}\\le 2.123$ &  $<1$  \\\\"
+    },
+    {
+      "table_id": "admissible-integral",
+      "label": "tab:admissible-norm",
+      "kind": "integral",
+      "row_id": "admissible-integral:r15",
+      "source_line": 2131,
+      "degrees": [
+        5
+      ],
+      "ranks": [
+        5,
+        6,
+        7,
+        8
+      ],
+      "displayed": [
+        "0.134",
+        "2.215"
+      ],
+      "bound": "<1",
+      "source": "5 & $5\\le n\\le 8$ & $0.134\\le g_{\\mathfrak{n}}\\le 2.215$ &  $<1$  \\\\"
+    },
+    {
+      "table_id": "admissible-integral",
+      "label": "tab:admissible-norm",
+      "kind": "integral",
+      "row_id": "admissible-integral:r16",
+      "source_line": 2133,
+      "degrees": [
+        6,
+        7
+      ],
+      "ranks": [
+        5,
+        6,
+        7
+      ],
+      "displayed": [
+        "0.183",
+        "2.318"
+      ],
+      "bound": "<1",
+      "source": "$6\\le d\\le 7$ & $5\\le n\\le 7$ & $0.183\\le g_{\\mathfrak{n}}\\le 2.318$ & $<1$ \\\\"
+    },
+    {
+      "table_id": "admissible-integral",
+      "label": "tab:admissible-norm",
+      "kind": "integral",
+      "row_id": "admissible-integral:r17",
+      "source_line": 2135,
+      "degrees": [
+        8,
+        9,
+        10,
+        11,
+        12,
+        13
+      ],
+      "ranks": [
+        5,
+        6
+      ],
+      "displayed": [
+        "0.109",
+        "2.362"
+      ],
+      "bound": "<1",
+      "source": "$8\\le d\\le 13$ & $5\\le n\\le 6$ & $0.109\\le g_{\\mathfrak{n}}\\le 2.362$ & $<1$ \\\\"
+    },
+    {
+      "table_id": "admissible-integral",
+      "label": "tab:admissible-norm",
+      "kind": "integral",
+      "row_id": "admissible-integral:r18",
+      "source_line": 2137,
+      "degrees": [
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57
+      ],
+      "ranks": [
+        5
+      ],
+      "displayed": [
+        "0.054",
+        "2.313"
+      ],
+      "bound": "<1",
+      "source": "$14\\le d\\le 57$ & 5 & $0.054\\le g_{\\mathfrak{n}}\\le 2.313$ & $<1$ \\\\"
+    }
+  ],
+  "maxima": [
+    {
+      "table_id": "maxima-classical",
+      "label": "tab:max-rank-degree-classical",
+      "kind": "classical",
+      "row_id": "maxima-classical:r01",
+      "source_line": 2094,
+      "degrees": [
+        1
+      ],
+      "maxrank": 12,
+      "ranks": [
+        3
+      ],
+      "maxdegree": 10,
+      "source": "1       & 12 & 3      & 10 \\\\"
+    },
+    {
+      "table_id": "maxima-classical",
+      "label": "tab:max-rank-degree-classical",
+      "kind": "classical",
+      "row_id": "maxima-classical:r02",
+      "source_line": 2095,
+      "degrees": [
+        2
+      ],
+      "maxrank": 6,
+      "ranks": [
+        4
+      ],
+      "maxdegree": 4,
+      "source": "2       & 6  & 4      & 4  \\\\"
+    },
+    {
+      "table_id": "maxima-classical",
+      "label": "tab:max-rank-degree-classical",
+      "kind": "classical",
+      "row_id": "maxima-classical:r03",
+      "source_line": 2096,
+      "degrees": [
+        3,
+        4
+      ],
+      "maxrank": 4,
+      "ranks": [
+        5,
+        6
+      ],
+      "maxdegree": 2,
+      "source": "$3\\le d\\le 4$  & 4  & $5\\le n\\le 6$ & 2  \\\\"
+    },
+    {
+      "table_id": "maxima-classical",
+      "label": "tab:max-rank-degree-classical",
+      "kind": "classical",
+      "row_id": "maxima-classical:r04",
+      "source_line": 2097,
+      "degrees": [
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "maxrank": 3,
+      "ranks": [
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "maxdegree": 1,
+      "source": "$5\\le d\\le 10$ & 3  & $7\\le n\\le 12$ & 1  \\\\"
+    },
+    {
+      "table_id": "maxima-integral",
+      "label": "tab:max-rank-degree-norm",
+      "kind": "integral",
+      "row_id": "maxima-integral:r01",
+      "source_line": 2149,
+      "degrees": [
+        1
+      ],
+      "maxrank": 29,
+      "ranks": [
+        5
+      ],
+      "maxdegree": 57,
+      "source": "1  & 29 & 5  & 57 \\\\"
+    },
+    {
+      "table_id": "maxima-integral",
+      "label": "tab:max-rank-degree-norm",
+      "kind": "integral",
+      "row_id": "maxima-integral:r02",
+      "source_line": 2150,
+      "degrees": [
+        2
+      ],
+      "maxrank": 14,
+      "ranks": [
+        6
+      ],
+      "maxdegree": 13,
+      "source": "2  & 14 & 6  & 13 \\\\"
+    },
+    {
+      "table_id": "maxima-integral",
+      "label": "tab:max-rank-degree-norm",
+      "kind": "integral",
+      "row_id": "maxima-integral:r03",
+      "source_line": 2151,
+      "degrees": [
+        3
+      ],
+      "maxrank": 10,
+      "ranks": [
+        7
+      ],
+      "maxdegree": 7,
+      "source": "3  & 10 & 7  & 7  \\\\"
+    },
+    {
+      "table_id": "maxima-integral",
+      "label": "tab:max-rank-degree-norm",
+      "kind": "integral",
+      "row_id": "maxima-integral:r04",
+      "source_line": 2152,
+      "degrees": [
+        4
+      ],
+      "maxrank": 9,
+      "ranks": [
+        8
+      ],
+      "maxdegree": 5,
+      "source": "4  & 9  & 8  & 5  \\\\"
+    },
+    {
+      "table_id": "maxima-integral",
+      "label": "tab:max-rank-degree-norm",
+      "kind": "integral",
+      "row_id": "maxima-integral:r05",
+      "source_line": 2153,
+      "degrees": [
+        5
+      ],
+      "maxrank": 8,
+      "ranks": [
+        9
+      ],
+      "maxdegree": 4,
+      "source": "5  & 8  & 9  & 4  \\\\"
+    },
+    {
+      "table_id": "maxima-integral",
+      "label": "tab:max-rank-degree-norm",
+      "kind": "integral",
+      "row_id": "maxima-integral:r06",
+      "source_line": 2154,
+      "degrees": [
+        6,
+        7
+      ],
+      "maxrank": 7,
+      "ranks": [
+        10
+      ],
+      "maxdegree": 3,
+      "source": "$6\\le d\\le 7$  & 7 & 10 & 3  \\\\"
+    },
+    {
+      "table_id": "maxima-integral",
+      "label": "tab:max-rank-degree-norm",
+      "kind": "integral",
+      "row_id": "maxima-integral:r07",
+      "source_line": 2155,
+      "degrees": [
+        8,
+        9,
+        10,
+        11,
+        12,
+        13
+      ],
+      "maxrank": 6,
+      "ranks": [
+        11,
+        12,
+        13,
+        14
+      ],
+      "maxdegree": 2,
+      "source": "$8\\le d\\le 13$  & 6 & $11\\le n\\le 14$ & 2 \\\\"
+    },
+    {
+      "table_id": "maxima-integral",
+      "label": "tab:max-rank-degree-norm",
+      "kind": "integral",
+      "row_id": "maxima-integral:r08",
+      "source_line": 2156,
+      "degrees": [
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57
+      ],
+      "maxrank": 5,
+      "ranks": [
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29
+      ],
+      "maxdegree": 1,
+      "source": "$14\\le d\\le 57$ & 5 & $15\\le n\\le 29$ & 1 \\\\"
+    }
+  ],
+  "enumeration": {
+    "classical": {
+      "rank_min": 3,
+      "rank_max": 12,
+      "degree_min": 1,
+      "degree_max": 10
+    },
+    "integral": {
+      "rank_min": 5,
+      "rank_max": 29,
+      "degree_min": 1,
+      "degree_max": 57
+    },
+    "quadratic_field_m_max": 200
+  }
+}
