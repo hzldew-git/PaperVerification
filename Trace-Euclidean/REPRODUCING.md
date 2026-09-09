@@ -25,6 +25,9 @@ signatures, each with exactly `propext`, `Classical.choice`, and
 `Quot.sound`. The initial verified Windows run used Lean 4.32.1 and Lake 5.0.0
 and completed 8,665 Lake jobs.
 
+On a Windows machine with limited process resources, set
+`$env:LEAN_NUM_THREADS = '4'` before these commands.
+
 ## Public computational protocol
 
 From `Trace-Euclidean`:

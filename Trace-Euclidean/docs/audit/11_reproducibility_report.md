@@ -14,7 +14,7 @@
 | Forbidden-construct scan | PASS, zero matches |
 | Mathematica verification | PASS, 2,165 records |
 | Verification-manual build | PASS |
-| Manuscript-exclusion gate | Pending final staged-tree check |
+| Manuscript-exclusion gate | PASS, 78 files inspected |
 
 The public computational run uses frozen extracted inputs. Rebinding the source
 hash to a new manuscript version is a private maintainer operation and cannot
@@ -22,10 +22,26 @@ be reproduced from the public repository alone.
 
 ## Clean-checkout boundary
 
-GitHub Actions is configured to rebuild the Lean project from a fresh Ubuntu
-checkout and rerun the forbidden-construct and endpoint-axiom audits. A local
-clean-checkout receipt will be added below before deployment is declared
-complete.
+A detached clean checkout, with no manuscript snapshot or manuscript build
+directory, was used for the following independent rerun:
+
+| Item | Result |
+|---|---|
+| Pinned dependency restoration | PASS, including mathlib revision `520045ab14e26149ee970e2e617ca04b09bde5d6` |
+| `lake build` | PASS, 8,665 jobs |
+| Endpoint signature/axiom audit | PASS, 13 endpoints |
+| Public Mathematica rerun | PASS, 2,165 records |
+| Delivery integrity check | PASS |
+| Manuscript-exclusion gate | PASS, 78 files inspected |
+| Repository state after public rerun | clean; `git status --porcelain` produced no output |
+
+The Windows clean build used `LEAN_NUM_THREADS=4` to avoid exhausting local
+process resources. This limits build concurrency only; it does not change the
+Lean sources, toolchain, dependencies, or kernel checks.
+
+GitHub Actions is configured to repeat the Lean build, forbidden-construct
+scan, endpoint-axiom audit, and manuscript-exclusion check from a fresh Ubuntu
+checkout.
 
 Current reproducibility status:
-`REPRODUCIBLE_IN_DEVELOPMENT_CHECKOUT_PENDING_CLEAN_CHECKOUT_RECEIPT`.
+`REPRODUCIBLE_CLEAN_CHECKOUT_VERIFIED`.
