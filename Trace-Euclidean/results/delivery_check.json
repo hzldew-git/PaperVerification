@@ -1,8 +1,6 @@
 {
   "source_sha256": "a2f522d077c600e0dc747dcaa8b06ba4e31ecd0b49b83dae468c9b61915a0e99",
   "source_hash_consistent": true,
-  "private_snapshot_checked": true,
-  "public_manuscript_artifacts_absent": false,
   "test_counts": {
     "PASS": 2165
   },
@@ -18,6 +16,5 @@
   "manual_pdf_present": true,
   "lean_forbidden_constructs_absent": true,
   "lean_endpoint_axiom_sets_expected": true,
-  "private_manuscript_pdf_checked": true,
   "errors": []
 }

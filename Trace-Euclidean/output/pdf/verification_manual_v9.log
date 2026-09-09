@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025) (preloaded format=xelatex 2026.3.18)  9 SEP 2026 22:41
+This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025) (preloaded format=xelatex 2026.3.18)  9 SEP 2026 23:14
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -533,7 +533,7 @@ tion_manual_v9.out)
 \openout4 = `verification_manual_v9.out'.
 
  (../generated/run_summary.tex
-Underfull \hbox (badness 10000) in paragraph at lines 18--18
+Underfull \hbox (badness 10000) in paragraph at lines 17--17
 []|\TU/lmr/m/n/10.95 Square-free parameters
  []
 
@@ -548,9 +548,8 @@ LaTeX Font Info:    Trying to load font information for U+euf on input line 153
 (c:/Software/texlive/2025/texmf-dist/tex/latex/amsfonts/ueuf.fd
 File: ueuf.fd 2013/01/14 v3.01 Euler Fraktur
 )
-(../generated/numeric_claims.tex
-
-[3]) (../generated/section4_coverage.tex [4] [5]) (../generated/issues.tex)
+(../generated/numeric_claims.tex [3]) (../generated/section4_coverage.tex
+[4] [5]) (../generated/issues.tex)
 
 [6]
 
@@ -570,11 +569,11 @@ Package rerunfilecheck Info: File `verification_manual_v9.out' has not changed.
 Here is how much of TeX's memory you used:
  12635 strings out of 473832
  198549 string characters out of 5729027
- 651149 words of memory out of 5000000
+ 649149 words of memory out of 5000000
  35353 multiletter control sequences out of 15000+600000
  569343 words of font info for 94 fonts, out of 8000000 for 9000
  1509 hyphenation exceptions out of 8191
  71i,13n,79p,611b,594s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
 Output written on D:/AI-Workspace/Projects/PaperVerification/Trace-Euclidean/ou
-tput/pdf/verification_manual_v9.xdv (8 pages, 202284 bytes).
+tput/pdf/verification_manual_v9.xdv (8 pages, 202400 bytes).

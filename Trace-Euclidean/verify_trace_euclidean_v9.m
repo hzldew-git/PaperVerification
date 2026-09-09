@@ -35,26 +35,21 @@ say["Trace-Euclidean-v9 reproducible verification"];
 say["Kernel: " <> $Version];
 
 setVerificationContext["integrity", "package", "cryptographic version binding"];
-If[FileExistsQ[snapshot],
-  sourceHash = IntegerString[FileHash[snapshot, "SHA256"], 16, 64];
-  check[
-    "source-sha256",
-    "integrity",
-    sourceHash === input["source_sha256"],
-    sourceHash,
-    input["source_sha256"],
-    "The private maintainer run uses the exact snapshot processed by prepare_inputs.py."
-  ],
-  sourceHash = input["source_sha256"];
-  check[
-    "source-sha256-recorded",
-    "integrity",
-    StringQ[sourceHash] && StringLength[sourceHash] === 64 &&
-      StringMatchQ[sourceHash, HexadecimalCharacter ..],
-    sourceHash,
-    "64 hexadecimal characters",
-    "The public package omits the manuscript; this is the digest recorded by the private extraction step."
-  ]
+sourceHash = input["source_sha256"];
+If[FileExistsQ[snapshot] &&
+    IntegerString[FileHash[snapshot, "SHA256"], 16, 64] =!= sourceHash,
+  Print["The private manuscript snapshot does not match inputs/manuscript_inputs.json."];
+  $VerificationExitCode = 1;
+  Abort[]
+];
+check[
+  "source-sha256-recorded",
+  "integrity",
+  StringQ[sourceHash] && StringLength[sourceHash] === 64 &&
+    StringMatchQ[sourceHash, HexadecimalCharacter ..],
+  sourceHash,
+  "64 hexadecimal characters",
+  "Digest produced by the private extraction step; a private maintainer build additionally checks the snapshot against it."
 ];
 
 Do[
@@ -100,8 +95,6 @@ summary = <|
   "classical_pairs" -> Length[classicalPairs],
   "integral_pairs" -> Length[integralPairs],
   "quadratic_fields_tested" -> Length[fieldRows],
-  "elapsed_seconds" -> N[AbsoluteTime[] - started, 8],
-  "completed" -> DateString["ISODateTime"],
   "precision" -> 80,
   "interval_decimal_places" -> 40,
   "scope" -> "Exact symbolic calculations, certified rational signs, manuscript approximations, all four displayed tables, exact trace/Voronoi formulae, and square-free m up to the configured bound. General proofs and cited analytic theorems are outside the computational scope."

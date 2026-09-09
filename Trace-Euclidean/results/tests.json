@@ -1,14 +1,14 @@
 [
 	{
-		"id":"source-sha256",
+		"id":"source-sha256-recorded",
 		"module":"integrity",
 		"anchor":"package",
 		"evidence":"cryptographic version binding",
 		"category":"integrity",
 		"status":"PASS",
 		"actual":"a2f522d077c600e0dc747dcaa8b06ba4e31ecd0b49b83dae468c9b61915a0e99",
-		"expected":"a2f522d077c600e0dc747dcaa8b06ba4e31ecd0b49b83dae468c9b61915a0e99",
-		"note":"The private maintainer run uses the exact snapshot processed by prepare_inputs.py."
+		"expected":"64 hexadecimal characters",
+		"note":"Digest produced by the private extraction step; a private maintainer build additionally checks the snapshot against it."
 	},
 	{
 		"id":"source-fragment-definition-gd",

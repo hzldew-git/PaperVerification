@@ -8,6 +8,23 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
+TEXT_SUFFIXES = {
+    ".csv",
+    ".json",
+    ".lean",
+    ".log",
+    ".m",
+    ".md",
+    ".ps1",
+    ".py",
+    ".tex",
+    ".toml",
+    ".txt",
+    ".wl",
+    ".wls",
+    ".yaml",
+    ".yml",
+}
 
 
 def load_json(path: Path):
@@ -29,6 +46,28 @@ def require(path: Path, errors: list[str]) -> None:
 
 def files_below(path: Path) -> list[Path]:
     return [item for item in path.rglob("*") if item.is_file()] if path.exists() else []
+
+
+def write_text_lf(path: Path, text: str) -> None:
+    normalized = text.replace("\r\n", "\n").replace("\r", "\n")
+    path.write_bytes(normalized.encode("utf-8"))
+
+
+def normalize_public_text_files() -> None:
+    for path in ROOT.rglob("*"):
+        if not path.is_file():
+            continue
+        relative = path.relative_to(ROOT)
+        if any(part in {".lake", "tmp", "source_snapshot"} for part in relative.parts):
+            continue
+        if len(relative.parts) >= 2 and relative.parts[:2] == ("output", "manuscript"):
+            continue
+        if path.suffix.lower() not in TEXT_SUFFIXES and path.name != ".gitignore":
+            continue
+        raw = path.read_bytes()
+        normalized = raw.replace(b"\r\n", b"\n").replace(b"\r", b"\n")
+        if normalized != raw:
+            path.write_bytes(normalized)
 
 
 def main() -> None:
@@ -271,10 +310,6 @@ def main() -> None:
     status = {
         "source_sha256": input_hash,
         "source_hash_consistent": source_hash_consistent,
-        "private_snapshot_checked": private_mode,
-        "public_manuscript_artifacts_absent": not private_mode
-        and not files_below(ROOT / "source_snapshot")
-        and not files_below(manuscript_output),
         "test_counts": dict(observed_counts),
         "tests_match_summary": dict(observed_counts) == summary["counts"],
         "module_ledger_complete": modules == test_modules,
@@ -299,12 +334,10 @@ def main() -> None:
         "lean_endpoint_axiom_sets_expected": not any(
             "Lean endpoint report" in error for error in errors
         ),
-        "private_manuscript_pdf_checked": manuscript_pdf_present if private_mode else False,
         "errors": errors,
     }
-    (ROOT / "results" / "delivery_check.json").write_text(
-        json.dumps(status, indent=2) + "\n", encoding="utf-8"
-    )
+    write_text_lf(ROOT / "results" / "delivery_check.json", json.dumps(status, indent=2) + "\n")
+    normalize_public_text_files()
 
     hash_paths = sorted(
         path
@@ -323,9 +356,7 @@ def main() -> None:
         and not path.name.lower().endswith(".synctex.gz")
     )
     sums = {path.relative_to(ROOT).as_posix(): sha256(path) for path in hash_paths}
-    (ROOT / "SHA256SUMS.json").write_text(
-        json.dumps(sums, indent=2) + "\n", encoding="utf-8"
-    )
+    write_text_lf(ROOT / "SHA256SUMS.json", json.dumps(sums, indent=2) + "\n")
 
     if errors:
         raise SystemExit("\n".join(errors))

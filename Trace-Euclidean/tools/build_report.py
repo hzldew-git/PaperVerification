@@ -17,6 +17,11 @@ def load_json(path: Path):
     return json.loads(path.read_text(encoding="utf-8"))
 
 
+def write_text_lf(path: Path, text: str) -> None:
+    normalized = text.replace("\r\n", "\n").replace("\r", "\n")
+    path.write_bytes(normalized.encode("utf-8"))
+
+
 def tex(text) -> str:
     mapping = {
         "&": r"\&",
@@ -151,25 +156,23 @@ def main() -> None:
         reference_lines.append(
             rf"\expandafter\def\csname msref@{label}\endcsname{{{manuscript_ref(manuscript, label)}}}"
         )
-    (GENERATED / "manuscript_refs.tex").write_text("\n".join(reference_lines) + "\n", encoding="utf-8")
+    write_text_lf(GENERATED / "manuscript_refs.tex", "\n".join(reference_lines) + "\n")
 
     summary_rows = [
         ["Private source identifier", url(manuscript["manuscript"]["filename"])],
         ["SHA-256", url(summary["source_sha256"])],
         ["Source lines", str(summary["source_line_count"])],
         ["Wolfram kernel", tex(summary["kernel"])],
-        ["Completed", tex(summary["completed"])],
         ["PASS / WARN / FAIL", count_table(summary["counts"])],
         ["Certified classical pairs", str(summary["classical_pairs"])],
         ["Certified integral pairs", str(summary["integral_pairs"])],
         ["Square-free parameters tested", str(summary["quadratic_fields_tested"])],
         ["Root precision", f"{summary['precision']} digits"],
         ["Rational interval output", f"{summary['interval_decimal_places']} decimal places, rounded outward"],
-        ["Kernel time", f"{summary['elapsed_seconds']:.3f} seconds"],
     ]
-    (GENERATED / "run_summary.tex").write_text(
+    write_text_lf(
+        GENERATED / "run_summary.tex",
         longtable(["Item", "Recorded value"], summary_rows, ["46mm", "108mm"]),
-        encoding="utf-8",
     )
 
     module_rows = []
@@ -195,14 +198,8 @@ def main() -> None:
             "counts": dict(counts),
             "result_records": "results/tests.json and results/tests.csv",
         })
-    (GENERATED / "module_map.tex").write_text(
-        module_list(module_rows),
-        encoding="utf-8",
-    )
-    (RESULTS / "verification_ledger.json").write_text(
-        json.dumps(ledger, indent=2) + "\n",
-        encoding="utf-8",
-    )
+    write_text_lf(GENERATED / "module_map.tex", module_list(module_rows))
+    write_text_lf(RESULTS / "verification_ledger.json", json.dumps(ledger, indent=2) + "\n")
 
     coverage_rows = []
     coverage_ledger = []
@@ -235,7 +232,8 @@ def main() -> None:
     uncovered = sorted(mathematical_analytic_ids - covered_test_ids)
     if uncovered:
         raise ValueError(f"Analytic test records missing from the Section 4 coverage ledger: {uncovered}")
-    (GENERATED / "section4_coverage.tex").write_text(
+    write_text_lf(
+        GENERATED / "section4_coverage.tex",
         longtable(
             ["Manuscript location", "Calculation checked", "Evidence", "Result"],
             coverage_rows,
@@ -244,11 +242,9 @@ def main() -> None:
             tabcolsep="2pt",
             ragged=True,
         ),
-        encoding="utf-8",
     )
-    (RESULTS / "section4_coverage.json").write_text(
-        json.dumps(coverage_ledger, indent=2) + "\n",
-        encoding="utf-8",
+    write_text_lf(
+        RESULTS / "section4_coverage.json", json.dumps(coverage_ledger, indent=2) + "\n"
     )
 
     category_rows = []
@@ -261,13 +257,13 @@ def main() -> None:
             str(counts.get("WARN", 0)),
             str(counts.get("FAIL", 0)),
         ])
-    (GENERATED / "category_summary.tex").write_text(
+    write_text_lf(
+        GENERATED / "category_summary.tex",
         longtable(
             ["Check category", "Total", "PASS", "WARN", "FAIL"],
             category_rows,
             ["64mm", "15mm", "15mm", "15mm", "15mm"],
         ),
-        encoding="utf-8",
     )
 
     numeric_rows = []
@@ -281,7 +277,8 @@ def main() -> None:
             tex(decimal_text(wl_decimal(item["value"]), 10)),
             test["status"],
         ])
-    (GENERATED / "numeric_claims.tex").write_text(
+    write_text_lf(
+        GENERATED / "numeric_claims.tex",
         longtable(
             ["Claim ID", "Manuscript location", "Line", "Printed", "Computed", "Status"],
             numeric_rows,
@@ -289,7 +286,6 @@ def main() -> None:
             font=r"\footnotesize",
             tabcolsep="2pt",
         ),
-        encoding="utf-8",
     )
 
     input_rows = {item["row_id"]: item for item in manuscript["tables"]}
@@ -339,7 +335,7 @@ def main() -> None:
                 tex(test["actual"]),
                 "inspect",
             ])
-    (RESULTS / "issues.json").write_text(json.dumps(issues, indent=2) + "\n", encoding="utf-8")
+    write_text_lf(RESULTS / "issues.json", json.dumps(issues, indent=2) + "\n")
     if issue_rows:
         issues_tex = longtable(
             ["Row ID", "Parameters", "Line", "Printed", "Computed", "Outward value"],
@@ -350,7 +346,7 @@ def main() -> None:
         )
     else:
         issues_tex = "No WARN or FAIL record was produced by this run.\n"
-    (GENERATED / "issues.tex").write_text(issues_tex, encoding="utf-8")
+    write_text_lf(GENERATED / "issues.tex", issues_tex)
 
     print(json.dumps({
         "generated_fragments": 7,

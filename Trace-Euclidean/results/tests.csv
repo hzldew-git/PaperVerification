@@ -1,5 +1,5 @@
 "id","module","anchor","evidence","category","status","actual","expected","note"
-"source-sha256","integrity","package","cryptographic version binding","integrity","PASS","a2f522d077c600e0dc747dcaa8b06ba4e31ecd0b49b83dae468c9b61915a0e99","a2f522d077c600e0dc747dcaa8b06ba4e31ecd0b49b83dae468c9b61915a0e99","The private maintainer run uses the exact snapshot processed by prepare_inputs.py."
+"source-sha256-recorded","integrity","package","cryptographic version binding","integrity","PASS","a2f522d077c600e0dc747dcaa8b06ba4e31ecd0b49b83dae468c9b61915a0e99","64 hexadecimal characters","Digest produced by the private extraction step; a private maintainer build additionally checks the snapshot against it."
 "source-fragment-definition-gd","analytic_bounds","eq:def-g","source-to-code binding","source binding","PASS","1111","g(n,d)=\log G_d(n,d)",""
 "source-fragment-definition-gs","analytic_bounds","eq:def-g","source-to-code binding","source binding","PASS","1112","g_{\mathfrak{s}}(n,d)=\log (G_{d}(n,d))/n",""
 "source-fragment-definition-gn","analytic_bounds","eq:def-g","source-to-code binding","source binding","PASS","1112","g_{\mathfrak{n}}(n,d)=d\log 2+(\log G_{d}(n,d))/n",""

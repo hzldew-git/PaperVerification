@@ -281,7 +281,9 @@ def main() -> None:
         "enumeration": manifest["enumeration"],
     }
     destination = ROOT / "inputs" / "manuscript_inputs.json"
-    destination.write_text(json.dumps(output, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    destination.write_bytes(
+        (json.dumps(output, ensure_ascii=False, indent=2) + "\n").encode("utf-8")
+    )
     print(
         json.dumps(
             {
