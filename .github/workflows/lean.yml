@@ -1,0 +1,60 @@
+name: Trace-Euclidean Lean checks
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: trace-euclidean-lean-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build-and-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+
+    steps:
+      - name: Check out the exact revision
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+
+      - name: Build the pinned Lean project
+        uses: leanprover/lean-action@38fbc41a8c28c4cbaec22d7f7de508ec2e7c0dd9 # v1.5.0
+        with:
+          lake-package-directory: Trace-Euclidean/lean
+          auto-config: false
+          build: true
+          use-mathlib-cache: true
+
+      - name: Reject unfinished or non-kernel proof constructs
+        shell: bash
+        run: |
+          set -euo pipefail
+          if git grep -n -E '(^|[^[:alpha:]])sorry([^[:alpha:]]|$)|sorryAx|^[[:space:]]*axiom[[:space:]]|native_decide|run_tac|^[[:space:]]*unsafe[[:space:]]|^[[:space:]]*extern[[:space:]]|implemented_by' -- 'Trace-Euclidean/lean/*.lean' 'Trace-Euclidean/lean/**/*.lean'; then
+            echo 'Forbidden proof construct found.' >&2
+            exit 1
+          fi
+
+      - name: Check public signatures and transitive axiom sets
+        working-directory: Trace-Euclidean/lean
+        shell: bash
+        run: |
+          set -euo pipefail
+          lake env lean TraceEuclideanTest/MainTheoremAudit.lean > theorem-audit.log 2>&1
+          cat theorem-audit.log
+          count="$(grep -c 'depends on axioms:' theorem-audit.log)"
+          test "$count" -eq 13
+          if grep 'depends on axioms:' theorem-audit.log | grep -vF 'depends on axioms: [propext, Classical.choice, Quot.sound]'; then
+            echo 'Unexpected transitive axiom dependency found.' >&2
+            exit 1
+          fi
+          rm theorem-audit.log
+
+      - name: Verify clean generated state
+        shell: bash
+        run: test -z "$(git status --porcelain)"

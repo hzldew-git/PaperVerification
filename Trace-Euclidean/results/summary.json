@@ -1,0 +1,35 @@
+{
+	"kernel":"15.0.0 for Microsoft Windows (64-bit) (May 15, 2026)",
+	"source_sha256":"a2f522d077c600e0dc747dcaa8b06ba4e31ecd0b49b83dae468c9b61915a0e99",
+	"source_line_count":2372,
+	"counts":{
+		"PASS":2165
+	},
+	"module_counts":{
+		"integrity":{
+			"PASS":1
+		},
+		"analytic_bounds":{
+			"PASS":134
+		},
+		"trace_geometry":{
+			"PASS":272
+		},
+		"admissible_tables":{
+			"PASS":1677
+		},
+		"gamma_diagnostics":{
+			"PASS":81
+		}
+	},
+	"failures":0,
+	"warnings":0,
+	"classical_pairs":24,
+	"integral_pairs":112,
+	"quadratic_fields_tested":121,
+	"elapsed_seconds":14.631609,
+	"completed":"2026-09-09T22:40:58",
+	"precision":80,
+	"interval_decimal_places":40,
+	"scope":"Exact symbolic calculations, certified rational signs, manuscript approximations, all four displayed tables, exact trace\/Voronoi formulae, and square-free m up to the configured bound. General proofs and cited analytic theorems are outside the computational scope."
+}

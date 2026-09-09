@@ -1,0 +1,41 @@
+TraceEuclidean.strictEuclidean_of_radius_lt.{u_1, u_2} {X : Type u_1} {Y : Type u_2} {cost : X → Y → ℝ} {ρsq t : ℝ}
+  (hρ : TraceEuclidean.SquaredCoveringRadiusSpec cost ρsq) (hlt : ρsq < t) : TraceEuclidean.StrictEuclidean cost t
+TraceEuclidean.radius_le_of_strictEuclidean.{u_1, u_2} {X : Type u_1} {Y : Type u_2} {cost : X → Y → ℝ} {ρsq t : ℝ}
+  (hρ : TraceEuclidean.SquaredCoveringRadiusSpec cost ρsq) (hE : TraceEuclidean.StrictEuclidean cost t) : ρsq ≤ t
+TraceEuclidean.pNormEuclidean_imp_traceEuclidean.{u_1, u_2} {X : Type u_1} {Y : Type u_2} {traceMean pMean : X → Y → ℝ}
+  (powerMean : ∀ (x : X) (y : Y), traceMean x y ≤ pMean x y) (hp : TraceEuclidean.StrictEuclidean pMean 1) :
+  TraceEuclidean.StrictEuclidean traceMean 1
+TraceEuclidean.two_scaled_isometric_iff.{u_1, u_2} {V : Type u_1} {W : Type u_2} {Q : V → ℝ} {Q' : W → ℝ} :
+  TraceEuclidean.IsometricForms (TraceEuclidean.scaleForm 2 Q) (TraceEuclidean.scaleForm 2 Q') ↔
+    TraceEuclidean.IsometricForms Q Q'
+TraceEuclidean.criticalPoint_hessian_negative {z gxx gxy gyy fprime : ℝ} (hz : 0 < z) (hgxx : gxx < 0)
+  (hxx : gxx = z * gxy) (hfp : fprime = gxy - z * gyy) (hfneg : fprime < 0) : gxx * gyy - gxy ^ 2 < 0
+TraceEuclidean.finite_positive_of_tendsto_atTop_atBot {h : ℕ → ℝ} (hh : Filter.Tendsto h Filter.atTop Filter.atBot) :
+  {n | 0 < h n}.Finite
+TraceEuclidean.voronoiVertexNorm_formula {p q r : ℝ} (hdet : p * q - r ^ 2 ≠ 0) :
+  TraceEuclidean.vertexNormSq p q r = p * q * (p + q - 2 * r) / (4 * (p * q - r ^ 2))
+TraceEuclidean.caseII_vertexNorm_first {m : ℝ} (hm : m ≠ 0) :
+  have A := (m + 1) / 2;
+  TraceEuclidean.vertexNormSq 2 A 1 = A ^ 2 / (2 * m)
+TraceEuclidean.caseII_vertexNorm_middle {m : ℝ} (hm : m ≠ 0) :
+  have A := (m + 1) / 2;
+  TraceEuclidean.vertexNormSq A A (A - 1) = A ^ 2 / (2 * m)
+TraceEuclidean.caseI_closed_candidates {m : ℕ} (hm : 1 < m) (hρ : TraceEuclidean.caseIRadiusSq m ≤ 2) : m = 2 ∨ m = 3
+TraceEuclidean.caseII_closed_candidates {m : ℕ} (hm : 1 < m) (hsq : TraceEuclidean.IsSquarefreeNat m) (hmod : m % 4 = 1)
+  (hρ : TraceEuclidean.caseIIRadiusSq m ≤ 2) : m = 5 ∨ m = 13
+TraceEuclidean.mThree_midpoint_obstruction (a b : ℤ) : 2 * (1 / 2 - ↑a) ^ 2 + 6 * (1 / 2 - ↑b) ^ 2 ≥ 2
+TraceEuclidean.candidateRadii_strictlyBelowTwo :
+  TraceEuclidean.caseIRadiusSq 2 < 2 ∧ TraceEuclidean.caseIIRadiusSq 5 < 2 ∧ TraceEuclidean.caseIIRadiusSq 13 < 2
+'TraceEuclidean.strictEuclidean_of_radius_lt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.radius_le_of_strictEuclidean' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.pNormEuclidean_imp_traceEuclidean' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.two_scaled_isometric_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.criticalPoint_hessian_negative' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.finite_positive_of_tendsto_atTop_atBot' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.voronoiVertexNorm_formula' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.caseII_vertexNorm_first' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.caseII_vertexNorm_middle' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.caseI_closed_candidates' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.caseII_closed_candidates' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.mThree_midpoint_obstruction' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.candidateRadii_strictlyBelowTwo' depends on axioms: [propext, Classical.choice, Quot.sound]

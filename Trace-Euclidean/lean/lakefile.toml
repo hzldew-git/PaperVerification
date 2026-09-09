@@ -1,0 +1,21 @@
+name = "TraceEuclidean"
+version = "0.1.0"
+keywords = ["mathematics", "quadratic-lattices", "verification"]
+defaultTargets = ["TraceEuclidean", "TraceEuclideanTest"]
+
+[leanOptions]
+pp.unicode.fun = true
+relaxedAutoImplicit = false
+weak.linter.mathlibStandardSet = true
+linter.style.header = false
+
+[[require]]
+name = "mathlib"
+scope = "leanprover-community"
+rev = "v4.32.1"
+
+[[lean_lib]]
+name = "TraceEuclidean"
+
+[[lean_lib]]
+name = "TraceEuclideanTest"

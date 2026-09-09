@@ -1,0 +1,31 @@
+import TraceEuclidean
+
+/-! Public signature and transitive-axiom audit for the formalized endpoints. -/
+
+#check TraceEuclidean.strictEuclidean_of_radius_lt
+#check TraceEuclidean.radius_le_of_strictEuclidean
+#check TraceEuclidean.pNormEuclidean_imp_traceEuclidean
+#check TraceEuclidean.two_scaled_isometric_iff
+#check TraceEuclidean.criticalPoint_hessian_negative
+#check TraceEuclidean.finite_positive_of_tendsto_atTop_atBot
+#check TraceEuclidean.voronoiVertexNorm_formula
+#check TraceEuclidean.caseII_vertexNorm_first
+#check TraceEuclidean.caseII_vertexNorm_middle
+#check TraceEuclidean.caseI_closed_candidates
+#check TraceEuclidean.caseII_closed_candidates
+#check TraceEuclidean.mThree_midpoint_obstruction
+#check TraceEuclidean.candidateRadii_strictlyBelowTwo
+
+#print axioms TraceEuclidean.strictEuclidean_of_radius_lt
+#print axioms TraceEuclidean.radius_le_of_strictEuclidean
+#print axioms TraceEuclidean.pNormEuclidean_imp_traceEuclidean
+#print axioms TraceEuclidean.two_scaled_isometric_iff
+#print axioms TraceEuclidean.criticalPoint_hessian_negative
+#print axioms TraceEuclidean.finite_positive_of_tendsto_atTop_atBot
+#print axioms TraceEuclidean.voronoiVertexNorm_formula
+#print axioms TraceEuclidean.caseII_vertexNorm_first
+#print axioms TraceEuclidean.caseII_vertexNorm_middle
+#print axioms TraceEuclidean.caseI_closed_candidates
+#print axioms TraceEuclidean.caseII_closed_candidates
+#print axioms TraceEuclidean.mThree_midpoint_obstruction
+#print axioms TraceEuclidean.candidateRadii_strictlyBelowTwo

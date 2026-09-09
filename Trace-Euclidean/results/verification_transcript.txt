@@ -1,0 +1,9 @@
+Trace-Euclidean-v9 reproducible verification
+Kernel: 15.0.0 for Microsoft Windows (64-bit) (May 15, 2026)
+[analytic_bounds] Checking every computationally accessible step in Section 4.
+[analytic_bounds] Constructing 40-place outward rational certificates.
+[admissible_tables] Certifying admissible pairs and excluded tails.
+[trace_geometry] Checking trace Gram determinants.
+[trace_geometry] Checking exact Voronoi vertices and radius formulae.
+[gamma_diagnostics] Running finite Gamma-function diagnostics.
+SUMMARY <|"PASS" -> 2165|>; failures=0; warnings=0

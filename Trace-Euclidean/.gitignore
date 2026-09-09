@@ -1,0 +1,12 @@
+/source_snapshot/
+/output/manuscript/
+/tmp/
+/lean/.lake/
+**/__pycache__/
+*.pyc
+*.aux
+*.fdb_latexmk
+*.fls
+*.out
+*.xdv
+*.synctex.gz

@@ -1,14 +1,14 @@
 # Paper verification materials
 
-This repository contains reproducible computational companions to research
-papers: source code, extracted inputs, machine-readable results, and
-verification documentation.
+This repository contains reproducible verification companions to research
+papers: computational source, selected Lean 4 formalizations, extracted inputs,
+machine-readable results, and verification documentation.
 
 ## Available package
 
-- [Trace-Euclidean-v8](Trace-Euclidean-v8/README.md): Mathematica checks,
+- [Trace-Euclidean](Trace-Euclidean/README.md): Mathematica and Lean 4 checks,
   complete Section 4 calculation coverage, result certificates, and the
-  [English verification manual](Trace-Euclidean-v8/output/pdf/verification_manual_v8.pdf).
+  [English verification manual](Trace-Euclidean/output/pdf/verification_manual_v9.pdf).
 
 ## Manuscript exclusion policy
 
