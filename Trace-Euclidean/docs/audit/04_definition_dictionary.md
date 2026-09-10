@@ -11,7 +11,7 @@
 | Squared trace covering radius | `SquaredCoveringRadiusSpec cost rhoSq` | Characterizes upper bound and sharpness; it does not construct the geometric radius. |
 | Obstructing point | `not_strictEuclidean_of_witness` | Exact logical shape of a point whose every translate has cost at least the threshold. |
 | `p`-norm Euclideanity | A second cost supplied to `StrictEuclidean` | Power means and endpoints `p=0,infinity` are not encoded. |
-| Field-varying lattice equivalence | `NumberFieldLatticeEquiv` | Records the field isomorphism, semilinear additive bijection, lattice image, and form compatibility; a quotient type is not yet constructed. |
+| Field-varying lattice equivalence | `GlobalLatticePresentation.EquivalenceData` and `GlobalLatticeClass` | Records the field isomorphism, semilinear additive bijection, lattice image, and form compatibility, then takes the actual quotient. |
 | Quadratic-form isometry in the scaling lemma | `IsometricForms Q Q'` | Function-level abstraction used only for cancellation of the scalar two. |
 | Scaling `L^(2)` | `scaleForm 2 Q` | Represents scaling of the form value, not a full lattice structure. |
 | Two-dimensional trace norm | `R2`, `dot`, `normSq` | Exact coordinate algebra over the real numbers. |
@@ -23,9 +23,14 @@
 | Real quadratic field | `RealQuadraticAlgebra m := QuadraticAlgebra ℚ m 0` | Concrete degree-two field after the square-free nonsquare proof; independent review should confirm presentation equivalence with the paper's `Q(sqrt m)`. |
 | Ring of integers of a real quadratic field | `RealQuadraticIntegers` with `caseIIntegerPointRingEquiv` and `caseIIIntegerPointRingEquiv` | Both standard integral bases are proved exhaustive. |
 | Analytic functions `g_s,g_n` | `gClassicReal`, `gIntegralReal` | Exact formulas and asymptotic tails used by the finiteness proof. |
-| Equivalence classes in global finiteness | Abstract type `α` in `MainFinitenessFramework` | Intended to be the paper quotient, but no formal quotient/instantiation is supplied; this is a material gap. |
+| Equivalence classes in global finiteness | `GlobalLatticeClass` | Actual quotient of coded totally real field-lattice presentations by the paper's field-isomorphism and semilinear-isometry relation. |
+| Pseudobasis `L = ⊕ a_i z_i` | `NumberFieldLatticeModule.PseudoBasis` | Constructed for every full lattice, with nonzero fractional ideals and a coordinate-module equivalence. |
+| Volume/determinant fractional ideal | `pseudoDeterminantFractionalIdeal` | `span(det B_z) * (∏ a_i)^2`; its absolute norm supplies the general trace determinant formula. |
+| Minkowski trace lattice and covolume | `EuclideanTraceSpace`, `euclideanIntegralLattice`, `ZLattice.covolume` | Concrete real trace space and full integer lattice; the squared covolume is proved equal to the trace Gram determinant. |
+| Fixed-field finite class code | `IntegralReductionCode` | Stores an integral Gram matrix and determinant-normalized coordinate module; equality reconstructs lattice equivalence. |
 
-Scale, norm, volume ideals and the Minkowski covolume of a general
-number-field lattice are not yet constructed as concrete Lean objects in the
-finiteness development. The framework uses integral volume ideals and their
-norms only through explicit fields.
+The pseudobasis determinant ideal is the formal object used in the endpoint
+proof. Independent domain review should confirm that its normalization agrees
+with the manuscript's `v(L)` convention. The formal proof establishes the
+same displayed product formula and absolute norm, but it does not identify
+every auxiliary scale-ideal and norm-ideal statement from Lemma 3.4.

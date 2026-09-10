@@ -39,19 +39,24 @@ are external inputs unless a ledger entry says otherwise.
 
 ## Semantic status
 
-Status: `PARTIAL_FORMALIZATION`, Grade C.
+Status: `SUBSTANTIAL_FORMALIZATION`, Grade B.
 
 Theorem 1.8 now has a concrete end-to-end Lean endpoint for
 `QuadraticAlgebra ℚ m 0`, and Proposition 6.1 has exact full-plane
 covering-radius specifications in both congruence cases. These are
 `PROVISIONAL_MATCH` pending independent semantic review.
 
-Theorems 1.2 and 1.3 have all eight final finiteness clauses with their
-paper-level rank, degree, and `t ≤ d` quantifiers. Their proofs use Lean-proved
-analytic tails, Hermite finiteness, and ideal enumeration, but the endpoint
-signatures still take `MainFinitenessFramework`. That structure assumes the
-geometric discriminant/volume estimates and the fixed-field fixed-volume
-lattice finiteness used in the manuscript. Since it has not been instantiated
-for the actual field-lattice equivalence classes, these two core theorem groups
-remain `FORMALIZATION_WEAKER`. This disclosed gap prevents Grade B under the
-same endpoint standard used for BongTheory.
+Theorems 1.2 and 1.3 now have eight unconditional final clauses on the actual
+quotient of field-lattice pairs, with the paper's rank, degree, and `t ≤ d`
+quantifiers. Their dependency chain proves the projective pseudobasis
+determinant formula, covolume lower bounds, covering upper bounds,
+discriminant bounds, Hermite reduction, direct fixed-field finite coding, and
+the analytic rank/degree tails. No project-specific proof-obligation structure
+occurs in an endpoint signature.
+
+The Grade B assessment reflects substantial coverage of all three core theorem
+groups. It remains below Grade A because the author/domain and independent
+Lean review cards are unsigned, the order-theoretic covering-radius convention
+still needs independent confirmation, and several supporting lemmas are
+covered by computation or by alternative endpoint proofs rather than by a
+line-for-line formalization of the manuscript proof.

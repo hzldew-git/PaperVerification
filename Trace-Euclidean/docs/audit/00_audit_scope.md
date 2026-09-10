@@ -47,6 +47,8 @@ that every paper statement was encoded, that cited theorems are correct, or
 that the complete paper is free of mathematical error.
 
 The audit applies the same public-endpoint rule used by the author's BongTheory
-work: a main endpoint is not treated as an unconditional match while it accepts
-a project-specific structure containing proof obligations. This rule is
-material for `MainFinitenessFramework`.
+work: a main endpoint is not treated as unconditional while it accepts a
+project-specific structure containing proof obligations. The current eight
+finiteness endpoints pass this gate: `MainFinitenessFramework` is instantiated
+internally by proved declarations, and no framework value appears in a public
+endpoint signature.

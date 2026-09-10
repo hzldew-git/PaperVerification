@@ -42,7 +42,7 @@ lake build
 lake env lean TraceEuclideanTest/MainTheoremAudit.lean
 ```
 
-The final command prints 40 elaborated public signatures and their transitive
+The final command prints 50 elaborated public signatures and their transitive
 axiom sets. The formalization has no `sorry`, `sorryAx`, project `axiom`,
 `native_decide`, `run_tac`, `unsafe`, `extern`, or `implemented_by`.
 
@@ -52,11 +52,12 @@ the trace-square cost to exact coordinates, proves the full-plane covering
 formulas, and concludes
 `IsFieldTraceEuclidean 2 ↔ m = 2 ∨ m = 5 ∨ m = 13`.
 The eight finiteness endpoints preserve the paper's rank, degree, and
-`t ≤ d` quantifiers and prove the analytic tails and Hermite/ideal
-enumeration internally. They remain conditional on the geometric
-discriminant/volume estimates and the fixed-field fixed-volume lattice
-finiteness interface recorded in `MainFinitenessFramework`. See
-`THEOREM_INDEX.md` and `docs/audit/` for the exact semantic boundary.
+`t ≤ d` quantifiers on the actual quotient of field-lattice pairs. They are
+unconditional Lean theorems: a projective pseudobasis proves the general
+trace determinant and covolume bounds, Hermite gives bounded-discriminant
+field finiteness, and finite reduction codes prove fixed-field, fixed-rank
+lattice finiteness. See `THEOREM_INDEX.md` and `docs/audit/` for the remaining
+semantic confirmation items and the Grade B assessment.
 
 ## Main deliverables
 

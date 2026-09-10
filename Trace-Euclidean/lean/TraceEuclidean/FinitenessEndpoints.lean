@@ -1,5 +1,6 @@
 import TraceEuclidean.AnalyticFiniteness
 import TraceEuclidean.ArithmeticFiniteness
+import TraceEuclidean.GammaVolumeBounds
 
 /-!
 Logical assembly of the eight clauses in Theorems 1.2 and 1.3. The type `α`
@@ -61,11 +62,10 @@ theorem finite_admissible_pairs_of_uniform_envelope
       exact Set.finite_empty
 
 /--
-The geometric and arithmetic inputs used after the definitions in the proof
-of Theorems 1.2 and 1.3. The analytic functions and all of their tail bounds
-are proved in `AnalyticFiniteness`. The predicates `classic t a` and
-`integral t a` encode positive definiteness, the stated integrality condition,
-and strict `t`-trace Euclideanity. The degree restriction remains separate.
+The proved geometric and arithmetic interfaces used to assemble Theorems
+1.2 and 1.3.  The only finiteness datum is fixed-field, fixed-rank
+finiteness; Hermite's theorem and the analytic tails then give all varying
+field, rank, and degree statements.
 -/
 structure MainFinitenessFramework (A α : Type*) [Field A] [CharZero A] where
   rank : α → ℕ
@@ -73,41 +73,24 @@ structure MainFinitenessFramework (A α : Type*) [Field A] [CharZero A] where
   classic : ℝ → α → Prop
   integral : ℝ → α → Prop
   fieldCode : α → NumberFieldCode A
-  classicVolumeIdeal : ∀ K, FieldFiber fieldCode K →
-    Ideal (NumberField.RingOfIntegers K)
-  integralScaledVolumeIdeal : ∀ K, FieldFiber fieldCode K →
-    Ideal (NumberField.RingOfIntegers K)
   classicDiscriminantBound : ℝ → ℕ → ℕ → ℕ
   integralDiscriminantBound : ℝ → ℕ → ℕ → ℕ
-  classicVolumeBound : ℝ → ℕ → ℕ → ℕ
-  integralScaledVolumeBound : ℝ → ℕ → ℕ → ℕ
   classic_positive : ∀ (t : ℝ) (a : α), 0 < t → t ≤ degree a →
-    classic t a → 0 < gClassicNat (rank a) (degree a)
+    classic t a → 0 < gCoarseClassicNat (rank a) (degree a)
   integral_positive : ∀ (t : ℝ) (a : α), 0 < t → t ≤ degree a →
-    integral t a → 0 < gIntegralNat (rank a) (degree a)
+    integral t a → 0 < gCoarseIntegralNat (rank a) (degree a)
   classic_discriminant_le : ∀ (t : ℝ) (n d : ℕ) (a : α),
-    classic t a ∧ rank a = n ∧ degree a = d →
+    0 < t → t ≤ d → classic t a ∧ rank a = n ∧ degree a = d →
       |(fieldCode a).discriminant| ≤ classicDiscriminantBound t n d
   integral_discriminant_le : ∀ (t : ℝ) (n d : ℕ) (a : α),
-    integral t a ∧ rank a = n ∧ degree a = d →
+    0 < t → t ≤ d → integral t a ∧ rank a = n ∧ degree a = d →
       |(fieldCode a).discriminant| ≤ integralDiscriminantBound t n d
-  classic_volume_le : ∀ (t : ℝ) (n d : ℕ) (K)
-      (a : FieldFiber fieldCode K),
-    classic t a.1 ∧ rank a.1 = n ∧ degree a.1 = d →
-      Ideal.absNorm (classicVolumeIdeal K a) ≤ classicVolumeBound t n d
-  integral_scaled_volume_le : ∀ (t : ℝ) (n d : ℕ) (K)
-      (a : FieldFiber fieldCode K),
-    integral t a.1 ∧ rank a.1 = n ∧ degree a.1 = d →
-      Ideal.absNorm (integralScaledVolumeIdeal K a) ≤
-        integralScaledVolumeBound t n d
-  classic_fixed_volume : ∀ (t : ℝ) (n d : ℕ) (K I),
+  classic_fixed_field_rank : ∀ (t : ℝ) (n : ℕ) (K), 0 < t →
     {a : FieldFiber fieldCode K |
-      classic t a.1 ∧ rank a.1 = n ∧ degree a.1 = d ∧
-        classicVolumeIdeal K a = I}.Finite
-  integral_fixed_scaled_volume : ∀ (t : ℝ) (n d : ℕ) (K I),
+      classic t a.1 ∧ rank a.1 = n}.Finite
+  integral_fixed_field_rank : ∀ (t : ℝ) (n : ℕ) (K), 0 < t →
     {a : FieldFiber fieldCode K |
-      integral t a.1 ∧ rank a.1 = n ∧ degree a.1 = d ∧
-        integralScaledVolumeIdeal K a = I}.Finite
+      integral t a.1 ∧ rank a.1 = n}.Finite
 
 namespace MainFinitenessFramework
 
@@ -115,42 +98,39 @@ variable {A α : Type*} [Field A] [CharZero A]
 variable (M : MainFinitenessFramework A α)
 
 /-- Lemma 5.1 specialized to a classic-integral fixed parameter fiber. -/
-theorem classic_fixed_pair (t : ℝ) (n d : ℕ) :
+theorem classic_fixed_pair (t : ℝ) (ht : 0 < t) (n d : ℕ) (htd : t ≤ d) :
     {a | M.classic t a ∧ M.rank a = n ∧ M.degree a = d}.Finite := by
   let P : α → Prop := fun a ↦
     M.classic t a ∧ M.rank a = n ∧ M.degree a = d
-  apply bounded_discriminant_volume_finiteness P M.fieldCode
-    (M.classicDiscriminantBound t n d) (M.classicVolumeBound t n d)
-    M.classicVolumeIdeal
+  apply finite_objects_of_bounded_field_discriminant P M.fieldCode
+    (M.classicDiscriminantBound t n d)
   · intro a ha
-    exact M.classic_discriminant_le t n d a ha
-  · intro K a ha
-    exact M.classic_volume_le t n d K a ha
-  · intro K I
-    simpa only [P, and_assoc] using M.classic_fixed_volume t n d K I
+    exact M.classic_discriminant_le t n d a ht htd ha
+  · intro K
+    apply ((M.classic_fixed_field_rank t n K ht).image Subtype.val).subset
+    intro a ha
+    exact ⟨⟨a, ha.2⟩, ⟨ha.1.1, ha.1.2.1⟩, rfl⟩
 
 /-- Lemma 5.1 specialized to an integral fixed parameter fiber after scaling. -/
-theorem integral_fixed_pair (t : ℝ) (n d : ℕ) :
+theorem integral_fixed_pair (t : ℝ) (ht : 0 < t) (n d : ℕ) (htd : t ≤ d) :
     {a | M.integral t a ∧ M.rank a = n ∧ M.degree a = d}.Finite := by
   let P : α → Prop := fun a ↦
     M.integral t a ∧ M.rank a = n ∧ M.degree a = d
-  apply bounded_discriminant_volume_finiteness P M.fieldCode
+  apply finite_objects_of_bounded_field_discriminant P M.fieldCode
     (M.integralDiscriminantBound t n d)
-    (M.integralScaledVolumeBound t n d) M.integralScaledVolumeIdeal
   · intro a ha
-    exact M.integral_discriminant_le t n d a ha
-  · intro K a ha
-    exact M.integral_scaled_volume_le t n d K a ha
-  · intro K I
-    simpa only [P, and_assoc] using
-      M.integral_fixed_scaled_volume t n d K I
+    exact M.integral_discriminant_le t n d a ht htd ha
+  · intro K
+    apply ((M.integral_fixed_field_rank t n K ht).image Subtype.val).subset
+    intro a ha
+    exact ⟨⟨a, ha.2⟩, ⟨ha.1.1, ha.1.2.1⟩, rfl⟩
 
 /-- Theorem 1.2(i), for either fixed rank `1` or fixed rank `2`. -/
 theorem finiteness_classic_fixed_degree_low_rank
-    (t : ℝ) (_ht : 0 < t) (n d : ℕ) (_htd : t ≤ d)
+    (t : ℝ) (ht : 0 < t) (n d : ℕ) (htd : t ≤ d)
     (_hn : n = 1 ∨ n = 2) :
     {a | M.classic t a ∧ M.rank a = n ∧ M.degree a = d}.Finite :=
-  M.classic_fixed_pair t n d
+  M.classic_fixed_pair t ht n d htd
 
 /-- Theorem 1.2(ii): fixed rank at least three and varying degree. -/
 theorem finiteness_classic_fixed_high_rank
@@ -158,13 +138,13 @@ theorem finiteness_classic_fixed_high_rank
     {a | M.classic t a ∧ M.rank a = n ∧ t ≤ M.degree a}.Finite := by
   apply finite_of_finite_keys_and_fibers
     (fun a ↦ M.classic t a ∧ M.rank a = n ∧ t ≤ M.degree a)
-    M.degree {d | 0 < gClassicNat n d}
-    (finite_positive_of_tendsto_atTop_atBot (gClassicNat_degree_tail n hn))
+    M.degree {d | 0 < gCoarseClassicNat n d}
+    (finite_positive_of_tendsto_atTop_atBot (gCoarseClassicNat_degree_tail n hn))
   · intro a ha
     simpa [ha.2.1] using M.classic_positive t a ht ha.2.2 ha.1
   · intro d
     by_cases htd : t ≤ d
-    · exact (M.classic_fixed_pair t n d).subset fun a ha ↦
+    · exact (M.classic_fixed_pair t ht n d htd).subset fun a ha ↦
         ⟨ha.1.1, ha.1.2.1, ha.2⟩
     · have hempty :
           {a | (M.classic t a ∧ M.rank a = n ∧ t ≤ M.degree a) ∧
@@ -186,12 +166,12 @@ theorem finiteness_classic_fixed_degree
     exact_mod_cast (show 0 < d by exact_mod_cast hdreal)
   apply finite_of_finite_keys_and_fibers
     (fun a ↦ M.classic t a ∧ M.degree a = d)
-    M.rank {n | 0 < gClassicNat n d}
-    (finite_positive_of_tendsto_atTop_atBot (gClassicNat_rank_tail d hd))
+    M.rank {n | 0 < gCoarseClassicNat n d}
+    (finite_positive_of_tendsto_atTop_atBot (gCoarseClassicNat_rank_tail d hd))
   · intro a ha
     simpa [ha.2] using M.classic_positive t a ht (by simpa [ha.2]) ha.1
   · intro n
-    exact (M.classic_fixed_pair t n d).subset fun a ha ↦
+    exact (M.classic_fixed_pair t ht n d htd).subset fun a ha ↦
       ⟨ha.1.1, ha.2, ha.1.2⟩
 
 /-- Theorem 1.2(iv): all ranks at least three and all allowed degrees. -/
@@ -199,18 +179,18 @@ theorem finiteness_classic_global (t : ℝ) (ht : 0 < t) :
     {a | M.classic t a ∧ t ≤ M.degree a ∧ 3 ≤ M.rank a}.Finite := by
   have hpairs :
       {p : ℕ × ℕ |
-        3 ≤ p.1 ∧ 1 ≤ p.2 ∧ 0 < gClassicNat p.1 p.2}.Finite :=
+        3 ≤ p.1 ∧ 1 ≤ p.2 ∧ 0 < gCoarseClassicNat p.1 p.2}.Finite :=
     finite_admissible_pairs_of_uniform_envelope
-      gClassicNat gClassicEnvelopeNat 3
+      gCoarseClassicNat gCoarseClassicEnvelopeNat 3
       (finite_positive_of_tendsto_atTop_atBot
-        gClassicEnvelopeNat_tail)
+        gCoarseClassicEnvelopeNat_tail)
       (fun d hd ↦ finite_positive_of_tendsto_atTop_atBot
-        (gClassicNat_rank_tail d hd))
-      (fun n d hn hd ↦ gClassicNat_le_envelope hn hd)
+        (gCoarseClassicNat_rank_tail d hd))
+      (fun n d hn _hd ↦ gCoarseClassicNat_le_envelope hn)
   apply finite_of_finite_keys_and_fibers
     (fun a ↦ M.classic t a ∧ t ≤ M.degree a ∧ 3 ≤ M.rank a)
     (fun a ↦ (M.rank a, M.degree a))
-    {p | 3 ≤ p.1 ∧ 1 ≤ p.2 ∧ 0 < gClassicNat p.1 p.2} hpairs
+    {p | 3 ≤ p.1 ∧ 1 ≤ p.2 ∧ 0 < gCoarseClassicNat p.1 p.2} hpairs
   · intro a ha
     have hdreal : (0 : ℝ) < M.degree a := ht.trans_le ha.2.1
     have hd : 1 ≤ M.degree a := by
@@ -219,7 +199,7 @@ theorem finiteness_classic_global (t : ℝ) (ht : 0 < t) :
     exact ⟨ha.2.2, hd, M.classic_positive t a ht ha.2.1 ha.1⟩
   · intro p
     by_cases htd : t ≤ p.2
-    · exact (M.classic_fixed_pair t p.1 p.2).subset fun a ha ↦ by
+    · exact (M.classic_fixed_pair t ht p.1 p.2 htd).subset fun a ha ↦ by
         have hr := congrArg Prod.fst ha.2
         have hd := congrArg Prod.snd ha.2
         exact ⟨ha.1.1, hr, hd⟩
@@ -239,10 +219,10 @@ theorem finiteness_classic_global (t : ℝ) (ht : 0 < t) :
 
 /-- Theorem 1.3(i), for a fixed rank from one through four. -/
 theorem finiteness_integral_fixed_degree_low_rank
-    (t : ℝ) (_ht : 0 < t) (n d : ℕ) (_htd : t ≤ d)
+    (t : ℝ) (ht : 0 < t) (n d : ℕ) (htd : t ≤ d)
     (_hn : n = 1 ∨ n = 2 ∨ n = 3 ∨ n = 4) :
     {a | M.integral t a ∧ M.rank a = n ∧ M.degree a = d}.Finite :=
-  M.integral_fixed_pair t n d
+  M.integral_fixed_pair t ht n d htd
 
 /-- Theorem 1.3(ii): fixed rank at least five and varying degree. -/
 theorem finiteness_integral_fixed_high_rank
@@ -250,13 +230,13 @@ theorem finiteness_integral_fixed_high_rank
     {a | M.integral t a ∧ M.rank a = n ∧ t ≤ M.degree a}.Finite := by
   apply finite_of_finite_keys_and_fibers
     (fun a ↦ M.integral t a ∧ M.rank a = n ∧ t ≤ M.degree a)
-    M.degree {d | 0 < gIntegralNat n d}
-    (finite_positive_of_tendsto_atTop_atBot (gIntegralNat_degree_tail n hn))
+    M.degree {d | 0 < gCoarseIntegralNat n d}
+    (finite_positive_of_tendsto_atTop_atBot (gCoarseIntegralNat_degree_tail n hn))
   · intro a ha
     simpa [ha.2.1] using M.integral_positive t a ht ha.2.2 ha.1
   · intro d
     by_cases htd : t ≤ d
-    · exact (M.integral_fixed_pair t n d).subset fun a ha ↦
+    · exact (M.integral_fixed_pair t ht n d htd).subset fun a ha ↦
         ⟨ha.1.1, ha.1.2.1, ha.2⟩
     · have hempty :
           {a | (M.integral t a ∧ M.rank a = n ∧ t ≤ M.degree a) ∧
@@ -279,12 +259,12 @@ theorem finiteness_integral_fixed_degree
     omega
   apply finite_of_finite_keys_and_fibers
     (fun a ↦ M.integral t a ∧ M.degree a = d)
-    M.rank {n | 0 < gIntegralNat n d}
-    (finite_positive_of_tendsto_atTop_atBot (gIntegralNat_rank_tail d hd))
+    M.rank {n | 0 < gCoarseIntegralNat n d}
+    (finite_positive_of_tendsto_atTop_atBot (gCoarseIntegralNat_rank_tail d hd))
   · intro a ha
     simpa [ha.2] using M.integral_positive t a ht (by simpa [ha.2]) ha.1
   · intro n
-    exact (M.integral_fixed_pair t n d).subset fun a ha ↦
+    exact (M.integral_fixed_pair t ht n d htd).subset fun a ha ↦
       ⟨ha.1.1, ha.2, ha.1.2⟩
 
 /-- Theorem 1.3(iv): all ranks at least five and all allowed degrees. -/
@@ -292,18 +272,18 @@ theorem finiteness_integral_global (t : ℝ) (ht : 0 < t) :
     {a | M.integral t a ∧ t ≤ M.degree a ∧ 5 ≤ M.rank a}.Finite := by
   have hpairs :
       {p : ℕ × ℕ |
-        5 ≤ p.1 ∧ 1 ≤ p.2 ∧ 0 < gIntegralNat p.1 p.2}.Finite :=
+        5 ≤ p.1 ∧ 1 ≤ p.2 ∧ 0 < gCoarseIntegralNat p.1 p.2}.Finite :=
     finite_admissible_pairs_of_uniform_envelope
-      gIntegralNat gIntegralEnvelopeNat 5
+      gCoarseIntegralNat gCoarseIntegralEnvelopeNat 5
       (finite_positive_of_tendsto_atTop_atBot
-        gIntegralEnvelopeNat_tail)
+        gCoarseIntegralEnvelopeNat_tail)
       (fun d hd ↦ finite_positive_of_tendsto_atTop_atBot
-        (gIntegralNat_rank_tail d hd))
-      (fun n d hn hd ↦ gIntegralNat_le_envelope hn hd)
+        (gCoarseIntegralNat_rank_tail d hd))
+      (fun n d hn _hd ↦ gCoarseIntegralNat_le_envelope hn)
   apply finite_of_finite_keys_and_fibers
     (fun a ↦ M.integral t a ∧ t ≤ M.degree a ∧ 5 ≤ M.rank a)
     (fun a ↦ (M.rank a, M.degree a))
-    {p | 5 ≤ p.1 ∧ 1 ≤ p.2 ∧ 0 < gIntegralNat p.1 p.2} hpairs
+    {p | 5 ≤ p.1 ∧ 1 ≤ p.2 ∧ 0 < gCoarseIntegralNat p.1 p.2} hpairs
   · intro a ha
     have hdreal : (0 : ℝ) < M.degree a := ht.trans_le ha.2.1
     have hd : 1 ≤ M.degree a := by
@@ -312,7 +292,7 @@ theorem finiteness_integral_global (t : ℝ) (ht : 0 < t) :
     exact ⟨ha.2.2, hd, M.integral_positive t a ht ha.2.1 ha.1⟩
   · intro p
     by_cases htd : t ≤ p.2
-    · exact (M.integral_fixed_pair t p.1 p.2).subset fun a ha ↦ by
+    · exact (M.integral_fixed_pair t ht p.1 p.2 htd).subset fun a ha ↦ by
         have hr := congrArg Prod.fst ha.2
         have hd := congrArg Prod.snd ha.2
         exact ⟨ha.1.1, hr, hd⟩

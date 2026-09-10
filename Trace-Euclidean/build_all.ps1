@@ -86,10 +86,24 @@ try {
 
     $auditText = Get-Content -LiteralPath (Join-Path $auditDirectory 'main_theorem_axioms.txt')
     $auditNormalized = (($auditText -join ' ') -replace '\s+', ' ').Trim()
-    $allAxiomCount = ([regex]::Matches($auditNormalized, 'depends on axioms:')).Count
-    $expectedAxiomPattern = 'depends on axioms: \[propext, Classical\.choice, Quot\.sound\]'
-    $expectedAxiomCount = ([regex]::Matches($auditNormalized, $expectedAxiomPattern)).Count
-    if ($allAxiomCount -ne 40 -or $expectedAxiomCount -ne 40) {
+    $expectedAxiomCount = (Select-String -LiteralPath `
+        (Join-Path $leanDirectory 'TraceEuclideanTest\MainTheoremAudit.lean') `
+        -Pattern '^#print axioms').Count
+    $axiomMatches = [regex]::Matches($auditNormalized, 'depends on axioms:\s*\[([^\]]*)\]')
+    $noAxiomCount = ([regex]::Matches($auditNormalized, 'does not depend on any axioms')).Count
+    $allAxiomCount = $axiomMatches.Count + $noAxiomCount
+    $allowedAxioms = @('propext', 'Classical.choice', 'Quot.sound')
+    $unexpectedAxioms = @(
+        foreach ($match in $axiomMatches) {
+            foreach ($axiomName in ($match.Groups[1].Value -split ',')) {
+                $trimmed = $axiomName.Trim()
+                if ($trimmed -and $trimmed -notin $allowedAxioms) {
+                    $trimmed
+                }
+            }
+        }
+    )
+    if ($allAxiomCount -ne $expectedAxiomCount -or $unexpectedAxioms.Count -ne 0) {
         throw 'Lean endpoint audit reported an unexpected transitive axiom set.'
     }
 }

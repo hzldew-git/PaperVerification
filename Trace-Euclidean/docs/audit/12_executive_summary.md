@@ -2,34 +2,35 @@
 
 ## Decision
 
-Overall status: `PARTIAL_FORMALIZATION`. Project grade: C.
+Overall status: `SUBSTANTIAL_FORMALIZATION`. Project grade: B.
 
 The v9 computational package passed every recorded check:
 `2165 PASS / 0 WARN / 0 FAIL`. The Lean project builds with pinned Lean 4.32.1
 and mathlib, contains no unfinished or non-kernel proof constructs, and reports
 only the standard dependencies `propext`, `Classical.choice`, and
-`Quot.sound` for all 40 audited endpoints.
+`Quot.sound` for all 50 audited endpoints.
 
 ## What Lean establishes
 
-Lean now defines the actual number-field trace cost, positive-definite full
-lattices, integrality, classic integrality, and field-varying semilinear
-equivalence data. It proves exact analytic tails and uniform envelopes,
-Hermite field finiteness, bounded ideal enumeration, all eight conditional
-finiteness conclusions, exact full-plane quadratic covering radii, both
-real-quadratic rings of integers, and the complete concrete iff classification
-`m in {2,5,13}`.
+Lean defines the actual number-field trace cost, positive-definite full
+lattices, integrality, classic integrality, and the quotient by field-varying
+semilinear isometry. It proves a pseudobasis for arbitrary full projective
+lattices, the general trace determinant and squared-covolume identities,
+classic and scale-two integral discriminant bounds, direct fixed-field
+finite-code theorems, Hermite assembly, analytic tails and uniform envelopes,
+and all eight unconditional finiteness conclusions. It also proves the exact
+full-plane quadratic covering radii, both real-quadratic rings of integers,
+and the concrete iff classification `m in {2,5,13}`.
 
 ## What remains outside Lean
 
-The public finiteness endpoints still accept
-`MainFinitenessFramework`. Its fields include the identification of the type
-`α` with actual equivalence classes, the general lattice
-discriminant/volume-ideal estimates, and O'Meara fixed-volume lattice
-finiteness. These are not proved by the current Lean project. General `Phi`,
-compact quotient, Gram/covolume, and the complete Section 4 maximum theorems
-also remain outside Lean, although the exact computations and the tails needed
-for finiteness are checked.
+General `Phi`, the manuscript's full standalone bounded-volume Lemma 5.1, the
+complete Section 4 maximum theorems, the full power-mean corollary, and every
+separate scale/norm/volume-ideal inequality remain outside Lean or only
+partially formalized. The core finiteness endpoints use proved alternative
+routes for these steps. Independent confirmation is still required for the
+volume-ideal normalization, the order-theoretic covering-radius convention,
+and the paper-to-Lean statement correspondence.
 
 ## Mathematical review outcome
 
@@ -38,6 +39,7 @@ critical-point argument, scaling-class assertion, covolume notation, p-norm
 proof bridge, section bookmark, and prose error. No additional mathematical
 contradiction was found within the scope of the executable checks.
 
-Theorem 1.8 and Proposition 6.1 are `PROVISIONAL_MATCH` pending independent
-sign-off. Theorems 1.2 and 1.3 remain `FORMALIZATION_WEAKER`; this is the
-specific reason the requested Grade B threshold has not yet been met.
+Theorems 1.2, 1.3, and 1.8, together with Proposition 6.1, are
+`PROVISIONAL_MATCH` pending independent sign-off. No undisclosed critical
+mismatch, proof placeholder, or project-specific endpoint premise was found.
+This supports Grade B; the unsigned review cards prevent Grade A.

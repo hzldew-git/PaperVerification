@@ -133,6 +133,13 @@ def main() -> None:
         ROOT / "lean" / "TraceEuclidean" / "AnalyticFiniteness.lean",
         ROOT / "lean" / "TraceEuclidean" / "ArithmeticFiniteness.lean",
         ROOT / "lean" / "TraceEuclidean" / "FinitenessEndpoints.lean",
+        ROOT / "lean" / "TraceEuclidean" / "FiniteReductionCodes.lean",
+        ROOT / "lean" / "TraceEuclidean" / "DirectFixedFieldFiniteness.lean",
+        ROOT / "lean" / "TraceEuclidean" / "GlobalLatticeClass.lean",
+        ROOT / "lean" / "TraceEuclidean" / "GlobalFiniteness.lean",
+        ROOT / "lean" / "TraceEuclidean" / "PseudoBasis.lean",
+        ROOT / "lean" / "TraceEuclidean" / "PseudoBasisDeterminant.lean",
+        ROOT / "lean" / "TraceEuclidean" / "VolumeIdeals.lean",
         ROOT / "lean" / "TraceEuclideanTest" / "MainTheoremAudit.lean",
         ROOT / "lean" / "audit" / "main_theorem_axioms.txt",
         ROOT / "THEOREM_INDEX.md",
@@ -291,14 +298,22 @@ def main() -> None:
         encoding="utf-8", errors="replace"
     )
     normalized_axiom_report = re.sub(r"\s+", " ", axiom_report).strip()
-    axiom_count = normalized_axiom_report.count("depends on axioms:")
-    expected_axiom_count = len(
-        re.findall(
-            r"depends on axioms: \[propext, Classical\.choice, Quot\.sound\]",
-            normalized_axiom_report,
-        )
+    audit_source = (ROOT / "lean" / "TraceEuclideanTest" / "MainTheoremAudit.lean").read_text(
+        encoding="utf-8"
     )
-    if axiom_count != 40 or expected_axiom_count != 40:
+    expected_axiom_count = len(re.findall(r"(?m)^#print axioms\s+", audit_source))
+    axiom_sets = re.findall(r"depends on axioms:\s*\[([^\]]*)\]", axiom_report)
+    axiom_count = len(axiom_sets) + len(
+        re.findall(r"does not depend on any axioms", axiom_report)
+    )
+    allowed_axioms = {"propext", "Classical.choice", "Quot.sound"}
+    unexpected_axioms = sorted({
+        axiom.strip()
+        for axiom_set in axiom_sets
+        for axiom in axiom_set.split(",")
+        if axiom.strip() and axiom.strip() not in allowed_axioms
+    })
+    if axiom_count != expected_axiom_count or unexpected_axioms:
         errors.append("The Lean endpoint report contains a missing or unexpected axiom set.")
 
     manuscript_pdf_present = False

@@ -18,13 +18,15 @@ signature and proof scope.
   transfer after pointwise domination is supplied.
 - Current status: `FORMALIZED_COMPONENT`.
 
-## Card C: scaling step in Lemma 5.1
+## Card C: pseudobasis determinant and scaling
 
-- [ ] Mathematical author confirms scale, norm, and volume-ideal identities.
-- [ ] Lean reviewer confirms the factor-two cancellation and that the scaled
-  volume ideal in `MainFinitenessFramework` still requires a concrete
-  instantiation.
-- Current status: `FORMALIZATION_WEAKER`.
+- [ ] Mathematical author confirms that
+  `span(det B_z) * (∏ a_i)^2` is the manuscript's volume-ideal
+  normalization.
+- [ ] Lean reviewer confirms the pseudobasis construction, determinant
+  change-of-basis formula, ideal integrality, nonvanishing, and exact
+  `2^(nd)` scale factor.
+- Current status: `PROVISIONAL_MATCH` for the determinant/covolume chain.
 
 ## Card D: repaired Lemma 4.3
 
@@ -56,8 +58,8 @@ signature and proof scope.
 
 - [ ] Mathematical author confirms that the four classic and four integral
   endpoint quantifiers match Theorems 1.2 and 1.3.
-- [ ] Domain reviewer validates the discriminant/volume bounds and O'Meara
-  103:4 plus Remark 103:5 for the exact equivalence relation.
-- [ ] Lean reviewer constructs the actual quotient of field-lattice pairs and
-  an unconditional instance replacing `MainFinitenessFramework`.
-- Current status: `FORMALIZATION_WEAKER`.
+- [ ] Domain reviewer validates the alternative direct fixed-field
+  finite-code argument and its equality-to-isometry reconstruction.
+- [ ] Lean reviewer confirms the actual quotient, nonfree pseudobasis route,
+  Hermite assembly, analytic tails, and absence of extra endpoint premises.
+- Current status: `PROVISIONAL_MATCH`.

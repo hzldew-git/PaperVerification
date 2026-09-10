@@ -11,8 +11,8 @@ certify complete formalization of the paper.
 - Lean toolchain: `v4.32.1`.
 - mathlib revision:
   `520045ab14e26149ee970e2e617ca04b09bde5d6`.
-- Formalization status: `PARTIAL_FORMALIZATION`.
-- Semantic-audit grade: C.
+- Formalization status: `SUBSTANTIAL_FORMALIZATION`.
+- Semantic-audit grade: B.
 
 ## Machine-checked claim
 
@@ -21,7 +21,9 @@ The declarations listed in
 terms under the pinned dependency graph. Their reported transitive axiom set is
 exactly `propext`, `Classical.choice`, and `Quot.sound`. The formal source
 scan found no forbidden proof placeholder or code-generation bypass. The
-audited list contains 40 endpoints.
+audited list contains 50 endpoints, including the general pseudobasis
+determinant chain, fixed-field finite-code theorems, and all eight
+unconditional global finiteness conclusions.
 
 ## Computational claim
 
@@ -32,12 +34,13 @@ in the verification ledger.
 
 ## Exclusions
 
-Theorem 1.8 and Proposition 6.1 have complete concrete endpoints and are
-`PROVISIONAL_MATCH` until independent review is recorded. This draft does not
-certify Theorems 1.2 and 1.3 as unconditional Lean theorems:
-`MainFinitenessFramework` remains an explicit premise of all eight
-conclusions. It also does not certify cited external theorems, manuscript prose
-outside the ledger, or semantic fidelity without independent review.
+Theorems 1.2, 1.3, and 1.8 and Proposition 6.1 have complete concrete
+endpoints and are `PROVISIONAL_MATCH` until independent review is recorded.
+The eight finiteness conclusions are unconditional Lean theorems on the actual
+quotient; `MainFinitenessFramework` does not occur in their hypotheses. This
+draft does not certify cited-source correctness, manuscript prose outside the
+inventory, the unformalized supporting results, or semantic fidelity without
+the signatures below.
 
 ## Signatures
 

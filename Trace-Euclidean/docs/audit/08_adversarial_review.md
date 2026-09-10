@@ -35,13 +35,15 @@
    No. The new proof works on every point of the real plane by rounding and
    proves sharpness against every integral lattice point. The vertex algebra is
    retained as independent supporting evidence.
-10. **Does scaling a form function prove finiteness of lattice classes?** No.
-    It validates cancellation of the factor two. Integrality, ideal scaling,
-    and class finiteness remain external.
+10. **Does scaling a form function alone prove finiteness of lattice classes?**
+    No. The current proof also constructs the scale-two integral Gram matrix,
+    proves its determinant norm factor `2^(nd)`, and builds a finite reduction
+    code that reconstructs the full lattice equivalence class.
 11. **Do the eight finite-set conclusions prove the paper theorems
-    unconditionally?** No. Their signatures expose
-    `MainFinitenessFramework`, including the geometric bounds, quotient
-    interpretation, and fixed-volume lattice-class theorem.
+    unconditionally?** Yes at the level of formal hypotheses. Their signatures
+    quantify over `GlobalLatticeClass` and contain only the paper parameters
+    and range assumptions. The generic framework is fully instantiated inside
+    the proof.
 12. **Could the quadratic endpoint use an assumed coordinate model?** The
     generic bridge can, but the audited theorem
     `realQuadratic_two_trace_euclidean_iff` constructs the field, both
@@ -52,6 +54,17 @@
 14. **Could `m=3` be excluded only by a decimal approximation?** No. Lean
     proves the exact midpoint lower bound at the strict threshold.
 
+15. **Could the pseudobasis argument silently assume the lattice is free?**
+    No. `exists_pseudoBasis` is proved for every full lattice over the ring of
+    integers, and the determinant proof uses the fractional ideals in that
+    pseudobasis. No `Module.Free O_F L` hypothesis occurs in the final formula.
+16. **Could equal finite codes forget information needed for isometry?** No.
+    The code stores the full field-valued Gram matrix and the
+    determinant-normalized coordinate submodule. Equality reconstructs a
+    field-linear isometry mapping one lattice onto the other, then descends to
+    equality in `GlobalLatticeClass`.
+
 No further mathematical contradiction was found in the v9 statements covered
-by the executable checks. The remaining finiteness interface is recorded as a
-scope gap and is not promoted to a provisional match.
+by the executable checks. The four core result groups are promoted to
+`PROVISIONAL_MATCH`; independent author/domain and Lean review remains
+required before `VERIFIED_MATCH` or Grade A.

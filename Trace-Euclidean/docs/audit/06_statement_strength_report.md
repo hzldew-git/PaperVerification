@@ -39,19 +39,21 @@ normalization.
 - Voronoi coefficient and norm formulas assume a nonzero Gram determinant.
 - The generic coordinate-model classification assumes an integral-coordinate
   equivalence, but the public concrete classification constructs it.
-- Finiteness assembly assumes the `MainFinitenessFramework`; analytic
-  negativity, Hermite finiteness, and ideal norm finiteness are no longer
-  assumed.
+- The generic `MainFinitenessFramework` theorem accepts an interface value,
+  while the public `GlobalFiniteness` endpoints instantiate every field with
+  proved declarations and accept no additional mathematical premise.
 
 ## Missing theorem strength
 
-Proposition 6.1 and Theorem 1.8 now have complete concrete endpoints and are
-`PROVISIONAL_MATCH`. Theorems 1.2 and 1.3 have all eight conclusion shapes,
-but their formal assumptions are stronger: `MainFinitenessFramework`
-contains the unproved concrete geometric and fixed-volume inputs and merely
-documents that `α` is the intended quotient of field-lattice pairs.
+Proposition 6.1, Theorem 1.8, Theorem 1.2(i)-(iv), and Theorem 1.3(i)-(iv)
+have complete concrete endpoints and are `PROVISIONAL_MATCH`. The finiteness
+proof uses a direct fixed-field finite-code argument instead of formalizing
+the manuscript's standalone bounded-volume Lemma 5.1. This alternate route
+proves the same main conclusions without stronger endpoint assumptions.
 
-The primary strength relationship for Theorems 1.2 and 1.3 is
-`FORMAL_ASSUMPTIONS_STRONGER`, hence theorem-level
-`FORMALIZATION_WEAKER`. Because two core theorem groups remain conditional,
-the project-level grade remains C.
+Supporting results remain partial: the full power-mean corollary, the general
+`Phi` construction, the complete analytic maximum proofs, and every separate
+scale/norm/volume-ideal inequality are not all formalized as paper-shaped Lean
+theorems. These are documented coverage limits rather than gaps in the
+transitive proof of a core endpoint. The project therefore meets Grade B and
+does not meet Grade A while semantic review cards remain unsigned.

@@ -5,9 +5,9 @@
 - Toolchain: Lean 4.32.1.
 - Dependency lock: `lake-manifest.json`, including mathlib revision
   `520045ab14e26149ee970e2e617ca04b09bde5d6`.
-- Full build: PASS, more than 8,600 Lake jobs.
+- Full build: PASS, 8,696 Lake jobs.
 - Forbidden-construct scan: PASS, zero matches.
-- Audited endpoints: 40.
+- Audited endpoints: 50.
 - Transitive axiom set for every endpoint:
   `propext`, `Classical.choice`, `Quot.sound`.
 
@@ -17,9 +17,10 @@ signature and axiom output is in
 `lean/audit/main_theorem_axioms.txt`.
 
 `noncomputable section` declarations control executable code generation and
-do not declare axioms. `MainFinitenessFramework` is also not an axiom: it is
-an explicit theorem parameter. Its mathematical fields are therefore visible
-in every affected endpoint signature and are assessed as stronger assumptions.
+do not declare axioms. `MainFinitenessFramework` is an internal generic
+assembly record, not an axiom. The audited `GlobalFiniteness` endpoints use the
+concrete instance `toMainFinitenessFramework`; no framework value or custom
+proof obligation occurs in their signatures.
 
 ## Computational evidence
 
@@ -38,5 +39,6 @@ formal proofs of external analytic inequalities.
 
 No independent Lean kernel implementation, independent computer algebra
 system, or independent human reviewer has signed this release. The evidence
-does not validate cited external theorems or close the semantic gaps identified
-in `05_theorem_correspondence.md`.
+does not validate manuscript prose outside the inventory, bibliography claims,
+or the remaining semantic confirmation items in
+`05_theorem_correspondence.md`.

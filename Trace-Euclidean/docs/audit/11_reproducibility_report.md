@@ -9,8 +9,8 @@
 | Lake | 5.0.0 |
 | mathlib | `520045ab14e26149ee970e2e617ca04b09bde5d6` |
 | `lake exe cache get` | PASS |
-| `lake build` | PASS, more than 8,600 jobs |
-| Endpoint signature/axiom audit | PASS, 40 endpoints |
+| `lake build` | PASS, 8,696 jobs |
+| Endpoint signature/axiom audit | PASS, 50 endpoints |
 | Forbidden-construct scan | PASS, zero matches |
 | Mathematica verification | PASS, 2,165 records |
 | Verification-manual build | PASS |

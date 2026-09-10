@@ -62,53 +62,68 @@ TraceEuclidean.gClassicEnvelopeNat_tail : Filter.Tendsto TraceEuclidean.gClassic
 TraceEuclidean.gIntegralEnvelopeNat_tail : Filter.Tendsto TraceEuclidean.gIntegralEnvelopeNat Filter.atTop Filter.atBot
 TraceEuclidean.finite_numberFieldCodes_of_discriminant_le.{u_1} (A : Type u_1) [Field A] [CharZero A] (N : ℕ) :
   {K | |K.discriminant| ≤ ↑N}.Finite
-TraceEuclidean.finite_objects_of_bounded_volumeIdeal.{u_1, u_2} {F : Type u_1} {α : Type u_2} [Field F] [NumberField F]
-  (P : α → Prop) (volumeIdeal : α → Ideal (NumberField.RingOfIntegers F)) (N : ℕ)
-  (hvolume : ∀ (a : α), P a → Ideal.absNorm (volumeIdeal a) ≤ N)
-  (hfixedIdeal : ∀ (I : Ideal (NumberField.RingOfIntegers F)), {a | P a ∧ volumeIdeal a = I}.Finite) : {a | P a}.Finite
-TraceEuclidean.bounded_discriminant_volume_finiteness.{u_1, u_2} {A : Type u_1} {α : Type u_2} [Field A] [CharZero A]
-  (P : α → Prop) (fieldCode : α → TraceEuclidean.NumberFieldCode A) (discriminantBound volumeBound : ℕ)
-  (volumeIdeal :
-    (K : TraceEuclidean.NumberFieldCode A) →
-      TraceEuclidean.FieldFiber fieldCode K → Ideal (NumberField.RingOfIntegers ↥↑K))
-  (hdisc : ∀ (a : α), P a → |(fieldCode a).discriminant| ≤ ↑discriminantBound)
-  (hvolume :
-    ∀ (K : TraceEuclidean.NumberFieldCode A) (a : TraceEuclidean.FieldFiber fieldCode K),
-      P ↑a → Ideal.absNorm (volumeIdeal K a) ≤ volumeBound)
-  (hfixed :
-    ∀ (K : TraceEuclidean.NumberFieldCode A) (I : Ideal (NumberField.RingOfIntegers ↥↑K)),
-      {a | P ↑a ∧ volumeIdeal K a = I}.Finite) :
-  {a | P a}.Finite
-TraceEuclidean.MainFinitenessFramework.classic_fixed_pair.{u_1, u_2} {A : Type u_1} {α : Type u_2} [Field A]
-  [CharZero A] (M : TraceEuclidean.MainFinitenessFramework A α) (t : ℝ) (n d : ℕ) :
-  {a | M.classic t a ∧ M.rank a = n ∧ M.degree a = d}.Finite
-TraceEuclidean.MainFinitenessFramework.integral_fixed_pair.{u_1, u_2} {A : Type u_1} {α : Type u_2} [Field A]
-  [CharZero A] (M : TraceEuclidean.MainFinitenessFramework A α) (t : ℝ) (n d : ℕ) :
-  {a | M.integral t a ∧ M.rank a = n ∧ M.degree a = d}.Finite
-TraceEuclidean.MainFinitenessFramework.finiteness_classic_fixed_degree_low_rank.{u_1, u_2} {A : Type u_1} {α : Type u_2}
-  [Field A] [CharZero A] (M : TraceEuclidean.MainFinitenessFramework A α) (t : ℝ) (_ht : 0 < t) (n d : ℕ)
-  (_htd : t ≤ ↑d) (_hn : n = 1 ∨ n = 2) : {a | M.classic t a ∧ M.rank a = n ∧ M.degree a = d}.Finite
-TraceEuclidean.MainFinitenessFramework.finiteness_classic_fixed_high_rank.{u_1, u_2} {A : Type u_1} {α : Type u_2}
-  [Field A] [CharZero A] (M : TraceEuclidean.MainFinitenessFramework A α) (t : ℝ) (ht : 0 < t) (n : ℕ) (hn : 3 ≤ n) :
-  {a | M.classic t a ∧ M.rank a = n ∧ t ≤ ↑(M.degree a)}.Finite
-TraceEuclidean.MainFinitenessFramework.finiteness_classic_fixed_degree.{u_1, u_2} {A : Type u_1} {α : Type u_2}
-  [Field A] [CharZero A] (M : TraceEuclidean.MainFinitenessFramework A α) (t : ℝ) (ht : 0 < t) (d : ℕ) (htd : t ≤ ↑d) :
-  {a | M.classic t a ∧ M.degree a = d}.Finite
-TraceEuclidean.MainFinitenessFramework.finiteness_classic_global.{u_1, u_2} {A : Type u_1} {α : Type u_2} [Field A]
-  [CharZero A] (M : TraceEuclidean.MainFinitenessFramework A α) (t : ℝ) (ht : 0 < t) :
-  {a | M.classic t a ∧ t ≤ ↑(M.degree a) ∧ 3 ≤ M.rank a}.Finite
-TraceEuclidean.MainFinitenessFramework.finiteness_integral_fixed_degree_low_rank.{u_1, u_2} {A : Type u_1}
-  {α : Type u_2} [Field A] [CharZero A] (M : TraceEuclidean.MainFinitenessFramework A α) (t : ℝ) (_ht : 0 < t) (n d : ℕ)
-  (_htd : t ≤ ↑d) (_hn : n = 1 ∨ n = 2 ∨ n = 3 ∨ n = 4) : {a | M.integral t a ∧ M.rank a = n ∧ M.degree a = d}.Finite
-TraceEuclidean.MainFinitenessFramework.finiteness_integral_fixed_high_rank.{u_1, u_2} {A : Type u_1} {α : Type u_2}
-  [Field A] [CharZero A] (M : TraceEuclidean.MainFinitenessFramework A α) (t : ℝ) (ht : 0 < t) (n : ℕ) (hn : 5 ≤ n) :
-  {a | M.integral t a ∧ M.rank a = n ∧ t ≤ ↑(M.degree a)}.Finite
-TraceEuclidean.MainFinitenessFramework.finiteness_integral_fixed_degree.{u_1, u_2} {A : Type u_1} {α : Type u_2}
-  [Field A] [CharZero A] (M : TraceEuclidean.MainFinitenessFramework A α) (t : ℝ) (ht : 0 < t) (d : ℕ) (htd : t ≤ ↑d) :
-  {a | M.integral t a ∧ M.degree a = d}.Finite
-TraceEuclidean.MainFinitenessFramework.finiteness_integral_global.{u_1, u_2} {A : Type u_1} {α : Type u_2} [Field A]
-  [CharZero A] (M : TraceEuclidean.MainFinitenessFramework A α) (t : ℝ) (ht : 0 < t) :
-  {a | M.integral t a ∧ t ≤ ↑(M.degree a) ∧ 5 ≤ M.rank a}.Finite
+TraceEuclidean.finite_objects_of_bounded_field_discriminant.{u_1, u_2} {A : Type u_1} {α : Type u_2} [Field A]
+  [CharZero A] (P : α → Prop) (fieldCode : α → TraceEuclidean.NumberFieldCode A) (N : ℕ)
+  (hdisc : ∀ (a : α), P a → |(fieldCode a).discriminant| ≤ ↑N)
+  (hfiber : ∀ (K : TraceEuclidean.NumberFieldCode A), {a | P a ∧ fieldCode a = K}.Finite) : {a | P a}.Finite
+TraceEuclidean.NumberFieldLatticeModule.exists_pseudoBasis.{u_1} {K : Type u_1} [Field K] [NumberField K] (n : ℕ)
+  (L : Submodule (NumberField.RingOfIntegers K) (Fin n → K)) :
+  Submodule.IsLattice K L → Nonempty (TraceEuclidean.NumberFieldLatticeModule.PseudoBasis n L)
+TraceEuclidean.GlobalLatticePresentation.euclideanCovolume_sq_eq_discr_pow_absNorm_pseudo
+  (P : TraceEuclidean.GlobalLatticePresentation) :
+  ZLattice.covolume P.euclideanIntegralLattice MeasureTheory.volume ^ 2 =
+    ↑|NumberField.discr ↥↑P.field| ^ P.rank *
+      ↑(FractionalIdeal.absNorm (P.pseudoDeterminantFractionalIdeal (QuadraticMap.associated P.Q)))
+TraceEuclidean.GlobalLatticePresentation.discriminant_pow_le_euclideanCovolume_sq_of_classic
+  (P : TraceEuclidean.GlobalLatticePresentation) (hclassic : P.IsClassicIntegral) :
+  ↑|NumberField.discr ↥↑P.field| ^ P.rank ≤ ZLattice.covolume P.euclideanIntegralLattice MeasureTheory.volume ^ 2
+TraceEuclidean.GlobalLatticePresentation.discriminant_pow_le_two_pow_mul_euclideanCovolume_sq
+  (P : TraceEuclidean.GlobalLatticePresentation) :
+  ↑|NumberField.discr ↥↑P.field| ^ P.rank ≤
+    2 ^ (P.rank * P.degree) * ZLattice.covolume P.euclideanIntegralLattice MeasureTheory.volume ^ 2
+TraceEuclidean.GlobalLatticeClass.finite_fixedField_rank_classic_traceEuclidean (K : TraceEuclidean.CodedNumberField)
+  (n : ℕ) {t u : ℝ} (ht : 0 < t) (htu : t < u) :
+  {c | (↑c).rank = n ∧ TraceEuclidean.GlobalLatticeClass.IsTraceEuclidean t ↑c ∧ (↑c).IsClassicIntegral}.Finite
+TraceEuclidean.GlobalLatticeClass.finite_fixedField_rank_integral_traceEuclidean (K : TraceEuclidean.CodedNumberField)
+  (n : ℕ) {t u : ℝ} (ht : 0 < t) (htu : t < u) :
+  {c | (↑c).rank = n ∧ TraceEuclidean.GlobalLatticeClass.IsTraceEuclidean t ↑c}.Finite
+TraceEuclidean.GlobalFiniteness.classic_discriminant_pow_le_trace (t : ℝ) (n d : ℕ)
+  (c : TraceEuclidean.GlobalLatticeClass) (ht : 0 < t)
+  (hc : TraceEuclidean.GlobalLatticeClass.IsClassicTraceEuclidean t c ∧ c.rank = n ∧ c.degree = d) :
+  ↑|TraceEuclidean.NumberFieldCode.discriminant c.fieldCode| ^ n ≤
+    TraceEuclidean.euclideanUnitBallVolume (n * d) ^ 2 * t ^ (n * d)
+TraceEuclidean.GlobalFiniteness.integral_discriminant_pow_le_trace (t : ℝ) (n d : ℕ)
+  (c : TraceEuclidean.GlobalLatticeClass) (ht : 0 < t)
+  (hc : TraceEuclidean.GlobalLatticeClass.IsIntegralTraceEuclidean t c ∧ c.rank = n ∧ c.degree = d) :
+  ↑|TraceEuclidean.NumberFieldCode.discriminant c.fieldCode| ^ n ≤
+    TraceEuclidean.euclideanUnitBallVolume (n * d) ^ 2 * (2 * t) ^ (n * d)
+TraceEuclidean.GlobalFiniteness.classic_fixed_pair (t : ℝ) (ht : 0 < t) (n d : ℕ) (htd : t ≤ ↑d) :
+  {c | TraceEuclidean.GlobalLatticeClass.IsClassicTraceEuclidean t c ∧ c.rank = n ∧ c.degree = d}.Finite
+TraceEuclidean.GlobalFiniteness.integral_fixed_pair (t : ℝ) (ht : 0 < t) (n d : ℕ) (htd : t ≤ ↑d) :
+  {c | TraceEuclidean.GlobalLatticeClass.IsIntegralTraceEuclidean t c ∧ c.rank = n ∧ c.degree = d}.Finite
+TraceEuclidean.GlobalFiniteness.finiteness_classic_fixed_degree_low_rank (t : ℝ) (ht : 0 < t) (n d : ℕ) (htd : t ≤ ↑d)
+  (hn : n = 1 ∨ n = 2) :
+  {c | TraceEuclidean.GlobalLatticeClass.IsClassicTraceEuclidean t c ∧ c.rank = n ∧ c.degree = d}.Finite
+TraceEuclidean.GlobalFiniteness.finiteness_classic_fixed_high_rank (t : ℝ) (ht : 0 < t) (n : ℕ) (hn : 3 ≤ n) :
+  {c | TraceEuclidean.GlobalLatticeClass.IsClassicTraceEuclidean t c ∧ c.rank = n ∧ t ≤ ↑c.degree}.Finite
+TraceEuclidean.GlobalFiniteness.finiteness_classic_fixed_degree (t : ℝ) (ht : 0 < t) (d : ℕ) (htd : t ≤ ↑d) :
+  {c | TraceEuclidean.GlobalLatticeClass.IsClassicTraceEuclidean t c ∧ c.degree = d}.Finite
+TraceEuclidean.GlobalFiniteness.finiteness_classic_global (t : ℝ) (ht : 0 < t) :
+  {c | TraceEuclidean.GlobalLatticeClass.IsClassicTraceEuclidean t c ∧ t ≤ ↑c.degree ∧ 3 ≤ c.rank}.Finite
+TraceEuclidean.GlobalFiniteness.finiteness_integral_fixed_degree_low_rank (t : ℝ) (ht : 0 < t) (n d : ℕ) (htd : t ≤ ↑d)
+  (hn : n = 1 ∨ n = 2 ∨ n = 3 ∨ n = 4) :
+  {c | TraceEuclidean.GlobalLatticeClass.IsIntegralTraceEuclidean t c ∧ c.rank = n ∧ c.degree = d}.Finite
+TraceEuclidean.GlobalFiniteness.finiteness_integral_fixed_high_rank (t : ℝ) (ht : 0 < t) (n : ℕ) (hn : 5 ≤ n) :
+  {c | TraceEuclidean.GlobalLatticeClass.IsIntegralTraceEuclidean t c ∧ c.rank = n ∧ t ≤ ↑c.degree}.Finite
+TraceEuclidean.GlobalFiniteness.finiteness_integral_fixed_degree (t : ℝ) (ht : 0 < t) (d : ℕ) (htd : t ≤ ↑d) :
+  {c | TraceEuclidean.GlobalLatticeClass.IsIntegralTraceEuclidean t c ∧ c.degree = d}.Finite
+TraceEuclidean.GlobalFiniteness.finiteness_integral_global (t : ℝ) (ht : 0 < t) :
+  {c | TraceEuclidean.GlobalLatticeClass.IsIntegralTraceEuclidean t c ∧ t ≤ ↑c.degree ∧ 5 ≤ c.rank}.Finite
+TraceEuclidean.GlobalLatticeClass.rank_pos (c : TraceEuclidean.GlobalLatticeClass) : 0 < c.rank
+TraceEuclidean.exp_classicTraceVolumeExponent_eq_paperTraceVolumeBound (t : ℝ) (n d : ℕ) (ht : 0 < t) (hn : 0 < n)
+  (hd : 0 < d) : Real.exp (TraceEuclidean.classicTraceVolumeExponent t n d) = TraceEuclidean.paperTraceVolumeBound t n d
+TraceEuclidean.exp_integralTraceVolumeExponent_eq (t : ℝ) (n d : ℕ) (ht : 0 < t) (hn : 0 < n) (hd : 0 < d) :
+  Real.exp (TraceEuclidean.integralTraceVolumeExponent t n d) = 2 ^ (n * d) * TraceEuclidean.paperTraceVolumeBound t n d
 'TraceEuclidean.strictEuclidean_of_radius_lt' depends on axioms: [propext, Classical.choice, Quot.sound]
 'TraceEuclidean.radius_le_of_strictEuclidean' depends on axioms: [propext, Classical.choice, Quot.sound]
 'TraceEuclidean.pNormEuclidean_imp_traceEuclidean' depends on axioms: [propext, Classical.choice, Quot.sound]
@@ -139,31 +154,53 @@ TraceEuclidean.MainFinitenessFramework.finiteness_integral_global.{u_1, u_2} {A 
 'TraceEuclidean.gClassicEnvelopeNat_tail' depends on axioms: [propext, Classical.choice, Quot.sound]
 'TraceEuclidean.gIntegralEnvelopeNat_tail' depends on axioms: [propext, Classical.choice, Quot.sound]
 'TraceEuclidean.finite_numberFieldCodes_of_discriminant_le' depends on axioms: [propext, Classical.choice, Quot.sound]
-'TraceEuclidean.finite_objects_of_bounded_volumeIdeal' depends on axioms: [propext, Classical.choice, Quot.sound]
-'TraceEuclidean.bounded_discriminant_volume_finiteness' depends on axioms: [propext, Classical.choice, Quot.sound]
-'TraceEuclidean.MainFinitenessFramework.classic_fixed_pair' depends on axioms: [propext, Classical.choice, Quot.sound]
-'TraceEuclidean.MainFinitenessFramework.integral_fixed_pair' depends on axioms: [propext, Classical.choice, Quot.sound]
-'TraceEuclidean.MainFinitenessFramework.finiteness_classic_fixed_degree_low_rank' depends on axioms: [propext,
+'TraceEuclidean.finite_objects_of_bounded_field_discriminant' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.NumberFieldLatticeModule.exists_pseudoBasis' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.GlobalLatticePresentation.euclideanCovolume_sq_eq_discr_pow_absNorm_pseudo' depends on axioms: [propext,
  Classical.choice,
  Quot.sound]
-'TraceEuclidean.MainFinitenessFramework.finiteness_classic_fixed_high_rank' depends on axioms: [propext,
+'TraceEuclidean.GlobalLatticePresentation.discriminant_pow_le_euclideanCovolume_sq_of_classic' depends on axioms: [propext,
  Classical.choice,
  Quot.sound]
-'TraceEuclidean.MainFinitenessFramework.finiteness_classic_fixed_degree' depends on axioms: [propext,
+'TraceEuclidean.GlobalLatticePresentation.discriminant_pow_le_two_pow_mul_euclideanCovolume_sq' depends on axioms: [propext,
  Classical.choice,
  Quot.sound]
-'TraceEuclidean.MainFinitenessFramework.finiteness_classic_global' depends on axioms: [propext,
+'TraceEuclidean.GlobalLatticeClass.finite_fixedField_rank_classic_traceEuclidean' depends on axioms: [propext,
  Classical.choice,
  Quot.sound]
-'TraceEuclidean.MainFinitenessFramework.finiteness_integral_fixed_degree_low_rank' depends on axioms: [propext,
+'TraceEuclidean.GlobalLatticeClass.finite_fixedField_rank_integral_traceEuclidean' depends on axioms: [propext,
  Classical.choice,
  Quot.sound]
-'TraceEuclidean.MainFinitenessFramework.finiteness_integral_fixed_high_rank' depends on axioms: [propext,
+'TraceEuclidean.GlobalFiniteness.classic_discriminant_pow_le_trace' depends on axioms: [propext,
  Classical.choice,
  Quot.sound]
-'TraceEuclidean.MainFinitenessFramework.finiteness_integral_fixed_degree' depends on axioms: [propext,
+'TraceEuclidean.GlobalFiniteness.integral_discriminant_pow_le_trace' depends on axioms: [propext,
  Classical.choice,
  Quot.sound]
-'TraceEuclidean.MainFinitenessFramework.finiteness_integral_global' depends on axioms: [propext,
+'TraceEuclidean.GlobalFiniteness.classic_fixed_pair' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.GlobalFiniteness.integral_fixed_pair' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.GlobalFiniteness.finiteness_classic_fixed_degree_low_rank' depends on axioms: [propext,
  Classical.choice,
  Quot.sound]
+'TraceEuclidean.GlobalFiniteness.finiteness_classic_fixed_high_rank' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'TraceEuclidean.GlobalFiniteness.finiteness_classic_fixed_degree' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'TraceEuclidean.GlobalFiniteness.finiteness_classic_global' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.GlobalFiniteness.finiteness_integral_fixed_degree_low_rank' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'TraceEuclidean.GlobalFiniteness.finiteness_integral_fixed_high_rank' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'TraceEuclidean.GlobalFiniteness.finiteness_integral_fixed_degree' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'TraceEuclidean.GlobalFiniteness.finiteness_integral_global' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.GlobalLatticeClass.rank_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.exp_classicTraceVolumeExponent_eq_paperTraceVolumeBound' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'TraceEuclidean.exp_integralTraceVolumeExponent_eq' depends on axioms: [propext, Classical.choice, Quot.sound]

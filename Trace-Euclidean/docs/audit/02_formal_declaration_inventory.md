@@ -105,19 +105,39 @@ finiteness proof. It proves degree tails for fixed rank, rank tails for fixed
 degree, uniform envelopes for ranks at least three and five, and convergence
 of both envelopes to minus infinity.
 
-## `ArithmeticFiniteness` and `FinitenessEndpoints`
+## Projective determinant and fixed-field reduction modules
 
-`ArithmeticFiniteness` invokes mathlib's Hermite theorem for fields of
-bounded discriminant and its finiteness theorem for integral ideals of bounded
-absolute norm. It assembles finite field and volume-ideal fibers.
-`FinitenessEndpoints` proves all eight final finite-set conclusions once a
-`MainFinitenessFramework` is supplied. The structure still contains the
-geometric discriminant/volume inequalities and fixed-volume lattice-class
-finiteness; it is therefore a mathematical premise, not implementation-only
-data.
+`PseudoBasis` constructs a pseudobasis for every full `O_F`-lattice in
+`F^n` by induction through a split projective rank-one quotient.
+`PseudoBasisDeterminant` proves the product-of-fractional-ideal norm change of
+basis, defines the pseudobasis determinant fractional ideal, proves its
+integrality and nonvanishing, and establishes
+`euclideanCovolume_sq_eq_discr_pow_absNorm_pseudo`. Its two final inequalities
+give the classic lower bound `Delta_F^n <= covolume^2` and the integral lower
+bound `Delta_F^n <= 2^(nd) covolume^2` without assuming lattice freeness.
+
+`CoveringVolume`, `TraceRealization`, and `TraceCovering` identify the trace
+quadratic space with a real Euclidean space, realize the integral lattice as a
+`ZLattice`, prove the covering implication, and bound its squared covolume by
+`U_(nd)^2 t^(nd)`.
+
+`FiniteReductionCodes` proves finiteness of bounded integral Gram/module
+codes. `DirectFixedFieldFiniteness` constructs those codes from short field
+bases and proves that equal codes give the paper's semilinear lattice
+equivalence. It concludes fixed-field, fixed-rank finiteness in both the
+classic and scale-two integral branches.
+
+## `ArithmeticFiniteness`, `FinitenessEndpoints`, and `GlobalFiniteness`
+
+`ArithmeticFiniteness` invokes mathlib's Hermite theorem for bounded field
+discriminant. `FinitenessEndpoints` assembles finite rank-degree families from
+discriminant bounds, fixed-field finite fibers, and analytic tail positivity.
+`GlobalFiniteness` instantiates this interface on the actual quotient
+`GlobalLatticeClass` and proves all eight paper-level conclusions. No custom
+input structure appears in those endpoint signatures.
 
 ## Public audit entry point
 
-`TraceEuclideanTest/MainTheoremAudit.lean` checks 40 selected endpoint
+`TraceEuclideanTest/MainTheoremAudit.lean` checks 50 selected endpoint
 signatures and prints their transitive axiom dependencies. It is an audit
 module, not an additional mathematical assumption.

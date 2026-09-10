@@ -8,11 +8,11 @@ positive definiteness at every real embedding, and integrality of every
 quadratic value. Classic integrality is a separate predicate using mathlib's
 associated bilinear form, whose normalization is one half of the polar form.
 
-`NumberFieldLatticeEquiv` records the field isomorphism, additive bijection,
-semilinearity, lattice preservation, and quadratic-form compatibility from the
-paper. The current global finiteness endpoints do not construct the quotient
-by this equivalence; their type `α` is documented as the quotient and remains
-part of the semantic confirmation obligation.
+`GlobalLatticePresentation.EquivalenceData` records the field isomorphism,
+additive bijection, semilinearity, lattice preservation, quadratic-form
+compatibility, rank, and degree from the paper. `GlobalLatticeClass` is the
+actual quotient by this relation. The public global finiteness endpoints
+quantify over that quotient rather than over an abstract placeholder type.
 
 ## Power means
 
@@ -45,19 +45,22 @@ fixed-degree rank tails, and uniform high-rank envelopes are now proved in
 Lean. Hermite finiteness and bounded ideal-norm finiteness are invoked from
 mathlib.
 
-`MainFinitenessFramework` remains a material assumption. Its fields require:
+The former material framework premise has been removed from the endpoint
+signatures. The current dependency chain proves:
 
-1. identification of the represented objects with equivalence classes of
-   positive-definite trace-Euclidean number-field lattices;
-2. the manuscript's discriminant and volume-ideal bounds;
-3. the classic and factor-two-scaled integral volume ideals;
-4. finiteness of each fixed-field, fixed-rank, fixed-volume-ideal fiber, where
-   O'Meara 103:4 and Remark 103:5 enter.
+1. a pseudobasis for every full lattice, including nonfree projective
+   `O_F`-modules;
+2. the general trace determinant and squared-covolume identities;
+3. sharp classic and factor-two integral discriminant lower bounds;
+4. the trace-Euclidean covering upper bound;
+5. bounded-discriminant field finiteness through mathlib's Hermite theorem;
+6. fixed-field, fixed-rank class finiteness by a finite Gram/module reduction
+   code whose equality reconstructs the quotient equivalence;
+7. the analytic degree, rank, and uniform-envelope tails.
 
-No field of the structure is an axiom in Lean: every public theorem is
-conditional on an explicit value of the structure. The absence of an
-instantiation for the paper's actual objects is nevertheless a stronger
-assumption than the paper theorem and blocks an unconditional match.
+`MainFinitenessFramework` remains an internal generic assembly record, but
+`GlobalFiniteness.toMainFinitenessFramework` supplies every field with a
+proved theorem. It is absent from the eight public endpoint hypotheses.
 
 ## Quadratic covering geometry
 
@@ -82,6 +85,8 @@ predicate are the intended paper conventions.
 
 ## External sources
 
-All cited number-field, lattice-finiteness, volume, and Voronoi theorems are
-treated as `EXTERNAL_INPUT`. Their hypotheses and normalization choices must
-be checked independently against the cited editions.
+Mathlib results used for Dedekind projectivity, fractional ideals, Hermite
+finiteness, Haar covolume, and standard real/number-field algebra remain part
+of the trusted library dependency. The manuscript's cited results are still
+source-review obligations unless the theorem correspondence table records an
+independent Lean proof or an alternative Lean route.
