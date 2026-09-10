@@ -53,18 +53,9 @@ if ($LASTEXITCODE -ne 0) {
     throw 'LaTeX result-fragment generation failed.'
 }
 
-$docsDirectory = Join-Path $packageRoot 'docs'
-$outputDirectory = Join-Path $packageRoot 'output\pdf'
-New-Item -ItemType Directory -Path $outputDirectory -Force | Out-Null
-Push-Location $docsDirectory
-try {
-    & $LatexmkExe -norc -xelatex -interaction=nonstopmode -halt-on-error -synctex=1 "-outdir=$outputDirectory" 'verification_manual_v9.tex'
-    if ($LASTEXITCODE -ne 0) {
-        throw 'XeLaTeX compilation failed.'
-    }
-}
-finally {
-    Pop-Location
+& (Join-Path $packageRoot 'tools\build_verification_manual.ps1') -LatexmkExe $LatexmkExe
+if ($LASTEXITCODE -ne 0) {
+    throw 'Verification-manual build failed.'
 }
 
 $leanDirectory = Join-Path $packageRoot 'lean'

@@ -379,7 +379,8 @@ def main() -> None:
             len(path.relative_to(ROOT).parts) >= 2
             and path.relative_to(ROOT).parts[:2] == ("output", "manuscript")
         )
-        and path.suffix.lower() not in {".aux", ".fdb_latexmk", ".fls", ".out", ".xdv"}
+        and path.suffix.lower()
+        not in {".aux", ".fdb_latexmk", ".fls", ".log", ".out", ".xdv"}
         and not path.name.lower().endswith(".synctex.gz")
     )
     sums = {path.relative_to(ROOT).as_posix(): sha256(path) for path in hash_paths}

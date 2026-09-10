@@ -78,8 +78,9 @@ semantic confirmation items and the Grade B assessment.
 - `results/rational_certificates.json`: exact interval endpoints and certified
   signs.
 - `results/all_table_values.csv`: values behind every admissible table pair.
-- `SHA256SUMS.json`: hashes for the public code, inputs, results, logs, and
-  verification documentation.
+- `SHA256SUMS.json`: hashes for the public code, inputs, results, compiled
+  manual, and verification documentation. Path-dependent build logs are
+  checked but excluded from the reproducibility hash set.
 - `lean/`: pinned Lean 4 source, tests, and the public axiom report.
 - `THEOREM_INDEX.md`: paper-to-Mathematica-to-Lean coverage map.
 - `TRUST.md`: proof, computation, reproducibility, and semantic trust boundary.

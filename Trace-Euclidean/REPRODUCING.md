@@ -35,11 +35,15 @@ From `Trace-Euclidean`:
 ```powershell
 wolframscript -file .\run_verification.wls
 python .\tools\build_report.py
+.\tools\build_verification_manual.ps1
 python .\tools\check_delivery.py
 ```
 
 The expected computational result is `2165 PASS / 0 WARN / 0 FAIL`. The public
-run validates the frozen extracted inputs and package correspondence. A
+run validates the frozen extracted inputs and package correspondence. The
+manual builder fixes the PDF creation timestamp, so the committed PDF is
+byte-for-byte reproducible across checkout paths; its path-dependent LaTeX log
+is inspected by the delivery check but is not committed. A
 maintainer can privately rebind those inputs to a revised manuscript with
 `build_all.ps1 -ManuscriptPath <outside-repository-path>`.
 
