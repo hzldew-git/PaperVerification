@@ -48,9 +48,10 @@ jobs:
           lake env lean TraceEuclideanTest/MainTheoremAudit.lean > theorem-audit.log 2>&1
           cat theorem-audit.log
           normalized="$(tr '\n' ' ' < theorem-audit.log | tr -s '[:space:]' ' ')"
+          expected_count="$(grep -c '^#print axioms' TraceEuclideanTest/MainTheoremAudit.lean)"
           count="$(grep -o 'depends on axioms:' <<< "$normalized" | wc -l)"
           expected="$(grep -oF 'depends on axioms: [propext, Classical.choice, Quot.sound]' <<< "$normalized" | wc -l)"
-          if [ "$count" -ne 40 ] || [ "$expected" -ne 40 ]; then
+          if [ "$count" -ne "$expected_count" ] || [ "$expected" -ne "$expected_count" ]; then
             echo 'Unexpected transitive axiom dependency found.' >&2
             exit 1
           fi
