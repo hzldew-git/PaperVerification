@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025) (preloaded format=xelatex 2026.3.18)  10 SEP 2026 08:36
+This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025) (preloaded format=xelatex 2026.3.18)  10 SEP 2026 08:56
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -573,7 +573,7 @@ Here is how much of TeX's memory you used:
  35359 multiletter control sequences out of 15000+600000
  569359 words of font info for 96 fonts, out of 8000000 for 9000
  1509 hyphenation exceptions out of 8191
- 71i,13n,79p,611b,558s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 71i,13n,79p,611b,594s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
 Output written on D:/AI-Workspace/Projects/PaperVerification/Trace-Euclidean/ou
-tput/pdf/verification_manual_v9.xdv (8 pages, 207416 bytes).
+tput/pdf/verification_manual_v9.xdv (8 pages, 209220 bytes).

@@ -20,22 +20,21 @@ The public computational run uses frozen extracted inputs. Rebinding the source
 hash to a new manuscript version is a private maintainer operation and cannot
 be reproduced from the public repository alone.
 
-## Clean-checkout boundary
+## Clean-checkout run
 
-A detached clean-checkout rerun is required after the current changes are
-committed. The previous release passed that protocol; the current development
-checkout has passed the same build commands and publication gate, but its
-post-commit clean-checkout record is not yet available in this draft.
+A detached worktree at commit
+`972c30b8d977fad41f716cb4b15fced13ed44ace` was populated from the committed
+repository state and rerun independently of the development checkout.
 
 | Item | Result |
 |---|---|
 | Pinned dependency restoration | PASS, including mathlib revision `520045ab14e26149ee970e2e617ca04b09bde5d6` |
-| `lake build` | Pending post-commit clean checkout |
-| Endpoint signature/axiom audit | Pending post-commit clean checkout |
-| Public Mathematica rerun | Pending post-commit clean checkout |
-| Delivery integrity check | Pending post-commit clean checkout |
-| Manuscript-exclusion gate | Pending post-commit clean checkout |
-| Repository state after public rerun | Pending post-commit clean checkout |
+| `lake build` | PASS, 8,673 jobs |
+| Endpoint signature/axiom audit | PASS, 40/40 standard axiom sets |
+| Public Mathematica rerun | PASS, 2,165 records |
+| Delivery integrity check | PASS, zero errors |
+| Manuscript-exclusion gate | PASS, 86 files inspected and 9 approved verification documents |
+| Repository state after public rerun | PASS, clean |
 
 The Windows clean build used `LEAN_NUM_THREADS=4` to avoid exhausting local
 process resources. This limits build concurrency only; it does not change the
@@ -45,7 +44,4 @@ GitHub Actions is configured to repeat the Lean build, forbidden-construct
 scan, endpoint-axiom audit, and manuscript-exclusion check from a fresh Ubuntu
 checkout.
 
-Current reproducibility status before the release commit:
-`REPRODUCIBLE_DEVELOPMENT_CHECKOUT`. This file is updated to
-`REPRODUCIBLE_CLEAN_CHECKOUT_VERIFIED` only after the detached checkout
-passes.
+Current reproducibility status: `REPRODUCIBLE_CLEAN_CHECKOUT_VERIFIED`.
