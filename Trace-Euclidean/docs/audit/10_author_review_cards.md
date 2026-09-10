@@ -7,8 +7,8 @@ signature and proof scope.
 ## Card A: Euclidean definitions
 
 - [ ] Mathematical author confirms the cost normalization and strict inequality.
-- [ ] Lean reviewer confirms quantifier order and the meaning of
-  `SquaredCoveringRadiusSpec`.
+- [ ] Lean reviewer confirms `traceCost`, full-lattice semantics, the
+  associated-bilinear-form normalization, and quantifier order.
 - Current status: `PROVISIONAL_MATCH`.
 
 ## Card B: p-norm corollary
@@ -21,9 +21,10 @@ signature and proof scope.
 ## Card C: scaling step in Lemma 5.1
 
 - [ ] Mathematical author confirms scale, norm, and volume-ideal identities.
-- [ ] Lean reviewer confirms that `two_scaled_isometric_iff` is only the
-  function-level cancellation component.
-- Current status: `PARTIAL_FORMALIZATION`.
+- [ ] Lean reviewer confirms the factor-two cancellation and that the scaled
+  volume ideal in `MainFinitenessFramework` still requires a concrete
+  instantiation.
+- Current status: `FORMALIZATION_WEAKER`.
 
 ## Card D: repaired Lemma 4.3
 
@@ -36,22 +37,27 @@ signature and proof scope.
 
 ## Card E: Proposition 6.1
 
-- [ ] Mathematical author confirms the strict obtuse-superbase argument and the
-  translation from strict Voronoi vectors to all cell facets.
-- [ ] Lean reviewer confirms the coordinate, determinant, and vertex formulas.
-- Current status: `PARTIAL_FORMALIZATION`.
+- [ ] Mathematical author confirms that the order-theoretic upper-plus-sharp
+  radius specification is equivalent to the stated covering radius.
+- [ ] Lean reviewer confirms the full-plane rounding proof, deep-hole lower
+  bound, and both formula normalizations.
+- Current status: `PROVISIONAL_MATCH`.
 
 ## Card F: Theorem 1.8
 
-- [ ] Mathematical author confirms necessity, the `m=3` strict obstruction,
-  and sufficiency for `m=2,5,13`.
-- [ ] Lean reviewer confirms that the current project proves only the arithmetic
-  endgame.
-- Current status: `PARTIAL_FORMALIZATION`.
+- [ ] Mathematical author confirms that `QuadraticAlgebra ℚ m 0` and the two
+  proved integral bases express the intended `Q(sqrt m)`.
+- [ ] Lean reviewer confirms the concrete number-field instance, exhaustive
+  ring-of-integers coordinates, trace-square bridge, necessity, `m=3`
+  obstruction, and sufficiency.
+- Current status: `PROVISIONAL_MATCH`.
 
 ## Card G: global finiteness
 
-- [ ] Mathematical author rechecks every cited finiteness theorem and its
-  hypotheses, including field-varying equivalence.
-- [ ] Lean reviewer confirms that no end-to-end theorem is claimed.
-- Current status: `PARTIAL_FORMALIZATION`.
+- [ ] Mathematical author confirms that the four classic and four integral
+  endpoint quantifiers match Theorems 1.2 and 1.3.
+- [ ] Domain reviewer validates the discriminant/volume bounds and O'Meara
+  103:4 plus Remark 103:5 for the exact equivalence relation.
+- [ ] Lean reviewer constructs the actual quotient of field-lattice pairs and
+  an unconditional instance replacing `MainFinitenessFramework`.
+- Current status: `FORMALIZATION_WEAKER`.

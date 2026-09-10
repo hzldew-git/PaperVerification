@@ -66,8 +66,58 @@ bound and upper bound `m<=13`, the square-free congruence candidates
 `m=5 or 13`, the half-integer lower bound and `m=3` obstruction, the exact
 radii at `m=2,5,13`, and strict inequality of those radii below two.
 
+## `NumberFieldLattice`
+
+This module defines total positivity, positive-definite quadratic forms over a
+totally real number field, the exact algebraic trace cost, integral and classic
+integral lattices, a bundled full lattice, its rank and field degree, the
+field-level trace-Euclidean predicate, and the semilinear equivalence data used
+when the ground field varies.
+
+## `QuadraticGeometry` and `QuadraticClassification`
+
+`QuadraticGeometry` works on the complete ordered coordinate plane rather
+than a finite vertex list. Rounding gives an upper bound for every point, and
+explicit deep holes prove sharpness. It establishes both formulas in
+Proposition 6.1 as `SquaredCoveringRadiusSpecOver` statements.
+`QuadraticClassification` uses the rational coordinate models to prove the
+strict iff classification, including the equality obstruction at `m=3`.
+
+## `QuadraticFieldBridge` and `QuadraticIntegralBasis`
+
+`QuadraticFieldBridge` transports field trace-square approximation through a
+linear coordinate equivalence and an additive equivalence for algebraic
+integers. `QuadraticIntegralBasis` supplies these equivalences for the
+concrete algebra `QuadraticAlgebra ℚ m 0`. It proves:
+
+- nonsquareness and the number-field instance for square-free `m>1`;
+- exact trace and norm formulas;
+- the algebraic-integer coordinate classification in both congruence cases;
+- integrality and exhaustiveness of the bases `1, sqrt(m)` and
+  `1, (1+sqrt(m))/2`;
+- the exact trace-square coordinate identity;
+- `realQuadratic_two_trace_euclidean_iff`.
+
+## `AnalyticFiniteness`
+
+This module defines the exact functions `g_s` and `g_n` used in the
+finiteness proof. It proves degree tails for fixed rank, rank tails for fixed
+degree, uniform envelopes for ranks at least three and five, and convergence
+of both envelopes to minus infinity.
+
+## `ArithmeticFiniteness` and `FinitenessEndpoints`
+
+`ArithmeticFiniteness` invokes mathlib's Hermite theorem for fields of
+bounded discriminant and its finiteness theorem for integral ideals of bounded
+absolute norm. It assembles finite field and volume-ideal fibers.
+`FinitenessEndpoints` proves all eight final finite-set conclusions once a
+`MainFinitenessFramework` is supplied. The structure still contains the
+geometric discriminant/volume inequalities and fixed-volume lattice-class
+finiteness; it is therefore a mathematical premise, not implementation-only
+data.
+
 ## Public audit entry point
 
-`TraceEuclideanTest/MainTheoremAudit.lean` checks 13 selected endpoint
+`TraceEuclideanTest/MainTheoremAudit.lean` checks 40 selected endpoint
 signatures and prints their transitive axiom dependencies. It is an audit
 module, not an additional mathematical assumption.

@@ -42,13 +42,21 @@ lake build
 lake env lean TraceEuclideanTest/MainTheoremAudit.lean
 ```
 
-The final command prints the elaborated public signatures and their transitive
+The final command prints 40 elaborated public signatures and their transitive
 axiom sets. The formalization has no `sorry`, `sorryAx`, project `axiom`,
-`native_decide`, `run_tac`, `unsafe`, `extern`, or `implemented_by`. Its scope
-is deliberately partial: it checks selected logical, analytic, scaling,
-Voronoi-algebra, and quadratic-arithmetic obligations, but it does not encode a
-single end-to-end version of either finiteness theorem or the real-quadratic
-classification theorem. See `THEOREM_INDEX.md` and `docs/audit/`.
+`native_decide`, `run_tac`, `unsafe`, `extern`, or `implemented_by`.
+
+The concrete real-quadratic endpoint constructs
+`QuadraticAlgebra ℚ m 0`, proves both integral-basis descriptions, transports
+the trace-square cost to exact coordinates, proves the full-plane covering
+formulas, and concludes
+`IsFieldTraceEuclidean 2 ↔ m = 2 ∨ m = 5 ∨ m = 13`.
+The eight finiteness endpoints preserve the paper's rank, degree, and
+`t ≤ d` quantifiers and prove the analytic tails and Hermite/ideal
+enumeration internally. They remain conditional on the geometric
+discriminant/volume estimates and the fixed-field fixed-volume lattice
+finiteness interface recorded in `MainFinitenessFramework`. See
+`THEOREM_INDEX.md` and `docs/audit/` for the exact semantic boundary.
 
 ## Main deliverables
 

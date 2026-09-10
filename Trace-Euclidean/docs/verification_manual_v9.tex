@@ -258,11 +258,16 @@ for arbitrary \(m\) comes from the manuscript's geometric argument.
 \section{Lean formalization and semantic boundary}
 
 The directory \nolinkurl{lean/} is a Lake project pinned to Lean~4.32.1 and a
-fixed mathlib revision.  Its modules check the strict and non-strict
-covering-radius implications, the power-mean witness transfer, cancellation of
-the factor-two scaling, the corrected Hessian-saddle step in Lemma~4.3,
-finite-parameter assembly, the two-dimensional vertex algebra above, and the
-quadratic candidate calculations.
+fixed mathlib revision.  In addition to the original component checks, it now
+defines the manuscript's number-field lattice semantics; proves exact analytic
+tails and rank-degree envelopes; applies mathlib's Hermite theorem and
+finiteness of ideals of bounded norm; proves exact covering radii on the full
+real coordinate plane; constructs both rings of integers of
+\(\mathbb Q(\sqrt m)\); and proves the complete concrete classification
+\[
+  \text{2-trace Euclidean}\quad\Longleftrightarrow\quad
+  m\in\{2,5,13\}.
+\]
 
 The formal source contains no \texttt{sorry}, \texttt{sorryAx}, project
 \texttt{axiom}, \texttt{native\_decide}, \texttt{run\_tac},
@@ -271,13 +276,19 @@ endpoint audit prints only \texttt{propext}, \texttt{Classical.choice}, and
 \texttt{Quot.sound}.  These are standard Lean and mathlib logical
 dependencies.
 
-The formalization is intentionally partial.  In particular, it does not yet
-construct the totally real fields and their lattices, formalize the full
-Voronoi-cell argument, or state the complete finiteness and quadratic-field
-classification theorems as Lean endpoints.  Thus successful compilation
-certifies the encoded components, not the complete manuscript.  The
-paper-to-code map and the English semantic-fidelity audit are in
-\nolinkurl{THEOREM_INDEX.md} and \nolinkurl{docs/audit/}.
+The public audit covers 40 endpoints.  The quadratic classification and the
+two covering-radius cases are concrete endpoints.  All eight conclusions of
+Theorems~1.2 and~1.3 are also Lean theorems with the paper's parameter
+restrictions, but they are conditional on
+\texttt{MainFinitenessFramework}.  This interface records the manuscript's
+geometric discriminant/volume estimates and the fixed-field fixed-volume
+lattice-finiteness theorem.  It has not yet been instantiated for the actual
+equivalence classes of field--lattice pairs.  Consequently the package remains
+Grade~C under the strict semantic rubric: successful compilation certifies the
+encoded concrete and conditional results, not an unconditional Lean proof of
+both global finiteness theorems.  The exact paper-to-code map and the English
+semantic-fidelity audit are in \nolinkurl{THEOREM_INDEX.md} and
+\nolinkurl{docs/audit/}.
 
 \section{Reproduction}
 

@@ -5,9 +5,9 @@
 - Toolchain: Lean 4.32.1.
 - Dependency lock: `lake-manifest.json`, including mathlib revision
   `520045ab14e26149ee970e2e617ca04b09bde5d6`.
-- Full build: PASS, 8,665 Lake jobs.
+- Full build: PASS, more than 8,600 Lake jobs.
 - Forbidden-construct scan: PASS, zero matches.
-- Audited endpoints: 13.
+- Audited endpoints: 40.
 - Transitive axiom set for every endpoint:
   `propext`, `Classical.choice`, `Quot.sound`.
 
@@ -16,8 +16,10 @@ The scan rejects `sorry`, `sorryAx`, a project `axiom`, `native_decide`,
 signature and axiom output is in
 `lean/audit/main_theorem_axioms.txt`.
 
-`noncomputable section` in the real-coordinate module controls executable
-code generation and does not declare an axiom.
+`noncomputable section` declarations control executable code generation and
+do not declare axioms. `MainFinitenessFramework` is also not an axiom: it is
+an explicit theorem parameter. Its mathematical fields are therefore visible
+in every affected endpoint signature and are assessed as stronger assumptions.
 
 ## Computational evidence
 

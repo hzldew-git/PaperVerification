@@ -85,9 +85,11 @@ try {
     }
 
     $auditText = Get-Content -LiteralPath (Join-Path $auditDirectory 'main_theorem_axioms.txt')
-    $axiomLines = @($auditText | Where-Object { $_ -match 'depends on axioms:' })
-    $expectedAxioms = 'depends on axioms: [propext, Classical.choice, Quot.sound]'
-    if ($axiomLines.Count -ne 13 -or @($axiomLines | Where-Object { "$_" -notmatch [regex]::Escape($expectedAxioms) }).Count -ne 0) {
+    $auditNormalized = (($auditText -join ' ') -replace '\s+', ' ').Trim()
+    $allAxiomCount = ([regex]::Matches($auditNormalized, 'depends on axioms:')).Count
+    $expectedAxiomPattern = 'depends on axioms: \[propext, Classical\.choice, Quot\.sound\]'
+    $expectedAxiomCount = ([regex]::Matches($auditNormalized, $expectedAxiomPattern)).Count
+    if ($allAxiomCount -ne 40 -or $expectedAxiomCount -ne 40) {
         throw 'Lean endpoint audit reported an unexpected transitive axiom set.'
     }
 }

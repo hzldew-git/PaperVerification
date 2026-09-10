@@ -30,6 +30,8 @@ Lean declarations by module. The comparison files then examine:
 
 - `PROVISIONAL_MATCH`: the reviewed statement appears semantically aligned,
   but independent author and Lean-expert sign-off is absent.
+- `FORMALIZATION_WEAKER`: the formal theorem has a stronger assumption or a
+  narrower object domain than the paper theorem.
 - `FORMALIZED_COMPONENT`: Lean proves a specifically identified component.
 - `PARTIAL_FORMALIZATION`: Lean covers some obligations but not the complete
   paper result.
@@ -43,3 +45,8 @@ This is a first-party machine-assisted audit, not independent peer review.
 Compilation proves acceptance of the encoded Lean statements. It does not prove
 that every paper statement was encoded, that cited theorems are correct, or
 that the complete paper is free of mathematical error.
+
+The audit applies the same public-endpoint rule used by the author's BongTheory
+work: a main endpoint is not treated as an unconditional match while it accepts
+a project-specific structure containing proof obligations. This rule is
+material for `MainFinitenessFramework`.

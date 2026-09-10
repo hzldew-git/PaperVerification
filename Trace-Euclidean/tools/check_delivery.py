@@ -125,6 +125,14 @@ def main() -> None:
         ROOT / "lean" / "TraceEuclidean" / "Finiteness.lean",
         ROOT / "lean" / "TraceEuclidean" / "VoronoiAlgebra.lean",
         ROOT / "lean" / "TraceEuclidean" / "QuadraticArithmetic.lean",
+        ROOT / "lean" / "TraceEuclidean" / "NumberFieldLattice.lean",
+        ROOT / "lean" / "TraceEuclidean" / "QuadraticGeometry.lean",
+        ROOT / "lean" / "TraceEuclidean" / "QuadraticClassification.lean",
+        ROOT / "lean" / "TraceEuclidean" / "QuadraticFieldBridge.lean",
+        ROOT / "lean" / "TraceEuclidean" / "QuadraticIntegralBasis.lean",
+        ROOT / "lean" / "TraceEuclidean" / "AnalyticFiniteness.lean",
+        ROOT / "lean" / "TraceEuclidean" / "ArithmeticFiniteness.lean",
+        ROOT / "lean" / "TraceEuclidean" / "FinitenessEndpoints.lean",
         ROOT / "lean" / "TraceEuclideanTest" / "MainTheoremAudit.lean",
         ROOT / "lean" / "audit" / "main_theorem_axioms.txt",
         ROOT / "THEOREM_INDEX.md",
@@ -282,11 +290,15 @@ def main() -> None:
     axiom_report = (ROOT / "lean" / "audit" / "main_theorem_axioms.txt").read_text(
         encoding="utf-8", errors="replace"
     )
-    axiom_lines = [
-        line for line in axiom_report.splitlines() if "depends on axioms:" in line
-    ]
-    expected_axioms = "depends on axioms: [propext, Classical.choice, Quot.sound]"
-    if len(axiom_lines) != 13 or any(expected_axioms not in line for line in axiom_lines):
+    normalized_axiom_report = re.sub(r"\s+", " ", axiom_report).strip()
+    axiom_count = normalized_axiom_report.count("depends on axioms:")
+    expected_axiom_count = len(
+        re.findall(
+            r"depends on axioms: \[propext, Classical\.choice, Quot\.sound\]",
+            normalized_axiom_report,
+        )
+    )
+    if axiom_count != 40 or expected_axiom_count != 40:
         errors.append("The Lean endpoint report contains a missing or unexpected axiom set.")
 
     manuscript_pdf_present = False

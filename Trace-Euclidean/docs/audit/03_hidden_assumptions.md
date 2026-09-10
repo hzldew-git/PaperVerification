@@ -1,13 +1,18 @@
 # Hidden-assumption audit
 
-## Abstract Euclidean predicates
+## Number-field lattice semantics
 
-`StrictEuclidean` receives an arbitrary real-valued cost. It does not construct
-the trace cost from a totally real field, quadratic form, Minkowski embedding,
-or lattice. `SquaredCoveringRadiusSpec` assumes both the upper-bound property
-and sharpness of the proposed radius. The Lean radius implications are valid
-once that specification is supplied; existence and identification of the
-paper's `rho_T(L)` are not formalized.
+`NumberFieldLattice` explicitly requires a number field, total reality, a
+finite-dimensional quadratic form, a full `O_F`-lattice, nondegeneracy,
+positive definiteness at every real embedding, and integrality of every
+quadratic value. Classic integrality is a separate predicate using mathlib's
+associated bilinear form, whose normalization is one half of the polar form.
+
+`NumberFieldLatticeEquiv` records the field isomorphism, additive bijection,
+semilinearity, lattice preservation, and quadratic-form compatibility from the
+paper. The current global finiteness endpoints do not construct the quotient
+by this equivalence; their type `α` is documented as the quotient and remains
+part of the semantic confirmation obligation.
 
 ## Power means
 
@@ -35,28 +40,45 @@ remain analytic paper arguments.
 
 ## Finiteness
 
-The abstract Lean finiteness lemmas assume convergence to minus infinity,
-explicit rectangle bounds, or finite fibers. They do not prove number-field
-discriminant finiteness, ideal finiteness, O'Meara's quadratic-space and lattice
-class finiteness, or the manuscript's volume and discriminant bounds.
+The exact `g_s` and `g_n` functions, their fixed-rank degree tails,
+fixed-degree rank tails, and uniform high-rank envelopes are now proved in
+Lean. Hermite finiteness and bounded ideal-norm finiteness are invoked from
+mathlib.
 
-## Voronoi geometry
+`MainFinitenessFramework` remains a material assumption. Its fields require:
 
-The Lean two-vector module assumes the coordinate models and, where needed,
-`s^2=m` and a nonzero Gram determinant. It proves the algebra after the
-relevant facet normals are known. It does not prove that the displayed vectors
-form a strict obtuse superbase, that they are precisely the strict Voronoi
-vectors, that every listed bisector intersection is a cell vertex, or that the
-listed vertices exhaust the Voronoi cell.
+1. identification of the represented objects with equivalence classes of
+   positive-definite trace-Euclidean number-field lattices;
+2. the manuscript's discriminant and volume-ideal bounds;
+3. the classic and factor-two-scaled integral volume ideals;
+4. finiteness of each fixed-field, fixed-rank, fixed-volume-ideal fiber, where
+   O'Meara 103:4 and Remark 103:5 enter.
+
+No field of the structure is an axiom in Lean: every public theorem is
+conditional on an explicit value of the structure. The absence of an
+instantiation for the paper's actual objects is nevertheless a stronger
+assumption than the paper theorem and blocks an unconditional match.
+
+## Quadratic covering geometry
+
+The original vector algebra remains available, but the principal proof no
+longer assumes facet exhaustion. On the full real plane, rounding constructs a
+lattice point within the claimed radius for every point, and an explicit
+midpoint or vertex gives a lower bound against every integral lattice point.
+`SquaredCoveringRadiusSpecOver` expresses the resulting least upper bound by
+an upper property and sharpness below it. Independent review must confirm that
+this order-theoretic specification is accepted as the paper's squared
+covering-radius convention.
 
 ## Quadratic classification
 
-The arithmetic module proves candidate elimination from the two radius formulas
-and proves the midpoint obstruction for `m=3`. It does not construct
-`Q(sqrt m)`, its ring of integers, its Minkowski lattice, or the equivalence
-between trace Euclideanity and a strict covering-radius inequality. Sufficiency
-for `m=2,5,13` therefore still depends on Proposition 6.1 and Lemma 2.2 at the
-paper level.
+`realQuadratic_two_trace_euclidean_iff` constructs the quadratic algebra,
+proves the full algebraic-integer coordinate description in both residue
+classes, transports the exact trace-square cost, and proves necessity and
+sufficiency for `m=2,5,13`. It is not parameterized by a coordinate model or
+an assumed radius formula. The remaining item is independent confirmation that
+the concrete `QuadraticAlgebra ℚ m 0` presentation and its field-level trace
+predicate are the intended paper conventions.
 
 ## External sources
 

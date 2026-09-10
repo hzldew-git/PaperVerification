@@ -31,18 +31,27 @@
 
 ## Scope attacks
 
-9. **Does the coordinate algebra prove that these are all Voronoi vertices?**
-   No. The strict obtuse-superbase and facet-exhaustion argument remains a
-   paper-level geometric step.
+9. **Does the covering proof depend on an incomplete Voronoi vertex list?**
+   No. The new proof works on every point of the real plane by rounding and
+   proves sharpness against every integral lattice point. The vertex algebra is
+   retained as independent supporting evidence.
 10. **Does scaling a form function prove finiteness of lattice classes?** No.
     It validates cancellation of the factor two. Integrality, ideal scaling,
     and class finiteness remain external.
-11. **Do finite parameter lemmas prove the global finiteness theorems?** No.
-    They assemble finite bounds only after analytic and arithmetic inputs are
-    supplied.
-12. **Does successful compilation prove the classification theorem?** No. The
-    field construction and end-to-end iff statement are absent.
+11. **Do the eight finite-set conclusions prove the paper theorems
+    unconditionally?** No. Their signatures expose
+    `MainFinitenessFramework`, including the geometric bounds, quotient
+    interpretation, and fixed-volume lattice-class theorem.
+12. **Could the quadratic endpoint use an assumed coordinate model?** The
+    generic bridge can, but the audited theorem
+    `realQuadratic_two_trace_euclidean_iff` constructs the field, both
+    integer-coordinate equivalences, and trace formula before applying it.
+13. **Could the integer-ring description prove only one containment?** No.
+    Explicit integrality proves one containment and the trace/norm parity
+    argument proves every algebraic integer has the stated coordinates.
+14. **Could `m=3` be excluded only by a decimal approximation?** No. Lean
+    proves the exact midpoint lower bound at the strict threshold.
 
 No further mathematical contradiction was found in the v9 statements covered
-by the executable checks. The unanswered attacks above are recorded as scope
-gaps, not silently treated as proved.
+by the executable checks. The remaining finiteness interface is recorded as a
+scope gap and is not promoted to a provisional match.

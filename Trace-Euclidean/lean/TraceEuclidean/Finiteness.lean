@@ -7,6 +7,21 @@ and arithmetic inputs are kept explicit.
 
 namespace TraceEuclidean
 
+/-- A finite set of keys with finite fibers gives a finite total family. -/
+theorem finite_of_finite_keys_and_fibers {α β : Type*}
+    (P : α → Prop) (key : α → β) (keys : Set β)
+    (hkeys : keys.Finite)
+    (hmem : ∀ a, P a → key a ∈ keys)
+    (hfiber : ∀ b, {a | P a ∧ key a = b}.Finite) :
+    {a | P a}.Finite := by
+  apply Set.Finite.of_finite_fibers key
+  · exact hkeys.subset fun b hb ↦ by
+      obtain ⟨a, ha, rfl⟩ := hb
+      exact hmem a ha
+  · intro b _hb
+    exact (hfiber b).subset fun a ha ↦
+      ⟨ha.1, by simpa using ha.2⟩
+
 /-- Eventual nonpositivity leaves only finitely many positive integer inputs. -/
 theorem finite_positive_of_eventually_nonpositive {h : ℕ → ℝ}
     (hbound : ∃ N, ∀ n, N ≤ n → h n ≤ 0) :

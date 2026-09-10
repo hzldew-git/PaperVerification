@@ -39,8 +39,19 @@ are external inputs unless a ledger entry says otherwise.
 
 ## Semantic status
 
-Status: `PARTIAL_FORMALIZATION`, Grade C. The project checks important proof
-components and all identified Section 4 computations, but it does not contain
-an end-to-end Lean theorem for Theorem 1.2, Theorem 1.3, Proposition 6.1, or
-Theorem 1.8. Successful compilation is not a certificate that those complete
-paper results are formally proved or semantically error-free.
+Status: `PARTIAL_FORMALIZATION`, Grade C.
+
+Theorem 1.8 now has a concrete end-to-end Lean endpoint for
+`QuadraticAlgebra ℚ m 0`, and Proposition 6.1 has exact full-plane
+covering-radius specifications in both congruence cases. These are
+`PROVISIONAL_MATCH` pending independent semantic review.
+
+Theorems 1.2 and 1.3 have all eight final finiteness clauses with their
+paper-level rank, degree, and `t ≤ d` quantifiers. Their proofs use Lean-proved
+analytic tails, Hermite finiteness, and ideal enumeration, but the endpoint
+signatures still take `MainFinitenessFramework`. That structure assumes the
+geometric discriminant/volume estimates and the fixed-field fixed-volume
+lattice finiteness used in the manuscript. Since it has not been instantiated
+for the actual field-lattice equivalence classes, these two core theorem groups
+remain `FORMALIZATION_WEAKER`. This disclosed gap prevents Grade B under the
+same endpoint standard used for BongTheory.

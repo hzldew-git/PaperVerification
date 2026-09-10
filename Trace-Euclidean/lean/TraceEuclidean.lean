@@ -1,7 +1,15 @@
 import TraceEuclidean.AnalyticCriticalPoint
+import TraceEuclidean.AnalyticFiniteness
+import TraceEuclidean.ArithmeticFiniteness
 import TraceEuclidean.Basic
 import TraceEuclidean.Finiteness
+import TraceEuclidean.FinitenessEndpoints
+import TraceEuclidean.NumberFieldLattice
 import TraceEuclidean.QuadraticArithmetic
+import TraceEuclidean.QuadraticClassification
+import TraceEuclidean.QuadraticFieldBridge
+import TraceEuclidean.QuadraticGeometry
+import TraceEuclidean.QuadraticIntegralBasis
 import TraceEuclidean.Scaling
 import TraceEuclidean.VoronoiAlgebra
 

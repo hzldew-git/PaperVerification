@@ -25,7 +25,7 @@ states the classic-integral refinement.
 | P17 | Lemma 3.2 | The covolume of the Minkowski lattice is `Delta_F^(n/2) sqrt(N(v(L)))`. |
 | P18 | Lemma 3.3 | The lattice covolume is bounded above by the Euclidean ball-volume constant times a power of the trace covering radius. |
 | P19 | Lemma 3.4 | Trace Euclideanity yields explicit bounds involving discriminant, volume, scale, norm, and the function `G_t(n,d)`. |
-| P20 | Lemma 4.1 | For fixed `y`, `g(x,y)` is strictly concave in `x), with a threshold controlling its unique maximum. |
+| P20 | Lemma 4.1 | For fixed `y`, `g(x,y)` is strictly concave in `x`, with a threshold controlling its unique maximum. |
 | P21 | Lemma 4.2 | For fixed `x`, the `y`-behavior of `g` is classified by the sign threshold `2 pi/e` and a unique root `x_0`. |
 | P22 | Lemma 4.3 | The global maximum of `g` on `x>=3,y>=1` lies on the `y=1` boundary; the proof excludes interior maxima by a negative Hessian determinant and compares certified boundary values. |
 | P23 | Lemma 4.4 | For fixed `y>=1`, `g_s(x,y)` is strictly decreasing for `x>=3`. |

@@ -26,6 +26,89 @@ TraceEuclidean.caseII_closed_candidates {m : ℕ} (hm : 1 < m) (hsq : TraceEucli
 TraceEuclidean.mThree_midpoint_obstruction (a b : ℤ) : 2 * (1 / 2 - ↑a) ^ 2 + 6 * (1 / 2 - ↑b) ^ 2 ≥ 2
 TraceEuclidean.candidateRadii_strictlyBelowTwo :
   TraceEuclidean.caseIRadiusSq 2 < 2 ∧ TraceEuclidean.caseIIRadiusSq 5 < 2 ∧ TraceEuclidean.caseIIRadiusSq 13 < 2
+TraceEuclidean.isTraceEuclidean_iff_strictEuclidean.{u_1, u_2} {F : Type u_1} {V : Type u_2} [Field F] [NumberField F]
+  [AddCommGroup V] [Module F V] [Module (NumberField.RingOfIntegers F) V] (Q : QuadraticForm F V)
+  (L : Submodule (NumberField.RingOfIntegers F) V) (t : ℝ) :
+  TraceEuclidean.IsTraceEuclidean Q L t ↔ TraceEuclidean.StrictEuclidean (fun x y => TraceEuclidean.traceCost Q x ↑y) t
+TraceEuclidean.isClosedTraceEuclidean_iff_closedEuclidean.{u_1, u_2} {F : Type u_1} {V : Type u_2} [Field F]
+  [NumberField F] [AddCommGroup V] [Module F V] [Module (NumberField.RingOfIntegers F) V] (Q : QuadraticForm F V)
+  (L : Submodule (NumberField.RingOfIntegers F) V) (t : ℝ) :
+  TraceEuclidean.IsClosedTraceEuclidean Q L t ↔
+    TraceEuclidean.ClosedEuclidean (fun x y => TraceEuclidean.traceCost Q x ↑y) t
+TraceEuclidean.fieldTwoTraceEuclideanRat_iff_real.{u_1} {F : Type u_1} [Field F] [NumberField F] :
+  TraceEuclidean.IsFieldTwoTraceEuclideanRat ↔ TraceEuclidean.IsFieldTraceEuclidean 2
+TraceEuclidean.realQuadratic_coveringRadiusSq_caseI {m : ℕ} (hm : 1 < m) (hsq : TraceEuclidean.IsSquarefreeNat m)
+  (hmod : m % 4 = 2 ∨ m % 4 = 3) :
+  TraceEuclidean.SquaredCoveringRadiusSpecOver (TraceEuclidean.realQuadraticCostReal m) ((↑m + 1) / 2)
+TraceEuclidean.realQuadratic_coveringRadiusSq_caseII {m : ℕ} (hm : 1 < m) (hsq : TraceEuclidean.IsSquarefreeNat m)
+  (hmod : m % 4 = 1) :
+  TraceEuclidean.SquaredCoveringRadiusSpecOver (TraceEuclidean.realQuadraticCostReal m) ((↑m + 1) ^ 2 / (8 * ↑m))
+TraceEuclidean.coordinate_two_trace_euclidean_iff {m : ℕ} (hm : 1 < m) (hsq : TraceEuclidean.IsSquarefreeNat m) :
+  TraceEuclidean.CoordinateTwoTraceEuclidean m ↔ m = 2 ∨ m = 5 ∨ m = 13
+TraceEuclidean.RealQuadraticCoordinateModel.field_two_trace_euclidean_iff.{u_1} {F : Type u_1} [Field F] [NumberField F]
+  {m : ℕ} (M : TraceEuclidean.RealQuadraticCoordinateModel F m) (hm : 1 < m) (hsq : TraceEuclidean.IsSquarefreeNat m) :
+  TraceEuclidean.IsFieldTraceEuclidean 2 ↔ m = 2 ∨ m = 5 ∨ m = 13
+TraceEuclidean.realQuadratic_two_trace_euclidean_iff {m : ℕ} (hm : 1 < m) (hsq : TraceEuclidean.IsSquarefreeNat m) :
+  TraceEuclidean.IsFieldTraceEuclidean 2 ↔ m = 2 ∨ m = 5 ∨ m = 13
+TraceEuclidean.gClassicNat_degree_tail (n : ℕ) (hn : 3 ≤ n) :
+  Filter.Tendsto (TraceEuclidean.gClassicNat n) Filter.atTop Filter.atBot
+TraceEuclidean.gIntegralNat_degree_tail (n : ℕ) (hn : 5 ≤ n) :
+  Filter.Tendsto (TraceEuclidean.gIntegralNat n) Filter.atTop Filter.atBot
+TraceEuclidean.gClassicNat_rank_tail (d : ℕ) (hd : 1 ≤ d) :
+  Filter.Tendsto (fun n => TraceEuclidean.gClassicNat n d) Filter.atTop Filter.atBot
+TraceEuclidean.gIntegralNat_rank_tail (d : ℕ) (hd : 1 ≤ d) :
+  Filter.Tendsto (fun n => TraceEuclidean.gIntegralNat n d) Filter.atTop Filter.atBot
+TraceEuclidean.gClassicEnvelopeNat_tail : Filter.Tendsto TraceEuclidean.gClassicEnvelopeNat Filter.atTop Filter.atBot
+TraceEuclidean.gIntegralEnvelopeNat_tail : Filter.Tendsto TraceEuclidean.gIntegralEnvelopeNat Filter.atTop Filter.atBot
+TraceEuclidean.finite_numberFieldCodes_of_discriminant_le.{u_1} (A : Type u_1) [Field A] [CharZero A] (N : ℕ) :
+  {K | |K.discriminant| ≤ ↑N}.Finite
+TraceEuclidean.finite_objects_of_bounded_volumeIdeal.{u_1, u_2} {F : Type u_1} {α : Type u_2} [Field F] [NumberField F]
+  (P : α → Prop) (volumeIdeal : α → Ideal (NumberField.RingOfIntegers F)) (N : ℕ)
+  (hvolume : ∀ (a : α), P a → Ideal.absNorm (volumeIdeal a) ≤ N)
+  (hfixedIdeal : ∀ (I : Ideal (NumberField.RingOfIntegers F)), {a | P a ∧ volumeIdeal a = I}.Finite) : {a | P a}.Finite
+TraceEuclidean.bounded_discriminant_volume_finiteness.{u_1, u_2} {A : Type u_1} {α : Type u_2} [Field A] [CharZero A]
+  (P : α → Prop) (fieldCode : α → TraceEuclidean.NumberFieldCode A) (discriminantBound volumeBound : ℕ)
+  (volumeIdeal :
+    (K : TraceEuclidean.NumberFieldCode A) →
+      TraceEuclidean.FieldFiber fieldCode K → Ideal (NumberField.RingOfIntegers ↥↑K))
+  (hdisc : ∀ (a : α), P a → |(fieldCode a).discriminant| ≤ ↑discriminantBound)
+  (hvolume :
+    ∀ (K : TraceEuclidean.NumberFieldCode A) (a : TraceEuclidean.FieldFiber fieldCode K),
+      P ↑a → Ideal.absNorm (volumeIdeal K a) ≤ volumeBound)
+  (hfixed :
+    ∀ (K : TraceEuclidean.NumberFieldCode A) (I : Ideal (NumberField.RingOfIntegers ↥↑K)),
+      {a | P ↑a ∧ volumeIdeal K a = I}.Finite) :
+  {a | P a}.Finite
+TraceEuclidean.MainFinitenessFramework.classic_fixed_pair.{u_1, u_2} {A : Type u_1} {α : Type u_2} [Field A]
+  [CharZero A] (M : TraceEuclidean.MainFinitenessFramework A α) (t : ℝ) (n d : ℕ) :
+  {a | M.classic t a ∧ M.rank a = n ∧ M.degree a = d}.Finite
+TraceEuclidean.MainFinitenessFramework.integral_fixed_pair.{u_1, u_2} {A : Type u_1} {α : Type u_2} [Field A]
+  [CharZero A] (M : TraceEuclidean.MainFinitenessFramework A α) (t : ℝ) (n d : ℕ) :
+  {a | M.integral t a ∧ M.rank a = n ∧ M.degree a = d}.Finite
+TraceEuclidean.MainFinitenessFramework.finiteness_classic_fixed_degree_low_rank.{u_1, u_2} {A : Type u_1} {α : Type u_2}
+  [Field A] [CharZero A] (M : TraceEuclidean.MainFinitenessFramework A α) (t : ℝ) (_ht : 0 < t) (n d : ℕ)
+  (_htd : t ≤ ↑d) (_hn : n = 1 ∨ n = 2) : {a | M.classic t a ∧ M.rank a = n ∧ M.degree a = d}.Finite
+TraceEuclidean.MainFinitenessFramework.finiteness_classic_fixed_high_rank.{u_1, u_2} {A : Type u_1} {α : Type u_2}
+  [Field A] [CharZero A] (M : TraceEuclidean.MainFinitenessFramework A α) (t : ℝ) (ht : 0 < t) (n : ℕ) (hn : 3 ≤ n) :
+  {a | M.classic t a ∧ M.rank a = n ∧ t ≤ ↑(M.degree a)}.Finite
+TraceEuclidean.MainFinitenessFramework.finiteness_classic_fixed_degree.{u_1, u_2} {A : Type u_1} {α : Type u_2}
+  [Field A] [CharZero A] (M : TraceEuclidean.MainFinitenessFramework A α) (t : ℝ) (ht : 0 < t) (d : ℕ) (htd : t ≤ ↑d) :
+  {a | M.classic t a ∧ M.degree a = d}.Finite
+TraceEuclidean.MainFinitenessFramework.finiteness_classic_global.{u_1, u_2} {A : Type u_1} {α : Type u_2} [Field A]
+  [CharZero A] (M : TraceEuclidean.MainFinitenessFramework A α) (t : ℝ) (ht : 0 < t) :
+  {a | M.classic t a ∧ t ≤ ↑(M.degree a) ∧ 3 ≤ M.rank a}.Finite
+TraceEuclidean.MainFinitenessFramework.finiteness_integral_fixed_degree_low_rank.{u_1, u_2} {A : Type u_1}
+  {α : Type u_2} [Field A] [CharZero A] (M : TraceEuclidean.MainFinitenessFramework A α) (t : ℝ) (_ht : 0 < t) (n d : ℕ)
+  (_htd : t ≤ ↑d) (_hn : n = 1 ∨ n = 2 ∨ n = 3 ∨ n = 4) : {a | M.integral t a ∧ M.rank a = n ∧ M.degree a = d}.Finite
+TraceEuclidean.MainFinitenessFramework.finiteness_integral_fixed_high_rank.{u_1, u_2} {A : Type u_1} {α : Type u_2}
+  [Field A] [CharZero A] (M : TraceEuclidean.MainFinitenessFramework A α) (t : ℝ) (ht : 0 < t) (n : ℕ) (hn : 5 ≤ n) :
+  {a | M.integral t a ∧ M.rank a = n ∧ t ≤ ↑(M.degree a)}.Finite
+TraceEuclidean.MainFinitenessFramework.finiteness_integral_fixed_degree.{u_1, u_2} {A : Type u_1} {α : Type u_2}
+  [Field A] [CharZero A] (M : TraceEuclidean.MainFinitenessFramework A α) (t : ℝ) (ht : 0 < t) (d : ℕ) (htd : t ≤ ↑d) :
+  {a | M.integral t a ∧ M.degree a = d}.Finite
+TraceEuclidean.MainFinitenessFramework.finiteness_integral_global.{u_1, u_2} {A : Type u_1} {α : Type u_2} [Field A]
+  [CharZero A] (M : TraceEuclidean.MainFinitenessFramework A α) (t : ℝ) (ht : 0 < t) :
+  {a | M.integral t a ∧ t ≤ ↑(M.degree a) ∧ 5 ≤ M.rank a}.Finite
 'TraceEuclidean.strictEuclidean_of_radius_lt' depends on axioms: [propext, Classical.choice, Quot.sound]
 'TraceEuclidean.radius_le_of_strictEuclidean' depends on axioms: [propext, Classical.choice, Quot.sound]
 'TraceEuclidean.pNormEuclidean_imp_traceEuclidean' depends on axioms: [propext, Classical.choice, Quot.sound]
@@ -39,3 +122,48 @@ TraceEuclidean.candidateRadii_strictlyBelowTwo :
 'TraceEuclidean.caseII_closed_candidates' depends on axioms: [propext, Classical.choice, Quot.sound]
 'TraceEuclidean.mThree_midpoint_obstruction' depends on axioms: [propext, Classical.choice, Quot.sound]
 'TraceEuclidean.candidateRadii_strictlyBelowTwo' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.isTraceEuclidean_iff_strictEuclidean' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.isClosedTraceEuclidean_iff_closedEuclidean' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.fieldTwoTraceEuclideanRat_iff_real' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.realQuadratic_coveringRadiusSq_caseI' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.realQuadratic_coveringRadiusSq_caseII' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.coordinate_two_trace_euclidean_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.RealQuadraticCoordinateModel.field_two_trace_euclidean_iff' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'TraceEuclidean.realQuadratic_two_trace_euclidean_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.gClassicNat_degree_tail' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.gIntegralNat_degree_tail' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.gClassicNat_rank_tail' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.gIntegralNat_rank_tail' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.gClassicEnvelopeNat_tail' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.gIntegralEnvelopeNat_tail' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.finite_numberFieldCodes_of_discriminant_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.finite_objects_of_bounded_volumeIdeal' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.bounded_discriminant_volume_finiteness' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.MainFinitenessFramework.classic_fixed_pair' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.MainFinitenessFramework.integral_fixed_pair' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.MainFinitenessFramework.finiteness_classic_fixed_degree_low_rank' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'TraceEuclidean.MainFinitenessFramework.finiteness_classic_fixed_high_rank' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'TraceEuclidean.MainFinitenessFramework.finiteness_classic_fixed_degree' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'TraceEuclidean.MainFinitenessFramework.finiteness_classic_global' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'TraceEuclidean.MainFinitenessFramework.finiteness_integral_fixed_degree_low_rank' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'TraceEuclidean.MainFinitenessFramework.finiteness_integral_fixed_high_rank' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'TraceEuclidean.MainFinitenessFramework.finiteness_integral_fixed_degree' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'TraceEuclidean.MainFinitenessFramework.finiteness_integral_global' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

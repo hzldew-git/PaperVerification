@@ -13,6 +13,11 @@
   determinant, not merely a nonpositive one.
 - The quadratic candidate lemmas retain the strict exclusion at `m=3` and
   distinguish the two congruence cases.
+- The concrete field classification retains square-free `m>1`, the actual
+  ring of integers in both residue cases, strict trace-square cost, and both
+  directions of the iff.
+- Each of the eight finiteness endpoints retains the paper's fixed or varying
+  rank and degree pattern and the restriction `t ≤ d`.
 
 ## Generalized but semantically thinner statements
 
@@ -21,23 +26,32 @@ makes their logical conclusions more general, but removes the field, module,
 lattice, and integrality content needed by the paper. This syntactic
 generality must not be reported as a stronger formalization of the paper.
 
-`finite_positive_of_tendsto_atTop_atBot` is an exact abstract finiteness
-principle for any sequence tending to minus infinity. It does not prove that
-the manuscript's `g_s` or `g_n` sequences have that limit.
+`SquaredCoveringRadiusSpecOver` characterizes a least upper bound through an
+upper approximation property and sharp failure below the proposed value. This
+is order-theoretically sufficient for the classification, but an independent
+reviewer must confirm that it is accepted as the manuscript's covering-radius
+normalization.
 
 ## Conditionalized statements
 
 - The p-norm conclusion assumes the pointwise power-mean inequality.
 - The Hessian conclusion assumes the differentiated critical identities.
 - Voronoi coefficient and norm formulas assume a nonzero Gram determinant.
-- Candidate classification assumes the two closed-radius formulas.
-- Finiteness assembly assumes eventual negativity or finite fibers.
+- The generic coordinate-model classification assumes an integral-coordinate
+  equivalence, but the public concrete classification constructs it.
+- Finiteness assembly assumes the `MainFinitenessFramework`; analytic
+  negativity, Hermite finiteness, and ideal norm finiteness are no longer
+  assumed.
 
 ## Missing theorem strength
 
-There is no Lean declaration with the full quantifiers and conclusion of
-Theorem 1.2, Theorem 1.3, Proposition 6.1, or Theorem 1.8. In particular, the
-formal source does not quantify over all totally real fields, all eligible
-lattices, or the manuscript's equivalence classes of field-lattice pairs.
+Proposition 6.1 and Theorem 1.8 now have complete concrete endpoints and are
+`PROVISIONAL_MATCH`. Theorems 1.2 and 1.3 have all eight conclusion shapes,
+but their formal assumptions are stronger: `MainFinitenessFramework`
+contains the unproved concrete geometric and fixed-volume inputs and merely
+documents that `α` is the intended quotient of field-lattice pairs.
 
-The correct project-level description is therefore `PARTIAL_FORMALIZATION`.
+The primary strength relationship for Theorems 1.2 and 1.3 is
+`FORMAL_ASSUMPTIONS_STRONGER`, hence theorem-level
+`FORMALIZATION_WEAKER`. Because two core theorem groups remain conditional,
+the project-level grade remains C.

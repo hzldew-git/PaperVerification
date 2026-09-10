@@ -20,7 +20,8 @@ The declarations listed in
 `lean/TraceEuclideanTest/MainTheoremAudit.lean` have Lean-kernel-accepted proof
 terms under the pinned dependency graph. Their reported transitive axiom set is
 exactly `propext`, `Classical.choice`, and `Quot.sound`. The formal source
-scan found no forbidden proof placeholder or code-generation bypass.
+scan found no forbidden proof placeholder or code-generation bypass. The
+audited list contains 40 endpoints.
 
 ## Computational claim
 
@@ -31,10 +32,12 @@ in the verification ledger.
 
 ## Exclusions
 
-This draft does not certify the full statements of Theorem 1.2, Theorem 1.3,
-Proposition 6.1, or Theorem 1.8 in Lean. It does not certify cited external
-theorems, manuscript prose outside the ledger, or semantic fidelity without
-independent review.
+Theorem 1.8 and Proposition 6.1 have complete concrete endpoints and are
+`PROVISIONAL_MATCH` until independent review is recorded. This draft does not
+certify Theorems 1.2 and 1.3 as unconditional Lean theorems:
+`MainFinitenessFramework` remains an explicit premise of all eight
+conclusions. It also does not certify cited external theorems, manuscript prose
+outside the ledger, or semantic fidelity without independent review.
 
 ## Signatures
 

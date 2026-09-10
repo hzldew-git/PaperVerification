@@ -6,8 +6,12 @@ The manuscript itself is intentionally absent from this repository.
 
 The status labels mean:
 
+- `PROVISIONAL_MATCH`: the full formal statement appears to match, subject to
+  independent author/domain and Lean review.
 - `FORMALIZED_COMPONENT`: Lean proves the stated component with its explicit
   hypotheses.
+- `FORMALIZATION_WEAKER`: the Lean theorem has additional mathematical
+  premises or a narrower object domain.
 - `COMPUTATION_VERIFIED`: Mathematica checks the displayed algebra, finite
   enumeration, certified interval, or numerical value recorded in the ledger.
 - `PARTIAL_FORMALIZATION`: some proof obligations are checked, but no Lean
@@ -18,24 +22,25 @@ The status labels mean:
 
 | Paper item | Mathematica evidence | Lean evidence | Status |
 |---|---|---|---|
-| Definition 1.1, strict trace Euclideanity | Source binding | `StrictEuclidean`; radius bridge | `PARTIAL_FORMALIZATION` |
-| Theorems 1.2 and 1.3, four finiteness assertions each | Complete admissible-pair tables and analytic tails | Finite parameter and scaling assembly lemmas | `PARTIAL_FORMALIZATION` |
+| Definition 1.1, strict trace Euclideanity | Source binding | `IsTraceEuclidean`, `traceCost`, `NumberFieldLattice` | `PROVISIONAL_MATCH` |
+| Theorems 1.2 and 1.3, four finiteness assertions each | Complete admissible-pair tables | Eight endpoints, exact analytic tails/envelopes, Hermite field finiteness, bounded ideal enumeration | `FORMALIZATION_WEAKER` |
 | Definition 1.5 and Corollary 1.6, p-norm implication | Source binding | `pNormEuclidean_imp_traceEuclidean` | `FORMALIZED_COMPONENT` |
-| Definition 1.7, trace Euclidean field | Source binding | None | `NOT_FORMALIZED` |
-| Theorem 1.8, classification by `m = 2, 5, 13` | Exact quadratic-field calculations and finite diagnostics | Candidate elimination, `m=3` obstruction, exact candidate radii | `PARTIAL_FORMALIZATION` |
+| Definition 1.7, trace Euclidean field | Source binding | `IsFieldTraceEuclidean` | `PROVISIONAL_MATCH` |
+| Theorem 1.8, classification by `m = 2, 5, 13` | Exact quadratic-field calculations and finite diagnostics | `realQuadratic_two_trace_euclidean_iff` | `PROVISIONAL_MATCH` |
 | Lemma 2.1, properties of `Phi` | None | None | `NOT_FORMALIZED` |
 | Lemma 2.2, covering radius criterion | Source binding | Abstract strict/closed radius implications | `PARTIAL_FORMALIZATION` |
 | Lemma 3.1, trace Gram determinant | Exact symbolic matrix checks | Two-dimensional special cases only | `COMPUTATION_VERIFIED` |
 | Lemma 3.2, covolume formula | Source-bound downstream checks | None | `NOT_FORMALIZED` |
 | Lemma 3.3, covering-volume inequality | None | None | `EXTERNAL_INPUT` |
-| Lemma 3.4, discriminant and volume-ideal bound | Exact formula diagnostics | None | `PARTIAL_FORMALIZATION` |
+| Lemma 3.4, discriminant and volume-ideal bound | Exact formula diagnostics | Exposed as named inputs of `MainFinitenessFramework` | `ASSUMED_NOT_PROVED` |
 | Lemmas 4.1 and 4.2 | Exact identities, signs, limits, and certified roots | Stationary derivative sublemma reused in 4.3 | `COMPUTATION_VERIFIED` |
-| Lemma 4.3, global maximum of `g` | Exact calculus, rational intervals, boundary comparison, tail check | Corrected critical-point Hessian-saddle component | `PARTIAL_FORMALIZATION` |
+| Lemma 4.3, global maximum of `g` | Exact calculus, rational intervals, boundary comparison, tail check | Critical-point saddle component plus the tail/envelope estimates needed for finiteness | `PARTIAL_FORMALIZATION` |
 | Lemmas 4.4-4.9 | Exact identities, monotonicity conditions, roots, and maxima | None | `COMPUTATION_VERIFIED` |
-| Lemma 5.1, bounded-discriminant/volume finiteness | None | Scaling isometry equivalence and finite-family assembly only | `PARTIAL_FORMALIZATION` |
-| Proposition 6.1, exact quadratic covering radii | Exact Gram/Voronoi calculations | Gram identities, vertex solution, vertex norm formula, radius algebra | `PARTIAL_FORMALIZATION` |
+| Lemma 5.1, bounded-discriminant/volume finiteness | None | Mathlib Hermite theorem, ideal norm finiteness, field/ideal fiber assembly, scaling cancellation | `FORMALIZATION_WEAKER` |
+| Proposition 6.1, exact quadratic covering radii | Exact Gram/Voronoi calculations | `realQuadratic_coveringRadiusSq_caseI`, `realQuadratic_coveringRadiusSq_caseII` | `PROVISIONAL_MATCH` |
 
 The machine-readable Mathematica map is `results/verification_ledger.json`.
-The Lean endpoint report is `lean/audit/main_theorem_axioms.txt`. No row marked
-`PARTIAL_FORMALIZATION` should be cited as an end-to-end Lean proof of the paper
-item.
+The Lean endpoint report is `lean/audit/main_theorem_axioms.txt`. The two
+finiteness theorem groups must be cited as conditional formal reductions,
+because `MainFinitenessFramework` has not been instantiated for the paper's
+actual equivalence classes of field-lattice pairs.
