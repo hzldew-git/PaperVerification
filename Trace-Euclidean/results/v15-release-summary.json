@@ -2,6 +2,7 @@
   "author_version": "Trace-Euclidean-v15",
   "source_sha256": "83a236e93648ce0802f8a0d3022de63710d089f3a4f7e61214a4c855459597b5",
   "grade": "B",
+  "lean_code_commit": "f3f8649c5f0e3820b8bbdc5216f44eb6d3df8edf",
   "status": "SUBSTANTIAL_FORMALIZATION",
   "main_results_reviewed": 4,
   "provisional_match": 4,
