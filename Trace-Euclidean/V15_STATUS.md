@@ -15,7 +15,9 @@ and v9 results still describe the prior v9 release. They are not v15 claims.
 - Public Wolfram rerun: 115 PASS, 0 FAIL.
 - Lean `lake build`: successful on Lean 4.32.1 and the pinned mathlib revision.
 - Lean proves the exact 22 Gram rows, the nine discriminant/parity rows, and
-  the six rows left after the first trace/norm equation.
+  the six rows left after the first trace/norm equation. It also proves first
+  ideal index one for every surviving row except `m=3`, and enumerates the
+  three trace/norm/index solutions in that exceptional row.
 - Lean proves `rank ≤ 34` for the formal integral variable-degree class.
 - Lean assembles global finiteness from the paper's `degree ≤ 14` bound, and
   derives that bound under explicit Odlyzko and rank-one classic-integrality

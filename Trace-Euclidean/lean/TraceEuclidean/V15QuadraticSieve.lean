@@ -178,4 +178,95 @@ theorem v15_quadratic_candidate_six_rows {m a b c n : ℕ}
   simp only [v15SixSurvivingGrams, List.mem_cons, List.not_mem_nil, or_false]
   tauto
 
+private theorem v15_index_one_if_short_trace {m a n k : ℕ} {t : ℤ}
+    (hn : 0 < n) (hk : 0 < k)
+    (hshort : a ^ 2 < 16 * n)
+    (heq : (a : ℤ) ^ 2 - (v15QuadraticDiscriminant m : ℤ) * t ^ 2 =
+      4 * (n : ℤ) * (k : ℤ) ^ 2) :
+    k = 1 := by
+  by_contra hne
+  have hk2 : (2 : ℤ) ≤ k := by exact_mod_cast (show 2 ≤ k by omega)
+  have hmD : (0 : ℤ) ≤ v15QuadraticDiscriminant m := by positivity
+  have hnZ : (0 : ℤ) < n := by exact_mod_cast hn
+  have hshortZ : (a : ℤ) ^ 2 < 16 * (n : ℤ) := by exact_mod_cast hshort
+  nlinarith [sq_nonneg t, sq_nonneg ((k : ℤ) - 2)]
+
+/-- For every surviving row except `m=3`, the first ideal index equals one.
+The exceptional row requires both basis vectors and their cross trace. -/
+theorem v15_survivor_first_index_one_except_three
+    {m a b c n : ℕ} {t : ℤ} {k : ℕ}
+    (hrow : (m, a, b, c, n) ∈ v15SixSurvivingGrams)
+    (hm3 : m ≠ 3) (hk : 0 < k)
+    (heq : (a : ℤ) ^ 2 - (v15QuadraticDiscriminant m : ℤ) * t ^ 2 =
+      4 * (n : ℤ) * (k : ℤ) ^ 2) :
+    k = 1 := by
+  simp only [v15SixSurvivingGrams, List.mem_cons, List.not_mem_nil,
+    or_false, Prod.mk.injEq] at hrow
+  rcases hrow with h | h | h | h | h | h
+  · rcases h with ⟨rfl, rfl, _, _, rfl⟩
+    exact v15_index_one_if_short_trace (by omega) hk
+      (by norm_num) heq
+  · exact (hm3 h.1).elim
+  · rcases h with ⟨rfl, rfl, _, _, rfl⟩
+    exact v15_index_one_if_short_trace (by omega) hk
+      (by norm_num) heq
+  · rcases h with ⟨rfl, rfl, _, _, rfl⟩
+    exact v15_index_one_if_short_trace (by omega) hk
+      (by norm_num) heq
+  · rcases h with ⟨rfl, rfl, _, _, rfl⟩
+    exact v15_index_one_if_short_trace (by omega) hk
+      (by norm_num) heq
+  · rcases h with ⟨rfl, rfl, _, _, rfl⟩
+    have hk_le_two : k ≤ 2 := by
+      by_contra hnot
+      have hk3 : (3 : ℤ) ≤ k := by exact_mod_cast (show 3 ≤ k by omega)
+      norm_num [v15QuadraticDiscriminant] at heq
+      nlinarith [sq_nonneg t]
+    have hk_case : k = 1 ∨ k = 2 := by omega
+    rcases hk_case with h1 | h2
+    · exact h1
+    · subst k
+      norm_num [v15QuadraticDiscriminant] at heq
+      rcases int_square_zero_or_ge_one t with ht0 | ht1 <;> omega
+
+/-- The exceptional `m=3` row permits exactly the three first-vector
+trace/norm/index solutions recorded in the manuscript. The second-vector
+cross-trace argument is still required to force one index to be one. -/
+theorem v15_m_three_trace_norm_solutions {t : ℤ} {k : ℕ}
+    (hk : 0 < k)
+    (heq : (4 : ℤ) ^ 2 - (v15QuadraticDiscriminant 3 : ℤ) * t ^ 2 =
+      4 * (1 : ℤ) * (k : ℤ) ^ 2) :
+    (t = -1 ∧ k = 1) ∨ (t = 1 ∧ k = 1) ∨ (t = 0 ∧ k = 2) := by
+  have hcase : t ≤ -2 ∨ t = -1 ∨ t = 0 ∨ t = 1 ∨ 2 ≤ t := by omega
+  rcases hcase with ht | ht | ht | ht | ht
+  · norm_num [v15QuadraticDiscriminant] at heq
+    nlinarith
+  · subst t
+    norm_num [v15QuadraticDiscriminant] at heq
+    have hkone : k = 1 := by
+      by_contra hne
+      have hk2 : (2 : ℤ) ≤ k := by exact_mod_cast (show 2 ≤ k by omega)
+      omega
+    exact Or.inl ⟨rfl, hkone⟩
+  · subst t
+    norm_num [v15QuadraticDiscriminant] at heq
+    have hktwo : k = 2 := by
+      by_contra hne
+      have hcase : k = 1 ∨ 3 ≤ k := by omega
+      rcases hcase with h1 | h3
+      · subst k
+        norm_num at heq
+      · have hk3 : (3 : ℤ) ≤ k := by exact_mod_cast h3
+        nlinarith
+    exact Or.inr (Or.inr ⟨rfl, hktwo⟩)
+  · subst t
+    norm_num [v15QuadraticDiscriminant] at heq
+    have hkone : k = 1 := by
+      by_contra hne
+      have hk2 : (2 : ℤ) ≤ k := by exact_mod_cast (show 2 ≤ k by omega)
+      omega
+    exact Or.inr (Or.inl ⟨rfl, hkone⟩)
+  · norm_num [v15QuadraticDiscriminant] at heq
+    nlinarith
+
 end TraceEuclidean

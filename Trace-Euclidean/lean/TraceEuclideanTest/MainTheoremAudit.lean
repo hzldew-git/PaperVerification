@@ -108,6 +108,8 @@ import TraceEuclidean
 #check TraceEuclidean.v15_admissible_gram_iff_mem
 #check TraceEuclidean.v15_quadratic_candidate_mem
 #check TraceEuclidean.v15_quadratic_candidate_six_rows
+#check TraceEuclidean.v15_survivor_first_index_one_except_three
+#check TraceEuclidean.v15_m_three_trace_norm_solutions
 #check TraceEuclidean.v15_six_radius_values
 #check TraceEuclidean.v15_integral_rank_le_34
 #check TraceEuclidean.v15_classic_finite_of_degree_bound
@@ -119,6 +121,8 @@ import TraceEuclidean
 #print axioms TraceEuclidean.v15_admissible_gram_iff_mem
 #print axioms TraceEuclidean.v15_quadratic_candidate_mem
 #print axioms TraceEuclidean.v15_quadratic_candidate_six_rows
+#print axioms TraceEuclidean.v15_survivor_first_index_one_except_three
+#print axioms TraceEuclidean.v15_m_three_trace_norm_solutions
 #print axioms TraceEuclidean.v15_six_radius_values
 #print axioms TraceEuclidean.v15_integral_rank_le_34
 #print axioms TraceEuclidean.v15_classic_finite_of_degree_bound
