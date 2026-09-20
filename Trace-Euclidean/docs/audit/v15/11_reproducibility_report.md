@@ -6,6 +6,6 @@
 - The v15 Lean project completed a full lake build on Lean 4.32.1 and pinned mathlib. The public MainTheoremAudit command printed the new classification, representative, and finiteness signatures, each with only standard Lean logical axioms.
 - The fixed formal code commit is f3f8649c5f0e3820b8bbdc5216f44eb6d3df8edf. The later documentation-only release commit does not alter the Lean proofs.
 - The public verification package contains extracted inputs and scripts, not the manuscript. The old v9 result summary and verification manual are clearly labeled historical.
-- A fresh independent-machine build and human semantic sign-off remain outstanding. GitHub push state is reported in the release note after deployment is attempted.
+- GitHub Actions rebuilt the published code in a fresh Ubuntu checkout and passed the Lean build, forbidden-construct scan, 84 endpoint axiom checks, v15 Python rerun, clean-tree gate, and manuscript-exclusion gate. The successful run is https://github.com/hzldew-git/PaperVerification/actions/runs/35520676689. Independently operated reproduction and human semantic sign-off remain outstanding.
 
 The reruns reproduce encoded statements and arithmetic under a fixed source version; they do not establish that every sentence of the manuscript is correct.

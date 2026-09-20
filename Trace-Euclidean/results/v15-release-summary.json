@@ -21,6 +21,13 @@
     "audited_axioms": ["propext", "Classical.choice", "Quot.sound"]
   },
   "external_mathematical_input": "Odlyzko unconditional Table 4, row b=4",
+  "published_code_github_actions": {
+    "head_sha": "22180f02159e86ce4ad215a9ceabb1061f998dca",
+    "lean_and_python": "success",
+    "manuscript_exclusion": "success",
+    "lean_run": "https://github.com/hzldew-git/PaperVerification/actions/runs/35520676689",
+    "manuscript_run": "https://github.com/hzldew-git/PaperVerification/actions/runs/35520676688"
+  },
   "audit": "docs/audit/v15/12_executive_summary.md",
   "historical_v9_summary": "results/summary.json"
 }

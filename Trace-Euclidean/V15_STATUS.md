@@ -8,6 +8,8 @@ The complete pinned Lean build passes. The v15 public Python and Wolfram
 reruns pass 1156 and 115 checks, respectively; private source-bound reruns
 pass 1165 and 112 checks. Audited Lean endpoints use only standard
 logical axioms.
+The published code also passed the [fresh GitHub Actions Lean and Python run](https://github.com/hzldew-git/PaperVerification/actions/runs/35520676689)
+and the [manuscript-exclusion run](https://github.com/hzldew-git/PaperVerification/actions/runs/35520676688).
 
 Theorems 1.2 and 1.3 have strict bounds and variable-degree global
 finiteness from the explicit cited Odlyzko Table 4 premise. Theorem 1.7

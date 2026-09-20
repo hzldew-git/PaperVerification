@@ -10,6 +10,6 @@ Proof trust: Lean kernel and pinned mathlib; standard logical axioms propext, Cl
 
 Exclusions: independent human approval, full generic Proposition 6.1 formula, all standalone supporting lemmas, historical and novelty claims, and proof of the cited Odlyzko theorem inside Lean.
 
-Reproducibility: complete local build and four v15 computational reruns passed. Independent clean-machine reproduction is pending.
+Reproducibility: the complete local build and four v15 computational reruns passed. GitHub Actions rebuilt the published proof in a clean Ubuntu checkout and passed the public Lean, Python, axiom, clean-tree, and manuscript-exclusion gates at https://github.com/hzldew-git/PaperVerification/actions/runs/35520676689. Independently operated reproduction remains pending.
 
 Assessment: Grade B for a substantial, scoped, reviewable formalization; this is not a certificate of complete manuscript correctness or Grade A semantic sign-off.
