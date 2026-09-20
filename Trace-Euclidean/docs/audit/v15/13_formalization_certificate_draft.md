@@ -12,6 +12,6 @@ Additional formalized results: Corollary 1.6 for every finite p >= 1 and p = inf
 
 Exclusions: independent human approval, all standalone supporting lemmas and numerical table maxima, historical and novelty claims, and proof of the cited Odlyzko theorem inside Lean. The abstract-to-canonical model equivalence remains a review item.
 
-Reproducibility: the current update passed a complete local Lean build and the expanded 95-endpoint transitive-axiom audit. Published bridge release ec2b406 passed public Lean, Python, axiom, clean-tree, and manuscript-exclusion gates at https://github.com/hzldew-git/PaperVerification/actions/runs/35523843755. Consult https://github.com/hzldew-git/PaperVerification/actions/workflows/lean.yml for the current revision's clean-checkout status. Independently operated reproduction remains pending.
+Reproducibility: formalization commit 741dc24cf0d41454116ff83c7295af31ff74ba76 passed a complete local Lean build and the expanded 95-endpoint transitive-axiom audit. Its fresh public Lean, Python, axiom, and clean-tree run passed at https://github.com/hzldew-git/PaperVerification/actions/runs/35542188896; the manuscript-exclusion run passed at https://github.com/hzldew-git/PaperVerification/actions/runs/35542188716. Independently operated reproduction remains pending.
 
 Assessment: Grade B for a substantial, scoped, reviewable formalization; this is not a certificate of complete manuscript correctness or Grade A semantic sign-off.

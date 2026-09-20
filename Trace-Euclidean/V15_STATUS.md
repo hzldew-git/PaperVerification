@@ -8,12 +8,12 @@ The complete pinned Lean build passes. The v15 public Python and Wolfram
 reruns pass 1156 and 115 checks, respectively; private source-bound reruns
 pass 1165 and 112 checks. Audited Lean endpoints use only standard
 logical axioms.
-The preceding published bridge release passed the [fresh GitHub Actions Lean
-and Python run](https://github.com/hzldew-git/PaperVerification/actions/runs/35523843755)
-and the [manuscript-exclusion run](https://github.com/hzldew-git/PaperVerification/actions/runs/35523843764).
-The current update has passed a complete local Lean build and a 95-endpoint
-transitive-axiom audit. Its clean-checkout status is shown by the
-[Lean workflow](https://github.com/hzldew-git/PaperVerification/actions/workflows/lean.yml).
+Formalization commit 741dc24 passed the [fresh GitHub Actions Lean, Python,
+and 95-endpoint axiom run](https://github.com/hzldew-git/PaperVerification/actions/runs/35542188896)
+and the [manuscript-exclusion run](https://github.com/hzldew-git/PaperVerification/actions/runs/35542188716).
+The same formalization passed a complete local Lean build. Consult the
+[Lean workflow](https://github.com/hzldew-git/PaperVerification/actions/workflows/lean.yml)
+for later revisions' clean-checkout status.
 
 Theorems 1.2 and 1.3 have strict bounds and variable-degree global
 finiteness from the explicit cited Odlyzko Table 4 premise. Theorem 1.7
