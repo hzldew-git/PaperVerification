@@ -179,3 +179,16 @@ import TraceEuclidean
 #print axioms TraceEuclidean.v15_free_ideal_self_isometric
 #print axioms TraceEuclidean.v15_mfive_one_two_not_isometric
 #print axioms TraceEuclidean.v15_distinct_discriminants_no_field_isomorphism
+
+-- General binary radius, abstract rank-one presentation, and Proposition 6.1.
+#check TraceEuclidean.v15_reduced_gram_exact_radius
+#check TraceEuclidean.v15_reduced_gram_exact_radius_rat
+#check TraceEuclidean.GlobalLatticePresentation.rankOne_ideal_bridge
+#check TraceEuclidean.v15_ideal_exact_radius_of
+#check TraceEuclidean.v15_proposition_six_one_ideal
+
+#print axioms TraceEuclidean.v15_reduced_gram_exact_radius
+#print axioms TraceEuclidean.v15_reduced_gram_exact_radius_rat
+#print axioms TraceEuclidean.GlobalLatticePresentation.rankOne_ideal_bridge
+#print axioms TraceEuclidean.v15_ideal_exact_radius_of
+#print axioms TraceEuclidean.v15_proposition_six_one_ideal

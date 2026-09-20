@@ -391,3 +391,46 @@ TraceEuclidean.v15_distinct_discriminants_no_field_isomorphism {m n : ℕ} (hm :
 'TraceEuclidean.v15_distinct_discriminants_no_field_isomorphism' depends on axioms: [propext,
  Classical.choice,
  Quot.sound]
+TraceEuclidean.v15_reduced_gram_exact_radius {a b c : ℕ} (h : TraceEuclidean.V15ReducedGram a b c) :
+  TraceEuclidean.SquaredCoveringRadiusSpecOver (TraceEuclidean.v15GramCost a b c) ↑(TraceEuclidean.v15GramRadius a b c)
+TraceEuclidean.v15_reduced_gram_exact_radius_rat {a b c : ℕ} (h : TraceEuclidean.V15ReducedGram a b c) :
+  TraceEuclidean.SquaredCoveringRadiusSpecOver (TraceEuclidean.v15GramCostRat a b c)
+    (TraceEuclidean.v15GramRadius a b c)
+TraceEuclidean.GlobalLatticePresentation.rankOne_ideal_bridge (P : TraceEuclidean.GlobalLatticePresentation)
+  (hrank : P.rank = 1) :
+  ∃ I α,
+    I ≠ 0 ∧
+      (∀ (x : Fin P.rank → ↥↑P.field), x ∈ P.L ↔ x ⟨0, ⋯⟩ ∈ I) ∧
+        (∀ (x : Fin P.rank → ↥↑P.field), P.Q x = α * x ⟨0, ⋯⟩ ^ 2) ∧
+          (∀ (σ : ↥↑P.field →+* ℝ), 0 < σ α) ∧
+            TraceEuclidean.v15ValueFractionalIdeal I α ≤ 1 ∧
+              (P.IsTraceEuclidean 2 ↔ TraceEuclidean.V15IdealTraceEuclidean I α)
+TraceEuclidean.v15_ideal_exact_radius_of.{u_1} {F : Type u_1} [Field F] [NumberField F]
+  (I : FractionalIdeal (nonZeroDivisors (NumberField.RingOfIntegers F)) F) (hI : I ≠ 0) (B : Module.Basis (Fin 2) ℤ ↥↑I)
+  (α : F) {a b c : ℕ} (hGram : TraceEuclidean.v15IdealTraceGramOf I hI B α = (↑a, ↑b, ↑c))
+  (hred : TraceEuclidean.V15ReducedGram a b c) :
+  TraceEuclidean.SquaredCoveringRadiusSpecOver (TraceEuclidean.v15IdealTraceCost I α)
+    (TraceEuclidean.v15GramRadius a b c)
+TraceEuclidean.v15_proposition_six_one_ideal {m : ℕ} (hm : 1 < m) (hsq : TraceEuclidean.IsSquarefreeNat m)
+  (I :
+    FractionalIdeal (nonZeroDivisors (NumberField.RingOfIntegers (TraceEuclidean.RealQuadraticAlgebra m)))
+      (TraceEuclidean.RealQuadraticAlgebra m))
+  (hI : I ≠ 0) (α : TraceEuclidean.RealQuadraticAlgebra m) :
+  TraceEuclidean.V15RealQuadraticTotallyPositive α →
+    TraceEuclidean.v15ValueFractionalIdeal I α ≤ 1 →
+      ∃ B a b c,
+        TraceEuclidean.v15IdealTraceGramOf I hI B α = (↑a, ↑b, ↑c) ∧
+          TraceEuclidean.V15ReducedGram a b c ∧
+            ↑a * ↑c - ↑b ^ 2 =
+                ↑(NumberField.discr (TraceEuclidean.RealQuadraticAlgebra m)) * (Algebra.norm ℚ) α *
+                  FractionalIdeal.absNorm I ^ 2 ∧
+              TraceEuclidean.SquaredCoveringRadiusSpecOver (TraceEuclidean.v15IdealTraceCost I α)
+                  (TraceEuclidean.v15GramRadius a b c) ∧
+                (TraceEuclidean.V15IdealTraceEuclidean I α ↔ TraceEuclidean.V15BinaryTraceEuclidean a b c)
+'TraceEuclidean.v15_reduced_gram_exact_radius' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15_reduced_gram_exact_radius_rat' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.GlobalLatticePresentation.rankOne_ideal_bridge' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'TraceEuclidean.v15_ideal_exact_radius_of' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15_proposition_six_one_ideal' depends on axioms: [propext, Classical.choice, Quot.sound]

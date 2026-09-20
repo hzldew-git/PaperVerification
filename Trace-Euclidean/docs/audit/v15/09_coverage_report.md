@@ -8,7 +8,8 @@
 | Strict root-discriminant and finite grid | Both bounds, rank and degree | Strict Lean bounds; rank at most 34; degree at most 14 from Table 4. |
 | Rank-one classification | Six classes | All fractional ideals, principality, six isometries, six valid constructive representatives, and distinctness. |
 | Reduced Gram sieve | 22, nine, six rows | Formal integer and field arithmetic connected to an actual ideal basis. |
-| General binary radius formula | Proposition 6.1 | Partial: rational deep-hole lower argument and six direct upper covers, but no one-theorem general formula. |
+| General binary radius formula | Proposition 6.1 | Complete generic real/rational reduced-Gram theorem, plus actual-ideal basis, determinant, and exact rational-field radius. The two displayed scalar specializations are not assembled in one new endpoint. |
+| Abstract rank-one ideal presentation | Rank-one preamble to Proposition 6.1 | Canonical global model now yields a nonzero fractional ideal and totally positive integral coefficient with equivalent strict trace condition. |
 | Analytic Section 4 and supporting lemmas | Selected | Source-bound exact and numerical checks; not every standalone statement is in Lean. |
 | Public computation | v15 | 1156 Python PASS and 115 Wolfram PASS; no failures. |
 | Private source-bound computation | v15 | 1165 Python PASS and 112 Wolfram PASS; no failures. |

@@ -13,5 +13,8 @@
 | v15_m*_representative_euclidean, v15_m*_representative_valid | Six free representatives are strictly trace Euclidean, positive, and integral. |
 | v15_mfive_one_two_not_isometric, v15_distinct_discriminants_no_field_isomorphism | Distinguish the two m=5 classes and the five quadratic fields. |
 | realQuadratic_two_trace_euclidean_iff | Reused concrete field-square endpoint for Corollary 1.9. |
+| v15_reduced_gram_exact_radius, v15_reduced_gram_exact_radius_rat | Exact generic reduced-binary squared covering radius over the real and rational planes. |
+| GlobalLatticePresentation.rankOne_ideal_bridge | Represents every canonical rank-one global lattice by a nonzero fractional ideal and coefficient, preserving positivity, integrality, and trace Euclideanity. |
+| v15_ideal_exact_radius_of, v15_proposition_six_one_ideal | Transfers the generic radius to every actual quadratic fractional ideal and packages its reduced basis and determinant identity. |
 
-Supporting modules prove the reduced-basis bridge, quotient-ideal index/norm identities, parity, determinant, exceptional two-vector exclusion, and constructive strict covers for all six forms. The complete general binary covering-radius formula in Proposition 6.1 remains a separate supporting-result gap.
+Supporting modules prove the reduced-basis bridge, quotient-ideal index/norm identities, parity, determinant, exceptional two-vector exclusion, and constructive strict covers for all six forms. The two integer-scalar specializations of Proposition 6.1 are not packaged as a single proposition-level endpoint.

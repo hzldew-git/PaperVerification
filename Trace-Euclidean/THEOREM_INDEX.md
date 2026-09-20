@@ -18,7 +18,8 @@ calculation was rerun. EXTERNAL_INPUT means a cited result is an explicit premis
 | Theorem 1.7, six rank-one classes | v15_actual_ideal_six_rows, v15_actual_ideal_principal, v15_rank_one_real_quadratic_classification_totally_positive; six representative validity and Euclidean proofs; distinction | PROVISIONAL_MATCH |
 | Corollary 1.9, trace Euclidean fields | realQuadratic_two_trace_euclidean_iff and concrete square-form bridge | PROVISIONAL_MATCH |
 | Reduced Gram sieve | 22 triples, nine field rows, six surviving rows, all linked to actual ideals | FORMALIZED_COMPONENT |
-| Proposition 6.1, general binary radius formula | Rational deep-hole necessity, six constructive upper covers, exact six radius expressions; full generic formula not exported | PARTIAL_FORMALIZATION |
+| Proposition 6.1, general binary radius formula | v15_reduced_gram_exact_radius, v15_reduced_gram_exact_radius_rat, v15_ideal_exact_radius_of, v15_proposition_six_one_ideal; arbitrary ideal basis and determinant included | FORMALIZED_COMPONENT; the two scalar specializations are not bundled in one endpoint |
+| Abstract rank-one ideal presentation | GlobalLatticePresentation.rankOne_ideal_bridge: nonzero fractional ideal, quadratic coefficient, positivity, integrality, and trace condition | FORMALIZED_COMPONENT in the canonical coordinate model |
 | Section 4 numerical tables | Public Python and Wolfram v15 reruns; source-bound private checks | COMPUTATION_VERIFIED |
 
 The active [v15 audit](docs/audit/v15/05_theorem_correspondence.md) expands the

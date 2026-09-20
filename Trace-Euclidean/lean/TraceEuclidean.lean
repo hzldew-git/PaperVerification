@@ -23,6 +23,9 @@ import TraceEuclidean.QuadraticClassification
 import TraceEuclidean.V15GramEnumeration
 import TraceEuclidean.V15BinaryCovering
 import TraceEuclidean.V15BinaryCriterion
+import TraceEuclidean.V15GeneralBinaryRadius
+import TraceEuclidean.V15RankOneIdealBridge
+import TraceEuclidean.V15PropositionSixOne
 import TraceEuclidean.V15GaussBasis
 import TraceEuclidean.V15IdealCoordinates
 import TraceEuclidean.V15IdealGaussBridge

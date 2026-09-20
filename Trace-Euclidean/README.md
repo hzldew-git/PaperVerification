@@ -44,9 +44,14 @@ results are 1165 Python PASS and 112 Wolfram PASS.
 [THEOREM_INDEX.md](THEOREM_INDEX.md) lists exact declaration names and remaining
 supporting-result gaps. [TRUST.md](TRUST.md) explains the cited source and proof
 boundary. [REPRODUCING.md](REPRODUCING.md) gives the full rerun protocol.
-The complete generic covering-radius formula of Proposition 6.1 is not claimed
-as a single Lean theorem; the classification instead uses its needed
-consequences through a general rational deep hole and six direct covers.
+The reduced-binary covering-radius formula for Proposition 6.1 trace Gram
+forms (whose first diagonal entry is at least 2) is now a single Lean theorem
+on both the real and rational planes. A separate theorem transfers it
+to every integral, totally positive real-quadratic fractional-ideal lattice,
+alongside the reduced basis and determinant identity. The abstract rank-one
+presentation is also exported for the canonical global lattice model. The
+paper's two displayed scalar specializations are not bundled into one new
+proposition-level Lean declaration.
 
 ## Historical v9 evidence
 
