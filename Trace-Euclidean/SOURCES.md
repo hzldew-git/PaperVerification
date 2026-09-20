@@ -34,7 +34,9 @@ uniform degree bound in the Lean proof.
 
 ## Unformalized standalone material
 
-The complete periodic-minimum and generic binary-radius developments,
-all separate ideal upper bounds, full Section 4 maximum theorems,
-the complete p-norm corollary, and historical or novelty assertions
-are not claimed as standalone Lean results. See the [coverage report](docs/audit/v15/09_coverage_report.md).
+The generic binary-radius formula, Proposition 6.1's two integer-scalar
+specializations, and the p-norm finiteness corollary now have standalone
+Lean endpoints. The complete periodic-minimum development, all separate
+ideal upper bounds, full Section 4 maximum theorems, and historical or
+novelty assertions are not claimed as standalone Lean results. See the
+[coverage report](docs/audit/v15/09_coverage_report.md).

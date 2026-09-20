@@ -16,5 +16,8 @@
 | v15_reduced_gram_exact_radius, v15_reduced_gram_exact_radius_rat | Exact generic reduced-binary squared covering radius over the real and rational planes. |
 | GlobalLatticePresentation.rankOne_ideal_bridge | Represents every canonical rank-one global lattice by a nonzero fractional ideal and coefficient, preserving positivity, integrality, and trace Euclideanity. |
 | v15_ideal_exact_radius_of, v15_proposition_six_one_ideal | Transfers the generic radius to every actual quadratic fractional ideal and packages its reduced basis and determinant identity. |
+| GlobalLatticePresentation.rankOne_ideal_bridge_at, rankOne_ideal_bridge_degree | Preserve the rank-one ideal presentation and strict trace condition at any real threshold and at the field degree. |
+| v15_proposition_six_one_scalar_cases, v15_proposition_six_one_full | Both positive-integer scalar formulas on the quadratic integer ring and a combined endpoint for all clauses of Proposition 6.1. |
+| GlobalLatticePresentation.v15_pnorm_implies_trace, v15_pnorm_finite_of_odlyzko_table4 | Power-mean implication for finite p >= 1 and infinity, followed by global finite-class conclusion from the cited Table 4 premise. |
 
-Supporting modules prove the reduced-basis bridge, quotient-ideal index/norm identities, parity, determinant, exceptional two-vector exclusion, and constructive strict covers for all six forms. The two integer-scalar specializations of Proposition 6.1 are not packaged as a single proposition-level endpoint.
+Supporting modules prove the reduced-basis bridge, quotient-ideal index/norm identities, parity, determinant, exceptional two-vector exclusion, and constructive strict covers for all six forms.

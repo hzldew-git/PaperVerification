@@ -8,8 +8,9 @@
 | Strict root-discriminant and finite grid | Both bounds, rank and degree | Strict Lean bounds; rank at most 34; degree at most 14 from Table 4. |
 | Rank-one classification | Six classes | All fractional ideals, principality, six isometries, six valid constructive representatives, and distinctness. |
 | Reduced Gram sieve | 22, nine, six rows | Formal integer and field arithmetic connected to an actual ideal basis. |
-| General binary radius formula | Proposition 6.1 | Complete generic real/rational reduced-Gram theorem, plus actual-ideal basis, determinant, and exact rational-field radius. The two displayed scalar specializations are not assembled in one new endpoint. |
-| Abstract rank-one ideal presentation | Rank-one preamble to Proposition 6.1 | Canonical global model now yields a nonzero fractional ideal and totally positive integral coefficient with equivalent strict trace condition. |
+| General binary radius and scalar formulas | Proposition 6.1 | Generic real/rational reduced-Gram theorem, actual-ideal basis and determinant, both positive-integer scalar formulas, and one combined proposition-level endpoint. |
+| Abstract rank-one ideal presentation | Rank-one preamble to Proposition 6.1 | Canonical global model yields a nonzero fractional ideal and totally positive integral coefficient with equivalent strict trace condition at any real threshold, including the field degree. |
+| p-norm finiteness | Corollary 1.6 | Every finite real p >= 1 and p = infinity; normalized embedding means, pointwise power-mean bound, strict trace implication, and varying-field finite classes from explicit Table 4 input. |
 | Analytic Section 4 and supporting lemmas | Selected | Source-bound exact and numerical checks; not every standalone statement is in Lean. |
 | Public computation | v15 | 1156 Python PASS and 115 Wolfram PASS; no failures. |
 | Private source-bound computation | v15 | 1165 Python PASS and 112 Wolfram PASS; no failures. |

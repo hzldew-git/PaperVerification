@@ -31,3 +31,19 @@ Paper: Q(sqrt(m)) with square-free m > 1 is trace Euclidean iff m belongs to {2,
 Formal: realQuadratic_two_trace_euclidean_iff and the field-square bridge. The v15 manuscript still uses the same square form and strict threshold 2.
 
 Status: PROVISIONAL_MATCH. AUTHOR_CONFIRMATION_REQUIRED for the field-model identification; independent Lean review remains unsigned.
+
+## Corollary 1.6: p-norm finiteness
+
+Paper: for each fixed p in [1, infinity], including house Euclideanity, positive integral lattices have finitely many isometry classes while the totally real field and positive rank vary.
+
+Formal: V15PNormExponent covers every finite real p >= 1 and infinity. GlobalLatticePresentation.v15_pnorm_implies_trace proves the strict witness transfer from the normalized embedding mean to trace divided by degree. v15_pnorm_finite_of_odlyzko_table4 gives finite classes under the same disclosed Table 4 input as Theorem 1.3.
+
+Status: PROVISIONAL_MATCH. AUTHOR_CONFIRMATION_REQUIRED for the embedding mean and cross-field isometry convention. FORMALIZATION_EXPERT_CONFIRMATION_REQUIRED for the mean inequality and quotient-class endpoint.
+
+## Proposition 6.1: reduced radius and integer-scalar formulas
+
+Paper: every qualifying rank-one fractional ideal has a reduced trace Gram basis, the determinant identity, and the exact squared radius; the full integer ring has two explicit formulas for every positive integer scalar.
+
+Formal: v15_proposition_six_one_full combines v15_proposition_six_one_ideal with v15_proposition_six_one_scalar_cases. GlobalLatticePresentation.rankOne_ideal_bridge_degree supplies the canonical abstract rank-one presentation at the manuscript threshold.
+
+Status: PROVISIONAL_MATCH. AUTHOR_CONFIRMATION_REQUIRED for the abstract-space and field-model identifications. FORMALIZATION_EXPERT_CONFIRMATION_REQUIRED for the ideal basis, integer-ring coordinate model, and sharp-radius transfer.

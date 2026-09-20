@@ -23,12 +23,16 @@ reconstruct a source file that is intentionally absent.
 Theorem 1.7's Lean endpoint covers all nonzero fractional-ideal
 presentations. The paper uses the standard representation of an abstract
 rank-one lattice by such an ideal and a coefficient. The theorem
-GlobalLatticePresentation.rankOne_ideal_bridge now exports this presentation
-for the canonical rank-one global lattice model, including positivity,
-integrality, and the strict trace condition. The theorem
-v15_proposition_six_one_ideal exports the general reduced-binary covering
-radius and determinant identity for actual fractional ideals. Its new proof
-has the same standard logical axiom dependencies as the existing endpoints.
+GlobalLatticePresentation.rankOne_ideal_bridge_at now exports this
+presentation for the canonical rank-one global lattice model, including
+positivity, integrality, and the strict trace condition at any real threshold.
+Its degree specialization matches the manuscript. The theorem
+v15_proposition_six_one_full exports the general reduced-binary covering
+radius and determinant identity for actual fractional ideals and both
+positive-integer scalar specializations on the full integer ring. Corollary
+1.6 has a varying-field endpoint for finite p >= 1 and p = infinity. These
+proofs have the same standard logical axiom dependencies as the existing
+endpoints.
 The main six-class theorem still uses its direct rational deep-hole argument
 and constructive covers for the six survivors.
 

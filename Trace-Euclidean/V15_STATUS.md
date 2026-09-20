@@ -8,21 +8,30 @@ The complete pinned Lean build passes. The v15 public Python and Wolfram
 reruns pass 1156 and 115 checks, respectively; private source-bound reruns
 pass 1165 and 112 checks. Audited Lean endpoints use only standard
 logical axioms.
-The published code also passed the [fresh GitHub Actions Lean and Python run](https://github.com/hzldew-git/PaperVerification/actions/runs/35520676689)
-and the [manuscript-exclusion run](https://github.com/hzldew-git/PaperVerification/actions/runs/35520676688).
+The preceding published bridge release passed the [fresh GitHub Actions Lean
+and Python run](https://github.com/hzldew-git/PaperVerification/actions/runs/35523843755)
+and the [manuscript-exclusion run](https://github.com/hzldew-git/PaperVerification/actions/runs/35523843764).
+The current update has passed a complete local Lean build and a 95-endpoint
+transitive-axiom audit. Its clean-checkout status is shown by the
+[Lean workflow](https://github.com/hzldew-git/PaperVerification/actions/workflows/lean.yml).
 
 Theorems 1.2 and 1.3 have strict bounds and variable-degree global
 finiteness from the explicit cited Odlyzko Table 4 premise. Theorem 1.7
 has a two-direction six-class endpoint for all nonzero fractional ideals,
 principality, actual isometries, six positive integral strictly Euclidean
 representatives, and distinctness. Corollary 1.9 retains its concrete
-field-square iff proof.
+field-square iff proof. Corollary 1.6 now has a full varying-field p-norm
+finiteness endpoint for finite p >= 1 and p = infinity. Proposition 6.1 now
+has a combined endpoint for its general fractional-ideal clause and both
+integer-scalar formulas. The canonical rank-one-to-ideal bridge now works at
+an arbitrary real threshold and at the manuscript's field-degree threshold.
 
 Assessment: SUBSTANTIAL_FORMALIZATION, Grade B. Four main results are
 PROVISIONAL_MATCH pending independent review; none is marked
-VERIFIED_MATCH. The full generic covering formula of Proposition 6.1
-and the abstract rank-one lattice presentation equivalence are disclosed
-remaining semantic or supporting-result items.
+VERIFIED_MATCH. Corollary 1.6 and Proposition 6.1 also await independent
+semantic review. Transport from every abstract number-field lattice to the
+canonical coordinate model and selected supporting numerical results remain
+outside the current signed scope.
 
 Start with [README.md](README.md), [THEOREM_INDEX.md](THEOREM_INDEX.md),
 and the [v15 audit](docs/audit/v15/12_executive_summary.md).

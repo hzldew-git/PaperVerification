@@ -146,11 +146,18 @@ private theorem rankOneIdeal_integral (P : GlobalLatticePresentation)
   have hxy : IsIntegral ℤ (α * x * y) := hclassic ⟨x, hx⟩ ⟨y, hy⟩
   exact (FractionalIdeal.mem_one_iff _).mpr ⟨⟨_, hxy⟩, rfl⟩
 
+/-- The ideal trace condition at an arbitrary real threshold. -/
+def V15IdealTraceEuclideanAt
+    {F : Type*} [Field F] [NumberField F]
+    (I : FractionalIdeal (nonZeroDivisors (𝓞 F)) F) (α : F) (t : ℝ) : Prop :=
+  ∀ x : F, ∃ y : I,
+    ((Algebra.trace ℚ F (α * (x - (y : F)) ^ 2) : ℚ) : ℝ) < t
+
 /-- Every positive integral rank-one global lattice is an actual fractional
 ideal with a totally positive quadratic coefficient; the trace-Euclidean
-condition is equivalent under this presentation. -/
-theorem rankOne_ideal_bridge (P : GlobalLatticePresentation)
-    (hrank : P.rank = 1) :
+condition at any real threshold is equivalent under this presentation. -/
+theorem rankOne_ideal_bridge_at (P : GlobalLatticePresentation)
+    (hrank : P.rank = 1) (t : ℝ) :
     ∃ (I : FractionalIdeal (nonZeroDivisors (𝓞 P.field.1)) P.field.1)
       (α : P.field.1),
       I ≠ 0 ∧
@@ -160,7 +167,7 @@ theorem rankOne_ideal_bridge (P : GlobalLatticePresentation)
         P.Q x = α * (x ⟨0, P.rankPositive⟩) ^ 2) ∧
       (∀ σ : P.field.1 →+* ℝ, 0 < σ α) ∧
       v15ValueFractionalIdeal I α ≤ 1 ∧
-      (P.IsTraceEuclidean 2 ↔ V15IdealTraceEuclidean I α) := by
+      (P.IsTraceEuclidean t ↔ V15IdealTraceEuclideanAt I α t) := by
   let I := P.rankOneFractionalIdeal
   let α := P.Q P.rankOneCoordinate
   refine ⟨I, α, P.rankOneFractionalIdeal_ne_zero,
@@ -179,7 +186,7 @@ theorem rankOne_ideal_bridge (P : GlobalLatticePresentation)
     have heq : P.Q (u - y.1) = α * (x - (z : P.field.1)) ^ 2 := by
       simpa [u, z, Pi.sub_apply] using hform
     rw [heq] at hy
-    exact_mod_cast hy
+    exact hy
   · intro h x
     obtain ⟨z, hz⟩ := h (x ⟨0, P.rankPositive⟩)
     let y : P.L := ⟨(fun _ ↦ (z : P.field.1)),
@@ -190,7 +197,49 @@ theorem rankOne_ideal_bridge (P : GlobalLatticePresentation)
         α * (x ⟨0, P.rankPositive⟩ - (z : P.field.1)) ^ 2 := by
       simpa [y, Pi.sub_apply] using hform
     rw [heq]
-    exact_mod_cast hz
+    exact hz
+
+/-- For a rank-one lattice, the ideal presentation respects the manuscript's
+threshold equal to the degree of its ground field. -/
+theorem rankOne_ideal_bridge_degree (P : GlobalLatticePresentation)
+    (hrank : P.rank = 1) :
+    ∃ (I : FractionalIdeal (nonZeroDivisors (𝓞 P.field.1)) P.field.1)
+      (α : P.field.1),
+      I ≠ 0 ∧
+      (∀ x : Fin P.rank → P.field.1,
+        x ∈ P.L ↔ x ⟨0, P.rankPositive⟩ ∈ I) ∧
+      (∀ x : Fin P.rank → P.field.1,
+        P.Q x = α * (x ⟨0, P.rankPositive⟩) ^ 2) ∧
+      (∀ σ : P.field.1 →+* ℝ, 0 < σ α) ∧
+      v15ValueFractionalIdeal I α ≤ 1 ∧
+      (P.IsTraceEuclidean (P.degree : ℝ) ↔
+        V15IdealTraceEuclideanAt I α (P.degree : ℝ)) :=
+  P.rankOne_ideal_bridge_at hrank P.degree
+
+/-- The quadratic specialization used by the six-class classification. -/
+theorem rankOne_ideal_bridge (P : GlobalLatticePresentation)
+    (hrank : P.rank = 1) :
+    ∃ (I : FractionalIdeal (nonZeroDivisors (𝓞 P.field.1)) P.field.1)
+      (α : P.field.1),
+      I ≠ 0 ∧
+      (∀ x : Fin P.rank → P.field.1,
+        x ∈ P.L ↔ x ⟨0, P.rankPositive⟩ ∈ I) ∧
+      (∀ x : Fin P.rank → P.field.1,
+        P.Q x = α * (x ⟨0, P.rankPositive⟩) ^ 2) ∧
+      (∀ σ : P.field.1 →+* ℝ, 0 < σ α) ∧
+      v15ValueFractionalIdeal I α ≤ 1 ∧
+      (P.IsTraceEuclidean 2 ↔ V15IdealTraceEuclidean I α) := by
+  obtain ⟨I, α, hI, hmem, hQ, hpos, hint, heq⟩ :=
+    P.rankOne_ideal_bridge_at hrank 2
+  refine ⟨I, α, hI, hmem, hQ, hpos, hint, ?_⟩
+  rw [heq]
+  constructor
+  · intro h x
+    obtain ⟨y, hy⟩ := h x
+    exact ⟨y, by exact_mod_cast hy⟩
+  · intro h x
+    obtain ⟨y, hy⟩ := h x
+    exact ⟨y, by exact_mod_cast hy⟩
 
 end GlobalLatticePresentation
 

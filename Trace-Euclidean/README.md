@@ -40,18 +40,22 @@ results are 1165 Python PASS and 112 Wolfram PASS.
   constructive representatives, and distinction of the classes.
 - Corollary 1.9: the square-form field classification m in {2,5,13} is carried
   by the concrete real-quadratic Lean endpoint.
+- Corollary 1.6: for each finite p at least 1 and for p = infinity, the
+  embedding power mean implies strict trace Euclideanity; the same global
+  finiteness theorem gives varying-field and varying-rank finiteness.
 
 [THEOREM_INDEX.md](THEOREM_INDEX.md) lists exact declaration names and remaining
 supporting-result gaps. [TRUST.md](TRUST.md) explains the cited source and proof
 boundary. [REPRODUCING.md](REPRODUCING.md) gives the full rerun protocol.
 The reduced-binary covering-radius formula for Proposition 6.1 trace Gram
-forms (whose first diagonal entry is at least 2) is now a single Lean theorem
-on both the real and rational planes. A separate theorem transfers it
-to every integral, totally positive real-quadratic fractional-ideal lattice,
-alongside the reduced basis and determinant identity. The abstract rank-one
-presentation is also exported for the canonical global lattice model. The
-paper's two displayed scalar specializations are not bundled into one new
-proposition-level Lean declaration.
+forms (whose first diagonal entry is at least 2) is proved on both the real
+and rational planes. A separate theorem transfers it to every integral,
+totally positive real-quadratic fractional-ideal lattice, alongside the
+reduced basis and determinant identity. The two displayed positive-integer
+scalar formulas are proved on the full ring of integers, and all clauses are
+bundled in one proposition-level Lean theorem. The canonical abstract
+rank-one presentation is exported at an arbitrary real trace threshold and
+at the manuscript's threshold equal to the field degree.
 
 ## Historical v9 evidence
 

@@ -405,6 +405,25 @@ TraceEuclidean.GlobalLatticePresentation.rankOne_ideal_bridge (P : TraceEuclidea
           (∀ (σ : ↥↑P.field →+* ℝ), 0 < σ α) ∧
             TraceEuclidean.v15ValueFractionalIdeal I α ≤ 1 ∧
               (P.IsTraceEuclidean 2 ↔ TraceEuclidean.V15IdealTraceEuclidean I α)
+TraceEuclidean.GlobalLatticePresentation.rankOne_ideal_bridge_at (P : TraceEuclidean.GlobalLatticePresentation)
+  (hrank : P.rank = 1) (t : ℝ) :
+  ∃ I α,
+    I ≠ 0 ∧
+      (∀ (x : Fin P.rank → ↥↑P.field), x ∈ P.L ↔ x ⟨0, ⋯⟩ ∈ I) ∧
+        (∀ (x : Fin P.rank → ↥↑P.field), P.Q x = α * x ⟨0, ⋯⟩ ^ 2) ∧
+          (∀ (σ : ↥↑P.field →+* ℝ), 0 < σ α) ∧
+            TraceEuclidean.v15ValueFractionalIdeal I α ≤ 1 ∧
+              (P.IsTraceEuclidean t ↔ TraceEuclidean.GlobalLatticePresentation.V15IdealTraceEuclideanAt I α t)
+TraceEuclidean.GlobalLatticePresentation.rankOne_ideal_bridge_degree (P : TraceEuclidean.GlobalLatticePresentation)
+  (hrank : P.rank = 1) :
+  ∃ I α,
+    I ≠ 0 ∧
+      (∀ (x : Fin P.rank → ↥↑P.field), x ∈ P.L ↔ x ⟨0, ⋯⟩ ∈ I) ∧
+        (∀ (x : Fin P.rank → ↥↑P.field), P.Q x = α * x ⟨0, ⋯⟩ ^ 2) ∧
+          (∀ (σ : ↥↑P.field →+* ℝ), 0 < σ α) ∧
+            TraceEuclidean.v15ValueFractionalIdeal I α ≤ 1 ∧
+              (P.IsTraceEuclidean ↑P.degree ↔
+                TraceEuclidean.GlobalLatticePresentation.V15IdealTraceEuclideanAt I α ↑P.degree)
 TraceEuclidean.v15_ideal_exact_radius_of.{u_1} {F : Type u_1} [Field F] [NumberField F]
   (I : FractionalIdeal (nonZeroDivisors (NumberField.RingOfIntegers F)) F) (hI : I ≠ 0) (B : Module.Basis (Fin 2) ℤ ↥↑I)
   (α : F) {a b c : ℕ} (hGram : TraceEuclidean.v15IdealTraceGramOf I hI B α = (↑a, ↑b, ↑c))
@@ -427,10 +446,56 @@ TraceEuclidean.v15_proposition_six_one_ideal {m : ℕ} (hm : 1 < m) (hsq : Trace
               TraceEuclidean.SquaredCoveringRadiusSpecOver (TraceEuclidean.v15IdealTraceCost I α)
                   (TraceEuclidean.v15GramRadius a b c) ∧
                 (TraceEuclidean.V15IdealTraceEuclidean I α ↔ TraceEuclidean.V15BinaryTraceEuclidean a b c)
+TraceEuclidean.v15_proposition_six_one_scalar_cases {m : ℕ} (hm : 1 < m) (hsq : TraceEuclidean.IsSquarefreeNat m)
+  (a : ℕ) (ha : 0 < a) :
+  (m % 4 = 2 ∨ m % 4 = 3 →
+      TraceEuclidean.SquaredCoveringRadiusSpecOver (TraceEuclidean.v15ScalarTraceCost a) (↑a * (↑m + 1) / 2)) ∧
+    (m % 4 = 1 →
+      TraceEuclidean.SquaredCoveringRadiusSpecOver (TraceEuclidean.v15ScalarTraceCost a) (↑a * (↑m + 1) ^ 2 / (8 * ↑m)))
+TraceEuclidean.v15_proposition_six_one_full {m : ℕ} (hm : 1 < m) (hsq : TraceEuclidean.IsSquarefreeNat m) :
+  (∀
+      (I :
+        FractionalIdeal (nonZeroDivisors (NumberField.RingOfIntegers (TraceEuclidean.RealQuadraticAlgebra m)))
+          (TraceEuclidean.RealQuadraticAlgebra m))
+      (hI : I ≠ 0) (α : TraceEuclidean.RealQuadraticAlgebra m),
+      TraceEuclidean.V15RealQuadraticTotallyPositive α →
+        TraceEuclidean.v15ValueFractionalIdeal I α ≤ 1 →
+          ∃ B a b c,
+            TraceEuclidean.v15IdealTraceGramOf I hI B α = (↑a, ↑b, ↑c) ∧
+              TraceEuclidean.V15ReducedGram a b c ∧
+                ↑a * ↑c - ↑b ^ 2 =
+                    ↑(NumberField.discr (TraceEuclidean.RealQuadraticAlgebra m)) * (Algebra.norm ℚ) α *
+                      FractionalIdeal.absNorm I ^ 2 ∧
+                  TraceEuclidean.SquaredCoveringRadiusSpecOver (TraceEuclidean.v15IdealTraceCost I α)
+                      (TraceEuclidean.v15GramRadius a b c) ∧
+                    (TraceEuclidean.V15IdealTraceEuclidean I α ↔ TraceEuclidean.V15BinaryTraceEuclidean a b c)) ∧
+    ∀ (a : ℕ),
+      0 < a →
+        (m % 4 = 2 ∨ m % 4 = 3 →
+            TraceEuclidean.SquaredCoveringRadiusSpecOver (TraceEuclidean.v15ScalarTraceCost a) (↑a * (↑m + 1) / 2)) ∧
+          (m % 4 = 1 →
+            TraceEuclidean.SquaredCoveringRadiusSpecOver (TraceEuclidean.v15ScalarTraceCost a)
+              (↑a * (↑m + 1) ^ 2 / (8 * ↑m)))
+TraceEuclidean.GlobalLatticePresentation.v15_pnorm_implies_trace (P : TraceEuclidean.GlobalLatticePresentation)
+  (p : TraceEuclidean.V15PNormExponent) (hp : P.IsV15PNormEuclidean p) : P.IsTraceEuclidean ↑P.degree
+TraceEuclidean.v15_pnorm_finite_of_odlyzko_table4 (hTable : TraceEuclidean.V15OdlyzkoTable4Input)
+  (p : TraceEuclidean.V15PNormExponent) : {c | ∃ P, ⟦P⟧ = c ∧ P.IsV15PNormEuclidean p}.Finite
 'TraceEuclidean.v15_reduced_gram_exact_radius' depends on axioms: [propext, Classical.choice, Quot.sound]
 'TraceEuclidean.v15_reduced_gram_exact_radius_rat' depends on axioms: [propext, Classical.choice, Quot.sound]
 'TraceEuclidean.GlobalLatticePresentation.rankOne_ideal_bridge' depends on axioms: [propext,
  Classical.choice,
  Quot.sound]
+'TraceEuclidean.GlobalLatticePresentation.rankOne_ideal_bridge_at' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'TraceEuclidean.GlobalLatticePresentation.rankOne_ideal_bridge_degree' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
 'TraceEuclidean.v15_ideal_exact_radius_of' depends on axioms: [propext, Classical.choice, Quot.sound]
 'TraceEuclidean.v15_proposition_six_one_ideal' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15_proposition_six_one_scalar_cases' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15_proposition_six_one_full' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.GlobalLatticePresentation.v15_pnorm_implies_trace' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'TraceEuclidean.v15_pnorm_finite_of_odlyzko_table4' depends on axioms: [propext, Classical.choice, Quot.sound]
