@@ -253,7 +253,7 @@ theorem caseI_midpoint_lower_over {K : Type*}
 
 theorem integral_difference_nonneg_over {K : Type*}
     [Field K] [LinearOrder K] [IsStrictOrderedRing K]
-    {A : K} (hA : 3 ≤ A) (a b : ℤ) :
+    {A : K} (hA : 2 ≤ A) (a b : ℤ) :
     0 ≤ 2 * (a : K) ^ 2 + 2 * a * b - 2 * a +
       A * (b : K) ^ 2 - A * b := by
   by_cases hb : b = 0
@@ -300,11 +300,11 @@ def caseIIVertexOver {K : Type*} [Field K] (m : K) : PlanePoint K :=
 
 theorem caseII_vertex_lower_over {K : Type*}
     [Field K] [LinearOrder K] [IsStrictOrderedRing K]
-    {m : K} (hm : 5 ≤ m) (z : IntegralPoint) :
+    {m : K} (hm : 3 ≤ m) (z : IntegralPoint) :
     caseIIRadiusSqOver m ≤
       caseIICostOver m (caseIIVertexOver m) z := by
   have hm0 : m ≠ 0 := by linarith
-  have hA : (3 : K) ≤ (m + 1) / 2 := by linarith
+  have hA : (2 : K) ≤ (m + 1) / 2 := by linarith
   have hdiff := integral_difference_nonneg_over hA z.1 z.2
   have hid :
       caseIICostOver m (caseIIVertexOver m) z =
@@ -338,7 +338,7 @@ theorem caseI_exact_radius_over {K : Type*}
 
 theorem caseII_exact_radius_over {K : Type*}
     [Field K] [LinearOrder K] [IsStrictOrderedRing K] [FloorRing K]
-    {m : K} (hm : 5 ≤ m) :
+    {m : K} (hm : 3 ≤ m) :
     SquaredCoveringRadiusSpecOver
       (caseIICostOver m : PlanePoint K → IntegralPoint → K)
       (caseIIRadiusSqOver m) := by
@@ -363,10 +363,10 @@ theorem realQuadratic_coveringRadiusSq {m : ℕ}
     SquaredCoveringRadiusSpecOver (realQuadraticCostReal m)
       (realQuadraticRadiusSq m) := by
   by_cases hmod : m % 4 = 1
-  · have hm5 : 5 ≤ m := by omega
+  · have hm3 : 3 ≤ m := by omega
     simpa [realQuadraticCostReal, realQuadraticRadiusSq, hmod] using
       (caseII_exact_radius_over (K := ℝ) (m := (m : ℝ))
-        (by exact_mod_cast hm5))
+        (by exact_mod_cast hm3))
   · simpa [realQuadraticCostReal, realQuadraticRadiusSq, hmod] using
       (caseI_exact_radius_over (K := ℝ) (m := (m : ℝ))
         (by positivity))

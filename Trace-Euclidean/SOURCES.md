@@ -1,43 +1,40 @@
 # Identified sources and external inputs
 
-## Audited manuscript identity
+## Author version
 
-The verification target is the local author version named
-`Trace-Euclidean-v9`, SHA-256
-`a2f522d077c600e0dc747dcaa8b06ba4e31ecd0b49b83dae468c9b61915a0e99`.
-The repository records its extracted labels, formulas, table entries, and hash
-in `inputs/manuscript_inputs.json`; it does not redistribute the manuscript.
+The target is the privately held author file Trace-Euclidean-v15.tex with
+SHA-256 83a236e93648ce0802f8a0d3022de63710d089f3a4f7e61214a4c855459597b5.
+Public inputs/manuscript_inputs_v15.json records its extracted mathematical
+data and labels without publishing the manuscript.
 
 ## Formal platform
 
-- Lean `v4.32.1`, pinned by `lean/lean-toolchain`.
-- mathlib revision `520045ab14e26149ee970e2e617ca04b09bde5d6`, pinned by
-  `lean/lake-manifest.json`.
+Lean v4.32.1 and pinned mathlib revision
+520045ab14e26149ee970e2e617ca04b09bde5d6.
+Library theorems on number fields, fractional ideals, discriminants,
+projective modules, Hermite finiteness, Haar covolume, and real analysis are
+trusted as pinned mathlib dependencies.
 
-## Library and external mathematical inputs
+## Odlyzko discriminant input
 
-The Lean proofs rely on pinned mathlib results for Dedekind domains and
-projective modules, fractional ideals and their norms, number-field trace and
-discriminant theory, Hermite finiteness, Haar measure and lattice covolume, and
-real Gamma-function analysis. These results are part of the disclosed trusted
-library dependency rather than project axioms.
+[Odlyzko, unconditional Table 4](https://www-users.cse.umn.edu/~odlyzko/unpublished/discr.bound.table4)
+lists row b=4.000 with A=36.347 and E=10.667.
+His [description of the tables](https://www-users.cse.umn.edu/~odlyzko/unpublished/discr.bound.tables.txt)
+states that Table 4 is unconditional, gives the general discriminant
+inequality and explains the direction of rounding. The Table 4 header
+directly states the bound used here. For a totally real field, its consequence
+is |D_F| > 36.347^d exp(-10.667). The formal proposition
+V15OdlyzkoTable4Input records exactly this consequence for coded fields.
+The mathematical source is external; the numerical conversion and
+downstream v15 finiteness proof are in Lean.
 
-The global finiteness endpoints do not assume O'Meara's fixed-volume
-classification: `DirectFixedFieldFiniteness` supplies an alternative finite
-reduction-code proof. The real-quadratic endpoint also constructs both rings
-of integers and proves a full-plane covering argument instead of assuming the
-cited Voronoi classification.
+Voight's totally real field enumeration supplies separate small-degree
+numerical inputs to the paper's tables. It is not the source of the
+uniform degree bound in the Lean proof.
 
-The following manuscript material is not reproved end to end in Lean:
+## Unformalized standalone material
 
-- the complete periodic-minimum function and compact-quotient development in
-  Lemma 2.1;
-- every separate scale-, norm-, and volume-ideal upper bound in Lemma 3.4;
-- the complete global-maximum statements of Lemmas 4.1--4.9;
-- the full power-mean definitions and Corollary 1.6;
-- historical, bibliographic, and norm-Euclidean classification claims.
-
-Exact locators and bibliography entries remain in the author manuscript.
-Neither successful Lean compilation nor the Mathematica run independently
-validates manuscript prose or cited-source claims outside the stated formal
-dependency chain.
+The complete periodic-minimum and generic binary-radius developments,
+all separate ideal upper bounds, full Section 4 maximum theorems,
+the complete p-norm corollary, and historical or novelty assertions
+are not claimed as standalone Lean results. See the [coverage report](docs/audit/v15/09_coverage_report.md).

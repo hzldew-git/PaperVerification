@@ -38,7 +38,7 @@ theorem coordinate_two_trace_euclidean_iff {m : ℕ}
       have hm5 : 5 ≤ m := by omega
       obtain ⟨z, hz⟩ := hcase (caseIIVertexOver (m : ℚ))
       have hlower := caseII_vertex_lower_over (K := ℚ)
-        (m := (m : ℚ)) (by exact_mod_cast hm5) z
+        (m := (m : ℚ)) (by exact_mod_cast (show 3 ≤ m by omega)) z
       have hradius : caseIIRadiusSq m ≤ 2 := by
         rw [← caseII_radiusSqOver_eq]
         exact (hlower.trans_lt hz).le

@@ -1,135 +1,65 @@
-# Trace-Euclidean verification package
+# Trace-Euclidean v15 verification package
 
-**Version notice:** This README and the active release index describe v9.
-The v15 work on this branch is documented in `V15_STATUS.md` and remains
-Grade C pending its main proof bridges.
+Active author version: Trace-Euclidean-v15.tex, SHA-256
+83a236e93648ce0802f8a0d3022de63710d089f3a4f7e61214a4c855459597b5.
+The manuscript TeX and PDF are deliberately absent.
 
-This directory is the public computational companion to the manuscript version
-identified by the SHA-256 digest in `results/summary.json`. It contains
-Mathematica verification, a Lean 4 formalization of selected proof obligations,
-extracted numerical inputs, machine-readable results, certificates, an English
-LaTeX manual, and a semantic-fidelity audit.
+This package contains Lean 4 proofs, independent Python and Wolfram checks,
+extracted v15 inputs, machine-readable results, and an English
+[semantic-fidelity audit](docs/audit/v15/12_executive_summary.md).
+Its scoped assessment is **Grade B: substantial formalization**.
+Independent author, domain, and Lean review remains unsigned.
 
-The manuscript source and rendered manuscript PDF are deliberately excluded.
-They are neither required for rerunning the published calculations nor allowed
-in this repository.
+## Reproduce v15
 
-## Reproduce the published calculations
+From this directory in PowerShell:
 
-From PowerShell in this directory, run:
+~~~powershell
+& 'D:\AI-Workspace\Environments\Python\math-research\Scripts\python.exe' '.\tools\verify_public_v15.py'
+& 'C:\Program Files\Wolfram Research\WolframScript\wolframscript.exe' -file '.\checks\v15_classification.wls'
+Set-Location '.\lean'
+& 'C:\Users\hzlde\.elan\bin\lake.exe' build
+& 'C:\Users\hzlde\.elan\bin\lake.exe' env lean '.\TraceEuclideanTest\MainTheoremAudit.lean'
+~~~
 
-```powershell
-& 'C:\Program Files\Wolfram Research\WolframScript\wolframscript.exe' -file '.\run_verification.wls'
-& 'D:\AI-Workspace\Environments\Python\math-research\Scripts\python.exe' '.\tools\build_report.py'
-& 'D:\AI-Workspace\Environments\Python\math-research\Scripts\python.exe' '.\tools\check_delivery.py'
-```
+Expected public computation: 1156 Python PASS and 115 Wolfram PASS, with zero
+failures. The Lean project pins Lean 4.32.1 and mathlib. The last command prints
+public theorem signatures and transitive axiom sets. The v15 source-bound checks
+are run separately against the author manuscript in a private workspace; their
+results are 1165 Python PASS and 112 Wolfram PASS.
 
-Executable paths may be replaced with the corresponding local installations.
-The Mathematica batch exit codes are `0` for all PASS, `2` for manuscript
-presentation warnings with no failed verification check, and `1` for an exact,
-certified, coverage, or integrity failure.
+## Formal scope
 
-The public run uses `inputs/manuscript_inputs.json`, which records the source
-SHA-256 digest, displayed numbering, stable LaTeX anchors, table entries, and
-formula fragments extracted during the private maintainer build. Because the
-manuscript itself is absent, the public run validates the calculations and the
-internal correspondence of the published package; it does not recompute the
-digest from a manuscript file.
+- Theorems 1.2 and 1.3: strict root-discriminant bounds and global finiteness
+  with the threshold equal to each varying field's degree. The finite
+  conclusions use [Odlyzko's unconditional Table 4](SOURCES.md) as an explicit
+  external mathematical premise.
+- Theorem 1.7: an if-and-only-if classification for every nonzero fractional
+  ideal presentation of a positive integral rank-one real-quadratic lattice.
+  Lean proves principality, six actual module-isometry classes, six valid
+  constructive representatives, and distinction of the classes.
+- Corollary 1.9: the square-form field classification m in {2,5,13} is carried
+  by the concrete real-quadratic Lean endpoint.
 
-## Reproduce the Lean formalization
+[THEOREM_INDEX.md](THEOREM_INDEX.md) lists exact declaration names and remaining
+supporting-result gaps. [TRUST.md](TRUST.md) explains the cited source and proof
+boundary. [REPRODUCING.md](REPRODUCING.md) gives the full rerun protocol.
+The complete generic covering-radius formula of Proposition 6.1 is not claimed
+as a single Lean theorem; the classification instead uses its needed
+consequences through a general rational deep hole and six direct covers.
 
-The Lean project pins Lean and mathlib. From `lean/`, run:
+## Historical v9 evidence
 
-```text
-lake exe cache get
-lake build
-lake env lean TraceEuclideanTest/MainTheoremAudit.lean
-```
+The prior v9 verification scripts, result summary, manual, and PDF remain
+available for comparison. Their [release notes](docs/v9_release_notes/README.md)
+and [audit](docs/audit/v9/12_executive_summary.md) are labeled by version.
+They are not counted as v15 results.
+The root-level build_all.ps1 and run_verification.wls still operate on v9;
+the complete immutable v9 package is Git commit
+c4aed60cc9405e4570d7b65eb308e8a71d5c7137.
 
-The final command prints 50 elaborated public signatures and their transitive
-axiom sets. The formalization has no `sorry`, `sorryAx`, project `axiom`,
-`native_decide`, `run_tac`, `unsafe`, `extern`, or `implemented_by`.
+Before publication, run the repository-level manuscript-exclusion gate:
 
-The concrete real-quadratic endpoint constructs
-`QuadraticAlgebra ℚ m 0`, proves both integral-basis descriptions, transports
-the trace-square cost to exact coordinates, proves the full-plane covering
-formulas, and concludes
-`IsFieldTraceEuclidean 2 ↔ m = 2 ∨ m = 5 ∨ m = 13`.
-The eight finiteness endpoints preserve the paper's rank, degree, and
-`t ≤ d` quantifiers on the actual quotient of field-lattice pairs. They are
-unconditional Lean theorems: a projective pseudobasis proves the general
-trace determinant and covolume bounds, Hermite gives bounded-discriminant
-field finiteness, and finite reduction codes prove fixed-field, fixed-rank
-lattice finiteness. See `THEOREM_INDEX.md` and `docs/audit/` for the remaining
-semantic confirmation items and the Grade B assessment.
-
-## Main deliverables
-
-- `verify_trace_euclidean_v9.m`: interactive Mathematica entry point; it does
-  not close the kernel.
-- `run_verification.wls`: WolframScript wrapper with a batch exit code.
-- `checks/`: focused modules for analytic bounds, admissible tables, trace
-  geometry, and gamma diagnostics.
-- `docs/verification_manual_v9.tex`: English LaTeX explanation and maintenance
-  guide.
-- `output/pdf/verification_manual_v9.pdf`: compiled verification manual with
-  manuscript numbering and the complete Section 4 calculation ledger.
-- `results/tests.json` and `results/tests.csv`: every check, with its module,
-  manuscript location, evidence class, actual value, and status.
-- `results/verification_ledger.json`: manuscript-to-code-to-result map.
-- `results/section4_coverage.json`: all Mathematica-checkable Section 4
-  calculations and their associated test records.
-- `results/rational_certificates.json`: exact interval endpoints and certified
-  signs.
-- `results/all_table_values.csv`: values behind every admissible table pair.
-- `SHA256SUMS.json`: hashes for the public code, inputs, results, compiled
-  manual, and verification documentation. Path-dependent build logs are
-  checked but excluded from the reproducibility hash set.
-- `lean/`: pinned Lean 4 source, tests, and the public axiom report.
-- `THEOREM_INDEX.md`: paper-to-Mathematica-to-Lean coverage map.
-- `TRUST.md`: proof, computation, reproducibility, and semantic trust boundary.
-- `docs/audit/`: English semantic-fidelity review package.
-
-## Maintainer update after a manuscript revision
-
-Keep the revised manuscript outside this Git repository, then run:
-
-```powershell
-.\build_all.ps1 -ManuscriptPath 'D:\private\path\Trace-Euclidean-v9.tex'
-```
-
-The pipeline performs these steps:
-
-1. copy the privately supplied manuscript to the ignored `source_snapshot/`
-   working directory;
-2. compile it only under the ignored `output/manuscript/` directory;
-3. extract source-bound inputs and current displayed numbering by stable LaTeX
-   labels;
-4. execute all Mathematica modules;
-5. regenerate the result fragments and English verification manual;
-6. run delivery-integrity and repository manuscript-exclusion checks.
-
-Ordinary prose edits, line-number changes, and automatic theorem renumbering do
-not require manual edits to the code or documentation. For mathematical
-changes:
-
-- edit the matching object in `config/verification_manifest.json` for a changed
-  printed approximation;
-- edit the matching module in `checks/` for a changed formula;
-- add one manifest entry and one focused check block for a new computable
-  component;
-- add a Section 4 coverage entry when the new component is a Mathematica-
-  checkable calculation in that section.
-
-The manual imports all displayed manuscript references and result tables from
-`generated/`. Do not edit those generated fragments by hand.
-
-Before every push, run the repository-level policy check:
-
-```powershell
+~~~powershell
 & 'D:\AI-Workspace\Environments\Python\math-research\Scripts\python.exe' '..\tools\check_no_manuscripts.py' --root '..'
-```
-
-The same check runs automatically on GitHub. It rejects unapproved `.tex` or
-`.pdf` files, all manuscript working directories, disguised PDF/complete-TeX
-documents, and opaque archives.
+~~~

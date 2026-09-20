@@ -1,0 +1,25 @@
+{
+  "author_version": "Trace-Euclidean-v15",
+  "source_sha256": "83a236e93648ce0802f8a0d3022de63710d089f3a4f7e61214a4c855459597b5",
+  "grade": "B",
+  "status": "SUBSTANTIAL_FORMALIZATION",
+  "main_results_reviewed": 4,
+  "provisional_match": 4,
+  "verified_match": 0,
+  "computation": {
+    "public_python_pass": 1156,
+    "public_wolfram_pass": 115,
+    "private_source_bound_python_pass": 1165,
+    "private_source_bound_wolfram_pass": 112,
+    "fail": 0
+  },
+  "lean": {
+    "version": "4.32.1",
+    "mathlib_revision": "520045ab14e26149ee970e2e617ca04b09bde5d6",
+    "full_build": "pass",
+    "audited_axioms": ["propext", "Classical.choice", "Quot.sound"]
+  },
+  "external_mathematical_input": "Odlyzko unconditional Table 4, row b=4",
+  "audit": "docs/audit/v15/12_executive_summary.md",
+  "historical_v9_summary": "results/summary.json"
+}

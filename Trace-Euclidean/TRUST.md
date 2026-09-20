@@ -1,62 +1,35 @@
-# Trust boundary
+# Trace-Euclidean v15 trust boundary
 
-This package separates four claims.
+Lean accepts the encoded proof terms under Lean 4.32.1 and pinned mathlib
+revision 520045ab14e26149ee970e2e617ca04b09bde5d6. The audited v15
+endpoints depend only on the standard logical axioms propext,
+Classical.choice, and Quot.sound. A source scan found no sorry, sorryAx,
+project axiom, native_decide, run_tac, unsafe, extern, or implemented_by in
+the proof modules.
 
-1. **Lean kernel acceptance.** Lean accepts the encoded declarations and proof
-   terms.
-2. **Computational verification.** Wolfram Language checks the encoded exact
-   identities, rational certificates, finite enumerations, and displayed
-   approximations.
-3. **Technical reproducibility.** A checkout can rebuild the pinned Lean
-   project and rerun the public computational package.
-4. **Semantic fidelity.** The encodings have the same definitions, hypotheses,
-   quantifiers, boundary conditions, and conclusions as the identified paper.
+The global finite-class results explicitly accept
+V15OdlyzkoTable4Input. It states the published unconditional Table 4 row
+b=4 for every coded totally real field. The source gives
+|D_F| > 36.347^d exp(-10.667). Lean proves the exponential comparison,
+degree cutoff, rank-one integral-to-classic lemma, strict root bounds, and
+finite assembly. The table is cited mathematical input, not a Lean axiom
+proved by this package.
 
-The first three have executable evidence. The fourth requires mathematical and
-formalization review and is documented under `docs/audit/`.
+The public Python and Wolfram runs trust their kernels and the extracted
+input file. The private maintainer run also checks the SHA-256 digest and
+printed entries against the manuscript. Public reruns alone cannot
+reconstruct a source file that is intentionally absent.
 
-## Lean proof boundary
+Theorem 1.7's Lean endpoint covers all nonzero fractional-ideal
+presentations. The paper uses the standard representation of an abstract
+rank-one lattice by such an ideal and a coefficient; no separate generic
+presentation equivalence is exported in Lean. The complete general
+binary covering-radius formula of Proposition 6.1 is not exported.
+The main six-class theorem uses a direct rational deep-hole argument and
+constructive covers for the six survivors.
 
-The Lean project pins Lean `v4.32.1` and mathlib revision
-`520045ab14e26149ee970e2e617ca04b09bde5d6`. A complete `lake build` succeeds.
-The public endpoint audit reports only `propext`, `Classical.choice`, and
-`Quot.sound`, which are standard Lean/mathlib logical dependencies.
-
-The formal source contains no `sorry`, `sorryAx`, project `axiom`,
-`native_decide`, `run_tac`, `unsafe`, `extern`, or `implemented_by`.
-`VoronoiAlgebra.lean` uses a `noncomputable section` because real-number
-division is not executable data; every theorem still has a proof term and this
-does not add an axiom.
-
-## Computational boundary
-
-The public computational rerun trusts the Wolfram kernel, the small Python
-reporting scripts, and the extracted input file. Exact symbolic equalities and
-rational interval certificates are stronger evidence than decimal agreement;
-finite high-precision gamma diagnostics remain diagnostics. Cited analytic,
-geometry-of-numbers, algebraic-number-theory, and quadratic-lattice theorems
-are external inputs unless a ledger entry says otherwise.
-
-## Semantic status
-
-Status: `SUBSTANTIAL_FORMALIZATION`, Grade B.
-
-Theorem 1.8 now has a concrete end-to-end Lean endpoint for
-`QuadraticAlgebra ℚ m 0`, and Proposition 6.1 has exact full-plane
-covering-radius specifications in both congruence cases. These are
-`PROVISIONAL_MATCH` pending independent semantic review.
-
-Theorems 1.2 and 1.3 now have eight unconditional final clauses on the actual
-quotient of field-lattice pairs, with the paper's rank, degree, and `t ≤ d`
-quantifiers. Their dependency chain proves the projective pseudobasis
-determinant formula, covolume lower bounds, covering upper bounds,
-discriminant bounds, Hermite reduction, direct fixed-field finite coding, and
-the analytic rank/degree tails. No project-specific proof-obligation structure
-occurs in an endpoint signature.
-
-The Grade B assessment reflects substantial coverage of all three core theorem
-groups. It remains below Grade A because the author/domain and independent
-Lean review cards are unsigned, the order-theoretic covering-radius convention
-still needs independent confirmation, and several supporting lemmas are
-covered by computation or by alternative endpoint proofs rather than by a
-line-for-line formalization of the manuscript proof.
+Compilation and PASS counts do not certify the complete manuscript.
+The first-party [v15 semantic audit](docs/audit/v15/12_executive_summary.md)
+records definition comparison, hidden assumptions, theorem scope,
+reproducibility, and unsigned review cards. Grade B reflects substantial
+formalization of the core claims; Grade A is not claimed.

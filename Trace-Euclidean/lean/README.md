@@ -1,38 +1,36 @@
-# Lean formalization
+# Lean formalization for Trace-Euclidean v15
 
-This Lake project checks selected proof obligations from the manuscript whose
-SHA-256 digest is recorded in `../results/summary.json`.
+This Lake project pins Lean v4.32.1 and mathlib revision
+520045ab14e26149ee970e2e617ca04b09bde5d6. It includes the inherited
+v9 modules and the v15 proofs.
 
-## Modules
+The v15 proof chain is organized as follows:
 
-| Module | Checked content |
-|---|---|
-| `Basic` | Strict and closed Euclidean predicates, squared-radius implications, obstruction witnesses, and the power-mean quantifier transfer |
-| `Scaling` | Cancellation showing that nonzero scaling preserves and reflects form isometry |
-| `AnalyticCriticalPoint` | The corrected stationary derivative and Hessian-saddle argument in Lemma 4.3 |
-| `Finiteness` | Finite positive parameter sets, finite rectangles, and finite dependent families |
-| `VoronoiAlgebra` | Exact two-dimensional Gram, vertex coefficient, and vertex norm identities |
-| `QuadraticArithmetic` | Candidate bounds, the `m=3` midpoint obstruction, and the three final radius values |
-| `QuadraticGeometry` | Full-plane covering upper bounds and exact deep-hole sharpness |
-| `QuadraticIntegralBasis` | Both real-quadratic integer bases and the concrete field classification |
-| `PseudoBasis` | Pseudobases for arbitrary full projective integer-ring lattices |
-| `PseudoBasisDeterminant` | General trace determinant, covolume, and classic/integral discriminant lower bounds |
-| `DirectFixedFieldFiniteness` | Finite Gram/module codes and fixed-field, fixed-rank class finiteness |
-| `GlobalFiniteness` | Eight unconditional finiteness endpoints on the actual quotient |
+| Modules | Content |
+| --- | --- |
+| V15StrictDiscriminant, V15FinitenessAssembly, V15OdlyzkoBridge, V15RankOneIntegral | Strict bounds, varying-degree finite grid, explicit Odlyzko source premise, rank-one classic-integrality |
+| V15BinaryCriterion, V15BinaryCovering, V15GaussBasis | Rational deep hole, six direct covers, and reduced binary basis |
+| V15IdealCoordinates, V15IdealNormQuotient, V15IdealDeterminant, V15VariableBasis | Actual fractional ideals, field coordinates, determinant and norm bridges |
+| V15VariableSieve, V15ActualPrincipality | Six survivor rows and principality, including m=3 |
+| V15CoefficientClassification, V15PositivityBridge | Actual isometries and the iff six-class theorem with total positivity |
+| V15Representatives, V15RepresentativeValidity, V15Distinctness | Six strictly Euclidean integral positive representatives and distinction |
+| QuadraticIntegralBasis, QuadraticFieldBridge | Concrete field-square corollary inherited and rechecked for v15 |
 
-`TraceEuclideanTest/MainTheoremAudit.lean` checks 50 public endpoint signatures
-and prints their transitive axiom sets. The expected set for every listed
-endpoint is `propext`, `Classical.choice`, and `Quot.sound`.
+The public endpoint is
+v15_rank_one_real_quadratic_classification_totally_positive. It quantifies
+over all nonzero fractional ideals. The global finite-class endpoints are
+v15_classic_finite_of_odlyzko_table4 and
+v15_integral_finite_of_odlyzko_table4_source. Their sole external
+mathematical premise is the cited unconditional Table 4 inequality.
 
-## Build
+From this directory:
 
-```text
+~~~text
 lake exe cache get
 lake build
 lake env lean TraceEuclideanTest/MainTheoremAudit.lean
-```
+~~~
 
-Lean compilation establishes that the encoded statements have kernel-accepted
-proof terms. The English audit under `../docs/audit/` separately records
-semantic correspondence, supporting-result coverage, and the confirmation
-items that keep the project at Grade B rather than Grade A.
+The final command prints signatures and transitive axiom dependencies.
+The repository records its output in audit/main_theorem_axioms.txt.
+See ../TRUST.md and ../docs/audit/v15 for the semantic boundary.

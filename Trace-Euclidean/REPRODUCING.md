@@ -1,57 +1,53 @@
-# Reproducing the verification
+# Reproducing the v15 release
 
-## Frozen inputs
+## Fixed inputs
 
-- Manuscript identity: SHA-256
-  `a2f522d077c600e0dc747dcaa8b06ba4e31ecd0b49b83dae468c9b61915a0e99`.
-- Lean toolchain: `v4.32.1`, pinned by `lean/lean-toolchain`.
-- mathlib: revision `520045ab14e26149ee970e2e617ca04b09bde5d6`, pinned
-  with all transitive packages by `lean/lake-manifest.json`.
-- The manuscript TeX and PDF are outside the repository and are not needed for
-  the public reruns.
+- Author source SHA-256: 83a236e93648ce0802f8a0d3022de63710d089f3a4f7e61214a4c855459597b5.
+- Lean toolchain: v4.32.1, recorded in lean/lean-toolchain.
+- mathlib revision: 520045ab14e26149ee970e2e617ca04b09bde5d6, pinned in lean/lake-manifest.json.
+- Public extracted input: inputs/manuscript_inputs_v15.json. The manuscript itself is kept private.
 
-## Lean clean-checkout protocol
+## Public computational rerun
 
-From `Trace-Euclidean/lean`:
+From Trace-Euclidean:
 
-```text
-lake exe cache get
-lake build
-lake env lean TraceEuclideanTest/MainTheoremAudit.lean
-```
+~~~powershell
+& 'D:\AI-Workspace\Environments\Python\math-research\Scripts\python.exe' '.\tools\verify_public_v15.py'
+& 'C:\Program Files\Wolfram Research\WolframScript\wolframscript.exe' -file '.\checks\v15_classification.wls'
+~~~
 
-Success requires zero exit codes. The last command must print 50 endpoint
-signatures, each with exactly `propext`, `Classical.choice`, and
-`Quot.sound`. The initial verified Windows run used Lean 4.32.1 and Lake 5.0.0
-and completed 8,696 Lake jobs.
+Expected: 1156 Python PASS, 115 Wolfram PASS, zero failures. The v15 summaries
+are under results/python_v15_summary.json and
+results/v15-mathematica-transcript.txt. Executable paths may be adapted.
 
-On a Windows machine with limited process resources, set
-`$env:LEAN_NUM_THREADS = '4'` before these commands.
+## Lean rerun
 
-## Public computational protocol
+From Trace-Euclidean/lean:
 
-From `Trace-Euclidean`:
+~~~powershell
+& 'C:\Users\hzlde\.elan\bin\lake.exe' exe cache get
+& 'C:\Users\hzlde\.elan\bin\lake.exe' build
+& 'C:\Users\hzlde\.elan\bin\lake.exe' env lean '.\TraceEuclideanTest\MainTheoremAudit.lean'
+~~~
 
-```powershell
-wolframscript -file .\run_verification.wls
-python .\tools\build_report.py
-.\tools\build_verification_manual.ps1
-python .\tools\check_delivery.py
-```
+The first command is needed only on a fresh checkout. The build and audit
+commands must exit successfully. Compare the axiom report with
+lean/audit/main_theorem_axioms.txt; the audited v15 declarations should
+list only propext, Classical.choice, and Quot.sound. On resource-limited
+Windows systems, set LEAN_NUM_THREADS to 4.
 
-The expected computational result is `2165 PASS / 0 WARN / 0 FAIL`. The public
-run validates the frozen extracted inputs and package correspondence. The
-manual builder fixes the PDF creation timestamp, so the committed PDF is
-byte-for-byte reproducible across checkout paths; its path-dependent LaTeX log
-is inspected by the delivery check but is not committed. A
-maintainer can privately rebind those inputs to a revised manuscript with
-`build_all.ps1 -ManuscriptPath <outside-repository-path>`.
+## Private maintainer source check
 
-From the repository root, run the publication gate before every push:
+The source-bound Python and Wolfram checks live outside this public
+repository. The frozen manuscript and its working copy have the SHA-256 above.
+Those runs produced 1165 Python PASS and 112 Wolfram PASS. This step verifies
+that the public extracted inputs correspond to the author's v15 source.
 
-```text
-python tools/check_no_manuscripts.py --root .
-```
+Before every push, from the repository root run:
 
-GitHub Actions repeats the Lean build, forbidden-construct scan, endpoint axiom
-audit, and manuscript-exclusion check on a fresh Ubuntu runner.
+~~~powershell
+& 'D:\AI-Workspace\Environments\Python\math-research\Scripts\python.exe' '.\tools\check_no_manuscripts.py' --root '.'
+~~~
+
+The v9 verification manual and 2165-check result set remain historical and
+must not be treated as v15 checks.

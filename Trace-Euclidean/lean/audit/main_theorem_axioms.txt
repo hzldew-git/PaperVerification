@@ -204,3 +204,190 @@ TraceEuclidean.exp_integralTraceVolumeExponent_eq (t : ℝ) (n d : ℕ) (ht : 0 
  Classical.choice,
  Quot.sound]
 'TraceEuclidean.exp_integralTraceVolumeExponent_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+TraceEuclidean.v15_admissible_gram_iff_mem {a b c : ℕ} :
+  TraceEuclidean.V15AdmissibleGram a b c ↔ (a, b, c) ∈ TraceEuclidean.v15GramTriples
+TraceEuclidean.v15_quadratic_candidate_mem {m a b c n : ℕ} (h : TraceEuclidean.V15QuadraticCandidate m a b c n) :
+  (m, a, b, c, n) ∈ TraceEuclidean.v15NineCandidates
+TraceEuclidean.v15_quadratic_candidate_six_rows {m a b c n : ℕ} (h : TraceEuclidean.V15QuadraticCandidate m a b c n)
+  (htrace : TraceEuclidean.V15TraceNormCondition m a n) : (m, a, b, c, n) ∈ TraceEuclidean.v15SixSurvivingGrams
+TraceEuclidean.v15_survivor_first_index_one_except_three {m a b c n : ℕ} {t : ℤ} {k : ℕ}
+  (hrow : (m, a, b, c, n) ∈ TraceEuclidean.v15SixSurvivingGrams) (hm3 : m ≠ 3) (hk : 0 < k)
+  (heq : ↑a ^ 2 - ↑(TraceEuclidean.v15QuadraticDiscriminant m) * t ^ 2 = 4 * ↑n * ↑k ^ 2) : k = 1
+TraceEuclidean.v15_m_three_trace_norm_solutions {t : ℤ} {k : ℕ} (hk : 0 < k)
+  (heq : 4 ^ 2 - ↑(TraceEuclidean.v15QuadraticDiscriminant 3) * t ^ 2 = 4 * 1 * ↑k ^ 2) :
+  t = -1 ∧ k = 1 ∨ t = 1 ∧ k = 1 ∨ t = 0 ∧ k = 2
+TraceEuclidean.v15_m_three_basis_forces_one_index_one.{u_1} {F : Type u_1} [Field F] {a β₁ β₂ : F} {t₁ t₂ : ℤ}
+  {k₁ k₂ : ℕ} (ha : a ≠ 0) (hβ₁ : β₁ ≠ β₂) (hβ₂ : β₁ ≠ -β₂) (hk₁ : 0 < k₁) (hk₂ : 0 < k₂)
+  (heq₁ : 4 ^ 2 - ↑(TraceEuclidean.v15QuadraticDiscriminant 3) * t₁ ^ 2 = 4 * 1 * ↑k₁ ^ 2)
+  (heq₂ : 4 ^ 2 - ↑(TraceEuclidean.v15QuadraticDiscriminant 3) * t₂ ^ 2 = 4 * 1 * ↑k₂ ^ 2)
+  (hzero₁ : t₁ = 0 → a * β₁ ^ 2 = 2) (hzero₂ : t₂ = 0 → a * β₂ ^ 2 = 2) : k₁ = 1 ∨ k₂ = 1
+TraceEuclidean.v15_six_radius_values :
+  TraceEuclidean.v15GramRadius 2 0 4 = 3 / 2 ∧
+    TraceEuclidean.v15GramRadius 4 2 4 = 4 / 3 ∧
+      TraceEuclidean.v15GramRadius 2 1 3 = 9 / 10 ∧
+        TraceEuclidean.v15GramRadius 4 2 6 = 9 / 5 ∧
+          TraceEuclidean.v15GramRadius 2 1 7 = 49 / 26 ∧ TraceEuclidean.v15GramRadius 5 2 5 = 25 / 14
+TraceEuclidean.v15_integral_rank_le_34 (c : TraceEuclidean.GlobalLatticeClass)
+  (hE : TraceEuclidean.GlobalLatticeClass.IsIntegralTraceEuclidean (↑c.degree) c) : c.rank ≤ 34
+TraceEuclidean.v15_classic_finite_of_degree_bound
+  (hdegree :
+    ∀ (c : TraceEuclidean.GlobalLatticeClass),
+      TraceEuclidean.GlobalLatticeClass.IsClassicTraceEuclidean (↑c.degree) c → c.degree ≤ 14) :
+  {c | TraceEuclidean.GlobalLatticeClass.IsClassicTraceEuclidean (↑c.degree) c}.Finite
+TraceEuclidean.v15_integral_finite_of_degree_bound
+  (hdegree :
+    ∀ (c : TraceEuclidean.GlobalLatticeClass),
+      TraceEuclidean.GlobalLatticeClass.IsIntegralTraceEuclidean (↑c.degree) c → c.degree ≤ 14) :
+  {c | TraceEuclidean.GlobalLatticeClass.IsIntegralTraceEuclidean (↑c.degree) c}.Finite
+TraceEuclidean.V15OdlyzkoDegreeInput : Prop
+TraceEuclidean.V15RankOneClassicInput : Prop
+TraceEuclidean.v15_classic_finite_of_odlyzko (hOdlyzko : TraceEuclidean.V15OdlyzkoDegreeInput) :
+  {c | TraceEuclidean.GlobalLatticeClass.IsClassicTraceEuclidean (↑c.degree) c}.Finite
+TraceEuclidean.v15_integral_finite_of_odlyzko (hOdlyzko : TraceEuclidean.V15OdlyzkoDegreeInput)
+  (hRankOne : TraceEuclidean.V15RankOneClassicInput) :
+  {c | TraceEuclidean.GlobalLatticeClass.IsIntegralTraceEuclidean (↑c.degree) c}.Finite
+TraceEuclidean.V15OdlyzkoTable4Input : Prop
+TraceEuclidean.v15_odlyzko_degree_input_of_table4 (hTable : TraceEuclidean.V15OdlyzkoTable4Input) :
+  TraceEuclidean.V15OdlyzkoDegreeInput
+TraceEuclidean.v15_rank_one_classic_input : TraceEuclidean.V15RankOneClassicInput
+TraceEuclidean.v15_classic_root_discriminant_lt (c : TraceEuclidean.GlobalLatticeClass)
+  (hE : TraceEuclidean.GlobalLatticeClass.IsClassicTraceEuclidean (↑c.degree) c) :
+  ↑c.rank * ↑|TraceEuclidean.NumberFieldCode.discriminant c.fieldCode| ^ (1 / ↑c.degree) < 2 * Real.pi * Real.exp 1
+TraceEuclidean.v15_integral_root_discriminant_lt (c : TraceEuclidean.GlobalLatticeClass)
+  (hE : TraceEuclidean.GlobalLatticeClass.IsIntegralTraceEuclidean (↑c.degree) c) :
+  ↑c.rank * ↑|TraceEuclidean.NumberFieldCode.discriminant c.fieldCode| ^ (1 / ↑c.degree) < 4 * Real.pi * Real.exp 1
+TraceEuclidean.v15_classic_finite_of_odlyzko_table4 (hTable : TraceEuclidean.V15OdlyzkoTable4Input) :
+  {c | TraceEuclidean.GlobalLatticeClass.IsClassicTraceEuclidean (↑c.degree) c}.Finite
+TraceEuclidean.v15_integral_finite_of_odlyzko_table4_source (hTable : TraceEuclidean.V15OdlyzkoTable4Input) :
+  {c | TraceEuclidean.GlobalLatticeClass.IsIntegralTraceEuclidean (↑c.degree) c}.Finite
+'TraceEuclidean.v15_admissible_gram_iff_mem' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15_quadratic_candidate_mem' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15_quadratic_candidate_six_rows' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15_survivor_first_index_one_except_three' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15_m_three_trace_norm_solutions' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15_m_three_basis_forces_one_index_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15_six_radius_values' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15_integral_rank_le_34' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15_classic_finite_of_degree_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15_integral_finite_of_degree_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15_classic_finite_of_odlyzko' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15_integral_finite_of_odlyzko' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15_odlyzko_degree_input_of_table4' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15_rank_one_classic_input' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15_classic_root_discriminant_lt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15_integral_root_discriminant_lt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15_classic_finite_of_odlyzko_table4' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15_integral_finite_of_odlyzko_table4_source' depends on axioms: [propext, Classical.choice, Quot.sound]
+TraceEuclidean.v15_actual_ideal_six_rows {m : ℕ} (hm : 1 < m) (hsq : TraceEuclidean.IsSquarefreeNat m)
+  (I :
+    FractionalIdeal (nonZeroDivisors (NumberField.RingOfIntegers (TraceEuclidean.RealQuadraticAlgebra m)))
+      (TraceEuclidean.RealQuadraticAlgebra m))
+  (hI : I ≠ 0) (α : TraceEuclidean.RealQuadraticAlgebra m) :
+  0 < (Algebra.norm ℚ) α →
+    ∀ (hint : TraceEuclidean.v15ValueFractionalIdeal I α ≤ 1),
+      TraceEuclidean.V15IdealTracePositive I α →
+        TraceEuclidean.V15IdealTraceEuclidean I α →
+          ∃ B a b c n,
+            TraceEuclidean.v15IdealTraceGramOf I hI B α = (↑a, ↑b, ↑c) ∧
+              TraceEuclidean.V15ReducedGram a b c ∧
+                ↑n = |(Algebra.norm ℚ) α| * FractionalIdeal.absNorm I ^ 2 ∧
+                  (m, a, b, c, n) ∈ TraceEuclidean.v15SixSurvivingGrams
+TraceEuclidean.v15_actual_ideal_principal {m : ℕ} (hm : 1 < m) (hsq : TraceEuclidean.IsSquarefreeNat m)
+  (I :
+    FractionalIdeal (nonZeroDivisors (NumberField.RingOfIntegers (TraceEuclidean.RealQuadraticAlgebra m)))
+      (TraceEuclidean.RealQuadraticAlgebra m))
+  (hI : I ≠ 0) (α : TraceEuclidean.RealQuadraticAlgebra m) :
+  0 < (Algebra.norm ℚ) α →
+    ∀ (hint : TraceEuclidean.v15ValueFractionalIdeal I α ≤ 1),
+      TraceEuclidean.V15IdealTracePositive I α →
+        TraceEuclidean.V15IdealTraceEuclidean I α →
+          ∃ β,
+            β ≠ 0 ∧
+              I =
+                FractionalIdeal.spanSingleton
+                  (nonZeroDivisors (NumberField.RingOfIntegers (TraceEuclidean.RealQuadraticAlgebra m))) β
+TraceEuclidean.v15_actual_ideal_generator_trace_norm {m : ℕ} (hm : 1 < m) (hsq : TraceEuclidean.IsSquarefreeNat m)
+  (I :
+    FractionalIdeal (nonZeroDivisors (NumberField.RingOfIntegers (TraceEuclidean.RealQuadraticAlgebra m)))
+      (TraceEuclidean.RealQuadraticAlgebra m))
+  (hI : I ≠ 0) (α : TraceEuclidean.RealQuadraticAlgebra m) :
+  0 < (Algebra.norm ℚ) α →
+    ∀ (hint : TraceEuclidean.v15ValueFractionalIdeal I α ≤ 1),
+      TraceEuclidean.V15IdealTracePositive I α →
+        TraceEuclidean.V15IdealTraceEuclidean I α →
+          ∃ a b c n β,
+            (m, a, b, c, n) ∈ TraceEuclidean.v15SixSurvivingGrams ∧
+              β ≠ 0 ∧
+                I =
+                    FractionalIdeal.spanSingleton
+                      (nonZeroDivisors (NumberField.RingOfIntegers (TraceEuclidean.RealQuadraticAlgebra m))) β ∧
+                  (Algebra.trace ℚ (TraceEuclidean.RealQuadraticAlgebra m)) (α * β ^ 2) = ↑a ∧
+                    (Algebra.norm ℚ) (α * β ^ 2) = ↑n
+TraceEuclidean.v15_actual_ideal_six_isometry_classes {m : ℕ} (hm : 1 < m) (hsq : TraceEuclidean.IsSquarefreeNat m)
+  (I :
+    FractionalIdeal (nonZeroDivisors (NumberField.RingOfIntegers (TraceEuclidean.RealQuadraticAlgebra m)))
+      (TraceEuclidean.RealQuadraticAlgebra m))
+  (hI : I ≠ 0) (α : TraceEuclidean.RealQuadraticAlgebra m) :
+  0 < (Algebra.norm ℚ) α →
+    ∀ (hint : TraceEuclidean.v15ValueFractionalIdeal I α ≤ 1),
+      TraceEuclidean.V15IdealTracePositive I α →
+        TraceEuclidean.V15IdealTraceEuclidean I α → TraceEuclidean.V15SixFreeIsometryClass I α
+TraceEuclidean.v15_six_isometry_classes_trace_euclidean {m : ℕ} [Fact (∀ (r : ℚ), r ^ 2 ≠ ↑m + 0 * r)]
+  (I :
+    FractionalIdeal (nonZeroDivisors (NumberField.RingOfIntegers (TraceEuclidean.RealQuadraticAlgebra m)))
+      (TraceEuclidean.RealQuadraticAlgebra m))
+  (α : TraceEuclidean.RealQuadraticAlgebra m) (hclass : TraceEuclidean.V15SixFreeIsometryClass I α) :
+  TraceEuclidean.V15IdealTraceEuclidean I α
+TraceEuclidean.v15_rank_one_real_quadratic_classification_totally_positive {m : ℕ} (hm : 1 < m)
+  (hsq : TraceEuclidean.IsSquarefreeNat m)
+  (I :
+    FractionalIdeal (nonZeroDivisors (NumberField.RingOfIntegers (TraceEuclidean.RealQuadraticAlgebra m)))
+      (TraceEuclidean.RealQuadraticAlgebra m))
+  (hI : I ≠ 0) (α : TraceEuclidean.RealQuadraticAlgebra m) :
+  TraceEuclidean.V15RealQuadraticTotallyPositive α →
+    TraceEuclidean.v15ValueFractionalIdeal I α ≤ 1 →
+      (TraceEuclidean.V15IdealTraceEuclidean I α ↔ TraceEuclidean.V15SixFreeIsometryClass I α)
+TraceEuclidean.v15_total_positive_iff_re_norm_positive {m : ℕ} (hm : 1 < m) [Fact (∀ (r : ℚ), r ^ 2 ≠ ↑m + 0 * r)]
+  (α : TraceEuclidean.RealQuadraticAlgebra m) :
+  TraceEuclidean.V15RealQuadraticTotallyPositive α ↔ TraceEuclidean.V15RealQuadraticCoefficientPositive α
+TraceEuclidean.v15_mtwo_representative_valid :
+  TraceEuclidean.V15RealQuadraticTotallyPositive 1 ∧ TraceEuclidean.v15ValueFractionalIdeal 1 1 ≤ 1
+TraceEuclidean.v15_mthree_representative_valid :
+  TraceEuclidean.V15RealQuadraticTotallyPositive TraceEuclidean.v15mThreeCoefficient ∧
+    TraceEuclidean.v15ValueFractionalIdeal 1 TraceEuclidean.v15mThreeCoefficient ≤ 1
+TraceEuclidean.v15_mfive_one_representative_valid :
+  TraceEuclidean.V15RealQuadraticTotallyPositive 1 ∧ TraceEuclidean.v15ValueFractionalIdeal 1 1 ≤ 1
+TraceEuclidean.v15_mfive_two_representative_valid :
+  TraceEuclidean.V15RealQuadraticTotallyPositive 2 ∧ TraceEuclidean.v15ValueFractionalIdeal 1 2 ≤ 1
+TraceEuclidean.v15_mthirteen_representative_valid :
+  TraceEuclidean.V15RealQuadraticTotallyPositive 1 ∧ TraceEuclidean.v15ValueFractionalIdeal 1 1 ≤ 1
+TraceEuclidean.v15_mtwentyone_representative_valid :
+  TraceEuclidean.V15RealQuadraticTotallyPositive TraceEuclidean.v15mTwentyOneCoefficient ∧
+    TraceEuclidean.v15ValueFractionalIdeal 1 TraceEuclidean.v15mTwentyOneCoefficient ≤ 1
+TraceEuclidean.v15_free_ideal_self_isometric.{u_1} {F : Type u_1} [Field F] [NumberField F] (δ : F) :
+  TraceEuclidean.V15IdealIsometricToFree 1 δ δ
+TraceEuclidean.v15_mfive_one_two_not_isometric : ¬TraceEuclidean.V15FreeFormsIsometric 1 2
+TraceEuclidean.v15_distinct_discriminants_no_field_isomorphism {m n : ℕ} (hm : 1 < m) (hn : 1 < n)
+  (hsm : TraceEuclidean.IsSquarefreeNat m) (hsn : TraceEuclidean.IsSquarefreeNat n)
+  (hdisc : TraceEuclidean.v15QuadraticDiscriminant m ≠ TraceEuclidean.v15QuadraticDiscriminant n) :
+  ¬Nonempty (TraceEuclidean.RealQuadraticAlgebra m ≃ₐ[ℚ] TraceEuclidean.RealQuadraticAlgebra n)
+'TraceEuclidean.v15_actual_ideal_six_rows' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15_actual_ideal_principal' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15_actual_ideal_generator_trace_norm' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15_actual_ideal_six_isometry_classes' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15_six_isometry_classes_trace_euclidean' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15_rank_one_real_quadratic_classification_totally_positive' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'TraceEuclidean.v15_total_positive_iff_re_norm_positive' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15_mtwo_representative_valid' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15_mthree_representative_valid' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15_mfive_one_representative_valid' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15_mfive_two_representative_valid' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15_mthirteen_representative_valid' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15_mtwentyone_representative_valid' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15_free_ideal_self_isometric' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15_mfive_one_two_not_isometric' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15_distinct_discriminants_no_field_isomorphism' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

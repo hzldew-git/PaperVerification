@@ -1,0 +1,9 @@
+# Hidden assumptions and object scope
+
+1. GlobalLatticePresentation bundles a coded number field, total reality, positive rank, full projective lattice, positive definite form, and integrality. GlobalLatticeClass uses field equivalence and semilinear quadratic-lattice isometry. AUTHOR_CONFIRMATION_REQUIRED for the intended cross-field convention.
+2. V15 global theorems use each class's degree as its strict trace threshold. Inherited v9 fixed-threshold theorems are supporting or historical results only.
+3. V15OdlyzkoTable4Input is an external theorem premise. For a totally real field, the cited row gives |D_F| > 36.347^d exp(-10.667). Lean proves the numerical conversion and rank-one integrality; no project axiom asserts the table.
+4. The rank-one endpoint quantifies over every nonzero fractional ideal and totally positive coefficient satisfying alpha I^2 subset O_F. The standard representation of an arbitrary abstract rank-one lattice as (I, alpha x^2) appears in the paper; a separate generic Lean equivalence declaration is absent. AUTHOR_CONFIRMATION_REQUIRED for this modeling boundary.
+5. An actual reduced Z-basis is constructed from the ideal. The determinant, parity, trace/norm/index, and strict covering conditions are derived for that basis rather than assumed at the final endpoint.
+6. V15SixFreeIsometryClass requires an O_F-linear equivalence preserving the quadratic form. Both directions are proved. All six representatives satisfy the stated positivity and integrality conditions and have constructive strict covers.
+7. The general reduced-binary covering-radius formula is not a premise of the classification proof. Necessity uses a rational deep hole; sufficiency uses constructive covers for the six survivor forms. Proposition 6.1 has component rather than full generic Lean coverage.
