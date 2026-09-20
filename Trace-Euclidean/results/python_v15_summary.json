@@ -1,0 +1,11 @@
+{
+  "source_sha256": "83a236e93648ce0802f8a0d3022de63710d089f3a4f7e61214a4c855459597b5",
+  "checks": 1156,
+  "pass": 1156,
+  "fail": 0,
+  "classic_pairs": 24,
+  "integral_pairs": 63,
+  "gram_triples": 22,
+  "field_candidates": 9,
+  "surviving_candidates": 6
+}

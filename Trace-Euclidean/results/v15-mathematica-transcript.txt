@@ -1,0 +1,139 @@
+Mathematica: 15.0.0 for Microsoft Windows (64-bit) (May 15, 2026)
+Independent Voronoi computation 1/22: {2, 0, 2}
+Independent Voronoi computation 2/22: {2, 1, 2}
+Independent Voronoi computation 3/22: {3, 0, 2}
+Independent Voronoi computation 4/22: {3, 1, 2}
+Independent Voronoi computation 5/22: {3, 0, 3}
+Independent Voronoi computation 6/22: {3, 1, 3}
+Independent Voronoi computation 7/22: {4, 0, 2}
+Independent Voronoi computation 8/22: {4, 1, 2}
+Independent Voronoi computation 9/22: {4, 0, 3}
+Independent Voronoi computation 10/22: {4, 1, 3}
+Independent Voronoi computation 11/22: {4, 1, 4}
+Independent Voronoi computation 12/22: {4, 2, 4}
+Independent Voronoi computation 13/22: {5, 0, 2}
+Independent Voronoi computation 14/22: {5, 1, 2}
+Independent Voronoi computation 15/22: {5, 1, 3}
+Independent Voronoi computation 16/22: {5, 1, 4}
+Independent Voronoi computation 17/22: {5, 2, 4}
+Independent Voronoi computation 18/22: {5, 2, 5}
+Independent Voronoi computation 19/22: {6, 1, 2}
+Independent Voronoi computation 20/22: {6, 1, 3}
+Independent Voronoi computation 21/22: {6, 2, 4}
+Independent Voronoi computation 22/22: {7, 1, 2}
+PASS: CJ_coefficient_order_and_formula
+PASS: CJ_lower_bound_identity
+PASS: CJ_polarization_normalization
+PASS: integer_upper_bound_A_7
+PASS: ideal_index_norm_algebra
+PASS: quadratic_trace_norm_algebra
+PASS: exactly_22_reduced_Gram_triples
+PASS: published_22_reduced_Gram_triples
+PASS: maximum_determinant_is_21
+PASS: Gram_1_exact_Voronoi
+PASS: Gram_1_rational_deep_holes
+PASS: Gram_2_exact_Voronoi
+PASS: Gram_2_rational_deep_holes
+PASS: Gram_3_exact_Voronoi
+PASS: Gram_3_rational_deep_holes
+PASS: Gram_4_exact_Voronoi
+PASS: Gram_4_rational_deep_holes
+PASS: Gram_5_exact_Voronoi
+PASS: Gram_5_rational_deep_holes
+PASS: Gram_6_exact_Voronoi
+PASS: Gram_6_rational_deep_holes
+PASS: Gram_7_exact_Voronoi
+PASS: Gram_7_rational_deep_holes
+PASS: Gram_8_exact_Voronoi
+PASS: Gram_8_rational_deep_holes
+PASS: Gram_9_exact_Voronoi
+PASS: Gram_9_rational_deep_holes
+PASS: Gram_10_exact_Voronoi
+PASS: Gram_10_rational_deep_holes
+PASS: Gram_11_exact_Voronoi
+PASS: Gram_11_rational_deep_holes
+PASS: Gram_12_exact_Voronoi
+PASS: Gram_12_rational_deep_holes
+PASS: Gram_13_exact_Voronoi
+PASS: Gram_13_rational_deep_holes
+PASS: Gram_14_exact_Voronoi
+PASS: Gram_14_rational_deep_holes
+PASS: Gram_15_exact_Voronoi
+PASS: Gram_15_rational_deep_holes
+PASS: Gram_16_exact_Voronoi
+PASS: Gram_16_rational_deep_holes
+PASS: Gram_17_exact_Voronoi
+PASS: Gram_17_rational_deep_holes
+PASS: Gram_18_exact_Voronoi
+PASS: Gram_18_rational_deep_holes
+PASS: Gram_19_exact_Voronoi
+PASS: Gram_19_rational_deep_holes
+PASS: Gram_20_exact_Voronoi
+PASS: Gram_20_rational_deep_holes
+PASS: Gram_21_exact_Voronoi
+PASS: Gram_21_rational_deep_holes
+PASS: Gram_22_exact_Voronoi
+PASS: Gram_22_rational_deep_holes
+PASS: published_nine_field_Gram_candidates
+PASS: exactly_nine_field_Gram_candidates
+PASS: all_fundamental_discriminants_are_exhausted
+PASS: candidate_1_all_trace_norm_index_solutions
+PASS: candidate_2_all_trace_norm_index_solutions
+PASS: candidate_3_all_trace_norm_index_solutions
+PASS: candidate_4_all_trace_norm_index_solutions
+PASS: candidate_5_all_trace_norm_index_solutions
+PASS: candidate_6_all_trace_norm_index_solutions
+PASS: candidate_7_all_trace_norm_index_solutions
+PASS: candidate_8_all_trace_norm_index_solutions
+PASS: candidate_9_all_trace_norm_index_solutions
+PASS: all_possible_b2_values
+PASS: three_empty_rows_are_excluded
+PASS: six_Gram_candidates_survive
+PASS: all_survivors_except_m3_have_index_one
+PASS: m3_both_values_two_force_cross_term_plus_or_minus_two
+PASS: m3_forced_cross_traces_contradict_B_2
+PASS: m3_other_b_values_have_norm_one
+PASS: m3_conjugate_coefficients_are_unit_square_equivalent
+PASS: m21_conjugate_coefficients_are_unit_square_equivalent
+PASS: published_six_representative_Gram_and_radius_records
+PASS: representative_1_unimodular_integral_basis
+PASS: representative_1_positive_integral_coefficient
+PASS: representative_1_trace_Gram
+PASS: representative_1_determinant_identity
+PASS: representative_1_exact_covering_radius
+PASS: representative_1_strict_threshold
+PASS: representative_2_unimodular_integral_basis
+PASS: representative_2_positive_integral_coefficient
+PASS: representative_2_trace_Gram
+PASS: representative_2_determinant_identity
+PASS: representative_2_exact_covering_radius
+PASS: representative_2_strict_threshold
+PASS: representative_3_unimodular_integral_basis
+PASS: representative_3_positive_integral_coefficient
+PASS: representative_3_trace_Gram
+PASS: representative_3_determinant_identity
+PASS: representative_3_exact_covering_radius
+PASS: representative_3_strict_threshold
+PASS: representative_4_unimodular_integral_basis
+PASS: representative_4_positive_integral_coefficient
+PASS: representative_4_trace_Gram
+PASS: representative_4_determinant_identity
+PASS: representative_4_exact_covering_radius
+PASS: representative_4_strict_threshold
+PASS: representative_5_unimodular_integral_basis
+PASS: representative_5_positive_integral_coefficient
+PASS: representative_5_trace_Gram
+PASS: representative_5_determinant_identity
+PASS: representative_5_exact_covering_radius
+PASS: representative_5_strict_threshold
+PASS: representative_6_unimodular_integral_basis
+PASS: representative_6_positive_integral_coefficient
+PASS: representative_6_trace_Gram
+PASS: representative_6_determinant_identity
+PASS: representative_6_exact_covering_radius
+PASS: representative_6_strict_threshold
+PASS: constructed_Gram_matrices_are_exactly_the_six_survivors
+PASS: m5_two_F_isometry_classes_are_distinct
+PASS: Corollary_1_9_fields
+PASS: m3_twisted_and_standard_radii
+SUMMARY: 115 PASS / 0 FAIL

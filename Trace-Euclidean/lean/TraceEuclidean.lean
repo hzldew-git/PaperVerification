@@ -20,6 +20,10 @@ import TraceEuclidean.PseudoBasis
 import TraceEuclidean.PseudoBasisDeterminant
 import TraceEuclidean.QuadraticArithmetic
 import TraceEuclidean.QuadraticClassification
+import TraceEuclidean.V15GramEnumeration
+import TraceEuclidean.V15QuadraticSieve
+import TraceEuclidean.V15FinitenessAssembly
+import TraceEuclidean.V15SixRadii
 import TraceEuclidean.QuadraticFieldBridge
 import TraceEuclidean.QuadraticGeometry
 import TraceEuclidean.QuadraticIntegralBasis

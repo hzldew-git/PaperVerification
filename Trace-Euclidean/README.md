@@ -1,5 +1,9 @@
 # Trace-Euclidean verification package
 
+**Version notice:** This README and the active release index describe v9.
+The v15 work on this branch is documented in `V15_STATUS.md` and remains
+Grade C pending its main proof bridges.
+
 This directory is the public computational companion to the manuscript version
 identified by the SHA-256 digest in `results/summary.json`. It contains
 Mathematica verification, a Lean 4 formalization of selected proof obligations,

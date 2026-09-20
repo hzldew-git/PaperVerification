@@ -1,0 +1,1158 @@
+{
+  "schema_version": 3,
+  "manuscript": {
+    "filename": "Trace-Euclidean-v15.tex",
+    "version": "v15",
+    "sha256": "83a236e93648ce0802f8a0d3022de63710d089f3a4f7e61214a4c855459597b5",
+    "line_count": 1894
+  },
+  "labels": {
+    "sec:introduction": {
+      "number": "1",
+      "page": "1"
+    },
+    "defn:trace-Euclidean": {
+      "number": "1.1",
+      "page": "3"
+    },
+    "thm:finiteness-classic": {
+      "number": "1.2",
+      "page": "3"
+    },
+    "thm:finiteness-integral": {
+      "number": "1.3",
+      "page": "3"
+    },
+    "re:finiteness": {
+      "number": "1.4",
+      "page": "3"
+    },
+    "defn:p-norm": {
+      "number": "1.5",
+      "page": "4"
+    },
+    "p-norm-rela": {
+      "number": "1.1",
+      "page": "4"
+    },
+    "implication-Euclidean-maximal": {
+      "number": "1.2",
+      "page": "4"
+    },
+    "cor:p-norm": {
+      "number": "1.6",
+      "page": "4"
+    },
+    "thm:rank-one-classification": {
+      "number": "1.7",
+      "page": "5"
+    },
+    "defn:trace-euclidean-field": {
+      "number": "1.8",
+      "page": "5"
+    },
+    "cor:trace-euclidean-quadratic": {
+      "number": "1.9",
+      "page": "5"
+    },
+    "sec:preliminaries": {
+      "number": "2",
+      "page": "6"
+    },
+    "com-diag": {
+      "number": "2.1",
+      "page": "6"
+    },
+    "phiQ": {
+      "number": "2.2",
+      "page": "6"
+    },
+    "eq:trace-form-compatibility": {
+      "number": "2.3",
+      "page": "7"
+    },
+    "rhoTL=supinf": {
+      "number": "2.4",
+      "page": "7"
+    },
+    "lem:Phi": {
+      "number": "2.1",
+      "page": "7"
+    },
+    "eq:inf-approx": {
+      "number": "2.5",
+      "page": "7"
+    },
+    "eq:cont-est": {
+      "number": "2.6",
+      "page": "7"
+    },
+    "eq:Phi-compatibility": {
+      "number": "2.7",
+      "page": "8"
+    },
+    "lem:phi-Euclidean-trace": {
+      "number": "2.2",
+      "page": "9"
+    },
+    "sec:volume-trace": {
+      "number": "3",
+      "page": "9"
+    },
+    "vol-defn": {
+      "number": "3.1",
+      "page": "10"
+    },
+    "eq:voronoi-covolume": {
+      "number": "3.2",
+      "page": "10"
+    },
+    "lem:gram-det": {
+      "number": "3.1",
+      "page": "10"
+    },
+    "eq:inner-product-sigma": {
+      "number": "3.3",
+      "page": "10"
+    },
+    "detG": {
+      "number": "3.4",
+      "page": "11"
+    },
+    "detC": {
+      "number": "3.5",
+      "page": "11"
+    },
+    "detA1": {
+      "number": "3.6",
+      "page": "11"
+    },
+    "NvL": {
+      "number": "3.7",
+      "page": "11"
+    },
+    "lem:covolume-formula": {
+      "number": "3.2",
+      "page": "12"
+    },
+    "lem:covering-volume-inequality": {
+      "number": "3.3",
+      "page": "12"
+    },
+    "lem:discriminant-norm-bound": {
+      "number": "3.4",
+      "page": "12"
+    },
+    "eq:disc-bound-step1": {
+      "number": "3.8",
+      "page": "12"
+    },
+    "norm-inclusion": {
+      "number": "3.9",
+      "page": "12"
+    },
+    "norm-scale-volume-inclusion": {
+      "number": "3.10",
+      "page": "12"
+    },
+    "sec:root-discriminant-bounds": {
+      "number": "4",
+      "page": "13"
+    },
+    "lem:root-discriminant-bound": {
+      "number": "4.1",
+      "page": "13"
+    },
+    "lem:discriminant-lower-bounds": {
+      "number": "4.2",
+      "page": "13"
+    },
+    "eq:beta-discriminant": {
+      "number": "4.1",
+      "page": "13"
+    },
+    "eq:odlyzko-explicit": {
+      "number": "4.2",
+      "page": "13"
+    },
+    "cor:finite-grid": {
+      "number": "4.3",
+      "page": "14"
+    },
+    "eq:Hd": {
+      "number": "4.3",
+      "page": "14"
+    },
+    "eq:def-h": {
+      "number": "4.4",
+      "page": "14"
+    },
+    "eq:admissible-pairs": {
+      "number": "4.5",
+      "page": "14"
+    },
+    "sec:finiteness": {
+      "number": "5",
+      "page": "14"
+    },
+    "lem:bounded-discriminant-volume-finiteness": {
+      "number": "5.1",
+      "page": "14"
+    },
+    "sec:trace-euclidean-fields": {
+      "number": "6",
+      "page": "15"
+    },
+    "eq:trace-covering-maximum": {
+      "number": "6.1",
+      "page": "16"
+    },
+    "prop:trace-euclidean-quadratic": {
+      "number": "6.1",
+      "page": "16"
+    },
+    "rhoa": {
+      "number": "6.2",
+      "page": "16"
+    },
+    "eq:rank-one-strict-criterion": {
+      "number": "6.3",
+      "page": "17"
+    },
+    "eq:rank-one-gram-bounds": {
+      "number": "6.4",
+      "page": "17"
+    },
+    "eq:rank-one-index-norm": {
+      "number": "6.5",
+      "page": "18"
+    },
+    "eq:rank-one-trace-norm": {
+      "number": "6.6",
+      "page": "18"
+    },
+    "tab:admissible-classical": {
+      "number": "1",
+      "page": "20"
+    },
+    "tab:max-rank-degree-classical": {
+      "number": "2",
+      "page": "20"
+    },
+    "tab:admissible-norm": {
+      "number": "3",
+      "page": "21"
+    },
+    "tab:max-rank-degree-norm": {
+      "number": "4",
+      "page": "23"
+    }
+  },
+  "table_rows": {
+    "classic": [
+      {
+        "n": 1,
+        "d": 1,
+        "h_display": "693147/500000",
+        "volume_upper_display": "4"
+      },
+      {
+        "n": 2,
+        "d": 1,
+        "h_display": "114473/100000",
+        "volume_upper_display": "986961/100000"
+      },
+      {
+        "n": 3,
+        "d": 1,
+        "h_display": "954941/1000000",
+        "volume_upper_display": "8773/500"
+      },
+      {
+        "n": 4,
+        "d": 1,
+        "h_display": "199539/250000",
+        "volume_upper_display": "243523/10000"
+      },
+      {
+        "n": 5,
+        "d": 1,
+        "h_display": "33217/50000",
+        "volume_upper_display": "11083/400"
+      },
+      {
+        "n": 6,
+        "d": 1,
+        "h_display": "547477/1000000",
+        "volume_upper_display": "267053/10000"
+      },
+      {
+        "n": 7,
+        "d": 1,
+        "h_display": "221831/500000",
+        "volume_upper_display": "44647/2000"
+      },
+      {
+        "n": 8,
+        "d": 1,
+        "h_display": "43777/125000",
+        "volume_upper_display": "41183/2500"
+      },
+      {
+        "n": 9,
+        "d": 1,
+        "h_display": "4144/15625",
+        "volume_upper_display": "54401/5000"
+      },
+      {
+        "n": 10,
+        "d": 1,
+        "h_display": "5851/31250",
+        "volume_upper_display": "325167/50000"
+      },
+      {
+        "n": 11,
+        "d": 1,
+        "h_display": "115173/1000000",
+        "volume_upper_display": "70997/20000"
+      },
+      {
+        "n": 12,
+        "d": 1,
+        "h_display": "12047/250000",
+        "volume_upper_display": "178293/100000"
+      },
+      {
+        "n": 1,
+        "d": 2,
+        "h_display": "516579/250000",
+        "volume_upper_display": "789569/100000"
+      },
+      {
+        "n": 2,
+        "d": 2,
+        "h_display": "1373169/1000000",
+        "volume_upper_display": "31171/2000"
+      },
+      {
+        "n": 3,
+        "d": 2,
+        "h_display": "87181/100000",
+        "volume_upper_display": "136731/10000"
+      },
+      {
+        "n": 4,
+        "d": 2,
+        "h_display": "477289/1000000",
+        "volume_upper_display": "33737/5000"
+      },
+      {
+        "n": 5,
+        "d": 2,
+        "h_display": "3783/25000",
+        "volume_upper_display": "106551/50000"
+      },
+      {
+        "n": 1,
+        "d": 3,
+        "h_display": "56721/25000",
+        "volume_upper_display": "966819/100000"
+      },
+      {
+        "n": 2,
+        "d": 3,
+        "h_display": "1046447/1000000",
+        "volume_upper_display": "162167/20000"
+      },
+      {
+        "n": 3,
+        "d": 3,
+        "h_display": "12479/62500",
+        "volume_upper_display": "182029/100000"
+      },
+      {
+        "n": 1,
+        "d": 4,
+        "h_display": "2151631/1000000",
+        "volume_upper_display": "53743/6250"
+      },
+      {
+        "n": 2,
+        "d": 4,
+        "h_display": "5623/15625",
+        "volume_upper_display": "205391/100000"
+      },
+      {
+        "n": 1,
+        "d": 5,
+        "h_display": "1777311/1000000",
+        "volume_upper_display": "295697/50000"
+      },
+      {
+        "n": 1,
+        "d": 6,
+        "h_display": "1423463/1000000",
+        "volume_upper_display": "103787/25000"
+      }
+    ],
+    "integral": [
+      {
+        "n": 1,
+        "d": 1,
+        "h_display": "1039721/500000",
+        "volume_upper_display": "4"
+      },
+      {
+        "n": 2,
+        "d": 1,
+        "h_display": "1837877/1000000",
+        "volume_upper_display": "986961/100000"
+      },
+      {
+        "n": 3,
+        "d": 1,
+        "h_display": "206011/125000",
+        "volume_upper_display": "8773/500"
+      },
+      {
+        "n": 4,
+        "d": 1,
+        "h_display": "1491303/1000000",
+        "volume_upper_display": "243523/10000"
+      },
+      {
+        "n": 5,
+        "d": 1,
+        "h_display": "84843/62500",
+        "volume_upper_display": "11083/400"
+      },
+      {
+        "n": 6,
+        "d": 1,
+        "h_display": "77539/62500",
+        "volume_upper_display": "267053/10000"
+      },
+      {
+        "n": 7,
+        "d": 1,
+        "h_display": "1136809/1000000",
+        "volume_upper_display": "44647/2000"
+      },
+      {
+        "n": 8,
+        "d": 1,
+        "h_display": "260841/250000",
+        "volume_upper_display": "41183/2500"
+      },
+      {
+        "n": 9,
+        "d": 1,
+        "h_display": "958363/1000000",
+        "volume_upper_display": "54401/5000"
+      },
+      {
+        "n": 10,
+        "d": 1,
+        "h_display": "880379/1000000",
+        "volume_upper_display": "325167/50000"
+      },
+      {
+        "n": 11,
+        "d": 1,
+        "h_display": "2526/3125",
+        "volume_upper_display": "70997/20000"
+      },
+      {
+        "n": 12,
+        "d": 1,
+        "h_display": "148267/200000",
+        "volume_upper_display": "178293/100000"
+      },
+      {
+        "n": 13,
+        "d": 1,
+        "h_display": "84843/125000",
+        "volume_upper_display": "165849/200000"
+      },
+      {
+        "n": 14,
+        "d": 1,
+        "h_display": "619997/1000000",
+        "volume_upper_display": "179559/500000"
+      },
+      {
+        "n": 15,
+        "d": 1,
+        "h_display": "564641/1000000",
+        "volume_upper_display": "145499/1000000"
+      },
+      {
+        "n": 16,
+        "d": 1,
+        "h_display": "256151/500000",
+        "volume_upper_display": "276903/5000000"
+      },
+      {
+        "n": 17,
+        "d": 1,
+        "h_display": "462661/1000000",
+        "volume_upper_display": "198757/10000000"
+      },
+      {
+        "n": 18,
+        "d": 1,
+        "h_display": "103863/250000",
+        "volume_upper_display": "134959/20000000"
+      },
+      {
+        "n": 19,
+        "d": 1,
+        "h_display": "370443/1000000",
+        "volume_upper_display": "108679/50000000"
+      },
+      {
+        "n": 20,
+        "d": 1,
+        "h_display": "81859/250000",
+        "volume_upper_display": "166499/250000000"
+      },
+      {
+        "n": 21,
+        "d": 1,
+        "h_display": "143129/500000",
+        "volume_upper_display": "194579/1000000000"
+      },
+      {
+        "n": 22,
+        "d": 1,
+        "h_display": "123379/500000",
+        "volume_upper_display": "543233/10000000000"
+      },
+      {
+        "n": 23,
+        "d": 1,
+        "h_display": "208803/1000000",
+        "volume_upper_display": "36303/2500000000"
+      },
+      {
+        "n": 24,
+        "d": 1,
+        "h_display": "43069/250000",
+        "volume_upper_display": "186163/50000000000"
+      },
+      {
+        "n": 25,
+        "d": 1,
+        "h_display": "137071/1000000",
+        "volume_upper_display": "917233/1000000000000"
+      },
+      {
+        "n": 26,
+        "d": 1,
+        "h_display": "20619/200000",
+        "volume_upper_display": "217439/1000000000000"
+      },
+      {
+        "n": 27,
+        "d": 1,
+        "h_display": "14053/200000",
+        "volume_upper_display": "6209/125000000000"
+      },
+      {
+        "n": 28,
+        "d": 1,
+        "h_display": "4813/125000",
+        "volume_upper_display": "27373/2500000000000"
+      },
+      {
+        "n": 29,
+        "d": 1,
+        "h_display": "1549/200000",
+        "volume_upper_display": "58293/25000000000000"
+      },
+      {
+        "n": 1,
+        "d": 2,
+        "h_display": "3452611/1000000",
+        "volume_upper_display": "789569/100000"
+      },
+      {
+        "n": 2,
+        "d": 2,
+        "h_display": "2759463/1000000",
+        "volume_upper_display": "31171/2000"
+      },
+      {
+        "n": 3,
+        "d": 2,
+        "h_display": "282263/125000",
+        "volume_upper_display": "136731/10000"
+      },
+      {
+        "n": 4,
+        "d": 2,
+        "h_display": "58237/31250",
+        "volume_upper_display": "33737/5000"
+      },
+      {
+        "n": 5,
+        "d": 2,
+        "h_display": "768807/500000",
+        "volume_upper_display": "106551/50000"
+      },
+      {
+        "n": 6,
+        "d": 2,
+        "h_display": "1259527/1000000",
+        "volume_upper_display": "58423/125000"
+      },
+      {
+        "n": 7,
+        "d": 2,
+        "h_display": "20337/20000",
+        "volume_upper_display": "241/3200"
+      },
+      {
+        "n": 8,
+        "d": 2,
+        "h_display": "40073/50000",
+        "volume_upper_display": "929131/100000000"
+      },
+      {
+        "n": 9,
+        "d": 2,
+        "h_display": "7597/12500",
+        "volume_upper_display": "181139/200000000"
+      },
+      {
+        "n": 10,
+        "d": 2,
+        "h_display": "26983/62500",
+        "volume_upper_display": "178777/2500000000"
+      },
+      {
+        "n": 11,
+        "d": 2,
+        "h_display": "270373/1000000",
+        "volume_upper_display": "233317/50000000000"
+      },
+      {
+        "n": 12,
+        "d": 2,
+        "h_display": "1897/15625",
+        "volume_upper_display": "255861/1000000000000"
+      },
+      {
+        "n": 1,
+        "d": 3,
+        "h_display": "2174141/500000",
+        "volume_upper_display": "966819/100000"
+      },
+      {
+        "n": 2,
+        "d": 3,
+        "h_display": "48842/15625",
+        "volume_upper_display": "162167/20000"
+      },
+      {
+        "n": 3,
+        "d": 3,
+        "h_display": "455821/200000",
+        "volume_upper_display": "182029/100000"
+      },
+      {
+        "n": 4,
+        "d": 3,
+        "h_display": "814011/500000",
+        "volume_upper_display": "41091/250000"
+      },
+      {
+        "n": 5,
+        "d": 3,
+        "h_display": "1097941/1000000",
+        "volume_upper_display": "184773/25000000"
+      },
+      {
+        "n": 6,
+        "d": 3,
+        "h_display": "162593/250000",
+        "volume_upper_display": "188877/1000000000"
+      },
+      {
+        "n": 7,
+        "d": 3,
+        "h_display": "26279/100000",
+        "volume_upper_display": "300103/100000000000"
+      },
+      {
+        "n": 1,
+        "d": 4,
+        "h_display": "246211/50000",
+        "volume_upper_display": "53743/6250"
+      },
+      {
+        "n": 2,
+        "d": 4,
+        "h_display": "156623/50000",
+        "volume_upper_display": "205391/100000"
+      },
+      {
+        "n": 3,
+        "d": 4,
+        "h_display": "1924347/1000000",
+        "volume_upper_display": "392473/5000000"
+      },
+      {
+        "n": 4,
+        "d": 4,
+        "h_display": "1008213/1000000",
+        "volume_upper_display": "215231/250000000"
+      },
+      {
+        "n": 5,
+        "d": 4,
+        "h_display": "268749/1000000",
+        "volume_upper_display": "365579/100000000000"
+      },
+      {
+        "n": 1,
+        "d": 5,
+        "h_display": "5243047/1000000",
+        "volume_upper_display": "295697/50000"
+      },
+      {
+        "n": 2,
+        "d": 5,
+        "h_display": "1428751/500000",
+        "volume_upper_display": "11851/40000"
+      },
+      {
+        "n": 3,
+        "d": 5,
+        "h_display": "39963/31250",
+        "volume_upper_display": "141481/100000000"
+      },
+      {
+        "n": 4,
+        "d": 5,
+        "h_display": "23197/250000",
+        "volume_upper_display": "69113/50000000000"
+      },
+      {
+        "n": 1,
+        "d": 6,
+        "h_display": "2791173/500000",
+        "volume_upper_display": "103787/25000"
+      },
+      {
+        "n": 2,
+        "d": 6,
+        "h_display": "1293307/500000",
+        "volume_upper_display": "107717/2500000"
+      },
+      {
+        "n": 3,
+        "d": 6,
+        "h_display": "631313/1000000",
+        "volume_upper_display": "126753/5000000000"
+      },
+      {
+        "n": 2,
+        "d": 7,
+        "h_display": "1143409/1000000",
+        "volume_upper_display": "150201/250000000"
+      },
+      {
+        "n": 2,
+        "d": 8,
+        "h_display": "159433/125000",
+        "volume_upper_display": "195603/1000000000"
+      },
+      {
+        "n": 2,
+        "d": 9,
+        "h_display": "520141/1000000",
+        "volume_upper_display": "107957/10000000000"
+      }
+    ]
+  },
+  "table_pair_counts": {
+    "classic": 24,
+    "integral": 63
+  },
+  "rank_bounds_by_degree": {
+    "classic": [
+      12,
+      5,
+      3,
+      2,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "integral": [
+      29,
+      12,
+      7,
+      5,
+      4,
+      3,
+      2,
+      2,
+      2,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "degree_bounds_by_rank": {
+    "classic": [
+      6,
+      4,
+      3,
+      2,
+      2,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "integral": [
+      6,
+      9,
+      6,
+      5,
+      4,
+      3,
+      3,
+      2,
+      2,
+      2,
+      2,
+      2,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "reduced_gram_triples": [
+    [
+      2,
+      0,
+      2
+    ],
+    [
+      2,
+      0,
+      3
+    ],
+    [
+      2,
+      0,
+      4
+    ],
+    [
+      2,
+      0,
+      5
+    ],
+    [
+      2,
+      1,
+      2
+    ],
+    [
+      2,
+      1,
+      3
+    ],
+    [
+      2,
+      1,
+      4
+    ],
+    [
+      2,
+      1,
+      5
+    ],
+    [
+      2,
+      1,
+      6
+    ],
+    [
+      2,
+      1,
+      7
+    ],
+    [
+      3,
+      0,
+      3
+    ],
+    [
+      3,
+      0,
+      4
+    ],
+    [
+      3,
+      1,
+      3
+    ],
+    [
+      3,
+      1,
+      4
+    ],
+    [
+      3,
+      1,
+      5
+    ],
+    [
+      3,
+      1,
+      6
+    ],
+    [
+      4,
+      1,
+      4
+    ],
+    [
+      4,
+      1,
+      5
+    ],
+    [
+      4,
+      2,
+      4
+    ],
+    [
+      4,
+      2,
+      5
+    ],
+    [
+      4,
+      2,
+      6
+    ],
+    [
+      5,
+      2,
+      5
+    ]
+  ],
+  "field_gram_candidates": [
+    [
+      2,
+      2,
+      0,
+      4,
+      1
+    ],
+    [
+      3,
+      4,
+      2,
+      4,
+      1
+    ],
+    [
+      5,
+      2,
+      0,
+      5,
+      2
+    ],
+    [
+      5,
+      2,
+      1,
+      3,
+      1
+    ],
+    [
+      5,
+      4,
+      1,
+      4,
+      3
+    ],
+    [
+      5,
+      4,
+      2,
+      6,
+      4
+    ],
+    [
+      13,
+      2,
+      1,
+      7,
+      1
+    ],
+    [
+      17,
+      3,
+      1,
+      6,
+      1
+    ],
+    [
+      21,
+      5,
+      2,
+      5,
+      1
+    ]
+  ],
+  "representatives": [
+    {
+      "m": 2,
+      "a": "1",
+      "basis": [
+        "1",
+        "sqrt(2)"
+      ],
+      "gram": [
+        2,
+        0,
+        4
+      ],
+      "radius": "3/2"
+    },
+    {
+      "m": 3,
+      "a": "sqrt(3) + 2",
+      "basis": [
+        "1",
+        "-1 + sqrt(3)"
+      ],
+      "gram": [
+        4,
+        2,
+        4
+      ],
+      "radius": "4/3"
+    },
+    {
+      "m": 5,
+      "a": "1",
+      "basis": [
+        "1",
+        "1/2 + sqrt(5)/2"
+      ],
+      "gram": [
+        2,
+        1,
+        3
+      ],
+      "radius": "9/10"
+    },
+    {
+      "m": 5,
+      "a": "2",
+      "basis": [
+        "1",
+        "1/2 + sqrt(5)/2"
+      ],
+      "gram": [
+        4,
+        2,
+        6
+      ],
+      "radius": "9/5"
+    },
+    {
+      "m": 13,
+      "a": "1",
+      "basis": [
+        "1",
+        "1/2 + sqrt(13)/2"
+      ],
+      "gram": [
+        2,
+        1,
+        7
+      ],
+      "radius": "49/26"
+    },
+    {
+      "m": 21,
+      "a": "sqrt(21)/2 + 5/2",
+      "basis": [
+        "5/2 - sqrt(21)/2",
+        "1"
+      ],
+      "gram": [
+        5,
+        2,
+        5
+      ],
+      "radius": "25/14"
+    }
+  ],
+  "private_check_counts": {
+    "python_sympy": 1165,
+    "mathematica": 112
+  }
+}

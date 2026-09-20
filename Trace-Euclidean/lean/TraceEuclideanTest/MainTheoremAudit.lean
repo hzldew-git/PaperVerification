@@ -103,3 +103,25 @@ import TraceEuclidean
 #print axioms TraceEuclidean.GlobalLatticeClass.rank_pos
 #print axioms TraceEuclidean.exp_classicTraceVolumeExponent_eq_paperTraceVolumeBound
 #print axioms TraceEuclidean.exp_integralTraceVolumeExponent_eq
+
+-- V15-specific declarations and their transitive trust dependencies.
+#check TraceEuclidean.v15_admissible_gram_iff_mem
+#check TraceEuclidean.v15_quadratic_candidate_mem
+#check TraceEuclidean.v15_quadratic_candidate_six_rows
+#check TraceEuclidean.v15_six_radius_values
+#check TraceEuclidean.v15_integral_rank_le_34
+#check TraceEuclidean.v15_classic_finite_of_degree_bound
+#check TraceEuclidean.v15_integral_finite_of_degree_bound
+#check TraceEuclidean.V15OdlyzkoDegreeInput
+#check TraceEuclidean.V15RankOneClassicInput
+#check TraceEuclidean.v15_classic_finite_of_odlyzko
+#check TraceEuclidean.v15_integral_finite_of_odlyzko
+#print axioms TraceEuclidean.v15_admissible_gram_iff_mem
+#print axioms TraceEuclidean.v15_quadratic_candidate_mem
+#print axioms TraceEuclidean.v15_quadratic_candidate_six_rows
+#print axioms TraceEuclidean.v15_six_radius_values
+#print axioms TraceEuclidean.v15_integral_rank_le_34
+#print axioms TraceEuclidean.v15_classic_finite_of_degree_bound
+#print axioms TraceEuclidean.v15_integral_finite_of_degree_bound
+#print axioms TraceEuclidean.v15_classic_finite_of_odlyzko
+#print axioms TraceEuclidean.v15_integral_finite_of_odlyzko
