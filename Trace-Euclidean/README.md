@@ -55,7 +55,14 @@ reduced basis and determinant identity. The two displayed positive-integer
 scalar formulas are proved on the full ring of integers, and all clauses are
 bundled in one proposition-level Lean theorem. The canonical abstract
 rank-one presentation is exported at an arbitrary real trace threshold and
-at the manuscript's threshold equal to the field degree.
+at the manuscript's threshold equal to the field degree. An additional Lean
+bridge constructs an actual coordinate isometry for every positive-rank
+abstract lattice over an already coded totally real field, preserving trace
+Euclideanity and classic integrality. Every number field can be coded inside
+the fixed algebraic closure; for totally real fields the code preserves total
+reality, identifies the integer rings, and preserves rational traces.
+Transport of the quadratic space and lattice along that field isomorphism
+remains a separate formal step.
 
 ## Historical v9 evidence
 

@@ -480,6 +480,33 @@ TraceEuclidean.GlobalLatticePresentation.v15_pnorm_implies_trace (P : TraceEucli
   (p : TraceEuclidean.V15PNormExponent) (hp : P.IsV15PNormEuclidean p) : P.IsTraceEuclidean ↑P.degree
 TraceEuclidean.v15_pnorm_finite_of_odlyzko_table4 (hTable : TraceEuclidean.V15OdlyzkoTable4Input)
   (p : TraceEuclidean.V15PNormExponent) : {c | ∃ P, ⟦P⟧ = c ∧ P.IsV15PNormEuclidean p}.Finite
+TraceEuclidean.v15_number_field_has_code.{u_1} (F : Type u_1) [Field F] [NumberField F] : ∃ C, Nonempty (F ≃ₐ[ℚ] ↥↑C)
+TraceEuclidean.v15_totally_real_field_code.{u_1} (F : Type u_1) [Field F] [NumberField F]
+  [NumberField.IsTotallyReal F] :
+  ∃ C e,
+    NumberField.IsTotallyReal ↥↑C ∧
+      (∀ (a : NumberField.RingOfIntegers F), ↑((NumberField.RingOfIntegers.mapRingEquiv e.toRingEquiv) a) = e ↑a) ∧
+        ∀ (x : F), (Algebra.trace ℚ ↥↑C) (e x) = (Algebra.trace ℚ F) x
+TraceEuclidean.NumberFieldLattice.v15AbstractToCanonical.{u_1} (C : TraceEuclidean.CodedNumberField)
+  [NumberField.IsTotallyReal ↥↑C] {V : Type u_1} [AddCommGroup V] [Module (↥↑C) V]
+  [Module (NumberField.RingOfIntegers ↥↑C) V] [IsScalarTower (NumberField.RingOfIntegers ↥↑C) (↥↑C) V]
+  [FiniteDimensional (↥↑C) V] (M : TraceEuclidean.NumberFieldLattice) (hn : 0 < Module.finrank (↥↑C) V) :
+  ∃ P,
+    P.field = C ∧
+      P.rank = Module.finrank (↥↑C) V ∧
+        Nonempty (TraceEuclidean.NumberFieldLatticeEquiv M P.toNumberFieldLattice) ∧
+          (P.IsTraceEuclidean ↑P.degree ↔ M.IsTraceEuclidean ↑M.degree) ∧ (P.IsClassicIntegral ↔ M.IsClassicIntegral)
+TraceEuclidean.NumberFieldLattice.v15AbstractRankOneIdealBridge.{u_1} (C : TraceEuclidean.CodedNumberField)
+  [NumberField.IsTotallyReal ↥↑C] {V : Type u_1} [AddCommGroup V] [Module (↥↑C) V]
+  [Module (NumberField.RingOfIntegers ↥↑C) V] [IsScalarTower (NumberField.RingOfIntegers ↥↑C) (↥↑C) V]
+  [FiniteDimensional (↥↑C) V] (M : TraceEuclidean.NumberFieldLattice) (hrank : Module.finrank (↥↑C) V = 1) (t : ℝ) :
+  ∃ I α,
+    I ≠ 0 ∧
+      (∀ (x : V), x ∈ M.L ↔ (TraceEuclidean.NumberFieldLattice.v15CoordinateEquiv C M) x ⟨0, ⋯⟩ ∈ I) ∧
+        (∀ (x : V), M.Q x = α * (TraceEuclidean.NumberFieldLattice.v15CoordinateEquiv C M) x ⟨0, ⋯⟩ ^ 2) ∧
+          (∀ (σ : ↥↑C →+* ℝ), 0 < σ α) ∧
+            TraceEuclidean.v15ValueFractionalIdeal I α ≤ 1 ∧
+              (M.IsTraceEuclidean t ↔ TraceEuclidean.GlobalLatticePresentation.V15IdealTraceEuclideanAt I α t)
 'TraceEuclidean.v15_reduced_gram_exact_radius' depends on axioms: [propext, Classical.choice, Quot.sound]
 'TraceEuclidean.v15_reduced_gram_exact_radius_rat' depends on axioms: [propext, Classical.choice, Quot.sound]
 'TraceEuclidean.GlobalLatticePresentation.rankOne_ideal_bridge' depends on axioms: [propext,
@@ -499,3 +526,9 @@ TraceEuclidean.v15_pnorm_finite_of_odlyzko_table4 (hTable : TraceEuclidean.V15Od
  Classical.choice,
  Quot.sound]
 'TraceEuclidean.v15_pnorm_finite_of_odlyzko_table4' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15_number_field_has_code' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15_totally_real_field_code' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.NumberFieldLattice.v15AbstractToCanonical' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.NumberFieldLattice.v15AbstractRankOneIdealBridge' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

@@ -27,7 +27,15 @@ GlobalLatticePresentation.rankOne_ideal_bridge_at now exports this
 presentation for the canonical rank-one global lattice model, including
 positivity, integrality, and the strict trace condition at any real threshold.
 Its degree specialization matches the manuscript. The theorem
-v15_proposition_six_one_full exports the general reduced-binary covering
+v15AbstractToCanonical adds an actual isometry from any positive-rank
+abstract lattice over an already coded field to the canonical coordinate
+model, preserving strict trace Euclideanity and classic integrality;
+v15AbstractRankOneIdealBridge composes this with the ideal representation.
+v15_totally_real_field_code identifies total reality, integer rings, and
+rational traces under the field coding isomorphism, while transport of the
+quadratic space and lattice along it remains outside the current Lean endpoint.
+The theorem v15_proposition_six_one_full
+exports the general reduced-binary covering
 radius and determinant identity for actual fractional ideals and both
 positive-integer scalar specializations on the full integer ring. Corollary
 1.6 has a varying-field endpoint for finite p >= 1 and p = infinity. These

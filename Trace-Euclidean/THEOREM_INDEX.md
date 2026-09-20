@@ -20,6 +20,7 @@ calculation was rerun. EXTERNAL_INPUT means a cited result is an explicit premis
 | Reduced Gram sieve | 22 triples, nine field rows, six surviving rows, all linked to actual ideals | FORMALIZED_COMPONENT |
 | Proposition 6.1, general binary radius and scalar formulas | v15_reduced_gram_exact_radius, v15_proposition_six_one_ideal, v15_proposition_six_one_scalar_cases, v15_proposition_six_one_full; arbitrary ideal basis, determinant, and both scalar formulas included | FORMALIZED_COMPONENT; independent semantic review pending |
 | Abstract rank-one ideal presentation | GlobalLatticePresentation.rankOne_ideal_bridge_at and rankOne_ideal_bridge_degree: nonzero fractional ideal, quadratic coefficient, positivity, integrality, and equivalent strict trace condition at arbitrary and degree thresholds | FORMALIZED_COMPONENT in the canonical coordinate model |
+| Abstract-space coordinate transport | v15AbstractToCanonical and v15AbstractRankOneIdealBridge: actual isometry, full lattice, quadratic values, strict trace condition, classic integrality, and rank-one ideal data over an already coded field; v15_totally_real_field_code identifies total reality, integer rings, and rational traces | FORMALIZED_COMPONENT; field-isomorphism transport of the quadratic space and lattice remains open |
 | Section 4 numerical tables | Public Python and Wolfram v15 reruns; source-bound private checks | COMPUTATION_VERIFIED |
 
 The active [v15 audit](docs/audit/v15/05_theorem_correspondence.md) expands the

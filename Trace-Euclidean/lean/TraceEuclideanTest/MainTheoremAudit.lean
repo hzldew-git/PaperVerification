@@ -192,6 +192,10 @@ import TraceEuclidean
 #check TraceEuclidean.v15_proposition_six_one_full
 #check TraceEuclidean.GlobalLatticePresentation.v15_pnorm_implies_trace
 #check TraceEuclidean.v15_pnorm_finite_of_odlyzko_table4
+#check TraceEuclidean.v15_number_field_has_code
+#check TraceEuclidean.v15_totally_real_field_code
+#check TraceEuclidean.NumberFieldLattice.v15AbstractToCanonical
+#check TraceEuclidean.NumberFieldLattice.v15AbstractRankOneIdealBridge
 
 #print axioms TraceEuclidean.v15_reduced_gram_exact_radius
 #print axioms TraceEuclidean.v15_reduced_gram_exact_radius_rat
@@ -204,3 +208,7 @@ import TraceEuclidean
 #print axioms TraceEuclidean.v15_proposition_six_one_full
 #print axioms TraceEuclidean.GlobalLatticePresentation.v15_pnorm_implies_trace
 #print axioms TraceEuclidean.v15_pnorm_finite_of_odlyzko_table4
+#print axioms TraceEuclidean.v15_number_field_has_code
+#print axioms TraceEuclidean.v15_totally_real_field_code
+#print axioms TraceEuclidean.NumberFieldLattice.v15AbstractToCanonical
+#print axioms TraceEuclidean.NumberFieldLattice.v15AbstractRankOneIdealBridge

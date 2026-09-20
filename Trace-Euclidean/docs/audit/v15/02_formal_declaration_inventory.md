@@ -17,6 +17,10 @@
 | GlobalLatticePresentation.rankOne_ideal_bridge | Represents every canonical rank-one global lattice by a nonzero fractional ideal and coefficient, preserving positivity, integrality, and trace Euclideanity. |
 | v15_ideal_exact_radius_of, v15_proposition_six_one_ideal | Transfers the generic radius to every actual quadratic fractional ideal and packages its reduced basis and determinant identity. |
 | GlobalLatticePresentation.rankOne_ideal_bridge_at, rankOne_ideal_bridge_degree | Preserve the rank-one ideal presentation and strict trace condition at any real threshold and at the field degree. |
+| v15_number_field_has_code | Every number field is isomorphic to one finite intermediate field in the fixed algebraic closure. |
+| v15_totally_real_field_code | A totally real field has a totally real code; its field isomorphism identifies the integer rings and preserves the rational trace. |
+| NumberFieldLattice.v15AbstractToCanonical | An arbitrary positive-rank abstract lattice over an already coded totally real field has an actual canonical-coordinate isometry, preserving trace Euclideanity at the field degree and classic integrality. |
+| NumberFieldLattice.v15AbstractRankOneIdealBridge | Composes the coordinate isometry with the rank-one ideal theorem at any real threshold, retaining positivity, integrality, membership, and the quadratic formula. |
 | v15_proposition_six_one_scalar_cases, v15_proposition_six_one_full | Both positive-integer scalar formulas on the quadratic integer ring and a combined endpoint for all clauses of Proposition 6.1. |
 | GlobalLatticePresentation.v15_pnorm_implies_trace, v15_pnorm_finite_of_odlyzko_table4 | Power-mean implication for finite p >= 1 and infinity, followed by global finite-class conclusion from the cited Table 4 premise. |
 
