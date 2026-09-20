@@ -19,23 +19,27 @@ and v9 results still describe the prior v9 release. They are not v15 claims.
   ideal index one for every surviving row except `m=3`, and enumerates the
   three trace/norm/index solutions in that exceptional row.
 - Lean proves `rank ≤ 34` for the formal integral variable-degree class.
-- Lean assembles global finiteness from the paper's `degree ≤ 14` bound, and
-  derives that bound under explicit Odlyzko and rank-one classic-integrality
-  inputs. Those inputs are not hidden axioms.
+- Lean proves the strict root-discriminant inequalities of Theorems 1.2 and
+  1.3. It also proves that every integral rank-one presentation is classic
+  integral, including nonfree fractional-ideal lattices.
+- Lean derives `degree ≤ 14` and both global finiteness conclusions from the
+  published form of Odlyzko Table 4, row `b=4`. The table's discriminant
+  inequality remains an explicit cited external input; the numerical
+  conversion and all later deductions are proved without project axioms.
+- Lean proves the two-vector exclusion in the exceptional `m=3` row under the
+  paper's trace/norm and coordinate hypotheses.
 - Lean checks the six rational radius expressions. A separate proof is needed
   to identify them with the full covering radii of the relevant lattices.
 
 ## Remaining Grade B obligations
 
-1. Connect the cited unconditional Odlyzko discriminant row to the formal
-   coded fields without a theorem-level degree-bound premise.
-2. Prove rank-one integral implies classic integral for arbitrary full
-   projective ideal lattices, and derive the exact strict root-discriminant
-   bounds of Theorems 1.2 and 1.3.
-3. Bridge every rank-one fractional-ideal lattice to the reduced Gram and
+1. Record the cited Odlyzko Table 4 theorem as an accepted external result
+   for the formal coded fields, with its source and scope audited. The exact
+   table inequality is still a theorem parameter in the public Lean API.
+2. Bridge every rank-one fractional-ideal lattice to the reduced Gram and
    trace/norm/index conditions, prove the full binary covering formula,
    construct the six representatives, prove freeness and pairwise distinction.
-4. Re-audit the inherited real-quadratic field endpoint against v15, refresh
+3. Re-audit the inherited real-quadratic field endpoint against v15, refresh
    every v9 release document and result index, then run a clean release build.
 
 Current v15 assessment: **Grade C, partial formalization**. The v9 Grade B

@@ -42,8 +42,8 @@ theorem factorial_upper_stirling (n : ℕ) (hn : 0 < n) :
   simpa only [Nat.cast_add, Nat.cast_one, Nat.succ_eq_add_one,
     mul_assoc] using this
 
-theorem gamma_half_nat_lower (m : ℕ) (hm : 0 < m) :
-    (((m : ℝ) / (2 * Real.exp 1)) ^ ((m : ℝ) / 2) : ℝ) ≤
+theorem gamma_half_nat_lower_strict (m : ℕ) (hm : 0 < m) :
+    (((m : ℝ) / (2 * Real.exp 1)) ^ ((m : ℝ) / 2) : ℝ) <
       Real.Gamma ((m : ℝ) / 2 + 1) := by
   obtain ⟨k, rfl | rfl⟩ := Nat.even_or_odd' m
   · have hk : 0 < k := by omega
@@ -60,30 +60,42 @@ theorem gamma_half_nat_lower (m : ℕ) (hm : 0 < m) :
       push_cast; ring]
     rw [Real.Gamma_nat_eq_factorial]
     have hs := Stirling.le_factorial_stirling k
-    have hsqrt : (1 : ℝ) ≤ Real.sqrt (2 * Real.pi * k) := by
+    have hsqrt : (1 : ℝ) < Real.sqrt (2 * Real.pi * k) := by
       have hA : 0 ≤ 2 * Real.pi * (k : ℝ) := by positivity
       have hAsq := Real.sq_sqrt hA
       have hkR : (1 : ℝ) ≤ k := by exact_mod_cast hk
       have hpiMul : 3 * (k : ℝ) < Real.pi * k :=
         mul_lt_mul_of_pos_right Real.pi_gt_three (by positivity)
       nlinarith [Real.sqrt_nonneg (2 * Real.pi * k)]
-    have hpow : 0 ≤ ((k : ℝ) / Real.exp 1) ^ k := by positivity
-    exact (le_mul_of_one_le_left hpow hsqrt).trans hs
+    have hpow : 0 < ((k : ℝ) / Real.exp 1) ^ k := by positivity
+    have hstrict :
+        ((k : ℝ) / Real.exp 1) ^ k <
+          Real.sqrt (2 * Real.pi * k) * ((k : ℝ) / Real.exp 1) ^ k := by
+      nlinarith [mul_pos (sub_pos.mpr hsqrt) hpow]
+    exact hstrict.trans_le hs
   · have hk0 : 0 ≤ k := Nat.zero_le k
     by_cases hk : k = 0
     · subst k
       norm_num only [Nat.cast_one]
       have hleft :
-          ((1 / (2 * Real.exp 1)) ^ (1 / 2 : ℝ) : ℝ) ≤
+          ((1 / (2 * Real.exp 1)) ^ (1 / 2 : ℝ) : ℝ) <
             Real.sqrt Real.pi / 2 := by
         rw [← Real.sqrt_eq_rpow]
-        apply (Real.sqrt_le_left (by positivity)).2
-        rw [div_pow, Real.sq_sqrt (by positivity)]
         have he : (2 : ℝ) < Real.exp 1 := by
           linarith [Real.exp_one_gt_d9]
         have hpi : (3 : ℝ) < Real.pi := Real.pi_gt_three
-        field_simp
-        nlinarith
+        have hfrac : (1 : ℝ) / (2 * Real.exp 1) < 1 / 4 := by
+          apply (div_lt_iff₀ (by positivity)).2
+          nlinarith
+        have hsqrt : Real.sqrt (1 / (2 * Real.exp 1)) < 1 / 2 := by
+          have h := Real.sqrt_lt_sqrt (show (0 : ℝ) ≤ 1 / (2 * Real.exp 1) by
+            positivity) hfrac
+          norm_num at h ⊢
+          exact h
+        have hright : (1 / 2 : ℝ) < Real.sqrt Real.pi / 2 := by
+          have hs := Real.sq_sqrt Real.pi_pos.le
+          nlinarith [Real.sqrt_nonneg Real.pi]
+        exact hsqrt.trans hright
       have hGamma :
           Real.Gamma ((1 : ℝ) / 2 + 1) = Real.sqrt Real.pi / 2 := by
         rw [Real.Gamma_add_one (by norm_num : (1 / 2 : ℝ) ≠ 0),
@@ -195,7 +207,7 @@ theorem gamma_half_nat_lower (m : ℕ) (hm : 0 < m) :
               (((2 * k + 1 : ℕ) : ℝ) / 2) : ℝ) ≤
             (k.factorial : ℝ) := by
         nlinarith
-      refine htofact.trans ?_
+      refine htofact.trans_lt ?_
       rw [← Real.Gamma_nat_eq_factorial k]
       have harg :
           (((2 * k + 1 : ℕ) : ℝ) / 2 + 1) =
@@ -203,7 +215,7 @@ theorem gamma_half_nat_lower (m : ℕ) (hm : 0 < m) :
         push_cast
         ring
       rw [harg]
-      apply Real.Gamma_strictMonoOn_Ici.monotoneOn
+      apply Real.Gamma_strictMonoOn_Ici
       · simp only [Set.mem_Ici]
         have hkR : (1 : ℝ) ≤ k := by exact_mod_cast hkpos
         linarith
@@ -211,6 +223,11 @@ theorem gamma_half_nat_lower (m : ℕ) (hm : 0 < m) :
         have hkR : (1 : ℝ) ≤ k := by exact_mod_cast hkpos
         linarith
       · linarith
+
+theorem gamma_half_nat_lower (m : ℕ) (hm : 0 < m) :
+    (((m : ℝ) / (2 * Real.exp 1)) ^ ((m : ℝ) / 2) : ℝ) ≤
+      Real.Gamma ((m : ℝ) / 2 + 1) :=
+  (gamma_half_nat_lower_strict m hm).le
 
 theorem euclideanUnitBallVolume_sq_le (m : ℕ) (hm : 0 < m) :
     euclideanUnitBallVolume m ^ (2 : ℕ) ≤
@@ -233,6 +250,51 @@ theorem euclideanUnitBallVolume_sq_le (m : ℕ) (hm : 0 < m) :
     (div_nonneg (Real.rpow_nonneg Real.pi_pos.le _)
       (Real.Gamma_pos_of_pos (by positivity)).le)
     hdiv 2
+  unfold euclideanUnitBallVolume
+  refine hsq.trans_eq ?_
+  dsimp [g, a]
+  rw [← Real.div_rpow Real.pi_pos.le (by positivity)
+    ((m : ℝ) / 2)]
+  have hbase :
+      Real.pi / ((m : ℝ) / (2 * Real.exp 1)) =
+        (2 * Real.pi * Real.exp 1) / (m : ℝ) := by
+    field_simp
+  rw [hbase]
+  let b : ℝ := (2 * Real.pi * Real.exp 1) / (m : ℝ)
+  change (b ^ ((m : ℝ) / 2)) ^ (2 : ℕ) = b ^ m
+  calc
+    (b ^ ((m : ℝ) / 2)) ^ (2 : ℕ) =
+        (b ^ ((m : ℝ) / 2)) ^ (2 : ℝ) := by
+      exact (Real.rpow_two _).symm
+    _ = b ^ (((m : ℝ) / 2) * 2) := by
+      rw [Real.rpow_mul (by dsimp [b]; positivity)]
+    _ = b ^ (m : ℝ) := by
+      congr 1
+      ring
+    _ = b ^ m := Real.rpow_natCast b m
+
+/-- The strict version needed for the root-discriminant bounds in v15. -/
+theorem euclideanUnitBallVolume_sq_lt (m : ℕ) (hm : 0 < m) :
+    euclideanUnitBallVolume m ^ (2 : ℕ) <
+      ((2 * Real.pi * Real.exp 1) / (m : ℝ)) ^ m := by
+  have hmR : (0 : ℝ) < m := by exact_mod_cast hm
+  let a : ℝ := (m : ℝ) / (2 * Real.exp 1)
+  have ha : 0 < a := by dsimp [a]; positivity
+  let g : ℝ := a ^ ((m : ℝ) / 2)
+  have hg : 0 < g := by dsimp [g]; positivity
+  have hGamma : g < Real.Gamma ((m : ℝ) / 2 + 1) := by
+    dsimp [g, a]
+    exact gamma_half_nat_lower_strict m hm
+  have hdiv :
+      Real.pi ^ ((m : ℝ) / 2) /
+          Real.Gamma ((m : ℝ) / 2 + 1) <
+        Real.pi ^ ((m : ℝ) / 2) / g :=
+    div_lt_div_of_pos_left (Real.rpow_pos_of_pos Real.pi_pos _)
+      hg hGamma
+  have hsq := pow_lt_pow_left₀ hdiv
+    (div_nonneg (Real.rpow_nonneg Real.pi_pos.le _)
+      (Real.Gamma_pos_of_pos (by positivity)).le)
+    (by norm_num : (2 : ℕ) ≠ 0)
   unfold euclideanUnitBallVolume
   refine hsq.trans_eq ?_
   dsimp [g, a]

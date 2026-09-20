@@ -23,7 +23,10 @@ import TraceEuclidean.QuadraticClassification
 import TraceEuclidean.V15GramEnumeration
 import TraceEuclidean.V15QuadraticSieve
 import TraceEuclidean.V15FinitenessAssembly
+import TraceEuclidean.V15OdlyzkoBridge
+import TraceEuclidean.V15RankOneIntegral
 import TraceEuclidean.V15SixRadii
+import TraceEuclidean.V15StrictDiscriminant
 import TraceEuclidean.QuadraticFieldBridge
 import TraceEuclidean.QuadraticGeometry
 import TraceEuclidean.QuadraticIntegralBasis

@@ -110,6 +110,7 @@ import TraceEuclidean
 #check TraceEuclidean.v15_quadratic_candidate_six_rows
 #check TraceEuclidean.v15_survivor_first_index_one_except_three
 #check TraceEuclidean.v15_m_three_trace_norm_solutions
+#check TraceEuclidean.v15_m_three_basis_forces_one_index_one
 #check TraceEuclidean.v15_six_radius_values
 #check TraceEuclidean.v15_integral_rank_le_34
 #check TraceEuclidean.v15_classic_finite_of_degree_bound
@@ -118,14 +119,28 @@ import TraceEuclidean
 #check TraceEuclidean.V15RankOneClassicInput
 #check TraceEuclidean.v15_classic_finite_of_odlyzko
 #check TraceEuclidean.v15_integral_finite_of_odlyzko
+#check TraceEuclidean.V15OdlyzkoTable4Input
+#check TraceEuclidean.v15_odlyzko_degree_input_of_table4
+#check TraceEuclidean.v15_rank_one_classic_input
+#check TraceEuclidean.v15_classic_root_discriminant_lt
+#check TraceEuclidean.v15_integral_root_discriminant_lt
+#check TraceEuclidean.v15_classic_finite_of_odlyzko_table4
+#check TraceEuclidean.v15_integral_finite_of_odlyzko_table4_source
 #print axioms TraceEuclidean.v15_admissible_gram_iff_mem
 #print axioms TraceEuclidean.v15_quadratic_candidate_mem
 #print axioms TraceEuclidean.v15_quadratic_candidate_six_rows
 #print axioms TraceEuclidean.v15_survivor_first_index_one_except_three
 #print axioms TraceEuclidean.v15_m_three_trace_norm_solutions
+#print axioms TraceEuclidean.v15_m_three_basis_forces_one_index_one
 #print axioms TraceEuclidean.v15_six_radius_values
 #print axioms TraceEuclidean.v15_integral_rank_le_34
 #print axioms TraceEuclidean.v15_classic_finite_of_degree_bound
 #print axioms TraceEuclidean.v15_integral_finite_of_degree_bound
 #print axioms TraceEuclidean.v15_classic_finite_of_odlyzko
 #print axioms TraceEuclidean.v15_integral_finite_of_odlyzko
+#print axioms TraceEuclidean.v15_odlyzko_degree_input_of_table4
+#print axioms TraceEuclidean.v15_rank_one_classic_input
+#print axioms TraceEuclidean.v15_classic_root_discriminant_lt
+#print axioms TraceEuclidean.v15_integral_root_discriminant_lt
+#print axioms TraceEuclidean.v15_classic_finite_of_odlyzko_table4
+#print axioms TraceEuclidean.v15_integral_finite_of_odlyzko_table4_source

@@ -230,8 +230,8 @@ theorem v15_survivor_first_index_one_except_three
       rcases int_square_zero_or_ge_one t with ht0 | ht1 <;> omega
 
 /-- The exceptional `m=3` row permits exactly the three first-vector
-trace/norm/index solutions recorded in the manuscript. The second-vector
-cross-trace argument is still required to force one index to be one. -/
+trace/norm/index solutions recorded in the manuscript. A separate two-vector
+lemma below forces one index to be one after the coordinate bridge. -/
 theorem v15_m_three_trace_norm_solutions {t : ℤ} {k : ℕ}
     (hk : 0 < k)
     (heq : (4 : ℤ) ^ 2 - (v15QuadraticDiscriminant 3 : ℤ) * t ^ 2 =
@@ -241,6 +241,7 @@ theorem v15_m_three_trace_norm_solutions {t : ℤ} {k : ℕ}
   rcases hcase with ht | ht | ht | ht | ht
   · norm_num [v15QuadraticDiscriminant] at heq
     nlinarith
+
   · subst t
     norm_num [v15QuadraticDiscriminant] at heq
     have hkone : k = 1 := by
@@ -268,5 +269,37 @@ theorem v15_m_three_trace_norm_solutions {t : ℤ} {k : ℕ}
     exact Or.inr (Or.inl ⟨rfl, hkone⟩)
   · norm_num [v15QuadraticDiscriminant] at heq
     nlinarith
+
+/-- The second-basis step in the exceptional `m=3` row. The zero-trace
+hypotheses express `bᵢ = aβᵢ² = 2`; no principality is assumed. -/
+theorem v15_m_three_basis_forces_one_index_one
+    {F : Type*} [Field F]
+    {a β₁ β₂ : F} {t₁ t₂ : ℤ} {k₁ k₂ : ℕ}
+    (ha : a ≠ 0) (hβ₁ : β₁ ≠ β₂) (hβ₂ : β₁ ≠ -β₂)
+    (hk₁ : 0 < k₁) (hk₂ : 0 < k₂)
+    (heq₁ : (4 : ℤ) ^ 2 - (v15QuadraticDiscriminant 3 : ℤ) * t₁ ^ 2 =
+      4 * (1 : ℤ) * (k₁ : ℤ) ^ 2)
+    (heq₂ : (4 : ℤ) ^ 2 - (v15QuadraticDiscriminant 3 : ℤ) * t₂ ^ 2 =
+      4 * (1 : ℤ) * (k₂ : ℤ) ^ 2)
+    (hzero₁ : t₁ = 0 → a * β₁ ^ 2 = 2)
+    (hzero₂ : t₂ = 0 → a * β₂ ^ 2 = 2) :
+    k₁ = 1 ∨ k₂ = 1 := by
+  have hs₁ := v15_m_three_trace_norm_solutions hk₁ heq₁
+  have hs₂ := v15_m_three_trace_norm_solutions hk₂ heq₂
+  by_contra hnot
+  have hne₁ : k₁ ≠ 1 := by aesop
+  have hne₂ : k₂ ≠ 1 := by aesop
+  have ht₁ : t₁ = 0 := by rcases hs₁ with h | h | h <;> aesop
+  have ht₂ : t₂ = 0 := by rcases hs₂ with h | h | h <;> aesop
+  have hsq : β₁ ^ 2 = β₂ ^ 2 := by
+    apply mul_left_cancel₀ ha
+    exact (hzero₁ ht₁).trans (hzero₂ ht₂).symm
+  have hfactor : (β₁ - β₂) * (β₁ + β₂) = 0 := by
+    calc
+      (β₁ - β₂) * (β₁ + β₂) = β₁ ^ 2 - β₂ ^ 2 := by ring
+      _ = 0 := sub_eq_zero.mpr hsq
+  rcases mul_eq_zero.mp hfactor with h | h
+  · exact hβ₁ (sub_eq_zero.mp h)
+  · exact hβ₂ (eq_neg_of_add_eq_zero_left h)
 
 end TraceEuclidean

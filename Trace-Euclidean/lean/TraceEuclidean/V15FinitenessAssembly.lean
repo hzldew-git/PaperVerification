@@ -2,9 +2,10 @@ import TraceEuclidean.GlobalFiniteness
 import TraceEuclidean.GammaVolumeBounds
 
 /-!
-V15 variable-threshold finite-grid assembly. The source's new root-
-discriminant and Odlyzko arguments must supply the uniform rank and degree
-bounds; those assumptions are explicit in the present declarations.
+V15 variable-threshold finite-grid assembly. The strict root-discriminant
+proof is in `V15StrictDiscriminant`, and the published Odlyzko row is connected
+to the degree cutoff in `V15OdlyzkoBridge`. This module keeps the intermediate
+inputs explicit.
 -/
 
 namespace TraceEuclidean
@@ -134,8 +135,8 @@ theorem v15_classic_degree_le_14_of_odlyzko
     _ ≤ (2 * Real.pi * Real.exp 1) ^ (c.rank * c.degree) := by
       exact pow_le_pow_left₀ (by positivity) hbase _
 
-/-- The extra rank-one fact is stated explicitly until it has its own Lean
-proof for arbitrary projective fractional-ideal lattices. -/
+/-- The rank-one norm-to-scale property, proved for all presentations in
+`V15RankOneIntegral`; it is kept explicit at this intermediate endpoint. -/
 def V15RankOneClassicInput : Prop :=
   ∀ c : GlobalLatticeClass, c.rank = 1 → c.IsClassicIntegral
 
