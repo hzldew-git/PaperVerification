@@ -11,11 +11,12 @@ logical axioms.
 Formalization commit 741dc24 passed the [fresh GitHub Actions Lean, Python,
 and 95-endpoint axiom run](https://github.com/hzldew-git/PaperVerification/actions/runs/35542188896)
 and the [manuscript-exclusion run](https://github.com/hzldew-git/PaperVerification/actions/runs/35542188716).
-The current update adds cross-field lattice transport and finite-table
-theorems and has passed a complete local Lean build and 105-endpoint axiom
-audit. Consult the
-[Lean workflow](https://github.com/hzldew-git/PaperVerification/actions/workflows/lean.yml)
-for later revisions' clean-checkout status.
+Formalization commit ee76166 adds cross-field lattice transport and
+finite-table theorems. It passed a complete local Lean build and 105-endpoint
+axiom audit, followed by the
+[fresh GitHub Actions Lean and Python run](https://github.com/hzldew-git/PaperVerification/actions/runs/35581394526)
+and the
+[manuscript-exclusion run](https://github.com/hzldew-git/PaperVerification/actions/runs/35581394493).
 
 Theorems 1.2 and 1.3 have strict bounds and variable-degree global
 finiteness from the explicit cited Odlyzko Table 4 premise. Theorem 1.7
