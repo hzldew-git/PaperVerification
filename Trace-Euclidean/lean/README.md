@@ -8,7 +8,7 @@ The v15 proof chain is organized as follows:
 
 | Modules | Content |
 | --- | --- |
-| V15StrictDiscriminant, V15FinitenessAssembly, V15OdlyzkoBridge, V15RankOneIntegral | Strict bounds, varying-degree finite grid, explicit Odlyzko source premise, rank-one classic-integrality |
+| V15StrictDiscriminant, V15FinitenessAssembly, V15OdlyzkoBridge, V15RankOneIntegral | Strict bounds, varying-degree finite grid, full Table 4 description with rounding/signature bridges, rank-one classic-integrality |
 | V15BinaryCriterion, V15BinaryCovering, V15GaussBasis | Rational deep hole, six direct covers, and reduced binary basis |
 | V15IdealCoordinates, V15IdealNormQuotient, V15IdealDeterminant, V15VariableBasis | Actual fractional ideals, field coordinates, determinant and norm bridges |
 | V15VariableSieve, V15ActualPrincipality | Six survivor rows and principality, including m=3 |
@@ -19,12 +19,14 @@ The v15 proof chain is organized as follows:
 | V15AdmissibleTables | Kernel-checked 24/63 finite tables, all rank/degree bound arrays, exact maxima, and quoted table consequences |
 | V15AnalyticTable, V15AnalyticTableBridge | Exact Gamma normalization of `H(n,d)`, proved rational enclosures, full 34 by 14 analytic-table equivalences, and the field-discriminant-to-table bridge |
 
-The public endpoint is
+The public classification endpoint is
 v15_rank_one_real_quadratic_classification_totally_positive. It quantifies
 over all nonzero fractional ideals. The global finite-class endpoints are
-v15_classic_finite_of_odlyzko_table4 and
-v15_integral_finite_of_odlyzko_table4_source. Their sole external
-mathematical premise is the cited unconditional Table 4 inequality.
+v15_classic_finite_of_odlyzko_table4_description and
+v15_integral_finite_of_odlyzko_table4_description_source. Their external
+mathematical premise is the complete cited unconditional Table 4 row; Lean
+proves its rounding, totally real specialization, and restriction to degrees
+at least fifteen.
 
 The endpoints v15AbstractToCanonicalAnyField and
 v15AbstractRankOneIdealBridgeAnyField remove the earlier restriction that the
@@ -34,9 +36,10 @@ v15_integral_table_exact_global_maxima, and the associated row/column bound
 theorems. The endpoints v15_classic_analytic_grid_iff_mem and
 v15_integral_analytic_grid_iff_mem prove inside Lean that the exact analytic
 inequalities select the 24 and 63 rows throughout the complete finite grid.
-The class-level endpoints v15_classic_pair_mem_of_sources and
-v15_integral_pair_mem_of_sources connect those equivalences to explicit
-small-degree discriminant and Odlyzko premises. The public Python verifier
+The class-level endpoints v15_classic_pair_mem_of_literature and
+v15_integral_pair_mem_of_literature connect those equivalences to separate
+degree 2--9, degree 10, degree 11, and Table 4-from-12 premises. Degree one is
+proved internally from Minkowski's bound. The public Python verifier
 independently replays the interval computation.
 
 From this directory:

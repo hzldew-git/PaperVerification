@@ -20,20 +20,36 @@ trusted as pinned mathlib dependencies.
 [Odlyzko, unconditional Table 4](https://www-users.cse.umn.edu/~odlyzko/unpublished/discr.bound.table4)
 lists row b=4.000 with A=36.347 and E=10.667.
 His [description of the tables](https://www-users.cse.umn.edu/~odlyzko/unpublished/discr.bound.tables.txt)
-states that Table 4 is unconditional, gives the general discriminant
-inequality and explains the direction of rounding. The Table 4 header
-directly states the bound used here. For a totally real field, its consequence
-is |D_F| > 36.347^d exp(-10.667). The formal proposition
-V15OdlyzkoTable4Input records exactly this consequence for coded fields.
-The mathematical source is external; the numerical conversion and
-downstream v15 finiteness proof are in Lean.
+states that Table 4 is unconditional and gives the stronger formula
+|D_F| > A^r1 B^(2r2) exp(f-E), where f is the prime-ideal correction.
+It also states that A and B are lower estimates and that E is rounded upward
+from 8b/3. For b=4, Lean checks 32/3 <= 10.667, the direction of this
+rounding, the totally real signature specialization, removal of the
+nonnegative f, and all downstream uses. The new literature-facing premise is
+V15OdlyzkoTable4DescriptionInput. V15OdlyzkoTable4Input remains as a
+compatibility interface for the resulting totally real consequence
+|D_F| > 36.347^d exp(-10.667).
 
-Voight's totally real field enumeration supplies the separate small-degree
-discriminant estimates used by the paper's tables. The formal proposition
-V15SmallDegreeDiscriminantInput records the required statement for degrees at
-most eleven. Together with V15OdlyzkoTable4Input it yields
-V15SectionFourDiscriminantInput. These cited estimates remain external; Lean
-proves the exact analytic reduction and every subsequent finite-grid result.
+The analytic method behind the tables is documented in Odlyzko's
+[Acta Arithmetica paper](https://www.impan.pl/en/publishing-house/journals-and-series/acta-arithmetica/all/29/3/100995/lower-bounds-for-discriminants-of-number-fields),
+DOI 10.4064/aa-29-3-275-297, his
+[Tohoku paper](https://www.jstage.jst.go.jp/article/tmj1949/29/2/29_2_209/_article/-char/en),
+DOI 10.2748/tmj/1178240652, and Poitou's
+[Bourbaki exposition](https://www.numdam.org/item/?id=SB_1975-1976__18__136_0).
+The explicit-formula theorem and the certified A/B integral estimates remain
+external. See [the source-reduction audit](docs/audit/v15/14_odlyzko_source_reduction.md).
+
+Voight's
+[totally real field enumeration](https://jvoight.github.io/articles/ANTS144-fixed-errata-052714.pdf)
+supplies a complete list through root discriminant 14 and proves there is no
+degree-ten field in that range. The small-degree interface is now separated
+into exact minima for degrees 2--9, the degree-ten root-discriminant input,
+and the optimized degree-eleven bound 14.083. Degree one is proved internally
+from Minkowski's bound. The online November 1976
+[Table 2](https://www-users.cse.umn.edu/~odlyzko/unpublished/discr.bound.table2)
+lists 14.034, rather than 14.083, at degree eleven; therefore the v15 value
+14.083 is tracked as a later optimized Odlyzko--Martinet input, following
+Voight's citation, and is not attributed to the online 1976 Table 4 alone.
 
 ## Unformalized standalone material
 

@@ -33,7 +33,10 @@ results are 1165 Python PASS and 112 Wolfram PASS.
 - Theorems 1.2 and 1.3: strict root-discriminant bounds and global finiteness
   with the threshold equal to each varying field's degree. The finite
   conclusions use [Odlyzko's unconditional Table 4](SOURCES.md) as an explicit
-  external mathematical premise.
+  external mathematical premise. Lean now starts from the table description
+  with signature exponents and the nonnegative prime-ideal correction, checks
+  the upward rounding and totally real specialization, and needs the row only
+  in degrees at least fifteen.
 - Theorem 1.7: an if-and-only-if classification for every nonzero fractional
   ideal presentation of a positive integral rank-one real-quadratic lattice.
   Lean proves principality, six actual module-isometry classes, six valid
@@ -68,9 +71,13 @@ checks all 34 by 14 cells. It proves that the analytic classic and integral
 inequalities select exactly the recorded 24 and 63 pairs, then proves all row
 and column bounds, the exact global maxima, the degree 7--9 rank-two assertion,
 and the final rank-twelve consequence. The public Python and Wolfram runs are
-independent checks of the same finite computation. The small-degree field
-discriminant estimates and Odlyzko's Table 4 remain explicit external
-mathematical inputs to the class-level bridge.
+independent checks of the same finite computation. Degree one of the
+small-degree discriminant input is now proved from Minkowski's bound. The
+exact minima in degrees 2--9, the degree-ten enumeration result, the optimized
+degree-eleven bound 14.083, and the analytic theorem behind Odlyzko's Table 4
+remain explicit external mathematical inputs. Their source separation and
+Lean reduction are recorded in the
+[Odlyzko source audit](docs/audit/v15/14_odlyzko_source_reduction.md).
 
 ## Historical v9 evidence
 

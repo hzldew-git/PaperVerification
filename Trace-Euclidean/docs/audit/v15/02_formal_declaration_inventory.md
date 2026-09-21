@@ -3,15 +3,19 @@
 | Declaration | Actual elaborated role |
 | --- | --- |
 | v15_classic_root_discriminant_lt, v15_integral_root_discriminant_lt | Strict rank-times-root-discriminant bounds for the corresponding varying-field quotient classes. |
-| V15OdlyzkoTable4Input | Explicit premise carrying Odlyzko's unconditional Table 4 lower bound for every coded totally real field. It is not a project axiom. |
-| V15SmallDegreeDiscriminantInput, V15SectionFourDiscriminantInput | Explicit external small-degree field-discriminant premise and the combined piecewise discriminant bound used by Section 4. |
+| V15OdlyzkoTable4ExactErrorInput, V15OdlyzkoTable4DescriptionInput | Literature-facing forms of Odlyzko's unconditional Table 4 row before and after upward rounding of E, including the signature exponents and nonnegative prime-ideal correction. They are explicit premises, not project axioms. |
+| v15_odlyzkoTable4_error_rounding, v15_odlyzkoTable4FieldInputFrom_of_description | Prove 32/3 <= 10.667, the valid rounding direction, totally real signature specialization, and removal of the nonnegative correction. |
+| V15OdlyzkoTable4FieldInputFrom, V15OdlyzkoTable4InputFrom | Restrict the Table 4 premise to the field degrees actually used; degree 12 begins the analytic table range and degree 15 begins the finiteness cutoff. |
+| v15_degree_one_discriminant_bound | Proves the degree-one Section 4 discriminant input internally from Minkowski's bound. |
+| V15DegreeTwoToNineMinimumInput, V15DegreeTenRootDiscriminantInput, V15DegreeElevenRootDiscriminantInput | Separate literature inputs for exact minima, Voight's empty degree-ten range at root discriminant at most 14, and the optimized degree-eleven bound 14.083. |
+| V15SmallDegreeDiscriminantInput, V15SectionFourDiscriminantInput | Compatibility premise and combined piecewise discriminant bound used by Section 4. |
 | v15_unitBallVolume_sq_closed, v15AnalyticH_eq_closed | Evaluate the squared unit-ball volume through factorials and rewrite the manuscript's Gamma-defined `H(n,d)` exactly. |
 | v15HLower_le_analyticH_le_upper | Encloses the exact analytic quantity between rational expressions using proved bounds for pi and the exponential correction. |
 | v15_classic_analytic_grid_iff_mem, v15_integral_analytic_grid_iff_mem | Prove on every cell with 1 <= n <= 34 and 1 <= d <= 14 that the exact analytic classic/integral inequality is equivalent to membership in the 24/63 pair list. |
-| v15_classic_pair_mem_of_sources, v15_integral_pair_mem_of_sources | Derive the actual lattice class's table membership from the disclosed small-degree discriminant, Odlyzko, and rank-one inputs. |
-| v15_odlyzko_degree_input_of_table4 | Proves the numerical degree cutoff from the published constants. |
+| v15_classic_pair_mem_of_literature, v15_integral_pair_mem_of_literature | Derive the actual lattice class's table membership from the source-specific small-degree inputs, full Table 4 description, and rank-one input. |
+| v15_odlyzko_degree_input_of_table4_from_fifteen | Proves the numerical degree cutoff from the published constants using Table 4 only from degree fifteen. |
 | v15_rank_one_classic_input | Proves integral rank-one presentations are classically integral without freeness. |
-| v15_classic_finite_of_odlyzko_table4, v15_integral_finite_of_odlyzko_table4_source | Global finiteness at the varying threshold equal to each field degree, conditional on the cited table. |
+| v15_classic_finite_of_odlyzko_table4_description, v15_integral_finite_of_odlyzko_table4_description_source | Global finiteness at the varying threshold equal to each field degree, conditional on the full cited Table 4 row. |
 | v15_actual_ideal_six_rows | Obtains six surviving reduced Gram rows for every qualifying nonzero fractional ideal. |
 | v15_actual_ideal_principal | Proves the ideal principal, including the exceptional m=3 case. |
 | v15_rank_one_real_quadratic_classification_totally_positive | If and only if over all nonzero fractional ideals and totally positive integral coefficients, with actual module-isometry classes. |
@@ -33,6 +37,6 @@
 | v15_classic_table_exact_global_maxima, v15_integral_table_exact_global_maxima | Prove the exact global table maxima, including witnesses. |
 | v15_integral_table_degree_seven_to_nine, v15_integral_table_overall_rank_le_twelve | Prove the two numerical consequences stated in Remark 1.4(iii)--(iv), with the degree-one classification supplied explicitly to the latter. |
 | v15_proposition_six_one_scalar_cases, v15_proposition_six_one_full | Both positive-integer scalar formulas on the quadratic integer ring and a combined endpoint for all clauses of Proposition 6.1. |
-| GlobalLatticePresentation.v15_pnorm_implies_trace, v15_pnorm_finite_of_odlyzko_table4 | Power-mean implication for finite p >= 1 and infinity, followed by global finite-class conclusion from the cited Table 4 premise. |
+| GlobalLatticePresentation.v15_pnorm_implies_trace, v15_pnorm_finite_of_odlyzko_table4_description | Power-mean implication for finite p >= 1 and infinity, followed by global finite-class conclusion from the full cited Table 4 row. |
 
 Supporting modules prove the reduced-basis bridge, quotient-ideal index/norm identities, parity, determinant, exceptional two-vector exclusion, and constructive strict covers for all six forms.

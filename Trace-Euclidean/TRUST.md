@@ -7,13 +7,16 @@ Classical.choice, and Quot.sound. A source scan found no sorry, sorryAx,
 project axiom, native_decide, run_tac, unsafe, extern, or implemented_by in
 the proof modules.
 
-The global finite-class results explicitly accept
-V15OdlyzkoTable4Input. It states the published unconditional Table 4 row
-b=4 for every coded totally real field. The source gives
-|D_F| > 36.347^d exp(-10.667). Lean proves the exponential comparison,
-degree cutoff, rank-one integral-to-classic lemma, strict root bounds, and
-finite assembly. The table is cited mathematical input, not a Lean axiom
-proved by this package.
+The global finite-class results can now accept
+V15OdlyzkoTable4DescriptionInput, the full published unconditional Table 4
+row b=4 with signature exponents and its nonnegative prime-ideal correction.
+Lean proves the upward rounding 32/3 <= 10.667, the totally real
+specialization |D_F| > 36.347^d exp(-10.667), field-to-class transport, and
+that only degrees at least fifteen are needed for global finiteness. The
+earlier V15OdlyzkoTable4Input remains as a compatibility interface. The
+explicit-formula theorem and certified archimedean integral estimates behind
+the table are cited mathematical inputs, not Lean axioms proved by this
+package.
 
 The public Python and Wolfram runs trust their kernels and the extracted
 input file. The private maintainer run also checks the SHA-256 digest and
@@ -49,12 +52,15 @@ enclosures for pi and the exponential correction, and kernel-checks all 476
 rank-degree cells. Its two equivalence theorems prove that the analytic classic
 and integral inequalities select exactly the 24 and 63 rows recorded in
 V15AdmissibleTables. V15AnalyticTableBridge proves the downstream class-level
-membership statements from two disclosed source premises:
-V15SmallDegreeDiscriminantInput for degrees at most eleven and
-V15OdlyzkoTable4Input for the remaining degrees. The cited field-discriminant
-estimates themselves remain external; the analytic enclosure and finite-grid
-classification are no longer outside Lean. Python and Wolfram provide
-independent computational checks.
+membership statements from source-specific field premises. Degree one is
+internal. Degrees 2--9 use exact minimum-discriminant data, degree 10 uses the
+absence of a totally real field with root discriminant at most 14, degree 11
+uses the later optimized bound 14.083, and Table 4 is required only from
+degree 12. The online November 1976 Table 2 gives 14.034 at degree 11, so the
+value 14.083 is explicitly kept separate from that table. These cited
+arithmetic and analytic source theorems remain external; all specialization,
+combination, analytic enclosure, and finite-grid classification steps are in
+Lean. Python and Wolfram provide independent computational checks.
 
 Compilation and PASS counts do not certify the complete manuscript.
 The first-party [v15 semantic audit](docs/audit/v15/12_executive_summary.md)

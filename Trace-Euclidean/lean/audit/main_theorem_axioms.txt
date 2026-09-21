@@ -249,6 +249,21 @@ TraceEuclidean.v15_integral_finite_of_odlyzko (hOdlyzko : TraceEuclidean.V15Odly
 TraceEuclidean.V15OdlyzkoTable4Input : Prop
 TraceEuclidean.v15_odlyzko_degree_input_of_table4 (hTable : TraceEuclidean.V15OdlyzkoTable4Input) :
   TraceEuclidean.V15OdlyzkoDegreeInput
+TraceEuclidean.V15OdlyzkoTable4ExactErrorInput : Prop
+TraceEuclidean.V15OdlyzkoTable4DescriptionInput : Prop
+TraceEuclidean.v15_odlyzkoTable4_error_rounding : 32 / 3 ≤ 10667 / 1000
+TraceEuclidean.v15_odlyzkoTable4DescriptionInput_of_exactError
+  (hExact : TraceEuclidean.V15OdlyzkoTable4ExactErrorInput) : TraceEuclidean.V15OdlyzkoTable4DescriptionInput
+TraceEuclidean.V15OdlyzkoTable4FieldInputFrom (d₀ : ℕ) : Prop
+TraceEuclidean.v15_odlyzkoTable4FieldInputFrom_of_description
+  (hDescription : TraceEuclidean.V15OdlyzkoTable4DescriptionInput) (d₀ : ℕ) :
+  TraceEuclidean.V15OdlyzkoTable4FieldInputFrom d₀
+TraceEuclidean.V15OdlyzkoTable4InputFrom (d₀ : ℕ) : Prop
+TraceEuclidean.v15_odlyzkoTable4InputFrom_of_description
+  (hDescription : TraceEuclidean.V15OdlyzkoTable4DescriptionInput) (d₀ : ℕ) :
+  TraceEuclidean.V15OdlyzkoTable4InputFrom d₀
+TraceEuclidean.v15_odlyzko_degree_input_of_table4_from_fifteen (hTable : TraceEuclidean.V15OdlyzkoTable4InputFrom 15) :
+  TraceEuclidean.V15OdlyzkoDegreeInput
 TraceEuclidean.v15_rank_one_classic_input : TraceEuclidean.V15RankOneClassicInput
 TraceEuclidean.v15_classic_root_discriminant_lt (c : TraceEuclidean.GlobalLatticeClass)
   (hE : TraceEuclidean.GlobalLatticeClass.IsClassicTraceEuclidean (↑c.degree) c) :
@@ -259,6 +274,12 @@ TraceEuclidean.v15_integral_root_discriminant_lt (c : TraceEuclidean.GlobalLatti
 TraceEuclidean.v15_classic_finite_of_odlyzko_table4 (hTable : TraceEuclidean.V15OdlyzkoTable4Input) :
   {c | TraceEuclidean.GlobalLatticeClass.IsClassicTraceEuclidean (↑c.degree) c}.Finite
 TraceEuclidean.v15_integral_finite_of_odlyzko_table4_source (hTable : TraceEuclidean.V15OdlyzkoTable4Input) :
+  {c | TraceEuclidean.GlobalLatticeClass.IsIntegralTraceEuclidean (↑c.degree) c}.Finite
+TraceEuclidean.v15_classic_finite_of_odlyzko_table4_description
+  (hDescription : TraceEuclidean.V15OdlyzkoTable4DescriptionInput) :
+  {c | TraceEuclidean.GlobalLatticeClass.IsClassicTraceEuclidean (↑c.degree) c}.Finite
+TraceEuclidean.v15_integral_finite_of_odlyzko_table4_description_source
+  (hDescription : TraceEuclidean.V15OdlyzkoTable4DescriptionInput) :
   {c | TraceEuclidean.GlobalLatticeClass.IsIntegralTraceEuclidean (↑c.degree) c}.Finite
 'TraceEuclidean.v15_admissible_gram_iff_mem' depends on axioms: [propext, Classical.choice, Quot.sound]
 'TraceEuclidean.v15_quadratic_candidate_mem' depends on axioms: [propext, Classical.choice, Quot.sound]
@@ -273,11 +294,28 @@ TraceEuclidean.v15_integral_finite_of_odlyzko_table4_source (hTable : TraceEucli
 'TraceEuclidean.v15_classic_finite_of_odlyzko' depends on axioms: [propext, Classical.choice, Quot.sound]
 'TraceEuclidean.v15_integral_finite_of_odlyzko' depends on axioms: [propext, Classical.choice, Quot.sound]
 'TraceEuclidean.v15_odlyzko_degree_input_of_table4' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15_odlyzkoTable4_error_rounding' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15_odlyzkoTable4DescriptionInput_of_exactError' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'TraceEuclidean.v15_odlyzkoTable4FieldInputFrom_of_description' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'TraceEuclidean.v15_odlyzkoTable4InputFrom_of_description' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15_odlyzko_degree_input_of_table4_from_fifteen' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
 'TraceEuclidean.v15_rank_one_classic_input' depends on axioms: [propext, Classical.choice, Quot.sound]
 'TraceEuclidean.v15_classic_root_discriminant_lt' depends on axioms: [propext, Classical.choice, Quot.sound]
 'TraceEuclidean.v15_integral_root_discriminant_lt' depends on axioms: [propext, Classical.choice, Quot.sound]
 'TraceEuclidean.v15_classic_finite_of_odlyzko_table4' depends on axioms: [propext, Classical.choice, Quot.sound]
 'TraceEuclidean.v15_integral_finite_of_odlyzko_table4_source' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15_classic_finite_of_odlyzko_table4_description' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'TraceEuclidean.v15_integral_finite_of_odlyzko_table4_description_source' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
 TraceEuclidean.v15_actual_ideal_six_rows {m : ℕ} (hm : 1 < m) (hsq : TraceEuclidean.IsSquarefreeNat m)
   (I :
     FractionalIdeal (nonZeroDivisors (NumberField.RingOfIntegers (TraceEuclidean.RealQuadraticAlgebra m)))
@@ -480,6 +518,9 @@ TraceEuclidean.GlobalLatticePresentation.v15_pnorm_implies_trace (P : TraceEucli
   (p : TraceEuclidean.V15PNormExponent) (hp : P.IsV15PNormEuclidean p) : P.IsTraceEuclidean ↑P.degree
 TraceEuclidean.v15_pnorm_finite_of_odlyzko_table4 (hTable : TraceEuclidean.V15OdlyzkoTable4Input)
   (p : TraceEuclidean.V15PNormExponent) : {c | ∃ P, ⟦P⟧ = c ∧ P.IsV15PNormEuclidean p}.Finite
+TraceEuclidean.v15_pnorm_finite_of_odlyzko_table4_description
+  (hDescription : TraceEuclidean.V15OdlyzkoTable4DescriptionInput) (p : TraceEuclidean.V15PNormExponent) :
+  {c | ∃ P, ⟦P⟧ = c ∧ P.IsV15PNormEuclidean p}.Finite
 TraceEuclidean.v15_number_field_has_code.{u_1} (F : Type u_1) [Field F] [NumberField F] : ∃ C, Nonempty (F ≃ₐ[ℚ] ↥↑C)
 TraceEuclidean.v15_totally_real_field_code.{u_1} (F : Type u_1) [Field F] [NumberField F]
   [NumberField.IsTotallyReal F] :
@@ -591,6 +632,31 @@ TraceEuclidean.v15_classic_analytic_grid_iff_mem (n d : ℕ) (hn : 1 ≤ n) (hn'
 TraceEuclidean.v15_integral_analytic_grid_iff_mem (n d : ℕ) (hn : 1 ≤ n) (hn' : n ≤ 34) (hd : 1 ≤ d) (hd' : d ≤ 14) :
   TraceEuclidean.v15IntegralThreshold n d ≤ TraceEuclidean.v15AnalyticH n d ↔
     (n, d) ∈ TraceEuclidean.v15IntegralAdmissiblePairs
+TraceEuclidean.v15_degree_one_discriminant_bound (c : TraceEuclidean.GlobalLatticeClass) (hd : c.degree = 1) :
+  TraceEuclidean.v15BetaPower 1 c.degree ≤ ↑|TraceEuclidean.NumberFieldCode.discriminant c.fieldCode|
+TraceEuclidean.V15DegreeTwoToNineMinimumInput : Prop
+TraceEuclidean.V15DegreeTenRootDiscriminantInput : Prop
+TraceEuclidean.V15DegreeElevenRootDiscriminantInput : Prop
+TraceEuclidean.v15_smallDegreeDiscriminantInput_of_literature (hMin : TraceEuclidean.V15DegreeTwoToNineMinimumInput)
+  (hTen : TraceEuclidean.V15DegreeTenRootDiscriminantInput)
+  (hEleven : TraceEuclidean.V15DegreeElevenRootDiscriminantInput) : TraceEuclidean.V15SmallDegreeDiscriminantInput
+TraceEuclidean.v15_sectionFourDiscriminantInput_of_literature (hMin : TraceEuclidean.V15DegreeTwoToNineMinimumInput)
+  (hTen : TraceEuclidean.V15DegreeTenRootDiscriminantInput)
+  (hEleven : TraceEuclidean.V15DegreeElevenRootDiscriminantInput)
+  (hDescription : TraceEuclidean.V15OdlyzkoTable4DescriptionInput) : TraceEuclidean.V15SectionFourDiscriminantInput
+TraceEuclidean.v15_classic_pair_mem_of_literature (hMin : TraceEuclidean.V15DegreeTwoToNineMinimumInput)
+  (hTen : TraceEuclidean.V15DegreeTenRootDiscriminantInput)
+  (hEleven : TraceEuclidean.V15DegreeElevenRootDiscriminantInput)
+  (hDescription : TraceEuclidean.V15OdlyzkoTable4DescriptionInput) (c : TraceEuclidean.GlobalLatticeClass)
+  (hE : TraceEuclidean.GlobalLatticeClass.IsClassicTraceEuclidean (↑c.degree) c) :
+  (c.rank, c.degree) ∈ TraceEuclidean.v15ClassicAdmissiblePairs
+TraceEuclidean.v15_integral_pair_mem_of_literature (hMin : TraceEuclidean.V15DegreeTwoToNineMinimumInput)
+  (hTen : TraceEuclidean.V15DegreeTenRootDiscriminantInput)
+  (hEleven : TraceEuclidean.V15DegreeElevenRootDiscriminantInput)
+  (hDescription : TraceEuclidean.V15OdlyzkoTable4DescriptionInput) (hRankOne : TraceEuclidean.V15RankOneClassicInput)
+  (c : TraceEuclidean.GlobalLatticeClass)
+  (hE : TraceEuclidean.GlobalLatticeClass.IsIntegralTraceEuclidean (↑c.degree) c) :
+  (c.rank, c.degree) ∈ TraceEuclidean.v15IntegralAdmissiblePairs
 TraceEuclidean.v15_sectionFourDiscriminantInput_of_sources (hSmall : TraceEuclidean.V15SmallDegreeDiscriminantInput)
   (hTable : TraceEuclidean.V15OdlyzkoTable4Input) : TraceEuclidean.V15SectionFourDiscriminantInput
 TraceEuclidean.v15_classic_pair_mem_of_sources (hSmall : TraceEuclidean.V15SmallDegreeDiscriminantInput)
@@ -621,6 +687,9 @@ TraceEuclidean.v15_integral_pair_mem_of_sources (hSmall : TraceEuclidean.V15Smal
  Classical.choice,
  Quot.sound]
 'TraceEuclidean.v15_pnorm_finite_of_odlyzko_table4' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15_pnorm_finite_of_odlyzko_table4_description' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
 'TraceEuclidean.v15_number_field_has_code' depends on axioms: [propext, Classical.choice, Quot.sound]
 'TraceEuclidean.v15_totally_real_field_code' depends on axioms: [propext, Classical.choice, Quot.sound]
 'TraceEuclidean.NumberFieldLattice.v15AbstractToCanonical' depends on axioms: [propext, Classical.choice, Quot.sound]
@@ -641,6 +710,15 @@ TraceEuclidean.v15_integral_pair_mem_of_sources (hSmall : TraceEuclidean.V15Smal
 'TraceEuclidean.v15HLower_le_analyticH_le_upper' depends on axioms: [propext, Classical.choice, Quot.sound]
 'TraceEuclidean.v15_classic_analytic_grid_iff_mem' depends on axioms: [propext, Classical.choice, Quot.sound]
 'TraceEuclidean.v15_integral_analytic_grid_iff_mem' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15_degree_one_discriminant_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15_smallDegreeDiscriminantInput_of_literature' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'TraceEuclidean.v15_sectionFourDiscriminantInput_of_literature' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'TraceEuclidean.v15_classic_pair_mem_of_literature' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15_integral_pair_mem_of_literature' depends on axioms: [propext, Classical.choice, Quot.sound]
 'TraceEuclidean.v15_sectionFourDiscriminantInput_of_sources' depends on axioms: [propext, Classical.choice, Quot.sound]
 'TraceEuclidean.v15_classic_pair_mem_of_sources' depends on axioms: [propext, Classical.choice, Quot.sound]
 'TraceEuclidean.v15_integral_pair_mem_of_sources' depends on axioms: [propext, Classical.choice, Quot.sound]

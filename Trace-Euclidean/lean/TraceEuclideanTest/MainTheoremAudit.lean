@@ -121,11 +121,22 @@ import TraceEuclidean
 #check TraceEuclidean.v15_integral_finite_of_odlyzko
 #check TraceEuclidean.V15OdlyzkoTable4Input
 #check TraceEuclidean.v15_odlyzko_degree_input_of_table4
+#check TraceEuclidean.V15OdlyzkoTable4ExactErrorInput
+#check TraceEuclidean.V15OdlyzkoTable4DescriptionInput
+#check TraceEuclidean.v15_odlyzkoTable4_error_rounding
+#check TraceEuclidean.v15_odlyzkoTable4DescriptionInput_of_exactError
+#check TraceEuclidean.V15OdlyzkoTable4FieldInputFrom
+#check TraceEuclidean.v15_odlyzkoTable4FieldInputFrom_of_description
+#check TraceEuclidean.V15OdlyzkoTable4InputFrom
+#check TraceEuclidean.v15_odlyzkoTable4InputFrom_of_description
+#check TraceEuclidean.v15_odlyzko_degree_input_of_table4_from_fifteen
 #check TraceEuclidean.v15_rank_one_classic_input
 #check TraceEuclidean.v15_classic_root_discriminant_lt
 #check TraceEuclidean.v15_integral_root_discriminant_lt
 #check TraceEuclidean.v15_classic_finite_of_odlyzko_table4
 #check TraceEuclidean.v15_integral_finite_of_odlyzko_table4_source
+#check TraceEuclidean.v15_classic_finite_of_odlyzko_table4_description
+#check TraceEuclidean.v15_integral_finite_of_odlyzko_table4_description_source
 #print axioms TraceEuclidean.v15_admissible_gram_iff_mem
 #print axioms TraceEuclidean.v15_quadratic_candidate_mem
 #print axioms TraceEuclidean.v15_quadratic_candidate_six_rows
@@ -139,11 +150,18 @@ import TraceEuclidean
 #print axioms TraceEuclidean.v15_classic_finite_of_odlyzko
 #print axioms TraceEuclidean.v15_integral_finite_of_odlyzko
 #print axioms TraceEuclidean.v15_odlyzko_degree_input_of_table4
+#print axioms TraceEuclidean.v15_odlyzkoTable4_error_rounding
+#print axioms TraceEuclidean.v15_odlyzkoTable4DescriptionInput_of_exactError
+#print axioms TraceEuclidean.v15_odlyzkoTable4FieldInputFrom_of_description
+#print axioms TraceEuclidean.v15_odlyzkoTable4InputFrom_of_description
+#print axioms TraceEuclidean.v15_odlyzko_degree_input_of_table4_from_fifteen
 #print axioms TraceEuclidean.v15_rank_one_classic_input
 #print axioms TraceEuclidean.v15_classic_root_discriminant_lt
 #print axioms TraceEuclidean.v15_integral_root_discriminant_lt
 #print axioms TraceEuclidean.v15_classic_finite_of_odlyzko_table4
 #print axioms TraceEuclidean.v15_integral_finite_of_odlyzko_table4_source
+#print axioms TraceEuclidean.v15_classic_finite_of_odlyzko_table4_description
+#print axioms TraceEuclidean.v15_integral_finite_of_odlyzko_table4_description_source
 
 -- V15 rank-one classification, realization, and semantic bridges.
 #check TraceEuclidean.v15_actual_ideal_six_rows
@@ -192,6 +210,7 @@ import TraceEuclidean
 #check TraceEuclidean.v15_proposition_six_one_full
 #check TraceEuclidean.GlobalLatticePresentation.v15_pnorm_implies_trace
 #check TraceEuclidean.v15_pnorm_finite_of_odlyzko_table4
+#check TraceEuclidean.v15_pnorm_finite_of_odlyzko_table4_description
 #check TraceEuclidean.v15_number_field_has_code
 #check TraceEuclidean.v15_totally_real_field_code
 #check TraceEuclidean.NumberFieldLattice.v15AbstractToCanonical
@@ -214,6 +233,14 @@ import TraceEuclidean
 #check TraceEuclidean.v15HLower_le_analyticH_le_upper
 #check TraceEuclidean.v15_classic_analytic_grid_iff_mem
 #check TraceEuclidean.v15_integral_analytic_grid_iff_mem
+#check TraceEuclidean.v15_degree_one_discriminant_bound
+#check TraceEuclidean.V15DegreeTwoToNineMinimumInput
+#check TraceEuclidean.V15DegreeTenRootDiscriminantInput
+#check TraceEuclidean.V15DegreeElevenRootDiscriminantInput
+#check TraceEuclidean.v15_smallDegreeDiscriminantInput_of_literature
+#check TraceEuclidean.v15_sectionFourDiscriminantInput_of_literature
+#check TraceEuclidean.v15_classic_pair_mem_of_literature
+#check TraceEuclidean.v15_integral_pair_mem_of_literature
 #check TraceEuclidean.v15_sectionFourDiscriminantInput_of_sources
 #check TraceEuclidean.v15_classic_pair_mem_of_sources
 #check TraceEuclidean.v15_integral_pair_mem_of_sources
@@ -229,6 +256,7 @@ import TraceEuclidean
 #print axioms TraceEuclidean.v15_proposition_six_one_full
 #print axioms TraceEuclidean.GlobalLatticePresentation.v15_pnorm_implies_trace
 #print axioms TraceEuclidean.v15_pnorm_finite_of_odlyzko_table4
+#print axioms TraceEuclidean.v15_pnorm_finite_of_odlyzko_table4_description
 #print axioms TraceEuclidean.v15_number_field_has_code
 #print axioms TraceEuclidean.v15_totally_real_field_code
 #print axioms TraceEuclidean.NumberFieldLattice.v15AbstractToCanonical
@@ -243,6 +271,11 @@ import TraceEuclidean
 #print axioms TraceEuclidean.v15HLower_le_analyticH_le_upper
 #print axioms TraceEuclidean.v15_classic_analytic_grid_iff_mem
 #print axioms TraceEuclidean.v15_integral_analytic_grid_iff_mem
+#print axioms TraceEuclidean.v15_degree_one_discriminant_bound
+#print axioms TraceEuclidean.v15_smallDegreeDiscriminantInput_of_literature
+#print axioms TraceEuclidean.v15_sectionFourDiscriminantInput_of_literature
+#print axioms TraceEuclidean.v15_classic_pair_mem_of_literature
+#print axioms TraceEuclidean.v15_integral_pair_mem_of_literature
 #print axioms TraceEuclidean.v15_sectionFourDiscriminantInput_of_sources
 #print axioms TraceEuclidean.v15_classic_pair_mem_of_sources
 #print axioms TraceEuclidean.v15_integral_pair_mem_of_sources

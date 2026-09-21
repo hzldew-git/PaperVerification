@@ -166,6 +166,31 @@ theorem v15_pnorm_finite_of_odlyzko_table4
   change P.IsTraceEuclidean (P.degree : ℝ)
   exact P.v15_pnorm_implies_trace p hp
 
+/-- Corollary 1.6 from the degree-restricted Table 4 premise actually used by
+the degree cutoff. -/
+theorem v15_pnorm_finite_of_odlyzko_table4_from_fifteen
+    (hTable : V15OdlyzkoTable4InputFrom 15) (p : V15PNormExponent) :
+    {c : GlobalLatticeClass |
+      ∃ P : GlobalLatticePresentation,
+        (Quotient.mk _ P : GlobalLatticeClass) = c ∧
+          P.IsV15PNormEuclidean p}.Finite := by
+  apply (v15_integral_finite_of_odlyzko_table4_from_fifteen_source hTable).subset
+  intro c hc
+  obtain ⟨P, rfl, hp⟩ := hc
+  change P.IsTraceEuclidean (P.degree : ℝ)
+  exact P.v15_pnorm_implies_trace p hp
+
+/-- Corollary 1.6 from the literature-facing complete Table 4 row. -/
+theorem v15_pnorm_finite_of_odlyzko_table4_description
+    (hDescription : V15OdlyzkoTable4DescriptionInput)
+    (p : V15PNormExponent) :
+    {c : GlobalLatticeClass |
+      ∃ P : GlobalLatticePresentation,
+        (Quotient.mk _ P : GlobalLatticeClass) = c ∧
+          P.IsV15PNormEuclidean p}.Finite :=
+  v15_pnorm_finite_of_odlyzko_table4_from_fifteen
+    (v15_odlyzkoTable4InputFrom_of_description hDescription 15) p
+
 end
 
 end TraceEuclidean

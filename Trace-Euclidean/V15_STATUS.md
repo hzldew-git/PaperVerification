@@ -17,6 +17,11 @@ axiom audit, followed by the
 [fresh GitHub Actions Lean and Python run](https://github.com/hzldew-git/PaperVerification/actions/runs/35581394526)
 and the
 [manuscript-exclusion run](https://github.com/hzldew-git/PaperVerification/actions/runs/35581394493).
+Formalization commit 4ff3057 adds the analytic `H(n,d)` interval bridge and
+class-level table membership. It passed the
+[fresh GitHub Actions Lean and Python run](https://github.com/hzldew-git/PaperVerification/actions/runs/35607296207)
+and the
+[manuscript-exclusion run](https://github.com/hzldew-git/PaperVerification/actions/runs/35607296280).
 
 Theorems 1.2 and 1.3 have strict bounds and variable-degree global
 finiteness from the explicit cited Odlyzko Table 4 premise. Theorem 1.7
@@ -35,9 +40,13 @@ VERIFIED_MATCH. Corollary 1.6 and Proposition 6.1 also await independent
 semantic review. Abstract-space transport is now proved over every totally
 real number field, including the scalar field, quadratic space, full lattice,
 and quadratic form. The finite Section 4 table arrays and maxima are Lean
-theorems. The analytic interval-to-table-row bridge, selected supporting
-lemmas, and independent semantic sign-off remain outside the current signed
-scope.
+theorems, and the analytic interval-to-table-row bridge is kernel checked on
+all 476 cells. The Odlyzko source interface now mirrors the full Table 4 row,
+checks the error-term rounding and totally real specialization, and restricts
+the premise to the degrees actually used. Degree one of the small-degree
+input is internal; the cited degree 2--11 estimates, the Odlyzko
+explicit-formula theorem, selected supporting lemmas, and independent
+semantic sign-off remain outside the current signed scope.
 
 Start with [README.md](README.md), [THEOREM_INDEX.md](THEOREM_INDEX.md),
 and the [v15 audit](docs/audit/v15/12_executive_summary.md).

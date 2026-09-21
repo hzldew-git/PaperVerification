@@ -66,6 +66,23 @@ theorem v15_integral_finite_of_odlyzko_table4_source
       c.IsIntegralTraceEuclidean (c.degree : ℝ)}.Finite :=
   v15_integral_finite_of_odlyzko_table4 hTable v15_rank_one_classic_input
 
+/-- The unconditional Table 4 row is needed only for degrees at least
+fifteen in the integral finiteness theorem. -/
+theorem v15_integral_finite_of_odlyzko_table4_from_fifteen_source
+    (hTable : V15OdlyzkoTable4InputFrom 15) :
+    {c : GlobalLatticeClass |
+      c.IsIntegralTraceEuclidean (c.degree : ℝ)}.Finite :=
+  v15_integral_finite_of_odlyzko_table4_from_fifteen
+    hTable v15_rank_one_classic_input
+
+/-- Integral finiteness from the literature-facing complete Table 4 row. -/
+theorem v15_integral_finite_of_odlyzko_table4_description_source
+    (hDescription : V15OdlyzkoTable4DescriptionInput) :
+    {c : GlobalLatticeClass |
+      c.IsIntegralTraceEuclidean (c.degree : ℝ)}.Finite :=
+  v15_integral_finite_of_odlyzko_table4_description
+    hDescription v15_rank_one_classic_input
+
 end
 
 end TraceEuclidean
