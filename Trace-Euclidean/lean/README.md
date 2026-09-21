@@ -17,6 +17,7 @@ The v15 proof chain is organized as follows:
 | QuadraticIntegralBasis, QuadraticFieldBridge | Concrete field-square corollary inherited and rechecked for v15 |
 | V15FieldTransport | Scalar-field, quadratic-space, full-lattice, and form transport from any totally real number field to a coded canonical model |
 | V15AdmissibleTables | Kernel-checked 24/63 finite tables, all rank/degree bound arrays, exact maxima, and quoted table consequences |
+| V15AnalyticTable, V15AnalyticTableBridge | Exact Gamma normalization of `H(n,d)`, proved rational enclosures, full 34 by 14 analytic-table equivalences, and the field-discriminant-to-table bridge |
 
 The public endpoint is
 v15_rank_one_real_quadratic_classification_totally_positive. It quantifies
@@ -30,8 +31,13 @@ v15AbstractRankOneIdealBridgeAnyField remove the earlier restriction that the
 source field already be coded. The finite Section 4 table conclusions are
 v15_classic_table_exact_global_maxima,
 v15_integral_table_exact_global_maxima, and the associated row/column bound
-theorems. Their analytic input-to-row computation is independently replayed
-with exact rational intervals by the public Python verifier.
+theorems. The endpoints v15_classic_analytic_grid_iff_mem and
+v15_integral_analytic_grid_iff_mem prove inside Lean that the exact analytic
+inequalities select the 24 and 63 rows throughout the complete finite grid.
+The class-level endpoints v15_classic_pair_mem_of_sources and
+v15_integral_pair_mem_of_sources connect those equivalences to explicit
+small-degree discriminant and Odlyzko premises. The public Python verifier
+independently replays the interval computation.
 
 From this directory:
 

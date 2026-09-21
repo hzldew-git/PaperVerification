@@ -582,6 +582,26 @@ TraceEuclidean.v15_integral_table_overall_rank_le_twelve {n d : ℕ}
 TraceEuclidean.v15_admissible_tables_inside_finite_grid :
   (∀ (n d : ℕ), (n, d) ∈ TraceEuclidean.v15ClassicAdmissiblePairs → 1 ≤ n ∧ n ≤ 34 ∧ 1 ≤ d ∧ d ≤ 14) ∧
     ∀ (n d : ℕ), (n, d) ∈ TraceEuclidean.v15IntegralAdmissiblePairs → 1 ≤ n ∧ n ≤ 34 ∧ 1 ≤ d ∧ d ≤ 14
+TraceEuclidean.v15AnalyticH_eq_closed (n d : ℕ) : TraceEuclidean.v15AnalyticH n d = TraceEuclidean.v15ClosedH n d
+TraceEuclidean.v15HLower_le_analyticH_le_upper (n d : ℕ) :
+  TraceEuclidean.v15HLower n d ≤ TraceEuclidean.v15AnalyticH n d ∧
+    TraceEuclidean.v15AnalyticH n d ≤ TraceEuclidean.v15HUpper n d
+TraceEuclidean.v15_classic_analytic_grid_iff_mem (n d : ℕ) (hn : 1 ≤ n) (hn' : n ≤ 34) (hd : 1 ≤ d) (hd' : d ≤ 14) :
+  1 ≤ TraceEuclidean.v15AnalyticH n d ↔ (n, d) ∈ TraceEuclidean.v15ClassicAdmissiblePairs
+TraceEuclidean.v15_integral_analytic_grid_iff_mem (n d : ℕ) (hn : 1 ≤ n) (hn' : n ≤ 34) (hd : 1 ≤ d) (hd' : d ≤ 14) :
+  TraceEuclidean.v15IntegralThreshold n d ≤ TraceEuclidean.v15AnalyticH n d ↔
+    (n, d) ∈ TraceEuclidean.v15IntegralAdmissiblePairs
+TraceEuclidean.v15_sectionFourDiscriminantInput_of_sources (hSmall : TraceEuclidean.V15SmallDegreeDiscriminantInput)
+  (hTable : TraceEuclidean.V15OdlyzkoTable4Input) : TraceEuclidean.V15SectionFourDiscriminantInput
+TraceEuclidean.v15_classic_pair_mem_of_sources (hSmall : TraceEuclidean.V15SmallDegreeDiscriminantInput)
+  (hTable : TraceEuclidean.V15OdlyzkoTable4Input) (c : TraceEuclidean.GlobalLatticeClass)
+  (hE : TraceEuclidean.GlobalLatticeClass.IsClassicTraceEuclidean (↑c.degree) c) :
+  (c.rank, c.degree) ∈ TraceEuclidean.v15ClassicAdmissiblePairs
+TraceEuclidean.v15_integral_pair_mem_of_sources (hSmall : TraceEuclidean.V15SmallDegreeDiscriminantInput)
+  (hTable : TraceEuclidean.V15OdlyzkoTable4Input) (hRankOne : TraceEuclidean.V15RankOneClassicInput)
+  (c : TraceEuclidean.GlobalLatticeClass)
+  (hE : TraceEuclidean.GlobalLatticeClass.IsIntegralTraceEuclidean (↑c.degree) c) :
+  (c.rank, c.degree) ∈ TraceEuclidean.v15IntegralAdmissiblePairs
 'TraceEuclidean.v15_reduced_gram_exact_radius' depends on axioms: [propext, Classical.choice, Quot.sound]
 'TraceEuclidean.v15_reduced_gram_exact_radius_rat' depends on axioms: [propext, Classical.choice, Quot.sound]
 'TraceEuclidean.GlobalLatticePresentation.rankOne_ideal_bridge' depends on axioms: [propext,
@@ -617,3 +637,10 @@ TraceEuclidean.v15_admissible_tables_inside_finite_grid :
 'TraceEuclidean.v15_integral_table_exact_global_maxima' depends on axioms: [propext, Classical.choice, Quot.sound]
 'TraceEuclidean.v15_integral_table_degree_seven_to_nine' depends on axioms: [propext, Classical.choice, Quot.sound]
 'TraceEuclidean.v15_integral_table_overall_rank_le_twelve' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15AnalyticH_eq_closed' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15HLower_le_analyticH_le_upper' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15_classic_analytic_grid_iff_mem' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15_integral_analytic_grid_iff_mem' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15_sectionFourDiscriminantInput_of_sources' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15_classic_pair_mem_of_sources' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15_integral_pair_mem_of_sources' depends on axioms: [propext, Classical.choice, Quot.sound]

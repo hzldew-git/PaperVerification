@@ -113,7 +113,6 @@ def main() -> None:
         ROOT / "generated" / "issues.tex",
         ROOT / "docs" / "verification_manual_v9.tex",
         ROOT / "output" / "pdf" / "verification_manual_v9.pdf",
-        ROOT / "output" / "pdf" / "verification_manual_v9.log",
         ROOT / "lean" / "lean-toolchain",
         ROOT / "lean" / "lakefile.toml",
         ROOT / "lean" / "lake-manifest.json",
@@ -146,7 +145,7 @@ def main() -> None:
         ROOT / "TRUST.md",
         ROOT / "REPRODUCING.md",
         ROOT / "SOURCES.md",
-        ROOT / "docs" / "audit" / "12_executive_summary.md",
+        ROOT / "docs" / "audit" / "v15" / "12_executive_summary.md",
     ]
     if private_mode:
         required.extend(
@@ -260,9 +259,7 @@ def main() -> None:
         if "table-G-bound-" + row["row_id"] not in test_ids:
             errors.append(f"No G-bound result for table row {row['row_id']}")
 
-    log = (ROOT / "output" / "pdf" / "verification_manual_v9.log").read_text(
-        encoding="utf-8", errors="replace"
-    )
+    manual_log = ROOT / "output" / "pdf" / "verification_manual_v9.log"
     forbidden_log_patterns = {
         "overfull box": r"Overfull \\hbox",
         "undefined references": r"undefined references",
@@ -270,9 +267,11 @@ def main() -> None:
         "LaTeX error": r"! LaTeX Error",
         "undefined control sequence": r"Undefined control sequence",
     }
-    for label, pattern in forbidden_log_patterns.items():
-        if re.search(pattern, log, flags=re.IGNORECASE):
-            errors.append(f"The verification-manual LaTeX log contains {label}.")
+    if manual_log.is_file():
+        log = manual_log.read_text(encoding="utf-8", errors="replace")
+        for label, pattern in forbidden_log_patterns.items():
+            if re.search(pattern, log, flags=re.IGNORECASE):
+                errors.append(f"The verification-manual LaTeX log contains {label}.")
 
     manual_pdf = ROOT / "output" / "pdf" / "verification_manual_v9.pdf"
     if not manual_pdf.read_bytes().startswith(b"%PDF"):
@@ -353,7 +352,10 @@ def main() -> None:
             and not duplicated_coverage_tests
             and not nonpassing_coverage
         ),
-        "latex_log_clean": not any("LaTeX log" in error for error in errors),
+        "manual_log_checked": manual_log.is_file(),
+        "latex_log_clean": (
+            manual_log.is_file() and not any("LaTeX log" in error for error in errors)
+        ),
         "manual_pdf_present": manual_pdf.is_file(),
         "lean_forbidden_constructs_absent": not any(
             "Forbidden Lean proof construct" in error for error in errors

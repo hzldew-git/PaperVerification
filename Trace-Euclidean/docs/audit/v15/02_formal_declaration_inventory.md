@@ -4,6 +4,11 @@
 | --- | --- |
 | v15_classic_root_discriminant_lt, v15_integral_root_discriminant_lt | Strict rank-times-root-discriminant bounds for the corresponding varying-field quotient classes. |
 | V15OdlyzkoTable4Input | Explicit premise carrying Odlyzko's unconditional Table 4 lower bound for every coded totally real field. It is not a project axiom. |
+| V15SmallDegreeDiscriminantInput, V15SectionFourDiscriminantInput | Explicit external small-degree field-discriminant premise and the combined piecewise discriminant bound used by Section 4. |
+| v15_unitBallVolume_sq_closed, v15AnalyticH_eq_closed | Evaluate the squared unit-ball volume through factorials and rewrite the manuscript's Gamma-defined `H(n,d)` exactly. |
+| v15HLower_le_analyticH_le_upper | Encloses the exact analytic quantity between rational expressions using proved bounds for pi and the exponential correction. |
+| v15_classic_analytic_grid_iff_mem, v15_integral_analytic_grid_iff_mem | Prove on every cell with 1 <= n <= 34 and 1 <= d <= 14 that the exact analytic classic/integral inequality is equivalent to membership in the 24/63 pair list. |
+| v15_classic_pair_mem_of_sources, v15_integral_pair_mem_of_sources | Derive the actual lattice class's table membership from the disclosed small-degree discriminant, Odlyzko, and rank-one inputs. |
 | v15_odlyzko_degree_input_of_table4 | Proves the numerical degree cutoff from the published constants. |
 | v15_rank_one_classic_input | Proves integral rank-one presentations are classically integral without freeness. |
 | v15_classic_finite_of_odlyzko_table4, v15_integral_finite_of_odlyzko_table4_source | Global finiteness at the varying threshold equal to each field degree, conditional on the cited table. |

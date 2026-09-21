@@ -44,12 +44,17 @@ endpoints.
 The main six-class theorem still uses its direct rational deep-hole argument
 and constructive covers for the six survivors.
 
-V15AdmissibleTables makes the 24 classic and 63 integral extracted table rows
-Lean data and proves their complete rank/degree bound arrays and quoted maxima.
-The public exact rational-interval checker remains responsible for showing
-that these rows are precisely those selected by the analytic `H(n,d)`
-inequalities; the cited discriminant bounds and interval enclosure proof are
-not silently promoted to Lean axioms.
+V15AnalyticTable evaluates the Gamma factor in `H(n,d)`, proves rational
+enclosures for pi and the exponential correction, and kernel-checks all 476
+rank-degree cells. Its two equivalence theorems prove that the analytic classic
+and integral inequalities select exactly the 24 and 63 rows recorded in
+V15AdmissibleTables. V15AnalyticTableBridge proves the downstream class-level
+membership statements from two disclosed source premises:
+V15SmallDegreeDiscriminantInput for degrees at most eleven and
+V15OdlyzkoTable4Input for the remaining degrees. The cited field-discriminant
+estimates themselves remain external; the analytic enclosure and finite-grid
+classification are no longer outside Lean. Python and Wolfram provide
+independent computational checks.
 
 Compilation and PASS counts do not certify the complete manuscript.
 The first-party [v15 semantic audit](docs/audit/v15/12_executive_summary.md)

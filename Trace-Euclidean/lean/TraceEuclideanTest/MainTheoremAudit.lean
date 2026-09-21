@@ -210,6 +210,13 @@ import TraceEuclidean
 #check TraceEuclidean.v15_integral_table_rank_le_twelve_of_degree_ge_two
 #check TraceEuclidean.v15_integral_table_overall_rank_le_twelve
 #check TraceEuclidean.v15_admissible_tables_inside_finite_grid
+#check TraceEuclidean.v15AnalyticH_eq_closed
+#check TraceEuclidean.v15HLower_le_analyticH_le_upper
+#check TraceEuclidean.v15_classic_analytic_grid_iff_mem
+#check TraceEuclidean.v15_integral_analytic_grid_iff_mem
+#check TraceEuclidean.v15_sectionFourDiscriminantInput_of_sources
+#check TraceEuclidean.v15_classic_pair_mem_of_sources
+#check TraceEuclidean.v15_integral_pair_mem_of_sources
 
 #print axioms TraceEuclidean.v15_reduced_gram_exact_radius
 #print axioms TraceEuclidean.v15_reduced_gram_exact_radius_rat
@@ -232,3 +239,10 @@ import TraceEuclidean
 #print axioms TraceEuclidean.v15_integral_table_exact_global_maxima
 #print axioms TraceEuclidean.v15_integral_table_degree_seven_to_nine
 #print axioms TraceEuclidean.v15_integral_table_overall_rank_le_twelve
+#print axioms TraceEuclidean.v15AnalyticH_eq_closed
+#print axioms TraceEuclidean.v15HLower_le_analyticH_le_upper
+#print axioms TraceEuclidean.v15_classic_analytic_grid_iff_mem
+#print axioms TraceEuclidean.v15_integral_analytic_grid_iff_mem
+#print axioms TraceEuclidean.v15_sectionFourDiscriminantInput_of_sources
+#print axioms TraceEuclidean.v15_classic_pair_mem_of_sources
+#print axioms TraceEuclidean.v15_integral_pair_mem_of_sources

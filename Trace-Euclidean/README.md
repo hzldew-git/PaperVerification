@@ -62,12 +62,15 @@ full lattice, and quadratic form to canonical coordinates. The resulting
 actual isometry preserves trace Euclideanity and classic integrality, and rank
 one composes with the fractional-ideal presentation at every real threshold.
 The induced field isomorphism identifies the integer rings and preserves
-rational traces. The 24 classic and 63 integral Section 4 table rows are also
-explicit Lean data; Lean proves all row and column bounds, the exact global
-maxima, the degree 7--9 rank-two assertion, and the final rank-twelve
-consequence. The fact that these rows are exactly those selected by the
-analytic `H(n,d)` inequalities remains certified by the public exact
-rational-interval verifier.
+rational traces. Lean evaluates the Gamma factor in the Section 4 quantity
+`H(n,d)`, encloses its transcendental factors by proved rational bounds, and
+checks all 34 by 14 cells. It proves that the analytic classic and integral
+inequalities select exactly the recorded 24 and 63 pairs, then proves all row
+and column bounds, the exact global maxima, the degree 7--9 rank-two assertion,
+and the final rank-twelve consequence. The public Python and Wolfram runs are
+independent checks of the same finite computation. The small-degree field
+discriminant estimates and Odlyzko's Table 4 remain explicit external
+mathematical inputs to the class-level bridge.
 
 ## Historical v9 evidence
 

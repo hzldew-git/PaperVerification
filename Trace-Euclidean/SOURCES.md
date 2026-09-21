@@ -28,15 +28,18 @@ V15OdlyzkoTable4Input records exactly this consequence for coded fields.
 The mathematical source is external; the numerical conversion and
 downstream v15 finiteness proof are in Lean.
 
-Voight's totally real field enumeration supplies separate small-degree
-numerical inputs to the paper's tables. It is not the source of the
-uniform degree bound in the Lean proof.
+Voight's totally real field enumeration supplies the separate small-degree
+discriminant estimates used by the paper's tables. The formal proposition
+V15SmallDegreeDiscriminantInput records the required statement for degrees at
+most eleven. Together with V15OdlyzkoTable4Input it yields
+V15SectionFourDiscriminantInput. These cited estimates remain external; Lean
+proves the exact analytic reduction and every subsequent finite-grid result.
 
 ## Unformalized standalone material
 
 The generic binary-radius formula, Proposition 6.1's two integer-scalar
-specializations, and the p-norm finiteness corollary now have standalone
-Lean endpoints. The complete periodic-minimum development, all separate
-ideal upper bounds, full Section 4 maximum theorems, and historical or
-novelty assertions are not claimed as standalone Lean results. See the
+specializations, the p-norm finiteness corollary, the Section 4 analytic grid,
+and its finite-table maxima now have standalone Lean endpoints. The complete
+periodic-minimum development, all separate ideal upper bounds, and historical
+or novelty assertions are not claimed as standalone Lean results. See the
 [coverage report](docs/audit/v15/09_coverage_report.md).
