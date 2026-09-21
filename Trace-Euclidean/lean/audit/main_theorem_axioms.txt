@@ -507,6 +507,81 @@ TraceEuclidean.NumberFieldLattice.v15AbstractRankOneIdealBridge.{u_1} (C : Trace
           (∀ (σ : ↥↑C →+* ℝ), 0 < σ α) ∧
             TraceEuclidean.v15ValueFractionalIdeal I α ≤ 1 ∧
               (M.IsTraceEuclidean t ↔ TraceEuclidean.GlobalLatticePresentation.V15IdealTraceEuclideanAt I α t)
+TraceEuclidean.NumberFieldLattice.v15AbstractToCanonicalAnyField.{u_1, u_2} {F : Type u_1} {V : Type u_2} [Field F]
+  [NumberField F] [NumberField.IsTotallyReal F] [AddCommGroup V] [Module F V] [Module (NumberField.RingOfIntegers F) V]
+  [IsScalarTower (NumberField.RingOfIntegers F) F V] [FiniteDimensional F V] (M : TraceEuclidean.NumberFieldLattice)
+  (hn : 0 < Module.finrank F V) :
+  ∃ C P,
+    P.field = C ∧
+      P.rank = Module.finrank F V ∧
+        Nonempty (TraceEuclidean.NumberFieldLatticeEquiv M P.toNumberFieldLattice) ∧
+          (P.IsTraceEuclidean ↑P.degree ↔ M.IsTraceEuclidean ↑M.degree) ∧ (P.IsClassicIntegral ↔ M.IsClassicIntegral)
+TraceEuclidean.NumberFieldLattice.v15AbstractRankOneIdealBridgeAnyField.{u_1, u_2} {F : Type u_1} {V : Type u_2}
+  [Field F] [NumberField F] [NumberField.IsTotallyReal F] [AddCommGroup V] [Module F V]
+  [Module (NumberField.RingOfIntegers F) V] [IsScalarTower (NumberField.RingOfIntegers F) F V] [FiniteDimensional F V]
+  (M : TraceEuclidean.NumberFieldLattice) (hrank : Module.finrank F V = 1) (t : ℝ) :
+  ∃ C e I α,
+    I ≠ 0 ∧
+      (∀ (x : V), x ∈ M.L ↔ (TraceEuclidean.NumberFieldLattice.v15FieldCoordinateEquiv C e) x ⟨0, ⋯⟩ ∈ I) ∧
+        (∀ (x : V), e (M.Q x) = α * (TraceEuclidean.NumberFieldLattice.v15FieldCoordinateEquiv C e) x ⟨0, ⋯⟩ ^ 2) ∧
+          (∀ (σ : ↥↑C →+* ℝ), 0 < σ α) ∧
+            TraceEuclidean.v15ValueFractionalIdeal I α ≤ 1 ∧
+              (M.IsTraceEuclidean t ↔ TraceEuclidean.GlobalLatticePresentation.V15IdealTraceEuclideanAt I α t)
+TraceEuclidean.v15_classic_table_pair_count : TraceEuclidean.v15ClassicAdmissiblePairs.length = 24
+TraceEuclidean.v15_integral_table_pair_count : TraceEuclidean.v15IntegralAdmissiblePairs.length = 63
+TraceEuclidean.v15_classic_rank_bounds_by_degree :
+  List.map (fun i => TraceEuclidean.v15TableRankBound TraceEuclidean.v15ClassicAdmissiblePairs (i + 1))
+      (List.range 14) =
+    [12, 5, 3, 2, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0]
+TraceEuclidean.v15_classic_degree_bounds_by_rank :
+  List.map (fun i => TraceEuclidean.v15TableDegreeBound TraceEuclidean.v15ClassicAdmissiblePairs (i + 1))
+      (List.range 34) =
+    have y :=
+      have y :=
+        have y := [0, 0, 0, 0, 0];
+        0 :: 0 :: 0 :: 0 :: y;
+      have y := 0 :: 0 :: 0 :: 0 :: y;
+      0 :: 0 :: 0 :: 0 :: y;
+    have y :=
+      have y := 0 :: 0 :: 0 :: 0 :: 0 :: y;
+      1 :: 1 :: 1 :: 1 :: y;
+    have y := 2 :: 1 :: 1 :: 1 :: y;
+    6 :: 4 :: 3 :: 2 :: y
+TraceEuclidean.v15_integral_rank_bounds_by_degree :
+  List.map (fun i => TraceEuclidean.v15TableRankBound TraceEuclidean.v15IntegralAdmissiblePairs (i + 1))
+      (List.range 14) =
+    [29, 12, 7, 5, 4, 3, 2, 2, 2, 0, 0, 0, 0, 0]
+TraceEuclidean.v15_integral_degree_bounds_by_rank :
+  List.map (fun i => TraceEuclidean.v15TableDegreeBound TraceEuclidean.v15IntegralAdmissiblePairs (i + 1))
+      (List.range 34) =
+    have y :=
+      have y :=
+        have y := [0, 0, 0, 0, 0];
+        1 :: 1 :: 1 :: 1 :: y;
+      have y := 1 :: 1 :: 1 :: 1 :: y;
+      1 :: 1 :: 1 :: 1 :: y;
+    have y :=
+      have y := 1 :: 1 :: 1 :: 1 :: 1 :: y;
+      2 :: 2 :: 2 :: 2 :: y;
+    have y := 4 :: 3 :: 3 :: 2 :: y;
+    6 :: 9 :: 6 :: 5 :: y
+TraceEuclidean.v15_classic_table_exact_global_maxima :
+  (12, 1) ∈ TraceEuclidean.v15ClassicAdmissiblePairs ∧
+    (1, 6) ∈ TraceEuclidean.v15ClassicAdmissiblePairs ∧
+      ∀ (n d : ℕ), (n, d) ∈ TraceEuclidean.v15ClassicAdmissiblePairs → n ≤ 12 ∧ d ≤ 6
+TraceEuclidean.v15_integral_table_exact_global_maxima :
+  (29, 1) ∈ TraceEuclidean.v15IntegralAdmissiblePairs ∧
+    (2, 9) ∈ TraceEuclidean.v15IntegralAdmissiblePairs ∧
+      ∀ (n d : ℕ), (n, d) ∈ TraceEuclidean.v15IntegralAdmissiblePairs → n ≤ 29 ∧ d ≤ 9
+TraceEuclidean.v15_integral_table_degree_seven_to_nine {n d : ℕ}
+  (h : (n, d) ∈ TraceEuclidean.v15IntegralAdmissiblePairs) (hd : 7 ≤ d) : n = 2 ∧ d ≤ 9
+TraceEuclidean.v15_integral_table_rank_le_twelve_of_degree_ge_two {n d : ℕ}
+  (h : (n, d) ∈ TraceEuclidean.v15IntegralAdmissiblePairs) (hd : 2 ≤ d) : n ≤ 12
+TraceEuclidean.v15_integral_table_overall_rank_le_twelve {n d : ℕ}
+  (h : (n, d) ∈ TraceEuclidean.v15IntegralAdmissiblePairs) (hDegreeOne : d = 1 → n ≤ 10) : n ≤ 12
+TraceEuclidean.v15_admissible_tables_inside_finite_grid :
+  (∀ (n d : ℕ), (n, d) ∈ TraceEuclidean.v15ClassicAdmissiblePairs → 1 ≤ n ∧ n ≤ 34 ∧ 1 ≤ d ∧ d ≤ 14) ∧
+    ∀ (n d : ℕ), (n, d) ∈ TraceEuclidean.v15IntegralAdmissiblePairs → 1 ≤ n ∧ n ≤ 34 ∧ 1 ≤ d ∧ d ≤ 14
 'TraceEuclidean.v15_reduced_gram_exact_radius' depends on axioms: [propext, Classical.choice, Quot.sound]
 'TraceEuclidean.v15_reduced_gram_exact_radius_rat' depends on axioms: [propext, Classical.choice, Quot.sound]
 'TraceEuclidean.GlobalLatticePresentation.rankOne_ideal_bridge' depends on axioms: [propext,
@@ -532,3 +607,13 @@ TraceEuclidean.NumberFieldLattice.v15AbstractRankOneIdealBridge.{u_1} (C : Trace
 'TraceEuclidean.NumberFieldLattice.v15AbstractRankOneIdealBridge' depends on axioms: [propext,
  Classical.choice,
  Quot.sound]
+'TraceEuclidean.NumberFieldLattice.v15AbstractToCanonicalAnyField' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'TraceEuclidean.NumberFieldLattice.v15AbstractRankOneIdealBridgeAnyField' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'TraceEuclidean.v15_classic_table_exact_global_maxima' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15_integral_table_exact_global_maxima' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15_integral_table_degree_seven_to_nine' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15_integral_table_overall_rank_le_twelve' depends on axioms: [propext, Classical.choice, Quot.sound]

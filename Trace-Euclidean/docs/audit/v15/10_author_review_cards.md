@@ -44,6 +44,6 @@ Status: PROVISIONAL_MATCH. AUTHOR_CONFIRMATION_REQUIRED for the embedding mean a
 
 Paper: every qualifying rank-one fractional ideal has a reduced trace Gram basis, the determinant identity, and the exact squared radius; the full integer ring has two explicit formulas for every positive integer scalar.
 
-Formal: v15_proposition_six_one_full combines v15_proposition_six_one_ideal with v15_proposition_six_one_scalar_cases. NumberFieldLattice.v15AbstractRankOneIdealBridge supplies the ideal presentation for arbitrary abstract rank-one spaces over an already coded field at the manuscript threshold.
+Formal: v15_proposition_six_one_full combines v15_proposition_six_one_ideal with v15_proposition_six_one_scalar_cases. NumberFieldLattice.v15AbstractRankOneIdealBridgeAnyField supplies the ideal presentation for arbitrary abstract rank-one spaces over every totally real field at the manuscript threshold.
 
 Status: PROVISIONAL_MATCH. AUTHOR_CONFIRMATION_REQUIRED for the abstract-space and field-model identifications. FORMALIZATION_EXPERT_CONFIRMATION_REQUIRED for the ideal basis, integer-ring coordinate model, and sharp-radius transfer.

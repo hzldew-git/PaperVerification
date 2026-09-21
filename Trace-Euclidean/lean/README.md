@@ -15,6 +15,8 @@ The v15 proof chain is organized as follows:
 | V15CoefficientClassification, V15PositivityBridge | Actual isometries and the iff six-class theorem with total positivity |
 | V15Representatives, V15RepresentativeValidity, V15Distinctness | Six strictly Euclidean integral positive representatives and distinction |
 | QuadraticIntegralBasis, QuadraticFieldBridge | Concrete field-square corollary inherited and rechecked for v15 |
+| V15FieldTransport | Scalar-field, quadratic-space, full-lattice, and form transport from any totally real number field to a coded canonical model |
+| V15AdmissibleTables | Kernel-checked 24/63 finite tables, all rank/degree bound arrays, exact maxima, and quoted table consequences |
 
 The public endpoint is
 v15_rank_one_real_quadratic_classification_totally_positive. It quantifies
@@ -22,6 +24,14 @@ over all nonzero fractional ideals. The global finite-class endpoints are
 v15_classic_finite_of_odlyzko_table4 and
 v15_integral_finite_of_odlyzko_table4_source. Their sole external
 mathematical premise is the cited unconditional Table 4 inequality.
+
+The endpoints v15AbstractToCanonicalAnyField and
+v15AbstractRankOneIdealBridgeAnyField remove the earlier restriction that the
+source field already be coded. The finite Section 4 table conclusions are
+v15_classic_table_exact_global_maxima,
+v15_integral_table_exact_global_maxima, and the associated row/column bound
+theorems. Their analytic input-to-row computation is independently replayed
+with exact rational intervals by the public Python verifier.
 
 From this directory:
 

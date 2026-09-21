@@ -56,13 +56,18 @@ scalar formulas are proved on the full ring of integers, and all clauses are
 bundled in one proposition-level Lean theorem. The canonical abstract
 rank-one presentation is exported at an arbitrary real trace threshold and
 at the manuscript's threshold equal to the field degree. An additional Lean
-bridge constructs an actual coordinate isometry for every positive-rank
-abstract lattice over an already coded totally real field, preserving trace
-Euclideanity and classic integrality. Every number field can be coded inside
-the fixed algebraic closure; for totally real fields the code preserves total
-reality, identifies the integer rings, and preserves rational traces.
-Transport of the quadratic space and lattice along that field isomorphism
-remains a separate formal step.
+bridge now handles every totally real ground field: it chooses a code in the
+fixed algebraic closure and transports the scalar field, quadratic space,
+full lattice, and quadratic form to canonical coordinates. The resulting
+actual isometry preserves trace Euclideanity and classic integrality, and rank
+one composes with the fractional-ideal presentation at every real threshold.
+The induced field isomorphism identifies the integer rings and preserves
+rational traces. The 24 classic and 63 integral Section 4 table rows are also
+explicit Lean data; Lean proves all row and column bounds, the exact global
+maxima, the degree 7--9 rank-two assertion, and the final rank-twelve
+consequence. The fact that these rows are exactly those selected by the
+analytic `H(n,d)` inequalities remains certified by the public exact
+rational-interval verifier.
 
 ## Historical v9 evidence
 

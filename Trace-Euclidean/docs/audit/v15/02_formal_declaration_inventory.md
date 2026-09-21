@@ -21,6 +21,12 @@
 | v15_totally_real_field_code | A totally real field has a totally real code; its field isomorphism identifies the integer rings and preserves the rational trace. |
 | NumberFieldLattice.v15AbstractToCanonical | An arbitrary positive-rank abstract lattice over an already coded totally real field has an actual canonical-coordinate isometry, preserving trace Euclideanity at the field degree and classic integrality. |
 | NumberFieldLattice.v15AbstractRankOneIdealBridge | Composes the coordinate isometry with the rank-one ideal theorem at any real threshold, retaining positivity, integrality, membership, and the quadratic formula. |
+| NumberFieldLattice.v15AbstractToCanonicalAnyField | For an arbitrary totally real number field, chooses a code and transports the scalar field, space, full lattice, and quadratic form to an actually isometric canonical presentation, preserving the degree threshold and classic integrality. |
+| NumberFieldLattice.v15AbstractRankOneIdealBridgeAnyField | Composes the cross-field transport with the rank-one ideal theorem at any real threshold. |
+| v15_classic_rank_bounds_by_degree, v15_classic_degree_bounds_by_rank | Kernel-check the complete rank and degree bound arrays in Table 2 from the 24 extracted classic pairs. |
+| v15_integral_rank_bounds_by_degree, v15_integral_degree_bounds_by_rank | Kernel-check the complete rank and degree bound arrays in Table 4 from the 63 extracted integral pairs. |
+| v15_classic_table_exact_global_maxima, v15_integral_table_exact_global_maxima | Prove the exact global table maxima, including witnesses. |
+| v15_integral_table_degree_seven_to_nine, v15_integral_table_overall_rank_le_twelve | Prove the two numerical consequences stated in Remark 1.4(iii)--(iv), with the degree-one classification supplied explicitly to the latter. |
 | v15_proposition_six_one_scalar_cases, v15_proposition_six_one_full | Both positive-integer scalar formulas on the quadratic integer ring and a combined endpoint for all clauses of Proposition 6.1. |
 | GlobalLatticePresentation.v15_pnorm_implies_trace, v15_pnorm_finite_of_odlyzko_table4 | Power-mean implication for finite p >= 1 and infinity, followed by global finite-class conclusion from the cited Table 4 premise. |
 

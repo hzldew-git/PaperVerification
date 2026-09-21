@@ -26,6 +26,8 @@ import TraceEuclidean.V15BinaryCriterion
 import TraceEuclidean.V15GeneralBinaryRadius
 import TraceEuclidean.V15RankOneIdealBridge
 import TraceEuclidean.V15AbstractCoordinates
+import TraceEuclidean.V15AdmissibleTables
+import TraceEuclidean.V15FieldTransport
 import TraceEuclidean.V15PropositionSixOne
 import TraceEuclidean.V15ScalarRadius
 import TraceEuclidean.V15PNorm

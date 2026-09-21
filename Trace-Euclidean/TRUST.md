@@ -27,13 +27,13 @@ GlobalLatticePresentation.rankOne_ideal_bridge_at now exports this
 presentation for the canonical rank-one global lattice model, including
 positivity, integrality, and the strict trace condition at any real threshold.
 Its degree specialization matches the manuscript. The theorem
-v15AbstractToCanonical adds an actual isometry from any positive-rank
-abstract lattice over an already coded field to the canonical coordinate
-model, preserving strict trace Euclideanity and classic integrality;
-v15AbstractRankOneIdealBridge composes this with the ideal representation.
-v15_totally_real_field_code identifies total reality, integer rings, and
-rational traces under the field coding isomorphism, while transport of the
-quadratic space and lattice along it remains outside the current Lean endpoint.
+v15AbstractToCanonicalAnyField adds an actual isometry from any positive-rank
+abstract lattice over any totally real number field to a coded canonical
+coordinate model, transporting the scalar field, full lattice, and quadratic
+form while preserving strict trace Euclideanity and classic integrality;
+v15AbstractRankOneIdealBridgeAnyField composes this with the ideal
+representation. The field isomorphism identifies the integer rings and
+preserves rational traces.
 The theorem v15_proposition_six_one_full
 exports the general reduced-binary covering
 radius and determinant identity for actual fractional ideals and both
@@ -43,6 +43,13 @@ proofs have the same standard logical axiom dependencies as the existing
 endpoints.
 The main six-class theorem still uses its direct rational deep-hole argument
 and constructive covers for the six survivors.
+
+V15AdmissibleTables makes the 24 classic and 63 integral extracted table rows
+Lean data and proves their complete rank/degree bound arrays and quoted maxima.
+The public exact rational-interval checker remains responsible for showing
+that these rows are precisely those selected by the analytic `H(n,d)`
+inequalities; the cited discriminant bounds and interval enclosure proof are
+not silently promoted to Lean axioms.
 
 Compilation and PASS counts do not certify the complete manuscript.
 The first-party [v15 semantic audit](docs/audit/v15/12_executive_summary.md)

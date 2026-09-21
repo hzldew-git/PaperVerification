@@ -11,8 +11,9 @@ logical axioms.
 Formalization commit 741dc24 passed the [fresh GitHub Actions Lean, Python,
 and 95-endpoint axiom run](https://github.com/hzldew-git/PaperVerification/actions/runs/35542188896)
 and the [manuscript-exclusion run](https://github.com/hzldew-git/PaperVerification/actions/runs/35542188716).
-The next update adds an abstract-space coordinate bridge and has passed a
-complete local Lean build and 99-endpoint axiom audit. Consult the
+The current update adds cross-field lattice transport and finite-table
+theorems and has passed a complete local Lean build and 105-endpoint axiom
+audit. Consult the
 [Lean workflow](https://github.com/hzldew-git/PaperVerification/actions/workflows/lean.yml)
 for later revisions' clean-checkout status.
 
@@ -30,12 +31,12 @@ an arbitrary real threshold and at the manuscript's field-degree threshold.
 Assessment: SUBSTANTIAL_FORMALIZATION, Grade B. Four main results are
 PROVISIONAL_MATCH pending independent review; none is marked
 VERIFIED_MATCH. Corollary 1.6 and Proposition 6.1 also await independent
-semantic review. Abstract-space transport is now proved over every already
-coded totally real field. Every totally real number field has a code with
-the same integer ring and rational trace under the field isomorphism. The
-remaining cross-field quadratic-space/lattice transport,
-selected supporting numerical Lean results, and independent semantic sign-off
-remain outside the current signed scope.
+semantic review. Abstract-space transport is now proved over every totally
+real number field, including the scalar field, quadratic space, full lattice,
+and quadratic form. The finite Section 4 table arrays and maxima are Lean
+theorems. The analytic interval-to-table-row bridge, selected supporting
+lemmas, and independent semantic sign-off remain outside the current signed
+scope.
 
 Start with [README.md](README.md), [THEOREM_INDEX.md](THEOREM_INDEX.md),
 and the [v15 audit](docs/audit/v15/12_executive_summary.md).
