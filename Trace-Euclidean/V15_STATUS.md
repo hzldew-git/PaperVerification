@@ -22,6 +22,12 @@ class-level table membership. It passed the
 [fresh GitHub Actions Lean and Python run](https://github.com/hzldew-git/PaperVerification/actions/runs/35607296207)
 and the
 [manuscript-exclusion run](https://github.com/hzldew-git/PaperVerification/actions/runs/35607296280).
+Formalization commit d507fc9 reduces the Odlyzko boundary to the published
+Table 4 description, proves its rounding and totally real specialization,
+and separates the small-degree literature inputs. It passed the
+[fresh GitHub Actions Lean and Python run](https://github.com/hzldew-git/PaperVerification/actions/runs/35614064862)
+with 125 audited endpoints and the
+[manuscript-exclusion run](https://github.com/hzldew-git/PaperVerification/actions/runs/35614064890).
 
 Theorems 1.2 and 1.3 have strict bounds and variable-degree global
 finiteness from the explicit cited Odlyzko Table 4 premise. Theorem 1.7

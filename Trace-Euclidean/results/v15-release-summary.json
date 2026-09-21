@@ -2,7 +2,7 @@
   "author_version": "Trace-Euclidean-v15",
   "source_sha256": "83a236e93648ce0802f8a0d3022de63710d089f3a4f7e61214a4c855459597b5",
   "grade": "B",
-  "lean_code_commit": "f3f8649c5f0e3820b8bbdc5216f44eb6d3df8edf",
+  "lean_code_commit": "d507fc951369b050c39946e8c0e74adfc9183151",
   "status": "SUBSTANTIAL_FORMALIZATION",
   "main_results_reviewed": 4,
   "provisional_match": 4,
@@ -18,15 +18,16 @@
     "version": "4.32.1",
     "mathlib_revision": "520045ab14e26149ee970e2e617ca04b09bde5d6",
     "full_build": "pass",
+    "audited_endpoints": 125,
     "audited_axioms": ["propext", "Classical.choice", "Quot.sound"]
   },
-  "external_mathematical_input": "Odlyzko unconditional Table 4, row b=4",
+  "external_mathematical_input": "Degree 2--11 discriminant estimates and Odlyzko unconditional Table 4 description, row b=4",
   "published_code_github_actions": {
-    "head_sha": "22180f02159e86ce4ad215a9ceabb1061f998dca",
+    "head_sha": "d507fc951369b050c39946e8c0e74adfc9183151",
     "lean_and_python": "success",
     "manuscript_exclusion": "success",
-    "lean_run": "https://github.com/hzldew-git/PaperVerification/actions/runs/35520676689",
-    "manuscript_run": "https://github.com/hzldew-git/PaperVerification/actions/runs/35520676688"
+    "lean_run": "https://github.com/hzldew-git/PaperVerification/actions/runs/35614064862",
+    "manuscript_run": "https://github.com/hzldew-git/PaperVerification/actions/runs/35614064890"
   },
   "audit": "docs/audit/v15/12_executive_summary.md",
   "historical_v9_summary": "results/summary.json"

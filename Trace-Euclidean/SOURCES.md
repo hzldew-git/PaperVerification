@@ -30,7 +30,10 @@ V15OdlyzkoTable4DescriptionInput. V15OdlyzkoTable4Input remains as a
 compatibility interface for the resulting totally real consequence
 |D_F| > 36.347^d exp(-10.667).
 
-The analytic method behind the tables is documented in Odlyzko's
+The flexible analytic method used for tabular discriminant bounds is developed
+in Odlyzko's [Inventiones paper](https://doi.org/10.1007/BF01389854),
+*Some analytic estimates of class numbers and discriminants*, 29 (1975),
+275--286. Related refinements are documented in his
 [Acta Arithmetica paper](https://www.impan.pl/en/publishing-house/journals-and-series/acta-arithmetica/all/29/3/100995/lower-bounds-for-discriminants-of-number-fields),
 DOI 10.4064/aa-29-3-275-297, his
 [Tohoku paper](https://www.jstage.jst.go.jp/article/tmj1949/29/2/29_2_209/_article/-char/en),

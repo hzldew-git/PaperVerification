@@ -79,8 +79,12 @@ or replaced in the manuscript by a bound directly derived from the online
 
 ## Remaining analytic formalization boundary
 
-Odlyzko's published proof method is developed in
-[Lower bounds for discriminants of number fields](https://www.impan.pl/en/publishing-house/journals-and-series/acta-arithmetica/all/29/3/100995/lower-bounds-for-discriminants-of-number-fields)
+The flexible explicit-formula method used for tabular discriminant bounds is
+developed in Odlyzko's
+[*Some analytic estimates of class numbers and discriminants*](https://doi.org/10.1007/BF01389854),
+Inventiones Mathematicae 29 (1975), 275--286.  Related refinements appear in
+his
+[*Lower bounds for discriminants of number fields*](https://www.impan.pl/en/publishing-house/journals-and-series/acta-arithmetica/all/29/3/100995/lower-bounds-for-discriminants-of-number-fields)
 and
 [Lower bounds for discriminants of number fields II](https://www.jstage.jst.go.jp/article/tmj1949/29/2/29_2_209/_article/-char/en).
 Poitou's
