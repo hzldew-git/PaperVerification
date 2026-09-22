@@ -36,7 +36,16 @@ results are 1165 Python PASS and 112 Wolfram PASS.
   external mathematical premise. Lean now starts from the table description
   with signature exponents and the nonnegative prime-ideal correction, checks
   the upward rounding and totally real specialization, and needs the row only
-  in degrees at least fifteen.
+  in degrees at least fifteen. The printed unconditional kernel at `b = 4`
+  is now defined in Lean; its evenness, nonnegativity, continuity, compact
+  support, and integrability are proved. Lean identifies `H` with one third
+  of the autocorrelation of the compactly supported bump `1 + cos(pi*x)` and
+  proves that the Fourier transform of `H` is real and nonnegative at every
+  real frequency. The complete double sum over all prime ideals and positive
+  exponents is defined in Lean, proved equal to the finite box with norm at
+  most 4095 and exponent at most eleven, and proved nonnegative. A
+  kernel-checked bridge substitutes this complete correction for the
+  existential correction in the exact-error and rounded table interfaces.
 - Theorem 1.7: an if-and-only-if classification for every nonzero fractional
   ideal presentation of a positive integral rank-one real-quadratic lattice.
   Lean proves principality, six actual module-isometry classes, six valid
@@ -75,9 +84,12 @@ independent checks of the same finite computation. Degree one of the
 small-degree discriminant input is now proved from Minkowski's bound. The
 exact minima in degrees 2--9, the degree-ten enumeration result, the optimized
 degree-eleven bound 14.083, and the analytic theorem behind Odlyzko's Table 4
-remain explicit external mathematical inputs. Their source separation and
-Lean reduction are recorded in the
-[Odlyzko source audit](docs/audit/v15/14_odlyzko_source_reduction.md).
+remain explicit external mathematical inputs. Within that last theorem, the
+unformalized analytic steps are the completed Dedekind-zeta explicit formula,
+the positivity and admissibility transfer from `H` to
+`F(x) = H(x/4)/cosh(x/2)`, and the certified archimedean estimates producing
+the tabulated constants. Their source separation and Lean reduction are
+recorded in the [Odlyzko source audit](docs/audit/v15/14_odlyzko_source_reduction.md).
 
 ## Version scope
 

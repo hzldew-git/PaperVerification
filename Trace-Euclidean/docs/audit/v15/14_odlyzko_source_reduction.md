@@ -39,14 +39,19 @@ the nonnegative correction `f`.  The resulting bound is
 `V15OdlyzkoTable4ExactErrorInput` records the complete row before the upward
 rounding of `E`.  `V15OdlyzkoTable4DescriptionInput` records the published
 rounded row, including the signature exponents and a nonnegative correction
-term.  The following implications are now kernel checked:
+term. `V15OdlyzkoTable4ExplicitCorrectionInput` replaces that existential
+term by the complete correction defined from the source kernel. Thus the
+remaining analytic premise is a single discriminant inequality with a fully
+specified correction. The following implications are now kernel checked:
 
 1. exact `E = 32/3` row to the rounded `E = 10.667` row;
 2. general signature row to the totally real field row;
 3. field-level statements to the selected field of a lattice class;
 4. the Table 4 input only from degree 12 for the Section 4 tables;
 5. the Table 4 input only from degree 15 for the global degree cutoff and
-   finiteness theorems.
+   finiteness theorems;
+6. the explicit complete correction inequality to the exact-error and rounded
+   Table 4 interfaces.
 
 The earlier unrestricted `V15OdlyzkoTable4Input` and its public theorem names
 remain as compatibility interfaces.  The new interfaces expose the weaker
@@ -89,20 +94,59 @@ and
 [Lower bounds for discriminants of number fields II](https://www.jstage.jst.go.jp/article/tmj1949/29/2/29_2_209/_article/-char/en).
 Poitou's
 [Bourbaki exposition](https://www.numdam.org/item/?id=SB_1975-1976__18__136_0)
-is a further proof-level account.  Eliminating the remaining Table 4 premise
-requires a new analytic-number-theory development containing at least:
+is a further proof-level account.
+
+The first elementary layers of that development are now machine checked.
+`V15OdlyzkoKernel` defines the source's unconditional function `H` and the
+`b = 4` kernel `F(x) = H(x/4)/cosh(x/2)`. Lean proves that `H` and `F` are
+even and nonnegative, that `H` is supported on `[-2,2]`, that `F` is supported
+on `[-8,8]`, and that `F` is continuous, compactly supported, and Lebesgue
+integrable. In particular, the interval where the sine term is negative is
+handled by a derivative-monotonicity proof rather than numerical sampling.
+
+`V15OdlyzkoAutocorrelation` then defines the compactly supported bump
+`g(x) = 1 + cos(pi*x)` on `[-1,1]` and proves the exact identity
+
+`H(x) = (1/3) integral g(t) g(t-x) dt`.
+
+The overlap integral is evaluated by a formal antiderivative, including all
+support cases. `V15OdlyzkoFourier` applies mathlib's convolution theorem and
+proves, in its Fourier convention,
+
+`Fourier(H)(xi) = (1/3) Fourier(g)(xi)^2`.
+
+Evenness makes `Fourier(g)` real. Consequently Lean proves that the Fourier
+transform of `H` is real and nonnegative at every real frequency. Thus the
+basic positive-definite auxiliary function is no longer an external premise.
+
+`V15OdlyzkoPrimeCorrection` defines the source's exact summand for a nonzero
+prime ideal and a positive exponent. It constructs the finite set of prime
+ideals of bounded absolute norm, proves every summand and every finite partial
+correction nonnegative, and proves monotonicity in the exponent cutoff. It
+then derives two uniform support bounds: exponents at least twelve vanish for
+every prime ideal, and every positive-exponent term vanishes when the ideal
+norm is at least 4096. The complete double sum over all prime ideals and
+positive exponents is therefore proved exactly equal to the finite sum over
+norms at most 4095 and exponents at most eleven. In particular, the complete
+prime correction is a nonnegative Lean theorem rather than an external
+infinite-sum premise.
+
+Eliminating the remaining Table 4 premise still requires a new
+analytic-number-theory development containing at least:
 
 1. a completed Dedekind zeta function with meromorphic continuation and its
    functional equation;
 2. the Stark/Weil explicit formula and control of its zero contribution;
-3. the unconditional compactly supported test kernel and its positivity;
-4. convergence and nonnegativity of the prime-ideal correction term;
-5. rigorous archimedean integral bounds producing the tabulated lower
+3. the positivity and admissibility transfer from `H` to the final kernel
+   `F(x) = H(x/4)/cosh(x/2)`, including the Fourier transform of the hyperbolic
+   secant and the product/convolution step required by the explicit formula;
+4. rigorous archimedean integral bounds producing the tabulated lower
    estimates `A = 36.347` and `B = 16.593`.
 
 Pinned mathlib defines the Dedekind zeta Dirichlet series and its residue at
 one, but it does not currently provide this explicit formula or the required
-global zero-sum theory.  Therefore the full Odlyzko theorem remains a
-disclosed external mathematical input.  The new Lean work reduces that input
-to the exact source statement and proves every specialization, rounding, and
-downstream use needed by v15.
+global zero-sum theory. Therefore the full Odlyzko theorem remains a
+disclosed external mathematical input. The Lean work now verifies the source
+kernel, the autocorrelation and Fourier positivity of `H`, the complete
+prime-ideal correction and its exact finite-support reduction, every
+specialization and rounding, and every downstream use needed by v15.

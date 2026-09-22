@@ -10,6 +10,7 @@ The v15 proof chain is organized as follows:
 | Modules | Content |
 | --- | --- |
 | V15StrictDiscriminant, V15FinitenessAssembly, V15OdlyzkoBridge, V15RankOneIntegral | Strict bounds, varying-degree finite grid, full Table 4 description with rounding/signature bridges, rank-one classic-integrality |
+| V15OdlyzkoKernel, V15OdlyzkoAutocorrelation, V15OdlyzkoFourier, V15OdlyzkoPrimeCorrection, V15OdlyzkoAnalyticBridge | Source-exact unconditional `b = 4` kernel; autocorrelation identity and Fourier positivity of `H`; complete prime-ideal correction, exact finite-support reduction, nonnegativity, and substitution into the Table 4 interface |
 | V15BinaryCriterion, V15BinaryCovering, V15GaussBasis | Rational deep hole, six direct covers, and reduced binary basis |
 | V15IdealCoordinates, V15IdealNormQuotient, V15IdealDeterminant, V15VariableBasis | Actual fractional ideals, field coordinates, determinant and norm bridges |
 | V15VariableSieve, V15ActualPrincipality | Six survivor rows and principality, including m=3 |

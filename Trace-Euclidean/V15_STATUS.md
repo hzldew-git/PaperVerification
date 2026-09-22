@@ -29,6 +29,15 @@ and separates the small-degree literature inputs. It passed the
 with 125 audited endpoints and the
 [manuscript-exclusion run](https://github.com/hzldew-git/PaperVerification/actions/runs/35614064890).
 
+The current analytic update formalizes the unconditional `b=4` kernel,
+identifies `H` as a normalized autocorrelation, proves that its Fourier
+transform is real and nonnegative, defines the complete prime-ideal
+correction, and reduces that correction exactly to norms at most 4095 and
+exponents at most eleven. It substitutes the correction into the Table 4
+interface. A complete local 8737-job build and the 149-endpoint axiom audit
+pass; the audit reports only propext, Classical.choice, and Quot.sound. Fresh
+public GitHub Actions evidence is pending deployment.
+
 Theorems 1.2 and 1.3 have strict bounds and variable-degree global
 finiteness from the explicit cited Odlyzko Table 4 premise. Theorem 1.7
 has a two-direction six-class endpoint for all nonzero fractional ideals,
@@ -52,7 +61,12 @@ checks the error-term rounding and totally real specialization, and restricts
 the premise to the degrees actually used. Degree one of the small-degree
 input is internal; the cited degree 2--11 estimates, the Odlyzko
 explicit-formula theorem, selected supporting lemmas, and independent
-semantic sign-off remain outside the current signed scope.
+semantic sign-off remain outside the current signed scope. Within the
+explicit-formula theorem, the remaining analytic layers include
+Dedekind-zeta continuation and the functional equation, the Stark/Weil
+formula and zero term, the positivity and admissibility transfer from `H` to
+`F(x)=H(x/4)/cosh(x/2)`, and the certified archimedean estimates producing
+the tabulated constants.
 
 Start with [README.md](README.md), [THEOREM_INDEX.md](THEOREM_INDEX.md),
 and the [v15 audit](docs/audit/v15/12_executive_summary.md).

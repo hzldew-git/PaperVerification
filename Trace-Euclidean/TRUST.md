@@ -14,9 +14,21 @@ Lean proves the upward rounding 32/3 <= 10.667, the totally real
 specialization |D_F| > 36.347^d exp(-10.667), field-to-class transport, and
 that only degrees at least fifteen are needed for global finiteness. The
 earlier V15OdlyzkoTable4Input remains as a compatibility interface. The
-explicit-formula theorem and certified archimedean integral estimates behind
-the table are cited mathematical inputs, not Lean axioms proved by this
-package.
+source's `b=4` unconditional kernel is now formalized directly: Lean proves
+its evenness, nonnegativity, continuity, compact support, and integrability.
+Lean also proves that `H` is one third of the autocorrelation of the compactly
+supported bump `1 + cos(pi*x)`, derives its Fourier transform as one third of
+the square of the bump's Fourier transform, and proves that this transform is
+real and nonnegative at every real frequency.
+The exact prime-ideal summands and the complete sum over all prime ideals and
+positive exponents are formalized. Compact support is proved to reduce this
+sum exactly to norms at most 4095 and exponents at most eleven, and the full
+correction is proved nonnegative. A bridge substitutes this explicit
+correction into the exact-error and rounded Table 4 interfaces. The
+explicit-formula theorem, the positivity and admissibility transfer from `H`
+to the final kernel `F(x) = H(x/4)/cosh(x/2)`, and certified archimedean
+integral estimates behind the table remain cited mathematical inputs rather
+than Lean theorems proved by this package.
 
 The public Python and Wolfram runs trust their kernels and the extracted
 input file. The private maintainer run also checks the SHA-256 digest and
