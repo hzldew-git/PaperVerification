@@ -172,7 +172,7 @@ theorem v15_integral_degree_le_14_of_odlyzko
     _ ≤ (2 * Real.pi * Real.exp 1) ^ (c.rank * c.degree) := by
       exact pow_le_pow_left₀ (by positivity) hbase _
 
-/-- The fixed-pair v9 result assembles to the v15 variable-degree classic
+/-- The foundational fixed-pair result assembles to the v15 variable-degree classic
 conclusion as soon as the paper's uniform grid bounds are supplied. -/
 theorem v15_classic_finite_of_grid
     (hrank : ∀ c : GlobalLatticeClass,

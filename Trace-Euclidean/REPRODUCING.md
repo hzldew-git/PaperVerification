@@ -48,6 +48,3 @@ Before every push, from the repository root run:
 ~~~powershell
 & 'D:\AI-Workspace\Environments\Python\math-research\Scripts\python.exe' '.\tools\check_no_manuscripts.py' --root '.'
 ~~~
-
-The v9 verification manual and 2165-check result set remain historical and
-must not be treated as v15 checks.

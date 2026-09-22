@@ -1,6 +1,6 @@
 # Adversarial semantic review
 
-1. Variable threshold: the older v9 global theorem fixes t; v15 needs t equal to each varying field degree. New v15 endpoints use c.degree explicitly.
+1. Variable threshold: the earlier global theorem fixes t; v15 needs t equal to each varying field degree. New v15 endpoints use c.degree explicitly.
 2. Strict boundary: replacing < d by <= d would weaken trace Euclideanity. The v15 Gram necessity and six constructive covers use strict inequalities; the global root bounds are strict.
 3. Nonprincipal ideals: a six-example proof would miss rank-one nonfree inputs. The actual-ideal reduced-basis and exceptional m=3 arguments prove that every qualifying ideal is principal.
 4. Necessary versus sufficient sieve: 22, nine, and six candidate rows alone do not classify lattices. The new actual isometry theorem and its converse close this logical gap.

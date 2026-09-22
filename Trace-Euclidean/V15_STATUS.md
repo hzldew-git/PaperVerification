@@ -56,4 +56,3 @@ semantic sign-off remain outside the current signed scope.
 
 Start with [README.md](README.md), [THEOREM_INDEX.md](THEOREM_INDEX.md),
 and the [v15 audit](docs/audit/v15/12_executive_summary.md).
-The v9 package remains archived for version comparison.

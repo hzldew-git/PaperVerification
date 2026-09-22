@@ -25,5 +25,4 @@ calculation was rerun. EXTERNAL_INPUT means a cited result is an explicit premis
 
 The active [v15 audit](docs/audit/v15/05_theorem_correspondence.md) expands the
 assumptions and quantifiers. The [Lean axiom report](lean/audit/main_theorem_axioms.txt)
-contains the elaborated endpoint signatures and trust dependencies. The
-historical v9 index is under docs/v9_release_notes.
+contains the elaborated endpoint signatures and trust dependencies.

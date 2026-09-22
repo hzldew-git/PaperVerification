@@ -16,4 +16,4 @@
 | Public computation | v15 | 1156 Python PASS and 115 Wolfram PASS; no failures. |
 | Private source-bound computation | v15 | 1165 Python PASS and 112 Wolfram PASS; no failures. |
 
-The v9 checks remain archived evidence for the prior source version. They are not included in the v15 counts. Coverage percentages for mathematical theorems are omitted because statement scope matters more than declaration count.
+Only the active v15 checks are included in the current package and counts. Coverage percentages for mathematical theorems are omitted because statement scope matters more than declaration count.

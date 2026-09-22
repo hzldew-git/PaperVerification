@@ -79,15 +79,11 @@ remain explicit external mathematical inputs. Their source separation and
 Lean reduction are recorded in the
 [Odlyzko source audit](docs/audit/v15/14_odlyzko_source_reduction.md).
 
-## Historical v9 evidence
+## Version scope
 
-The prior v9 verification scripts, result summary, manual, and PDF remain
-available for comparison. Their [release notes](docs/v9_release_notes/README.md)
-and [audit](docs/audit/v9/12_executive_summary.md) are labeled by version.
-They are not counted as v15 results.
-The root-level build_all.ps1 and run_verification.wls still operate on v9;
-the complete immutable v9 package is Git commit
-c4aed60cc9405e4570d7b65eb308e8a71d5c7137.
+The current package publishes only v15 verification artifacts. The Lean
+project retains shared foundational modules that are imported by the v15 proof
+chain; they are required for the current build and are not a separate release.
 
 Before publication, run the repository-level manuscript-exclusion gate:
 

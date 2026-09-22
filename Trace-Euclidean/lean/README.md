@@ -1,8 +1,9 @@
 # Lean formalization for Trace-Euclidean v15
 
 This Lake project pins Lean v4.32.1 and mathlib revision
-520045ab14e26149ee970e2e617ca04b09bde5d6. It includes the inherited
-v9 modules and the v15 proofs.
+520045ab14e26149ee970e2e617ca04b09bde5d6. It includes the shared
+foundational modules required by the v15 proof chain and the v15-specific
+proofs.
 
 The v15 proof chain is organized as follows:
 
