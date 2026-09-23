@@ -104,7 +104,9 @@ exact minima in degrees 2--9, the degree-ten enumeration result, the optimized
 degree-eleven bound 14.083, and the analytic theorem behind Odlyzko's Table 4
 remain explicit external mathematical inputs. Within that last theorem, the
 unformalized analytic steps are Dedekind-zeta continuation and its functional
-equation, the Stark/Weil explicit formula and paired-zero convergence. Lean checks the
+equation, the Stark/Weil explicit formula, the actual zero count and a
+uniform fourth-power decay estimate sufficient for paired-zero convergence. Lean proves the
+deduction of that convergence from those two quantitative estimates and checks the
 test function's differentiability and derivative decay, and derives the exact
 `E = 32/3` integral from the kernel. The source separation and Lean reduction are
 recorded in the [Odlyzko source audit](docs/audit/v15/14_odlyzko_source_reduction.md).

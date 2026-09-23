@@ -177,8 +177,19 @@ complex series is equivalent to summability of the real contributions.
 nonreal zeros in conjugate pairs. It connects these terms and the convergent
 paired series to the existing
 exact-error Table 4 reduction, proving their sign internally.
-These results do not establish that Dedekind-zeta zeros exist in the required
-enumeration or that their paired sum converges.
+`V15OdlyzkoZeroSummability` now makes the convergence step quantitative. For a
+height-ordered sequence of pair representatives, it converts a finite
+zero-count bound `N(T) <= C(1+T)^2` into the ordinal bound
+`n+1 <= C(1+|Im(rho_n)|)^2`. A uniform transform bound
+`||Phi(s)|| <= D/(1+|Im(s)|)^4` in the closed critical strip then gives a
+square-series majorant for the real zero contributions and proves absolute
+convergence of the paired series. Its final theorem substitutes these two
+estimates directly into the Table 4 reduction, so summability is no longer a
+separate premise there. The fourth-power bound and the count of actual
+Dedekind-zeta zeros remain explicit, unproved inputs; this criterion does not
+assert that an actual zero enumeration has been constructed. Lean also proves
+that a finite count bounded by `A + B*T*log(2+T)` implies the coarser
+quadratic count with constant `A+B`.
 
 Odlyzko's [1990 survey, equation (2.1)](https://www.numdam.org/item/JTNB_1990__2_1_119_0.pdf)
 requires global differentiability of `F` and exponential decay of both `F`
@@ -238,7 +249,8 @@ analytic-number-theory development containing at least:
 2. the Stark/Weil explicit formula, a zero-counting estimate, and convergence
    of its paired zero sum. The source test-function hypotheses, entire
    zero transform, qualitative vertical decay, conjugate pairing identities,
-   pointwise sign, and conditional paired-series reduction are already proved.
+   pointwise sign, and the deduction of paired-series convergence from a
+   quadratic count and fourth-power transform decay are already proved.
 
 The sinh integral's convergence and the strict numerical estimates for
 `A = 36.347` and `B = 16.593` are supplied by the separate
