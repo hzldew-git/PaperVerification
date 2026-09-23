@@ -119,6 +119,21 @@ Evenness makes `Fourier(g)` real. Consequently Lean proves that the Fourier
 transform of `H` is real and nonnegative at every real frequency. Thus the
 basic positive-definite auxiliary function is no longer an external premise.
 
+`V15OdlyzkoSechFourier` proves integrability of the remaining factor and,
+using the sigmoid substitution, the complex beta integral, and Euler's
+reflection formula, evaluates its transform in mathlib's convention as
+
+`Fourier(1/cosh(x/2))(w) = 2*pi/cosh(2*pi^2*w)`.
+
+The right side is real and strictly positive and is itself integrable.
+`V15OdlyzkoFinalFourier` proves the required product-to-frequency-convolution
+identity under the checked integrability and continuity hypotheses. After
+combining this identity with Fourier scaling for `H(x/4)`, Lean rewrites the
+transform of `F(x)=H(x/4)/cosh(x/2)` as an integral whose real integrand is
+pointwise nonnegative. Therefore the complete transform is real and
+nonnegative at every real frequency. The Fourier-positivity transfer to the
+final kernel is no longer an external premise.
+
 `V15OdlyzkoPrimeCorrection` defines the source's exact summand for a nonzero
 prime ideal and a positive exponent. It constructs the finite set of prime
 ideals of bounded absolute norm, proves every summand and every finite partial
@@ -137,16 +152,15 @@ analytic-number-theory development containing at least:
 1. a completed Dedekind zeta function with meromorphic continuation and its
    functional equation;
 2. the Stark/Weil explicit formula and control of its zero contribution;
-3. the positivity and admissibility transfer from `H` to the final kernel
-   `F(x) = H(x/4)/cosh(x/2)`, including the Fourier transform of the hyperbolic
-   secant and the product/convolution step required by the explicit formula;
-4. rigorous archimedean integral bounds producing the tabulated lower
+3. rigorous archimedean integral bounds producing the tabulated lower
    estimates `A = 36.347` and `B = 16.593`.
 
 Pinned mathlib defines the Dedekind zeta Dirichlet series and its residue at
 one, but it does not currently provide this explicit formula or the required
 global zero-sum theory. Therefore the full Odlyzko theorem remains a
 disclosed external mathematical input. The Lean work now verifies the source
-kernel, the autocorrelation and Fourier positivity of `H`, the complete
-prime-ideal correction and its exact finite-support reduction, every
-specialization and rounding, and every downstream use needed by v15.
+kernel, the autocorrelation and Fourier positivity of `H`, the exact
+hyperbolic-secant transform, the product-to-convolution bridge and Fourier
+positivity of the complete `F`, the complete prime-ideal correction and its
+exact finite-support reduction, every specialization and rounding, and every
+downstream use needed by v15.

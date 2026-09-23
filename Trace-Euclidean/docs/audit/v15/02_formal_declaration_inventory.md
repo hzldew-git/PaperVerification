@@ -38,5 +38,7 @@
 | v15_integral_table_degree_seven_to_nine, v15_integral_table_overall_rank_le_twelve | Prove the two numerical consequences stated in Remark 1.4(iii)--(iv), with the degree-one classification supplied explicitly to the latter. |
 | v15_proposition_six_one_scalar_cases, v15_proposition_six_one_full | Both positive-integer scalar formulas on the quadratic integer ring and a combined endpoint for all clauses of Proposition 6.1. |
 | GlobalLatticePresentation.v15_pnorm_implies_trace, v15_pnorm_finite_of_odlyzko_table4_description | Power-mean implication for finite p >= 1 and infinity, followed by global finite-class conclusion from the full cited Table 4 row. |
+| v15OdlyzkoSechFourier, v15OdlyzkoSechFourier_integrable | Exact Fourier transform and Fourier-side integrability of the hyperbolic-secant factor in the unconditional kernel. |
+| v15OdlyzkoF4_fourier_eq_convolution, v15OdlyzkoF4_fourier_re_nonneg, v15OdlyzkoF4_fourier_im_eq_zero | Product-to-frequency-convolution bridge and the reality and nonnegativity of the Fourier transform of the complete `b=4` kernel. |
 
 Supporting modules prove the reduced-basis bridge, quotient-ideal index/norm identities, parity, determinant, exceptional two-vector exclusion, and constructive strict covers for all six forms.

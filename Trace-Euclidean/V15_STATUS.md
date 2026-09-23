@@ -41,6 +41,14 @@ also passed the
 and the
 [manuscript-exclusion run](https://github.com/hzldew-git/PaperVerification/actions/runs/35795731409).
 
+The current Fourier-completion update proves integrability and the exact
+Fourier transform of `1/cosh(x/2)`, the scaling law for `H(x/4)`, a
+product-to-frequency-convolution identity under the required integrability
+hypotheses, and the resulting reality and nonnegativity of the Fourier
+transform of `F(x)=H(x/4)/cosh(x/2)`. A complete local 8742-job build and the
+expanded 164-endpoint axiom audit pass; every audited endpoint again reports
+only propext, Classical.choice, and Quot.sound.
+
 Theorems 1.2 and 1.3 have strict bounds and variable-degree global
 finiteness from the explicit cited Odlyzko Table 4 premise. Theorem 1.7
 has a two-direction six-class endpoint for all nonzero fractional ideals,
@@ -67,9 +75,8 @@ explicit-formula theorem, selected supporting lemmas, and independent
 semantic sign-off remain outside the current signed scope. Within the
 explicit-formula theorem, the remaining analytic layers include
 Dedekind-zeta continuation and the functional equation, the Stark/Weil
-formula and zero term, the positivity and admissibility transfer from `H` to
-`F(x)=H(x/4)/cosh(x/2)`, and the certified archimedean estimates producing
-the tabulated constants.
+formula and zero term, and the certified archimedean estimates producing the
+tabulated constants.
 
 Start with [README.md](README.md), [THEOREM_INDEX.md](THEOREM_INDEX.md),
 and the [v15 audit](docs/audit/v15/12_executive_summary.md).

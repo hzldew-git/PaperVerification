@@ -41,9 +41,14 @@ results are 1165 Python PASS and 112 Wolfram PASS.
   support, and integrability are proved. Lean identifies `H` with one third
   of the autocorrelation of the compactly supported bump `1 + cos(pi*x)` and
   proves that the Fourier transform of `H` is real and nonnegative at every
-  real frequency. The complete double sum over all prime ideals and positive
-  exponents is defined in Lean, proved equal to the finite box with norm at
-  most 4095 and exponent at most eleven, and proved nonnegative. A
+  real frequency. Lean also proves integrability of `1/cosh(x/2)` and the
+  exact formula `Fourier(1/cosh(x/2))(w) = 2*pi/cosh(2*pi^2*w)`. Fourier
+  scaling and a proved product-to-convolution theorem then show that the
+  transform of the complete kernel `F(x) = H(x/4)/cosh(x/2)` is real and
+  nonnegative at every real frequency. The complete double sum over all prime
+  ideals and positive exponents is defined in Lean, proved equal to the finite
+  box with norm at most 4095 and exponent at most eleven, and proved
+  nonnegative. A
   kernel-checked bridge substitutes this complete correction for the
   existential correction in the exact-error and rounded table interfaces.
 - Theorem 1.7: an if-and-only-if classification for every nonzero fractional
@@ -85,10 +90,10 @@ small-degree discriminant input is now proved from Minkowski's bound. The
 exact minima in degrees 2--9, the degree-ten enumeration result, the optimized
 degree-eleven bound 14.083, and the analytic theorem behind Odlyzko's Table 4
 remain explicit external mathematical inputs. Within that last theorem, the
-unformalized analytic steps are the completed Dedekind-zeta explicit formula,
-the positivity and admissibility transfer from `H` to
-`F(x) = H(x/4)/cosh(x/2)`, and the certified archimedean estimates producing
-the tabulated constants. Their source separation and Lean reduction are
+unformalized analytic steps are Dedekind-zeta continuation and its functional
+equation, the Stark/Weil explicit formula and zero-term control, and the
+certified archimedean estimates producing the tabulated constants. Their
+source separation and Lean reduction are
 recorded in the [Odlyzko source audit](docs/audit/v15/14_odlyzko_source_reduction.md).
 
 ## Version scope

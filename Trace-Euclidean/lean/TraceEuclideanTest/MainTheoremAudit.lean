@@ -327,3 +327,36 @@ import TraceEuclidean
 #print axioms TraceEuclidean.v15_sectionFourDiscriminantInput_of_sources
 #print axioms TraceEuclidean.v15_classic_pair_mem_of_sources
 #print axioms TraceEuclidean.v15_integral_pair_mem_of_sources
+
+-- Final unconditional b = 4 kernel: scaling, sech transform, and Fourier positivity.
+#check TraceEuclidean.v15OdlyzkoH_hasCompactSupport
+#check TraceEuclidean.v15OdlyzkoH_integrable
+#check TraceEuclidean.v15OdlyzkoH4_fourier_eq
+#check TraceEuclidean.v15OdlyzkoH4_fourier_re_nonneg
+#check TraceEuclidean.v15OdlyzkoH4_fourier_im_eq_zero
+#check TraceEuclidean.v15OdlyzkoSech_integrable
+#check TraceEuclidean.v15OdlyzkoSechFourier
+#check TraceEuclidean.v15OdlyzkoSechFourierRePos
+#check TraceEuclidean.v15OdlyzkoSechFourier_integrable
+#check TraceEuclidean.v15OdlyzkoF4Complex_eq_mul
+#check TraceEuclidean.v15OdlyzkoF4_fourier_eq_convolution
+#check TraceEuclidean.v15OdlyzkoF4_fourierConvolution_integrable
+#check TraceEuclidean.v15OdlyzkoF4_fourier_eq_nonnegativeIntegral
+#check TraceEuclidean.v15OdlyzkoF4_fourier_re_nonneg
+#check TraceEuclidean.v15OdlyzkoF4_fourier_im_eq_zero
+
+#print axioms TraceEuclidean.v15OdlyzkoH_hasCompactSupport
+#print axioms TraceEuclidean.v15OdlyzkoH_integrable
+#print axioms TraceEuclidean.v15OdlyzkoH4_fourier_eq
+#print axioms TraceEuclidean.v15OdlyzkoH4_fourier_re_nonneg
+#print axioms TraceEuclidean.v15OdlyzkoH4_fourier_im_eq_zero
+#print axioms TraceEuclidean.v15OdlyzkoSech_integrable
+#print axioms TraceEuclidean.v15OdlyzkoSechFourier
+#print axioms TraceEuclidean.v15OdlyzkoSechFourierRePos
+#print axioms TraceEuclidean.v15OdlyzkoSechFourier_integrable
+#print axioms TraceEuclidean.v15OdlyzkoF4Complex_eq_mul
+#print axioms TraceEuclidean.v15OdlyzkoF4_fourier_eq_convolution
+#print axioms TraceEuclidean.v15OdlyzkoF4_fourierConvolution_integrable
+#print axioms TraceEuclidean.v15OdlyzkoF4_fourier_eq_nonnegativeIntegral
+#print axioms TraceEuclidean.v15OdlyzkoF4_fourier_re_nonneg
+#print axioms TraceEuclidean.v15OdlyzkoF4_fourier_im_eq_zero

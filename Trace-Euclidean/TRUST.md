@@ -24,11 +24,14 @@ The exact prime-ideal summands and the complete sum over all prime ideals and
 positive exponents are formalized. Compact support is proved to reduce this
 sum exactly to norms at most 4095 and exponents at most eleven, and the full
 correction is proved nonnegative. A bridge substitutes this explicit
-correction into the exact-error and rounded Table 4 interfaces. The
-explicit-formula theorem, the positivity and admissibility transfer from `H`
-to the final kernel `F(x) = H(x/4)/cosh(x/2)`, and certified archimedean
-integral estimates behind the table remain cited mathematical inputs rather
-than Lean theorems proved by this package.
+correction into the exact-error and rounded Table 4 interfaces. Lean proves
+the exact Fourier transform of `1/cosh(x/2)`, its strict positivity, the
+Fourier scaling of `H(x/4)`, and the product-to-convolution identity for the
+complete kernel `F(x) = H(x/4)/cosh(x/2)`. Hence the Fourier transform of `F`
+is real and nonnegative at every real frequency. The completed Dedekind-zeta
+theory, the Stark/Weil explicit formula with zero-term control, and certified
+archimedean integral estimates behind the table remain cited mathematical
+inputs rather than Lean theorems proved by this package.
 
 The public Python and Wolfram runs trust their kernels and the extracted
 input file. The private maintainer run also checks the SHA-256 digest and

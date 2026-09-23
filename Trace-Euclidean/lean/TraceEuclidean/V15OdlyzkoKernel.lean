@@ -174,6 +174,20 @@ theorem v15OdlyzkoH_continuous : Continuous v15OdlyzkoH := by
   simp only [Set.mem_insert_iff, Set.mem_singleton_iff] at hx
   rcases hx with rfl | rfl <;> norm_num
 
+/-- Odlyzko's auxiliary function has compact support contained in `[-2, 2]`. -/
+theorem v15OdlyzkoH_hasCompactSupport : HasCompactSupport v15OdlyzkoH := by
+  apply HasCompactSupport.of_support_subset_isCompact (K := Set.Icc (-2) 2) isCompact_Icc
+  intro x hx
+  change -2 ≤ x ∧ x ≤ 2
+  rw [← abs_le]
+  by_contra hbound
+  exact hx (v15OdlyzkoH_eq_zero_of_two_lt_abs (lt_of_not_ge hbound))
+
+/-- Odlyzko's compactly supported auxiliary function is Lebesgue integrable. -/
+theorem v15OdlyzkoH_integrable :
+    MeasureTheory.Integrable v15OdlyzkoH MeasureTheory.volume :=
+  v15OdlyzkoH_continuous.integrable_of_hasCompactSupport v15OdlyzkoH_hasCompactSupport
+
 @[simp] theorem v15OdlyzkoH_zero : v15OdlyzkoH 0 = 1 := by
   norm_num [v15OdlyzkoH, v15OdlyzkoHCore]
 

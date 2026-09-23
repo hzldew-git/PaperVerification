@@ -807,3 +807,55 @@ TraceEuclidean.v15_integral_pair_mem_of_sources (hSmall : TraceEuclidean.V15Smal
 'TraceEuclidean.v15_sectionFourDiscriminantInput_of_sources' depends on axioms: [propext, Classical.choice, Quot.sound]
 'TraceEuclidean.v15_classic_pair_mem_of_sources' depends on axioms: [propext, Classical.choice, Quot.sound]
 'TraceEuclidean.v15_integral_pair_mem_of_sources' depends on axioms: [propext, Classical.choice, Quot.sound]
+TraceEuclidean.v15OdlyzkoH_hasCompactSupport : HasCompactSupport TraceEuclidean.v15OdlyzkoH
+TraceEuclidean.v15OdlyzkoH_integrable : MeasureTheory.Integrable TraceEuclidean.v15OdlyzkoH MeasureTheory.volume
+TraceEuclidean.v15OdlyzkoH4_fourier_eq (w : ℝ) :
+  FourierTransform.fourier TraceEuclidean.v15OdlyzkoH4Complex w =
+    4 * FourierTransform.fourier TraceEuclidean.v15OdlyzkoHComplex (4 * w)
+TraceEuclidean.v15OdlyzkoH4_fourier_re_nonneg (w : ℝ) :
+  0 ≤ (FourierTransform.fourier TraceEuclidean.v15OdlyzkoH4Complex w).re
+TraceEuclidean.v15OdlyzkoH4_fourier_im_eq_zero (w : ℝ) :
+  (FourierTransform.fourier TraceEuclidean.v15OdlyzkoH4Complex w).im = 0
+TraceEuclidean.v15OdlyzkoSech_integrable : MeasureTheory.Integrable TraceEuclidean.v15OdlyzkoSech MeasureTheory.volume
+TraceEuclidean.v15OdlyzkoSechFourier (w : ℝ) :
+  FourierTransform.fourier TraceEuclidean.v15OdlyzkoSechComplex w = ↑(2 * Real.pi / Real.cosh (2 * Real.pi ^ 2 * w))
+TraceEuclidean.v15OdlyzkoSechFourierRePos (w : ℝ) :
+  0 < (FourierTransform.fourier TraceEuclidean.v15OdlyzkoSechComplex w).re
+TraceEuclidean.v15OdlyzkoSechFourier_integrable :
+  MeasureTheory.Integrable (FourierTransform.fourier TraceEuclidean.v15OdlyzkoSechComplex) MeasureTheory.volume
+TraceEuclidean.v15OdlyzkoF4Complex_eq_mul (x : ℝ) :
+  TraceEuclidean.v15OdlyzkoF4Complex x = TraceEuclidean.v15OdlyzkoH4Complex x * TraceEuclidean.v15OdlyzkoSechComplex x
+TraceEuclidean.v15OdlyzkoF4_fourier_eq_convolution (w : ℝ) :
+  FourierTransform.fourier TraceEuclidean.v15OdlyzkoF4Complex w =
+    MeasureTheory.convolution (FourierTransform.fourier TraceEuclidean.v15OdlyzkoSechComplex)
+      (FourierTransform.fourier TraceEuclidean.v15OdlyzkoH4Complex) (ContinuousLinearMap.mul ℂ ℂ) MeasureTheory.volume w
+TraceEuclidean.v15OdlyzkoF4_fourierConvolution_integrable (w : ℝ) :
+  MeasureTheory.Integrable
+    (fun y =>
+      FourierTransform.fourier TraceEuclidean.v15OdlyzkoSechComplex y *
+        FourierTransform.fourier TraceEuclidean.v15OdlyzkoH4Complex (w - y))
+    MeasureTheory.volume
+TraceEuclidean.v15OdlyzkoF4_fourier_eq_nonnegativeIntegral (w : ℝ) :
+  FourierTransform.fourier TraceEuclidean.v15OdlyzkoF4Complex w =
+    ↑(∫ (y : ℝ),
+        (FourierTransform.fourier TraceEuclidean.v15OdlyzkoSechComplex y).re *
+          (FourierTransform.fourier TraceEuclidean.v15OdlyzkoH4Complex (w - y)).re)
+TraceEuclidean.v15OdlyzkoF4_fourier_re_nonneg (w : ℝ) :
+  0 ≤ (FourierTransform.fourier TraceEuclidean.v15OdlyzkoF4Complex w).re
+TraceEuclidean.v15OdlyzkoF4_fourier_im_eq_zero (w : ℝ) :
+  (FourierTransform.fourier TraceEuclidean.v15OdlyzkoF4Complex w).im = 0
+'TraceEuclidean.v15OdlyzkoH_hasCompactSupport' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15OdlyzkoH_integrable' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15OdlyzkoH4_fourier_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15OdlyzkoH4_fourier_re_nonneg' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15OdlyzkoH4_fourier_im_eq_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15OdlyzkoSech_integrable' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15OdlyzkoSechFourier' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15OdlyzkoSechFourierRePos' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15OdlyzkoSechFourier_integrable' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15OdlyzkoF4Complex_eq_mul' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15OdlyzkoF4_fourier_eq_convolution' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15OdlyzkoF4_fourierConvolution_integrable' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15OdlyzkoF4_fourier_eq_nonnegativeIntegral' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15OdlyzkoF4_fourier_re_nonneg' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15OdlyzkoF4_fourier_im_eq_zero' depends on axioms: [propext, Classical.choice, Quot.sound]

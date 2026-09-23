@@ -52,6 +52,10 @@ private theorem v15OdlyzkoBumpComplex_fourier_real (w : ℝ) :
 Fourier transform. -/
 def v15OdlyzkoHComplex (x : ℝ) : ℂ := v15OdlyzkoH x
 
+/-- The complex-valued auxiliary function is integrable. -/
+theorem v15OdlyzkoHComplex_integrable : Integrable v15OdlyzkoHComplex volume := by
+  exact v15OdlyzkoH_integrable.ofReal
+
 private theorem v15OdlyzkoHComplex_eq_convolution (x : ℝ) :
     v15OdlyzkoHComplex x = (1 / 3 : ℂ) *
       (v15OdlyzkoBumpComplex ⋆[ContinuousLinearMap.mul ℂ ℂ] v15OdlyzkoBumpComplex) x := by
@@ -106,6 +110,45 @@ theorem v15OdlyzkoH_fourier_im_eq_zero (w : ℝ) :
     (𝓕 v15OdlyzkoHComplex w).im = 0 := by
   rw [v15OdlyzkoH_fourier_eq_square, v15OdlyzkoBumpComplex_fourier_real]
   norm_num [pow_two]
+
+/-- The scaled auxiliary function `x ↦ H(x / 4)`, viewed as complex-valued. -/
+def v15OdlyzkoH4Complex (x : ℝ) : ℂ := v15OdlyzkoHComplex (x / 4)
+
+/-- Exact Fourier scaling for the auxiliary function used in the `b = 4` kernel. -/
+theorem v15OdlyzkoH4_fourier_eq (w : ℝ) :
+    𝓕 v15OdlyzkoH4Complex w = 4 * 𝓕 v15OdlyzkoHComplex (4 * w) := by
+  rw [Real.fourier_real_eq, Real.fourier_real_eq]
+  calc
+    (∫ x : ℝ, 𝐞 (-(x * w)) • v15OdlyzkoH4Complex x) =
+        ∫ x : ℝ, (fun y : ℝ ↦
+          𝐞 (-(y * (4 * w))) • v15OdlyzkoHComplex y) (x / 4) := by
+      congr with x
+      simp only [v15OdlyzkoH4Complex]
+      congr 2
+      ring
+    _ = |(4 : ℝ)| • ∫ y : ℝ,
+        𝐞 (-(y * (4 * w))) • v15OdlyzkoHComplex y :=
+      Measure.integral_comp_div (fun y : ℝ ↦
+        𝐞 (-(y * (4 * w))) • v15OdlyzkoHComplex y) 4
+    _ = 4 * ∫ y : ℝ, 𝐞 (-(y * (4 * w))) • v15OdlyzkoHComplex y := by
+      norm_num [smul_eq_mul]
+
+/-- The Fourier transform of the scaled auxiliary function has nonnegative real part. -/
+theorem v15OdlyzkoH4_fourier_re_nonneg (w : ℝ) :
+    0 ≤ (𝓕 v15OdlyzkoH4Complex w).re := by
+  rw [v15OdlyzkoH4_fourier_eq]
+  simpa using mul_nonneg (show (0 : ℝ) ≤ 4 by norm_num)
+    (v15OdlyzkoH_fourier_re_nonneg (4 * w))
+
+/-- The Fourier transform of the scaled auxiliary function is real. -/
+theorem v15OdlyzkoH4_fourier_im_eq_zero (w : ℝ) :
+    (𝓕 v15OdlyzkoH4Complex w).im = 0 := by
+  rw [v15OdlyzkoH4_fourier_eq]
+  norm_num [v15OdlyzkoH_fourier_im_eq_zero]
+
+/-- The scaled auxiliary function is integrable. -/
+theorem v15OdlyzkoH4Complex_integrable : Integrable v15OdlyzkoH4Complex volume := by
+  exact v15OdlyzkoHComplex_integrable.comp_div (by norm_num)
 
 end
 end TraceEuclidean
