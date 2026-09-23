@@ -186,8 +186,10 @@ log B_* = gamma + log(8*pi) - I_sinh
 log A_* = pi/2 + log B_* - I_cosh
 ~~~
 
-The named `V15OdlyzkoABIntegralCertificate` requires convergence of both
-integrals and the strict inequalities `log(36.347) < log A_*` and
+Lean proves convergence of `I_cosh` from the integrable hyperbolic-secant
+factor and boundedness of the compactly supported `F`. The named
+`V15OdlyzkoABIntegralCertificate` requires convergence of `I_sinh` and the
+strict inequalities `log(36.347) < log A_*` and
 `log(16.593) < log B_*`. `V15OdlyzkoExplicitFormulaInput` states (2.3) with
 the exact `4*integral F*cosh` term, the already proved complete prime
 correction, and a real zero contribution. Lean proves that this formula, a
@@ -218,8 +220,9 @@ analytic-number-theory development containing at least:
 2. the Stark/Weil explicit formula and existence and convergence of its paired
    zero sum; the source test-function hypotheses, pointwise zero-transform
    sign, and conditional summable-family sign are already proved;
-3. rigorous archimedean integral bounds producing the tabulated lower
-   estimates `A = 36.347` and `B = 16.593`.
+3. convergence of the sinh-denominator archimedean integral and rigorous
+   bounds producing the tabulated lower estimates `A = 36.347` and
+   `B = 16.593`.
 
 Pinned mathlib defines the Dedekind zeta Dirichlet series and its residue at
 one, but it does not currently provide this explicit formula or the required

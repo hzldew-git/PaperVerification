@@ -43,8 +43,9 @@ the exact `E = 32/3` error integral from the source kernel. It also proves
 `Phi(0) = Phi(1) = 16/3` and their sum equals the exact error.
 The source-formula reduction states Odlyzko's two archimedean integrals and
 equation (2.3) explicitly. Its Table 4 deduction is conditional on this
-formula, a nonnegative convergent zero sum, and a strict integral certificate
-for the tabulated `A` and `B` values; those premises are unproved.
+formula, a nonnegative convergent zero sum, convergence of the sinh-denominator
+integral, and strict bounds for the tabulated `A` and `B` values. The
+cosh-denominator integral is proved convergent; the other premises are unproved.
 
 The public Python and Wolfram runs trust their kernels and the extracted
 input file. The private maintainer run also checks the SHA-256 digest and

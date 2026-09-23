@@ -425,8 +425,12 @@ import TraceEuclidean
 -- Source-exact explicit-formula reduction with strict archimedean certificate.
 #check TraceEuclidean.V15OdlyzkoABIntegralCertificate
 #check TraceEuclidean.V15OdlyzkoExplicitFormulaInput
+#check TraceEuclidean.v15OdlyzkoCoshIntegrand_integrable
+#check TraceEuclidean.v15OdlyzkoCoshIntegrand_integrableOn
 #check TraceEuclidean.v15_odlyzkoTable4ExplicitCorrectionInput_of_sourceFormula
 #check TraceEuclidean.v15_odlyzkoTable4ExplicitCorrectionInput_of_enumeratedZeros
 
+#print axioms TraceEuclidean.v15OdlyzkoCoshIntegrand_integrable
+#print axioms TraceEuclidean.v15OdlyzkoCoshIntegrand_integrableOn
 #print axioms TraceEuclidean.v15_odlyzkoTable4ExplicitCorrectionInput_of_sourceFormula
 #print axioms TraceEuclidean.v15_odlyzkoTable4ExplicitCorrectionInput_of_enumeratedZeros

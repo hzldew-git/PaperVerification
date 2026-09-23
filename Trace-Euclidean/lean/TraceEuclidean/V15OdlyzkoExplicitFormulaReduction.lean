@@ -30,6 +30,39 @@ def v15OdlyzkoCoshIntegral : ℝ :=
   ∫ x in Set.Ioi (0 : ℝ),
     (1 - v15OdlyzkoF4 x) / (2 * Real.cosh (x / 2))
 
+/-- The source's cosh-denominator archimedean integral converges. -/
+theorem v15OdlyzkoCoshIntegrand_integrable :
+    Integrable
+      (fun x : ℝ ↦ (1 - v15OdlyzkoF4 x) / (2 * Real.cosh (x / 2)))
+      volume := by
+  obtain ⟨C, hC⟩ := v15OdlyzkoF4_continuous.bounded_above_of_compact_support
+    v15OdlyzkoF4_hasCompactSupport
+  have hfactor :
+      Integrable (fun x : ℝ ↦ v15OdlyzkoSech x * (1 - v15OdlyzkoF4 x))
+        volume := by
+    apply v15OdlyzkoSech_integrable.mul_bdd
+    · exact (continuous_const.sub v15OdlyzkoF4_continuous).aestronglyMeasurable
+    · filter_upwards with x
+      have := hC x
+      calc
+        ‖1 - v15OdlyzkoF4 x‖ ≤ ‖(1 : ℝ)‖ + ‖v15OdlyzkoF4 x‖ := norm_sub_le _ _
+        _ ≤ 1 + C := by simpa using add_le_add_left this 1
+  have hscaled :
+      Integrable
+        (fun x : ℝ ↦ (1 / 2 : ℝ) *
+          (v15OdlyzkoSech x * (1 - v15OdlyzkoF4 x))) volume :=
+    hfactor.const_mul (1 / 2 : ℝ)
+  convert hscaled using 1
+  funext x
+  unfold v15OdlyzkoSech
+  field_simp [(Real.cosh_pos (x / 2)).ne']
+
+theorem v15OdlyzkoCoshIntegrand_integrableOn :
+    IntegrableOn
+      (fun x : ℝ ↦ (1 - v15OdlyzkoF4 x) / (2 * Real.cosh (x / 2)))
+      (Set.Ioi 0) :=
+  v15OdlyzkoCoshIntegrand_integrable.integrableOn
+
 /-- The exact logarithmic constant per complex-signature dimension. -/
 def v15OdlyzkoArchLogB : ℝ :=
   Real.eulerMascheroniConstant + Real.log (8 * Real.pi) -
@@ -39,15 +72,13 @@ def v15OdlyzkoArchLogB : ℝ :=
 def v15OdlyzkoArchLogA : ℝ :=
   Real.pi / 2 + v15OdlyzkoArchLogB - v15OdlyzkoCoshIntegral
 
-/-- A strict certificate for both table constants.  Integrability is included
-so that the numerical inequalities cannot rely on the Bochner integral's
-fallback value for a nonintegrable function. -/
+/-- A strict certificate for both table constants.  The remaining sinh
+integrability is included so the inequality cannot rely on the Bochner
+integral's fallback value for a nonintegrable function; cosh integrability
+is already proved. -/
 def V15OdlyzkoABIntegralCertificate : Prop :=
   IntegrableOn
       (fun x : ℝ ↦ (1 - v15OdlyzkoF4 x) / (2 * Real.sinh (x / 2)))
-      (Set.Ioi 0) ∧
-    IntegrableOn
-      (fun x : ℝ ↦ (1 - v15OdlyzkoF4 x) / (2 * Real.cosh (x / 2)))
       (Set.Ioi 0) ∧
     Real.log (36347 / 1000 : ℝ) < v15OdlyzkoArchLogA ∧
     Real.log (16593 / 1000 : ℝ) < v15OdlyzkoArchLogB
@@ -86,8 +117,8 @@ theorem v15_odlyzkoTable4ExplicitCorrectionInput_of_sourceFormula
   have hpos : 0 < r + c := by
     rw [hrank]
     exact Module.finrank_pos
-  have hA : Real.log (36347 / 1000 : ℝ) < v15OdlyzkoArchLogA := hAB.2.2.1
-  have hB : Real.log (16593 / 1000 : ℝ) < v15OdlyzkoArchLogB := hAB.2.2.2
+  have hA : Real.log (36347 / 1000 : ℝ) < v15OdlyzkoArchLogA := hAB.2.1
+  have hB : Real.log (16593 / 1000 : ℝ) < v15OdlyzkoArchLogB := hAB.2.2
   have hStrict :
       (r : ℝ) * Real.log (36347 / 1000 : ℝ) +
         (c : ℝ) * Real.log (16593 / 1000 : ℝ) <

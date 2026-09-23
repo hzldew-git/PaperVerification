@@ -52,8 +52,9 @@ which verifies the eventual decay hypothesis in equation (2.1). The
 exact endpoint values `Phi(0) = Phi(1) = 16/3` are proved in Lean. The
 explicit-formula identity, its paired-zero convergence, and certified A/B
 integral estimates remain external. A Lean reduction now states the exact
-archimedean integrals from equation (2.3), takes its explicit formula and
-strict `A,B` bounds as named premises, and derives the Table 4 interface. See
+archimedean integrals from equation (2.3), proves convergence of the
+cosh-denominator integral, takes its explicit formula and strict `A,B` bounds
+as named premises, and derives the Table 4 interface. See
 [the source-reduction audit](docs/audit/v15/14_odlyzko_source_reduction.md).
 
 Voight's
