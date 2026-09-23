@@ -39,14 +39,18 @@ three explains the passage from contours avoiding zero heights to all `T`.
 These are unconditional Lean deductions **from an arbitrary entire
 regularization**. The regularization's existence and the HSW inequality at
 regular heights remain explicit mathematical inputs. Countability and finite
-exhaustion do not yet construct the requested infinite, height-ordered
-enumeration or prove that infinitely many strip zeros exist.
+exhaustion do not prove that infinitely many strip zeros exist. A direct
+unordered `tsum` theorem now makes a height-ordered enumeration unnecessary
+for the Table 4 zero term.
 
 The source footnote formulates contour avoidance using zeros of its
 completed `xi_K`. The Lean input uses heights with no occurrence of a
-zero of the pole-removed zeta function in the open strip. Identifying these
-two notions of regular height is part of the still unproved completed-zeta
-theory; the transfer theorem does not silently make that identification.
+zero of the pole-removed zeta function in the open strip. The new
+`V15DedekindZetaCompletion.lean` proves exact HSW Gamma normalization and
+identical zero positions and orders in the open critical strip for the
+completed expression formed from an arbitrary entire regularization.
+Its existence and functional equation remain unproved; the correspondence
+itself no longer needs to be assumed separately.
 
 ## Pinned-library boundary
 

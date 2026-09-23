@@ -82,6 +82,8 @@ import TraceEuclidean.V15OdlyzkoZeroCountLiterature
 import TraceEuclidean.V15DedekindZetaZeros
 import TraceEuclidean.V15DedekindZetaConjugation
 import TraceEuclidean.V15DedekindZetaZeroHeight
+import TraceEuclidean.V15DedekindZetaUnorderedZeros
+import TraceEuclidean.V15DedekindZetaCompletion
 import TraceEuclidean.V15RankOneIntegral
 import TraceEuclidean.V15SixRadii
 import TraceEuclidean.V15StrictDiscriminant

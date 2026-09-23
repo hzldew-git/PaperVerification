@@ -40,12 +40,20 @@ theorem makes any summable family of such zero contributions nonnegative.
 The existence and functional equation of the completed Dedekind zeta function,
 the quantitative count of its actual zeros, and the Stark/Weil explicit
 formula remain outside the Lean proof. For an entire regularization and a
-quantitative ordered zero count, Lean proves paired-zero convergence.
+quadratic count on actual zero occurrences, Lean now proves absolute
+convergence of the direct unordered zero sum and nonnegativity of its real
+part. The earlier paired sequence endpoint remains for compatibility but is
+not required by the new direct-sum reduction.
 It also proves a finite-height exhaustion of actual multiplicity-aware
 strip-zero occurrences and a right interval of constant count after every
 height. A continuous count bound established at heights with no strip zero
 is transferred to all heights, but the HSW bound at those regular heights
-remains an explicit input. Lean proves the
+remains an explicit input. The exact HSW Gamma normalization is identified
+with mathlib's Deligne factors, and the resulting completed function has
+the same zero positions and analytic multiplicities as the entire
+regularization inside the open critical strip. This correspondence is
+conditional on the regularization; no global entire completion or
+functional equation is inferred. Lean proves the
 test function's differentiability and derivative decay condition, and derives
 the exact `E = 32/3` error integral from the source kernel. It also proves
 `Phi(0) = Phi(1) = 16/3` and their sum equals the exact error.

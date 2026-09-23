@@ -73,6 +73,10 @@ The package now defines actual multiplicity-aware occurrences conditional
 on an entire regularization, proves finite-height exhaustion, and transfers
 a continuous bound from occurrence-free heights to all heights. It does not
 prove the cited analytic theorem or construct the entire regularization.
+It also proves the HSW-to-quadratic reduction and direct unordered zero-sum
+convergence, without an ordered enumeration. The HSW Gamma factor equals
+mathlib's Deligne factors, and completed and regularized zero orders agree
+in the open critical strip, conditional on the regularization.
 See [the zero-count literature note](docs/audit/v15/16_zero_count_literature.md)
 and [the classical-source map](docs/audit/v15/18_classical_analytic_sources.md).
 

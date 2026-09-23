@@ -84,6 +84,24 @@ symmetry, the exact Odlyzko transform has a convergent paired series.
 An infinite ordered sequence of representatives and the HSW inequality
 have not been proved.
 
+The newer `V15DedekindZetaUnorderedZeros.lean` removes the first requirement
+from the source-formula route. It partitions the actual occurrence type by
+integer height and proves that a quadratic all-height count together with
+the already-proved fourth-power decay makes the direct `tsum` absolutely
+convergent. `quadraticCount_of_HSWField` derives that count from the exact
+HSW input, including `0 <= T < 1`; `phi_summable_of_HSWRegular` also uses the
+proved regular-height transfer. The endpoint
+`v15_odlyzkoTable4ExplicitCorrectionInput_of_unorderedZeros` uses the direct
+zero sum and no ordered enumeration. HSW's inequality and the explicit
+formula remain named analytic hypotheses.
+
+`V15DedekindZetaCompletion.lean` identifies the factor in HSW (2.1) with
+mathlib's `Gammaℝ` and `Gammaℂ`, proves its nonvanishing and analyticity in
+the open critical strip, and proves equality of zero positions and analytic
+zero orders with the pole-removed regularization there. These results are
+conditional on the entire regularization and do not prove a global
+functional equation or HSW's numerical bound.
+
 ## Transform decay now proved; global zeta remains
 
 For the transform estimate, the pinned mathlib module
@@ -113,7 +131,9 @@ the contour or distribution argument, and the identity for the exact
 
 The next independent target is constructing the entire regularization from
 number-field theta/Poisson data, proving its functional equation, and
-obtaining the HSW count from an argument-principle
-proof. A height-ordered enumeration must then identify every required
-conjugate pair. The Stark/Weil explicit formula remains a separate, larger
-source-to-Lean gap.
+obtaining a coarse count from growth or HSW's sharp count from an
+argument-principle proof. The pinned mathlib contains Jensen's inequality
+in `Mathlib.Analysis.Complex.JensenFormula`; using it still requires a
+global growth estimate and a bridge from divisor sums to the project's
+multiplicity-aware occurrences. The Stark/Weil explicit formula remains a
+separate, larger source-to-Lean gap.

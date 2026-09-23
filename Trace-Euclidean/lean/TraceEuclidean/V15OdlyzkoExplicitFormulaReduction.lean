@@ -440,8 +440,8 @@ theorem v15OdlyzkoABIntegralCertificate_of_strictBounds
   ⟨v15OdlyzkoSinhIntegrand_integrableOn, hA, hB⟩
 
 /-- Equation (2.3) with the exact `b=4` endpoint term and complete prime
-correction.  The parameter `Z` must be supplied by a convergent paired-zero
-sum in the source's normalization. -/
+correction. The parameter `Z` must be supplied by a convergent zero sum
+in the source's normalization; an unordered occurrence sum is supported. -/
 def V15OdlyzkoExplicitFormulaInput (Z : CodedNumberField → ℝ) : Prop :=
   ∀ K : CodedNumberField,
     Real.log (((|K.discriminant| : ℤ) : ℝ)) =

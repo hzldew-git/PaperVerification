@@ -1269,3 +1269,77 @@ TraceEuclidean.V15DedekindZetaZeroOccurrence.HSWFieldInput_of_regular_heights.{u
 'TraceEuclidean.V15DedekindZetaZeroOccurrence.HSWFieldInput_of_regular_heights' depends on axioms: [propext,
  Classical.choice,
  Quot.sound]
+TraceEuclidean.V15DedekindZetaZeroOccurrence.quadraticCount_of_HSWNumeric.{u_1} {K : Type u_1} [Field K] [NumberField K]
+  (Z : TraceEuclidean.V15DedekindZetaRegularization K) (d : ℝ) (n : ℕ) (hd : 1 ≤ d)
+  (hNumeric : TraceEuclidean.V15DedekindZetaZeroOccurrence.HSWNumericInput Z d n) :
+  TraceEuclidean.V15DedekindZetaZeroOccurrence.QuadraticCountInput Z (4 * (Real.log d + 25 * ↑n + 5))
+TraceEuclidean.V15DedekindZetaZeroOccurrence.quadraticCount_of_HSWField.{u_1} {K : Type u_1} [Field K] [NumberField K]
+  (Z : TraceEuclidean.V15DedekindZetaRegularization K)
+  (hField : TraceEuclidean.V15DedekindZetaZeroOccurrence.HSWFieldInput Z) :
+  TraceEuclidean.V15DedekindZetaZeroOccurrence.QuadraticCountInput Z
+    (4 * (Real.log |↑(NumberField.discr K)| + 25 * ↑(Module.finrank ℚ K) + 5))
+TraceEuclidean.V15DedekindZetaZeroOccurrence.phi_summable_of_quadratic_count.{u_1} {K : Type u_1} [Field K]
+  [NumberField K] (Z : TraceEuclidean.V15DedekindZetaRegularization K) (C : ℝ) (hC : 0 ≤ C)
+  (hCount : TraceEuclidean.V15DedekindZetaZeroOccurrence.QuadraticCountInput Z C) :
+  Summable fun o => TraceEuclidean.v15OdlyzkoPhi o.value
+TraceEuclidean.V15DedekindZetaZeroOccurrence.phi_tsum_re_nonneg_of_quadratic_count.{u_1} {K : Type u_1} [Field K]
+  [NumberField K] (Z : TraceEuclidean.V15DedekindZetaRegularization K) (C : ℝ) (hC : 0 ≤ C)
+  (hCount : TraceEuclidean.V15DedekindZetaZeroOccurrence.QuadraticCountInput Z C) :
+  0 ≤ (∑' (o : TraceEuclidean.V15DedekindZetaZeroOccurrence Z), TraceEuclidean.v15OdlyzkoPhi o.value).re
+TraceEuclidean.V15DedekindZetaZeroOccurrence.phi_summable_of_HSWRegular.{u_1} {K : Type u_1} [Field K] [NumberField K]
+  (Z : TraceEuclidean.V15DedekindZetaRegularization K)
+  (hRegular :
+    TraceEuclidean.V15DedekindZetaZeroOccurrence.HSWRegularHeightInput Z |↑(NumberField.discr K)|
+      (Module.finrank ℚ K)) :
+  Summable fun o => TraceEuclidean.v15OdlyzkoPhi o.value
+TraceEuclidean.v15_odlyzkoTable4ExplicitCorrectionInput_of_unorderedZeros
+  (regularization : (K : TraceEuclidean.CodedNumberField) → TraceEuclidean.V15DedekindZetaRegularization ↥↑K)
+  (C : TraceEuclidean.CodedNumberField → ℝ) (hC : ∀ (K : TraceEuclidean.CodedNumberField), 0 ≤ C K)
+  (hCount :
+    ∀ (K : TraceEuclidean.CodedNumberField),
+      TraceEuclidean.V15DedekindZetaZeroOccurrence.QuadraticCountInput (regularization K) (C K))
+  (hFormula :
+    TraceEuclidean.V15OdlyzkoExplicitFormulaInput fun K =>
+      (∑' (o : TraceEuclidean.V15DedekindZetaZeroOccurrence (regularization K)),
+          TraceEuclidean.v15OdlyzkoPhi o.value).re)
+  (hAB : TraceEuclidean.V15OdlyzkoABIntegralCertificate) : TraceEuclidean.V15OdlyzkoTable4ExplicitCorrectionInput
+'TraceEuclidean.V15DedekindZetaZeroOccurrence.quadraticCount_of_HSWNumeric' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'TraceEuclidean.V15DedekindZetaZeroOccurrence.quadraticCount_of_HSWField' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'TraceEuclidean.V15DedekindZetaZeroOccurrence.phi_summable_of_quadratic_count' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'TraceEuclidean.V15DedekindZetaZeroOccurrence.phi_tsum_re_nonneg_of_quadratic_count' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'TraceEuclidean.V15DedekindZetaZeroOccurrence.phi_summable_of_HSWRegular' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'TraceEuclidean.v15_odlyzkoTable4ExplicitCorrectionInput_of_unorderedZeros' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+TraceEuclidean.v15_hswGammaFactor_eq_archimedeanFactor.{u_1} (K : Type u_1) [Field K] [NumberField K] (s : ℂ) :
+  TraceEuclidean.v15HSWGammaFactor K s = TraceEuclidean.v15CompletedArchimedeanFactor K s
+TraceEuclidean.v15_completedArchimedeanFactor_ne_zero.{u_1} (K : Type u_1) [Field K] [NumberField K] {s : ℂ}
+  (hs : 0 < s.re) : TraceEuclidean.v15CompletedArchimedeanFactor K s ≠ 0
+TraceEuclidean.v15_completedMultiplier_ne_zero.{u_1} (K : Type u_1) [Field K] [NumberField K] {s : ℂ} (hs : 0 < s.re) :
+  TraceEuclidean.v15CompletedMultiplier K s ≠ 0
+TraceEuclidean.v15_completed_zero_iff_regularized_zero.{u_1} (K : Type u_1) [Field K] [NumberField K]
+  (Z : TraceEuclidean.V15DedekindZetaRegularization K) {s : ℂ} (hs : 0 < s.re) :
+  TraceEuclidean.v15CompletedFromRegularization K Z s = 0 ↔ Z.value s = 0
+TraceEuclidean.v15_completedMultiplier_analyticAt.{u_1} (K : Type u_1) [Field K] [NumberField K] {s : ℂ}
+  (hs : 0 < s.re) : AnalyticAt ℂ (TraceEuclidean.v15CompletedMultiplier K) s
+TraceEuclidean.v15_completed_zero_order_eq_regularized_zero_order.{u_1} (K : Type u_1) [Field K] [NumberField K]
+  (Z : TraceEuclidean.V15DedekindZetaRegularization K) {s : ℂ} (hs : 0 < s.re) :
+  analyticOrderNatAt (TraceEuclidean.v15CompletedFromRegularization K Z) s = analyticOrderNatAt Z.value s
+'TraceEuclidean.v15_hswGammaFactor_eq_archimedeanFactor' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15_completedArchimedeanFactor_ne_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15_completedMultiplier_ne_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15_completed_zero_iff_regularized_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15_completedMultiplier_analyticAt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15_completed_zero_order_eq_regularized_zero_order' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
