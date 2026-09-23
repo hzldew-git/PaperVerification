@@ -56,6 +56,10 @@ results are 1165 Python PASS and 112 Wolfram PASS.
   nonnegative. A
   kernel-checked bridge substitutes this complete correction for the
   existential correction in the exact-error and rounded table interfaces.
+  The remaining analytic step is now stated in source normalization: two
+  convergent archimedean integrals with strict `A,B` lower estimates and
+  equation (2.3) with a convergent zero contribution conditionally imply the
+  full Table 4 inequality.
 - Theorem 1.7: an if-and-only-if classification for every nonzero fractional
   ideal presentation of a positive integral rank-one real-quadratic lattice.
   Lean proves principality, six actual module-isometry classes, six valid

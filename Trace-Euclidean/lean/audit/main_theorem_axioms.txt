@@ -941,3 +941,22 @@ TraceEuclidean.v15OdlyzkoPhi_zero_add_one : TraceEuclidean.v15OdlyzkoPhi 0 + Tra
 'TraceEuclidean.v15OdlyzkoPhi_one' depends on axioms: [propext, Classical.choice, Quot.sound]
 'TraceEuclidean.v15OdlyzkoPhi_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
 'TraceEuclidean.v15OdlyzkoPhi_zero_add_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+TraceEuclidean.V15OdlyzkoABIntegralCertificate : Prop
+TraceEuclidean.V15OdlyzkoExplicitFormulaInput (Z : TraceEuclidean.CodedNumberField → ℝ) : Prop
+TraceEuclidean.v15_odlyzkoTable4ExplicitCorrectionInput_of_sourceFormula (Z : TraceEuclidean.CodedNumberField → ℝ)
+  (hFormula : TraceEuclidean.V15OdlyzkoExplicitFormulaInput Z)
+  (hZeros : ∀ (K : TraceEuclidean.CodedNumberField), 0 ≤ Z K) (hAB : TraceEuclidean.V15OdlyzkoABIntegralCertificate) :
+  TraceEuclidean.V15OdlyzkoTable4ExplicitCorrectionInput
+TraceEuclidean.v15_odlyzkoTable4ExplicitCorrectionInput_of_enumeratedZeros
+  (zeros : TraceEuclidean.CodedNumberField → ℕ → ℂ)
+  (hStrip : ∀ (K : TraceEuclidean.CodedNumberField) (i : ℕ), 0 ≤ (zeros K i).re ∧ (zeros K i).re ≤ 1)
+  (hSummable : ∀ (K : TraceEuclidean.CodedNumberField), Summable fun i => TraceEuclidean.v15OdlyzkoPhi (zeros K i))
+  (hFormula :
+    TraceEuclidean.V15OdlyzkoExplicitFormulaInput fun K => (∑' (i : ℕ), TraceEuclidean.v15OdlyzkoPhi (zeros K i)).re)
+  (hAB : TraceEuclidean.V15OdlyzkoABIntegralCertificate) : TraceEuclidean.V15OdlyzkoTable4ExplicitCorrectionInput
+'TraceEuclidean.v15_odlyzkoTable4ExplicitCorrectionInput_of_sourceFormula' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'TraceEuclidean.v15_odlyzkoTable4ExplicitCorrectionInput_of_enumeratedZeros' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

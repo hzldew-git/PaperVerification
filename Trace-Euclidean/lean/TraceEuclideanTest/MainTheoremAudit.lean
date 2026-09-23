@@ -421,3 +421,12 @@ import TraceEuclidean
 #print axioms TraceEuclidean.v15OdlyzkoPhi_one
 #print axioms TraceEuclidean.v15OdlyzkoPhi_zero
 #print axioms TraceEuclidean.v15OdlyzkoPhi_zero_add_one
+
+-- Source-exact explicit-formula reduction with strict archimedean certificate.
+#check TraceEuclidean.V15OdlyzkoABIntegralCertificate
+#check TraceEuclidean.V15OdlyzkoExplicitFormulaInput
+#check TraceEuclidean.v15_odlyzkoTable4ExplicitCorrectionInput_of_sourceFormula
+#check TraceEuclidean.v15_odlyzkoTable4ExplicitCorrectionInput_of_enumeratedZeros
+
+#print axioms TraceEuclidean.v15_odlyzkoTable4ExplicitCorrectionInput_of_sourceFormula
+#print axioms TraceEuclidean.v15_odlyzkoTable4ExplicitCorrectionInput_of_enumeratedZeros

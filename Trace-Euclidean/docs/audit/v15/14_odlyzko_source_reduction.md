@@ -175,6 +175,29 @@ source's eventual decay inequality with `c = epsilon = 1`.
 `E = 32/3` integral directly, rather than only accepting the table
 description's value and checking its upward rounding.
 
+The [1990 survey, equation (2.3)](https://www.numdam.org/article/JTNB_1990__2_1_119_0.pdf)
+also gives two distinct archimedean terms. `V15OdlyzkoExplicitFormulaReduction`
+defines them with the source denominators:
+
+~~~text
+I_sinh = integral_(0,infinity) (1-F(x))/(2*sinh(x/2)) dx
+I_cosh = integral_(0,infinity) (1-F(x))/(2*cosh(x/2)) dx
+log B_* = gamma + log(8*pi) - I_sinh
+log A_* = pi/2 + log B_* - I_cosh
+~~~
+
+The named `V15OdlyzkoABIntegralCertificate` requires convergence of both
+integrals and the strict inequalities `log(36.347) < log A_*` and
+`log(16.593) < log B_*`. `V15OdlyzkoExplicitFormulaInput` states (2.3) with
+the exact `4*integral F*cosh` term, the already proved complete prime
+correction, and a real zero contribution. Lean proves that this formula, a
+nonnegative zero contribution, and the strict integral certificate imply
+`V15OdlyzkoTable4ExplicitCorrectionInput` for every number field. A second
+bridge uses the proved `Phi` sign theorem when the zero contribution is a
+summable enumerated family in the closed critical strip. These two analytic
+premises are explicit and unproved; the reduction does not establish the
+Dedekind-zeta zero enumeration or the formula itself.
+
 `V15OdlyzkoPrimeCorrection` defines the source's exact summand for a nonzero
 prime ideal and a positive exponent. It constructs the finite set of prime
 ideals of bounded absolute norm, proves every summand and every finite partial

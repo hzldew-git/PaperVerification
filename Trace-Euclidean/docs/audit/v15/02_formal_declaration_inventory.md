@@ -9,6 +9,7 @@
 | v15OdlyzkoHCore_intervalIntegral_zero_two, v15OdlyzkoF4_archimedean_error_integral | Evaluate the printed `H` formula and derive the exact `E = 32/3` archimedean error integral from the source kernel. |
 | v15OdlyzkoPhi_one_sub | Prove the exact source transform satisfies `Phi(1-s) = Phi(s)` for every complex `s`. |
 | v15OdlyzkoPhi_one, v15OdlyzkoPhi_zero, v15OdlyzkoPhi_zero_add_one | Derive both exact endpoint values `16/3` and their sum `32/3` from the proved kernel error integral. |
+| V15OdlyzkoABIntegralCertificate, V15OdlyzkoExplicitFormulaInput, v15_odlyzkoTable4ExplicitCorrectionInput_of_sourceFormula, v15_odlyzkoTable4ExplicitCorrectionInput_of_enumeratedZeros | State the two source archimedean integrals, strict `A,B` bounds, and exact equation (2.3), then prove the conditional bridge to Table 4. The two named premises remain unproved. |
 | V15OdlyzkoTable4FieldInputFrom, V15OdlyzkoTable4InputFrom | Restrict the Table 4 premise to the field degrees actually used; degree 12 begins the analytic table range and degree 15 begins the finiteness cutoff. |
 | v15_degree_one_discriminant_bound | Proves the degree-one Section 4 discriminant input internally from Minkowski's bound. |
 | V15DegreeTwoToNineMinimumInput, V15DegreeTenRootDiscriminantInput, V15DegreeElevenRootDiscriminantInput | Separate literature inputs for exact minima, Voight's empty degree-ten range at root discriminant at most 14, and the optimized degree-eleven bound 14.083. |
