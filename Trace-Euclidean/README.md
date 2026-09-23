@@ -48,7 +48,8 @@ results are 1165 Python PASS and 112 Wolfram PASS.
   nonnegative at every real frequency. The source-normalized transform
   `Phi(s) = integral F(x)*exp((s-1/2)*x) dx` now has nonnegative real part for
   every `0 <= Re(s) <= 1`, including the boundary, by an exact tilted-secant
-  transform and a compact-support continuity argument. The complete double
+  transform and a compact-support continuity argument. Its reflection identity
+  and exact endpoint values `Phi(0) = Phi(1) = 16/3` are also proved. The complete double
   sum over all prime
   ideals and positive exponents is defined in Lean, proved equal to the finite
   box with norm at most 4095 and exponent at most eleven, and proved

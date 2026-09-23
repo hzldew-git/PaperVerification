@@ -39,7 +39,8 @@ The completed Dedekind-zeta theory, the Stark/Weil explicit formula and its
 zero-sum existence and convergence, and certified archimedean integral
 estimates for `A` and `B` remain outside the Lean proof. Lean now proves the
 test function's differentiability and derivative decay condition, and derives
-the exact `E = 32/3` error integral from the source kernel.
+the exact `E = 32/3` error integral from the source kernel. It also proves
+`Phi(0) = Phi(1) = 16/3` and their sum equals the exact error.
 
 The public Python and Wolfram runs trust their kernels and the extracted
 input file. The private maintainer run also checks the SHA-256 digest and

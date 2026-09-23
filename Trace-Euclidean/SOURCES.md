@@ -24,7 +24,8 @@ states that Table 4 is unconditional and gives the stronger formula
 |D_F| > A^r1 B^(2r2) exp(f-E), where f is the prime-ideal correction.
 It also states that A and B are lower estimates and that E is rounded upward
 from 8b/3. For b=4, Lean derives the exact archimedean error integral
-`4 * integral_(0,infinity) F(x)*cosh(x/2) dx = 32/3`, then checks
+`4 * integral_(0,infinity) F(x)*cosh(x/2) dx = 32/3` and the
+endpoint-transform identity `Phi(0) + Phi(1) = 32/3`, then checks
 32/3 <= 10.667 and the direction of this
 rounding, the totally real signature specialization, removal of the
 nonnegative f, and all downstream uses. The new literature-facing premise is
@@ -48,6 +49,7 @@ condition for an unconditional bound. Lean now proves that sign condition for
 the printed `b=4` kernel, including both strip boundaries. It also proves the
 test function's global differentiability and its derivative's compact support,
 which verifies the eventual decay hypothesis in equation (2.1). The
+exact endpoint values `Phi(0) = Phi(1) = 16/3` are proved in Lean. The
 explicit-formula identity, its paired-zero convergence, and certified A/B
 integral estimates remain external. See
 [the source-reduction audit](docs/audit/v15/14_odlyzko_source_reduction.md).

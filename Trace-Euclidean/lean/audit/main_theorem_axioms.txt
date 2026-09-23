@@ -935,3 +935,9 @@ TraceEuclidean.v15OdlyzkoF4_archimedean_error_integral :
 'TraceEuclidean.v15OdlyzkoF4_archimedean_error_integral' depends on axioms: [propext, Classical.choice, Quot.sound]
 TraceEuclidean.v15OdlyzkoPhi_one_sub (s : ℂ) : TraceEuclidean.v15OdlyzkoPhi (1 - s) = TraceEuclidean.v15OdlyzkoPhi s
 'TraceEuclidean.v15OdlyzkoPhi_one_sub' depends on axioms: [propext, Classical.choice, Quot.sound]
+TraceEuclidean.v15OdlyzkoPhi_one : TraceEuclidean.v15OdlyzkoPhi 1 = 16 / 3
+TraceEuclidean.v15OdlyzkoPhi_zero : TraceEuclidean.v15OdlyzkoPhi 0 = 16 / 3
+TraceEuclidean.v15OdlyzkoPhi_zero_add_one : TraceEuclidean.v15OdlyzkoPhi 0 + TraceEuclidean.v15OdlyzkoPhi 1 = 32 / 3
+'TraceEuclidean.v15OdlyzkoPhi_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15OdlyzkoPhi_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15OdlyzkoPhi_zero_add_one' depends on axioms: [propext, Classical.choice, Quot.sound]

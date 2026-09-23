@@ -412,3 +412,12 @@ import TraceEuclidean
 -- Symmetry of the source transform under reflection about the central line.
 #check TraceEuclidean.v15OdlyzkoPhi_one_sub
 #print axioms TraceEuclidean.v15OdlyzkoPhi_one_sub
+
+-- Exact source endpoint values and their total archimedean error contribution.
+#check TraceEuclidean.v15OdlyzkoPhi_one
+#check TraceEuclidean.v15OdlyzkoPhi_zero
+#check TraceEuclidean.v15OdlyzkoPhi_zero_add_one
+
+#print axioms TraceEuclidean.v15OdlyzkoPhi_one
+#print axioms TraceEuclidean.v15OdlyzkoPhi_zero
+#print axioms TraceEuclidean.v15OdlyzkoPhi_zero_add_one

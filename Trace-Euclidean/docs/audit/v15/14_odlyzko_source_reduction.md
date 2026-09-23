@@ -159,6 +159,8 @@ summable family of such contributions. These theorems do not assert that the
 Dedekind-zeta zero family exists or is summable in the paired convention of
 the explicit formula. `V15OdlyzkoPhiSymmetry` also proves the source-normalized
 reflection identity `Phi(1-s) = Phi(s)` from the evenness of `F`.
+`V15OdlyzkoPhiEndpoint` combines that identity with the exact error integral
+to prove `Phi(0) = Phi(1) = 16/3` and `Phi(0) + Phi(1) = 32/3`.
 
 Odlyzko's [1990 survey, equation (2.1)](https://www.numdam.org/item/JTNB_1990__2_1_119_0.pdf)
 requires global differentiability of `F` and exponential decay of both `F`
@@ -204,6 +206,6 @@ kernel, the autocorrelation and Fourier positivity of `H`, the exact
 hyperbolic-secant and tilted transforms, the product-to-convolution bridge,
 source-normalized zero-transform positivity on the closed critical strip, the
 test function's differentiability and derivative decay, the exact `E = 32/3`
-integral, the complete prime-ideal correction and its
+integral, the exact endpoint-transform values, the complete prime-ideal correction and its
 exact finite-support reduction, every specialization and rounding, and every
 downstream use needed by v15.
