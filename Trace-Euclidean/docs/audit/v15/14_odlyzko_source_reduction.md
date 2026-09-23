@@ -185,9 +185,12 @@ zero-count bound `N(T) <= C(1+T)^2` into the ordinal bound
 square-series majorant for the real zero contributions and proves absolute
 convergence of the paired series. Its final theorem substitutes these two
 estimates directly into the Table 4 reduction, so summability is no longer a
-separate premise there. The fourth-power bound and the count of actual
-Dedekind-zeta zeros remain explicit, unproved inputs; this criterion does not
-assert that an actual zero enumeration has been constructed. Lean also proves
+separate premise there. The fourth-power bound is now proved for the exact
+source transform by the separate
+[`C^4` and Fourier development](17_odlyzko_fourth_decay.md), so the current
+Table 4 bridge requires only the quadratic count for a height-ordered zero
+enumeration. The count of actual Dedekind-zeta zeros and the enumeration
+remain explicit, unproved inputs. Lean also proves
 that a finite count bounded by `A + B*T*log(2+T)` implies the coarser
 quadratic count with constant `A+B`. `V15OdlyzkoZeroCountLiterature` now
 connects the explicit multiplicity-aware bound of Hasanalizade--Shen--Wong,
@@ -252,11 +255,11 @@ analytic-number-theory development containing at least:
 
 1. a completed Dedekind zeta function with meromorphic continuation and its
    functional equation;
-2. the Stark/Weil explicit formula, a zero-counting estimate, and convergence
-   of its paired zero sum. The source test-function hypotheses, entire
-   zero transform, qualitative vertical decay, conjugate pairing identities,
-   pointwise sign, and the deduction of paired-series convergence from a
-   quadratic count and fourth-power transform decay are already proved.
+2. the Stark/Weil explicit formula and an instantiated zero-counting estimate
+   for actual zero occurrences. The source test-function hypotheses, entire
+   zero transform, uniform fourth-power vertical decay, conjugate pairing
+   identities, pointwise sign, and paired-series convergence from a quadratic
+   count are already proved.
 
 The sinh integral's convergence and the strict numerical estimates for
 `A = 36.347` and `B = 16.593` are supplied by the separate

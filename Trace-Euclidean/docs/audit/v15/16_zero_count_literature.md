@@ -53,18 +53,15 @@ multiplicities inhabit the `zero occurrence` type, and it has not constructed
 the infinite ordered representative sequence. The transfer theorem states
 the injectivity and occurrence assumptions explicitly.
 
-## The other two analytic routes
+## Transform decay now proved; global zeta remains
 
 For the transform estimate, the pinned mathlib module
 [`FourierTransformDeriv`](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Analysis/Fourier/FourierTransformDeriv.html)
-provides `Real.fourier_iteratedDeriv`: four integrations by parts can turn an
-integrable fourth derivative of the compactly supported, exponentially
-tilted `b=4` kernel into a `|t|^{-4}` vertical bound. The existing Lean
-development proves global differentiability of the kernel, but not the
-fourth derivative and its integrability. An alternative is an explicit
-Fourier estimate for the compact bump `g(x)=1+cos(pi*x)` on `[-1,1]`, whose
-autocorrelation is already formalized. Neither route has yet yielded the
-required uniform closed-strip bound for `Phi`.
+provides `Real.fourier_iteratedDeriv`. The subsequent
+[`fourth-decay proof`](17_odlyzko_fourth_decay.md) establishes global `C^4`
+regularity, fourth-derivative integrability, uniform closed-strip `L^1`
+bounds, and the exact `|t|^{-4}` Fourier estimate. Thus the transform decay
+premise has been discharged in Lean for the printed `b=4` kernel.
 
 For global zeta continuation and the functional equation, mathlib's
 [`WeakFEPair`](https://leanprover-community.github.io/mathlib4_docs/Mathlib/NumberTheory/LSeries/AbstractFuncEq.html)
@@ -83,8 +80,9 @@ the contour or distribution argument, and the identity for the exact
 
 ## Practical next proof boundary
 
-The nearest independent target is a Lean proof of `V15OdlyzkoPhiFourthPowerBound`
-using the exact compact kernel. The zero-count reduction is ready to be used
-once actual Dedekind-zeta zeros are represented and the published theorem is
-admitted as a clearly labeled literature input. The global functional
-equation and Odlyzko explicit formula remain the larger source-to-Lean gap.
+The nearest independent target is to represent actual Dedekind-zeta zero
+occurrences with multiplicities and construct a height-ordered sequence of
+conjugate-pair representatives. The zero-count reduction is ready once that
+enumeration is connected to the published theorem as a clearly labeled
+literature input. The global functional equation and Odlyzko explicit formula
+remain the larger source-to-Lean gap.

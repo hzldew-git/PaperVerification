@@ -97,13 +97,13 @@ private theorem v15OdlyzkoHCore_differentiable :
     Differentiable ℝ v15OdlyzkoHCore :=
   fun t ↦ (v15OdlyzkoHCore_hasDerivAt t).differentiableAt
 
-private def v15OdlyzkoHRight (x : ℝ) : ℝ :=
+def v15OdlyzkoHRight (x : ℝ) : ℝ :=
   if x ≤ 2 then v15OdlyzkoHCore x else 0
 
-private def v15OdlyzkoHMiddle (x : ℝ) : ℝ :=
+def v15OdlyzkoHMiddle (x : ℝ) : ℝ :=
   if x ≤ 0 then v15OdlyzkoHCore (-x) else v15OdlyzkoHRight x
 
-private def v15OdlyzkoHPiecewise (x : ℝ) : ℝ :=
+def v15OdlyzkoHPiecewise (x : ℝ) : ℝ :=
   if x ≤ -2 then 0 else v15OdlyzkoHMiddle x
 
 private theorem v15OdlyzkoHRight_differentiable :
@@ -157,7 +157,7 @@ private theorem v15OdlyzkoHPiecewise_differentiable :
   · rw [v15OdlyzkoHMiddle_hasDerivAt_neg_two.deriv]
     simp
 
-private theorem v15OdlyzkoH_eq_piecewise (x : ℝ) :
+theorem v15OdlyzkoH_eq_piecewise (x : ℝ) :
     v15OdlyzkoH x = v15OdlyzkoHPiecewise x := by
   by_cases hx₁ : x ≤ -2
   · rcases lt_or_eq_of_le hx₁ with hlt | heq

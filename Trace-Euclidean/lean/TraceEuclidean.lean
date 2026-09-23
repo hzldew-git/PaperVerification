@@ -64,6 +64,7 @@ import TraceEuclidean.V15OdlyzkoFinalFourier
 import TraceEuclidean.V15OdlyzkoTiltedSech
 import TraceEuclidean.V15OdlyzkoZeroStrip
 import TraceEuclidean.V15OdlyzkoDifferentiability
+import TraceEuclidean.V15OdlyzkoFourthRegularity
 import TraceEuclidean.V15OdlyzkoArchimedean
 import TraceEuclidean.V15OdlyzkoPhiSymmetry
 import TraceEuclidean.V15OdlyzkoPhiEndpoint
@@ -76,6 +77,7 @@ import TraceEuclidean.V15OdlyzkoZeroDecay
 import TraceEuclidean.V15OdlyzkoZeroPairing
 import TraceEuclidean.V15OdlyzkoPairedFormula
 import TraceEuclidean.V15OdlyzkoZeroSummability
+import TraceEuclidean.V15OdlyzkoFourthDecayCriterion
 import TraceEuclidean.V15OdlyzkoZeroCountLiterature
 import TraceEuclidean.V15RankOneIntegral
 import TraceEuclidean.V15SixRadii

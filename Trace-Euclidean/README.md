@@ -104,16 +104,19 @@ exact minima in degrees 2--9, the degree-ten enumeration result, the optimized
 degree-eleven bound 14.083, and the analytic theorem behind Odlyzko's Table 4
 remain explicit external mathematical inputs. Within that last theorem, the
 unformalized analytic steps are Dedekind-zeta continuation and its functional
-equation, the Stark/Weil explicit formula, the actual zero count and a
-uniform fourth-power decay estimate sufficient for paired-zero convergence. Lean proves the
-deduction of that convergence from those two quantitative estimates. It also checks
+equation, the Stark/Weil explicit formula, and an actual zero count connected
+to a height-ordered occurrence enumeration. Lean now proves the uniform
+fourth-power decay estimate for the exact source transform and deduces
+paired-zero convergence from a quadratic count. It also checks
 that the source's explicit multiplicity-aware zero-count inequality reduces to the
 quadratic count used by this criterion, conditional on that analytic theorem
 and an injective occurrence enumeration. Lean checks the test function's
 differentiability and derivative decay, and derives the exact
 `E = 32/3` integral from the kernel. The source separation and Lean reduction are
 recorded in the [Odlyzko source audit](docs/audit/v15/14_odlyzko_source_reduction.md)
-and [zero-count literature note](docs/audit/v15/16_zero_count_literature.md).
+and [zero-count literature note](docs/audit/v15/16_zero_count_literature.md);
+the [fourth-decay proof](docs/audit/v15/17_odlyzko_fourth_decay.md) records
+the new regularity and Fourier argument.
 
 ## Version scope
 

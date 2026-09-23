@@ -52,14 +52,16 @@ which verifies the eventual decay hypothesis in equation (2.1). The
 exact endpoint values `Phi(0) = Phi(1) = 16/3` are proved in Lean. The
 explicit-formula identity and the analytic count of actual Dedekind-zeta
 zeros remain external. The paired-zero convergence follows in Lean from an
-explicit zero count and a uniform fourth-power bound on `Phi`; the latter
-bound is still unproved. The A/B integral estimates are certified in Lean,
+explicit zero count and a uniform fourth-power bound on `Phi`. The latter
+bound is now proved for the exact source kernel by global `C^4` gluing,
+compactness, and four integrations by parts. The A/B integral estimates are certified in Lean,
 with a disclosed `native_decide` trust boundary. A Lean reduction states the exact
 archimedean integrals from equation (2.3), proves convergence of the
 cosh- and sinh-denominator integrals, derives the strict `A,B` bounds from
 certified intervals, and uses the explicit formula as a named premise to
 derive the Table 4 interface. See
-[the source-reduction audit](docs/audit/v15/14_odlyzko_source_reduction.md).
+[the source-reduction audit](docs/audit/v15/14_odlyzko_source_reduction.md)
+and [the fourth-decay proof](docs/audit/v15/17_odlyzko_fourth_decay.md).
 
 [Hasanalizade--Shen--Wong, Corollary 1.2](https://arxiv.org/pdf/2102.04663)
 gives a multiplicity-aware explicit Dedekind-zeta zero count for `T >= 1`.

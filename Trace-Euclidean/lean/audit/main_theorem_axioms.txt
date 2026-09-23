@@ -967,3 +967,170 @@ TraceEuclidean.v15_odlyzkoTable4ExplicitCorrectionInput_of_enumeratedZeros
 'TraceEuclidean.v15_odlyzkoTable4ExplicitCorrectionInput_of_enumeratedZeros' depends on axioms: [propext,
  Classical.choice,
  Quot.sound]
+TraceEuclidean.v15OdlyzkoKernelMeasure_exp_integrable (t : ℝ) :
+  MeasureTheory.Integrable (fun x => Real.exp (t * x)) TraceEuclidean.v15OdlyzkoKernelMeasure
+TraceEuclidean.v15OdlyzkoPhi_eq_complexMGF (s : ℂ) :
+  TraceEuclidean.v15OdlyzkoPhi s = ProbabilityTheory.complexMGF id TraceEuclidean.v15OdlyzkoKernelMeasure (s - 1 / 2)
+TraceEuclidean.v15OdlyzkoPhi_differentiable : Differentiable ℂ TraceEuclidean.v15OdlyzkoPhi
+TraceEuclidean.v15OdlyzkoPhi_hasDerivAt (s : ℂ) :
+  HasDerivAt TraceEuclidean.v15OdlyzkoPhi
+    (∫ (x : ℝ), ↑(TraceEuclidean.v15OdlyzkoF4 x) * ↑x * Complex.exp ((s - 1 / 2) * ↑x)) s
+TraceEuclidean.v15OdlyzkoPhi_tendsto_zero_vertical (a : ℝ) :
+  Filter.Tendsto (fun w => TraceEuclidean.v15OdlyzkoPhi (↑(a + 1 / 2) + ↑(-2 * Real.pi * w) * Complex.I))
+    (Filter.cocompact ℝ) (nhds 0)
+TraceEuclidean.v15OdlyzkoPhi_conj (s : ℂ) :
+  TraceEuclidean.v15OdlyzkoPhi ((starRingEnd ℂ) s) = (starRingEnd ℂ) (TraceEuclidean.v15OdlyzkoPhi s)
+TraceEuclidean.v15OdlyzkoPhi_im_eq_zero_of_im_eq_zero (s : ℂ) (hs : s.im = 0) : (TraceEuclidean.v15OdlyzkoPhi s).im = 0
+TraceEuclidean.v15OdlyzkoPhi_conj_pair (s : ℂ) :
+  TraceEuclidean.v15OdlyzkoPhi s + TraceEuclidean.v15OdlyzkoPhi ((starRingEnd ℂ) s) =
+    ↑(2 * (TraceEuclidean.v15OdlyzkoPhi s).re)
+TraceEuclidean.v15OdlyzkoPhi_conj_pair_summable_iff.{u_1} {ι : Type u_1} (zeros : ι → ℂ) :
+  (Summable fun i =>
+      TraceEuclidean.v15OdlyzkoPhi (zeros i) + TraceEuclidean.v15OdlyzkoPhi ((starRingEnd ℂ) (zeros i))) ↔
+    Summable fun i => (TraceEuclidean.v15OdlyzkoPhi (zeros i)).re
+TraceEuclidean.v15OdlyzkoPhi_conj_pair_tsum.{u_1} {ι : Type u_1} (zeros : ι → ℂ)
+  (h : Summable fun i => (TraceEuclidean.v15OdlyzkoPhi (zeros i)).re) :
+  ∑' (i : ι), (TraceEuclidean.v15OdlyzkoPhi (zeros i) + TraceEuclidean.v15OdlyzkoPhi ((starRingEnd ℂ) (zeros i))) =
+    ↑(2 * TraceEuclidean.v15OdlyzkoZeroRealSum zeros)
+TraceEuclidean.v15_odlyzkoTable4ExplicitCorrectionInput_of_realAndPairedZeros
+  (realIndices : TraceEuclidean.CodedNumberField → Finset ℕ)
+  (realZeros pairReps : TraceEuclidean.CodedNumberField → ℕ → ℂ)
+  (_hReal : ∀ (K : TraceEuclidean.CodedNumberField), ∀ i ∈ realIndices K, (realZeros K i).im = 0)
+  (_hNonreal : ∀ (K : TraceEuclidean.CodedNumberField) (i : ℕ), (pairReps K i).im ≠ 0)
+  (hRealStrip :
+    ∀ (K : TraceEuclidean.CodedNumberField), ∀ i ∈ realIndices K, 0 ≤ (realZeros K i).re ∧ (realZeros K i).re ≤ 1)
+  (hPairStrip : ∀ (K : TraceEuclidean.CodedNumberField) (i : ℕ), 0 ≤ (pairReps K i).re ∧ (pairReps K i).re ≤ 1)
+  (hPairSummable :
+    ∀ (K : TraceEuclidean.CodedNumberField),
+      Summable fun i =>
+        TraceEuclidean.v15OdlyzkoPhi (pairReps K i) + TraceEuclidean.v15OdlyzkoPhi ((starRingEnd ℂ) (pairReps K i)))
+  (hFormula :
+    TraceEuclidean.V15OdlyzkoExplicitFormulaInput fun K =>
+      ∑ i ∈ realIndices K, (TraceEuclidean.v15OdlyzkoPhi (realZeros K i)).re +
+        (∑' (i : ℕ),
+            (TraceEuclidean.v15OdlyzkoPhi (pairReps K i) +
+              TraceEuclidean.v15OdlyzkoPhi ((starRingEnd ℂ) (pairReps K i)))).re)
+  (hAB : TraceEuclidean.V15OdlyzkoABIntegralCertificate) : TraceEuclidean.V15OdlyzkoTable4ExplicitCorrectionInput
+TraceEuclidean.v15OdlyzkoZeroOrdinalBound_of_countBound (zeros : ℕ → ℂ) (C : ℝ)
+  (hOrdered : ∀ (i j : ℕ), i ≤ j → |(zeros i).im| ≤ |(zeros j).im|)
+  (hCount : TraceEuclidean.V15OdlyzkoZeroCountBound C zeros) : TraceEuclidean.V15OdlyzkoZeroOrdinalBound C zeros
+TraceEuclidean.v15OdlyzkoZeroCountBound_of_logBound (zeros : ℕ → ℂ) (A B : ℝ) (hA : 0 ≤ A) (hB : 0 ≤ B)
+  (hLogCount : TraceEuclidean.V15OdlyzkoZeroCountLogBound A B zeros) :
+  TraceEuclidean.V15OdlyzkoZeroCountBound (A + B) zeros
+TraceEuclidean.v15OdlyzkoPhi_zero_re_summable_of_bounds (zeros : ℕ → ℂ) (C D : ℝ) (hC : 0 ≤ C) (hD : 0 ≤ D)
+  (hStrip : ∀ (n : ℕ), 0 ≤ (zeros n).re ∧ (zeros n).re ≤ 1)
+  (hGrowth : TraceEuclidean.V15OdlyzkoZeroOrdinalBound C zeros)
+  (hDecay : TraceEuclidean.V15OdlyzkoPhiFourthPowerBound D) :
+  Summable fun n => (TraceEuclidean.v15OdlyzkoPhi (zeros n)).re
+TraceEuclidean.v15OdlyzkoPhi_conj_pair_summable_of_bounds (zeros : ℕ → ℂ) (C D : ℝ) (hC : 0 ≤ C) (hD : 0 ≤ D)
+  (hStrip : ∀ (n : ℕ), 0 ≤ (zeros n).re ∧ (zeros n).re ≤ 1)
+  (hGrowth : TraceEuclidean.V15OdlyzkoZeroOrdinalBound C zeros)
+  (hDecay : TraceEuclidean.V15OdlyzkoPhiFourthPowerBound D) :
+  Summable fun n => TraceEuclidean.v15OdlyzkoPhi (zeros n) + TraceEuclidean.v15OdlyzkoPhi ((starRingEnd ℂ) (zeros n))
+TraceEuclidean.v15_odlyzkoTable4ExplicitCorrectionInput_of_countAndDecay
+  (realIndices : TraceEuclidean.CodedNumberField → Finset ℕ)
+  (realZeros pairReps : TraceEuclidean.CodedNumberField → ℕ → ℂ)
+  (hReal : ∀ (K : TraceEuclidean.CodedNumberField), ∀ i ∈ realIndices K, (realZeros K i).im = 0)
+  (hNonreal : ∀ (K : TraceEuclidean.CodedNumberField) (i : ℕ), (pairReps K i).im ≠ 0)
+  (hRealStrip :
+    ∀ (K : TraceEuclidean.CodedNumberField), ∀ i ∈ realIndices K, 0 ≤ (realZeros K i).re ∧ (realZeros K i).re ≤ 1)
+  (hPairStrip : ∀ (K : TraceEuclidean.CodedNumberField) (i : ℕ), 0 ≤ (pairReps K i).re ∧ (pairReps K i).re ≤ 1)
+  (C : TraceEuclidean.CodedNumberField → ℝ) (D : ℝ) (hC : ∀ (K : TraceEuclidean.CodedNumberField), 0 ≤ C K) (hD : 0 ≤ D)
+  (hOrdered : ∀ (K : TraceEuclidean.CodedNumberField) (i j : ℕ), i ≤ j → |(pairReps K i).im| ≤ |(pairReps K j).im|)
+  (hCount : ∀ (K : TraceEuclidean.CodedNumberField), TraceEuclidean.V15OdlyzkoZeroCountBound (C K) (pairReps K))
+  (hDecay : TraceEuclidean.V15OdlyzkoPhiFourthPowerBound D)
+  (hFormula :
+    TraceEuclidean.V15OdlyzkoExplicitFormulaInput fun K =>
+      ∑ i ∈ realIndices K, (TraceEuclidean.v15OdlyzkoPhi (realZeros K i)).re +
+        (∑' (i : ℕ),
+            (TraceEuclidean.v15OdlyzkoPhi (pairReps K i) +
+              TraceEuclidean.v15OdlyzkoPhi ((starRingEnd ℂ) (pairReps K i)))).re)
+  (hAB : TraceEuclidean.V15OdlyzkoABIntegralCertificate) : TraceEuclidean.V15OdlyzkoTable4ExplicitCorrectionInput
+TraceEuclidean.v15HasanalizadeShenWong_log_main_term (d T : ℝ) (n : ℕ) (hd : 0 < d) (hT : 0 < T) :
+  Real.log (d * (T / (2 * Real.pi * Real.exp 1)) ^ n) =
+    Real.log d + ↑n * (Real.log T - Real.log (2 * Real.pi * Real.exp 1))
+TraceEuclidean.v15HasanalizadeShenWong_pairCount_of_allZeroCount.{u_1} (d : ℝ) (n : ℕ) {ι : Type u_1}
+  (zeroValue : ι → ℂ) (representative : ℕ → ι) (hInjective : Function.Injective representative)
+  (hAll : TraceEuclidean.V15HasanalizadeShenWongAllZeroCountInput d n zeroValue) :
+  TraceEuclidean.V15HasanalizadeShenWongPairCountInput d n (zeroValue ∘ representative)
+TraceEuclidean.v15OdlyzkoZeroCountBound_of_HSW_published.{u_1} (d : ℝ) (n : ℕ) {ι : Type u_1} (zeroValue : ι → ℂ)
+  (representative : ℕ → ι) (hd : 1 ≤ d) (hInjective : Function.Injective representative)
+  (hCorollary : TraceEuclidean.V15HasanalizadeShenWongCorollary12Input d n zeroValue) :
+  TraceEuclidean.V15OdlyzkoZeroCountBound (24 * ↑n + 5 + 3 * (Real.log d + ↑n) * Real.log 3 + 3 * (Real.log d + ↑n))
+    (zeroValue ∘ representative)
+'TraceEuclidean.v15OdlyzkoKernelMeasure_exp_integrable' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15OdlyzkoPhi_eq_complexMGF' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15OdlyzkoPhi_differentiable' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15OdlyzkoPhi_hasDerivAt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15OdlyzkoPhi_tendsto_zero_vertical' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15OdlyzkoPhi_conj' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15OdlyzkoPhi_im_eq_zero_of_im_eq_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15OdlyzkoPhi_conj_pair' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15OdlyzkoPhi_conj_pair_summable_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15OdlyzkoPhi_conj_pair_tsum' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15_odlyzkoTable4ExplicitCorrectionInput_of_realAndPairedZeros' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'TraceEuclidean.v15OdlyzkoZeroOrdinalBound_of_countBound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15OdlyzkoZeroCountBound_of_logBound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15OdlyzkoPhi_zero_re_summable_of_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15OdlyzkoPhi_conj_pair_summable_of_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15_odlyzkoTable4ExplicitCorrectionInput_of_countAndDecay' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'TraceEuclidean.v15HasanalizadeShenWong_log_main_term' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15HasanalizadeShenWong_pairCount_of_allZeroCount' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'TraceEuclidean.v15OdlyzkoZeroCountBound_of_HSW_published' depends on axioms: [propext, Classical.choice, Quot.sound]
+TraceEuclidean.v15OdlyzkoHCore_fourth_order_boundary_data :
+  TraceEuclidean.v15OdlyzkoHCore 0 = 1 ∧
+    TraceEuclidean.v15HCoreD1✝ 0 = 0 ∧
+      TraceEuclidean.v15HCoreD2✝ 0 = -Real.pi ^ 2 / 3 ∧
+        TraceEuclidean.v15HCoreD3✝ 0 = 0 ∧
+          TraceEuclidean.v15HCoreD4✝ 0 = Real.pi ^ 4 / 3 ∧
+            TraceEuclidean.v15OdlyzkoHCore 2 = 0 ∧
+              TraceEuclidean.v15HCoreD1✝ 2 = 0 ∧
+                TraceEuclidean.v15HCoreD2✝ 2 = 0 ∧ TraceEuclidean.v15HCoreD3✝ 2 = 0 ∧ TraceEuclidean.v15HCoreD4✝ 2 = 0
+TraceEuclidean.v15Fourth_contDiff_if_le (f g : ℝ → ℝ) (a : ℝ) (hf : ContDiff ℝ 4 f) (hg : ContDiff ℝ 4 g)
+  (hjets : ∀ k ≤ 4, iteratedDeriv k f a = iteratedDeriv k g a) : ContDiff ℝ 4 fun x => if x ≤ a then f x else g x
+TraceEuclidean.v15OdlyzkoH_contDiff_four : ContDiff ℝ 4 TraceEuclidean.v15OdlyzkoH
+TraceEuclidean.v15OdlyzkoF4_contDiff_four : ContDiff ℝ 4 TraceEuclidean.v15OdlyzkoF4
+TraceEuclidean.v15OdlyzkoTiltedF4_contDiff_four (a : ℝ) : ContDiff ℝ 4 (TraceEuclidean.v15OdlyzkoTiltedF4 a)
+TraceEuclidean.v15OdlyzkoTiltedF4_exists_uniform_fourth_mass :
+  ∃ M₀ M₄, TraceEuclidean.V15OdlyzkoTiltedFourthDerivativeMassBound M₀ M₄
+TraceEuclidean.v15OdlyzkoPhi_exists_fourthPowerBound : ∃ D, 0 ≤ D ∧ TraceEuclidean.V15OdlyzkoPhiFourthPowerBound D
+TraceEuclidean.v15OdlyzkoPhi_conj_pair_summable_of_ordinalBound (zeros : ℕ → ℂ) (C : ℝ) (hC : 0 ≤ C)
+  (hStrip : ∀ (n : ℕ), 0 ≤ (zeros n).re ∧ (zeros n).re ≤ 1)
+  (hGrowth : TraceEuclidean.V15OdlyzkoZeroOrdinalBound C zeros) :
+  Summable fun n => TraceEuclidean.v15OdlyzkoPhi (zeros n) + TraceEuclidean.v15OdlyzkoPhi ((starRingEnd ℂ) (zeros n))
+TraceEuclidean.v15_odlyzkoTable4ExplicitCorrectionInput_of_count
+  (realIndices : TraceEuclidean.CodedNumberField → Finset ℕ)
+  (realZeros pairReps : TraceEuclidean.CodedNumberField → ℕ → ℂ)
+  (hReal : ∀ (K : TraceEuclidean.CodedNumberField), ∀ i ∈ realIndices K, (realZeros K i).im = 0)
+  (hNonreal : ∀ (K : TraceEuclidean.CodedNumberField) (i : ℕ), (pairReps K i).im ≠ 0)
+  (hRealStrip :
+    ∀ (K : TraceEuclidean.CodedNumberField), ∀ i ∈ realIndices K, 0 ≤ (realZeros K i).re ∧ (realZeros K i).re ≤ 1)
+  (hPairStrip : ∀ (K : TraceEuclidean.CodedNumberField) (i : ℕ), 0 ≤ (pairReps K i).re ∧ (pairReps K i).re ≤ 1)
+  (C : TraceEuclidean.CodedNumberField → ℝ) (hC : ∀ (K : TraceEuclidean.CodedNumberField), 0 ≤ C K)
+  (hOrdered : ∀ (K : TraceEuclidean.CodedNumberField) (i j : ℕ), i ≤ j → |(pairReps K i).im| ≤ |(pairReps K j).im|)
+  (hCount : ∀ (K : TraceEuclidean.CodedNumberField), TraceEuclidean.V15OdlyzkoZeroCountBound (C K) (pairReps K))
+  (hFormula :
+    TraceEuclidean.V15OdlyzkoExplicitFormulaInput fun K =>
+      ∑ i ∈ realIndices K, (TraceEuclidean.v15OdlyzkoPhi (realZeros K i)).re +
+        (∑' (i : ℕ),
+            (TraceEuclidean.v15OdlyzkoPhi (pairReps K i) +
+              TraceEuclidean.v15OdlyzkoPhi ((starRingEnd ℂ) (pairReps K i)))).re)
+  (hAB : TraceEuclidean.V15OdlyzkoABIntegralCertificate) : TraceEuclidean.V15OdlyzkoTable4ExplicitCorrectionInput
+'TraceEuclidean.v15Fourth_contDiff_if_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15OdlyzkoH_contDiff_four' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15OdlyzkoTiltedF4_exists_uniform_fourth_mass' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'TraceEuclidean.v15OdlyzkoPhi_exists_fourthPowerBound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15OdlyzkoPhi_conj_pair_summable_of_ordinalBound' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'TraceEuclidean.v15_odlyzkoTable4ExplicitCorrectionInput_of_count' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

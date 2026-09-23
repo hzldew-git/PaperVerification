@@ -475,3 +475,21 @@ import TraceEuclidean
 #print axioms TraceEuclidean.v15HasanalizadeShenWong_log_main_term
 #print axioms TraceEuclidean.v15HasanalizadeShenWong_pairCount_of_allZeroCount
 #print axioms TraceEuclidean.v15OdlyzkoZeroCountBound_of_HSW_published
+
+-- Exact C⁴ kernel, uniform fourth-derivative mass, and unconditional Phi decay.
+#check TraceEuclidean.v15OdlyzkoHCore_fourth_order_boundary_data
+#check TraceEuclidean.v15Fourth_contDiff_if_le
+#check TraceEuclidean.v15OdlyzkoH_contDiff_four
+#check TraceEuclidean.v15OdlyzkoF4_contDiff_four
+#check TraceEuclidean.v15OdlyzkoTiltedF4_contDiff_four
+#check TraceEuclidean.v15OdlyzkoTiltedF4_exists_uniform_fourth_mass
+#check TraceEuclidean.v15OdlyzkoPhi_exists_fourthPowerBound
+#check TraceEuclidean.v15OdlyzkoPhi_conj_pair_summable_of_ordinalBound
+#check TraceEuclidean.v15_odlyzkoTable4ExplicitCorrectionInput_of_count
+
+#print axioms TraceEuclidean.v15Fourth_contDiff_if_le
+#print axioms TraceEuclidean.v15OdlyzkoH_contDiff_four
+#print axioms TraceEuclidean.v15OdlyzkoTiltedF4_exists_uniform_fourth_mass
+#print axioms TraceEuclidean.v15OdlyzkoPhi_exists_fourthPowerBound
+#print axioms TraceEuclidean.v15OdlyzkoPhi_conj_pair_summable_of_ordinalBound
+#print axioms TraceEuclidean.v15_odlyzkoTable4ExplicitCorrectionInput_of_count
