@@ -41,13 +41,16 @@ also passed the
 and the
 [manuscript-exclusion run](https://github.com/hzldew-git/PaperVerification/actions/runs/35795731409).
 
-The current Fourier-completion update proves integrability and the exact
+Formalization commit 065f2354ff2836890c3159ce93aeb672453deba7 proves integrability and the exact
 Fourier transform of `1/cosh(x/2)`, the scaling law for `H(x/4)`, a
 product-to-frequency-convolution identity under the required integrability
 hypotheses, and the resulting reality and nonnegativity of the Fourier
 transform of `F(x)=H(x/4)/cosh(x/2)`. A complete local 8742-job build and the
 expanded 164-endpoint axiom audit pass; every audited endpoint again reports
-only propext, Classical.choice, and Quot.sound.
+only propext, Classical.choice, and Quot.sound. It also passed the
+[fresh GitHub Actions Lean, Python, and 164-endpoint axiom run](https://github.com/hzldew-git/PaperVerification/actions/runs/35800505233)
+and the
+[manuscript-exclusion run](https://github.com/hzldew-git/PaperVerification/actions/runs/35800504968).
 
 Theorems 1.2 and 1.3 have strict bounds and variable-degree global
 finiteness from the explicit cited Odlyzko Table 4 premise. Theorem 1.7
