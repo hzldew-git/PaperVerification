@@ -4,6 +4,12 @@ Active author version: Trace-Euclidean-v15.tex, SHA-256
 83a236e93648ce0802f8a0d3022de63710d089f3a4f7e61214a4c855459597b5.
 The manuscript TeX and PDF are deliberately absent.
 
+The analytic-number-theory module `V15DedekindZetaZeros.lean` now proves
+uniqueness and nonvanishing of any entire continuation of `(s-1) ζ_K(s)`,
+and finiteness of its zero occurrences at bounded height with multiplicity.
+Existence of that continuation, the published quantitative count, and the
+Stark/Weil explicit formula remain explicit proof boundaries.
+
 This package contains Lean 4 proofs, independent Python and Wolfram checks,
 extracted v15 inputs, machine-readable results, and an English
 [semantic-fidelity audit](docs/audit/v15/12_executive_summary.md).

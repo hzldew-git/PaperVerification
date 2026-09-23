@@ -48,10 +48,24 @@ lose multiplicity. The following deductions are Lean theorems:
    criterion. The argument uses `log(2+T) >= log 3 >= 2/3` for `T >= 1`.
 
 The cited zero-count theorem itself is **still an external analytic input**.
-The package has no completed Dedekind zeta function whose zeros and
-multiplicities inhabit the `zero occurrence` type, and it has not constructed
-the infinite ordered representative sequence. The transfer theorem states
-the injectivity and occurrence assumptions explicitly.
+`V15DedekindZetaZeros.lean` now defines an entire continuation of
+`(s-1) ζ_K(s)` as an explicit structure. Existence of that continuation is
+not asserted. Using mathlib's class-number-formula residue, Lean proves that
+any such continuation is nonzero; the analytic identity theorem then makes
+it unique. Its zero set is closed and discrete, so every compact region has
+finitely many distinct zero positions. A sigma type gives each critical-strip
+zero exactly as many occurrences as its analytic order. Lean proves that
+the occurrence set at every finite height is finite, including the possible
+boundary heights.
+
+The new `HSWFieldInput` fixes the count parameters to the field's actual
+absolute discriminant and degree. Only the numerical inequality remains an
+external premise; Lean constructs the finite set required by the older
+Corollary 1.2 interface and derives the quadratic bound for any injective
+occurrence sequence. With a height ordering and conjugation symmetry as
+explicit hypotheses, the exact Odlyzko transform has a convergent paired
+series. An infinite ordered sequence of representatives, conjugation
+symmetry of the continuation, and the HSW inequality have not been proved.
 
 ## Transform decay now proved; global zeta remains
 
@@ -80,9 +94,9 @@ the contour or distribution argument, and the identity for the exact
 
 ## Practical next proof boundary
 
-The nearest independent target is to represent actual Dedekind-zeta zero
-occurrences with multiplicities and construct a height-ordered sequence of
-conjugate-pair representatives. The zero-count reduction is ready once that
-enumeration is connected to the published theorem as a clearly labeled
-literature input. The global functional equation and Odlyzko explicit formula
-remain the larger source-to-Lean gap.
+The next independent target is constructing the entire regularization from
+number-field theta/Poisson data, proving its conjugation symmetry and
+functional equation, and obtaining the HSW count from an argument-principle
+proof. A height-ordered enumeration must then identify every required
+conjugate pair. The Stark/Weil explicit formula remains a separate, larger
+source-to-Lean gap.

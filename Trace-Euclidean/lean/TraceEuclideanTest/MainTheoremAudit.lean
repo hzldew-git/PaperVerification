@@ -493,3 +493,18 @@ import TraceEuclidean
 #print axioms TraceEuclidean.v15OdlyzkoPhi_exists_fourthPowerBound
 #print axioms TraceEuclidean.v15OdlyzkoPhi_conj_pair_summable_of_ordinalBound
 #print axioms TraceEuclidean.v15_odlyzkoTable4ExplicitCorrectionInput_of_count
+
+-- Pole-removed Dedekind zeta: uniqueness and multiplicity-aware zero occurrences.
+#check TraceEuclidean.V15DedekindZetaRegularization.exists_nonzero
+#check TraceEuclidean.V15DedekindZetaRegularization.value_unique
+#check TraceEuclidean.V15DedekindZetaRegularization.zeroSet_discrete
+#check TraceEuclidean.V15DedekindZetaZeroOccurrence.fibre_card
+#check TraceEuclidean.V15DedekindZetaZeroOccurrence.boundedSet_finite
+#check TraceEuclidean.V15DedekindZetaZeroOccurrence.corollary12_of_numeric
+#check TraceEuclidean.V15DedekindZetaZeroOccurrence.paired_sum_summable_of_field_HSW
+
+#print axioms TraceEuclidean.V15DedekindZetaRegularization.exists_nonzero
+#print axioms TraceEuclidean.V15DedekindZetaRegularization.value_unique
+#print axioms TraceEuclidean.V15DedekindZetaZeroOccurrence.boundedSet_finite
+#print axioms TraceEuclidean.V15DedekindZetaZeroOccurrence.corollary12_of_numeric
+#print axioms TraceEuclidean.V15DedekindZetaZeroOccurrence.paired_sum_summable_of_field_HSW
