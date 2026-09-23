@@ -39,8 +39,14 @@ DOI 10.4064/aa-29-3-275-297, his
 [Tohoku paper](https://www.jstage.jst.go.jp/article/tmj1949/29/2/29_2_209/_article/-char/en),
 DOI 10.2748/tmj/1178240652, and Poitou's
 [Bourbaki exposition](https://www.numdam.org/item/?id=SB_1975-1976__18__136_0).
-The explicit-formula theorem and the certified A/B integral estimates remain
-external. See [the source-reduction audit](docs/audit/v15/14_odlyzko_source_reduction.md).
+Odlyzko's [1990 survey, equations (2.2)--(2.4)](https://www.numdam.org/item/JTNB_1990__2_1_119_0.pdf)
+defines `Phi(s) = integral F(x)*exp((s-1/2)*x) dx` and identifies
+`Re Phi(s) >= 0` throughout the critical strip as the zero-term sign
+condition for an unconditional bound. Lean now proves that sign condition for
+the printed `b=4` kernel, including both strip boundaries. The
+explicit-formula identity and its paired-zero convergence, the test
+function's differentiability condition, and certified A/B integral estimates
+remain external. See [the source-reduction audit](docs/audit/v15/14_odlyzko_source_reduction.md).
 
 Voight's
 [totally real field enumeration](https://jvoight.github.io/articles/ANTS144-fixed-errata-052714.pdf)
