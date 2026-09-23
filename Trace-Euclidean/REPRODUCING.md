@@ -5,6 +5,7 @@
 - Author source SHA-256: 83a236e93648ce0802f8a0d3022de63710d089f3a4f7e61214a4c855459597b5.
 - Lean toolchain: v4.32.1, recorded in lean/lean-toolchain.
 - mathlib revision: 520045ab14e26149ee970e2e617ca04b09bde5d6, pinned in lean/lake-manifest.json.
+- Numerical dependency: 27 vendored LeanCert `v4.32.1` modules in lean/LeanCert, with upstream Apache 2.0 license and provenance in VENDORED.md.
 - Public extracted input: inputs/manuscript_inputs_v15.json. The manuscript itself is kept private.
 
 ## Public computational rerun
@@ -28,12 +29,15 @@ From Trace-Euclidean/lean:
 & 'C:\Users\hzlde\.elan\bin\lake.exe' exe cache get
 & 'C:\Users\hzlde\.elan\bin\lake.exe' build
 & 'C:\Users\hzlde\.elan\bin\lake.exe' env lean '.\TraceEuclideanTest\MainTheoremAudit.lean'
+& 'C:\Users\hzlde\.elan\bin\lake.exe' env lean '.\TraceEuclideanTest\NumericalAxiomAudit.lean'
 ~~~
 
 The first command is needed only on a fresh checkout. The build and audit
 commands must exit successfully. Compare the axiom report with
-lean/audit/main_theorem_axioms.txt; the audited v15 declarations should
-list only propext, Classical.choice, and Quot.sound. On resource-limited
+lean/audit/main_theorem_axioms.txt; the main v15 declarations should
+list only propext, Classical.choice, and Quot.sound. The numerical audit
+separately identifies the generated `_native.native_decide.ax_*` dependencies
+in LeanCert's interval and Euler–Mascheroni checks. On resource-limited
 Windows systems, set LEAN_NUM_THREADS to 4.
 
 ## Private maintainer source check

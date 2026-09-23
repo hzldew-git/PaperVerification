@@ -19,3 +19,35 @@ name = "TraceEuclidean"
 
 [[lean_lib]]
 name = "TraceEuclideanTest"
+
+[[lean_lib]]
+name = "LeanCert"
+roots = [
+  "LeanCert.Core.DerivativeIntervals",
+  "LeanCert.Core.Dyadic",
+  "LeanCert.Core.Expr",
+  "LeanCert.Core.Interval",
+  "LeanCert.Core.IntervalDyadic",
+  "LeanCert.Core.IntervalRat.Basic",
+  "LeanCert.Core.IntervalRat.LogReduction",
+  "LeanCert.Core.IntervalRat.Taylor",
+  "LeanCert.Core.IntervalRat.Transcendental",
+  "LeanCert.Core.IntervalRat.TrigReduced",
+  "LeanCert.Core.IntervalReal",
+  "LeanCert.Core.IntervalRealEndpoints",
+  "LeanCert.Core.Support",
+  "LeanCert.Core.Taylor",
+  "LeanCert.Core.TrigReduction",
+  "LeanCert.Engine.Eval.Core",
+  "LeanCert.Engine.Eval.Extended",
+  "LeanCert.Engine.Eval.Result",
+  "LeanCert.Engine.FinSumDyadic",
+  "LeanCert.Engine.Integrate",
+  "LeanCert.Engine.IntervalEval",
+  "LeanCert.Engine.IntervalEvalDyadic",
+  "LeanCert.Examples.EulerMascheroniBounds",
+  "LeanCert.Tactic.Bound.Lemmas",
+  "LeanCert.Validity.Dyadic",
+  "LeanCert.Validity.DyadicBounds",
+  "LeanCert.Validity.IntegrationDyadic",
+]

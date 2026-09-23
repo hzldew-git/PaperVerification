@@ -31,12 +31,22 @@ jobs:
           build: true
           use-mathlib-cache: true
 
-      - name: Reject unfinished or non-kernel proof constructs
+      - name: Reject unfinished or non-kernel proof constructs in kernel-only modules
         shell: bash
         run: |
           set -euo pipefail
-          if git grep -n -E '(^|[^[:alpha:]])sorry([^[:alpha:]]|$)|sorryAx|^[[:space:]]*axiom[[:space:]]|native_decide|run_tac|^[[:space:]]*unsafe[[:space:]]|^[[:space:]]*extern[[:space:]]|implemented_by' -- 'Trace-Euclidean/lean/*.lean' 'Trace-Euclidean/lean/**/*.lean'; then
+          if git grep -n -E '(^|[^[:alpha:]])sorry([^[:alpha:]]|$)|sorryAx|^[[:space:]]*axiom[[:space:]]|native_decide|run_tac|^[[:space:]]*unsafe[[:space:]]|^[[:space:]]*extern[[:space:]]|implemented_by' -- 'Trace-Euclidean/lean/*.lean' 'Trace-Euclidean/lean/**/*.lean' ':(exclude)Trace-Euclidean/lean/LeanCert/**' ':(exclude)Trace-Euclidean/lean/TraceEuclidean/V15OdlyzkoNumerical.lean'; then
             echo 'Forbidden proof construct found.' >&2
+            exit 1
+          fi
+
+      - name: Reject unfinished constructs in numerical dependencies
+        shell: bash
+        run: |
+          set -euo pipefail
+          # These files use native_decide; its compiler trust is audited separately.
+          if git grep -n -E '^[[:space:]]*(sorry|axiom|unsafe|extern|run_tac)([[:space:]]|$)|sorryAx|implemented_by' -- 'Trace-Euclidean/lean/LeanCert/**/*.lean' 'Trace-Euclidean/lean/TraceEuclidean/V15OdlyzkoNumerical.lean'; then
+            echo 'Unfinished construct found in a numerical dependency.' >&2
             exit 1
           fi
 
@@ -56,6 +66,43 @@ jobs:
             exit 1
           fi
           rm theorem-audit.log
+
+      - name: Audit the numerical compiler trust boundary
+        working-directory: Trace-Euclidean/lean
+        shell: bash
+        run: |
+          set -euo pipefail
+          trap 'rm -f numerical-audit.log' EXIT
+          lake env lean TraceEuclideanTest/NumericalAxiomAudit.lean > numerical-audit.log 2>&1
+          cat numerical-audit.log
+          python - <<'PY'
+          from pathlib import Path
+          import re
+
+          source = Path('TraceEuclideanTest/NumericalAxiomAudit.lean').read_text(encoding='utf-8')
+          output = ' '.join(Path('numerical-audit.log').read_text(encoding='utf-8').split())
+          names = re.findall(r'^#print axioms\s+(\S+)', source, re.M)
+          if len(names) != 7:
+              raise SystemExit(f'Expected seven numerical audit declarations, found {len(names)}')
+          standard = {'propext', 'Classical.choice', 'Quot.sound'}
+          sinh = 'TraceEuclidean.V15OdlyzkoNumerical.sinh_core_upper._native.native_decide.ax_1_1'
+          cosh = 'TraceEuclidean.V15OdlyzkoNumerical.cosh_core_upper._native.native_decide.ax_1_1'
+          gamma = 'EulerMascheroni.harmonic_N_ge._native.native_decide.ax_1_2'
+          scalar_a = 'TraceEuclidean.V15OdlyzkoNumerical.scalarA_strict._native.native_decide.ax_1_1'
+          scalar_b = 'TraceEuclidean.V15OdlyzkoNumerical.scalarB_strict._native.native_decide.ax_1_1'
+          expected = {name: standard for name in names[:4]}
+          expected[names[4]] = standard | {sinh}
+          expected[names[5]] = standard | {cosh}
+          expected[names[6]] = standard | {sinh, cosh, gamma, scalar_a, scalar_b}
+          for name in names:
+              match = re.search("'" + re.escape(name) + r"' depends on axioms: \[([^]]*)\]", output)
+              if match is None:
+                  raise SystemExit(f'Missing axiom audit output: {name}')
+              axioms = {item.strip().rstrip('✝') for item in match.group(1).split(',')}
+              if axioms != expected[name]:
+                  raise SystemExit(f'Unexpected axiom set for {name}: {axioms}')
+          print(f'NUMERICAL AXIOM AUDIT: PASS ({len(names)} declarations)')
+          PY
 
       - name: Rerun public v15 Python certificates
         shell: bash

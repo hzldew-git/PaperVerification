@@ -1,11 +1,13 @@
 # Trace-Euclidean v15 trust boundary
 
 Lean accepts the encoded proof terms under Lean 4.32.1 and pinned mathlib
-revision 520045ab14e26149ee970e2e617ca04b09bde5d6. The audited v15
-endpoints depend only on the standard logical axioms propext,
-Classical.choice, and Quot.sound. A source scan found no sorry, sorryAx,
-project axiom, native_decide, run_tac, unsafe, extern, or implemented_by in
-the proof modules.
+revision 520045ab14e26149ee970e2e617ca04b09bde5d6. The 193 previously
+audited main v15 endpoints depend only on the standard logical axioms propext,
+Classical.choice, and Quot.sound. The archimedean numerical certificate uses
+LeanCert's `native_decide` checks and therefore also trusts Lean's native
+compiler. The axiom audit prints five generated `_native.native_decide.ax_*`
+dependencies for the final certificate; these are checked separately.
+The delivered proof modules contain no sorry, sorryAx, or project axiom.
 
 The global finite-class results can now accept
 V15OdlyzkoTable4DescriptionInput, the full published unconditional Table 4
@@ -35,17 +37,16 @@ complete kernel. Continuity in `a`, obtained from compact support, covers the
 two boundary weights. The resulting theorem proves `Re Phi(s) >= 0` for every
 `0 <= Re(s) <= 1` in Odlyzko's equation (2.2) normalization. A separate
 theorem makes any summable family of such zero contributions nonnegative.
-The completed Dedekind-zeta theory, the Stark/Weil explicit formula and its
-zero-sum existence and convergence, and certified archimedean integral
-estimates for `A` and `B` remain outside the Lean proof. Lean now proves the
+The completed Dedekind-zeta theory and the Stark/Weil explicit formula and its
+zero-sum existence and convergence remain outside the Lean proof. Lean proves the
 test function's differentiability and derivative decay condition, and derives
 the exact `E = 32/3` error integral from the source kernel. It also proves
 `Phi(0) = Phi(1) = 16/3` and their sum equals the exact error.
 The source-formula reduction states Odlyzko's two archimedean integrals and
-equation (2.3) explicitly. Its Table 4 deduction is conditional on this
-formula, a nonnegative convergent zero sum, convergence of the sinh-denominator
-integral, and strict bounds for the tabulated `A` and `B` values. The
-cosh-denominator integral is proved convergent; the other premises are unproved.
+equation (2.3) explicitly. Both integrals converge, and strict bounds for the
+tabulated `A` and `B` values follow from analytic endpoint estimates and
+LeanCert's dyadic interval certificates. Its Table 4 deduction remains
+conditional on equation (2.3) and a nonnegative convergent paired-zero sum.
 
 The public Python and Wolfram runs trust their kernels and the extracted
 input file. The private maintainer run also checks the SHA-256 digest and

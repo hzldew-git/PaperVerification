@@ -219,10 +219,13 @@ analytic-number-theory development containing at least:
    functional equation;
 2. the Stark/Weil explicit formula and existence and convergence of its paired
    zero sum; the source test-function hypotheses, pointwise zero-transform
-   sign, and conditional summable-family sign are already proved;
-3. convergence of the sinh-denominator archimedean integral and rigorous
-   bounds producing the tabulated lower estimates `A = 36.347` and
-   `B = 16.593`.
+   sign, and conditional summable-family sign are already proved.
+
+The sinh integral's convergence and the strict numerical estimates for
+`A = 36.347` and `B = 16.593` are supplied by the separate
+`15_odlyzko_archimedean_certificate.md` development. Its finite-interval
+checks use `native_decide`, so they carry an explicitly recorded native
+compiler trust boundary.
 
 Pinned mathlib defines the Dedekind zeta Dirichlet series and its residue at
 one, but it does not currently provide this explicit formula or the required

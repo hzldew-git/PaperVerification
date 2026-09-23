@@ -70,6 +70,7 @@ import TraceEuclidean.V15OdlyzkoPhiEndpoint
 import TraceEuclidean.V15OdlyzkoPrimeCorrection
 import TraceEuclidean.V15OdlyzkoAnalyticBridge
 import TraceEuclidean.V15OdlyzkoExplicitFormulaReduction
+import TraceEuclidean.V15OdlyzkoNumerical
 import TraceEuclidean.V15RankOneIntegral
 import TraceEuclidean.V15SixRadii
 import TraceEuclidean.V15StrictDiscriminant

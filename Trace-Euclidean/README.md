@@ -20,11 +20,13 @@ From this directory in PowerShell:
 Set-Location '.\lean'
 & 'C:\Users\hzlde\.elan\bin\lake.exe' build
 & 'C:\Users\hzlde\.elan\bin\lake.exe' env lean '.\TraceEuclideanTest\MainTheoremAudit.lean'
+& 'C:\Users\hzlde\.elan\bin\lake.exe' env lean '.\TraceEuclideanTest\NumericalAxiomAudit.lean'
 ~~~
 
 Expected public computation: 1156 Python PASS and 115 Wolfram PASS, with zero
-failures. The Lean project pins Lean 4.32.1 and mathlib. The last command prints
-public theorem signatures and transitive axiom sets. The v15 source-bound checks
+failures. The Lean project pins Lean 4.32.1 and mathlib. The two audit commands
+print main theorem signatures and the separate numerical trust dependencies.
+The v15 source-bound checks
 are run separately against the author manuscript in a private workspace; their
 results are 1165 Python PASS and 112 Wolfram PASS.
 
@@ -56,11 +58,12 @@ results are 1165 Python PASS and 112 Wolfram PASS.
   nonnegative. A
   kernel-checked bridge substitutes this complete correction for the
   existential correction in the exact-error and rounded table interfaces.
-  The remaining analytic step is now stated in source normalization: two
-  archimedean integrals with strict `A,B` lower estimates and
-  equation (2.3) with a convergent zero contribution conditionally imply the
-  full Table 4 inequality. Lean proves convergence of the cosh-denominator
-  integral; convergence of the sinh-denominator integral remains a premise.
+  The two source-normalized archimedean integrals converge. Their strict
+  `A = 36.347` and `B = 16.593` estimates are assembled from analytic
+  endpoint bounds and certified dyadic integration. The numerical checks use
+  `native_decide`, which adds Lean's native compiler to their trust boundary.
+  Equation (2.3) and a convergent paired-zero contribution remain the
+  mathematical inputs needed to derive the full Table 4 inequality.
 - Theorem 1.7: an if-and-only-if classification for every nonzero fractional
   ideal presentation of a positive integral rank-one real-quadratic lattice.
   Lean proves principality, six actual module-isometry classes, six valid
@@ -101,8 +104,7 @@ exact minima in degrees 2--9, the degree-ten enumeration result, the optimized
 degree-eleven bound 14.083, and the analytic theorem behind Odlyzko's Table 4
 remain explicit external mathematical inputs. Within that last theorem, the
 unformalized analytic steps are Dedekind-zeta continuation and its functional
-equation, the Stark/Weil explicit formula and paired-zero convergence, and the
-certified archimedean estimates producing `A` and `B`. Lean now checks the
+equation, the Stark/Weil explicit formula and paired-zero convergence. Lean checks the
 test function's differentiability and derivative decay, and derives the exact
 `E = 32/3` integral from the kernel. The source separation and Lean reduction are
 recorded in the [Odlyzko source audit](docs/audit/v15/14_odlyzko_source_reduction.md).

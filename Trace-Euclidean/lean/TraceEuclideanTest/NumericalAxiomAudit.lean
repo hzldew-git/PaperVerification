@@ -1,0 +1,19 @@
+import TraceEuclidean.V15OdlyzkoNumerical
+
+/-! Explicit audit of the native interval-checking trust boundary. -/
+
+#check TraceEuclidean.v15OdlyzkoSinhIntegrand_integrableOn
+#check TraceEuclidean.v15OdlyzkoSinhIntegral_zero_hundredth_le
+#check TraceEuclidean.v15OdlyzkoSinhIntegral_tail_le
+#check TraceEuclidean.v15OdlyzkoCoshIntegral_tail_le
+#check TraceEuclidean.V15OdlyzkoNumerical.sinh_core_upper
+#check TraceEuclidean.V15OdlyzkoNumerical.cosh_core_upper
+#check TraceEuclidean.V15OdlyzkoNumerical.abIntegralCertificate
+
+#print axioms TraceEuclidean.v15OdlyzkoSinhIntegrand_integrableOn
+#print axioms TraceEuclidean.v15OdlyzkoSinhIntegral_zero_hundredth_le
+#print axioms TraceEuclidean.v15OdlyzkoSinhIntegral_tail_le
+#print axioms TraceEuclidean.v15OdlyzkoCoshIntegral_tail_le
+#print axioms TraceEuclidean.V15OdlyzkoNumerical.sinh_core_upper
+#print axioms TraceEuclidean.V15OdlyzkoNumerical.cosh_core_upper
+#print axioms TraceEuclidean.V15OdlyzkoNumerical.abIntegralCertificate

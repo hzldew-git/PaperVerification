@@ -6,8 +6,9 @@ The manuscript is excluded from this public repository.
 
 The complete pinned Lean build passes. The v15 public Python and Wolfram
 reruns pass 1156 and 115 checks, respectively; private source-bound reruns
-pass 1165 and 112 checks. Audited Lean endpoints use only standard
-logical axioms.
+pass 1165 and 112 checks. The 193 previously audited main Lean endpoints use
+only standard logical axioms. The new numerical certificate separately uses
+`native_decide`, with its compiler trust disclosed in TRUST.md.
 Formalization commit 741dc24 passed the [fresh GitHub Actions Lean, Python,
 and 95-endpoint axiom run](https://github.com/hzldew-git/PaperVerification/actions/runs/35542188896)
 and the [manuscript-exclusion run](https://github.com/hzldew-git/PaperVerification/actions/runs/35542188716).
@@ -77,9 +78,10 @@ input is internal; the cited degree 2--11 estimates, the Odlyzko
 explicit-formula theorem, selected supporting lemmas, and independent
 semantic sign-off remain outside the current signed scope. Within the
 explicit-formula theorem, the remaining analytic layers include
-Dedekind-zeta continuation and the functional equation, the Stark/Weil
-formula and zero term, and the certified archimedean estimates producing the
-tabulated constants.
+Dedekind-zeta continuation and the functional equation, and the Stark/Weil
+formula with its convergent paired-zero term. Lean now proves convergence of
+both archimedean integrals and the strict tabulated-constant inequalities,
+using a disclosed native-compiler trust boundary for the interval certificates.
 
 Start with [README.md](README.md), [THEOREM_INDEX.md](THEOREM_INDEX.md),
 and the [v15 audit](docs/audit/v15/12_executive_summary.md).
