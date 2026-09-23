@@ -19,7 +19,7 @@ open scoped Convolution RealInnerProductSpace
 
 noncomputable section
 
-private theorem v15FourierMulEqConvolution
+theorem v15FourierMulEqConvolution
     (f g : ℝ → ℂ) (hf : Integrable f volume) (hg : Integrable g volume)
     (hFg : Integrable (𝓕 g) volume) (hgc : Continuous g) (w : ℝ) :
     𝓕 (fun x ↦ f x * g x) w =

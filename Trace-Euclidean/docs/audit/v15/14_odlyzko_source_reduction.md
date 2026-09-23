@@ -134,6 +134,26 @@ pointwise nonnegative. Therefore the complete transform is real and
 nonnegative at every real frequency. The Fourier-positivity transfer to the
 final kernel is no longer an external premise.
 
+Odlyzko's [1990 survey, equations (2.2)--(2.4)](https://www.numdam.org/item/JTNB_1990__2_1_119_0.pdf)
+requires the stronger condition `Re Phi(s) >= 0` throughout the entire
+critical strip, where `Phi(s) = integral F(x)*exp((s-1/2)*x) dx`. Positivity of
+the ordinary Fourier transform alone addresses only `Re(s) = 1/2`.
+`V15OdlyzkoTiltedSech` now proves, for `-1/2 < a < 1/2`, the exact formula
+
+`Fourier(exp(a*x)/cosh(x/2))(w) = 2*pi/sin(pi*(1/2+a-2*pi*i*w))`.
+
+It proves integrability on both sides and strict positivity of the transform's
+real part. `V15OdlyzkoZeroStrip` combines this with the nonnegative real
+Fourier transform of `H(x/4)` to prove nonnegativity for the complete kernel
+at every open-strip weight. The complete kernel is compactly supported, so
+its transform is continuous in the weight; closure then gives both boundary
+weights. Lean checks the exact change of variables between its Fourier
+convention and Odlyzko's `Phi(s)`, and proves `Re Phi(s) >= 0` whenever
+`0 <= Re(s) <= 1`. It also proves nonnegativity of the real part of any
+summable family of such contributions. These theorems do not assert that the
+Dedekind-zeta zero family exists or is summable in the paired convention of
+the explicit formula.
+
 `V15OdlyzkoPrimeCorrection` defines the source's exact summand for a nonzero
 prime ideal and a positive exponent. It constructs the finite set of prime
 ideals of bounded absolute norm, proves every summand and every finite partial
@@ -151,7 +171,10 @@ analytic-number-theory development containing at least:
 
 1. a completed Dedekind zeta function with meromorphic continuation and its
    functional equation;
-2. the Stark/Weil explicit formula and control of its zero contribution;
+2. the Stark/Weil explicit formula, existence and convergence of its paired
+   zero sum, and verification of the source's differentiability and derivative
+   decay conditions for the test function; the pointwise zero-transform sign
+   and conditional summable-family sign are already proved;
 3. rigorous archimedean integral bounds producing the tabulated lower
    estimates `A = 36.347` and `B = 16.593`.
 
@@ -160,7 +183,8 @@ one, but it does not currently provide this explicit formula or the required
 global zero-sum theory. Therefore the full Odlyzko theorem remains a
 disclosed external mathematical input. The Lean work now verifies the source
 kernel, the autocorrelation and Fourier positivity of `H`, the exact
-hyperbolic-secant transform, the product-to-convolution bridge and Fourier
-positivity of the complete `F`, the complete prime-ideal correction and its
+hyperbolic-secant and tilted transforms, the product-to-convolution bridge,
+source-normalized zero-transform positivity on the closed critical strip, the
+complete prime-ideal correction and its
 exact finite-support reduction, every specialization and rounding, and every
 downstream use needed by v15.

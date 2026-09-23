@@ -45,7 +45,11 @@ results are 1165 Python PASS and 112 Wolfram PASS.
   exact formula `Fourier(1/cosh(x/2))(w) = 2*pi/cosh(2*pi^2*w)`. Fourier
   scaling and a proved product-to-convolution theorem then show that the
   transform of the complete kernel `F(x) = H(x/4)/cosh(x/2)` is real and
-  nonnegative at every real frequency. The complete double sum over all prime
+  nonnegative at every real frequency. The source-normalized transform
+  `Phi(s) = integral F(x)*exp((s-1/2)*x) dx` now has nonnegative real part for
+  every `0 <= Re(s) <= 1`, including the boundary, by an exact tilted-secant
+  transform and a compact-support continuity argument. The complete double
+  sum over all prime
   ideals and positive exponents is defined in Lean, proved equal to the finite
   box with norm at most 4095 and exponent at most eleven, and proved
   nonnegative. A

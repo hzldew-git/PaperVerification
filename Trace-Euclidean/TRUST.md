@@ -28,10 +28,17 @@ correction into the exact-error and rounded Table 4 interfaces. Lean proves
 the exact Fourier transform of `1/cosh(x/2)`, its strict positivity, the
 Fourier scaling of `H(x/4)`, and the product-to-convolution identity for the
 complete kernel `F(x) = H(x/4)/cosh(x/2)`. Hence the Fourier transform of `F`
-is real and nonnegative at every real frequency. The completed Dedekind-zeta
-theory, the Stark/Weil explicit formula with zero-term control, and certified
-archimedean integral estimates behind the table remain cited mathematical
-inputs rather than Lean theorems proved by this package.
+is real and nonnegative at every real frequency. Lean now also evaluates the
+transform of `exp(a*x)/cosh(x/2)` for every `-1/2 < a < 1/2`, proves its real
+part positive and Fourier-side integrability, and applies convolution to the
+complete kernel. Continuity in `a`, obtained from compact support, covers the
+two boundary weights. The resulting theorem proves `Re Phi(s) >= 0` for every
+`0 <= Re(s) <= 1` in Odlyzko's equation (2.2) normalization. A separate
+theorem makes any summable family of such zero contributions nonnegative.
+The completed Dedekind-zeta theory, the Stark/Weil explicit formula and its
+zero-sum existence and convergence, the test function's differentiability
+condition, and certified archimedean integral estimates behind the table
+remain outside the Lean proof.
 
 The public Python and Wolfram runs trust their kernels and the extracted
 input file. The private maintainer run also checks the SHA-256 digest and

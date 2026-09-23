@@ -40,5 +40,7 @@
 | GlobalLatticePresentation.v15_pnorm_implies_trace, v15_pnorm_finite_of_odlyzko_table4_description | Power-mean implication for finite p >= 1 and infinity, followed by global finite-class conclusion from the full cited Table 4 row. |
 | v15OdlyzkoSechFourier, v15OdlyzkoSechFourier_integrable | Exact Fourier transform and Fourier-side integrability of the hyperbolic-secant factor in the unconditional kernel. |
 | v15OdlyzkoF4_fourier_eq_convolution, v15OdlyzkoF4_fourier_re_nonneg, v15OdlyzkoF4_fourier_im_eq_zero | Product-to-frequency-convolution bridge and the reality and nonnegativity of the Fourier transform of the complete `b=4` kernel. |
+| v15OdlyzkoTiltedSech_fourier_eq_sin, v15OdlyzkoTiltedF4_fourier_re_nonneg_closed, v15OdlyzkoPhi_eq_fourier, v15OdlyzkoPhi_re_nonneg_of_mem_closed_strip | Exact tilted-secant transform, closed-strip positivity of the complete kernel, and the source-normalization bridge for Odlyzko's zero transform. |
+| v15OdlyzkoPhi_zero_tsum_re_nonneg | Nonnegative real part of a summable family of zero contributions, conditional on every parameter lying in the critical strip and on summability. |
 
 Supporting modules prove the reduced-basis bridge, quotient-ideal index/norm identities, parity, determinant, exceptional two-vector exclusion, and constructive strict covers for all six forms.

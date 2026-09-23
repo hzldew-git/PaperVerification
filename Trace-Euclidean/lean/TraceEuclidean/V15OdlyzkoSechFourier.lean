@@ -20,7 +20,7 @@ hypotheses needed by the product-to-convolution step for Odlyzko's test
 function.
 -/
 
-private theorem v15IntegralSigmoid (g : ℝ → ℂ) :
+theorem v15IntegralSigmoid (g : ℝ → ℂ) :
     (∫ t in Ioo (0 : ℝ) 1, g t) =
       ∫ x : ℝ, (Real.sigmoid x * (1 - Real.sigmoid x) : ℝ) • g (Real.sigmoid x) := by
   have h := MeasureTheory.integral_image_eq_integral_abs_deriv_smul
@@ -33,7 +33,7 @@ private theorem v15IntegralSigmoid (g : ℝ → ℂ) :
   simpa only [abs_of_pos (mul_pos (Real.sigmoid_pos _)
     (sub_pos.mpr (Real.sigmoid_lt_one _)))] using h
 
-private theorem v15SigmoidEqExpDivCosh (x : ℝ) :
+theorem v15SigmoidEqExpDivCosh (x : ℝ) :
     Real.sigmoid x = Real.exp (x / 2) / (2 * Real.cosh (x / 2)) := by
   rw [Real.sigmoid_def, Real.cosh_eq]
   field_simp [Real.exp_ne_zero]
@@ -41,17 +41,17 @@ private theorem v15SigmoidEqExpDivCosh (x : ℝ) :
   congr 1
   ring
 
-private theorem v15OneSubSigmoidEqExpNegDivCosh (x : ℝ) :
+theorem v15OneSubSigmoidEqExpNegDivCosh (x : ℝ) :
     1 - Real.sigmoid x = Real.exp (-x / 2) / (2 * Real.cosh (x / 2)) := by
   rw [← Real.sigmoid_neg, v15SigmoidEqExpDivCosh]
   simp only [neg_div, Real.cosh_neg]
 
-private theorem v15LogSigmoid (x : ℝ) :
+theorem v15LogSigmoid (x : ℝ) :
     Real.log (Real.sigmoid x) = x / 2 - Real.log (2 * Real.cosh (x / 2)) := by
   rw [v15SigmoidEqExpDivCosh, Real.log_div (Real.exp_ne_zero _)
     (by positivity : (2 * Real.cosh (x / 2) : ℝ) ≠ 0), Real.log_exp]
 
-private theorem v15LogOneSubSigmoid (x : ℝ) :
+theorem v15LogOneSubSigmoid (x : ℝ) :
     Real.log (1 - Real.sigmoid x) = -x / 2 - Real.log (2 * Real.cosh (x / 2)) := by
   rw [v15OneSubSigmoidEqExpNegDivCosh, Real.log_div (Real.exp_ne_zero _)
     (by positivity : (2 * Real.cosh (x / 2) : ℝ) ≠ 0), Real.log_exp]
@@ -119,7 +119,7 @@ private theorem v15BetaSigmoidIntegrand (k x : ℝ) :
       push_cast
       field_simp [Real.cosh_pos (x / 2) |>.ne']
 
-private theorem v15BetaIntegralEqIntegralIoo (z : ℂ) :
+theorem v15BetaIntegralEqIntegralIoo (z : ℂ) :
     Complex.betaIntegral z (1 - z) =
       ∫ t : ℝ in Ioo 0 1,
         (t : ℂ) ^ (z - 1) * (1 - (t : ℂ)) ^ ((1 - z) - 1) := by

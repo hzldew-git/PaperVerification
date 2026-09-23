@@ -859,3 +859,46 @@ TraceEuclidean.v15OdlyzkoF4_fourier_im_eq_zero (w : ℝ) :
 'TraceEuclidean.v15OdlyzkoF4_fourier_eq_nonnegativeIntegral' depends on axioms: [propext, Classical.choice, Quot.sound]
 'TraceEuclidean.v15OdlyzkoF4_fourier_re_nonneg' depends on axioms: [propext, Classical.choice, Quot.sound]
 'TraceEuclidean.v15OdlyzkoF4_fourier_im_eq_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+TraceEuclidean.v15OdlyzkoTiltedSech_integrable (a : ℝ) (ha₁ : -(1 / 2) < a) (ha₂ : a < 1 / 2) :
+  MeasureTheory.Integrable (TraceEuclidean.v15OdlyzkoTiltedSech a) MeasureTheory.volume
+TraceEuclidean.v15OdlyzkoTiltedSech_fourier_eq_beta (a w : ℝ) :
+  have z := ↑(1 / 2 + a) - ↑(2 * Real.pi * w) * Complex.I;
+  FourierTransform.fourier (TraceEuclidean.v15OdlyzkoTiltedSech a) w = 2 * z.betaIntegral (1 - z)
+TraceEuclidean.v15OdlyzkoTiltedSech_fourier_eq_sin (a w : ℝ) (ha₁ : -(1 / 2) < a) (ha₂ : a < 1 / 2) :
+  have z := ↑(1 / 2 + a) - ↑(2 * Real.pi * w) * Complex.I;
+  FourierTransform.fourier (TraceEuclidean.v15OdlyzkoTiltedSech a) w = 2 * ↑Real.pi / Complex.sin (↑Real.pi * z)
+TraceEuclidean.v15OdlyzkoTiltedSech_fourier_re_pos (a w : ℝ) (ha₁ : -(1 / 2) < a) (ha₂ : a < 1 / 2) :
+  0 < (FourierTransform.fourier (TraceEuclidean.v15OdlyzkoTiltedSech a) w).re
+TraceEuclidean.v15OdlyzkoTiltedSech_fourier_integrable (a : ℝ) (ha₁ : -(1 / 2) < a) (ha₂ : a < 1 / 2) :
+  MeasureTheory.Integrable (FourierTransform.fourier (TraceEuclidean.v15OdlyzkoTiltedSech a)) MeasureTheory.volume
+TraceEuclidean.v15OdlyzkoTiltedF4_fourier_eq_convolution (a w : ℝ) (ha₁ : -(1 / 2) < a) (ha₂ : a < 1 / 2) :
+  FourierTransform.fourier (TraceEuclidean.v15OdlyzkoTiltedF4 a) w =
+    MeasureTheory.convolution (FourierTransform.fourier (TraceEuclidean.v15OdlyzkoTiltedSech a))
+      (FourierTransform.fourier TraceEuclidean.v15OdlyzkoH4Complex) (ContinuousLinearMap.mul ℂ ℂ) MeasureTheory.volume w
+TraceEuclidean.v15OdlyzkoTiltedF4_fourier_re_nonneg (a w : ℝ) (ha₁ : -(1 / 2) < a) (ha₂ : a < 1 / 2) :
+  0 ≤ (FourierTransform.fourier (TraceEuclidean.v15OdlyzkoTiltedF4 a) w).re
+TraceEuclidean.v15OdlyzkoTiltedF4_fourier_continuous (w : ℝ) :
+  Continuous fun a => FourierTransform.fourier (TraceEuclidean.v15OdlyzkoTiltedF4 a) w
+TraceEuclidean.v15OdlyzkoTiltedF4_fourier_re_nonneg_closed (a w : ℝ) (ha₁ : -(1 / 2) ≤ a) (ha₂ : a ≤ 1 / 2) :
+  0 ≤ (FourierTransform.fourier (TraceEuclidean.v15OdlyzkoTiltedF4 a) w).re
+TraceEuclidean.v15OdlyzkoPhi_eq_fourier (s : ℂ) :
+  TraceEuclidean.v15OdlyzkoPhi s =
+    FourierTransform.fourier (TraceEuclidean.v15OdlyzkoTiltedF4 (s.re - 1 / 2)) (-s.im / (2 * Real.pi))
+TraceEuclidean.v15OdlyzkoPhi_re_nonneg_of_mem_closed_strip (s : ℂ) (hs₁ : 0 ≤ s.re) (hs₂ : s.re ≤ 1) :
+  0 ≤ (TraceEuclidean.v15OdlyzkoPhi s).re
+TraceEuclidean.v15OdlyzkoPhi_zero_tsum_re_nonneg.{u_1} {ι : Type u_1} (zeros : ι → ℂ)
+  (hstrip : ∀ (i : ι), 0 ≤ (zeros i).re ∧ (zeros i).re ≤ 1)
+  (hsum : Summable fun i => TraceEuclidean.v15OdlyzkoPhi (zeros i)) :
+  0 ≤ (∑' (i : ι), TraceEuclidean.v15OdlyzkoPhi (zeros i)).re
+'TraceEuclidean.v15OdlyzkoTiltedSech_integrable' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15OdlyzkoTiltedSech_fourier_eq_beta' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15OdlyzkoTiltedSech_fourier_eq_sin' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15OdlyzkoTiltedSech_fourier_re_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15OdlyzkoTiltedSech_fourier_integrable' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15OdlyzkoTiltedF4_fourier_eq_convolution' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15OdlyzkoTiltedF4_fourier_re_nonneg' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15OdlyzkoTiltedF4_fourier_continuous' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15OdlyzkoTiltedF4_fourier_re_nonneg_closed' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15OdlyzkoPhi_eq_fourier' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15OdlyzkoPhi_re_nonneg_of_mem_closed_strip' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15OdlyzkoPhi_zero_tsum_re_nonneg' depends on axioms: [propext, Classical.choice, Quot.sound]
