@@ -189,7 +189,13 @@ separate premise there. The fourth-power bound and the count of actual
 Dedekind-zeta zeros remain explicit, unproved inputs; this criterion does not
 assert that an actual zero enumeration has been constructed. Lean also proves
 that a finite count bounded by `A + B*T*log(2+T)` implies the coarser
-quadratic count with constant `A+B`.
+quadratic count with constant `A+B`. `V15OdlyzkoZeroCountLiterature` now
+connects the explicit multiplicity-aware bound of Hasanalizade--Shen--Wong,
+Corollary 1.2, to this criterion. It checks the exact logarithmic expansion,
+reduces the published constants to a coarse count, transfers that count to
+injectively selected pair representatives, and controls heights below one by
+restriction. The analytic theorem and its instantiation with actual zeta zeros
+are still premises; see `16_zero_count_literature.md`.
 
 Odlyzko's [1990 survey, equation (2.1)](https://www.numdam.org/item/JTNB_1990__2_1_119_0.pdf)
 requires global differentiability of `F` and exponential decay of both `F`

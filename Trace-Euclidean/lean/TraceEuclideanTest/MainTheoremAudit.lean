@@ -452,6 +452,9 @@ import TraceEuclidean
 #check TraceEuclidean.v15OdlyzkoPhi_zero_re_summable_of_bounds
 #check TraceEuclidean.v15OdlyzkoPhi_conj_pair_summable_of_bounds
 #check TraceEuclidean.v15_odlyzkoTable4ExplicitCorrectionInput_of_countAndDecay
+#check TraceEuclidean.v15HasanalizadeShenWong_log_main_term
+#check TraceEuclidean.v15HasanalizadeShenWong_pairCount_of_allZeroCount
+#check TraceEuclidean.v15OdlyzkoZeroCountBound_of_HSW_published
 
 #print axioms TraceEuclidean.v15OdlyzkoKernelMeasure_exp_integrable
 #print axioms TraceEuclidean.v15OdlyzkoPhi_eq_complexMGF
@@ -469,3 +472,6 @@ import TraceEuclidean
 #print axioms TraceEuclidean.v15OdlyzkoPhi_zero_re_summable_of_bounds
 #print axioms TraceEuclidean.v15OdlyzkoPhi_conj_pair_summable_of_bounds
 #print axioms TraceEuclidean.v15_odlyzkoTable4ExplicitCorrectionInput_of_countAndDecay
+#print axioms TraceEuclidean.v15HasanalizadeShenWong_log_main_term
+#print axioms TraceEuclidean.v15HasanalizadeShenWong_pairCount_of_allZeroCount
+#print axioms TraceEuclidean.v15OdlyzkoZeroCountBound_of_HSW_published

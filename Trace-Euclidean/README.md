@@ -106,10 +106,14 @@ remain explicit external mathematical inputs. Within that last theorem, the
 unformalized analytic steps are Dedekind-zeta continuation and its functional
 equation, the Stark/Weil explicit formula, the actual zero count and a
 uniform fourth-power decay estimate sufficient for paired-zero convergence. Lean proves the
-deduction of that convergence from those two quantitative estimates and checks the
-test function's differentiability and derivative decay, and derives the exact
+deduction of that convergence from those two quantitative estimates. It also checks
+that the source's explicit multiplicity-aware zero-count inequality reduces to the
+quadratic count used by this criterion, conditional on that analytic theorem
+and an injective occurrence enumeration. Lean checks the test function's
+differentiability and derivative decay, and derives the exact
 `E = 32/3` integral from the kernel. The source separation and Lean reduction are
-recorded in the [Odlyzko source audit](docs/audit/v15/14_odlyzko_source_reduction.md).
+recorded in the [Odlyzko source audit](docs/audit/v15/14_odlyzko_source_reduction.md)
+and [zero-count literature note](docs/audit/v15/16_zero_count_literature.md).
 
 ## Version scope
 

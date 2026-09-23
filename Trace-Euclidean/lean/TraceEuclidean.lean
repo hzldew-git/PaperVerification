@@ -76,6 +76,7 @@ import TraceEuclidean.V15OdlyzkoZeroDecay
 import TraceEuclidean.V15OdlyzkoZeroPairing
 import TraceEuclidean.V15OdlyzkoPairedFormula
 import TraceEuclidean.V15OdlyzkoZeroSummability
+import TraceEuclidean.V15OdlyzkoZeroCountLiterature
 import TraceEuclidean.V15RankOneIntegral
 import TraceEuclidean.V15SixRadii
 import TraceEuclidean.V15StrictDiscriminant

@@ -50,12 +50,26 @@ the printed `b=4` kernel, including both strip boundaries. It also proves the
 test function's global differentiability and its derivative's compact support,
 which verifies the eventual decay hypothesis in equation (2.1). The
 exact endpoint values `Phi(0) = Phi(1) = 16/3` are proved in Lean. The
-explicit-formula identity, its paired-zero convergence, and certified A/B
-integral estimates remain external. A Lean reduction now states the exact
+explicit-formula identity and the analytic count of actual Dedekind-zeta
+zeros remain external. The paired-zero convergence follows in Lean from an
+explicit zero count and a uniform fourth-power bound on `Phi`; the latter
+bound is still unproved. The A/B integral estimates are certified in Lean,
+with a disclosed `native_decide` trust boundary. A Lean reduction states the exact
 archimedean integrals from equation (2.3), proves convergence of the
-cosh-denominator integral, takes its explicit formula and strict `A,B` bounds
-as named premises, and derives the Table 4 interface. See
+cosh- and sinh-denominator integrals, derives the strict `A,B` bounds from
+certified intervals, and uses the explicit formula as a named premise to
+derive the Table 4 interface. See
 [the source-reduction audit](docs/audit/v15/14_odlyzko_source_reduction.md).
+
+[Hasanalizade--Shen--Wong, Corollary 1.2](https://arxiv.org/pdf/2102.04663)
+gives a multiplicity-aware explicit Dedekind-zeta zero count for `T >= 1`.
+Lean checks its logarithmic normalization and a coarse reduction to the
+quadratic count used by the paired-zero convergence criterion. It also
+transfers a count on zero occurrences to any injective sequence of pair
+representatives and handles `0 <= T < 1` using the count at height one.
+These reductions do not prove the cited analytic theorem or construct the
+actual Dedekind-zeta zero occurrences. See
+[the zero-count literature note](docs/audit/v15/16_zero_count_literature.md).
 
 Voight's
 [totally real field enumeration](https://jvoight.github.io/articles/ANTS144-fixed-errata-052714.pdf)

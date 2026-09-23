@@ -35,6 +35,45 @@ def V15OdlyzkoZeroCountLogBound (A B : ℝ) (zeros : ℕ → ℂ) : Prop :=
     (∀ n, n ∈ s ↔ |(zeros n).im| ≤ T) ∧
       (s.card : ℝ) ≤ A + B * T * Real.log (2 + T)
 
+/-- The large-height version matches the range `T ≥ 1` in the explicit
+Dedekind-zeta zero count of Hasanalizade--Shen--Wong, Corollary 1.2. -/
+def V15OdlyzkoZeroCountLargeHeightLogBound (A B : ℝ) (zeros : ℕ → ℂ) : Prop :=
+  ∀ T : ℝ, 1 ≤ T → ∃ s : Finset ℕ,
+    (∀ n, n ∈ s ↔ |(zeros n).im| ≤ T) ∧
+      (s.card : ℝ) ≤ A + B * T * Real.log (2 + T)
+
+/-- The count at height one controls every smaller height by restricting its
+finite index set. Thus a published `T ≥ 1` estimate suffices for the `T ≥ 0`
+interface, after increasing the constant term by `B * log 3`. -/
+theorem v15OdlyzkoZeroCountLogBound_of_largeHeight
+    (zeros : ℕ → ℂ) (A B : ℝ) (hB : 0 ≤ B)
+    (hLarge : V15OdlyzkoZeroCountLargeHeightLogBound A B zeros) :
+    V15OdlyzkoZeroCountLogBound (A + B * Real.log 3) B zeros := by
+  classical
+  intro T hT
+  by_cases hOne : 1 ≤ T
+  · obtain ⟨s, hs, hCard⟩ := hLarge T hOne
+    refine ⟨s, hs, ?_⟩
+    have hLogThree : 0 ≤ Real.log 3 := Real.log_nonneg (by norm_num)
+    nlinarith [mul_nonneg hB hLogThree]
+  · obtain ⟨s, hs, hCard⟩ := hLarge 1 le_rfl
+    let s' := s.filter (fun n ↦ |(zeros n).im| ≤ T)
+    refine ⟨s', ?_, ?_⟩
+    · intro n
+      simp only [s', Finset.mem_filter, hs n]
+      constructor
+      · exact And.right
+      · intro hn
+        exact ⟨hn.trans (by linarith), hn⟩
+    · have hSub : s' ⊆ s := Finset.filter_subset _ _
+      have hCard' : (s'.card : ℝ) ≤ (s.card : ℝ) := by
+        exact_mod_cast Finset.card_le_card hSub
+      have hLog : 0 ≤ Real.log (2 + T) :=
+        Real.log_nonneg (by linarith)
+      have hExtra : 0 ≤ B * T * Real.log (2 + T) := by positivity
+      norm_num at hCard
+      nlinarith
+
 /-- The standard logarithmic counting scale yields the coarser quadratic
 count used by the summability criterion. -/
 theorem v15OdlyzkoZeroCountBound_of_logBound
