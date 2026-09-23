@@ -17,6 +17,15 @@ analytic zero order. The induced map is an involution on actual zero
 occurrences and preserves every bounded-height set. These results do not
 prove existence of the continuation or the published count inequality.
 
+`V15DedekindZetaZeroHeight.lean` adds a finite exhaustion and countability
+proof for the actual multiplicity-aware occurrences. It proves a right
+interval of locally constant zero counts and, from continuity, extends any
+bound established at occurrence-free heights to boundary heights. The
+source-normalized HSW transfer still assumes the numerical inequality at
+regular heights and the existence of an entire regularization. Neither is
+introduced as an axiom. The new endpoint dependency audit is included in
+`lean/audit/main_theorem_axioms.txt`.
+
 The same axiom audit now covers the exact Fourier transform of the
 hyperbolic-secant factor, the product-to-convolution bridge, and the theorem
 that the complete unconditional `b=4` kernel has a real nonnegative Fourier

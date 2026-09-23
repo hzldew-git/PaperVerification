@@ -69,9 +69,19 @@ Lean checks its logarithmic normalization and a coarse reduction to the
 quadratic count used by the paired-zero convergence criterion. It also
 transfers a count on zero occurrences to any injective sequence of pair
 representatives and handles `0 <= T < 1` using the count at height one.
-These reductions do not prove the cited analytic theorem or construct the
-actual Dedekind-zeta zero occurrences. See
-[the zero-count literature note](docs/audit/v15/16_zero_count_literature.md).
+The package now defines actual multiplicity-aware occurrences conditional
+on an entire regularization, proves finite-height exhaustion, and transfers
+a continuous bound from occurrence-free heights to all heights. It does not
+prove the cited analytic theorem or construct the entire regularization.
+See [the zero-count literature note](docs/audit/v15/16_zero_count_literature.md)
+and [the classical-source map](docs/audit/v15/18_classical_analytic_sources.md).
+
+Neukirch's [*Algebraic Number Theory*, Chapter VII](https://link.springer.com/book/10.1007/978-3-662-03983-0)
+and Tate's [*Fourier Analysis in Number Fields and Hecke's Zeta-Functions*,
+Chapter IV](https://sites.math.rutgers.edu/~alexk/2023S572/Tate1950.pdf)
+provide the classical theta/Poisson and Mellin route to the global
+continuation and functional equation. Those steps are not supplied by the
+pinned mathlib number-field zeta module.
 
 Voight's
 [totally real field enumeration](https://jvoight.github.io/articles/ANTS144-fixed-errata-052714.pdf)

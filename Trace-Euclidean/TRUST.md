@@ -1,7 +1,7 @@
 # Trace-Euclidean v15 trust boundary
 
 Lean accepts the encoded proof terms under Lean 4.32.1 and pinned mathlib
-revision 520045ab14e26149ee970e2e617ca04b09bde5d6. The 193 previously
+revision 520045ab14e26149ee970e2e617ca04b09bde5d6. The 236
 audited main v15 endpoints depend only on the standard logical axioms propext,
 Classical.choice, and Quot.sound. The archimedean numerical certificate uses
 LeanCert's `native_decide` checks and therefore also trusts Lean's native
@@ -37,8 +37,15 @@ complete kernel. Continuity in `a`, obtained from compact support, covers the
 two boundary weights. The resulting theorem proves `Re Phi(s) >= 0` for every
 `0 <= Re(s) <= 1` in Odlyzko's equation (2.2) normalization. A separate
 theorem makes any summable family of such zero contributions nonnegative.
-The completed Dedekind-zeta theory and the Stark/Weil explicit formula and its
-zero-sum existence and convergence remain outside the Lean proof. Lean proves the
+The existence and functional equation of the completed Dedekind zeta function,
+the quantitative count of its actual zeros, and the Stark/Weil explicit
+formula remain outside the Lean proof. For an entire regularization and a
+quantitative ordered zero count, Lean proves paired-zero convergence.
+It also proves a finite-height exhaustion of actual multiplicity-aware
+strip-zero occurrences and a right interval of constant count after every
+height. A continuous count bound established at heights with no strip zero
+is transferred to all heights, but the HSW bound at those regular heights
+remains an explicit input. Lean proves the
 test function's differentiability and derivative decay condition, and derives
 the exact `E = 32/3` error integral from the source kernel. It also proves
 `Phi(0) = Phi(1) = 16/3` and their sum equals the exact error.

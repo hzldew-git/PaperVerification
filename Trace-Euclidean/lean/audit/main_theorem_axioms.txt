@@ -1207,3 +1207,65 @@ TraceEuclidean.V15DedekindZetaZeroOccurrence.paired_sum_summable_of_field_HSW_au
 'TraceEuclidean.V15DedekindZetaZeroOccurrence.paired_sum_summable_of_field_HSW_auto' depends on axioms: [propext,
  Classical.choice,
  Quot.sound]
+TraceEuclidean.V15DedekindZetaZeroOccurrence.heightExhaustion.{u_1} {K : Type u_1} [Field K] [NumberField K]
+  (Z : TraceEuclidean.V15DedekindZetaRegularization K) : Set.univ.FiniteExhaustion
+TraceEuclidean.V15DedekindZetaZeroOccurrence.countable.{u_1} {K : Type u_1} [Field K] [NumberField K]
+  (Z : TraceEuclidean.V15DedekindZetaRegularization K) : Countable (TraceEuclidean.V15DedekindZetaZeroOccurrence Z)
+TraceEuclidean.V15DedekindZetaZeroOccurrence.exists_right_height_gap.{u_1} {K : Type u_1} [Field K] [NumberField K]
+  (Z : TraceEuclidean.V15DedekindZetaRegularization K) (T : ℝ) :
+  ∃ ε,
+    0 < ε ∧
+      ε ≤ 1 ∧
+        ∀ (U : ℝ),
+          T < U →
+            U ≤ T + ε →
+              TraceEuclidean.V15DedekindZetaZeroOccurrence.boundedSet Z U =
+                TraceEuclidean.V15DedekindZetaZeroOccurrence.boundedSet Z T
+TraceEuclidean.V15DedekindZetaZeroOccurrence.exists_right_regular_interval.{u_1} {K : Type u_1} [Field K]
+  [NumberField K] (Z : TraceEuclidean.V15DedekindZetaRegularization K) (T : ℝ) :
+  ∃ ε,
+    0 < ε ∧
+      ∀ (U : ℝ),
+        T < U →
+          U ≤ T + ε →
+            (TraceEuclidean.V15DedekindZetaZeroOccurrence.boundedSet Z U).ncard =
+                (TraceEuclidean.V15DedekindZetaZeroOccurrence.boundedSet Z T).ncard ∧
+              ∀ (o : TraceEuclidean.V15DedekindZetaZeroOccurrence Z), |o.value.im| ≠ U
+TraceEuclidean.V15DedekindZetaZeroOccurrence.bound_of_regular_heights.{u_1} {K : Type u_1} [Field K] [NumberField K]
+  (Z : TraceEuclidean.V15DedekindZetaRegularization K) (T : ℝ) (hT : 1 ≤ T) (main error : ℝ → ℝ)
+  (hMain : ContinuousAt main T) (hError : ContinuousAt error T)
+  (hBound :
+    ∀ (U : ℝ),
+      1 ≤ U →
+        (∀ (o : TraceEuclidean.V15DedekindZetaZeroOccurrence Z), |o.value.im| ≠ U) →
+          |↑(TraceEuclidean.V15DedekindZetaZeroOccurrence.boundedSet Z U).ncard - main U| ≤ error U) :
+  |↑(TraceEuclidean.V15DedekindZetaZeroOccurrence.boundedSet Z T).ncard - main T| ≤ error T
+TraceEuclidean.V15DedekindZetaZeroOccurrence.HSWNumericInput_of_regular_heights.{u_1} {K : Type u_1} [Field K]
+  [NumberField K] (Z : TraceEuclidean.V15DedekindZetaRegularization K) (d : ℝ) (n : ℕ) (hd : 0 < d)
+  (hRegular : TraceEuclidean.V15DedekindZetaZeroOccurrence.HSWRegularHeightInput Z d n) :
+  TraceEuclidean.V15DedekindZetaZeroOccurrence.HSWNumericInput Z d n
+TraceEuclidean.V15DedekindZetaZeroOccurrence.HSWFieldInput_of_regular_heights.{u_1} {K : Type u_1} [Field K]
+  [NumberField K] (Z : TraceEuclidean.V15DedekindZetaRegularization K)
+  (hRegular :
+    TraceEuclidean.V15DedekindZetaZeroOccurrence.HSWRegularHeightInput Z |↑(NumberField.discr K)|
+      (Module.finrank ℚ K)) :
+  TraceEuclidean.V15DedekindZetaZeroOccurrence.HSWFieldInput Z
+'TraceEuclidean.V15DedekindZetaZeroOccurrence.heightExhaustion' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'TraceEuclidean.V15DedekindZetaZeroOccurrence.countable' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.V15DedekindZetaZeroOccurrence.exists_right_height_gap' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'TraceEuclidean.V15DedekindZetaZeroOccurrence.exists_right_regular_interval' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'TraceEuclidean.V15DedekindZetaZeroOccurrence.bound_of_regular_heights' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'TraceEuclidean.V15DedekindZetaZeroOccurrence.HSWNumericInput_of_regular_heights' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'TraceEuclidean.V15DedekindZetaZeroOccurrence.HSWFieldInput_of_regular_heights' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

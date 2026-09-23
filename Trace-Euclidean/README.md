@@ -4,11 +4,15 @@ Active author version: Trace-Euclidean-v15.tex, SHA-256
 83a236e93648ce0802f8a0d3022de63710d089f3a4f7e61214a4c855459597b5.
 The manuscript TeX and PDF are deliberately absent.
 
-The analytic-number-theory modules `V15DedekindZetaZeros.lean` and
-`V15DedekindZetaConjugation.lean` prove uniqueness, nonvanishing, and
-conjugation symmetry of any entire continuation of `(s-1) ζ_K(s)`, and
-finiteness and conjugation of its zero occurrences with multiplicity.
-Existence of that continuation, the published quantitative count, and the
+The analytic-number-theory modules `V15DedekindZetaZeros.lean`,
+`V15DedekindZetaConjugation.lean`, and `V15DedekindZetaZeroHeight.lean`
+prove uniqueness, nonvanishing, and conjugation symmetry of any entire
+continuation of `(s-1) ζ_K(s)`, finite-height exhaustion of its zeros with
+multiplicity, and the extension of a continuous zero-count bound from
+regular heights to all heights. The
+[classical-source note](docs/audit/v15/18_classical_analytic_sources.md)
+maps these results to the cited books and papers. Existence of the
+continuation, the published quantitative count at regular heights, and the
 Stark/Weil explicit formula remain explicit proof boundaries.
 
 This package contains Lean 4 proofs, independent Python and Wolfram checks,

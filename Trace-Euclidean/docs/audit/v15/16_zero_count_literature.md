@@ -64,6 +64,17 @@ transfers this identity to any entire regularization. Lean also proves that
 conjugation preserves analytic order and gives an involution on actual
 zero occurrences that preserves each finite-height set.
 
+`V15DedekindZetaZeroHeight.lean` now constructs a finite-height exhaustion
+of all multiplicity-aware occurrences and proves that their type is
+countable. Local finiteness gives a right interval after every height with
+no new occurrences. Its `bound_of_regular_heights` theorem uses that
+interval and continuity to extend a bound from heights with no zero on the
+boundary to every `T >= 1`. The field-specific
+`HSWFieldInput_of_regular_heights` instantiates this with the precise main
+term and decimal constants of Corollary 1.2. The inequality at regular
+heights remains an explicit input. See the
+[classical-source map](18_classical_analytic_sources.md).
+
 The new `HSWFieldInput` fixes the count parameters to the field's actual
 absolute discriminant and degree. Only the numerical inequality remains an
 external premise; Lean constructs the finite set required by the older
