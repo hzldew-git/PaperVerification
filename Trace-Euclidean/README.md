@@ -4,9 +4,10 @@ Active author version: Trace-Euclidean-v15.tex, SHA-256
 83a236e93648ce0802f8a0d3022de63710d089f3a4f7e61214a4c855459597b5.
 The manuscript TeX and PDF are deliberately absent.
 
-The analytic-number-theory module `V15DedekindZetaZeros.lean` now proves
-uniqueness and nonvanishing of any entire continuation of `(s-1) ζ_K(s)`,
-and finiteness of its zero occurrences at bounded height with multiplicity.
+The analytic-number-theory modules `V15DedekindZetaZeros.lean` and
+`V15DedekindZetaConjugation.lean` prove uniqueness, nonvanishing, and
+conjugation symmetry of any entire continuation of `(s-1) ζ_K(s)`, and
+finiteness and conjugation of its zero occurrences with multiplicity.
 Existence of that continuation, the published quantitative count, and the
 Stark/Weil explicit formula remain explicit proof boundaries.
 

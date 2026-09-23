@@ -4,14 +4,18 @@ The Lean project builds on Lean 4.32.1 with the pinned mathlib revision. The sel
 
 The field-discriminant estimates are EXTERNAL_INPUTS. Degree one is now proved internally from Minkowski's bound. Separate field-level premises record the exact minima in degrees 2--9, the empty degree-ten range at root discriminant at most 14, and the optimized degree-eleven bound 14.083. V15OdlyzkoTable4DescriptionInput records the full unconditional Table 4 row b=4 with A=36.347, B=16.593, the signature exponents, and the nonnegative prime-ideal correction. Lean proves 32/3 <= 10.667, the valid upward-rounding implication, the totally real specialization, field-to-class transport, and that Table 4 is required only from degree 12 for Section 4 and degree 15 for finiteness. The online November 1976 Table 2 has 14.034 at degree 11, so 14.083 is kept as a distinct later optimized source input. None of these cited source theorems is concealed as a project axiom. Lean proves their combination, the exact Gamma normalization and rational enclosure of H(n,d), both complete finite-grid equivalences, and the downstream class-level membership theorems.
 
-The new `V15DedekindZetaZeros.lean` adds no project axiom. It treats the
-existence of an entire continuation of `(s-1) ζ_K(s)`, conjugation symmetry,
-and the HSW numerical count as named mathematical hypotheses. From mathlib's
+The `V15DedekindZetaZeros.lean` and `V15DedekindZetaConjugation.lean` modules
+add no project axiom. They treat the existence of an entire continuation of
+`(s-1) ζ_K(s)` and the HSW numerical count as named mathematical hypotheses.
+From mathlib's
 class-number-formula residue and analytic identity/isolated-zero theorems,
 Lean proves any such continuation is unique and nonzero, its zeros are
 discrete, and its multiplicity-aware occurrence set is finite at bounded
-height. These results do not prove existence of the continuation or the
-published count inequality.
+height. Real ideal-norm coefficients and continuation uniqueness imply
+conjugation symmetry; repeated derivatives show that conjugation preserves
+analytic zero order. The induced map is an involution on actual zero
+occurrences and preserves every bounded-height set. These results do not
+prove existence of the continuation or the published count inequality.
 
 The same axiom audit now covers the exact Fourier transform of the
 hyperbolic-secant factor, the product-to-convolution bridge, and the theorem

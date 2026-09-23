@@ -508,3 +508,18 @@ import TraceEuclidean
 #print axioms TraceEuclidean.V15DedekindZetaZeroOccurrence.boundedSet_finite
 #print axioms TraceEuclidean.V15DedekindZetaZeroOccurrence.corollary12_of_numeric
 #print axioms TraceEuclidean.V15DedekindZetaZeroOccurrence.paired_sum_summable_of_field_HSW
+
+-- Real ideal coefficients force conjugation symmetry for every entire regularization.
+#check TraceEuclidean.v15_dedekindZeta_conj
+#check TraceEuclidean.V15DedekindZetaRegularization.conj_symm
+#check TraceEuclidean.V15DedekindZetaRegularization.order_conj
+#check TraceEuclidean.V15DedekindZetaZeroOccurrence.conjugateEquiv
+#check TraceEuclidean.V15DedekindZetaZeroOccurrence.conjugate_mem_boundedSet_iff
+#check TraceEuclidean.V15DedekindZetaZeroOccurrence.paired_sum_summable_of_field_HSW_auto
+
+#print axioms TraceEuclidean.v15_dedekindZeta_conj
+#print axioms TraceEuclidean.V15DedekindZetaRegularization.conj_symm
+#print axioms TraceEuclidean.V15DedekindZetaRegularization.order_conj
+#print axioms TraceEuclidean.V15DedekindZetaZeroOccurrence.conjugate_involutive
+#print axioms TraceEuclidean.V15DedekindZetaZeroOccurrence.conjugate_mem_boundedSet_iff
+#print axioms TraceEuclidean.V15DedekindZetaZeroOccurrence.paired_sum_summable_of_field_HSW_auto

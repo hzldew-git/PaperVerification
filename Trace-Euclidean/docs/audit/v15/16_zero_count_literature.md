@@ -58,14 +58,20 @@ zero exactly as many occurrences as its analytic order. Lean proves that
 the occurrence set at every finite height is finite, including the possible
 boundary heights.
 
+`V15DedekindZetaConjugation.lean` proves that real ideal-norm coefficients
+force the Dirichlet series to commute with conjugation. Uniqueness then
+transfers this identity to any entire regularization. Lean also proves that
+conjugation preserves analytic order and gives an involution on actual
+zero occurrences that preserves each finite-height set.
+
 The new `HSWFieldInput` fixes the count parameters to the field's actual
 absolute discriminant and degree. Only the numerical inequality remains an
 external premise; Lean constructs the finite set required by the older
 Corollary 1.2 interface and derives the quadratic bound for any injective
-occurrence sequence. With a height ordering and conjugation symmetry as
-explicit hypotheses, the exact Odlyzko transform has a convergent paired
-series. An infinite ordered sequence of representatives, conjugation
-symmetry of the continuation, and the HSW inequality have not been proved.
+occurrence sequence. With a height ordering and the proved conjugation
+symmetry, the exact Odlyzko transform has a convergent paired series.
+An infinite ordered sequence of representatives and the HSW inequality
+have not been proved.
 
 ## Transform decay now proved; global zeta remains
 
@@ -95,8 +101,8 @@ the contour or distribution argument, and the identity for the exact
 ## Practical next proof boundary
 
 The next independent target is constructing the entire regularization from
-number-field theta/Poisson data, proving its conjugation symmetry and
-functional equation, and obtaining the HSW count from an argument-principle
+number-field theta/Poisson data, proving its functional equation, and
+obtaining the HSW count from an argument-principle
 proof. A height-ordered enumeration must then identify every required
 conjugate pair. The Stark/Weil explicit formula remains a separate, larger
 source-to-Lean gap.

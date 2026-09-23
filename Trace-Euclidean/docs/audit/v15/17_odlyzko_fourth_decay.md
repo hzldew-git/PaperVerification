@@ -48,8 +48,10 @@ Those are separate missing bridges. `V15DedekindZetaZeros.lean` now defines
 zero occurrences from analytic order for any entire regularization of
 `(s-1) ζ_K(s)`. Lean proves uniqueness of such a regularization, discreteness
 and finite-height finiteness of its zeros, and conditional paired summability
-from the published count inequality. Existence of the regularization,
-conjugation symmetry, the HSW inequality itself, an ordered enumeration,
+from the published count inequality. `V15DedekindZetaConjugation.lean` proves
+conjugation symmetry and its action on multiplicity-aware zero occurrences
+from any entire regularization. Existence of the regularization,
+the HSW inequality itself, an ordered enumeration,
 the global functional equation, and the Stark/Weil explicit formula remain
 unproved. Consequently the four reviewed v15 main results retain their
 documented `PROVISIONAL_MATCH` status.

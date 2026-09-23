@@ -1134,3 +1134,76 @@ TraceEuclidean.v15_odlyzkoTable4ExplicitCorrectionInput_of_count
 'TraceEuclidean.v15_odlyzkoTable4ExplicitCorrectionInput_of_count' depends on axioms: [propext,
  Classical.choice,
  Quot.sound]
+TraceEuclidean.V15DedekindZetaRegularization.exists_nonzero.{u_1} {K : Type u_1} [Field K] [NumberField K]
+  (Z : TraceEuclidean.V15DedekindZetaRegularization K) : ∃ s, Z.value s ≠ 0
+TraceEuclidean.V15DedekindZetaRegularization.value_unique.{u_1} {K : Type u_1} [Field K] [NumberField K]
+  (Z W : TraceEuclidean.V15DedekindZetaRegularization K) : Z.value = W.value
+TraceEuclidean.V15DedekindZetaRegularization.zeroSet_discrete.{u_1} {K : Type u_1} [Field K] [NumberField K]
+  (Z : TraceEuclidean.V15DedekindZetaRegularization K) : IsDiscrete Z.zeroSet
+TraceEuclidean.V15DedekindZetaZeroOccurrence.fibre_card.{u_1} {K : Type u_1} [Field K] [NumberField K]
+  (Z : TraceEuclidean.V15DedekindZetaRegularization K) (s : { z // 0 < z.re ∧ z.re < 1 }) :
+  Nat.card (Fin (analyticOrderNatAt Z.value ↑s)) = analyticOrderNatAt Z.value ↑s
+TraceEuclidean.V15DedekindZetaZeroOccurrence.boundedSet_finite.{u_1} {K : Type u_1} [Field K] [NumberField K]
+  (Z : TraceEuclidean.V15DedekindZetaRegularization K) (T : ℝ) :
+  (TraceEuclidean.V15DedekindZetaZeroOccurrence.boundedSet Z T).Finite
+TraceEuclidean.V15DedekindZetaZeroOccurrence.corollary12_of_numeric.{u_1} {K : Type u_1} [Field K] [NumberField K]
+  (Z : TraceEuclidean.V15DedekindZetaRegularization K) (d : ℝ) (n : ℕ)
+  (hNumeric : TraceEuclidean.V15DedekindZetaZeroOccurrence.HSWNumericInput Z d n) :
+  TraceEuclidean.V15HasanalizadeShenWongCorollary12Input d n TraceEuclidean.V15DedekindZetaZeroOccurrence.value
+TraceEuclidean.V15DedekindZetaZeroOccurrence.paired_sum_summable_of_field_HSW.{u_1} {K : Type u_1} [Field K]
+  [NumberField K] (Z : TraceEuclidean.V15DedekindZetaRegularization K)
+  (representative : ℕ → TraceEuclidean.V15DedekindZetaZeroOccurrence Z) (hInjective : Function.Injective representative)
+  (hConj : ∀ (s : ℂ), Z.value ((starRingEnd ℂ) s) = (starRingEnd ℂ) (Z.value s))
+  (hOrdered : ∀ (i j : ℕ), i ≤ j → |(representative i).value.im| ≤ |(representative j).value.im|)
+  (hNumeric : TraceEuclidean.V15DedekindZetaZeroOccurrence.HSWFieldInput Z) :
+  (∀ (i : ℕ), Z.value ((starRingEnd ℂ) (representative i).value) = 0) ∧
+    Summable fun i =>
+      TraceEuclidean.v15OdlyzkoPhi (representative i).value +
+        TraceEuclidean.v15OdlyzkoPhi ((starRingEnd ℂ) (representative i).value)
+'TraceEuclidean.V15DedekindZetaRegularization.exists_nonzero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.V15DedekindZetaRegularization.value_unique' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.V15DedekindZetaZeroOccurrence.boundedSet_finite' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'TraceEuclidean.V15DedekindZetaZeroOccurrence.corollary12_of_numeric' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'TraceEuclidean.V15DedekindZetaZeroOccurrence.paired_sum_summable_of_field_HSW' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+TraceEuclidean.v15_dedekindZeta_conj.{u_1} (K : Type u_1) [Field K] [NumberField K] (s : ℂ) :
+  NumberField.dedekindZeta K ((starRingEnd ℂ) s) = (starRingEnd ℂ) (NumberField.dedekindZeta K s)
+TraceEuclidean.V15DedekindZetaRegularization.conj_symm.{u_1} {K : Type u_1} [Field K] [NumberField K]
+  (Z : TraceEuclidean.V15DedekindZetaRegularization K) (s : ℂ) :
+  Z.value ((starRingEnd ℂ) s) = (starRingEnd ℂ) (Z.value s)
+TraceEuclidean.V15DedekindZetaRegularization.order_conj.{u_1} {K : Type u_1} [Field K] [NumberField K]
+  (Z : TraceEuclidean.V15DedekindZetaRegularization K) (s : ℂ) :
+  analyticOrderAt Z.value ((starRingEnd ℂ) s) = analyticOrderAt Z.value s
+TraceEuclidean.V15DedekindZetaZeroOccurrence.conjugateEquiv.{u_1} {K : Type u_1} [Field K] [NumberField K]
+  {Z : TraceEuclidean.V15DedekindZetaRegularization K} :
+  TraceEuclidean.V15DedekindZetaZeroOccurrence Z ≃ TraceEuclidean.V15DedekindZetaZeroOccurrence Z
+TraceEuclidean.V15DedekindZetaZeroOccurrence.conjugate_mem_boundedSet_iff.{u_1} {K : Type u_1} [Field K] [NumberField K]
+  {Z : TraceEuclidean.V15DedekindZetaRegularization K} (o : TraceEuclidean.V15DedekindZetaZeroOccurrence Z) (T : ℝ) :
+  o.conjugate ∈ TraceEuclidean.V15DedekindZetaZeroOccurrence.boundedSet Z T ↔
+    o ∈ TraceEuclidean.V15DedekindZetaZeroOccurrence.boundedSet Z T
+TraceEuclidean.V15DedekindZetaZeroOccurrence.paired_sum_summable_of_field_HSW_auto.{u_1} {K : Type u_1} [Field K]
+  [NumberField K] (Z : TraceEuclidean.V15DedekindZetaRegularization K)
+  (representative : ℕ → TraceEuclidean.V15DedekindZetaZeroOccurrence Z) (hInjective : Function.Injective representative)
+  (hOrdered : ∀ (i j : ℕ), i ≤ j → |(representative i).value.im| ≤ |(representative j).value.im|)
+  (hNumeric : TraceEuclidean.V15DedekindZetaZeroOccurrence.HSWFieldInput Z) :
+  (∀ (i : ℕ), Z.value ((starRingEnd ℂ) (representative i).value) = 0) ∧
+    Summable fun i =>
+      TraceEuclidean.v15OdlyzkoPhi (representative i).value +
+        TraceEuclidean.v15OdlyzkoPhi ((starRingEnd ℂ) (representative i).value)
+'TraceEuclidean.v15_dedekindZeta_conj' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.V15DedekindZetaRegularization.conj_symm' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.V15DedekindZetaRegularization.order_conj' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.V15DedekindZetaZeroOccurrence.conjugate_involutive' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'TraceEuclidean.V15DedekindZetaZeroOccurrence.conjugate_mem_boundedSet_iff' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'TraceEuclidean.V15DedekindZetaZeroOccurrence.paired_sum_summable_of_field_HSW_auto' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
