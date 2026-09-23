@@ -17,6 +17,12 @@ The 2021 paper notes and repairs an error in an earlier explicit estimate of
 Trudgian; its Corollary 1.2 is the count used here. The source also records
 the completed zeta function and its functional equation in equations
 (2.1)--(2.2), but these are *recalled*, not formalized in our Lean package.
+The authors state after Corollary 1.2 that their explicit constants were
+obtained by direct numerical computation with Maple; they do not carry out
+the interval analysis used in related work. A fully kernel-checked rebuild
+of those decimal constants would therefore need a separate certified
+numerical argument. The coarse summability criterion does not need their
+optimized constants, so a future symbolic `O(T log T)` proof is another route.
 
 ## Checked reduction in Lean
 
