@@ -434,3 +434,28 @@ import TraceEuclidean
 #print axioms TraceEuclidean.v15OdlyzkoCoshIntegrand_integrableOn
 #print axioms TraceEuclidean.v15_odlyzkoTable4ExplicitCorrectionInput_of_sourceFormula
 #print axioms TraceEuclidean.v15_odlyzkoTable4ExplicitCorrectionInput_of_enumeratedZeros
+
+-- Entire source transform and exact conjugate-paired zero interface.
+#check TraceEuclidean.v15OdlyzkoKernelMeasure_exp_integrable
+#check TraceEuclidean.v15OdlyzkoPhi_eq_complexMGF
+#check TraceEuclidean.v15OdlyzkoPhi_differentiable
+#check TraceEuclidean.v15OdlyzkoPhi_hasDerivAt
+#check TraceEuclidean.v15OdlyzkoPhi_tendsto_zero_vertical
+#check TraceEuclidean.v15OdlyzkoPhi_conj
+#check TraceEuclidean.v15OdlyzkoPhi_im_eq_zero_of_im_eq_zero
+#check TraceEuclidean.v15OdlyzkoPhi_conj_pair
+#check TraceEuclidean.v15OdlyzkoPhi_conj_pair_summable_iff
+#check TraceEuclidean.v15OdlyzkoPhi_conj_pair_tsum
+#check TraceEuclidean.v15_odlyzkoTable4ExplicitCorrectionInput_of_realAndPairedZeros
+
+#print axioms TraceEuclidean.v15OdlyzkoKernelMeasure_exp_integrable
+#print axioms TraceEuclidean.v15OdlyzkoPhi_eq_complexMGF
+#print axioms TraceEuclidean.v15OdlyzkoPhi_differentiable
+#print axioms TraceEuclidean.v15OdlyzkoPhi_hasDerivAt
+#print axioms TraceEuclidean.v15OdlyzkoPhi_tendsto_zero_vertical
+#print axioms TraceEuclidean.v15OdlyzkoPhi_conj
+#print axioms TraceEuclidean.v15OdlyzkoPhi_im_eq_zero_of_im_eq_zero
+#print axioms TraceEuclidean.v15OdlyzkoPhi_conj_pair
+#print axioms TraceEuclidean.v15OdlyzkoPhi_conj_pair_summable_iff
+#print axioms TraceEuclidean.v15OdlyzkoPhi_conj_pair_tsum
+#print axioms TraceEuclidean.v15_odlyzkoTable4ExplicitCorrectionInput_of_realAndPairedZeros

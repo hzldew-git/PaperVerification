@@ -162,6 +162,24 @@ reflection identity `Phi(1-s) = Phi(s)` from the evenness of `F`.
 `V15OdlyzkoPhiEndpoint` combines that identity with the exact error integral
 to prove `Phi(0) = Phi(1) = 16/3` and `Phi(0) + Phi(1) = 32/3`.
 
+`V15OdlyzkoEntire` treats the nonnegative compactly supported `F` as a
+measure density. Lean proves that every real exponential moment is finite,
+identifies `Phi(s)` with the shifted complex moment-generating function, and
+proves that `Phi` is entire with its derivative given by differentiating the
+source integral. `V15OdlyzkoZeroDecay` applies the Riemann-Lebesgue lemma to
+show that `Phi` vanishes at both ends of each fixed vertical line. This
+qualitative limit does not by itself imply a convergent zero sum.
+`V15OdlyzkoZeroPairing` proves `Phi(conj(s)) = conj(Phi(s))` and that each
+conjugate pair contributes exactly
+`2 Re Phi(s)`. For a family of representatives, summability of the paired
+complex series is equivalent to summability of the real contributions.
+`V15OdlyzkoPairedFormula` counts finitely indexed real zeros once and distinct
+nonreal zeros in conjugate pairs. It connects these terms and the convergent
+paired series to the existing
+exact-error Table 4 reduction, proving their sign internally.
+These results do not establish that Dedekind-zeta zeros exist in the required
+enumeration or that their paired sum converges.
+
 Odlyzko's [1990 survey, equation (2.1)](https://www.numdam.org/item/JTNB_1990__2_1_119_0.pdf)
 requires global differentiability of `F` and exponential decay of both `F`
 and `F'`. `V15OdlyzkoDifferentiability` proves that `H` and the exact
@@ -217,9 +235,10 @@ analytic-number-theory development containing at least:
 
 1. a completed Dedekind zeta function with meromorphic continuation and its
    functional equation;
-2. the Stark/Weil explicit formula and existence and convergence of its paired
-   zero sum; the source test-function hypotheses, pointwise zero-transform
-   sign, and conditional summable-family sign are already proved.
+2. the Stark/Weil explicit formula, a zero-counting estimate, and convergence
+   of its paired zero sum. The source test-function hypotheses, entire
+   zero transform, qualitative vertical decay, conjugate pairing identities,
+   pointwise sign, and conditional paired-series reduction are already proved.
 
 The sinh integral's convergence and the strict numerical estimates for
 `A = 36.347` and `B = 16.593` are supplied by the separate
@@ -228,9 +247,10 @@ checks use `native_decide`, so they carry an explicitly recorded native
 compiler trust boundary.
 
 Pinned mathlib defines the Dedekind zeta Dirichlet series and its residue at
-one, but it does not currently provide this explicit formula or the required
-global zero-sum theory. Therefore the full Odlyzko theorem remains a
-disclosed external mathematical input. The Lean work now verifies the source
+one, but it does not currently provide global continuation, the functional
+equation, this explicit formula, or the required zero-sum theory. Therefore
+the full Odlyzko theorem remains a disclosed external mathematical input. The
+Lean work now verifies the source
 kernel, the autocorrelation and Fourier positivity of `H`, the exact
 hyperbolic-secant and tilted transforms, the product-to-convolution bridge,
 source-normalized zero-transform positivity on the closed critical strip, the
