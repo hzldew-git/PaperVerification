@@ -7,6 +7,7 @@
 | v15_odlyzkoTable4_error_rounding, v15_odlyzkoTable4FieldInputFrom_of_description | Prove 32/3 <= 10.667, the valid rounding direction, totally real signature specialization, and removal of the nonnegative correction. |
 | v15OdlyzkoH_differentiable, v15OdlyzkoF4_differentiable, v15OdlyzkoF4_exp_decay, v15OdlyzkoF4_source_test_hypotheses | Prove and package all source test-function hypotheses in equation (2.1): evenness, normalization, global differentiability, and the eventual exponential bound for the function and its derivative. |
 | v15OdlyzkoHCore_intervalIntegral_zero_two, v15OdlyzkoF4_archimedean_error_integral | Evaluate the printed `H` formula and derive the exact `E = 32/3` archimedean error integral from the source kernel. |
+| v15OdlyzkoPhi_one_sub | Prove the exact source transform satisfies `Phi(1-s) = Phi(s)` for every complex `s`. |
 | V15OdlyzkoTable4FieldInputFrom, V15OdlyzkoTable4InputFrom | Restrict the Table 4 premise to the field degrees actually used; degree 12 begins the analytic table range and degree 15 begins the finiteness cutoff. |
 | v15_degree_one_discriminant_bound | Proves the degree-one Section 4 discriminant input internally from Minkowski's bound. |
 | V15DegreeTwoToNineMinimumInput, V15DegreeTenRootDiscriminantInput, V15DegreeElevenRootDiscriminantInput | Separate literature inputs for exact minima, Voight's empty degree-ten range at root discriminant at most 14, and the optimized degree-eleven bound 14.083. |

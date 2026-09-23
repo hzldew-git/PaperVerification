@@ -408,3 +408,7 @@ import TraceEuclidean
 #print axioms TraceEuclidean.v15OdlyzkoHCore_intervalIntegral_zero_two
 #print axioms TraceEuclidean.v15OdlyzkoH4_intervalIntegral_zero_eight
 #print axioms TraceEuclidean.v15OdlyzkoF4_archimedean_error_integral
+
+-- Symmetry of the source transform under reflection about the central line.
+#check TraceEuclidean.v15OdlyzkoPhi_one_sub
+#print axioms TraceEuclidean.v15OdlyzkoPhi_one_sub

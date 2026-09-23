@@ -157,7 +157,8 @@ convention and Odlyzko's `Phi(s)`, and proves `Re Phi(s) >= 0` whenever
 `0 <= Re(s) <= 1`. It also proves nonnegativity of the real part of any
 summable family of such contributions. These theorems do not assert that the
 Dedekind-zeta zero family exists or is summable in the paired convention of
-the explicit formula.
+the explicit formula. `V15OdlyzkoPhiSymmetry` also proves the source-normalized
+reflection identity `Phi(1-s) = Phi(s)` from the evenness of `F`.
 
 Odlyzko's [1990 survey, equation (2.1)](https://www.numdam.org/item/JTNB_1990__2_1_119_0.pdf)
 requires global differentiability of `F` and exponential decay of both `F`
