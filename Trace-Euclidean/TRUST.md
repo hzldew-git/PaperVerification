@@ -36,9 +36,10 @@ two boundary weights. The resulting theorem proves `Re Phi(s) >= 0` for every
 `0 <= Re(s) <= 1` in Odlyzko's equation (2.2) normalization. A separate
 theorem makes any summable family of such zero contributions nonnegative.
 The completed Dedekind-zeta theory, the Stark/Weil explicit formula and its
-zero-sum existence and convergence, the test function's differentiability
-condition, and certified archimedean integral estimates behind the table
-remain outside the Lean proof.
+zero-sum existence and convergence, and certified archimedean integral
+estimates for `A` and `B` remain outside the Lean proof. Lean now proves the
+test function's differentiability and derivative decay condition, and derives
+the exact `E = 32/3` error integral from the source kernel.
 
 The public Python and Wolfram runs trust their kernels and the extracted
 input file. The private maintainer run also checks the SHA-256 digest and

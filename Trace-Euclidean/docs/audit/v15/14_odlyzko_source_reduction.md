@@ -24,7 +24,12 @@ where `f` is the prime-ideal sum formed with the unconditional kernel
 unconditional, `A` and `B` are lower estimates, and `E` is rounded upward
 from the exact value `8b/3`.
 
-For `b = 4`, the exact error is `32/3`.  Lean proves
+For `b = 4`, the exact error is `32/3`. Lean now evaluates the source kernel's
+archimedean error integral exactly:
+
+`4 * integral_(0,infinity) F(x)*cosh(x/2) dx = 32/3`.
+
+It also proves
 
 `32/3 <= 10.667`,
 
@@ -154,6 +159,19 @@ summable family of such contributions. These theorems do not assert that the
 Dedekind-zeta zero family exists or is summable in the paired convention of
 the explicit formula.
 
+Odlyzko's [1990 survey, equation (2.1)](https://www.numdam.org/item/JTNB_1990__2_1_119_0.pdf)
+requires global differentiability of `F` and exponential decay of both `F`
+and `F'`. `V15OdlyzkoDifferentiability` proves that `H` and the exact
+`b = 4` function `F` are differentiable at every real point. It handles the
+origin and both support endpoints by matching their one-sided derivatives.
+It also proves that `F'` vanishes whenever `|x| > 8`, hence verifies the
+source's eventual decay inequality with `c = epsilon = 1`.
+
+`V15OdlyzkoArchimedean` integrates the printed formula for `H` exactly on
+`[0,2]`, scales to `[0,8]`, and removes the zero tail. This proves the
+`E = 32/3` integral directly, rather than only accepting the table
+description's value and checking its upward rounding.
+
 `V15OdlyzkoPrimeCorrection` defines the source's exact summand for a nonzero
 prime ideal and a positive exponent. It constructs the finite set of prime
 ideals of bounded absolute norm, proves every summand and every finite partial
@@ -171,10 +189,9 @@ analytic-number-theory development containing at least:
 
 1. a completed Dedekind zeta function with meromorphic continuation and its
    functional equation;
-2. the Stark/Weil explicit formula, existence and convergence of its paired
-   zero sum, and verification of the source's differentiability and derivative
-   decay conditions for the test function; the pointwise zero-transform sign
-   and conditional summable-family sign are already proved;
+2. the Stark/Weil explicit formula and existence and convergence of its paired
+   zero sum; the source test-function hypotheses, pointwise zero-transform
+   sign, and conditional summable-family sign are already proved;
 3. rigorous archimedean integral bounds producing the tabulated lower
    estimates `A = 36.347` and `B = 16.593`.
 
@@ -185,6 +202,7 @@ disclosed external mathematical input. The Lean work now verifies the source
 kernel, the autocorrelation and Fourier positivity of `H`, the exact
 hyperbolic-secant and tilted transforms, the product-to-convolution bridge,
 source-normalized zero-transform positivity on the closed critical strip, the
-complete prime-ideal correction and its
+test function's differentiability and derivative decay, the exact `E = 32/3`
+integral, the complete prime-ideal correction and its
 exact finite-support reduction, every specialization and rounding, and every
 downstream use needed by v15.

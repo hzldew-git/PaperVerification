@@ -387,3 +387,24 @@ import TraceEuclidean
 #print axioms TraceEuclidean.v15OdlyzkoPhi_eq_fourier
 #print axioms TraceEuclidean.v15OdlyzkoPhi_re_nonneg_of_mem_closed_strip
 #print axioms TraceEuclidean.v15OdlyzkoPhi_zero_tsum_re_nonneg
+
+-- Source equation (2.1) and exact b = 4 archimedean error integral.
+#check TraceEuclidean.v15OdlyzkoH_differentiable
+#check TraceEuclidean.v15OdlyzkoF4_differentiable
+#check TraceEuclidean.v15OdlyzkoF4_deriv_hasCompactSupport
+#check TraceEuclidean.v15OdlyzkoF4_and_deriv_eq_zero_of_eight_lt_abs
+#check TraceEuclidean.v15OdlyzkoF4_exp_decay
+#check TraceEuclidean.v15OdlyzkoF4_source_test_hypotheses
+#check TraceEuclidean.v15OdlyzkoHCore_intervalIntegral_zero_two
+#check TraceEuclidean.v15OdlyzkoH4_intervalIntegral_zero_eight
+#check TraceEuclidean.v15OdlyzkoF4_archimedean_error_integral
+
+#print axioms TraceEuclidean.v15OdlyzkoH_differentiable
+#print axioms TraceEuclidean.v15OdlyzkoF4_differentiable
+#print axioms TraceEuclidean.v15OdlyzkoF4_deriv_hasCompactSupport
+#print axioms TraceEuclidean.v15OdlyzkoF4_and_deriv_eq_zero_of_eight_lt_abs
+#print axioms TraceEuclidean.v15OdlyzkoF4_exp_decay
+#print axioms TraceEuclidean.v15OdlyzkoF4_source_test_hypotheses
+#print axioms TraceEuclidean.v15OdlyzkoHCore_intervalIntegral_zero_two
+#print axioms TraceEuclidean.v15OdlyzkoH4_intervalIntegral_zero_eight
+#print axioms TraceEuclidean.v15OdlyzkoF4_archimedean_error_integral

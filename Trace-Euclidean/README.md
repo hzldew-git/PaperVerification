@@ -95,9 +95,10 @@ exact minima in degrees 2--9, the degree-ten enumeration result, the optimized
 degree-eleven bound 14.083, and the analytic theorem behind Odlyzko's Table 4
 remain explicit external mathematical inputs. Within that last theorem, the
 unformalized analytic steps are Dedekind-zeta continuation and its functional
-equation, the Stark/Weil explicit formula and zero-term control, and the
-certified archimedean estimates producing the tabulated constants. Their
-source separation and Lean reduction are
+equation, the Stark/Weil explicit formula and paired-zero convergence, and the
+certified archimedean estimates producing `A` and `B`. Lean now checks the
+test function's differentiability and derivative decay, and derives the exact
+`E = 32/3` integral from the kernel. The source separation and Lean reduction are
 recorded in the [Odlyzko source audit](docs/audit/v15/14_odlyzko_source_reduction.md).
 
 ## Version scope

@@ -63,6 +63,8 @@ import TraceEuclidean.V15OdlyzkoSechFourier
 import TraceEuclidean.V15OdlyzkoFinalFourier
 import TraceEuclidean.V15OdlyzkoTiltedSech
 import TraceEuclidean.V15OdlyzkoZeroStrip
+import TraceEuclidean.V15OdlyzkoDifferentiability
+import TraceEuclidean.V15OdlyzkoArchimedean
 import TraceEuclidean.V15OdlyzkoPrimeCorrection
 import TraceEuclidean.V15OdlyzkoAnalyticBridge
 import TraceEuclidean.V15RankOneIntegral

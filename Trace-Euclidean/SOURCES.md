@@ -23,7 +23,9 @@ His [description of the tables](https://www-users.cse.umn.edu/~odlyzko/unpublish
 states that Table 4 is unconditional and gives the stronger formula
 |D_F| > A^r1 B^(2r2) exp(f-E), where f is the prime-ideal correction.
 It also states that A and B are lower estimates and that E is rounded upward
-from 8b/3. For b=4, Lean checks 32/3 <= 10.667, the direction of this
+from 8b/3. For b=4, Lean derives the exact archimedean error integral
+`4 * integral_(0,infinity) F(x)*cosh(x/2) dx = 32/3`, then checks
+32/3 <= 10.667 and the direction of this
 rounding, the totally real signature specialization, removal of the
 nonnegative f, and all downstream uses. The new literature-facing premise is
 V15OdlyzkoTable4DescriptionInput. V15OdlyzkoTable4Input remains as a
@@ -43,10 +45,12 @@ Odlyzko's [1990 survey, equations (2.2)--(2.4)](https://www.numdam.org/item/JTNB
 defines `Phi(s) = integral F(x)*exp((s-1/2)*x) dx` and identifies
 `Re Phi(s) >= 0` throughout the critical strip as the zero-term sign
 condition for an unconditional bound. Lean now proves that sign condition for
-the printed `b=4` kernel, including both strip boundaries. The
-explicit-formula identity and its paired-zero convergence, the test
-function's differentiability condition, and certified A/B integral estimates
-remain external. See [the source-reduction audit](docs/audit/v15/14_odlyzko_source_reduction.md).
+the printed `b=4` kernel, including both strip boundaries. It also proves the
+test function's global differentiability and its derivative's compact support,
+which verifies the eventual decay hypothesis in equation (2.1). The
+explicit-formula identity, its paired-zero convergence, and certified A/B
+integral estimates remain external. See
+[the source-reduction audit](docs/audit/v15/14_odlyzko_source_reduction.md).
 
 Voight's
 [totally real field enumeration](https://jvoight.github.io/articles/ANTS144-fixed-errata-052714.pdf)
