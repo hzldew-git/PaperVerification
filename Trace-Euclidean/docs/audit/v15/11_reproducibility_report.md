@@ -1,5 +1,7 @@
 # Reproducibility report
 
+- The Mellin-bridge update completed a full local 8793-job Lean build. The expanded 263-declaration main axiom audit found only `propext`, `Classical.choice`, and `Quot.sound`. The separate numerical audit still exposes the same five generated native compiler axioms for the A/B certificate. The local v15-to-v16 statement comparison found 19 unchanged main theorem-like environments and one reworded remark; neither manuscript is in the public package. No new Python or Wolfram classification rerun is claimed for this Lean-only update.
+
 - The private author source and private frozen copy both have SHA-256 83a236e93648ce0802f8a0d3022de63710d089f3a4f7e61214a4c855459597b5.
 - The private source-bound Python run produced 1165 PASS and 0 FAIL. Its Wolfram run produced 112 PASS and 0 FAIL.
 - Earlier public extracted-input Python and Wolfram checks produced 1156 PASS and 115 PASS, respectively, with 0 FAIL.

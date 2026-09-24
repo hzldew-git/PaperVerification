@@ -4,6 +4,12 @@ Active author version: Trace-Euclidean-v15.tex, SHA-256
 83a236e93648ce0802f8a0d3022de63710d089f3a4f7e61214a4c855459597b5.
 The manuscript TeX and PDF are deliberately absent.
 
+The local [v16 statement-delta audit](docs/audit/v16/01_statement_delta_and_mellin_bridge.md)
+compares the author's revised manuscript with this frozen v15 baseline: all
+19 labelled theorem, corollary, proposition, lemma, and definition statements
+match after whitespace and label normalization. One remark was reworded.
+The comparison script accepts local TeX paths; neither manuscript is published.
+
 The analytic-number-theory modules `V15DedekindZetaZeros.lean`,
 `V15DedekindZetaConjugation.lean`, and `V15DedekindZetaZeroHeight.lean`
 prove uniqueness, nonvanishing, and conjugation symmetry of any entire
@@ -14,6 +20,10 @@ regular heights to all heights. The
 maps these results to the cited books and papers. Existence of the
 continuation, the published quantitative count at regular heights, and the
 Stark/Weil explicit formula remain explicit proof boundaries.
+The newly imported abstract Mellin principle and its pole-removal/reflection
+bridge prove an entire abstract candidate and its functional equation. The
+number-field theta-to-zeta identification and normalization are still needed
+to construct the actual Dedekind-zeta continuation.
 
 This package contains Lean 4 proofs, independent Python and Wolfram checks,
 extracted v15 inputs, machine-readable results, and an English

@@ -587,3 +587,23 @@ import TraceEuclidean
 #print axioms TraceEuclidean.V15DedekindZetaZeroOccurrence.phi_summable_of_circle_growth
 #print axioms TraceEuclidean.V15DedekindZetaZeroOccurrence.phi_tsum_re_nonneg_of_circle_growth
 #print axioms TraceEuclidean.v15_odlyzkoTable4ExplicitCorrectionInput_of_circle_growth
+
+-- Abstract Mellin continuation imported from sum_product, and the new
+-- pole-removal / reflection bridge to the conditional Dedekind-zeta model.
+#check DedekindZeta.MellinPrinciple.mellinTail_analyticOn
+#check DedekindZeta.MellinPrinciple.mellinContinuation_eq
+#check TraceEuclidean.V15AnalyticMellin.poleRemovedMellin_analyticOn
+#check TraceEuclidean.V15AnalyticMellin.poleRemovedMellin_eq_mul_continuation
+#check TraceEuclidean.V15AnalyticMellin.mellinTail_reflection
+#check TraceEuclidean.V15AnalyticMellin.poleRemovedMellin_reflection
+#check TraceEuclidean.V15AnalyticMellin.mellinContinuation_reflection
+#check TraceEuclidean.V15AnalyticMellin.regularizationOfMellinPair
+
+#print axioms DedekindZeta.MellinPrinciple.mellinTail_analyticOn
+#print axioms DedekindZeta.MellinPrinciple.mellinContinuation_eq
+#print axioms TraceEuclidean.V15AnalyticMellin.poleRemovedMellin_analyticOn
+#print axioms TraceEuclidean.V15AnalyticMellin.poleRemovedMellin_eq_mul_continuation
+#print axioms TraceEuclidean.V15AnalyticMellin.mellinTail_reflection
+#print axioms TraceEuclidean.V15AnalyticMellin.poleRemovedMellin_reflection
+#print axioms TraceEuclidean.V15AnalyticMellin.mellinContinuation_reflection
+#print axioms TraceEuclidean.V15AnalyticMellin.regularizationOfMellinPair

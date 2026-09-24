@@ -85,6 +85,7 @@ import TraceEuclidean.V15DedekindZetaZeroHeight
 import TraceEuclidean.V15DedekindZetaUnorderedZeros
 import TraceEuclidean.V15DedekindZetaCompletion
 import TraceEuclidean.V15DedekindZetaJensenCount
+import TraceEuclidean.V15AnalyticMellinBridge
 import TraceEuclidean.V15RankOneIntegral
 import TraceEuclidean.V15SixRadii
 import TraceEuclidean.V15StrictDiscriminant

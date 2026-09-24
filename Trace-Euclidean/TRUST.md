@@ -42,6 +42,15 @@ a growth bound for its entire regularization, and the Stark/Weil explicit
 formula remain outside the Lean proof. Jensen's inequality now proves a
 coarse quantitative count of actual strip zeros from an explicit quadratic
 exponential circle-growth hypothesis. The sharp HSW count remains external.
+An Apache-2.0 abstract Mellin module from `mathlib-initiative/sum_product`
+has been ported to the pinned toolchain. Its analytic tail and half-plane
+agreement are proved, and `V15AnalyticMellinBridge` now proves the entire
+pole-removed expression and its reflection/functional equation. The bridge
+requires a separately proved entire normalization factor and right-half-plane
+identity with `NumberField.dedekindZeta`; thus it does not discharge the
+field-specific continuation premise. The source and v16-delta review are
+recorded in
+[the v16 progress note](docs/audit/v16/01_statement_delta_and_mellin_bridge.md).
 For an entire regularization and either this growth hypothesis or a
 quadratic count on actual zero occurrences, Lean proves absolute
 convergence of the direct unordered zero sum and nonnegativity of its real

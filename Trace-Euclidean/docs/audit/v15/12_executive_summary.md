@@ -1,5 +1,15 @@
 # Executive summary
 
+Mellin update: an Apache-2.0 abstract Mellin module from `sum_product` now
+compiles under the pinned toolchain. Lean proves that its pole-removed
+continuation is entire and satisfies the reflection law; away from the poles,
+the meromorphic continuation satisfies the corresponding functional equation.
+An explicit normalization-factor interface would construct the existing
+Dedekind-zeta regularization after the field-specific theta-to-zeta identity
+and analytic normalization are proved. Those inputs, the growth estimate, and
+the Stark/Weil explicit formula remain open. The v16 statement-delta audit is
+linked from the README; the four main results remain PROVISIONAL_MATCH.
+
 Jensen update: Lean now derives a quadratic count of actual critical-strip
 zero occurrences from an explicit quadratic exponential circle-growth bound
 for a proposed entire regularization. This gives absolute convergence and a
@@ -16,4 +26,4 @@ All four reviewed main results are PROVISIONAL_MATCH; none is independently VERI
 
 A new finite-height exhaustion proves that multiplicity-aware strip-zero occurrences are countable. After every height there is a right interval with constant zero count. For the exact HSW Corollary 1.2 normalization, Lean extends an inequality assumed at occurrence-free heights to every T >= 1. The inequality at occurrence-free heights and the entire regularization remain explicit inputs. A direct unordered zero sum now converges from a quadratic count, and the exact HSW bound implies that count. The HSW Gamma factor has been matched to mathlib, with critical-strip zero positions and analytic multiplicities preserved by completion. Global continuation, its functional equation, the quantitative HSW bound, and the Stark/Weil explicit formula remain unproved. The source map is in 18_classical_analytic_sources.md.
 
-The complete local 8791-job Lean build passes. The expanded 255-endpoint axiom audit includes the Jensen, unordered-zero, and completed-factor endpoints using only standard logical axioms; the A/B interval certificates retain their separately disclosed native-compiler trust. The four finite-array equality proofs are kernel computations with no axiom dependencies. Local public reruns produced 1156 Python PASS and 115 Wolfram PASS, both with zero failures. Superseded release evidence is not included in the current package or v15 counts.
+The complete local 8793-job Lean build passes. The expanded 263-endpoint axiom audit includes the Jensen, unordered-zero, completed-factor, and abstract Mellin endpoints using only standard logical axioms; the A/B interval certificates retain their separately disclosed native-compiler trust. The four finite-array equality proofs are kernel computations with no axiom dependencies. Local public reruns produced 1156 Python PASS and 115 Wolfram PASS, both with zero failures. Superseded release evidence is not included in the current package or v15 counts.
