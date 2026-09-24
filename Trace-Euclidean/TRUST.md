@@ -1,7 +1,7 @@
 # Trace-Euclidean v15 trust boundary
 
 Lean accepts the encoded proof terms under Lean 4.32.1 and pinned mathlib
-revision 520045ab14e26149ee970e2e617ca04b09bde5d6. The 236
+revision 520045ab14e26149ee970e2e617ca04b09bde5d6. The 255
 audited main v15 endpoints depend only on the standard logical axioms propext,
 Classical.choice, and Quot.sound. The archimedean numerical certificate uses
 LeanCert's `native_decide` checks and therefore also trusts Lean's native
@@ -38,9 +38,12 @@ two boundary weights. The resulting theorem proves `Re Phi(s) >= 0` for every
 `0 <= Re(s) <= 1` in Odlyzko's equation (2.2) normalization. A separate
 theorem makes any summable family of such zero contributions nonnegative.
 The existence and functional equation of the completed Dedekind zeta function,
-the quantitative count of its actual zeros, and the Stark/Weil explicit
-formula remain outside the Lean proof. For an entire regularization and a
-quadratic count on actual zero occurrences, Lean now proves absolute
+a growth bound for its entire regularization, and the Stark/Weil explicit
+formula remain outside the Lean proof. Jensen's inequality now proves a
+coarse quantitative count of actual strip zeros from an explicit quadratic
+exponential circle-growth hypothesis. The sharp HSW count remains external.
+For an entire regularization and either this growth hypothesis or a
+quadratic count on actual zero occurrences, Lean proves absolute
 convergence of the direct unordered zero sum and nonnegativity of its real
 part. The earlier paired sequence endpoint remains for compatibility but is
 not required by the new direct-sum reduction.

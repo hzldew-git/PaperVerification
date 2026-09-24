@@ -1343,3 +1343,66 @@ TraceEuclidean.v15_completed_zero_order_eq_regularized_zero_order.{u_1} (K : Typ
 'TraceEuclidean.v15_completed_zero_order_eq_regularized_zero_order' depends on axioms: [propext,
  Classical.choice,
  Quot.sound]
+TraceEuclidean.V15DedekindZetaZeroOccurrence.boundedSet_ncard_le_divisor.{u_1} {K : Type u_1} [Field K] [NumberField K]
+  (Z : TraceEuclidean.V15DedekindZetaRegularization K) (T : ℝ) {B : Set ℂ} (hB : IsCompact B)
+  (hContain : ∀ o ∈ TraceEuclidean.V15DedekindZetaZeroOccurrence.boundedSet Z T, o.value ∈ B) :
+  ↑(TraceEuclidean.V15DedekindZetaZeroOccurrence.boundedSet Z T).ncard ≤
+    ∑ᶠ (z : ℂ), ↑((MeromorphicOn.divisor Z.value B) z)
+TraceEuclidean.V15DedekindZetaZeroOccurrence.boundedSet_ncard_le_jensen.{u_1} {K : Type u_1} [Field K] [NumberField K]
+  (Z : TraceEuclidean.V15DedekindZetaRegularization K) (T : ℝ) {c : ℂ} {r R M : ℝ} (hr : 0 < |r|) (hrR : |r| < |R|)
+  (hM : 1 ≤ M) (hc : Z.value c ≠ 0)
+  (hContain : ∀ o ∈ TraceEuclidean.V15DedekindZetaZeroOccurrence.boundedSet Z T, o.value ∈ Metric.closedBall c |r|)
+  (hBound : ∀ z ∈ Metric.sphere c |R|, ‖Z.value z‖ ≤ M) :
+  ↑(TraceEuclidean.V15DedekindZetaZeroOccurrence.boundedSet Z T).ncard ≤ Real.log (M / ‖Z.value c‖) / Real.log (R / r)
+TraceEuclidean.V15DedekindZetaZeroOccurrence.boundedSet_ncard_le_circle_growth.{u_1} {K : Type u_1} [Field K]
+  [NumberField K] (Z : TraceEuclidean.V15DedekindZetaRegularization K) {T : ℝ} (hT : 0 ≤ T) {c : ℂ} {M : ℝ} (hM : 1 ≤ M)
+  (hc : Z.value c ≠ 0) (hGrowth : ∀ z ∈ Metric.sphere c (2 * (‖c‖ + T + 2)), ‖Z.value z‖ ≤ M) :
+  ↑(TraceEuclidean.V15DedekindZetaZeroOccurrence.boundedSet Z T).ncard ≤ Real.log (M / ‖Z.value c‖) / Real.log 2
+TraceEuclidean.V15DedekindZetaZeroOccurrence.quadraticCount_of_circle_growth.{u_1} {K : Type u_1} [Field K]
+  [NumberField K] (Z : TraceEuclidean.V15DedekindZetaRegularization K) (c : ℂ) (hc : Z.value c ≠ 0) (A : ℝ) (hA : 0 ≤ A)
+  (hGrowth : ∀ (T : ℝ), 0 ≤ T → ∀ z ∈ Metric.sphere c (2 * (‖c‖ + T + 2)), ‖Z.value z‖ ≤ Real.exp (A * (1 + T) ^ 2)) :
+  TraceEuclidean.V15DedekindZetaZeroOccurrence.QuadraticCountInput Z ((A + |Real.log ‖Z.value c‖|) / Real.log 2)
+TraceEuclidean.V15DedekindZetaZeroOccurrence.phi_summable_of_circle_growth.{u_1} {K : Type u_1} [Field K]
+  [NumberField K] (Z : TraceEuclidean.V15DedekindZetaRegularization K) (c : ℂ) (hc : Z.value c ≠ 0) (A : ℝ) (hA : 0 ≤ A)
+  (hGrowth : ∀ (T : ℝ), 0 ≤ T → ∀ z ∈ Metric.sphere c (2 * (‖c‖ + T + 2)), ‖Z.value z‖ ≤ Real.exp (A * (1 + T) ^ 2)) :
+  Summable fun o => TraceEuclidean.v15OdlyzkoPhi o.value
+TraceEuclidean.V15DedekindZetaZeroOccurrence.phi_tsum_re_nonneg_of_circle_growth.{u_1} {K : Type u_1} [Field K]
+  [NumberField K] (Z : TraceEuclidean.V15DedekindZetaRegularization K) (c : ℂ) (hc : Z.value c ≠ 0) (A : ℝ) (hA : 0 ≤ A)
+  (hGrowth : ∀ (T : ℝ), 0 ≤ T → ∀ z ∈ Metric.sphere c (2 * (‖c‖ + T + 2)), ‖Z.value z‖ ≤ Real.exp (A * (1 + T) ^ 2)) :
+  0 ≤ (∑' (o : TraceEuclidean.V15DedekindZetaZeroOccurrence Z), TraceEuclidean.v15OdlyzkoPhi o.value).re
+TraceEuclidean.v15_odlyzkoTable4ExplicitCorrectionInput_of_circle_growth
+  (regularization : (K : TraceEuclidean.CodedNumberField) → TraceEuclidean.V15DedekindZetaRegularization ↥↑K)
+  (center : TraceEuclidean.CodedNumberField → ℂ)
+  (hCenter : ∀ (K : TraceEuclidean.CodedNumberField), (regularization K).value (center K) ≠ 0)
+  (A : TraceEuclidean.CodedNumberField → ℝ) (hA : ∀ (K : TraceEuclidean.CodedNumberField), 0 ≤ A K)
+  (hGrowth :
+    ∀ (K : TraceEuclidean.CodedNumberField) (T : ℝ),
+      0 ≤ T →
+        ∀ z ∈ Metric.sphere (center K) (2 * (‖center K‖ + T + 2)),
+          ‖(regularization K).value z‖ ≤ Real.exp (A K * (1 + T) ^ 2))
+  (hFormula :
+    TraceEuclidean.V15OdlyzkoExplicitFormulaInput fun K =>
+      (∑' (o : TraceEuclidean.V15DedekindZetaZeroOccurrence (regularization K)),
+          TraceEuclidean.v15OdlyzkoPhi o.value).re)
+  (hAB : TraceEuclidean.V15OdlyzkoABIntegralCertificate) : TraceEuclidean.V15OdlyzkoTable4ExplicitCorrectionInput
+'TraceEuclidean.V15DedekindZetaZeroOccurrence.boundedSet_ncard_le_divisor' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'TraceEuclidean.V15DedekindZetaZeroOccurrence.boundedSet_ncard_le_jensen' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'TraceEuclidean.V15DedekindZetaZeroOccurrence.boundedSet_ncard_le_circle_growth' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'TraceEuclidean.V15DedekindZetaZeroOccurrence.quadraticCount_of_circle_growth' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'TraceEuclidean.V15DedekindZetaZeroOccurrence.phi_summable_of_circle_growth' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'TraceEuclidean.V15DedekindZetaZeroOccurrence.phi_tsum_re_nonneg_of_circle_growth' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'TraceEuclidean.v15_odlyzkoTable4ExplicitCorrectionInput_of_circle_growth' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
