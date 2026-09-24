@@ -1,5 +1,13 @@
 # v16 statement delta and Mellin bridge (24 September 2026)
 
+**Later formalization update:** The field-specific theta/Mellin identities
+and entire Gamma normalization described below as pending have since been
+proved for every number field in the v15 verification code. See
+[the zeta-continuation construction](../v15/20_zeta_continuation_construction.md).
+The completed-zeta functional equation, circle-growth bound, and Stark/Weil
+formula remain open. The v16 statement comparison below was not rerun for
+this Lean-only update.
+
 ## Version comparison
 
 The local author files compared were `Trace-Euclidean-v15.tex` (SHA-256

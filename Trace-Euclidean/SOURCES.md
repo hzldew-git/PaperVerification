@@ -69,14 +69,14 @@ Lean checks its logarithmic normalization and a coarse reduction to the
 quadratic count used by the paired-zero convergence criterion. It also
 transfers a count on zero occurrences to any injective sequence of pair
 representatives and handles `0 <= T < 1` using the count at height one.
-The package now defines actual multiplicity-aware occurrences conditional
-on an entire regularization, proves finite-height exhaustion, and transfers
-a continuous bound from occurrence-free heights to all heights. It does not
-prove the cited analytic theorem or construct the entire regularization.
+The package now constructs an entire regularization, defines its actual
+multiplicity-aware zero occurrences, proves finite-height exhaustion, and
+transfers a continuous bound from occurrence-free heights to all heights.
+It does not prove the cited quantitative zero-count theorem.
 It also proves the HSW-to-quadratic reduction and direct unordered zero-sum
 convergence, without an ordered enumeration. The HSW Gamma factor equals
 mathlib's Deligne factors, and completed and regularized zero orders agree
-in the open critical strip, conditional on the regularization.
+in the open critical strip for the constructed regularization.
 See [the zero-count literature note](docs/audit/v15/16_zero_count_literature.md)
 and [the classical-source map](docs/audit/v15/18_classical_analytic_sources.md).
 

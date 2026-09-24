@@ -1,5 +1,13 @@
 # Reproducibility report
 
+- The zeta-continuation update passed a full local 8803-job Lean build. The
+  expanded 266-declaration axiom audit contains only `propext`,
+  `Classical.choice`, and `Quot.sound` for the audited endpoints, including
+  the constructed entire regularization and its Table 4 growth bridge.
+  The number-field theta/Mellin source and local changes are documented in
+  [the continuation note](20_zeta_continuation_construction.md). No Python
+  or Wolfram classification rerun is claimed for this Lean-only update.
+
 - The Mellin-bridge update completed a full local 8793-job Lean build. The expanded 263-declaration main axiom audit found only `propext`, `Classical.choice`, and `Quot.sound`. The separate numerical audit still exposes the same five generated native compiler axioms for the A/B certificate. The local v15-to-v16 statement comparison found 19 unchanged main theorem-like environments and one reworded remark; neither manuscript is in the public package. No new Python or Wolfram classification rerun is claimed for this Lean-only update.
 
 - The private author source and private frozen copy both have SHA-256 83a236e93648ce0802f8a0d3022de63710d089f3a4f7e61214a4c855459597b5.

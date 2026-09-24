@@ -37,20 +37,19 @@ complete kernel. Continuity in `a`, obtained from compact support, covers the
 two boundary weights. The resulting theorem proves `Re Phi(s) >= 0` for every
 `0 <= Re(s) <= 1` in Odlyzko's equation (2.2) normalization. A separate
 theorem makes any summable family of such zero contributions nonnegative.
-The existence and functional equation of the completed Dedekind zeta function,
-a growth bound for its entire regularization, and the Stark/Weil explicit
-formula remain outside the Lean proof. Jensen's inequality now proves a
+The completed Dedekind-zeta functional equation, a growth bound for its
+entire regularization, and the Stark/Weil explicit formula remain outside
+the Lean proof. Jensen's inequality now proves a
 coarse quantitative count of actual strip zeros from an explicit quadratic
 exponential circle-growth hypothesis. The sharp HSW count remains external.
-An Apache-2.0 abstract Mellin module from `mathlib-initiative/sum_product`
-has been ported to the pinned toolchain. Its analytic tail and half-plane
-agreement are proved, and `V15AnalyticMellinBridge` now proves the entire
-pole-removed expression and its reflection/functional equation. The bridge
-requires a separately proved entire normalization factor and right-half-plane
-identity with `NumberField.dedekindZeta`; thus it does not discharge the
-field-specific continuation premise. The source and v16-delta review are
-recorded in
-[the v16 progress note](docs/audit/v16/01_statement_delta_and_mellin_bridge.md).
+The Apache-2.0 number-field theta/Poisson and Mellin development from
+`mathlib-initiative/sum_product` has been ported to the pinned toolchain.
+`DedekindZeta.ZetaRegularization` proves the entire normalization factor and
+right-half-plane identity with `NumberField.dedekindZeta`; the resulting
+`V15DedekindZetaRegularization` is now constructed. The separate
+`V15AnalyticMellinBridge` retains its abstract reflection theorem. The
+source and exact proof boundary are recorded in
+[the continuation note](docs/audit/v15/20_zeta_continuation_construction.md).
 For an entire regularization and either this growth hypothesis or a
 quadratic count on actual zero occurrences, Lean proves absolute
 convergence of the direct unordered zero sum and nonnegativity of its real
@@ -63,9 +62,9 @@ is transferred to all heights, but the HSW bound at those regular heights
 remains an explicit input. The exact HSW Gamma normalization is identified
 with mathlib's Deligne factors, and the resulting completed function has
 the same zero positions and analytic multiplicities as the entire
-regularization inside the open critical strip. This correspondence is
-conditional on the regularization; no global entire completion or
-functional equation is inferred. Lean proves the
+regularization inside the open critical strip. The regularization now has a
+concrete construction; no completed-zeta functional equation is inferred.
+Lean proves the
 test function's differentiability and derivative decay condition, and derives
 the exact `E = 32/3` error integral from the source kernel. It also proves
 `Phi(0) = Phi(1) = 16/3` and their sum equals the exact error.

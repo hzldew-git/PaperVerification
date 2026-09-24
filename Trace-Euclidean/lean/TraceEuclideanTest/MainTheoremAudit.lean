@@ -496,6 +496,9 @@ import TraceEuclidean
 
 -- Pole-removed Dedekind zeta: uniqueness and multiplicity-aware zero occurrences.
 #check TraceEuclidean.V15DedekindZetaRegularization.exists_nonzero
+#check TraceEuclidean.v15ConstructedDedekindZetaRegularization
+#check TraceEuclidean.v15_odlyzkoTable4_of_constructed_circle_growth
+#check DedekindZeta.ZetaRegularization.dedekindZetaRegularized_eq
 #check TraceEuclidean.V15DedekindZetaRegularization.value_unique
 #check TraceEuclidean.V15DedekindZetaRegularization.zeroSet_discrete
 #check TraceEuclidean.V15DedekindZetaZeroOccurrence.fibre_card
@@ -504,6 +507,9 @@ import TraceEuclidean
 #check TraceEuclidean.V15DedekindZetaZeroOccurrence.paired_sum_summable_of_field_HSW
 
 #print axioms TraceEuclidean.V15DedekindZetaRegularization.exists_nonzero
+#print axioms TraceEuclidean.v15ConstructedDedekindZetaRegularization
+#print axioms TraceEuclidean.v15_odlyzkoTable4_of_constructed_circle_growth
+#print axioms DedekindZeta.ZetaRegularization.dedekindZetaRegularized_eq
 #print axioms TraceEuclidean.V15DedekindZetaRegularization.value_unique
 #print axioms TraceEuclidean.V15DedekindZetaZeroOccurrence.boundedSet_finite
 #print axioms TraceEuclidean.V15DedekindZetaZeroOccurrence.corollary12_of_numeric

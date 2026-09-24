@@ -10,20 +10,15 @@ compares the author's revised manuscript with this frozen v15 baseline: all
 match after whitespace and label normalization. One remark was reworded.
 The comparison script accepts local TeX paths; neither manuscript is published.
 
-The analytic-number-theory modules `V15DedekindZetaZeros.lean`,
-`V15DedekindZetaConjugation.lean`, and `V15DedekindZetaZeroHeight.lean`
-prove uniqueness, nonvanishing, and conjugation symmetry of any entire
-continuation of `(s-1) ζ_K(s)`, finite-height exhaustion of its zeros with
-multiplicity, and the extension of a continuous zero-count bound from
-regular heights to all heights. The
-[classical-source note](docs/audit/v15/18_classical_analytic_sources.md)
-maps these results to the cited books and papers. Existence of the
-continuation, the published quantitative count at regular heights, and the
-Stark/Weil explicit formula remain explicit proof boundaries.
-The newly imported abstract Mellin principle and its pole-removal/reflection
-bridge prove an entire abstract candidate and its functional equation. The
-number-field theta-to-zeta identification and normalization are still needed
-to construct the actual Dedekind-zeta continuation.
+The vendored number-field theta/Mellin development now constructs an entire
+continuation of `(s-1) ζ_K(s)` for every number field. Its value is used by
+`V15DedekindZetaConstructed.lean`, closing the existence premise of the zero
+theory. The earlier uniqueness, nonvanishing, conjugation, and finite-height
+theorems apply to this constructed function. The
+[continuation proof note](docs/audit/v15/20_zeta_continuation_construction.md)
+records its source and exact Lean endpoints. The completed-zeta functional
+equation, an explicit growth bound, the published quantitative zero count,
+and the Stark/Weil explicit formula remain proof boundaries.
 
 This package contains Lean 4 proofs, independent Python and Wolfram checks,
 extracted v15 inputs, machine-readable results, and an English
@@ -124,8 +119,8 @@ small-degree discriminant input is now proved from Minkowski's bound. The
 exact minima in degrees 2--9, the degree-ten enumeration result, the optimized
 degree-eleven bound 14.083, and the analytic theorem behind Odlyzko's Table 4
 remain explicit external mathematical inputs. Within that last theorem, the
-unformalized analytic steps are Dedekind-zeta continuation and its functional
-equation, the Stark/Weil explicit formula, and an actual quantitative zero
+unformalized analytic steps are the completed-zeta functional equation,
+the Stark/Weil explicit formula, and an actual quantitative zero
 count. Lean now proves the uniform fourth-power decay estimate for the exact
 source transform and deduces absolute convergence of the direct unordered
 sum over actual zero occurrences from a quadratic count. It checks that the

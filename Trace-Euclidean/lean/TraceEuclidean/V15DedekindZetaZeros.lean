@@ -8,8 +8,9 @@ import Mathlib.NumberTheory.NumberField.DedekindZeta
 # Zero occurrences for a regularized Dedekind zeta continuation
 
 An entire continuation of `(s - 1) * ζ_K(s)` is recorded as explicit data.
-Its existence is not supplied by the pinned mathlib. The class-number-formula
-residue, which *is* in mathlib, forces any such continuation to be nonzero.
+Its existence is supplied in `V15DedekindZetaConstructed` from the vendored
+number-field theta/Mellin development. The class-number-formula residue
+forces any such continuation to be nonzero.
 The remaining theorems prove uniqueness, discrete zeros, and an occurrence
 type whose finite fibres have exactly the analytic zero multiplicity.
 -/

@@ -1136,6 +1136,24 @@ TraceEuclidean.v15_odlyzkoTable4ExplicitCorrectionInput_of_count
  Quot.sound]
 TraceEuclidean.V15DedekindZetaRegularization.exists_nonzero.{u_1} {K : Type u_1} [Field K] [NumberField K]
   (Z : TraceEuclidean.V15DedekindZetaRegularization K) : ∃ s, Z.value s ≠ 0
+TraceEuclidean.v15ConstructedDedekindZetaRegularization.{u_1} (K : Type u_1) [Field K] [NumberField K] :
+  TraceEuclidean.V15DedekindZetaRegularization K
+TraceEuclidean.v15_odlyzkoTable4_of_constructed_circle_growth (center : TraceEuclidean.CodedNumberField → ℂ)
+  (hCenter :
+    ∀ (K : TraceEuclidean.CodedNumberField), (TraceEuclidean.v15ConstructedRegularizationFamily K).value (center K) ≠ 0)
+  (A : TraceEuclidean.CodedNumberField → ℝ) (hA : ∀ (K : TraceEuclidean.CodedNumberField), 0 ≤ A K)
+  (hGrowth :
+    ∀ (K : TraceEuclidean.CodedNumberField) (T : ℝ),
+      0 ≤ T →
+        ∀ z ∈ Metric.sphere (center K) (2 * (‖center K‖ + T + 2)),
+          ‖(TraceEuclidean.v15ConstructedRegularizationFamily K).value z‖ ≤ Real.exp (A K * (1 + T) ^ 2))
+  (hFormula :
+    TraceEuclidean.V15OdlyzkoExplicitFormulaInput fun K =>
+      (∑' (o : TraceEuclidean.V15DedekindZetaZeroOccurrence (TraceEuclidean.v15ConstructedRegularizationFamily K)),
+          TraceEuclidean.v15OdlyzkoPhi o.value).re)
+  (hAB : TraceEuclidean.V15OdlyzkoABIntegralCertificate) : TraceEuclidean.V15OdlyzkoTable4ExplicitCorrectionInput
+DedekindZeta.ZetaRegularization.dedekindZetaRegularized_eq.{u_1} (K : Type u_1) [Field K] [NumberField K] {s : ℂ}
+  (hs : 1 < s.re) : DedekindZeta.ZetaRegularization.dedekindZetaRegularized K s = (s - 1) * NumberField.dedekindZeta K s
 TraceEuclidean.V15DedekindZetaRegularization.value_unique.{u_1} {K : Type u_1} [Field K] [NumberField K]
   (Z W : TraceEuclidean.V15DedekindZetaRegularization K) : Z.value = W.value
 TraceEuclidean.V15DedekindZetaRegularization.zeroSet_discrete.{u_1} {K : Type u_1} [Field K] [NumberField K]
@@ -1161,6 +1179,11 @@ TraceEuclidean.V15DedekindZetaZeroOccurrence.paired_sum_summable_of_field_HSW.{u
       TraceEuclidean.v15OdlyzkoPhi (representative i).value +
         TraceEuclidean.v15OdlyzkoPhi ((starRingEnd ℂ) (representative i).value)
 'TraceEuclidean.V15DedekindZetaRegularization.exists_nonzero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15ConstructedDedekindZetaRegularization' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15_odlyzkoTable4_of_constructed_circle_growth' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'DedekindZeta.ZetaRegularization.dedekindZetaRegularized_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
 'TraceEuclidean.V15DedekindZetaRegularization.value_unique' depends on axioms: [propext, Classical.choice, Quot.sound]
 'TraceEuclidean.V15DedekindZetaZeroOccurrence.boundedSet_finite' depends on axioms: [propext,
  Classical.choice,
@@ -1406,3 +1429,53 @@ TraceEuclidean.v15_odlyzkoTable4ExplicitCorrectionInput_of_circle_growth
 'TraceEuclidean.v15_odlyzkoTable4ExplicitCorrectionInput_of_circle_growth' depends on axioms: [propext,
  Classical.choice,
  Quot.sound]
+DedekindZeta.MellinPrinciple.mellinTail_analyticOn {f g : ℝ → ℂ} {a₀ b₀ C : ℂ} {k c α : ℝ}
+  (h : DedekindZeta.MellinPrinciple.IsMellinPair f g a₀ b₀ C k c α) :
+  AnalyticOnNhd ℂ (DedekindZeta.MellinPrinciple.mellinTail f g a₀ b₀ C k) Set.univ
+DedekindZeta.MellinPrinciple.mellinContinuation_eq {f g : ℝ → ℂ} {a₀ b₀ C : ℂ} {k c α : ℝ}
+  (h : DedekindZeta.MellinPrinciple.IsMellinPair f g a₀ b₀ C k c α) {s : ℂ} (hs : k < s.re) :
+  DedekindZeta.MellinPrinciple.mellinContinuation f g a₀ b₀ C k s = DedekindZeta.MellinPrinciple.reducedMellin f a₀ s
+TraceEuclidean.V15AnalyticMellin.poleRemovedMellin_analyticOn {f g : ℝ → ℂ} {a₀ b₀ C : ℂ} {k c α : ℝ}
+  (h : DedekindZeta.MellinPrinciple.IsMellinPair f g a₀ b₀ C k c α) :
+  AnalyticOnNhd ℂ (TraceEuclidean.V15AnalyticMellin.poleRemovedMellin f g a₀ b₀ C k) Set.univ
+TraceEuclidean.V15AnalyticMellin.poleRemovedMellin_eq_mul_continuation {f g : ℝ → ℂ} {a₀ b₀ C : ℂ} {k : ℝ} (s : ℂ)
+  (hs₀ : s ≠ 0) (hsk : s ≠ ↑k) :
+  TraceEuclidean.V15AnalyticMellin.poleRemovedMellin f g a₀ b₀ C k s =
+    s * (s - ↑k) * DedekindZeta.MellinPrinciple.mellinContinuation f g a₀ b₀ C k s
+TraceEuclidean.V15AnalyticMellin.mellinTail_reflection {f g : ℝ → ℂ} {a₀ b₀ C : ℂ} {k c α : ℝ}
+  (h : DedekindZeta.MellinPrinciple.IsMellinPair f g a₀ b₀ C k c α) (s : ℂ) :
+  DedekindZeta.MellinPrinciple.mellinTail f g a₀ b₀ C k s =
+    C * DedekindZeta.MellinPrinciple.mellinTail g f b₀ a₀ C⁻¹ k (↑k - s)
+TraceEuclidean.V15AnalyticMellin.poleRemovedMellin_reflection {f g : ℝ → ℂ} {a₀ b₀ C : ℂ} {k c α : ℝ}
+  (h : DedekindZeta.MellinPrinciple.IsMellinPair f g a₀ b₀ C k c α) (s : ℂ) :
+  TraceEuclidean.V15AnalyticMellin.poleRemovedMellin f g a₀ b₀ C k s =
+    C * TraceEuclidean.V15AnalyticMellin.poleRemovedMellin g f b₀ a₀ C⁻¹ k (↑k - s)
+TraceEuclidean.V15AnalyticMellin.mellinContinuation_reflection {f g : ℝ → ℂ} {a₀ b₀ C : ℂ} {k c α : ℝ}
+  (h : DedekindZeta.MellinPrinciple.IsMellinPair f g a₀ b₀ C k c α) (s : ℂ) (hs₀ : s ≠ 0) (hsk : s ≠ ↑k) :
+  DedekindZeta.MellinPrinciple.mellinContinuation f g a₀ b₀ C k s =
+    C * DedekindZeta.MellinPrinciple.mellinContinuation g f b₀ a₀ C⁻¹ k (↑k - s)
+TraceEuclidean.V15AnalyticMellin.regularizationOfMellinPair.{u_1} {f g : ℝ → ℂ} {a₀ b₀ C : ℂ} {k c α : ℝ} (K : Type u_1)
+  [Field K] [NumberField K] (h : DedekindZeta.MellinPrinciple.IsMellinPair f g a₀ b₀ C k c α) (m : ℂ → ℂ)
+  (hm : AnalyticOnNhd ℂ m Set.univ)
+  (hThetaZeta :
+    ∀ (s : ℂ),
+      1 < s.re →
+        m s * TraceEuclidean.V15AnalyticMellin.poleRemovedMellin f g a₀ b₀ C k s =
+          (s - 1) * NumberField.dedekindZeta K s) :
+  TraceEuclidean.V15DedekindZetaRegularization K
+'DedekindZeta.MellinPrinciple.mellinTail_analyticOn' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DedekindZeta.MellinPrinciple.mellinContinuation_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.V15AnalyticMellin.poleRemovedMellin_analyticOn' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'TraceEuclidean.V15AnalyticMellin.poleRemovedMellin_eq_mul_continuation' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'TraceEuclidean.V15AnalyticMellin.mellinTail_reflection' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.V15AnalyticMellin.poleRemovedMellin_reflection' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'TraceEuclidean.V15AnalyticMellin.mellinContinuation_reflection' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'TraceEuclidean.V15AnalyticMellin.regularizationOfMellinPair' depends on axioms: [propext, Classical.choice, Quot.sound]

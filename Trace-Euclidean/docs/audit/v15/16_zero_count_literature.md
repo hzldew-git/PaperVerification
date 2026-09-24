@@ -50,7 +50,7 @@ lose multiplicity. The following deductions are Lean theorems:
 The cited zero-count theorem itself is **still an external analytic input**.
 `V15DedekindZetaZeros.lean` now defines an entire continuation of
 `(s-1) ζ_K(s)` as an explicit structure. Existence of that continuation is
-not asserted. Using mathlib's class-number-formula residue, Lean proves that
+now proved in `V15DedekindZetaConstructed.lean` from the vendored number-field theta/Mellin development. Using mathlib's class-number-formula residue, Lean proves that
 any such continuation is nonzero; the analytic identity theorem then makes
 it unique. Its zero set is closed and discrete, so every compact region has
 finitely many distinct zero positions. A sigma type gives each critical-strip
@@ -102,7 +102,7 @@ zero orders with the pole-removed regularization there. These results are
 conditional on the entire regularization and do not prove a global
 functional equation or HSW's numerical bound.
 
-## Transform decay now proved; global zeta remains
+## Transform decay and entire zeta continuation now proved; further global theory remains
 
 For the transform estimate, the pinned mathlib module
 [`FourierTransformDeriv`](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Analysis/Fourier/FourierTransformDeriv.html)
@@ -112,28 +112,29 @@ regularity, fourth-derivative integrability, uniform closed-strip `L^1`
 bounds, and the exact `|t|^{-4}` Fourier estimate. Thus the transform decay
 premise has been discharged in Lean for the printed `b=4` kernel.
 
-For global zeta continuation and the functional equation, mathlib's
+For the remaining completed-zeta functional equation, mathlib's
 [`WeakFEPair`](https://leanprover-community.github.io/mathlib4_docs/Mathlib/NumberTheory/LSeries/AbstractFuncEq.html)
 already supplies a **generic** Mellin-transform continuation and functional
 equation. The pinned
 [`DedekindZeta`](https://leanprover-community.github.io/mathlib4_docs/Mathlib/NumberTheory/NumberField/DedekindZeta.html)
 module gives the ideal-norm Dirichlet series and the right-hand residue at
-one, but no concrete number-field theta/Poisson data to instantiate that
-generic framework. Hasanalizade--Shen--Wong, equations (2.1)--(2.2), fixes
+one. The vendored number-field theta/Poisson modules now prove the entire
+regularization and its agreement with that series on `Re(s)>1`; their
+dual-ideal class reindexing has not yet yielded a global functional equation.
+Hasanalizade--Shen--Wong, equations (2.1)--(2.2), fixes
 the gamma-factor normalization to match. Odlyzko's
 [1990 survey, equations (2.2)--(2.6)](https://www.numdam.org/item/JTNB_1990__2_1_119_0.pdf)
 then provides the source normalization for the explicit formula. This is a
-substantial separate development: the completed zeta function, its zeros,
+substantial separate development: a growth or sharp zero-count estimate,
 the contour or distribution argument, and the identity for the exact
 `b=4` test function still need Lean proofs.
 
 ## Practical next proof boundary
 
-The next independent target is constructing the entire regularization from
-number-field theta/Poisson data, proving its functional equation, and
-obtaining a coarse count from growth or HSW's sharp count from an
+The next independent targets are proving the completed-zeta functional
+equation and obtaining a coarse count from growth or HSW's sharp count from an
 argument-principle proof. The pinned mathlib contains Jensen's inequality
 in `Mathlib.Analysis.Complex.JensenFormula`; using it still requires a
-global growth estimate and a bridge from divisor sums to the project's
-multiplicity-aware occurrences. The Stark/Weil explicit formula remains a
+global growth estimate; the bridge from divisor sums to the project's
+multiplicity-aware occurrences is already proved. The Stark/Weil explicit formula remains a
 separate, larger source-to-Lean gap.

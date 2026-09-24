@@ -18,6 +18,9 @@ rev = "v4.32.1"
 name = "TraceEuclidean"
 
 [[lean_lib]]
+name = "DedekindZeta"
+
+[[lean_lib]]
 name = "TraceEuclideanTest"
 
 [[lean_lib]]
