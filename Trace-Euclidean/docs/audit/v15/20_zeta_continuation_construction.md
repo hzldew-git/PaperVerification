@@ -53,6 +53,14 @@ former poles. A global completed-zeta functional equation still requires a
 proof that these dual fractional-ideal terms reindex over the entire class
 group with the correct discriminant and norm factors.
 
+`DedekindZeta.DualClassReindex` now proves the algebraic part of that
+reindexing: the dual ideal `(𝔞𝔡)⁻¹` lies in the class
+`([𝔞][𝔡])⁻¹`, this correspondence permutes the finite class group, and
+finite sums may be reindexed along it. To obtain the functional equation,
+the remaining step is to identify the radial theta term for each dual
+fractional ideal with the chosen integral representative of its class,
+including the scaling of the norm and discriminant factors.
+
 ## Trust and remaining work
 
 The local full Lean build and `MainTheoremAudit` pass. The new construction,

@@ -9,9 +9,11 @@ See `../THIRD_PARTY_LICENSES/sum_product_APACHE-2.0.txt`.
 `ConeRadialReduction`, `ConeMellinBridge`, and `PerClass` are upstream files
 with small proof adaptations for Lean 4.32.1 and this repository's existing
 copy of `MellinPrinciple` (`TraceEuclidean.AnalyticMellinPrinciple`).
-`GlobalContinuation` and `ZetaRegularization` are new modules added for this
-verification project. Their public theorems prove an entire continuation of
-`(s - 1) * NumberField.dedekindZeta K s` for every number field `K`.
+`GlobalContinuation`, `ZetaRegularization`, and `DualClassReindex` are new
+modules added for this verification project. Their public theorems prove an
+entire continuation of `(s - 1) * NumberField.dedekindZeta K s` for every
+number field `K`, and the class-group permutation induced by the trace-dual
+fractional ideal.
 
 The functional equation, quantitative growth bound, and Stark/Weil explicit
 formula require separate proofs.

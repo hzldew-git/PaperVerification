@@ -615,3 +615,11 @@ import TraceEuclidean
 #print axioms TraceEuclidean.V15AnalyticMellin.poleRemovedMellin_reflection
 #print axioms TraceEuclidean.V15AnalyticMellin.mellinContinuation_reflection
 #print axioms TraceEuclidean.V15AnalyticMellin.regularizationOfMellinPair
+
+-- The trace-dual fractional ideal induces a permutation of ideal classes.
+#check DedekindZeta.DualClassReindex.class_dualIdeal
+#check DedekindZeta.DualClassReindex.class_dualIdeal_idealClassRep
+#check DedekindZeta.DualClassReindex.sum_dualClassPermutation
+#print axioms DedekindZeta.DualClassReindex.class_dualIdeal
+#print axioms DedekindZeta.DualClassReindex.class_dualIdeal_idealClassRep
+#print axioms DedekindZeta.DualClassReindex.sum_dualClassPermutation
