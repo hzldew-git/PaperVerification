@@ -1,7 +1,7 @@
 # Reproducibility report
 
 - The zeta-continuation update passed a full local 8803-job Lean build. The
-  expanded 266-declaration axiom audit contains only `propext`,
+  expanded 267-declaration axiom audit contains only `propext`,
   `Classical.choice`, and `Quot.sound` for the audited endpoints, including
   the constructed entire regularization and its Table 4 growth bridge.
   The number-field theta/Mellin source and local changes are documented in

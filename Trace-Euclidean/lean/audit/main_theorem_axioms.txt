@@ -1138,6 +1138,14 @@ TraceEuclidean.V15DedekindZetaRegularization.exists_nonzero.{u_1} {K : Type u_1}
   (Z : TraceEuclidean.V15DedekindZetaRegularization K) : ∃ s, Z.value s ≠ 0
 TraceEuclidean.v15ConstructedDedekindZetaRegularization.{u_1} (K : Type u_1) [Field K] [NumberField K] :
   TraceEuclidean.V15DedekindZetaRegularization K
+TraceEuclidean.v15_completedPartialZeta_reflected_radial.{u_1} (K : Type u_1) [Field K] [NumberField K]
+  (𝔞 : Ideal (NumberField.RingOfIntegers K)) (hne : 𝔞 ≠ 0) (s : ℂ) (hs₀ : s ≠ 0) (hs₁ : s ≠ 1) :
+  DedekindZeta.GlobalContinuation.completedPartialZetaContinuation K 𝔞 s =
+    1 / ↑(NumberField.Units.torsionOrder K) * ↑(Ideal.absNorm 𝔞) ^ s * ↑|NumberField.discr K| ^ (s / 2) *
+      ((↑(DedekindZeta.Theta.covolume K 𝔞))⁻¹ *
+        DedekindZeta.MellinPrinciple.mellinContinuation (DedekindZeta.ConeRadialReduction.radialThetaDual K 𝔞)
+          (DedekindZeta.ConeRadialReduction.radialTheta K 𝔞) (DedekindZeta.ConeRadialReduction.surfaceVolume K)
+          (DedekindZeta.ConeRadialReduction.surfaceVolume K) (↑(DedekindZeta.Theta.covolume K 𝔞))⁻¹⁻¹ 1 (1 - s))
 TraceEuclidean.v15_odlyzkoTable4_of_constructed_circle_growth (center : TraceEuclidean.CodedNumberField → ℂ)
   (hCenter :
     ∀ (K : TraceEuclidean.CodedNumberField), (TraceEuclidean.v15ConstructedRegularizationFamily K).value (center K) ≠ 0)
@@ -1180,6 +1188,7 @@ TraceEuclidean.V15DedekindZetaZeroOccurrence.paired_sum_summable_of_field_HSW.{u
         TraceEuclidean.v15OdlyzkoPhi ((starRingEnd ℂ) (representative i).value)
 'TraceEuclidean.V15DedekindZetaRegularization.exists_nonzero' depends on axioms: [propext, Classical.choice, Quot.sound]
 'TraceEuclidean.v15ConstructedDedekindZetaRegularization' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15_completedPartialZeta_reflected_radial' depends on axioms: [propext, Classical.choice, Quot.sound]
 'TraceEuclidean.v15_odlyzkoTable4_of_constructed_circle_growth' depends on axioms: [propext,
  Classical.choice,
  Quot.sound]

@@ -46,6 +46,13 @@ regularization exists. It still states the circle-growth estimate, the
 source explicit formula, and the already certified archimedean bounds as
 explicit premises.
 
+The field-specific theorem `v15_completedPartialZeta_reflected_radial`
+instantiates the abstract Mellin reflection for every nonzero integral ideal.
+It identifies the reflected *dual radial* Mellin expression away from the
+former poles. A global completed-zeta functional equation still requires a
+proof that these dual fractional-ideal terms reindex over the entire class
+group with the correct discriminant and norm factors.
+
 ## Trust and remaining work
 
 The local full Lean build and `MainTheoremAudit` pass. The new construction,

@@ -1,6 +1,7 @@
 import DedekindZeta.ZetaRegularization
 import TraceEuclidean.V15DedekindZetaZeros
 import TraceEuclidean.V15DedekindZetaJensenCount
+import TraceEuclidean.V15AnalyticMellinBridge
 
 /-!
 # Constructing the regularized Dedekind zeta used by the zero theory
@@ -13,6 +14,32 @@ previously conditional zero-theory interface.
 namespace TraceEuclidean
 
 noncomputable section
+
+open NumberField DedekindZeta.ConeRadialReduction DedekindZeta.MellinPrinciple
+open scoped nonZeroDivisors
+
+/-- Each continued partial zeta has the expected reflected dual radial
+Mellin expression away from the former pole locations. Assembling the
+completed zeta functional equation additionally requires reindexing the
+dual fractional ideals across the class group. -/
+theorem v15_completedPartialZeta_reflected_radial
+    (K : Type*) [Field K] [NumberField K]
+    (𝔞 : Ideal (𝓞 K)) (hne : 𝔞 ≠ 0) (s : ℂ)
+    (hs₀ : s ≠ 0) (hs₁ : s ≠ 1) :
+    DedekindZeta.GlobalContinuation.completedPartialZetaContinuation K 𝔞 s =
+      (1 / (NumberField.Units.torsionOrder K : ℂ)) *
+        (Ideal.absNorm 𝔞 : ℂ) ^ s *
+          (((|NumberField.discr K| : ℤ) : ℂ) ^ (s / 2)) *
+            (((DedekindZeta.Theta.covolume K 𝔞 : ℂ)⁻¹) *
+              mellinContinuation (radialThetaDual K 𝔞) (radialTheta K 𝔞)
+                (surfaceVolume K) (surfaceVolume K)
+                (((DedekindZeta.Theta.covolume K 𝔞 : ℂ)⁻¹)⁻¹)
+                1 (1 - s)) := by
+  obtain ⟨c, α, hpair⟩ :=
+    exists_isMellinPair_radialTheta (K := K) 𝔞 hne
+  unfold DedekindZeta.GlobalContinuation.completedPartialZetaContinuation
+  rw [V15AnalyticMellin.mellinContinuation_reflection hpair s hs₀ hs₁]
+  simp only [Complex.ofReal_one, sub_eq_add_neg, add_comm]
 
 /-- The actual entire regularization of Dedekind zeta supplied by the
 number-field theta/Mellin construction. -/
