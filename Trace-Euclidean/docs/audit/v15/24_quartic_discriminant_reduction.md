@@ -55,8 +55,9 @@ nonlinear arithmetic and a finite elimination of the remaining `s3` values.
 ## Bridge to an algebraic integer
 
 The modules `V15QuarticPowerBasis`, `V15QuarticGeneratorArithmetic`,
-`V15QuarticGeneratorSpread`, and `V15QuarticHermite` prove the following facts
-for a primitive integral generator `a` of a quartic number field.
+`V15QuarticGeneratorNormalization`, `V15QuarticGeneratorSpread`, and
+`V15QuarticHermite` prove the following facts for a primitive integral
+generator `a` of a quartic number field.
 
 - The explicit quartic is the integer minpoly of `a`.
 - Its power-basis discriminant equals the displayed quartic polynomial.
@@ -70,6 +71,10 @@ for a primitive integral generator `a` of a quartic number field.
   strictly positive.
 - The displayed third Hermite minor is the Gram determinant of the embedded
   vectors `1,a,a^2`, hence is strictly positive.
+- Integral translation and the required translation-after-negation are
+  performed on the actual algebraic integer, preserve primitivity, spread,
+  Hermite minor, and discriminant, and produce an actual normalized generator
+  with trace coefficient in `{0,1,2}`.
 
 Thus irreducibility, positivity of the spread, positivity of the third Hermite
 minor, positivity of the polynomial discriminant, and the index relation no
@@ -108,16 +113,32 @@ inequality. After the projection and number-field bridges this gives
 
 without `V15HermiteThreeInput`. The corresponding kernel-checked coefficient
 search proves that an irreducible normalized quartic then has polynomial
-discriminant in
+coefficients in exactly the six rows
+
+```text
+(0,-4,-1,1), (0,-4,0,1), (0,-4,0,2),
+(0,-4,1,1),  (1,-3,-1,1), (2,-2,-3,1).
+```
+
+Their polynomial discriminants lie in
 
 ```text
 {725, 1957, 2048, 2304}.
 ```
 
-Thus this route removes the sharp Hermite theorem from the geometric step,
-but does not yet prove the field-discriminant lower bound by itself. The extra
-`2048` and `2304` polynomial orders require index or maximal-order arguments;
-they must not be discarded merely because the finite enumeration compiles.
+The field-discriminant/index relation eliminates the `725` and `1957` rows
+when `29 < |D_K| < 725`, leaving the `2048` and `2304` rows. The module
+`V15QuarticOrderMaximality` then proves that the `2048` polynomial is
+Eisenstein at `2`, that every algebraic integer belongs to its power order,
+and hence that its field discriminant is exactly `2048`. This contradicts
+`|D_K| < 725`, so the weak route reduces an actual primitive generator to the
+single row `(0,-4,0,1)` of polynomial discriminant `2304`.
+
+For this `2304` row, translating the generator by `-1` produces a polynomial
+that is Eisenstein at `2`. Lean consequently proves that `9x` belongs to the
+power order for every algebraic integer `x`. Thus the complete `2`-primary
+index obstruction is removed; proving `3`-primary saturation of this order is
+the remaining arithmetic step.
 
 ## Section 4 endpoint
 
@@ -159,10 +180,13 @@ the strict spread bound. This second task is exactly
 `V15QuarticPrimitiveShortSelectionInput`. The coefficient inequalities are
 now internal and are no longer part of either task.
 
-The weaker Minkowski route replaces the first task by exact treatment of the
-additional polynomial discriminants `2048` and `2304`; it still needs the
-primitive-vector selection step. This gives two separately audited ways to
-continue rather than silently assuming either missing result.
+The weaker Minkowski route no longer needs the sharp Hermite theorem. It still
+needs the primitive-vector selection step, because the nonrational short
+vector may lie in a quadratic subfield. Once a primitive generator is
+available, Lean normalizes it, eliminates five of the six exact rows, and
+leaves only the `2304` row. Closing this route therefore requires both the
+selection theorem and the remaining `3`-primary maximal-order argument for
+`X^4 - 4X^2 + 1`.
 
 Once this premise is proved, no separate degree-four minimum-discriminant table
 input remains in the strengthened Section 4 chain. The current code and axiom

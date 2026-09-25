@@ -19,6 +19,18 @@ noncomputable section
 open NumberField Module Polynomial
 open scoped Matrix NumberField
 
+/-- A quartic ring of integers admits an integral basis indexed by `Fin 4`. -/
+theorem v15_exists_ringOfIntegers_basis_fin_four
+    (K : Type*) [Field K] [NumberField K]
+    (hdegree : Module.finrank ℚ K = 4) :
+    Nonempty (Basis (Fin 4) ℤ (𝓞 K)) := by
+  let e : Module.Free.ChooseBasisIndex ℤ (𝓞 K) ≃ Fin 4 :=
+    Fintype.equivOfCardEq (by
+      rw [← Module.finrank_eq_card_basis
+        (NumberField.RingOfIntegers.basis K)]
+      exact (NumberField.RingOfIntegers.rank K).trans hdegree)
+  exact ⟨(NumberField.RingOfIntegers.basis K).reindex e⟩
+
 /-- The four signed elementary coefficients of an integral quartic minimal
 polynomial. -/
 def v15QuarticS1

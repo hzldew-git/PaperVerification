@@ -1,5 +1,18 @@
 # Reproducibility report
 
+- The quartic weak-Minkowski order update passed a full local 8858-job Lean
+  build under the pinned Lean 4.32.1 and mathlib v4.32.1 toolchain. The
+  expanded 435-declaration main audit reports only `propext`,
+  `Classical.choice`, and `Quot.sound`; the separate 29-declaration numerical
+  audit exposes exactly the same five documented `native_decide`
+  dependencies. Lean now kernel-checks the exact six normalized rows under
+  spread below `35`, normalizes the actual primitive generator, proves the
+  `2048` power order maximal, reduces the weak route to the single `2304`
+  row under `29 < |D_K| < 725`, and removes that row's complete `2`-primary
+  denominator. Its `3`-primary saturation and primitive-vector selection
+  remain explicit boundaries. Public reruns produced 1156 Python PASS and
+  115 Wolfram PASS with zero failures. Both forbidden-construct scans passed,
+  and the manuscript guard inspected 268 files and passed.
 - The quartic Hunter-projection update passed a full local 8855-job Lean
   build under the pinned Lean 4.32.1 and mathlib v4.32.1 toolchain. The
   expanded 418-declaration main audit reports only `propext`,

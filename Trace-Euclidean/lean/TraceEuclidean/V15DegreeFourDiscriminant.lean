@@ -473,12 +473,18 @@ private def v15QuarticAdmissibleThirtyFive
     0 < v15QuarticHermiteMinorThree s1 s2 s3 s4 ∧
     0 < v15QuarticDiscriminant s1 s2 s3 s4)
 
+private def v15QuarticExceptionalRowThirtyFive
+    (s1 s2 s3 s4 : ℤ) : Bool :=
+  decide ((s1 = 0 ∧ s2 = -4 ∧ s3 = -1 ∧ s4 = 1) ∨
+    (s1 = 0 ∧ s2 = -4 ∧ s3 = 0 ∧ s4 = 1) ∨
+    (s1 = 0 ∧ s2 = -4 ∧ s3 = 0 ∧ s4 = 2) ∨
+    (s1 = 0 ∧ s2 = -4 ∧ s3 = 1 ∧ s4 = 1) ∨
+    (s1 = 1 ∧ s2 = -3 ∧ s3 = -1 ∧ s4 = 1) ∨
+    (s1 = 2 ∧ s2 = -2 ∧ s3 = -3 ∧ s4 = 1))
+
 private def v15QuarticOutcomeThirtyFive
     (s1 s2 s3 s4 : ℤ) : Bool :=
-  decide (v15QuarticDiscriminant s1 s2 s3 s4 = 725) ||
-    decide (v15QuarticDiscriminant s1 s2 s3 s4 = 1957) ||
-    decide (v15QuarticDiscriminant s1 s2 s3 s4 = 2048) ||
-    decide (v15QuarticDiscriminant s1 s2 s3 s4 = 2304) ||
+  v15QuarticExceptionalRowThirtyFive s1 s2 s3 s4 ||
     v15QuarticRootSearch s1 s2 s3 s4 ||
     v15QuarticFactorSearch s1 s2 s3 s4
 
@@ -497,9 +503,9 @@ private theorem v15_quarticFiniteCheckThirtyFive_true :
     v15QuarticFiniteCheckThirtyFive = true := by
   decide
 
-/-- Under the weaker Minkowski spread bound, the irreducible normalized
-quartics have one of four explicitly checked polynomial discriminants. -/
-theorem v15_normalized_quartic_discriminant_candidates_of_spread_lt_thirtyFive
+/-- Under the weaker Minkowski spread bound, every irreducible normalized
+quartic is one of six explicitly checked coefficient rows. -/
+theorem v15_normalized_quartic_rows_of_spread_lt_thirtyFive
     (s1 s2 s3 s4 : ℤ)
     (hs1 : 0 ≤ s1) (hs1' : s1 ≤ 2)
     (hs2 : -4 ≤ s2) (hs2' : s2 ≤ 2)
@@ -512,10 +518,12 @@ theorem v15_normalized_quartic_discriminant_candidates_of_spread_lt_thirtyFive
     (hnoRoot : ∀ z : ℤ, v15QuarticEval s1 s2 s3 s4 z ≠ 0)
     (hnoQuadratic : ∀ u v p q : ℤ,
       ¬V15QuarticQuadraticFactorWitness s1 s2 s3 s4 u v p q) :
-    v15QuarticDiscriminant s1 s2 s3 s4 = 725 ∨
-      v15QuarticDiscriminant s1 s2 s3 s4 = 1957 ∨
-      v15QuarticDiscriminant s1 s2 s3 s4 = 2048 ∨
-      v15QuarticDiscriminant s1 s2 s3 s4 = 2304 := by
+    (s1 = 0 ∧ s2 = -4 ∧ s3 = -1 ∧ s4 = 1) ∨
+      (s1 = 0 ∧ s2 = -4 ∧ s3 = 0 ∧ s4 = 1) ∨
+      (s1 = 0 ∧ s2 = -4 ∧ s3 = 0 ∧ s4 = 2) ∨
+      (s1 = 0 ∧ s2 = -4 ∧ s3 = 1 ∧ s4 = 1) ∨
+      (s1 = 1 ∧ s2 = -3 ∧ s3 = -1 ∧ s4 = 1) ∨
+      (s1 = 2 ∧ s2 = -2 ∧ s3 = -3 ∧ s4 = 1) := by
   have hs1mem : s1 ∈ v15QuarticS1Range := by
     interval_cases s1 <;> decide
   have hs2mem : s2 ∈ v15QuarticS2Range := by
@@ -535,14 +543,11 @@ theorem v15_normalized_quartic_discriminant_candidates_of_spread_lt_thirtyFive
       hminor, hdisc]
   have houtcome : v15QuarticOutcomeThirtyFive s1 s2 s3 s4 = true := by
     simpa [hadmissible] using hrow
-  simp only [v15QuarticOutcomeThirtyFive, Bool.or_eq_true,
+  simp only [v15QuarticOutcomeThirtyFive,
+    v15QuarticExceptionalRowThirtyFive, Bool.or_eq_true,
     decide_eq_true_eq] at houtcome
-  rcases houtcome with
-    ((((h725 | h1957) | h2048) | h2304) | hroot) | hfactor
-  · exact Or.inl h725
-  · exact Or.inr (Or.inl h1957)
-  · exact Or.inr (Or.inr (Or.inl h2048))
-  · exact Or.inr (Or.inr (Or.inr h2304))
+  rcases houtcome with (hrow | hroot) | hfactor
+  · exact hrow
   · change v15QuarticSmallRange.any (fun z ↦
       decide (v15QuarticEval s1 s2 s3 s4 z = 0)) = true at hroot
     obtain ⟨z, -, hz⟩ := List.any_eq_true.mp hroot
@@ -558,6 +563,32 @@ theorem v15_normalized_quartic_discriminant_candidates_of_spread_lt_thirtyFive
     obtain ⟨p, -, hp⟩ := List.any_eq_true.mp hv
     obtain ⟨q, -, hq⟩ := List.any_eq_true.mp hp
     exact ((hnoQuadratic u v p q) (of_decide_eq_true hq)).elim
+
+/-- The six coefficient rows above have exactly four polynomial
+discriminants. -/
+theorem v15_normalized_quartic_discriminant_candidates_of_spread_lt_thirtyFive
+    (s1 s2 s3 s4 : ℤ)
+    (hs1 : 0 ≤ s1) (hs1' : s1 ≤ 2)
+    (hs2 : -4 ≤ s2) (hs2' : s2 ≤ 2)
+    (hs3 : -24 ≤ s3) (hs3' : s3 ≤ 24)
+    (hs4 : -4 ≤ s4) (hs4' : s4 ≤ 4)
+    (hspreadPos : 0 < v15QuarticSpread s1 s2)
+    (hspreadLt : v15QuarticSpread s1 s2 < 35)
+    (hminor : 0 < v15QuarticHermiteMinorThree s1 s2 s3 s4)
+    (hdisc : 0 < v15QuarticDiscriminant s1 s2 s3 s4)
+    (hnoRoot : ∀ z : ℤ, v15QuarticEval s1 s2 s3 s4 z ≠ 0)
+    (hnoQuadratic : ∀ u v p q : ℤ,
+      ¬V15QuarticQuadraticFactorWitness s1 s2 s3 s4 u v p q) :
+    v15QuarticDiscriminant s1 s2 s3 s4 = 725 ∨
+      v15QuarticDiscriminant s1 s2 s3 s4 = 1957 ∨
+      v15QuarticDiscriminant s1 s2 s3 s4 = 2048 ∨
+      v15QuarticDiscriminant s1 s2 s3 s4 = 2304 := by
+  rcases v15_normalized_quartic_rows_of_spread_lt_thirtyFive
+      s1 s2 s3 s4 hs1 hs1' hs2 hs2' hs3 hs3' hs4 hs4'
+      hspreadPos hspreadLt hminor hdisc hnoRoot hnoQuadratic with
+    h | h | h | h | h | h
+  all_goals rcases h with ⟨rfl, rfl, rfl, rfl⟩
+  all_goals norm_num [v15QuarticDiscriminant]
 
 /-- If the field discriminant lies strictly between `29` and `725`, the
 `725` and `1957` polynomial-discriminant outcomes are arithmetically

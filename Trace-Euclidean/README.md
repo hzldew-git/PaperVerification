@@ -161,10 +161,13 @@ and the final rank-twelve consequence. The public Python and Wolfram runs are
     projection, exact covolume quotient, integral lift, and reduction to the
     sharp Hermite constant plus the quadratic-subfield selection problem are
     formalized. An unconditional three-dimensional Minkowski-ball route also
-    gives spread below 35. Its kernel-checked enlarged enumeration leaves the
-    polynomial discriminants 725, 1957, 2048, and 2304; the last two require
-    further index or maximal-order arguments before this weaker route proves
-    the field-discriminant endpoint.
+    gives spread below 35. Its kernel-checked enlarged enumeration identifies
+    the exact six coefficient rows. Actual-generator normalization and the
+    index relation reduce these to the 2048 and 2304 rows; Lean proves the 2048
+    power order maximal and eliminates it below field discriminant 725. For the
+    remaining 2304 row, Lean removes every 2-primary denominator. The weaker
+    route still requires primitive-vector selection and the remaining
+    3-primary maximal-order argument.
     The exact minima in degrees 5--9, the degree-ten enumeration result, and the
     optimized degree-eleven bound 14.083 remain explicit external mathematical
     inputs. Odlyzko's Table 4 is retained as the source and normalization

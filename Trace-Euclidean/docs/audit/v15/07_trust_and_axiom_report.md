@@ -65,7 +65,13 @@ The remaining quartic premise is a primitive integral Hunter generator with
 only the strict upper-spread bound recorded in
 `V15DegreeFourPrimitiveGeneratorInput`. Its finer decomposition consists of
 the sharp three-dimensional Hermite theorem and selecting a short lift outside
-the possible quadratic subfield. After that reduction,
+the possible quadratic subfield. The weaker Minkowski route avoids the sharp
+Hermite input: Lean normalizes the actual primitive generator, kernel-checks
+the exact six rows, proves the `2048` power order maximal, reduces the field
+discriminant interval to the `2304` row, and removes its complete `2`-primary
+denominator. That route still requires the same primitive-vector selection
+and the remaining `3`-primary saturation of the `2304` order. After the sharp
+reduction,
 Section 4 takes exact-minimum interfaces only for degrees `5`--`9`, the
 degree-ten exclusion at root discriminant at most `14`, and the optimized
 degree-eleven bound `14.083`. The online
