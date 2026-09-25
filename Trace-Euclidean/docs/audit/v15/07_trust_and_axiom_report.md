@@ -53,11 +53,11 @@ themselves do not use it.
 Degrees one and two are proved internally. For degree two, Lean proves that
 the field discriminant is not a square in `ℚ`; total-real positivity and
 Minkowski's bound then give `|D_F| >= 5`. The Table 4 range is now internal.
-For degree three, Lean proves integral trace normalization, the exact
-normalized polynomial enumeration, and that the conditional Hunter
-certificate gives `|D_F| >= 49`. Section 4 still
-takes source interfaces for that projected-lattice certificate, the exact
-degree `4`--`9` minima, the degree-ten exclusion at root discriminant at most
+For degree three, Lean constructs the projected lattice and its covolume,
+lifts the Hunter vector to a nonrational integral generator, proves the spread
+and index-discriminant identities, and combines them with trace normalization
+and exact polynomial enumeration to obtain `|D_F| >= 49`. Section 4 still
+takes source interfaces for the exact degree `4`--`9` minima, the degree-ten exclusion at root discriminant at most
 `14`, and the optimized degree-eleven bound `14.083`. The online
 November 1976 Table 2 gives `14.034` at degree eleven, so `14.083` remains a
 separately attributed later optimized input.

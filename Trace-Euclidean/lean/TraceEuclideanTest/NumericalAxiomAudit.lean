@@ -1,4 +1,4 @@
-import TraceEuclidean.V15OdlyzkoExplicitFormulaClosed
+import TraceEuclidean.V15SectionFourClosed
 
 /-! Explicit audit of the native interval-checking trust boundary. -/
 
@@ -18,6 +18,9 @@ import TraceEuclidean.V15OdlyzkoExplicitFormulaClosed
 #check TraceEuclidean.v15_sectionFourDiscriminantInput_of_hunterCertificate_closed
 #check TraceEuclidean.v15_classic_pair_mem_of_hunterCertificate_closed
 #check TraceEuclidean.v15_integral_pair_mem_of_hunterCertificate_closed
+#check TraceEuclidean.v15_sectionFourDiscriminantInput_of_degreeFourToEleven_closed
+#check TraceEuclidean.v15_classic_pair_mem_of_degreeFourToEleven_closed
+#check TraceEuclidean.v15_integral_pair_mem_of_degreeFourToEleven_closed
 
 #print axioms TraceEuclidean.v15OdlyzkoSinhIntegrand_integrableOn
 #print axioms TraceEuclidean.v15OdlyzkoSinhIntegral_zero_hundredth_le
@@ -39,3 +42,6 @@ import TraceEuclidean.V15OdlyzkoExplicitFormulaClosed
 #print axioms TraceEuclidean.v15_sectionFourDiscriminantInput_of_hunterCertificate_closed
 #print axioms TraceEuclidean.v15_classic_pair_mem_of_hunterCertificate_closed
 #print axioms TraceEuclidean.v15_integral_pair_mem_of_hunterCertificate_closed
+#print axioms TraceEuclidean.v15_sectionFourDiscriminantInput_of_degreeFourToEleven_closed
+#print axioms TraceEuclidean.v15_classic_pair_mem_of_degreeFourToEleven_closed
+#print axioms TraceEuclidean.v15_integral_pair_mem_of_degreeFourToEleven_closed

@@ -150,6 +150,40 @@ theorem v15_hunter_shortVector_of_covolume_lt
   exact v15_hunter_shortVector_of_fundamentalDomain
     L.toAddSubgroup fund (v15_hunter_measure_bound_of_covolume_lt hF)
 
+/-- Coordinate-free form of the Hunter disk theorem.  Every full
+two-dimensional Euclidean `ℤ`-lattice with covolume below `7 / sqrt(3)` has
+the required nonzero short vector. -/
+theorem v15_hunter_shortVector_of_covolume_lt_of_finrank_eq_two
+    {E : Type*} [NormedAddCommGroup E] [InnerProductSpace ℝ E]
+    [FiniteDimensional ℝ E] [MeasurableSpace E] [BorelSpace E]
+    (L : Submodule ℤ E) [DiscreteTopology L] [IsZLattice ℝ L]
+    (hfin : Module.finrank ℝ E = 2)
+    (hcov : ZLattice.covolume L < 7 / Real.sqrt 3) :
+    ∃ x : L, x ≠ 0 ∧ 3 * ‖((x : L) : E)‖ ^ 2 < 16 := by
+  let oE : OrthonormalBasis (Fin 2) ℝ E :=
+    (stdOrthonormalBasis ℝ E).reindex (finCongr hfin)
+  let e : V15HunterPlane ≃ₗᵢ[ℝ] E :=
+    (EuclideanSpace.basisFun (Fin 2) ℝ).equiv oE (Equiv.refl (Fin 2))
+  let L' : Submodule ℤ V15HunterPlane :=
+    ZLattice.comap ℝ L e.toContinuousLinearEquiv.toLinearMap
+  have hcovEq : ZLattice.covolume L' = ZLattice.covolume L := by
+    exact ZLattice.covolume_comap L volume volume
+      (LinearIsometryEquiv.measurePreserving e)
+  have hcov' : ZLattice.covolume L' < 7 / Real.sqrt 3 := by
+    rw [hcovEq]
+    exact hcov
+  obtain ⟨x, hx0, hxshort⟩ :=
+    v15_hunter_shortVector_of_covolume_lt L' hcov'
+  let y : L := ⟨e x.1, x.2⟩
+  have hy0 : y ≠ 0 := by
+    intro hy
+    apply hx0
+    apply Subtype.ext
+    apply e.injective
+    simpa [y] using congrArg Subtype.val hy
+  refine ⟨y, hy0, ?_⟩
+  simpa [y] using hxshort
+
 end
 
 end TraceEuclidean

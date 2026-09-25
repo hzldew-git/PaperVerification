@@ -32,6 +32,7 @@ import TraceEuclidean.V15DegreeTwoDiscriminant
 import TraceEuclidean.V15HunterGeometry
 import TraceEuclidean.V15HunterNumberField
 import TraceEuclidean.V15DegreeThreeDiscriminant
+import TraceEuclidean.V15DegreeThreeHunterClosed
 import TraceEuclidean.V15AnalyticTableBridge
 import TraceEuclidean.V15FieldTransport
 import TraceEuclidean.V15PropositionSixOne
@@ -77,6 +78,7 @@ import TraceEuclidean.V15OdlyzkoAnalyticBridge
 import TraceEuclidean.V15OdlyzkoExplicitFormulaReduction
 import TraceEuclidean.V15OdlyzkoNumerical
 import TraceEuclidean.V15OdlyzkoExplicitFormulaClosed
+import TraceEuclidean.V15SectionFourClosed
 import TraceEuclidean.V15OdlyzkoEntire
 import TraceEuclidean.V15OdlyzkoZeroDecay
 import TraceEuclidean.V15OdlyzkoZeroPairing

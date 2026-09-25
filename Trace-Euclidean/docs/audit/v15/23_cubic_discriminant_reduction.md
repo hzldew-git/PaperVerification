@@ -70,22 +70,36 @@ covolume `sqrt(|D_K|)` in both the mixed and Euclidean Minkowski models. Under
 projected-covolume inequality required by the disk theorem once the projection
 formula is established.
 
-The theorem
-`v15_coded_degree_three_discriminant_ge_49_of_hunterCertificate` then proves
-`|D_K| >= 49`. The certificate is requested only under the contradiction
-hypothesis `|D_K| < 49`; it is not a false uniform short-vector assertion for
-all cubic fields. Lean also proves the downstream assembly from this cubic
-certificate, the degree `4`--`9` minimum input, the degree-ten exclusion, and
-the degree-eleven estimate to the Section 4 classic and integral table
-membership statements.
+The compatibility theorem
+`v15_coded_degree_three_discriminant_ge_49_of_hunterCertificate` requests the
+certificate only under the contradiction hypothesis `|D_K| < 49`; it is not a
+false uniform short-vector assertion for all cubic fields.
 
-## Remaining boundary
+## Closed bridge
 
-`V15DegreeThreeHunterCertificateInput` still packages the field-specific
-existence step: construction of the projected integer-ring lattice and its
-identification as a full two-dimensional `Z`-lattice, proof that its covolume
-is the full integer-ring covolume divided by `sqrt(3)`, followed by the lift to
-a nonrational integral generator and the finite-index discriminant relation.
-The full integer-ring covolume, trace normalization, area comparison,
-intrinsic disk short-vector theorem, finite coefficient enumeration, and every
-downstream use of the certificate are already kernel checked.
+The former certificate boundary is now discharged by the following Lean
+modules.
+
+- `V15HunterProjection` proves the centered Gram-determinant and projected
+  covolume identities.
+- `V15PrimitiveBasis` extends a primitive integer-ring vector to a basis, and
+  `V15HunterNumberFieldProjection` chooses such a basis beginning with `1`,
+  constructs the projected full lattice, applies the disk theorem, lifts the
+  short vector to an algebraic integer, and proves that it generates the cubic
+  field.
+- `V15CubicPowerBasis` proves the cubic companion and derivative matrices,
+  their discriminant formula, and the two trace identities.
+- `V15CubicGeneratorArithmetic` proves that the polynomial discriminant is a
+  positive integer square times the field discriminant.
+- `V15CubicGeneratorSpread` identifies the cubic spread with three times the
+  squared norm of the centered Euclidean embedding.
+- `v15_degree_three_hunterCertificate` assembles these results, while
+  `v15_coded_degree_three_discriminant_ge_49` proves `|D_K| >= 49` without an
+  external cubic premise.
+
+Finally,
+`v15_sectionFourDiscriminantInput_of_degreeFourToEleven_closed` and its two
+table-membership corollaries substitute the proved certificate into the
+Section 4 chain. The remaining field-discriminant inputs begin in degree four:
+the exact minima for degrees `4`--`9`, the degree-ten exclusion, and the
+optimized degree-eleven estimate.

@@ -354,6 +354,48 @@ TraceEuclidean.v15_odlyzkoTable4DescriptionInput_closed : TraceEuclidean.V15Odly
 TraceEuclidean.v15_sectionFourDiscriminantInput_of_smallDegreeLiterature
   (hMin : TraceEuclidean.V15DegreeTwoToNineMinimumInput) (hTen : TraceEuclidean.V15DegreeTenRootDiscriminantInput)
   (hEleven : TraceEuclidean.V15DegreeElevenRootDiscriminantInput) : TraceEuclidean.V15SectionFourDiscriminantInput
+TraceEuclidean.v15_sectionFourDiscriminantInput_of_reduced_smallDegreeLiterature
+  (hMin : TraceEuclidean.V15DegreeThreeToNineMinimumInput) (hTen : TraceEuclidean.V15DegreeTenRootDiscriminantInput)
+  (hEleven : TraceEuclidean.V15DegreeElevenRootDiscriminantInput) : TraceEuclidean.V15SectionFourDiscriminantInput
+TraceEuclidean.v15_classic_pair_mem_of_reduced_smallDegreeLiterature
+  (hMin : TraceEuclidean.V15DegreeThreeToNineMinimumInput) (hTen : TraceEuclidean.V15DegreeTenRootDiscriminantInput)
+  (hEleven : TraceEuclidean.V15DegreeElevenRootDiscriminantInput) (c : TraceEuclidean.GlobalLatticeClass)
+  (hE : TraceEuclidean.GlobalLatticeClass.IsClassicTraceEuclidean (↑c.degree) c) :
+  (c.rank, c.degree) ∈ TraceEuclidean.v15ClassicAdmissiblePairs
+TraceEuclidean.v15_integral_pair_mem_of_reduced_smallDegreeLiterature
+  (hMin : TraceEuclidean.V15DegreeThreeToNineMinimumInput) (hTen : TraceEuclidean.V15DegreeTenRootDiscriminantInput)
+  (hEleven : TraceEuclidean.V15DegreeElevenRootDiscriminantInput) (c : TraceEuclidean.GlobalLatticeClass)
+  (hE : TraceEuclidean.GlobalLatticeClass.IsIntegralTraceEuclidean (↑c.degree) c) :
+  (c.rank, c.degree) ∈ TraceEuclidean.v15IntegralAdmissiblePairs
+TraceEuclidean.v15_sectionFourDiscriminantInput_of_hunterCertificate_closed
+  (hHunter : TraceEuclidean.V15DegreeThreeHunterCertificateInput)
+  (hMin : TraceEuclidean.V15DegreeFourToNineMinimumInput) (hTen : TraceEuclidean.V15DegreeTenRootDiscriminantInput)
+  (hEleven : TraceEuclidean.V15DegreeElevenRootDiscriminantInput) : TraceEuclidean.V15SectionFourDiscriminantInput
+TraceEuclidean.v15_classic_pair_mem_of_hunterCertificate_closed
+  (hHunter : TraceEuclidean.V15DegreeThreeHunterCertificateInput)
+  (hMin : TraceEuclidean.V15DegreeFourToNineMinimumInput) (hTen : TraceEuclidean.V15DegreeTenRootDiscriminantInput)
+  (hEleven : TraceEuclidean.V15DegreeElevenRootDiscriminantInput) (c : TraceEuclidean.GlobalLatticeClass)
+  (hE : TraceEuclidean.GlobalLatticeClass.IsClassicTraceEuclidean (↑c.degree) c) :
+  (c.rank, c.degree) ∈ TraceEuclidean.v15ClassicAdmissiblePairs
+TraceEuclidean.v15_integral_pair_mem_of_hunterCertificate_closed
+  (hHunter : TraceEuclidean.V15DegreeThreeHunterCertificateInput)
+  (hMin : TraceEuclidean.V15DegreeFourToNineMinimumInput) (hTen : TraceEuclidean.V15DegreeTenRootDiscriminantInput)
+  (hEleven : TraceEuclidean.V15DegreeElevenRootDiscriminantInput) (c : TraceEuclidean.GlobalLatticeClass)
+  (hE : TraceEuclidean.GlobalLatticeClass.IsIntegralTraceEuclidean (↑c.degree) c) :
+  (c.rank, c.degree) ∈ TraceEuclidean.v15IntegralAdmissiblePairs
+TraceEuclidean.v15_sectionFourDiscriminantInput_of_degreeFourToEleven_closed
+  (hMin : TraceEuclidean.V15DegreeFourToNineMinimumInput) (hTen : TraceEuclidean.V15DegreeTenRootDiscriminantInput)
+  (hEleven : TraceEuclidean.V15DegreeElevenRootDiscriminantInput) : TraceEuclidean.V15SectionFourDiscriminantInput
+TraceEuclidean.v15_classic_pair_mem_of_degreeFourToEleven_closed (hMin : TraceEuclidean.V15DegreeFourToNineMinimumInput)
+  (hTen : TraceEuclidean.V15DegreeTenRootDiscriminantInput)
+  (hEleven : TraceEuclidean.V15DegreeElevenRootDiscriminantInput) (c : TraceEuclidean.GlobalLatticeClass)
+  (hE : TraceEuclidean.GlobalLatticeClass.IsClassicTraceEuclidean (↑c.degree) c) :
+  (c.rank, c.degree) ∈ TraceEuclidean.v15ClassicAdmissiblePairs
+TraceEuclidean.v15_integral_pair_mem_of_degreeFourToEleven_closed
+  (hMin : TraceEuclidean.V15DegreeFourToNineMinimumInput) (hTen : TraceEuclidean.V15DegreeTenRootDiscriminantInput)
+  (hEleven : TraceEuclidean.V15DegreeElevenRootDiscriminantInput) (c : TraceEuclidean.GlobalLatticeClass)
+  (hE : TraceEuclidean.GlobalLatticeClass.IsIntegralTraceEuclidean (↑c.degree) c) :
+  (c.rank, c.degree) ∈ TraceEuclidean.v15IntegralAdmissiblePairs
 TraceEuclidean.v15_classic_finite_closed :
   {c | TraceEuclidean.GlobalLatticeClass.IsClassicTraceEuclidean (↑c.degree) c}.Finite
 TraceEuclidean.v15_integral_finite_closed :
@@ -755,14 +797,133 @@ TraceEuclidean.v15_integral_analytic_grid_iff_mem (n d : ℕ) (hn : 1 ≤ n) (hn
     (n, d) ∈ TraceEuclidean.v15IntegralAdmissiblePairs
 TraceEuclidean.v15_degree_one_discriminant_bound (c : TraceEuclidean.GlobalLatticeClass) (hd : c.degree = 1) :
   TraceEuclidean.v15BetaPower 1 c.degree ≤ ↑|TraceEuclidean.NumberFieldCode.discriminant c.fieldCode|
+TraceEuclidean.v15_powerBasis_discr_eq_det_sq_mul_field.{u_1} (K : Type u_1) [Field K] [NumberField K]
+  (pb : PowerBasis ℚ K) : ∃ q, Algebra.discr ℚ ⇑pb.basis = q ^ 2 * ↑(NumberField.discr K)
+TraceEuclidean.v15_powerBasis_discr_isSquare_of_field_discr_isSquare.{u_1} (K : Type u_1) [Field K] [NumberField K]
+  (pb : PowerBasis ℚ K) (h : IsSquare ↑(NumberField.discr K)) : IsSquare (Algebra.discr ℚ ⇑pb.basis)
+TraceEuclidean.v15_field_discr_not_isSquare_of_finrank_two.{u_1} (K : Type u_1) [Field K] [NumberField K]
+  (hdegree : Module.finrank ℚ K = 2) : ¬IsSquare ↑(NumberField.discr K)
+TraceEuclidean.v15_degree_two_discriminant_ge_five.{u_1} (K : Type u_1) [Field K] [NumberField K]
+  (hreal : NumberField.IsTotallyReal K) (hdegree : Module.finrank ℚ K = 2) : 5 ≤ ↑|NumberField.discr K|
+TraceEuclidean.v15_coded_degree_two_discriminant_ge_five (K : TraceEuclidean.CodedNumberField)
+  (hreal : NumberField.IsTotallyReal ↥↑K) (hdegree : Module.finrank ℚ ↥↑K = 2) :
+  5 ≤ ↑|TraceEuclidean.NumberFieldCode.discriminant K|
+TraceEuclidean.v15CubicSpread (s1 s2 : ℤ) : ℤ
+TraceEuclidean.v15CubicDiscriminant (s1 s2 s3 : ℤ) : ℤ
+TraceEuclidean.v15CubicEval (s1 s2 s3 z : ℤ) : ℤ
+TraceEuclidean.v15HunterRadius : ℝ
+TraceEuclidean.v15HunterRadius_pos : 0 < TraceEuclidean.v15HunterRadius
+TraceEuclidean.v15_hunter_covolume_constant_lt_disk_area : 7 / √3 * 4 < TraceEuclidean.v15HunterRadius ^ 2 * Real.pi
+TraceEuclidean.v15_three_mul_norm_sq_lt_sixteen_of_mem_ball {x : TraceEuclidean.V15HunterPlane}
+  (hx : x ∈ Metric.ball 0 TraceEuclidean.v15HunterRadius) : 3 * ‖x‖ ^ 2 < 16
+TraceEuclidean.v15_hunter_shortVector_of_fundamentalDomain (L : AddSubgroup TraceEuclidean.V15HunterPlane)
+  [Countable ↥L] {F : Set TraceEuclidean.V15HunterPlane}
+  (fund : MeasureTheory.IsAddFundamentalDomain (↥L) F MeasureTheory.volume)
+  (hvolume :
+    MeasureTheory.volume F * 2 ^ Module.finrank ℝ TraceEuclidean.V15HunterPlane <
+      MeasureTheory.volume (Metric.ball 0 TraceEuclidean.v15HunterRadius)) :
+  ∃ x, x ≠ 0 ∧ 3 * ‖↑x‖ ^ 2 < 16
+TraceEuclidean.v15_hunter_measure_bound_of_covolume_lt {F : Set TraceEuclidean.V15HunterPlane}
+  (hF : MeasureTheory.volume F < ENNReal.ofReal (7 / √3)) :
+  MeasureTheory.volume F * 2 ^ Module.finrank ℝ TraceEuclidean.V15HunterPlane <
+    MeasureTheory.volume (Metric.ball 0 TraceEuclidean.v15HunterRadius)
+TraceEuclidean.v15_hunter_shortVector_of_covolume_lt (L : Submodule ℤ TraceEuclidean.V15HunterPlane)
+  [DiscreteTopology ↥L] [IsZLattice ℝ L] (hcov : ZLattice.covolume L MeasureTheory.volume < 7 / √3) :
+  ∃ x, x ≠ 0 ∧ 3 * ‖↑x‖ ^ 2 < 16
+TraceEuclidean.v15_totallyReal_integerLattice_covolume_eq_sqrt_discr.{u_1} (K : Type u_1) [Field K] [NumberField K]
+  (hreal : NumberField.IsTotallyReal K) :
+  ZLattice.covolume (NumberField.mixedEmbedding.integerLattice K) MeasureTheory.volume = √|↑(NumberField.discr K)|
+TraceEuclidean.v15_totallyReal_euclidean_integerLattice_covolume_eq_sqrt_discr.{u_1} (K : Type u_1) [Field K]
+  [NumberField K] (hreal : NumberField.IsTotallyReal K) :
+  ZLattice.covolume (NumberField.mixedEmbedding.euclidean.integerLattice K) MeasureTheory.volume =
+    √|↑(NumberField.discr K)|
+TraceEuclidean.v15_totallyReal_integerLattice_covolume_div_sqrt_three_lt.{u_1} (K : Type u_1) [Field K] [NumberField K]
+  (hreal : NumberField.IsTotallyReal K) (hdisc : |NumberField.discr K| < 49) :
+  ZLattice.covolume (NumberField.mixedEmbedding.integerLattice K) MeasureTheory.volume / √3 < 7 / √3
+TraceEuclidean.v15_cubic_spread_pos_of_discriminant_pos (s1 s2 s3 : ℤ)
+  (hdisc : 0 < TraceEuclidean.v15CubicDiscriminant s1 s2 s3) : 0 < TraceEuclidean.v15CubicSpread s1 s2
+TraceEuclidean.v15_normalize_cubic_coefficients (s1 s2 s3 : ℤ)
+  (hnoRoot : ∀ (z : ℤ), TraceEuclidean.v15CubicEval s1 s2 s3 z ≠ 0) :
+  ∃ t1 t2 t3,
+    (t1 = 0 ∨ t1 = 1) ∧
+      TraceEuclidean.v15CubicSpread t1 t2 = TraceEuclidean.v15CubicSpread s1 s2 ∧
+        TraceEuclidean.v15CubicDiscriminant t1 t2 t3 = TraceEuclidean.v15CubicDiscriminant s1 s2 s3 ∧
+          ∀ (z : ℤ), TraceEuclidean.v15CubicEval t1 t2 t3 z ≠ 0
+TraceEuclidean.v15_normalized_cubic_discriminant_eq_49 (s1 s2 s3 : ℤ) (hs1 : s1 = 0 ∨ s1 = 1)
+  (hspreadPos : 0 < TraceEuclidean.v15CubicSpread s1 s2) (hspreadLt : TraceEuclidean.v15CubicSpread s1 s2 < 16)
+  (hdiscPos : 0 < TraceEuclidean.v15CubicDiscriminant s1 s2 s3)
+  (hnoRoot : ∀ (z : ℤ), TraceEuclidean.v15CubicEval s1 s2 s3 z ≠ 0) : TraceEuclidean.v15CubicDiscriminant s1 s2 s3 = 49
+TraceEuclidean.V15DegreeThreeHunterCertificateInput : Prop
 TraceEuclidean.V15DegreeTwoToNineMinimumInput : Prop
+TraceEuclidean.V15DegreeThreeToNineMinimumInput : Prop
+TraceEuclidean.V15DegreeFourToNineMinimumInput : Prop
 TraceEuclidean.V15DegreeTenRootDiscriminantInput : Prop
 TraceEuclidean.V15DegreeElevenRootDiscriminantInput : Prop
+TraceEuclidean.v15_coded_degree_three_discriminant_ge_49_of_hunterCertificate
+  (hHunter : TraceEuclidean.V15DegreeThreeHunterCertificateInput) (K : TraceEuclidean.CodedNumberField)
+  (hreal : NumberField.IsTotallyReal ↥↑K) (hdegree : Module.finrank ℚ ↥↑K = 3) :
+  49 ≤ ↑|TraceEuclidean.NumberFieldCode.discriminant K|
+TraceEuclidean.v15_cubic_hunter_generator.{u_1} (K : Type u_1) [Field K] [NumberField K]
+  (hreal : NumberField.IsTotallyReal K) (hdegree : Module.finrank ℚ K = 3) (hdisc : |NumberField.discr K| < 49) :
+  ∃ bz,
+    ↑(bz 0) = TraceEuclidean.v15EuclideanOne K ∧
+      ∃ x,
+        x ≠ 0 ∧
+          ℚ⟮↑(TraceEuclidean.v15HunterAlgebraicIntegerLift K bz x)⟯ = ⊤ ∧
+            3 *
+                ‖(TraceEuclidean.v15HunterCenterLinearMap
+                        ((Module.Basis.ofZLatticeBasis ℝ (NumberField.mixedEmbedding.euclidean.integerLattice K) bz) 0)
+                        ⋯)
+                      ((NumberField.mixedEmbedding.euclidean.toMixed K).symm
+                        ((NumberField.mixedEmbedding K) ↑(TraceEuclidean.v15HunterAlgebraicIntegerLift K bz x)))‖ ^
+                  2 <
+              16
+TraceEuclidean.v15_cubic_exists_positive_index.{u_1} (K : Type u_1) [Field K] [NumberField K]
+  (hdegree : Module.finrank ℚ K = 3) (a : NumberField.RingOfIntegers K) (hgen : ℚ⟮↑a⟯ = ⊤)
+  (bO : Module.Basis (Fin 3) ℤ (NumberField.RingOfIntegers K)) :
+  ∃ index,
+    0 < index ∧
+      TraceEuclidean.v15CubicDiscriminant (TraceEuclidean.v15CubicS1 K a) (TraceEuclidean.v15CubicS2 K a)
+          (TraceEuclidean.v15CubicS3 K a) =
+        ↑index ^ 2 * NumberField.discr K
+TraceEuclidean.v15_cubicSpread_cast_eq_center_norm.{u_1} (K : Type u_1) [Field K] [NumberField K]
+  (hreal : NumberField.IsTotallyReal K) (hdegree : Module.finrank ℚ K = 3) (a : NumberField.RingOfIntegers K)
+  (hgen : ℚ⟮↑a⟯ = ⊤) (he : inner ℝ (TraceEuclidean.v15EuclideanOne K) (TraceEuclidean.v15EuclideanOne K) ≠ 0) :
+  ↑(TraceEuclidean.v15CubicSpread (TraceEuclidean.v15CubicS1 K a) (TraceEuclidean.v15CubicS2 K a)) =
+    3 *
+      ‖(TraceEuclidean.v15HunterCenterLinearMap (TraceEuclidean.v15EuclideanOne K) he)
+            (TraceEuclidean.v15EuclideanEmbedding K ↑a)‖ ^
+        2
+TraceEuclidean.v15_degree_three_hunterCertificate : TraceEuclidean.V15DegreeThreeHunterCertificateInput
+TraceEuclidean.v15_coded_degree_three_discriminant_ge_49 (K : TraceEuclidean.CodedNumberField)
+  (hreal : NumberField.IsTotallyReal ↥↑K) (hdegree : Module.finrank ℚ ↥↑K = 3) :
+  49 ≤ ↑|TraceEuclidean.NumberFieldCode.discriminant K|
+TraceEuclidean.v15_degreeThreeToNineMinimumInput_of_hunterCertificate
+  (hHunter : TraceEuclidean.V15DegreeThreeHunterCertificateInput)
+  (hMin : TraceEuclidean.V15DegreeFourToNineMinimumInput) : TraceEuclidean.V15DegreeThreeToNineMinimumInput
+TraceEuclidean.v15_degreeTwoToNineMinimumInput_of_threeToNine (hMin : TraceEuclidean.V15DegreeThreeToNineMinimumInput) :
+  TraceEuclidean.V15DegreeTwoToNineMinimumInput
 TraceEuclidean.v15_smallDegreeDiscriminantInput_of_literature (hMin : TraceEuclidean.V15DegreeTwoToNineMinimumInput)
   (hTen : TraceEuclidean.V15DegreeTenRootDiscriminantInput)
   (hEleven : TraceEuclidean.V15DegreeElevenRootDiscriminantInput) : TraceEuclidean.V15SmallDegreeDiscriminantInput
+TraceEuclidean.v15_smallDegreeDiscriminantInput_of_reduced_literature
+  (hMin : TraceEuclidean.V15DegreeThreeToNineMinimumInput) (hTen : TraceEuclidean.V15DegreeTenRootDiscriminantInput)
+  (hEleven : TraceEuclidean.V15DegreeElevenRootDiscriminantInput) : TraceEuclidean.V15SmallDegreeDiscriminantInput
+TraceEuclidean.v15_smallDegreeDiscriminantInput_of_hunterCertificate
+  (hHunter : TraceEuclidean.V15DegreeThreeHunterCertificateInput)
+  (hMin : TraceEuclidean.V15DegreeFourToNineMinimumInput) (hTen : TraceEuclidean.V15DegreeTenRootDiscriminantInput)
+  (hEleven : TraceEuclidean.V15DegreeElevenRootDiscriminantInput) : TraceEuclidean.V15SmallDegreeDiscriminantInput
 TraceEuclidean.v15_sectionFourDiscriminantInput_of_literature (hMin : TraceEuclidean.V15DegreeTwoToNineMinimumInput)
   (hTen : TraceEuclidean.V15DegreeTenRootDiscriminantInput)
+  (hEleven : TraceEuclidean.V15DegreeElevenRootDiscriminantInput)
+  (hDescription : TraceEuclidean.V15OdlyzkoTable4DescriptionInput) : TraceEuclidean.V15SectionFourDiscriminantInput
+TraceEuclidean.v15_sectionFourDiscriminantInput_of_reduced_literature
+  (hMin : TraceEuclidean.V15DegreeThreeToNineMinimumInput) (hTen : TraceEuclidean.V15DegreeTenRootDiscriminantInput)
+  (hEleven : TraceEuclidean.V15DegreeElevenRootDiscriminantInput)
+  (hDescription : TraceEuclidean.V15OdlyzkoTable4DescriptionInput) : TraceEuclidean.V15SectionFourDiscriminantInput
+TraceEuclidean.v15_sectionFourDiscriminantInput_of_hunterCertificate
+  (hHunter : TraceEuclidean.V15DegreeThreeHunterCertificateInput)
+  (hMin : TraceEuclidean.V15DegreeFourToNineMinimumInput) (hTen : TraceEuclidean.V15DegreeTenRootDiscriminantInput)
   (hEleven : TraceEuclidean.V15DegreeElevenRootDiscriminantInput)
   (hDescription : TraceEuclidean.V15OdlyzkoTable4DescriptionInput) : TraceEuclidean.V15SectionFourDiscriminantInput
 TraceEuclidean.v15_classic_pair_mem_of_literature (hMin : TraceEuclidean.V15DegreeTwoToNineMinimumInput)
@@ -771,8 +932,35 @@ TraceEuclidean.v15_classic_pair_mem_of_literature (hMin : TraceEuclidean.V15Degr
   (hDescription : TraceEuclidean.V15OdlyzkoTable4DescriptionInput) (c : TraceEuclidean.GlobalLatticeClass)
   (hE : TraceEuclidean.GlobalLatticeClass.IsClassicTraceEuclidean (↑c.degree) c) :
   (c.rank, c.degree) ∈ TraceEuclidean.v15ClassicAdmissiblePairs
+TraceEuclidean.v15_classic_pair_mem_of_reduced_literature (hMin : TraceEuclidean.V15DegreeThreeToNineMinimumInput)
+  (hTen : TraceEuclidean.V15DegreeTenRootDiscriminantInput)
+  (hEleven : TraceEuclidean.V15DegreeElevenRootDiscriminantInput)
+  (hDescription : TraceEuclidean.V15OdlyzkoTable4DescriptionInput) (c : TraceEuclidean.GlobalLatticeClass)
+  (hE : TraceEuclidean.GlobalLatticeClass.IsClassicTraceEuclidean (↑c.degree) c) :
+  (c.rank, c.degree) ∈ TraceEuclidean.v15ClassicAdmissiblePairs
+TraceEuclidean.v15_classic_pair_mem_of_hunterCertificate (hHunter : TraceEuclidean.V15DegreeThreeHunterCertificateInput)
+  (hMin : TraceEuclidean.V15DegreeFourToNineMinimumInput) (hTen : TraceEuclidean.V15DegreeTenRootDiscriminantInput)
+  (hEleven : TraceEuclidean.V15DegreeElevenRootDiscriminantInput)
+  (hDescription : TraceEuclidean.V15OdlyzkoTable4DescriptionInput) (c : TraceEuclidean.GlobalLatticeClass)
+  (hE : TraceEuclidean.GlobalLatticeClass.IsClassicTraceEuclidean (↑c.degree) c) :
+  (c.rank, c.degree) ∈ TraceEuclidean.v15ClassicAdmissiblePairs
 TraceEuclidean.v15_integral_pair_mem_of_literature (hMin : TraceEuclidean.V15DegreeTwoToNineMinimumInput)
   (hTen : TraceEuclidean.V15DegreeTenRootDiscriminantInput)
+  (hEleven : TraceEuclidean.V15DegreeElevenRootDiscriminantInput)
+  (hDescription : TraceEuclidean.V15OdlyzkoTable4DescriptionInput) (hRankOne : TraceEuclidean.V15RankOneClassicInput)
+  (c : TraceEuclidean.GlobalLatticeClass)
+  (hE : TraceEuclidean.GlobalLatticeClass.IsIntegralTraceEuclidean (↑c.degree) c) :
+  (c.rank, c.degree) ∈ TraceEuclidean.v15IntegralAdmissiblePairs
+TraceEuclidean.v15_integral_pair_mem_of_reduced_literature (hMin : TraceEuclidean.V15DegreeThreeToNineMinimumInput)
+  (hTen : TraceEuclidean.V15DegreeTenRootDiscriminantInput)
+  (hEleven : TraceEuclidean.V15DegreeElevenRootDiscriminantInput)
+  (hDescription : TraceEuclidean.V15OdlyzkoTable4DescriptionInput) (hRankOne : TraceEuclidean.V15RankOneClassicInput)
+  (c : TraceEuclidean.GlobalLatticeClass)
+  (hE : TraceEuclidean.GlobalLatticeClass.IsIntegralTraceEuclidean (↑c.degree) c) :
+  (c.rank, c.degree) ∈ TraceEuclidean.v15IntegralAdmissiblePairs
+TraceEuclidean.v15_integral_pair_mem_of_hunterCertificate
+  (hHunter : TraceEuclidean.V15DegreeThreeHunterCertificateInput)
+  (hMin : TraceEuclidean.V15DegreeFourToNineMinimumInput) (hTen : TraceEuclidean.V15DegreeTenRootDiscriminantInput)
   (hEleven : TraceEuclidean.V15DegreeElevenRootDiscriminantInput)
   (hDescription : TraceEuclidean.V15OdlyzkoTable4DescriptionInput) (hRankOne : TraceEuclidean.V15RankOneClassicInput)
   (c : TraceEuclidean.GlobalLatticeClass)
@@ -832,14 +1020,66 @@ TraceEuclidean.v15_integral_pair_mem_of_sources (hSmall : TraceEuclidean.V15Smal
 'TraceEuclidean.v15_classic_analytic_grid_iff_mem' depends on axioms: [propext, Classical.choice, Quot.sound]
 'TraceEuclidean.v15_integral_analytic_grid_iff_mem' depends on axioms: [propext, Classical.choice, Quot.sound]
 'TraceEuclidean.v15_degree_one_discriminant_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15_powerBasis_discr_eq_det_sq_mul_field' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15_powerBasis_discr_isSquare_of_field_discr_isSquare' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'TraceEuclidean.v15_field_discr_not_isSquare_of_finrank_two' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15_degree_two_discriminant_ge_five' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15_coded_degree_two_discriminant_ge_five' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15_hunter_shortVector_of_fundamentalDomain' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15_hunter_measure_bound_of_covolume_lt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15_hunter_shortVector_of_covolume_lt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15_totallyReal_integerLattice_covolume_eq_sqrt_discr' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'TraceEuclidean.v15_totallyReal_euclidean_integerLattice_covolume_eq_sqrt_discr' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'TraceEuclidean.v15_totallyReal_integerLattice_covolume_div_sqrt_three_lt' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'TraceEuclidean.v15_cubic_spread_pos_of_discriminant_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15_normalize_cubic_coefficients' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15_normalized_cubic_discriminant_eq_49' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15_coded_degree_three_discriminant_ge_49_of_hunterCertificate' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'TraceEuclidean.v15_cubic_hunter_generator' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15_cubic_exists_positive_index' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15_cubicSpread_cast_eq_center_norm' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15_degree_three_hunterCertificate' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15_coded_degree_three_discriminant_ge_49' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15_degreeThreeToNineMinimumInput_of_hunterCertificate' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'TraceEuclidean.v15_degreeTwoToNineMinimumInput_of_threeToNine' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
 'TraceEuclidean.v15_smallDegreeDiscriminantInput_of_literature' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'TraceEuclidean.v15_smallDegreeDiscriminantInput_of_reduced_literature' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'TraceEuclidean.v15_smallDegreeDiscriminantInput_of_hunterCertificate' depends on axioms: [propext,
  Classical.choice,
  Quot.sound]
 'TraceEuclidean.v15_sectionFourDiscriminantInput_of_literature' depends on axioms: [propext,
  Classical.choice,
  Quot.sound]
+'TraceEuclidean.v15_sectionFourDiscriminantInput_of_reduced_literature' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'TraceEuclidean.v15_sectionFourDiscriminantInput_of_hunterCertificate' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
 'TraceEuclidean.v15_classic_pair_mem_of_literature' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15_classic_pair_mem_of_reduced_literature' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15_classic_pair_mem_of_hunterCertificate' depends on axioms: [propext, Classical.choice, Quot.sound]
 'TraceEuclidean.v15_integral_pair_mem_of_literature' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15_integral_pair_mem_of_reduced_literature' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15_integral_pair_mem_of_hunterCertificate' depends on axioms: [propext, Classical.choice, Quot.sound]
 'TraceEuclidean.v15_sectionFourDiscriminantInput_of_sources' depends on axioms: [propext, Classical.choice, Quot.sound]
 'TraceEuclidean.v15_classic_pair_mem_of_sources' depends on axioms: [propext, Classical.choice, Quot.sound]
 'TraceEuclidean.v15_integral_pair_mem_of_sources' depends on axioms: [propext, Classical.choice, Quot.sound]

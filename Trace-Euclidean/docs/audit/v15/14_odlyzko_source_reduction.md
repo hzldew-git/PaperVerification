@@ -74,9 +74,10 @@ The old single premise for degrees at most eleven is now decomposed by source:
 - degree 1 is proved in Lean from mathlib's Minkowski discriminant bound;
 - degree 2 is proved in Lean by combining Minkowski's bound with positivity
   and the nonsquareness of a quadratic field discriminant in `ℚ`;
-- degree 3 is reduced in Lean to the conditional Hunter projected-lattice
-  certificate, with integral trace normalization and the finite coefficient
-  enumeration proved internally;
+- degree 3 is proved in Lean: the projected integer-ring covolume, Hunter
+  short-vector lift, cubic generator, spread identity, positive-index
+  discriminant relation, trace normalization, and finite coefficient
+  enumeration are all internal;
 - degrees 4--9 use exact minimum-discriminant data;
 - degree 10 uses the absence of totally real degree-ten fields with root
   discriminant at most 14;

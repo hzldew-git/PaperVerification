@@ -1,18 +1,19 @@
 # Reproducibility report
 
-- The cubic-discriminant reduction passed a full local 8839-job Lean build
-  under the pinned Lean 4.32.1 and mathlib v4.32.1 toolchain. The main audit
-  reports 361 declaration-level transitive axiom sets, all using only
-  `propext`, `Classical.choice`, and `Quot.sound`. The separate 20-declaration
-  numerical audit exposes exactly the five documented `native_decide`
-  dependencies. Lean now proves cubic trace normalization, positivity of the
-  conjugate spread, the full integer-ring covolume formula in the Euclidean
-  Minkowski model, the intrinsic two-dimensional disk theorem, and the finite
-  cubic enumeration. The remaining cubic premise is the field-specific
-  projected-lattice construction, its covolume formula, the lift to an
-  integral generator, and the finite-index discriminant relation. Public
-  reruns produced 1156 Python PASS and 115 Wolfram PASS with zero failures.
-  The manuscript-exclusion guard inspected 248 files and passed.
+- The closed cubic Hunter update passed a full local 8847-job Lean build under
+  the pinned Lean 4.32.1 and mathlib v4.32.1 toolchain. The 366-declaration
+  main audit reports only `propext`, `Classical.choice`, and `Quot.sound`. The
+  separate 23-declaration numerical audit exposes exactly the five documented
+  `native_decide` dependencies and tracks their propagation to the final
+  Section 4 interfaces. Lean now proves the projected integer-ring covolume,
+  primitive basis extension, Hunter generator lift, cubic trace and spread
+  identities, positive-index discriminant relation, complete Hunter
+  certificate, and unconditional degree-three lower bound `|D_K| >= 49`.
+  The final Section 4 bridge retains only the degree 4--11 field-discriminant
+  source inputs. This Lean-only update did not rerun the unchanged public
+  classification computations; their latest results remain 1156 Python PASS
+  and 115 Wolfram PASS with zero failures. The manuscript-exclusion guard
+  inspected 257 files and passed.
 
 - The quadratic-discriminant update passed a full local 8836-job Lean build
   under the pinned Lean 4.32.1 and mathlib v4.32.1 toolchain. The main audit

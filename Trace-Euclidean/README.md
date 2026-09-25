@@ -144,12 +144,12 @@ and the final rank-twelve consequence. The public Python and Wolfram runs are
     the small-degree discriminant input are proved internally. In degree two,
     Lean combines Minkowski's bound with positivity and a proof that a
     quadratic field discriminant is not a square in `ℚ`, excluding equality at
-    four. In degree three, Lean proves arbitrary-to-normalized cubic coefficient
-    reduction, the complete normalized enumeration, and that a conditional
-    Hunter certificate forces the exact lower bound `49`. Lean also proves the
-    full integer-ring covolume and the intrinsic two-dimensional disk theorem.
-    The remaining cubic boundary is the projected-lattice construction and its
-    quotient-covolume formula under `|D_F| < 49`.
+    four. In degree three, Lean constructs the projected integer-ring lattice,
+    proves its quotient-covolume formula, obtains and lifts the Hunter short
+    vector to a nonrational integral generator, identifies its conjugate
+    spread, and proves the positive-index discriminant relation. Combined with
+    trace normalization and the complete finite enumeration, this gives the
+    unconditional Lean theorem `|D_F| >= 49`.
     The exact minima in degrees 4--9, the degree-ten enumeration result, and the
     optimized degree-eleven bound 14.083 remain explicit external mathematical
     inputs. Odlyzko's Table 4 is retained as the source and normalization
