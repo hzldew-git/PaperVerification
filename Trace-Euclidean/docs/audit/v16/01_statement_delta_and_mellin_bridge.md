@@ -4,8 +4,10 @@
 and entire Gamma normalization described below as pending have since been
 proved for every number field in the v15 verification code. See
 [the zeta-continuation construction](../v15/20_zeta_continuation_construction.md).
-The completed-zeta functional equation, circle-growth bound, and Stark/Weil
-formula remain open. The v16 statement comparison below was not rerun for
+The completed-zeta functional equation, quadratic circle-growth bound,
+Jensen zero count, and direct zero-sum convergence have since been proved in
+the v15 verification code. The Stark/Weil formula remains open. The v16
+statement comparison below was not rerun for
 this Lean-only update.
 
 ## Version comparison
@@ -59,17 +61,19 @@ meromorphic expression away from `0,k`, and satisfies the reflection equation
 on all of `ℂ`; the meromorphic expression also satisfies its functional
 equation away from the poles. A normalization-factor interface constructs the
 existing `V15DedekindZetaRegularization` once a field-specific entire factor
-and the right-half-plane theta-to-zeta identity are supplied. These are
-genuine remaining premises, not definitions that assert the desired theorem.
+and the right-half-plane theta-to-zeta identity are supplied. Those
+field-specific premises and the final class-group assembly have since been
+proved in the v15 verification code.
 
 The source project retains theta inversion and partial-zeta Mellin code, but
 its exported [`ConeMellinBridge.lean`](https://github.com/mathlib-initiative/sum_product/blob/80e4127a67742659d521466204c6d2d7e0ca2b3f/DedekindZeta/ConeMellinBridge.lean)
 explicitly stops before the final all-field meromorphic continuation and
-functional-equation assembly. The remaining work is to prove the number-field
-theta/Poisson hypotheses, the precise gamma and discriminant normalization,
-and the right-half-plane identification with mathlib's Dedekind zeta. A
-growth bound for the resulting entire function and the Stark/Weil explicit
-formula are further independent tasks.
+functional-equation assembly. The local adaptation now proves the number-field
+theta/Poisson hypotheses, gamma and discriminant normalization,
+right-half-plane identification, trace-dual rescaling, global functional
+equation, and a quadratic exponential growth bound for the resulting entire
+function. Jensen then supplies the coarse zero count. The Stark/Weil explicit
+formula is the remaining independent analytic task.
 
 ## Numerical trust
 

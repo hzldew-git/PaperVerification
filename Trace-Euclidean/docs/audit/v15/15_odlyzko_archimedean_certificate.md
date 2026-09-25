@@ -73,7 +73,8 @@ Lean's native compiler. The public axiom audit lists five generated
 boundary from a proof reduced only by the Lean kernel. The vendored LeanCert
 source and its Apache 2.0 license are in `lean/LeanCert`.
 
-This certificate does not prove the Stark/Weil explicit formula, analytic
-continuation of the Dedekind zeta function, paired-zero convergence, or the
-separate low-degree field-discriminant inputs. Those remain explicit external
+This certificate does not prove the Stark/Weil explicit formula or the
+separate low-degree field-discriminant inputs. Analytic continuation,
+completed-function growth, and direct zero-sum convergence are now supplied
+by separate Lean modules. The remaining items stay explicit external
 mathematical inputs to the v15 verification.

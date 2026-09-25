@@ -72,16 +72,17 @@ private theorem shiftedGamma_cancel {s : ℂ} (hs₀ : s ≠ 0)
   have hp : (Real.pi : ℂ) ≠ 0 := Complex.ofReal_ne_zero.mpr Real.pi_ne_zero
   field_simp [hs₀, hG, hp]
 
-/-- On the original half-plane, the entire multiplier exactly inverts
-`s * ZInfty(s)`. -/
-theorem inverseCompletedMultiplier_mul {s : ℂ} (hs : 1 < s.re) :
+/-- On the positive half-plane, the entire multiplier exactly inverts
+`s * ZInfty(s)`.  The wider domain is useful when comparing zeros in the
+critical strip with the entire completed continuation. -/
+theorem inverseCompletedMultiplier_mul_of_re_pos {s : ℂ} (hs : 0 < s.re) :
     inverseCompletedMultiplier K s * (s * ZInfty K s) = 1 := by
   have hs₀ : s ≠ 0 := by
     intro heq
     subst s
     norm_num at hs
   have hG : Gammaℝ s ≠ 0 :=
-    Gammaℝ_ne_zero_of_re_pos (by linarith)
+    Gammaℝ_ne_zero_of_re_pos hs
   have hG1 : Gammaℝ (s + 1) ≠ 0 := by
     apply Gammaℝ_ne_zero_of_re_pos
     simp only [Complex.add_re, Complex.one_re]
@@ -115,6 +116,12 @@ theorem inverseCompletedMultiplier_mul {s : ℂ} (hs : 1 < s.re) :
         ( ((Gammaℝ (s + 1))⁻¹) ^ nrComplexPlaces K *
           (Gammaℝ (s + 1)) ^ nrComplexPlaces K ) := by ring
     _ = 1 := by rw [hDcancel, hshift, hGcancel, hG1cancel]; ring
+
+/-- On the original convergence half-plane, the entire multiplier exactly
+inverts `s * ZInfty(s)`. -/
+theorem inverseCompletedMultiplier_mul {s : ℂ} (hs : 1 < s.re) :
+    inverseCompletedMultiplier K s * (s * ZInfty K s) = 1 :=
+  inverseCompletedMultiplier_mul_of_re_pos K (by linarith)
 
 /-- An entire regularization of the ordinary Dedekind zeta function. -/
 def dedekindZetaRegularized (s : ℂ) : ℂ :=

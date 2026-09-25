@@ -17,8 +17,14 @@ theory. The earlier uniqueness, nonvanishing, conjugation, and finite-height
 theorems apply to this constructed function. The
 [continuation proof note](docs/audit/v15/20_zeta_continuation_construction.md)
 records its source and exact Lean endpoints. The completed-zeta functional
-equation, an explicit growth bound, the published quantitative zero count,
-and the Stark/Weil explicit formula remain proof boundaries.
+equation and an explicit quadratic growth bound are proved; Jensen supplies a
+quadratic count and direct zero-sum convergence. The sharper published count
+remains optional and unproved. Lean also proves right-half-plane Euler-product
+nonvanishing, the absolutely convergent prime-power logarithmic derivative,
+the archimedean Gamma/digamma decomposition, the digamma partial-fraction
+series, and the symmetric critical-line archimedean bracket. The remaining
+analytic proof boundary is the digamma integral specialization and the global
+Stark/Weil contour identity.
 
 This package contains Lean 4 proofs, independent Python and Wolfram checks,
 extracted v15 inputs, machine-readable results, and an English
@@ -119,16 +125,19 @@ small-degree discriminant input is now proved from Minkowski's bound. The
 exact minima in degrees 2--9, the degree-ten enumeration result, the optimized
 degree-eleven bound 14.083, and the analytic theorem behind Odlyzko's Table 4
 remain explicit external mathematical inputs. Within that last theorem, the
-unformalized analytic steps are the completed-zeta functional equation,
-the Stark/Weil explicit formula, and an actual quantitative zero
-count. Lean now proves the uniform fourth-power decay estimate for the exact
-source transform and deduces absolute convergence of the direct unordered
-sum over actual zero occurrences from a quadratic count. It checks that the
-source's explicit multiplicity-aware HSW bound implies that quadratic count,
-without an ordered enumeration. It also matches the HSW Gamma normalization
-to mathlib's Deligne factors and proves that the conditional completed zeta
+unformalized analytic step is the Stark/Weil explicit formula. Lean proves the
+completed-zeta functional equation, a global quadratic exponential growth
+bound, the resulting Jensen count of actual zero occurrences, the uniform
+fourth-power decay estimate for the exact source transform, and absolute
+convergence of the direct unordered zero sum. It proves the ideal Euler
+product and nonvanishing on `Re(s) > 1`, expands the ordinary logarithmic
+derivative as an absolutely convergent prime-power series, evaluates the
+infinite-place logarithmic derivative in terms of digamma, proves the digamma
+partial-fraction series, and derives the symmetric critical-line bracket. It
+also matches the HSW Gamma
+normalization to mathlib's Deligne factors and proves that the completed zeta
 function has the same zero positions and multiplicities in the open critical
-strip as the existing pole-removed regularization. Lean checks the test function's
+strip as the pole-removed regularization. Lean checks the test function's
 differentiability and derivative decay, and derives the exact
 `E = 32/3` integral from the kernel. The source separation and Lean reduction are
 recorded in the [Odlyzko source audit](docs/audit/v15/14_odlyzko_source_reduction.md)

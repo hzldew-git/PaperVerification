@@ -43,15 +43,19 @@ premise from the conditional Table 4 reduction.
 ## Remaining analytic boundary
 
 The theorem above concerns the exact source transform and does not assume
-an actual zero count or Odlyzko's explicit formula. Those are separate
-missing bridges. The Dedekind-zeta continuation is now constructed in
+an actual zero count or Odlyzko's explicit formula. The Dedekind-zeta
+continuation is now constructed in
 `V15DedekindZetaConstructed.lean`. `V15DedekindZetaZeros.lean` defines
 zero occurrences from analytic order for any entire regularization of
 `(s-1) ζ_K(s)`. Lean proves uniqueness of such a regularization, discreteness
-and finite-height finiteness of its zeros, and conditional paired summability
-from the published count inequality. `V15DedekindZetaConjugation.lean` proves
+and finite-height finiteness of its zeros. `V15DedekindZetaConjugation.lean` proves
 conjugation symmetry and its action on multiplicity-aware zero occurrences
-from any entire regularization. The HSW inequality itself, an ordered enumeration,
-the global functional equation, and the Stark/Weil explicit formula remain
-unproved. Consequently the four reviewed v15 main results retain their
+from any entire regularization. `V15MellinGrowth.lean` proves quadratic
+completed-function growth, obtains a quadratic count through Jensen, and
+proves absolute convergence of the direct zero-occurrence sum. The sharp HSW
+inequality remains unproved but is unnecessary here; no ordered enumeration
+is required. The Stark/Weil explicit formula remains unproved. The global
+completed-zeta functional equation is proved in
+`DedekindZeta.FractionalIdealRescaling`.
+Consequently the four reviewed v15 main results retain their
 documented `PROVISIONAL_MATCH` status.

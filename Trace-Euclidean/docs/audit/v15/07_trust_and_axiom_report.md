@@ -7,8 +7,10 @@ The field-discriminant estimates are EXTERNAL_INPUTS. Degree one is now proved i
 The `V15DedekindZetaZeros.lean` and `V15DedekindZetaConjugation.lean` modules
 add no project axiom. The required entire continuation of `(s-1) ζ_K(s)`
 is now constructed by the vendored number-field theta/Mellin development and
-`V15DedekindZetaConstructed.lean`; the HSW numerical count remains a named
-mathematical hypothesis.
+`V15DedekindZetaConstructed.lean`. The sharp HSW numerical count remains a
+named mathematical hypothesis, but it is no longer needed for convergence of
+the Odlyzko zero sum: the completed-function growth and Jensen route supplies
+a coarser quadratic count internally.
 From mathlib's
 class-number-formula residue and analytic identity/isolated-zero theorems,
 Lean proves any such continuation is unique and nonzero, its zeros are
@@ -17,8 +19,9 @@ height. Real ideal-norm coefficients and continuation uniqueness imply
 conjugation symmetry; repeated derivatives show that conjugation preserves
 analytic zero order. The induced map is an involution on actual zero
 occurrences and preserves every bounded-height set. The constructed instance
-proves existence of the continuation; the published count inequality remains
-unproved.
+proves existence of the continuation. The published sharp count inequality
+remains unproved, while `V15MellinGrowth.lean` now proves the coarser count
+needed here.
 
 `V15DedekindZetaZeroHeight.lean` adds a finite exhaustion and countability
 proof for the actual multiplicity-aware occurrences. It proves a right
@@ -36,11 +39,14 @@ transform. It also covers the exponentially tilted factor, positivity in the
 open strip, continuity up to both boundary weights, and the source-exact
 theorem `Re Phi(s) >= 0` for `0 <= Re(s) <= 1`. For a summable zero family,
 Lean proves that its total contribution has nonnegative real part. The
-completed Dedekind-zeta functional equation and growth bound, the Stark/Weil explicit
-formula and the quantitative count of actual zero occurrences remain external mathematics. Lean now
+completed Dedekind-zeta functional equation is now a Lean theorem.
+`V15MellinGrowth.lean` turns the theta decay estimates into a global quadratic
+exponential bound for the entire completed function, supplies the precise
+Jensen circles, proves a quadratic count of actual zero occurrences, and
+proves absolute convergence of their direct Odlyzko transform. The
+Stark/Weil explicit formula remains external mathematics. Lean now
 proves the test function's `C^4` regularity, derivative decay, uniform
-fourth-power transform decay, and paired-zero convergence conditional on a
-quadratic count for an ordered occurrence enumeration. It also
+fourth-power transform decay, and direct zero-occurrence convergence. It also
 evaluates the exact E = 32/3 archimedean error integral and both endpoint
 transforms `Phi(0) = Phi(1) = 16/3`.
 The source-exact equation (2.3) remains a named unproved premise in a

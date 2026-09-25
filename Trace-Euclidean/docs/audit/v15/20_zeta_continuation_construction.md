@@ -40,26 +40,101 @@ right-half-plane identities are checked by Lean, including the discriminant
 and both real and complex Gamma factors.
 
 `TraceEuclidean.V15DedekindZetaConstructed` instantiates the existing
-`V15DedekindZetaRegularization` structure. Its Table 4 endpoint
-`v15_odlyzkoTable4_of_constructed_circle_growth` no longer assumes that the
-regularization exists. It still states the circle-growth estimate, the
-source explicit formula, and the already certified archimedean bounds as
-explicit premises.
+`V15DedekindZetaRegularization` structure. `V15DedekindZetaCompletedJensen`
+matches its zeros and multiplicities with the entire completed function.
+`V15MellinGrowth` proves the circle-growth estimate, quadratic zero count, and
+direct zero-sum convergence. The endpoint
+`v15_odlyzkoTable4_of_constructed_explicitFormula` therefore takes only the
+source explicit formula as a mathematical premise; it uses the already
+certified archimedean bounds internally.
 
 The field-specific theorem `v15_completedPartialZeta_reflected_radial`
 instantiates the abstract Mellin reflection for every nonzero integral ideal.
 It identifies the reflected *dual radial* Mellin expression away from the
-former poles. A global completed-zeta functional equation still requires a
-proof that these dual fractional-ideal terms reindex over the entire class
-group with the correct discriminant and norm factors.
+former poles.
 
-`DedekindZeta.DualClassReindex` now proves the algebraic part of that
+`DedekindZeta.DualClassReindex` proves the algebraic part of the
 reindexing: the dual ideal `(𝔞𝔡)⁻¹` lies in the class
 `([𝔞][𝔡])⁻¹`, this correspondence permutes the finite class group, and
-finite sums may be reindexed along it. To obtain the functional equation,
-the remaining step is to identify the radial theta term for each dual
-fractional ideal with the chosen integral representative of its class,
-including the scaling of the norm and discriminant factors.
+finite sums may be reindexed along it. The new
+`DedekindZeta.FractionalIdealRescaling` module completes the analytic and
+arithmetic bridge. It proves invariance of the fundamental-cone integral
+under nonzero right translation, identifies the theta kernel of a principal
+multiple of a fractional ideal, constructs a nonzero principal comparison
+with the selected integral class representative, and proves the exact norm
+identity containing the discriminant.
+
+The resulting theorems prove the reflected identity for every partial
+completed zeta, reindex its finite class sum, and then use analytic uniqueness
+to obtain
+
+```text
+completedZetaPoleRemoved K s = completedZetaPoleRemoved K (1 - s)
+```
+
+for every complex `s`. Away from `0` and `1`, Lean also proves
+`completedZetaContinuation K s = completedZetaContinuation K (1 - s)`.
+
+## Quantitative growth and zero count
+
+`TraceEuclidean.V15MellinGrowth` converts each radial theta function's
+asymptotic exponential decay into a uniform pointwise bound on `[1,∞)`. It
+proves the logarithmic inequality and Young estimate needed to absorb every
+Mellin power into `exp(A * (1 + ‖s‖)^2)`, establishes integrability of the
+remaining half-rate exponential tail, and bounds both Mellin-tail integrals.
+The ideal norm and discriminant complex powers satisfy the same type of bound.
+
+The bounds are stable under products and finite sums, so the finite class-group
+sum `completedZetaPoleRemoved K` has global quadratic exponential growth.
+Using a point where this entire function is nonzero, Lean turns the global
+bound into the exact expanding-circle bound required by Jensen's inequality.
+`exists_constructedDedekindZeta_quadraticCountInput` then gives a quadratic
+count of the actual critical-strip zero occurrences, including multiplicity,
+and `constructedDedekindZeta_odlyzkoPhi_summable` proves absolute convergence
+of their direct Odlyzko transform.
+
+## Logarithmic derivative and toolchain decision
+
+`DedekindZeta.LogDeriv` supplies the first contour-integration interface. On
+`Re(s) > 1`, Lean proves that `ZInfty K` is nonzero and differentiable and
+that `NumberField.dedekindZeta K` is differentiable and nonzero. It then proves
+
+```text
+logDeriv completedZetaPoleRemoved(s)
+  = 1/s + 1/(s-1) + logDeriv ZInfty(s) + logDeriv dedekindZeta(s),
+```
+
+without an additional pointwise nonvanishing premise. Differentiating the
+already proved functional equation also gives the global reflection identity
+for the completed logarithmic derivative.
+
+`DedekindZeta.IdealEulerProduct` derives this nonvanishing from the ideal Euler
+product. `DedekindZeta.PrimeLogDeriv` proves local-uniform convergence of the
+non-inverted factors and absolute convergence of the logarithm-weighted double
+series over prime ideals and positive powers. Consequently
+`logDeriv_dedekindZeta_eq_neg_tsum_primePowers` identifies the ordinary-zeta
+logarithmic derivative with that series. `DedekindZeta.ArchimedeanLogDeriv`
+separately expands `logDeriv (ZInfty K)` into the discriminant, real-place, and
+complex-place digamma terms. `DedekindZeta.DigammaSeries`, adapted from
+`anthropics/formal-math` commit
+`fbdc36bbf17d20af3fd0447c6d1a8a02773c9844`, proves the Weierstrass product and
+digamma partial-fraction expansion. `DedekindZeta.DigammaIdentities` then
+proves conjugation and duplication and rewrites the two critical-line
+archimedean logarithmic derivatives as the required real-part bracket.
+`DedekindZeta.DigammaVertical` additionally maps the complex series through
+the real-part functional and proves its absolutely convergent rational series
+on every vertical line `a+it` with `0 < a < 1`.
+
+The external `anthropics/formal-math` project contains a proof of the Riemann
+zeta Weil formula under Lean 4.33.0-rc2 and mathlib commit
+`51e6992efd06126df61a496bebf8f49482a4e129`. The present project remains pinned
+to Lean/mathlib 4.32.1. At the time of comparison, the later mathlib did not
+provide a directly reusable Dedekind-zeta Euler-product nonvanishing theorem.
+The present project has now closed that gap locally. Upgrading would still
+require replaying the whole project and would not by itself supply the
+remaining number-field Stark/Weil specialization. The current route is to port
+compatible generic contour lemmas selectively and retain the stable 4.32.1
+toolchain.
 
 ## Trust and remaining work
 
@@ -70,12 +145,16 @@ right-half-plane equality, and Table 4 endpoint depend only on `propext`,
 previously disclosed native compiler dependence is unchanged.
 
 This construction proves entire continuation of the **pole-removed ordinary
-zeta**. It does not yet prove the functional equation of the completed
-Dedekind zeta. The finite ideal-class sum must still be related under
-dual-ideal inversion to its `s ↦ 1-s` transform. A quantitative circle-growth
-bound for the constructed entire function is also needed to activate the
-existing Jensen zero-count theorem. Finally, the Stark/Weil explicit formula
-for the manuscript's test function remains a named source-level premise.
+zeta** and the functional equation of the completed Dedekind zeta. The
+subsequent quantitative module proves a global quadratic exponential bound
+for the completed function and activates the Jensen zero-count theorem. The
+Stark/Weil explicit formula for the manuscript's test function remains the
+single named analytic premise of the final Table 4 reduction. The ideal Euler
+product, right-half-plane nonvanishing, prime-power logarithmic-derivative
+identity, complex and vertical real digamma series, and symmetric critical-line archimedean bracket are
+internal. What remains is the digamma-to-hyperbolic-integral bridge and the global contour argument,
+including the test-function transforms, justified interchanges, residues, and
+limit passage.
 The cited small-degree discriminant results remain separate literature
 inputs. The four main manuscript results retain the scoped Grade B and
 PROVISIONAL_MATCH assessments.

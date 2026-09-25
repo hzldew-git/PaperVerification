@@ -1432,6 +1432,86 @@ theorem summable_absNorm_neg_cpow {s : ℂ} (hs : 1 < s.re) :
         rw [div_eq_mul_inv]
   exact hsumH
 
+/-- The prime-ideal subseries of the absolutely convergent ideal Dirichlet
+series is absolutely summable on `1 < re s`.  This is the analytic input for
+both the ideal Euler product and the prime-ideal line in the explicit formula. -/
+theorem summable_primeIdeal_absNorm_neg_cpow {s : ℂ} (hs : 1 < s.re) :
+    Summable (fun v : HeightOneSpectrum (𝓞 K) =>
+      ‖(Ideal.absNorm v.asIdeal : ℂ) ^ (-s)‖) := by
+  let e : HeightOneSpectrum (𝓞 K) → NonzeroIdeal K :=
+    fun v => ⟨v.asIdeal, by simpa [Ideal.zero_eq_bot] using v.ne_bot⟩
+  have he : Function.Injective e := by
+    intro v w hvw
+    exact HeightOneSpectrum.ext (by
+      simpa [e] using congrArg Subtype.val hvw)
+  have hsum : Summable (fun 𝔞 : NonzeroIdeal K =>
+      ‖(Ideal.absNorm (𝔞 : Ideal (𝓞 K)) : ℂ) ^ (-s)‖) :=
+    summable_norm_iff.mpr (summable_absNorm_neg_cpow K hs)
+  simpa [e, Function.comp_def] using hsum.comp_injective he
+
+/-- The Euler product over nonzero prime ideals converges to the Dedekind zeta
+function on its half-plane of absolute convergence. -/
+theorem hasProd_primeIdeal_eulerFactors {s : ℂ} (hs : 1 < s.re) :
+    HasProd
+      (fun v : HeightOneSpectrum (𝓞 K) =>
+        (1 - (Ideal.absNorm v.asIdeal : ℂ) ^ (-s))⁻¹)
+      (NumberField.dedekindZeta K s) := by
+  classical
+  let g : HeightOneSpectrum (𝓞 K) → ℂ :=
+    fun v => (Ideal.absNorm v.asIdeal : ℂ) ^ (-s)
+  have hg : ∀ v, ‖g v‖ < 1 := by
+    intro v
+    have hNneZero : Ideal.absNorm v.asIdeal ≠ 0 := by
+      intro h
+      exact v.ne_bot ((Ideal.absNorm_eq_zero_iff).mp h)
+    have hNneOne : Ideal.absNorm v.asIdeal ≠ 1 := by
+      intro h
+      exact v.isPrime.ne_top ((Ideal.absNorm_eq_one_iff).mp h)
+    have hNone : 1 < Ideal.absNorm v.asIdeal := by omega
+    have hNpos : 0 < Ideal.absNorm v.asIdeal :=
+      Nat.zero_lt_of_lt hNone
+    change ‖(Ideal.absNorm v.asIdeal : ℂ) ^ (-s)‖ < 1
+    rw [Complex.norm_natCast_cpow_of_pos hNpos, Complex.neg_re]
+    exact Real.rpow_lt_one_of_one_lt_of_neg
+      (by exact_mod_cast hNone) (by linarith)
+  have hsumg : Summable (fun v => ‖g v‖) := by
+    simpa [g] using summable_primeIdeal_absNorm_neg_cpow K hs
+  have hprod := hasProd_finsuppMonomial hg hsumg
+  let e := nonzeroIdealEquivFinsupp K
+  have hmono : ∀ f : HeightOneSpectrum (𝓞 K) →₀ ℕ,
+      (∏ᶠ v, g v ^ f v) =
+        (Ideal.absNorm ((e.symm f : NonzeroIdeal K) : Ideal (𝓞 K)) : ℂ) ^ (-s) := by
+    intro f
+    symm
+    calc
+      (Ideal.absNorm ((e.symm f : NonzeroIdeal K) : Ideal (𝓞 K)) : ℂ) ^ (-s)
+          = ∏ᶠ v, g v ^ idealExp K (e.symm f : NonzeroIdeal K).1 v := by
+              simpa [g] using
+                absNorm_cpow_eq_finprod K (e.symm f : NonzeroIdeal K).2 s
+      _ = ∏ᶠ v, g v ^ f v := by
+          apply finprod_congr
+          intro v
+          have hv := congrArg
+            (fun h : HeightOneSpectrum (𝓞 K) →₀ ℕ => h v)
+            (e.apply_symm_apply f)
+          change idealExp K (e.symm f : NonzeroIdeal K).1 v = f v at hv
+          rw [hv]
+  have hsumEq :
+      (∑' f : HeightOneSpectrum (𝓞 K) →₀ ℕ, ∏ᶠ v, g v ^ f v) =
+        NumberField.dedekindZeta K s := by
+    rw [dedekindZeta_eq_tsum_absNorm K hs]
+    calc
+      (∑' f : HeightOneSpectrum (𝓞 K) →₀ ℕ, ∏ᶠ v, g v ^ f v)
+          = ∑' f, (Ideal.absNorm
+              ((e.symm f : NonzeroIdeal K) : Ideal (𝓞 K)) : ℂ) ^ (-s) :=
+            tsum_congr hmono
+      _ = ∑' 𝔞 : NonzeroIdeal K,
+          (Ideal.absNorm (𝔞 : Ideal (𝓞 K)) : ℂ) ^ (-s) :=
+            e.symm.tsum_eq (fun 𝔞 : NonzeroIdeal K =>
+              (Ideal.absNorm (𝔞 : Ideal (𝓞 K)) : ℂ) ^ (-s))
+  rw [hsumEq] at hprod
+  simpa [g] using hprod
+
 /-- **Partition over ideal classes**: the finite sum over the class group of the
 partial Dedekind zetas recovers the full sum over nonzero integral ideals. -/
 theorem sum_class_tsum_absNorm {s : ℂ} (hs : 1 < s.re) :

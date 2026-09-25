@@ -1,8 +1,8 @@
 # Trace-Euclidean v15 trust boundary
 
 Lean accepts the encoded proof terms under Lean 4.32.1 and pinned mathlib
-revision 520045ab14e26149ee970e2e617ca04b09bde5d6. The 255
-audited main v15 endpoints depend only on the standard logical axioms propext,
+revision 520045ab14e26149ee970e2e617ca04b09bde5d6. The audited endpoints depend
+only on the standard logical axioms propext,
 Classical.choice, and Quot.sound. The archimedean numerical certificate uses
 LeanCert's `native_decide` checks and therefore also trusts Lean's native
 compiler. The axiom audit prints five generated `_native.native_decide.ax_*`
@@ -37,11 +37,20 @@ complete kernel. Continuity in `a`, obtained from compact support, covers the
 two boundary weights. The resulting theorem proves `Re Phi(s) >= 0` for every
 `0 <= Re(s) <= 1` in Odlyzko's equation (2.2) normalization. A separate
 theorem makes any summable family of such zero contributions nonnegative.
-The completed Dedekind-zeta functional equation, a growth bound for its
-entire regularization, and the Stark/Weil explicit formula remain outside
-the Lean proof. Jensen's inequality now proves a
-coarse quantitative count of actual strip zeros from an explicit quadratic
-exponential circle-growth hypothesis. The sharp HSW count remains external.
+The completed Dedekind-zeta functional equation and a global quadratic
+exponential growth bound are now Lean theorems. Jensen's inequality then
+proves a coarse quantitative count of actual strip zeros. The sharp HSW
+count remains external but is unnecessary for zero-sum convergence. The
+completed logarithmic-derivative and reflection bridges are Lean theorems.
+Lean now also proves the ideal Euler product and Dedekind-zeta nonvanishing on
+`Re(s) > 1`, absolute convergence of the prime-power logarithmic-derivative
+series, its equality with the zeta logarithmic derivative, and the full
+archimedean logarithmic derivative in terms of digamma. It also checks the
+digamma partial-fraction series, conjugation and duplication, and the symmetric
+critical-line archimedean bracket. The remaining analytic boundary is the
+digamma-to-hyperbolic-integral specialization together with the test-function
+transforms, limiting interchanges, residues, and global Stark/Weil contour
+identity.
 The Apache-2.0 number-field theta/Poisson and Mellin development from
 `mathlib-initiative/sum_product` has been ported to the pinned toolchain.
 `DedekindZeta.ZetaRegularization` proves the entire normalization factor and
@@ -50,11 +59,11 @@ right-half-plane identity with `NumberField.dedekindZeta`; the resulting
 `V15AnalyticMellinBridge` retains its abstract reflection theorem. The
 source and exact proof boundary are recorded in
 [the continuation note](docs/audit/v15/20_zeta_continuation_construction.md).
-For an entire regularization and either this growth hypothesis or a
-quadratic count on actual zero occurrences, Lean proves absolute
+For the constructed regularization, the proved growth estimate supplies the
+quadratic count on actual zero occurrences. Lean therefore proves absolute
 convergence of the direct unordered zero sum and nonnegativity of its real
 part. The earlier paired sequence endpoint remains for compatibility but is
-not required by the new direct-sum reduction.
+not required by the direct-sum reduction.
 It also proves a finite-height exhaustion of actual multiplicity-aware
 strip-zero occurrences and a right interval of constant count after every
 height. A continuous count bound established at heights with no strip zero
@@ -62,8 +71,8 @@ is transferred to all heights, but the HSW bound at those regular heights
 remains an explicit input. The exact HSW Gamma normalization is identified
 with mathlib's Deligne factors, and the resulting completed function has
 the same zero positions and analytic multiplicities as the entire
-regularization inside the open critical strip. The regularization now has a
-concrete construction; no completed-zeta functional equation is inferred.
+regularization inside the open critical strip. The regularization and the
+completed-zeta functional equation now have concrete constructions.
 Lean proves the
 test function's differentiability and derivative decay condition, and derives
 the exact `E = 32/3` error integral from the source kernel. It also proves
@@ -71,8 +80,9 @@ the exact `E = 32/3` error integral from the source kernel. It also proves
 The source-formula reduction states Odlyzko's two archimedean integrals and
 equation (2.3) explicitly. Both integrals converge, and strict bounds for the
 tabulated `A` and `B` values follow from analytic endpoint estimates and
-LeanCert's dyadic interval certificates. Its Table 4 deduction remains
-conditional on equation (2.3) and a nonnegative convergent paired-zero sum.
+LeanCert's dyadic interval certificates. The direct zero sum and its sign are
+now discharged internally; the Table 4 deduction remains conditional only on
+the Stark/Weil equation (2.3).
 
 The public Python and Wolfram runs trust their kernels and the extracted
 input file. The private maintainer run also checks the SHA-256 digest and

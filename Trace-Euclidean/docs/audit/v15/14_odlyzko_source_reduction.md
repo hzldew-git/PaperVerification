@@ -250,16 +250,12 @@ norms at most 4095 and exponents at most eleven. In particular, the complete
 prime correction is a nonnegative Lean theorem rather than an external
 infinite-sum premise.
 
-Eliminating the remaining Table 4 premise still requires a new
-analytic-number-theory development containing at least:
-
-1. a completed Dedekind zeta function with meromorphic continuation and its
-   functional equation;
-2. the Stark/Weil explicit formula and an instantiated zero-counting estimate
-   for actual zero occurrences. The source test-function hypotheses, entire
-   zero transform, uniform fourth-power vertical decay, conjugate pairing
-   identities, pointwise sign, and paired-series convergence from a quadratic
-   count are already proved.
+Eliminating the remaining Table 4 premise now requires the Stark/Weil explicit
+formula. The completed Dedekind zeta, its functional equation, quadratic
+growth, a Jensen count for actual zero occurrences, and direct zero-sum
+convergence are proved. The source test-function hypotheses, entire zero
+transform, uniform fourth-power vertical decay, conjugate pairing identities,
+and pointwise sign are also proved.
 
 The sinh integral's convergence and the strict numerical estimates for
 `A = 36.347` and `B = 16.593` are supplied by the separate
@@ -268,10 +264,10 @@ checks use `native_decide`, so they carry an explicitly recorded native
 compiler trust boundary.
 
 Pinned mathlib defines the Dedekind zeta Dirichlet series and its residue at
-one, but it does not currently provide global continuation, the functional
-equation, this explicit formula, or the required zero-sum theory. Therefore
-the full Odlyzko theorem remains a disclosed external mathematical input. The
-Lean work now verifies the source
+one but does not provide this explicit formula. The local theta/Mellin
+development now supplies global continuation, the functional equation,
+growth, and the required zero-sum theory. Therefore the full Odlyzko theorem
+still has one disclosed external mathematical input. The Lean work verifies the source
 kernel, the autocorrelation and Fourier positivity of `H`, the exact
 hyperbolic-secant and tilted transforms, the product-to-convolution bridge,
 source-normalized zero-transform positivity on the closed critical strip, the

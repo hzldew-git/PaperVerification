@@ -16,13 +16,15 @@ Here `d_K` is the positive absolute field discriminant and `n_K` its degree.
 The 2021 paper notes and repairs an error in an earlier explicit estimate of
 Trudgian; its Corollary 1.2 is the count used here. The source also records
 the completed zeta function and its functional equation in equations
-(2.1)--(2.2), but these are *recalled*, not formalized in our Lean package.
+(2.1)--(2.2). These are recalled in the paper and are now independently
+formalized in this Lean package.
 The authors state after Corollary 1.2 that their explicit constants were
 obtained by direct numerical computation with Maple; they do not carry out
 the interval analysis used in related work. A fully kernel-checked rebuild
 of those decimal constants would therefore need a separate certified
 numerical argument. The coarse summability criterion does not need their
-optimized constants, so a future symbolic `O(T log T)` proof is another route.
+optimized constants; the completed-function growth and Jensen proof below now
+supplies it directly.
 
 ## Checked reduction in Lean
 
@@ -76,13 +78,11 @@ heights remains an explicit input. See the
 [classical-source map](18_classical_analytic_sources.md).
 
 The new `HSWFieldInput` fixes the count parameters to the field's actual
-absolute discriminant and degree. Only the numerical inequality remains an
-external premise; Lean constructs the finite set required by the older
-Corollary 1.2 interface and derives the quadratic bound for any injective
-occurrence sequence. With a height ordering and the proved conjugation
-symmetry, the exact Odlyzko transform has a convergent paired series.
-An infinite ordered sequence of representatives and the HSW inequality
-have not been proved.
+absolute discriminant and degree. The sharp numerical inequality remains an
+external premise. It is retained as a faithful formal reduction of Corollary
+1.2, but it is no longer needed for the Table 4 convergence route. An infinite
+ordered sequence of representatives has not been constructed and is no
+longer required.
 
 The newer `V15DedekindZetaUnorderedZeros.lean` removes the first requirement
 from the source-formula route. It partitions the actual occurrence type by
@@ -92,17 +92,22 @@ convergent. `quadraticCount_of_HSWField` derives that count from the exact
 HSW input, including `0 <= T < 1`; `phi_summable_of_HSWRegular` also uses the
 proved regular-height transfer. The endpoint
 `v15_odlyzkoTable4ExplicitCorrectionInput_of_unorderedZeros` uses the direct
-zero sum and no ordered enumeration. HSW's inequality and the explicit
-formula remain named analytic hypotheses.
+zero sum and no ordered enumeration. `V15MellinGrowth.lean` proves a global
+quadratic exponential bound for the entire completed zeta from the theta
+decay and Mellin-tail formulas. The completed-function Jensen bridge then
+derives the required quadratic count and absolute convergence of this direct
+sum. Only the explicit formula remains a named analytic hypothesis in the
+final Table 4 theorem.
 
 `V15DedekindZetaCompletion.lean` identifies the factor in HSW (2.1) with
 mathlib's `Gammaℝ` and `Gammaℂ`, proves its nonvanishing and analyticity in
 the open critical strip, and proves equality of zero positions and analytic
 zero orders with the pole-removed regularization there. These results are
-conditional on the entire regularization and do not prove a global
-functional equation or HSW's numerical bound.
+combined with the constructed entire regularization. The global functional
+equation and the coarser Jensen count are now proved; the sharp HSW numerical
+bound remains unproved.
 
-## Transform decay and entire zeta continuation now proved; further global theory remains
+## Transform decay, continuation, and coarse zero count now proved
 
 For the transform estimate, the pinned mathlib module
 [`FourierTransformDeriv`](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Analysis/Fourier/FourierTransformDeriv.html)
@@ -112,7 +117,7 @@ regularity, fourth-derivative integrability, uniform closed-strip `L^1`
 bounds, and the exact `|t|^{-4}` Fourier estimate. Thus the transform decay
 premise has been discharged in Lean for the printed `b=4` kernel.
 
-For the remaining completed-zeta functional equation, mathlib's
+For the completed-zeta functional equation, mathlib's
 [`WeakFEPair`](https://leanprover-community.github.io/mathlib4_docs/Mathlib/NumberTheory/LSeries/AbstractFuncEq.html)
 already supplies a **generic** Mellin-transform continuation and functional
 equation. The pinned
@@ -120,21 +125,21 @@ equation. The pinned
 module gives the ideal-norm Dirichlet series and the right-hand residue at
 one. The vendored number-field theta/Poisson modules now prove the entire
 regularization and its agreement with that series on `Re(s)>1`; their
-dual-ideal class reindexing has not yet yielded a global functional equation.
+trace-dual fractional-ideal rescaling and class reindexing now yield the
+global functional equation.
 Hasanalizade--Shen--Wong, equations (2.1)--(2.2), fixes
 the gamma-factor normalization to match. Odlyzko's
 [1990 survey, equations (2.2)--(2.6)](https://www.numdam.org/item/JTNB_1990__2_1_119_0.pdf)
-then provides the source normalization for the explicit formula. This is a
-substantial separate development: a growth or sharp zero-count estimate,
-the contour or distribution argument, and the identity for the exact
-`b=4` test function still need Lean proofs.
+then provides the source normalization for the explicit formula. Growth and
+the coarse zero count are now proved. The contour or distribution argument,
+the prime-ideal logarithmic-derivative expansion, and the identity for the
+exact `b=4` test function still need Lean proofs.
 
 ## Practical next proof boundary
 
-The next independent targets are proving the completed-zeta functional
-equation and obtaining a coarse count from growth or HSW's sharp count from an
-argument-principle proof. The pinned mathlib contains Jensen's inequality
-in `Mathlib.Analysis.Complex.JensenFormula`; using it still requires a
-global growth estimate; the bridge from divisor sums to the project's
-multiplicity-aware occurrences is already proved. The Stark/Weil explicit formula remains a
-separate, larger source-to-Lean gap.
+The coarse count is now obtained from the global growth estimate and mathlib's
+Jensen inequality, including the bridge from completed-function divisors to
+the project's multiplicity-aware occurrences. The next independent target is
+the Stark/Weil explicit formula. Its proof must connect the completed zeta's
+zeros, the Gamma terms, and the ideal Euler-product logarithmic derivative to
+the exact compactly supported test kernel.

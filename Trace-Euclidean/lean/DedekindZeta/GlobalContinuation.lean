@@ -37,7 +37,7 @@ def completedZetaContinuation (s : ℂ) : ℂ :=
   ∑ c : ClassGroup (𝓞 K),
     completedPartialZetaContinuation K (idealClassRep K c) s
 
-private theorem idealClassRep_ne_zero (c : ClassGroup (𝓞 K)) :
+theorem idealClassRep_ne_zero (c : ClassGroup (𝓞 K)) :
     idealClassRep K c ≠ 0 := by
   unfold idealClassRep
   exact mem_nonZeroDivisors_iff_ne_zero.mp
@@ -57,7 +57,7 @@ theorem completedZetaContinuation_eq_zeta {s : ℂ} (hs : 1 < s.re) :
 
 /-- Remove the two possible Mellin poles without making a choice of values at
 the old pole locations. Here the radial weight is one. -/
-private def poleRemovedRadial (𝔞 : Ideal (𝓞 K)) (s : ℂ) : ℂ :=
+def poleRemovedRadial (𝔞 : Ideal (𝓞 K)) (s : ℂ) : ℂ :=
   -(surfaceVolume K) * (s - 1) +
     ((Theta.covolume K 𝔞 : ℂ)⁻¹) * (surfaceVolume K) * s +
       s * (s - 1) *
@@ -91,7 +91,7 @@ private theorem poleRemovedRadial_eq (𝔞 : Ideal (𝓞 K)) (s : ℂ)
   norm_num
   ring
 
-private def partialFactor (𝔞 : Ideal (𝓞 K)) (s : ℂ) : ℂ :=
+def partialFactor (𝔞 : Ideal (𝓞 K)) (s : ℂ) : ℂ :=
   (1 / (Units.torsionOrder K : ℂ)) * (Ideal.absNorm 𝔞 : ℂ) ^ s *
     (((|NumberField.discr K| : ℤ) : ℂ) ^ (s / 2))
 
