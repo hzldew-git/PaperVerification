@@ -1,5 +1,9 @@
 # Fourth-power decay of the exact Odlyzko transform
 
+**Status update.** The decay theorem recorded here is now used by the closed
+specialized contour proof; see
+[`22_odlyzko_contour_closure.md`](22_odlyzko_contour_closure.md).
+
 The v15 unconditional `b = 4` test function is the exact printed function
 `F(x) = H(x/4)/cosh(x/2)`, supported on `[-8,8]`. The source-normalized
 transform is `Phi(s) = integral F(x) exp((s-1/2)x) dx`.
@@ -54,7 +58,8 @@ from any entire regularization. `V15MellinGrowth.lean` proves quadratic
 completed-function growth, obtains a quadratic count through Jensen, and
 proves absolute convergence of the direct zero-occurrence sum. The sharp HSW
 inequality remains unproved but is unnecessary here; no ordered enumeration
-is required. The Stark/Weil explicit formula remains unproved. The global
+is required. The subsequent finite-contour modules prove the specialized
+`b = 4` discriminant inequality required by the manuscript. The global
 completed-zeta functional equation is proved in
 `DedekindZeta.FractionalIdealRescaling`.
 Consequently the four reviewed v15 main results retain their

@@ -4,7 +4,7 @@
 
 Paper: finite isometry classes over all totally real fields and positive ranks, with strict n Delta_F^(1/d) < 2 pi e.
 
-Formal: v15_classic_root_discriminant_lt and v15_classic_finite_of_odlyzko_table4. The finite theorem accepts the exact published Table 4 inequality as a cited external premise.
+Formal: `v15_classic_root_discriminant_lt` and `v15_classic_finite_closed`. The finite theorem uses the internally proved specialized `b = 4` discriminant inequality.
 
 Status: PROVISIONAL_MATCH. AUTHOR_CONFIRMATION_REQUIRED for the cross-field isometry convention. FORMALIZATION_EXPERT_CONFIRMATION_REQUIRED for the quotient and analytic dependency chain.
 
@@ -12,7 +12,7 @@ Status: PROVISIONAL_MATCH. AUTHOR_CONFIRMATION_REQUIRED for the cross-field isom
 
 Paper: same varying field/rank scope and strict n Delta_F^(1/d) < 4 pi e.
 
-Formal: v15_integral_root_discriminant_lt, v15_integral_rank_le_34, v15_rank_one_classic_input, and v15_integral_finite_of_odlyzko_table4_source.
+Formal: `v15_integral_root_discriminant_lt`, `v15_integral_rank_le_34`, `v15_rank_one_classic_input`, and `v15_integral_finite_closed`.
 
 Status: PROVISIONAL_MATCH. AUTHOR_CONFIRMATION_REQUIRED for volume-ideal and classic-integrality normalization. FORMALIZATION_EXPERT_CONFIRMATION_REQUIRED for the rank-one and scale-two bridges.
 
@@ -36,7 +36,7 @@ Status: PROVISIONAL_MATCH. AUTHOR_CONFIRMATION_REQUIRED for the field-model iden
 
 Paper: for each fixed p in [1, infinity], including house Euclideanity, positive integral lattices have finitely many isometry classes while the totally real field and positive rank vary.
 
-Formal: V15PNormExponent covers every finite real p >= 1 and infinity. GlobalLatticePresentation.v15_pnorm_implies_trace proves the strict witness transfer from the normalized embedding mean to trace divided by degree. v15_pnorm_finite_of_odlyzko_table4 gives finite classes under the same disclosed Table 4 input as Theorem 1.3.
+Formal: `V15PNormExponent` covers every finite real p >= 1 and infinity. `GlobalLatticePresentation.v15_pnorm_implies_trace` proves the strict witness transfer from the normalized embedding mean to trace divided by degree. `v15_pnorm_finite_closed` gives finite classes through the internally proved Table 4 route.
 
 Status: PROVISIONAL_MATCH. AUTHOR_CONFIRMATION_REQUIRED for the embedding mean and cross-field isometry convention. FORMALIZATION_EXPERT_CONFIRMATION_REQUIRED for the mean inequality and quotient-class endpoint.
 

@@ -1,5 +1,9 @@
 # Odlyzko transformed prime-power certificate
 
+**Status update.** This certificate is now combined with the endpoint,
+archimedean, and finite-contour modules in the closed specialized proof; see
+[`22_odlyzko_contour_closure.md`](22_odlyzko_contour_closure.md).
+
 This note records the kernel-checked prime side of the explicit-formula
 development. The implementation is
 `lean/TraceEuclidean/V15OdlyzkoPrimeTransform.lean`.
@@ -67,8 +71,7 @@ The final declarations are
 
 The endpoints use only `propext`, `Classical.choice`, and `Quot.sound`. They do
 not use `sorry`, a project axiom, or `native_decide`. The transformed
-prime-power matching is therefore closed. The remaining analytic boundary is
-the global Stark/Weil contour argument: a weighted logarithmic-derivative
-integral for the completed zeta must be identified with the convergent sum of
-its zeros, including multiplicity, after the horizontal contour terms are
-shown to vanish.
+prime-power matching is therefore closed. The subsequent contour modules
+identify the weighted completed-zeta integral with finite multiplicity-aware
+zero sums, make the horizontal terms vanish, pass to the vertical limit, and
+derive the specialized discriminant inequality.

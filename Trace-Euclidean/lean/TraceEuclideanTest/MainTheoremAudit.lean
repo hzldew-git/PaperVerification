@@ -161,6 +161,16 @@ import TraceEuclidean
 #check TraceEuclidean.v15OdlyzkoPrimeCorrection_nonneg
 #check TraceEuclidean.v15_odlyzkoTable4ExactErrorInput_of_explicitCorrection
 #check TraceEuclidean.v15_odlyzkoTable4DescriptionInput_of_explicitCorrection
+#check TraceEuclidean.v15OdlyzkoEndpoint_normalized_integral
+#check TraceEuclidean.v15OdlyzkoArchimedean_normalized_integral_re
+#check TraceEuclidean.v15OdlyzkoCompletedVerticalPair_normalized_integral_re
+#check TraceEuclidean.v15Odlyzko_discriminant_log_lower_bound
+#check TraceEuclidean.v15_odlyzkoTable4ExplicitCorrectionInput_closed
+#check TraceEuclidean.v15_odlyzkoTable4DescriptionInput_closed
+#check TraceEuclidean.v15_sectionFourDiscriminantInput_of_smallDegreeLiterature
+#check TraceEuclidean.v15_classic_finite_closed
+#check TraceEuclidean.v15_integral_finite_closed
+#check TraceEuclidean.v15_pnorm_finite_closed
 #print axioms TraceEuclidean.v15_admissible_gram_iff_mem
 #print axioms TraceEuclidean.v15_quadratic_candidate_mem
 #print axioms TraceEuclidean.v15_quadratic_candidate_six_rows
@@ -210,6 +220,10 @@ import TraceEuclidean
 #print axioms TraceEuclidean.v15OdlyzkoPrimeCorrection_nonneg
 #print axioms TraceEuclidean.v15_odlyzkoTable4ExactErrorInput_of_explicitCorrection
 #print axioms TraceEuclidean.v15_odlyzkoTable4DescriptionInput_of_explicitCorrection
+#print axioms TraceEuclidean.v15OdlyzkoEndpoint_normalized_integral
+#print axioms TraceEuclidean.v15OdlyzkoArchimedean_normalized_integral_re
+#print axioms TraceEuclidean.v15OdlyzkoCompletedVerticalPair_normalized_integral_re
+#print axioms TraceEuclidean.v15Odlyzko_discriminant_log_lower_bound
 
 -- V15 rank-one classification, realization, and semantic bridges.
 #check TraceEuclidean.v15_actual_ideal_six_rows
@@ -664,7 +678,6 @@ import TraceEuclidean
 #print axioms TraceEuclidean.V15MellinGrowth.exists_completedZetaPoleRemoved_circle_growth
 #print axioms TraceEuclidean.V15MellinGrowth.exists_constructedDedekindZeta_quadraticCountInput
 #print axioms TraceEuclidean.V15MellinGrowth.constructedDedekindZeta_odlyzkoPhi_summable
-#print axioms TraceEuclidean.V15MellinGrowth.v15_odlyzkoTable4_of_constructed_explicitFormula
 
 -- First contour-integration interface for the constructed completed zeta.
 #check DedekindZeta.LogDeriv.ZInfty_ne_zero_of_re_pos

@@ -188,6 +188,67 @@ theorem v15OdlyzkoTiltedF4_exists_uniform_fourth_mass :
           ‖iteratedDeriv 4 (v15OdlyzkoTiltedF4 a) x‖))
     exact hle.trans hb
 
+/-- On every fixed compact interval of exponential tilts, the exact source
+kernel and its fourth derivative have uniform finite `L¹` bounds. -/
+def V15OdlyzkoTiltedFourthDerivativeMassBoundOn
+    (a₀ a₁ M₀ M₄ : ℝ) : Prop :=
+  ∀ a : ℝ, a₀ ≤ a → a ≤ a₁ →
+    (∫ x : ℝ, ‖v15OdlyzkoTiltedF4 a x‖) ≤ M₀ ∧
+      (∫ x : ℝ, ‖iteratedDeriv 4 (v15OdlyzkoTiltedF4 a) x‖) ≤ M₄
+
+/-- Compactness supplies uniform fourth-derivative masses on an arbitrary
+closed tilt interval. -/
+theorem v15OdlyzkoTiltedF4_exists_uniform_fourth_mass_on (a₀ a₁ : ℝ) :
+    ∃ M₀ M₄ : ℝ,
+      V15OdlyzkoTiltedFourthDerivativeMassBoundOn a₀ a₁ M₀ M₄ := by
+  let S : Set (ℝ × ℝ) :=
+    Set.Icc a₀ a₁ ×ˢ Set.Icc (-8 : ℝ) 8
+  have hCompact : IsCompact S := isCompact_Icc.prod isCompact_Icc
+  obtain ⟨C₀, hC₀⟩ := hCompact.exists_bound_of_continuousOn
+    v15OdlyzkoTiltedF4_continuous_joint.continuousOn
+  obtain ⟨C₄, hC₄⟩ := hCompact.exists_bound_of_continuousOn
+    v15OdlyzkoTiltedF4_fourth_deriv_continuous_joint.continuousOn
+  let V : ℝ := (volume (Set.Icc (-8 : ℝ) 8)).toReal
+  refine ⟨C₀ * V, C₄ * V, ?_⟩
+  intro a ha₀ ha₁
+  have ha : a ∈ Set.Icc a₀ a₁ := ⟨ha₀, ha₁⟩
+  have hfinite : volume (Set.Icc (-8 : ℝ) 8) < ⊤ := isCompact_Icc.measure_lt_top
+  constructor
+  · have hb := norm_setIntegral_le_of_norm_le_const
+      (μ := volume) (s := Set.Icc (-8 : ℝ) 8)
+      (f := fun x : ℝ ↦ ‖v15OdlyzkoTiltedF4 a x‖)
+      hfinite (by
+        intro x hx
+        simpa only [Real.norm_eq_abs, abs_of_nonneg (norm_nonneg _)] using
+          hC₀ (a, x) (show (a, x) ∈ S from ⟨ha, hx⟩))
+    have hEq := v15OdlyzkoTiltedF4_iteratedDeriv_norm_integral_eq_set a 0
+    simp only [iteratedDeriv_zero] at hEq
+    rw [hEq]
+    have hle :
+        (∫ x in Set.Icc (-8 : ℝ) 8, ‖v15OdlyzkoTiltedF4 a x‖) ≤
+          ‖∫ x in Set.Icc (-8 : ℝ) 8, ‖v15OdlyzkoTiltedF4 a x‖‖ := by
+      simpa only [Real.norm_eq_abs] using
+        (le_abs_self (∫ x in Set.Icc (-8 : ℝ) 8,
+          ‖v15OdlyzkoTiltedF4 a x‖))
+    exact hle.trans hb
+  · have hb := norm_setIntegral_le_of_norm_le_const
+      (μ := volume) (s := Set.Icc (-8 : ℝ) 8)
+      (f := fun x : ℝ ↦ ‖iteratedDeriv 4 (v15OdlyzkoTiltedF4 a) x‖)
+      hfinite (by
+        intro x hx
+        simpa only [Real.norm_eq_abs, abs_of_nonneg (norm_nonneg _)] using
+          hC₄ (a, x) (show (a, x) ∈ S from ⟨ha, hx⟩))
+    rw [v15OdlyzkoTiltedF4_iteratedDeriv_norm_integral_eq_set a 4]
+    have hle :
+        (∫ x in Set.Icc (-8 : ℝ) 8,
+          ‖iteratedDeriv 4 (v15OdlyzkoTiltedF4 a) x‖) ≤
+          ‖∫ x in Set.Icc (-8 : ℝ) 8,
+            ‖iteratedDeriv 4 (v15OdlyzkoTiltedF4 a) x‖‖ := by
+      simpa only [Real.norm_eq_abs] using
+        (le_abs_self (∫ x in Set.Icc (-8 : ℝ) 8,
+          ‖iteratedDeriv 4 (v15OdlyzkoTiltedF4 a) x‖))
+    exact hle.trans hb
+
 /-- Uniform fourth-derivative data for the exponentially tilted exact kernel
 on the entire closed critical strip. The `C⁴` assertion and both integral
 bounds are established above for the exact source kernel. -/
@@ -315,6 +376,78 @@ theorem v15OdlyzkoPhi_exists_fourthPowerBound :
       (iteratedDeriv 4 (v15OdlyzkoTiltedF4 0) x))).trans h₄
   exact ⟨8 * (M₀ + M₄), by positivity,
     v15OdlyzkoPhiFourthPowerBound_of_derivativeMassBound M₀ M₄ hMass⟩
+
+/-- A uniform fourth-power transform bound on an arbitrary closed vertical
+strip. -/
+def V15OdlyzkoPhiFourthPowerBoundOn (σ₀ σ₁ D : ℝ) : Prop :=
+  ∀ s : ℂ, σ₀ ≤ s.re → s.re ≤ σ₁ →
+    ‖v15OdlyzkoPhi s‖ ≤ D / (1 + |s.im|) ^ 4
+
+/-- Uniform fourth-derivative masses on the corresponding compact interval
+of exponential tilts imply fourth-power decay on a closed vertical strip. -/
+theorem v15OdlyzkoPhiFourthPowerBoundOn_of_massBound
+    (σ₀ σ₁ M₀ M₄ : ℝ)
+    (hMass : V15OdlyzkoTiltedFourthDerivativeMassBoundOn
+      (σ₀ - 1 / 2) (σ₁ - 1 / 2) M₀ M₄) :
+    V15OdlyzkoPhiFourthPowerBoundOn σ₀ σ₁ (8 * (M₀ + M₄)) := by
+  intro s hs₀ hs₁
+  let a : ℝ := s.re - 1 / 2
+  let w : ℝ := -s.im / (2 * Real.pi)
+  let f : ℝ → ℂ := v15OdlyzkoTiltedF4 a
+  obtain ⟨hMass₀, hMass₄⟩ := hMass a (by dsimp [a]; linarith)
+    (by dsimp [a]; linarith)
+  have hSmooth : ContDiff ℝ 4 f := by
+    simpa only [f] using v15OdlyzkoTiltedF4_contDiff_four a
+  have hInt : ∀ k : ℕ, (k : ℕ∞) ≤ 4 →
+      Integrable (iteratedDeriv k f) volume := by
+    intro k hk
+    simpa only [f] using
+      v15OdlyzkoTiltedF4_iteratedDeriv_integrable_of_contDiff a
+        (v15OdlyzkoTiltedF4_contDiff_four a) k hk
+  have hPhi : v15OdlyzkoPhi s = 𝓕 f w := by
+    simpa only [a, w, f] using v15OdlyzkoPhi_eq_fourier s
+  have hZero : ‖v15OdlyzkoPhi s‖ ≤ M₀ := by
+    rw [hPhi]
+    exact (VectorFourier.norm_fourierIntegral_le_integral_norm
+      𝐞 volume (innerₗ ℝ) f w).trans hMass₀
+  have hFourth : |s.im| ^ 4 * ‖v15OdlyzkoPhi s‖ ≤ M₄ := by
+    have h := v15Fourier_fourth_frequency_bound f hSmooth hInt w
+    rw [v15Odlyzko_fourth_frequency_normalization s.im, ← hPhi] at h
+    exact h.trans hMass₄
+  have hPow : (1 + |s.im|) ^ 4 ≤ 8 * (1 + |s.im| ^ 4) := by
+    have hFactor : 0 ≤ (|s.im| - 1) ^ 2 *
+        (7 * |s.im| ^ 2 + 10 * |s.im| + 7) := by positivity
+    nlinarith
+  have hProduct :
+      (1 + |s.im|) ^ 4 * ‖v15OdlyzkoPhi s‖ ≤ 8 * (M₀ + M₄) := by
+    calc
+      _ ≤ (8 * (1 + |s.im| ^ 4)) * ‖v15OdlyzkoPhi s‖ :=
+        mul_le_mul_of_nonneg_right hPow (norm_nonneg _)
+      _ = 8 * (‖v15OdlyzkoPhi s‖ +
+          |s.im| ^ 4 * ‖v15OdlyzkoPhi s‖) := by ring
+      _ ≤ 8 * (M₀ + M₄) := by nlinarith
+  apply (le_div_iff₀ (by positivity : 0 < (1 + |s.im|) ^ 4)).2
+  nlinarith
+
+/-- The exact Odlyzko transform has uniform fourth-power decay on the wider
+strip used by the finite symmetric contour. -/
+theorem v15OdlyzkoPhi_exists_wideFourthPowerBound :
+    ∃ D : ℝ, 0 ≤ D ∧ V15OdlyzkoPhiFourthPowerBoundOn (-1) 2 D := by
+  obtain ⟨M₀, M₄, hMass⟩ :=
+    v15OdlyzkoTiltedF4_exists_uniform_fourth_mass_on
+      (-(3 / 2 : ℝ)) (3 / 2 : ℝ)
+  obtain ⟨h₀, h₄⟩ := hMass 0 (by norm_num) (by norm_num)
+  have hM₀ : 0 ≤ M₀ :=
+    (integral_nonneg (fun x ↦ norm_nonneg (v15OdlyzkoTiltedF4 0 x))).trans h₀
+  have hM₄ : 0 ≤ M₄ :=
+    (integral_nonneg (fun x ↦ norm_nonneg
+      (iteratedDeriv 4 (v15OdlyzkoTiltedF4 0) x))).trans h₄
+  have hMass' : V15OdlyzkoTiltedFourthDerivativeMassBoundOn
+      ((-1 : ℝ) - 1 / 2) (2 - 1 / 2) M₀ M₄ := by
+    intro a ha₀ ha₁
+    apply hMass a <;> norm_num at ha₀ ha₁ ⊢ <;> linarith
+  exact ⟨8 * (M₀ + M₄), by positivity,
+    v15OdlyzkoPhiFourthPowerBoundOn_of_massBound (-1) 2 M₀ M₄ hMass'⟩
 
 /-- For any height-ordered zero enumeration satisfying the quadratic ordinal
 bound, the actual conjugate-paired transform series is absolutely summable.

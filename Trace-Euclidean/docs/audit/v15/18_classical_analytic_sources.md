@@ -1,5 +1,10 @@
 # Classical analytic sources and the next Lean bridge
 
+**Status update.** These sources now guide a completed specialized `b = 4`
+contour formalization. See
+[`22_odlyzko_contour_closure.md`](22_odlyzko_contour_closure.md) for its exact
+scope; the table below still records the source map.
+
 This note identifies the source of each outstanding analytic theorem and
 records what the pinned Lean project actually proves. A citation supplies a
 mathematical reference, not a Lean proof.
@@ -8,7 +13,7 @@ mathematical reference, not a Lean proof.
 | --- | --- | --- |
 | Dedekind-zeta continuation and functional equation | J. Neukirch, [*Algebraic Number Theory*](https://link.springer.com/book/10.1007/978-3-662-03983-0), Chapter VII, especially Section 5 (Dedekind zeta), Section 7 (number-field theta series), and Section 8 (Hecke L-series); J. Tate, [*Fourier Analysis in Number Fields and Hecke's Zeta-Functions*](https://sites.math.rutgers.edu/~alexk/2023S572/Tate1950.pdf), Chapter IV, Sections 4.2 and 4.4--4.5 | The continuation, trace-dual class reindexing, exact norm/discriminant scaling, and completed-zeta functional equation are proved in Lean. |
 | Completed zeta and quantitative zero count | E. Hasanalizade, Q. Shen, and P.-J. Wong, [*Counting zeros of Dedekind zeta functions*](https://arxiv.org/pdf/2102.04663), Corollary 1.2, equations (2.1)--(2.4), Section 3, and the footnote after (2.5) | The constructed completed zeta, functional equation, quadratic exponential growth, Jensen count, and direct zero-sum convergence are proved. The sharper published count and its decimal constants remain an optional unproved route. |
-| Stark/Weil formula and discriminant bounds | H. Stark, [*Some effective cases of the Brauer--Siegel theorem*](https://gdz.sub.uni-goettingen.de/download/pdf/PPN356556735_0023/PPN356556735_0023.pdf), Invent. Math. 23 (1974), 135--152; G. Poitou, [*Minorations de discriminants*](https://www.numdam.org/article/SB_1975-1976__18__136_0.pdf), Section 6; A. Odlyzko, [*Lower bounds for discriminants of number fields*](https://www.impan.pl/en/publishing-house/journals-and-series/acta-arithmetica/all/29/3/100995/lower-bounds-for-discriminants-of-number-fields), Acta Arith. 29 (1976), 275--297; Odlyzko's [1990 survey](https://www.numdam.org/item/JTNB_1990__2_1_119_0.pdf), Section 2 | Prove the explicit formula with its zero and prime-ideal terms, convergence and normalization, then specialize it to the printed unconditional test function and Table 4 constants. |
+| Stark/Weil formula and discriminant bounds | H. Stark, [*Some effective cases of the Brauer--Siegel theorem*](https://gdz.sub.uni-goettingen.de/download/pdf/PPN356556735_0023/PPN356556735_0023.pdf), Invent. Math. 23 (1974), 135--152; G. Poitou, [*Minorations de discriminants*](https://www.numdam.org/article/SB_1975-1976__18__136_0.pdf), Section 6; A. Odlyzko, [*Lower bounds for discriminants of number fields*](https://www.impan.pl/en/publishing-house/journals-and-series/acta-arithmetica/all/29/3/100995/lower-bounds-for-discriminants-of-number-fields), Acta Arith. 29 (1976), 275--297; Odlyzko's [1990 survey](https://www.numdam.org/item/JTNB_1990__2_1_119_0.pdf), Section 2 | The project proves the finite contour, zero, endpoint, archimedean, and prime terms for the printed unconditional `b = 4` test function and derives the required Table 4 inequality. It does not claim a general arbitrary-test-function formula. |
 
 The 1976 unpublished [*Discriminant bounds* tables](https://www-users.cse.umn.edu/~odlyzko/unpublished/discr.bound.table4)
 are the separate source for the numerical Table 4 row in the v15 audit. The
@@ -65,6 +70,6 @@ Mellin data now construct an entire continuation of `(s-1) ζ_K(s)` in this
 project, and the fractional-ideal rescaling module proves the global completed
 functional equation. The
 argument-principle specialization and Stark/Weil explicit formula are not
-supplied by mathlib. This project now proves the required circle-growth
-estimate and derives the coarse count. The next proof boundary is the explicit
-formula itself, and every remaining analytic hypothesis must stay visible.
+supplied by mathlib. This project proves the circle-growth estimate, coarse
+count, finite weighted argument principle, contour limits, and specialized
+`b = 4` discriminant inequality locally.

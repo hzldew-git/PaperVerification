@@ -28,8 +28,10 @@ from 8b/3. For b=4, Lean derives the exact archimedean error integral
 endpoint-transform identity `Phi(0) + Phi(1) = 32/3`, then checks
 32/3 <= 10.667 and the direction of this
 rounding, the totally real signature specialization, removal of the
-nonnegative f, and all downstream uses. The new literature-facing premise is
-V15OdlyzkoTable4DescriptionInput. V15OdlyzkoTable4Input remains as a
+nonnegative f, and all downstream uses. `V15OdlyzkoTable4DescriptionInput` is
+retained as the literature-facing interface.
+`v15_odlyzkoTable4DescriptionInput_closed` now constructs it from the
+internal specialized contour proof. `V15OdlyzkoTable4Input` remains as a
 compatibility interface for the resulting totally real consequence
 |D_F| > 36.347^d exp(-10.667).
 
@@ -50,18 +52,20 @@ the printed `b=4` kernel, including both strip boundaries. It also proves the
 test function's global differentiability and its derivative's compact support,
 which verifies the eventual decay hypothesis in equation (2.1). The
 exact endpoint values `Phi(0) = Phi(1) = 16/3` are proved in Lean. The
-explicit-formula identity and the analytic count of actual Dedekind-zeta
-zeros remain external. The paired-zero convergence follows in Lean from an
-explicit zero count and a uniform fourth-power bound on `Phi`. The latter
+project constructs actual multiplicity-aware Dedekind-zeta zeros and obtains
+a sufficient quadratic count from completed-function growth and Jensen's
+theorem. Direct zero-sum convergence follows from that count and a uniform
+fourth-power bound on `Phi`. The latter
 bound is now proved for the exact source kernel by global `C^4` gluing,
 compactness, and four integrations by parts. The A/B integral estimates are certified in Lean,
-with a disclosed `native_decide` trust boundary. A Lean reduction states the exact
-archimedean integrals from equation (2.3), proves convergence of the
-cosh- and sinh-denominator integrals, derives the strict `A,B` bounds from
-certified intervals, and uses the explicit formula as a named premise to
-derive the Table 4 interface. See
+with a disclosed `native_decide` trust boundary. Lean proves the exact
+archimedean integrals from equation (2.3), convergence of the cosh- and
+sinh-denominator integrals, the strict `A,B` bounds, the finite completed-zeta
+contour identity, vanishing horizontal terms, and the limiting vertical
+integral. These yield the specialized logarithmic discriminant inequality and
+the Table 4 interface without an assumed explicit-formula theorem. See
 [the source-reduction audit](docs/audit/v15/14_odlyzko_source_reduction.md)
-and [the fourth-decay proof](docs/audit/v15/17_odlyzko_fourth_decay.md).
+and [the contour-closure audit](docs/audit/v15/22_odlyzko_contour_closure.md).
 
 [Hasanalizade--Shen--Wong, Corollary 1.2](https://arxiv.org/pdf/2102.04663)
 gives a multiplicity-aware explicit Dedekind-zeta zero count for `T >= 1`.
@@ -84,8 +88,9 @@ Neukirch's [*Algebraic Number Theory*, Chapter VII](https://link.springer.com/bo
 and Tate's [*Fourier Analysis in Number Fields and Hecke's Zeta-Functions*,
 Chapter IV](https://sites.math.rutgers.edu/~alexk/2023S572/Tate1950.pdf)
 provide the classical theta/Poisson and Mellin route to the global
-continuation and functional equation. Those steps are not supplied by the
-pinned mathlib number-field zeta module.
+continuation and functional equation. Those steps are not supplied directly
+by the pinned mathlib number-field zeta module; the project now supplies them
+through its vendored and adapted number-field development.
 
 Voight's
 [totally real field enumeration](https://jvoight.github.io/articles/ANTS144-fixed-errata-052714.pdf)

@@ -9,9 +9,10 @@ compiler. The axiom audit prints five generated `_native.native_decide.ax_*`
 dependencies for the final certificate; these are checked separately.
 The delivered proof modules contain no sorry, sorryAx, or project axiom.
 
-The global finite-class results can now accept
-V15OdlyzkoTable4DescriptionInput, the full published unconditional Table 4
-row b=4 with signature exponents and its nonnegative prime-ideal correction.
+The global finite-class results now receive an internally constructed
+`V15OdlyzkoTable4DescriptionInput`, matching the published unconditional
+Table 4 row `b=4` with signature exponents and its nonnegative prime-ideal
+correction.
 Lean proves the upward rounding 32/3 <= 10.667, the totally real
 specialization |D_F| > 36.347^d exp(-10.667), field-to-class transport, and
 that only degrees at least fifteen are needed for global finiteness. The
@@ -50,10 +51,11 @@ digamma partial-fraction series, conjugation and duplication, and the symmetric
 critical-line archimedean bracket. The Gauss integral representation of the
 digamma terms, the critical transform's realness and integrability, its
 quadratic moment, and the exact Fourier and cosine inversion formulas are Lean
-theorems as well. The remaining analytic boundary is the conversion of the
-paired archimedean integrals to the source's exact hyperbolic terms with the
-required Fubini and limiting arguments, the transformed prime-power matching,
-the residues, and the global Stark/Weil contour identity.
+theorems as well. Lean also proves the required Fubini and limiting arguments,
+the transformed prime-power matching, the finite weighted argument principle,
+the zero-free rectangle sequence, horizontal decay, vertical convergence,
+the endpoint residues, and the archimedean line shift. These assemble into
+the exact logarithmic discriminant lower bound.
 The Apache-2.0 number-field theta/Poisson and Mellin development from
 `mathlib-initiative/sum_product` has been ported to the pinned toolchain.
 `DedekindZeta.ZetaRegularization` proves the entire normalization factor and
@@ -84,8 +86,11 @@ The source-formula reduction states Odlyzko's two archimedean integrals and
 equation (2.3) explicitly. Both integrals converge, and strict bounds for the
 tabulated `A` and `B` values follow from analytic endpoint estimates and
 LeanCert's dyadic interval certificates. The direct zero sum and its sign are
-now discharged internally; the Table 4 deduction remains conditional only on
-the Stark/Weil equation (2.3).
+discharged internally. The completed contour theorem proves the inequality
+needed from equation (2.3) directly and constructs the exact-error and rounded
+Table 4 interfaces. The analytic part before the numerical `A,B` certificate
+uses only `propext`, `Classical.choice`, and `Quot.sound`; the final strict
+constants add the five disclosed native-compiler dependencies.
 
 The public Python and Wolfram runs trust their kernels and the extracted
 input file. The private maintainer run also checks the SHA-256 digest and

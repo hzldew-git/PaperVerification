@@ -1,5 +1,10 @@
 # Literature route for the remaining Odlyzko zero term
 
+**Status update.** The internally proved quadratic Jensen count is sufficient
+for the completed specialized contour proof. The sharper HSW numerical count
+remains optional; see
+[`22_odlyzko_contour_closure.md`](22_odlyzko_contour_closure.md).
+
 ## Exact zero count located
 
 Hasanalizade, Shen, and Wong, [*Counting zeros of Dedekind zeta functions*,
@@ -96,8 +101,8 @@ zero sum and no ordered enumeration. `V15MellinGrowth.lean` proves a global
 quadratic exponential bound for the entire completed zeta from the theta
 decay and Mellin-tail formulas. The completed-function Jensen bridge then
 derives the required quadratic count and absolute convergence of this direct
-sum. Only the explicit formula remains a named analytic hypothesis in the
-final Table 4 theorem.
+sum. The later finite-contour modules use this count and remove the explicit
+formula hypothesis from the final Table 4 theorem.
 
 `V15DedekindZetaCompletion.lean` identifies the factor in HSW (2.1) with
 mathlib's `Gammaℝ` and `Gammaℂ`, proves its nonvanishing and analyticity in
@@ -135,11 +140,10 @@ the coarse zero count are now proved. The contour or distribution argument,
 the prime-ideal logarithmic-derivative expansion, and the identity for the
 exact `b=4` test function still need Lean proofs.
 
-## Practical next proof boundary
+## Downstream use
 
-The coarse count is now obtained from the global growth estimate and mathlib's
+The coarse count is obtained from the global growth estimate and mathlib's
 Jensen inequality, including the bridge from completed-function divisors to
-the project's multiplicity-aware occurrences. The next independent target is
-the Stark/Weil explicit formula. Its proof must connect the completed zeta's
-zeros, the Gamma terms, and the ideal Euler-product logarithmic derivative to
-the exact compactly supported test kernel.
+the project's multiplicity-aware occurrences. The finite-contour proof now
+connects these zeros, the Gamma terms, and the ideal Euler-product logarithmic
+derivative to the exact compactly supported test kernel.

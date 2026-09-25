@@ -330,6 +330,36 @@ TraceEuclidean.v15_odlyzkoTable4ExactErrorInput_of_explicitCorrection
   (hExplicit : TraceEuclidean.V15OdlyzkoTable4ExplicitCorrectionInput) : TraceEuclidean.V15OdlyzkoTable4ExactErrorInput
 TraceEuclidean.v15_odlyzkoTable4DescriptionInput_of_explicitCorrection
   (hExplicit : TraceEuclidean.V15OdlyzkoTable4ExplicitCorrectionInput) : TraceEuclidean.V15OdlyzkoTable4DescriptionInput
+TraceEuclidean.v15OdlyzkoEndpoint_normalized_integral :
+  1 / (2 * ↑Real.pi) * ∫ (t : ℝ), 2 * TraceEuclidean.v15OdlyzkoEndpointIntegrand (2 + ↑t * Complex.I) = 32 / 3
+TraceEuclidean.v15OdlyzkoArchimedean_normalized_integral_re.{u_1} (K : Type u_1) [Field K] [NumberField K] :
+  (1 / (2 * ↑Real.pi) * ∫ (t : ℝ), 2 * TraceEuclidean.v15OdlyzkoArchimedeanIntegrand K (2 + ↑t * Complex.I)).re =
+    Real.log ↑|NumberField.discr K| - ↑(NumberField.InfinitePlace.nrRealPlaces K) * TraceEuclidean.v15OdlyzkoArchLogA -
+      2 * ↑(NumberField.InfinitePlace.nrComplexPlaces K) * TraceEuclidean.v15OdlyzkoArchLogB
+TraceEuclidean.v15OdlyzkoCompletedVerticalPair_normalized_integral_re.{u_1} (K : Type u_1) [Field K] [NumberField K] :
+  (1 / (2 * ↑Real.pi) * ∫ (t : ℝ), TraceEuclidean.v15OdlyzkoCompletedVerticalPair K t).re =
+    32 / 3 +
+        (Real.log ↑|NumberField.discr K| -
+            ↑(NumberField.InfinitePlace.nrRealPlaces K) * TraceEuclidean.v15OdlyzkoArchLogA -
+          2 * ↑(NumberField.InfinitePlace.nrComplexPlaces K) * TraceEuclidean.v15OdlyzkoArchLogB) -
+      TraceEuclidean.v15OdlyzkoPrimeCorrection K
+TraceEuclidean.v15Odlyzko_discriminant_log_lower_bound.{u_1} (K : Type u_1) [Field K] [NumberField K] :
+  ↑(NumberField.InfinitePlace.nrRealPlaces K) * TraceEuclidean.v15OdlyzkoArchLogA +
+          2 * ↑(NumberField.InfinitePlace.nrComplexPlaces K) * TraceEuclidean.v15OdlyzkoArchLogB +
+        TraceEuclidean.v15OdlyzkoPrimeCorrection K -
+      32 / 3 ≤
+    Real.log ↑|NumberField.discr K|
+TraceEuclidean.v15_odlyzkoTable4ExplicitCorrectionInput_closed : TraceEuclidean.V15OdlyzkoTable4ExplicitCorrectionInput
+TraceEuclidean.v15_odlyzkoTable4DescriptionInput_closed : TraceEuclidean.V15OdlyzkoTable4DescriptionInput
+TraceEuclidean.v15_sectionFourDiscriminantInput_of_smallDegreeLiterature
+  (hMin : TraceEuclidean.V15DegreeTwoToNineMinimumInput) (hTen : TraceEuclidean.V15DegreeTenRootDiscriminantInput)
+  (hEleven : TraceEuclidean.V15DegreeElevenRootDiscriminantInput) : TraceEuclidean.V15SectionFourDiscriminantInput
+TraceEuclidean.v15_classic_finite_closed :
+  {c | TraceEuclidean.GlobalLatticeClass.IsClassicTraceEuclidean (↑c.degree) c}.Finite
+TraceEuclidean.v15_integral_finite_closed :
+  {c | TraceEuclidean.GlobalLatticeClass.IsIntegralTraceEuclidean (↑c.degree) c}.Finite
+TraceEuclidean.v15_pnorm_finite_closed (p : TraceEuclidean.V15PNormExponent) :
+  {c | ∃ P, ⟦P⟧ = c ∧ P.IsV15PNormEuclidean p}.Finite
 'TraceEuclidean.v15_admissible_gram_iff_mem' depends on axioms: [propext, Classical.choice, Quot.sound]
 'TraceEuclidean.v15_quadratic_candidate_mem' depends on axioms: [propext, Classical.choice, Quot.sound]
 'TraceEuclidean.v15_quadratic_candidate_six_rows' depends on axioms: [propext, Classical.choice, Quot.sound]
@@ -401,6 +431,12 @@ TraceEuclidean.v15_odlyzkoTable4DescriptionInput_of_explicitCorrection
 'TraceEuclidean.v15_odlyzkoTable4DescriptionInput_of_explicitCorrection' depends on axioms: [propext,
  Classical.choice,
  Quot.sound]
+'TraceEuclidean.v15OdlyzkoEndpoint_normalized_integral' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15OdlyzkoArchimedean_normalized_integral_re' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15OdlyzkoCompletedVerticalPair_normalized_integral_re' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'TraceEuclidean.v15Odlyzko_discriminant_log_lower_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
 TraceEuclidean.v15_actual_ideal_six_rows {m : ℕ} (hm : 1 < m) (hsq : TraceEuclidean.IsSquarefreeNat m)
   (I :
     FractionalIdeal (nonZeroDivisors (NumberField.RingOfIntegers (TraceEuclidean.RealQuadraticAlgebra m)))
@@ -1653,14 +1689,6 @@ TraceEuclidean.V15MellinGrowth.v15_odlyzkoTable4_of_constructed_explicitFormula
 'TraceEuclidean.V15MellinGrowth.constructedDedekindZeta_odlyzkoPhi_summable' depends on axioms: [propext,
  Classical.choice,
  Quot.sound]
-'TraceEuclidean.V15MellinGrowth.v15_odlyzkoTable4_of_constructed_explicitFormula' depends on axioms: [propext,
- Classical.choice,
- Quot.sound,
- EulerMascheroni.harmonic_N_ge._native.native_decide.ax_1_2,
- TraceEuclidean.V15OdlyzkoNumerical.cosh_core_upper._native.native_decide.ax_1_1,
- TraceEuclidean.V15OdlyzkoNumerical.sinh_core_upper._native.native_decide.ax_1_1,
- TraceEuclidean.V15OdlyzkoNumerical.scalarA_strict._native.native_decide.ax_1_1✝,
- TraceEuclidean.V15OdlyzkoNumerical.scalarB_strict._native.native_decide.ax_1_1✝]
 DedekindZeta.LogDeriv.ZInfty_ne_zero_of_re_pos.{u_1} (K : Type u_1) [Field K] [NumberField K] {s : ℂ} (hs : 0 < s.re) :
   DedekindZeta.ZInfty K s ≠ 0
 DedekindZeta.LogDeriv.differentiableAt_ZInfty.{u_1} (K : Type u_1) [Field K] [NumberField K] {s : ℂ} (hs : 0 < s.re) :

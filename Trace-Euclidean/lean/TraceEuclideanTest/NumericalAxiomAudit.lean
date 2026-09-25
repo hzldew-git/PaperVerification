@@ -1,4 +1,4 @@
-import TraceEuclidean.V15OdlyzkoNumerical
+import TraceEuclidean.V15OdlyzkoExplicitFormulaClosed
 
 /-! Explicit audit of the native interval-checking trust boundary. -/
 
@@ -9,6 +9,9 @@ import TraceEuclidean.V15OdlyzkoNumerical
 #check TraceEuclidean.V15OdlyzkoNumerical.sinh_core_upper
 #check TraceEuclidean.V15OdlyzkoNumerical.cosh_core_upper
 #check TraceEuclidean.V15OdlyzkoNumerical.abIntegralCertificate
+#check TraceEuclidean.V15MellinGrowth.v15_odlyzkoTable4_of_constructed_explicitFormula
+#check TraceEuclidean.v15_odlyzkoTable4ExplicitCorrectionInput_closed
+#check TraceEuclidean.v15_odlyzkoTable4DescriptionInput_closed
 
 #print axioms TraceEuclidean.v15OdlyzkoSinhIntegrand_integrableOn
 #print axioms TraceEuclidean.v15OdlyzkoSinhIntegral_zero_hundredth_le
@@ -17,3 +20,10 @@ import TraceEuclidean.V15OdlyzkoNumerical
 #print axioms TraceEuclidean.V15OdlyzkoNumerical.sinh_core_upper
 #print axioms TraceEuclidean.V15OdlyzkoNumerical.cosh_core_upper
 #print axioms TraceEuclidean.V15OdlyzkoNumerical.abIntegralCertificate
+#print axioms TraceEuclidean.V15MellinGrowth.v15_odlyzkoTable4_of_constructed_explicitFormula
+#print axioms TraceEuclidean.v15_odlyzkoTable4ExplicitCorrectionInput_closed
+#print axioms TraceEuclidean.v15_odlyzkoTable4DescriptionInput_closed
+#print axioms TraceEuclidean.v15_sectionFourDiscriminantInput_of_smallDegreeLiterature
+#print axioms TraceEuclidean.v15_classic_finite_closed
+#print axioms TraceEuclidean.v15_integral_finite_closed
+#print axioms TraceEuclidean.v15_pnorm_finite_closed

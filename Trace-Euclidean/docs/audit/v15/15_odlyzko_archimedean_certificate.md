@@ -1,5 +1,9 @@
 # Odlyzko `b = 4` archimedean certificate
 
+**Status update.** This numerical certificate is now one component of the
+closed specialized contour proof; see
+[`22_odlyzko_contour_closure.md`](22_odlyzko_contour_closure.md).
+
 This certificate concerns the two archimedean constants in Odlyzko's
 unconditional Table 4 row used by v15. Its Lean implementation is
 `TraceEuclidean/V15OdlyzkoExplicitFormulaReduction.lean` and
@@ -73,8 +77,8 @@ Lean's native compiler. The public axiom audit lists five generated
 boundary from a proof reduced only by the Lean kernel. The vendored LeanCert
 source and its Apache 2.0 license are in `lean/LeanCert`.
 
-This certificate does not prove the Stark/Weil explicit formula or the
-separate low-degree field-discriminant inputs. Analytic continuation,
-completed-function growth, and direct zero-sum convergence are now supplied
-by separate Lean modules. The remaining items stay explicit external
-mathematical inputs to the v15 verification.
+This certificate alone does not prove the contour identity or the separate
+low-degree field-discriminant inputs. Analytic continuation, completed-function
+growth, finite zero sums, and the specialized contour limit are supplied by
+separate Lean modules. The degree `2`--`11` estimates remain external
+mathematical inputs to the Section 4 verification.

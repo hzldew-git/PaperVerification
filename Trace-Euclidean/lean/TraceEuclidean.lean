@@ -72,6 +72,7 @@ import TraceEuclidean.V15OdlyzkoPrimeCorrection
 import TraceEuclidean.V15OdlyzkoAnalyticBridge
 import TraceEuclidean.V15OdlyzkoExplicitFormulaReduction
 import TraceEuclidean.V15OdlyzkoNumerical
+import TraceEuclidean.V15OdlyzkoExplicitFormulaClosed
 import TraceEuclidean.V15OdlyzkoEntire
 import TraceEuclidean.V15OdlyzkoZeroDecay
 import TraceEuclidean.V15OdlyzkoZeroPairing

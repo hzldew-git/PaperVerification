@@ -2,8 +2,9 @@ import TraceEuclidean.V15FinitenessAssembly
 
 /-!
 The numerical consequence of Odlyzko's unconditional Table 4, row `b = 4`.
-The published discriminant estimate is kept as an explicit external premise;
-the conversion to the degree cutoff is proved here in Lean.
+This file isolates the literature-facing statement and proves its downstream
+consequences.  `V15OdlyzkoExplicitFormulaClosed` later constructs the same
+statement from the completed-zeta contour argument.
 -/
 
 namespace TraceEuclidean
@@ -11,9 +12,9 @@ namespace TraceEuclidean
 noncomputable section
 
 /-- The full shape of Odlyzko's unconditional Table 4 row `b = 4` as
-described with its nonnegative prime-ideal correction term `f`.  This is an
-external literature input; the specialization to totally real fields is
-proved below. -/
+described with its nonnegative prime-ideal correction term `f`.  It is the
+literature-facing interface; the specialization to totally real fields is
+proved below and a later contour module supplies this proposition internally. -/
 def V15OdlyzkoTable4DescriptionInput : Prop :=
   ∃ f : CodedNumberField → ℝ,
     (∀ K, 0 ≤ f K) ∧

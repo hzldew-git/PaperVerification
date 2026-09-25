@@ -1,24 +1,35 @@
 # Analytic boundary progress, ordered by proof difficulty
 
-This note records the status of the four tasks discussed after the classical
-source review. A compiled conditional theorem is a deduction from its named
-premises; it does not prove those premises.
+This note records the final status of the four analytic tasks. A compiled
+conditional theorem is still only a deduction from its named premises, but the
+new closed endpoint below supplies the Table 4 premise without assuming the
+source explicit formula.
 
-| Task | New Lean result | Remaining theorem |
+| Task | Lean result | Status |
 | --- | --- | --- |
-| Direct zero sum without ordered enumeration | `V15DedekindZetaUnorderedZeros.lean` proves absolute convergence and nonnegative real part of the direct `tsum` over actual multiplicity-aware strip-zero occurrences from a quadratic height count. `V15MellinGrowth.lean` now supplies that count and hence discharges the summability premise. | No remaining count or ordering premise; the explicit formula must identify this convergent sum with the source zero term. |
-| Coarse and sharp zero count | `V15DedekindZetaCompletedJensen.lean` transfers completed-function divisor multiplicities to the ordinary regularization and applies Jensen. `V15MellinGrowth.lean` proves the required global quadratic exponential bound from theta decay and Mellin tails, producing a quadratic all-height count. | The sharp HSW decimal bound remains unproved but is optional for the present Table 4 route. |
-| Entire continuation and functional equation | `DedekindZeta/ZetaRegularization.lean` constructs an entire continuation of `(s-1) ζ_K(s)`. `DedekindZeta/FractionalIdealRescaling.lean` identifies each trace-dual fractional ideal with the selected integral class representative, proves the exact norm/discriminant scaling, reindexes the finite class sum, and proves the completed-zeta functional equation globally. `V15DedekindZetaCompletion.lean` matches HSW's Gamma factor and preserves critical-strip zero positions and multiplicities. | Closed for the current scope. |
-| Stark/Weil explicit formula | `DedekindZeta/IdealEulerProduct.lean` proves Dedekind-zeta nonvanishing on `Re(s) > 1`. `DedekindZeta/PrimeLogDeriv.lean` and `DedekindZeta/LogDeriv.lean` prove local-uniform convergence, absolute summability, and the prime-power logarithmic-derivative formula. `DedekindZeta/ArchimedeanLogDeriv.lean` expands the full infinite-place logarithmic derivative into discriminant and digamma terms. `DedekindZeta/DigammaSeries.lean` supplies the Weierstrass/digamma series; `DedekindZeta/DigammaVertical.lean` derives the absolutely convergent real series on `a+it`; `DedekindZeta/DigammaIdentities.lean` proves conjugation, duplication, and the symmetric critical-line archimedean bracket; and `DedekindZeta/DigammaIntegral.lean` proves its Gauss integral form. `V15OdlyzkoCriticalTransform.lean` proves critical-line realness and integrability, a quadratic moment, and exact Fourier/cosine inversion. `V15OdlyzkoArchimedeanBridge.lean` proves joint absolute integrability, both Fubini interchanges, the real-place rescaling, the two exact digamma pairings, and the normalized number-field bracket `log |D_K| - r_1 log A_* - 2 r_2 log B_*`. `V15OdlyzkoPrimeTransform.lean` proves fourth-power decay and Fourier inversion on every fixed vertical line, transforms every Euler prime-power term, justifies the complete sum/integral exchange for `Re(s) > 1`, and identifies the transformed actual zeta logarithmic derivative with minus `pi` times the finite source correction. `v15_odlyzkoTable4ExplicitCorrectionInput_of_unorderedZeros` connects the convergent direct zero sum to the source-normalized Table 4 reduction. | Prove the global contour/residue limit that identifies the completed-zeta logarithmic-derivative integral with the multiplicity-aware zero sum. The resulting explicit-formula identity remains a named hypothesis. |
+| Direct zero control without ordered enumeration | `V15DedekindZetaUnorderedZeros.lean` proves absolute convergence and nonnegative real part of the direct `tsum` over multiplicity-aware strip-zero occurrences. `V15OdlyzkoContourFinite.lean` and `V15OdlyzkoContourSequence.lean` additionally work with finite zero sets inside zero-free rectangles. | Closed. The final inequality uses finite nonnegative sums directly; an infinite ordered enumeration is unnecessary. |
+| Coarse and sharp zero count | `V15DedekindZetaCompletedJensen.lean` and `V15MellinGrowth.lean` derive a quadratic all-height count from the completed function's proved growth. | The count needed here is closed. The sharper HSW decimal estimate remains optional and unproved. |
+| Entire continuation and functional equation | `DedekindZeta/ZetaRegularization.lean`, `DedekindZeta/GlobalContinuation.lean`, and `DedekindZeta/FractionalIdealRescaling.lean` construct the regularization and prove the completed functional equation. | Closed for the current scope. |
+| Specialized Stark/Weil contour inequality | `V15DedekindZetaLandau.lean` and `V15DedekindZetaGoodHeights.lean` provide logarithmic-derivative control and zero-free heights. `V15OdlyzkoHorizontalLimit.lean` and `V15OdlyzkoVerticalLimit.lean` prove the contour limits. `V15OdlyzkoEndpointContour.lean` evaluates the endpoint residues as `32/3`. `V15OdlyzkoArchimedeanShift.lean` shifts and evaluates the infinite-place term. `V15OdlyzkoPrimeTransform.lean` evaluates the ordinary-zeta term. `V15OdlyzkoExplicitFormulaClosed.lean` combines these with finite zero-sum positivity. | Closed for the manuscript's unconditional `b=4` test function and the required discriminant inequality. |
 
-The source path is [Neukirch VII and Tate IV for continuation and the
-functional equation, HSW Sections 2–4 for the optional sharp count, and
-Odlyzko/Poitou for the explicit formula](18_classical_analytic_sources.md).
-The continuation, functional equation, growth, coarse count, direct sum,
-Euler-product nonvanishing, prime-power line, complex and vertical real
-digamma series, the Gauss integral bridge, the symmetric critical-line
-archimedean bracket, and the critical Fourier/cosine inversion are closed in
-that dependency order. The exact hyperbolic/Fubini specialization is now also
-closed. The exact transformed prime-power matching is also closed. The
-remaining analytic construction is the global Stark/Weil test-function
-contour/residue identity.
+The final theorem
+`v15Odlyzko_discriminant_log_lower_bound` proves
+
+```text
+r_1 * log A_* + 2 * r_2 * log B_* + PrimeCorrection(K) - 32/3
+  <= log |D_K|.
+```
+
+`v15_odlyzkoTable4ExplicitCorrectionInput_closed` inserts the certified strict
+numerical bounds, and `v15_odlyzkoTable4DescriptionInput_closed` performs the
+published rounding. The analytic theorems through the logarithmic lower bound
+use only `propext`, `Classical.choice`, and `Quot.sound`. The final strict
+constants inherit the separately disclosed five `native_decide` dependencies
+from `V15OdlyzkoNumerical.abIntegralCertificate`.
+
+The source path remains [Neukirch VII and Tate IV for continuation and the
+functional equation, HSW for optional sharp zero counting, and Stark,
+Poitou, and Odlyzko for the explicit-formula organization and
+normalization](18_classical_analytic_sources.md). The project proves the
+specialization needed here; it does not claim a reusable general Weil explicit
+formula for arbitrary test functions.

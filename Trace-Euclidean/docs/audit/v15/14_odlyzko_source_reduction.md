@@ -1,5 +1,10 @@
 # Odlyzko source reduction for v15
 
+**Status update.** The contour boundary described in the development history
+below is now closed for the manuscript's specialized `b = 4` kernel. See
+[`22_odlyzko_contour_closure.md`](22_odlyzko_contour_closure.md) for the final
+proof chain and trust boundary.
+
 ## Scope and finding
 
 This note traces the discriminant inputs used by v15 back to the cited
@@ -277,14 +282,10 @@ integral_R Phi(sigma+it) * (zeta_K'/zeta_K)(sigma+it) dt
   = -pi * PrimeCorrection(K),   sigma > 1.
 ~~~
 
-Eliminating the remaining Table 4 premise now requires the global
-Stark/Weil contour/residue identity that combines the zero, prime, and
-archimedean terms. The completed Dedekind zeta, its functional equation,
-quadratic growth, a Jensen count for
-actual zero occurrences, direct zero-sum convergence, and the full
-archimedean pairing are proved. The source test-function hypotheses, entire
-zero transform, uniform fourth-power vertical decay, conjugate pairing
-identities, and pointwise sign are also proved.
+The subsequent contour modules eliminate the remaining Table 4 premise for
+the specialized kernel. They combine the finite zero, prime, archimedean, and
+endpoint terms on rectangles, prove the horizontal and vertical limits, and
+derive `v15Odlyzko_discriminant_log_lower_bound`.
 
 The sinh integral's convergence and the strict numerical estimates for
 `A = 36.347` and `B = 16.593` are supplied by the separate
@@ -293,12 +294,11 @@ checks use `native_decide`, so they carry an explicitly recorded native
 compiler trust boundary.
 
 Pinned mathlib defines the Dedekind zeta Dirichlet series and its residue at
-one but does not provide this explicit formula. The local theta/Mellin
-development now supplies global continuation, the functional equation,
-growth, the required zero-sum theory, the complete archimedean Gamma/digamma
-pairing, and the transformed prime-power logarithmic derivative. Therefore the
-full Odlyzko theorem still has one disclosed external mathematical input, now
-localized to the global contour/residue identity. The Lean work verifies the source
+one but does not provide this explicit formula. The local theta/Mellin and
+contour development supplies global continuation, the functional equation,
+growth, the required finite zero-sum theory, the complete archimedean
+Gamma/digamma pairing, the transformed prime-power logarithmic derivative,
+and the specialized contour limit. The Lean work verifies the source
 kernel, the autocorrelation and Fourier positivity of `H`, the exact
 hyperbolic-secant and tilted transforms, the product-to-convolution bridge,
 source-normalized zero-transform positivity on the closed critical strip, the

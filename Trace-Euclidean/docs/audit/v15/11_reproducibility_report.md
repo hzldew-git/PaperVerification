@@ -1,13 +1,27 @@
 # Reproducibility report
 
+- The contour-closure update passed a full local 8835-job Lean build under the
+  pinned Lean 4.32.1 and mathlib v4.32.1 toolchain. The refreshed main audit
+  reports 336 kernel-only declaration-level transitive axiom sets. The endpoint contour,
+  archimedean and prime transforms, completed vertical-pair identity, and
+  discriminant logarithm inequality use only `propext`, `Classical.choice`,
+  and `Quot.sound`. A separate 14-declaration numerical audit shows that the
+  closed Table 4 endpoints and the three resulting finiteness theorems
+  additionally expose exactly the five documented
+  `native_decide` dependencies of the strict numerical A/B certificate. The
+  public reruns produced 1156 Python PASS and 115 Wolfram PASS, with zero
+  failures. The manuscript-exclusion guard inspected 243 files and passed.
+  Fresh-checkout GitHub Actions results are pending deployment of this update.
+
 - The prime-transform update passed a full local 8818-job Lean build. The ten
   added audit endpoints cover arbitrary vertical-line fourth-power decay and
   inversion, exact single-term and complete prime-power transforms,
   countability of finite places, the justified infinite sum/integral exchange,
   the actual Dedekind-zeta logarithmic derivative, and the finite critical-line
   bracket. Their transitive axiom sets use only `propext`, `Classical.choice`,
-  and `Quot.sound`. The transformed prime-power boundary is closed; the global
-  contour/residue identity remains.
+  and `Quot.sound`. At that stage the transformed prime-power boundary was
+  closed and the global contour/residue identity remained; the contour-closure
+  update above has since closed it.
 
 - The archimedean-bridge update passed a full local 8817-job Lean build and
   the expanded transitive-axiom audit. The new joint-integrability, Fubini,
@@ -23,11 +37,12 @@
   completed-function circle bound, the resulting quadratic count of actual
   zero occurrences, and absolute convergence of the direct Odlyzko zero sum.
   These endpoints use only `propext`, `Classical.choice`, and `Quot.sound`.
-  The final Table 4 reduction now has the Stark/Weil explicit formula as its
-  sole mathematical premise; its transitive axiom set also exposes the five
-  already documented `native_decide` dependencies of the numerical A/B
-  certificate. No Python or Wolfram classification rerun is claimed for this
-  Lean-only update.
+  At that stage the final Table 4 reduction retained the Stark/Weil explicit
+  formula as its sole mathematical premise; the contour-closure update above
+  now constructs the specialized formula internally. Its transitive axiom set
+  also exposed the five already documented `native_decide` dependencies of the
+  numerical A/B certificate. No Python or Wolfram classification rerun was
+  claimed for that Lean-only update.
 
 - The zeta-continuation update passed a full local 8803-job Lean build. The
   expanded 267-declaration axiom audit contains only `propext`,

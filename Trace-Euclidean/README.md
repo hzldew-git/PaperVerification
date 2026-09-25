@@ -27,8 +27,12 @@ Gauss-digamma/Fubini specialization to the source's two hyperbolic terms. The
 project now also proves arbitrary vertical-line Fourier inversion, exchanges
 the complete absolutely convergent prime-power series with the vertical
 integral, and identifies the transformed actual zeta logarithmic derivative
-with minus `pi` times the finite source correction. The remaining analytic
-proof boundary is the global Stark/Weil contour/residue identity.
+with minus `pi` times the finite source correction. The finite weighted
+argument principle, zero-free expanding rectangles, horizontal-side limits,
+vertical integrability, endpoint residues, and archimedean line shift are now
+also proved. Their combination gives the exact logarithmic discriminant lower
+bound and constructs the Table 4 description inside Lean. See the
+[contour-closure note](docs/audit/v15/22_odlyzko_contour_closure.md).
 
 This package contains Lean 4 proofs, independent Python and Wolfram checks,
 extracted v15 inputs, machine-readable results, and an English
@@ -59,10 +63,10 @@ results are 1165 Python PASS and 112 Wolfram PASS.
 ## Formal scope
 
 - Theorems 1.2 and 1.3: strict root-discriminant bounds and global finiteness
-  with the threshold equal to each varying field's degree. The finite
-  conclusions use [Odlyzko's unconditional Table 4](SOURCES.md) as an explicit
-  external mathematical premise. Lean now starts from the table description
-  with signature exponents and the nonnegative prime-ideal correction, checks
+  with the threshold equal to each varying field's degree. Lean now derives
+  the required `b=4` Table 4 inequality from the completed-zeta contour and
+  constructs the table description with signature exponents and the
+  nonnegative prime-ideal correction. It checks
   the upward rounding and totally real specialization, and needs the row only
   in degrees at least fifteen. The printed unconditional kernel at `b = 4`
   is now defined in Lean; its evenness, nonnegativity, continuity, compact
@@ -96,9 +100,12 @@ results are 1165 Python PASS and 112 Wolfram PASS.
   vertical line, the exact transform of each prime-power Euler term, the
   absolute sum/integral exchange on `Re(s) > 1`, and the identity between the
   transformed actual Dedekind-zeta logarithmic derivative and the complete
-  finite-support source correction. Equation (2.3), specifically its global
-  zero/residue contour identity, remains the mathematical input needed to
-  derive the full Table 4 inequality.
+  finite-support source correction. Lean then applies the finite weighted
+  argument principle on an expanding sequence of zero-free rectangles,
+  proves both horizontal sides vanish, folds the vertical sides, evaluates
+  the endpoint term as `32/3`, shifts the archimedean term to the critical
+  line, and derives the full strict Table 4 inequality. The final numerical
+  constants retain the disclosed `native_decide` compiler trust boundary.
 - Theorem 1.7: an if-and-only-if classification for every nonzero fractional
   ideal presentation of a positive integral rank-one real-quadratic lattice.
   Lean proves principality, six actual module-isometry classes, six valid
@@ -135,10 +142,11 @@ and column bounds, the exact global maxima, the degree 7--9 rank-two assertion,
 and the final rank-twelve consequence. The public Python and Wolfram runs are
 independent checks of the same finite computation. Degree one of the
 small-degree discriminant input is now proved from Minkowski's bound. The
-exact minima in degrees 2--9, the degree-ten enumeration result, the optimized
-degree-eleven bound 14.083, and the analytic theorem behind Odlyzko's Table 4
-remain explicit external mathematical inputs. Within that last theorem, the
-unformalized analytic step is the Stark/Weil explicit formula. Lean proves the
+exact minima in degrees 2--9, the degree-ten enumeration result, and the
+optimized degree-eleven bound 14.083 remain explicit external mathematical
+inputs. Odlyzko's Table 4 is retained as the source and normalization
+reference, while the `b=4` inequality used here is now derived internally.
+Lean proves the
 completed-zeta functional equation, a global quadratic exponential growth
 bound, the resulting Jensen count of actual zero occurrences, the uniform
 fourth-power decay estimate for the exact source transform, and absolute
@@ -163,9 +171,11 @@ and [zero-count literature note](docs/audit/v15/16_zero_count_literature.md);
 the [fourth-decay proof](docs/audit/v15/17_odlyzko_fourth_decay.md) records
 the new regularity and Fourier argument, while the
 [prime-transform certificate](docs/audit/v15/21_odlyzko_prime_transform.md)
-records the complete Euler-term and sum/integral bridge. The
+records the complete Euler-term and sum/integral bridge, and the
+[contour-closure note](docs/audit/v15/22_odlyzko_contour_closure.md)
+records the completed argument. The
 [analytic boundary progress note](docs/audit/v15/19_analytic_boundary_progress.md)
-records the ordered proof tasks and the remaining global contour dependency.
+records the ordered proof tasks and their final status.
 
 ## Version scope
 

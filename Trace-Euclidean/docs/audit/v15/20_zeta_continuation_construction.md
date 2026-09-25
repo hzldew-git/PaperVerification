@@ -1,5 +1,9 @@
 # Dedekind zeta continuation constructed in Lean
 
+**Status update.** The continuation developed here now feeds a completed
+specialized `b = 4` contour proof; see
+[`22_odlyzko_contour_closure.md`](22_odlyzko_contour_closure.md).
+
 The formalization now constructs, for every number field `K`, an entire
 function agreeing with `(s - 1) * NumberField.dedekindZeta K s` whenever
 `1 < Re(s)`. It is the concrete value
@@ -131,11 +135,10 @@ zeta Weil formula under Lean 4.33.0-rc2 and mathlib commit
 to Lean/mathlib 4.32.1. At the time of comparison, the later mathlib did not
 provide a directly reusable Dedekind-zeta Euler-product nonvanishing theorem.
 The present project has now closed that gap locally. Upgrading would still
-require replaying the whole project and would not by itself supply the
-remaining number-field Stark/Weil specialization. The current route is to port
-compatible generic contour lemmas selectively and retain the stable 4.32.1
-toolchain. The intervening transformed prime-power step has since been proved
-on that pinned toolchain.
+require replaying the whole project and would not by itself prove the
+number-field contour specialization. Compatible generic contour lemmas were
+ported selectively while retaining the stable 4.32.1 toolchain, and the
+specialized proof has now been completed there.
 
 ## Trust and remaining work
 
@@ -149,13 +152,11 @@ This construction proves entire continuation of the **pole-removed ordinary
 zeta** and the functional equation of the completed Dedekind zeta. The
 subsequent quantitative module proves a global quadratic exponential bound
 for the completed function and activates the Jensen zero-count theorem. The
-Stark/Weil explicit formula for the manuscript's test function remains the
-single named analytic premise of the final Table 4 reduction. The ideal Euler
-product, right-half-plane nonvanishing, prime-power logarithmic-derivative
-identity, complex and vertical real digamma series, and symmetric critical-line archimedean bracket are
-internal. What remains is the digamma-to-hyperbolic-integral bridge and the global contour argument,
-including the test-function transforms, justified interchanges, residues, and
-limit passage.
+ideal Euler product, right-half-plane nonvanishing, prime-power
+logarithmic-derivative identity, complex and vertical real digamma series,
+symmetric critical-line archimedean bracket, test-function transforms,
+justified interchanges, residues, and contour limits are internal for the
+specialized `b = 4` route.
 The cited small-degree discriminant results remain separate literature
 inputs. The four main manuscript results retain the scoped Grade B and
 PROVISIONAL_MATCH assessments.
