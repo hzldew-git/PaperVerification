@@ -78,9 +78,12 @@ through three are internal, including the cubic Hunter projected lattice,
 quotient covolume, integral lift, normalization, and finite enumeration. In
 degree four, the rank-three projection, exact covolume quotient, integral
 lift, normalization, coefficient bounds, field-discriminant bridges, and
-finite enumeration are internal. The remaining quartic boundary is the sharp
-three-dimensional Hermite theorem together with choosing a short lift outside
-a possible quadratic subfield. Exact minima for degrees 5--9, the degree-ten
+finite enumeration are internal. An unconditional Minkowski-ball alternative
+now gives spread below 35 and reduces the arithmetic to polynomial
+discriminants 725, 1957, 2048, and 2304. The quartic boundary can therefore be
+closed either by the sharp three-dimensional Hermite theorem or by handling
+the 2048 and 2304 index cases; both routes still require choosing a short lift
+outside a possible quadratic subfield. Exact minima for degrees 5--9, the degree-ten
 exclusion, the optimized degree-eleven bound, selected supporting lemmas, and
 independent semantic sign-off remain outside the current signed scope. The
 strict tabulated-constant inequalities use a

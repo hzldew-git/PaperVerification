@@ -1,5 +1,6 @@
 import TraceEuclidean.V15HunterProjection
 import TraceEuclidean.V15QuarticPowerBasis
+import TraceEuclidean.V15QuarticHunterGeometry
 
 /-!
 # Projection determinant for the quartic Hunter argument
@@ -289,6 +290,33 @@ theorem v15QuarticHunterProjectedLattice_shortVector
       (ZLattice.covolume (v15QuarticHunterProjectedLattice b)),
       sq_nonneg (ZLattice.covolume (span ℤ (Set.range b)))]
   exact lt_of_pow_lt_pow_left₀ 3 (by norm_num : (0 : ℝ) ≤ 29) hcube
+
+/-- The elementary three-dimensional Minkowski ball gives the weaker short
+vector bound used by the enlarged quartic coefficient search. -/
+theorem v15QuarticHunterProjectedLattice_shortVector_minkowski
+    (b : Basis (Fin 4) ℝ E)
+    (hinner : inner ℝ (b 0) (b 0) = 4)
+    (hcov : ZLattice.covolume (span ℤ (Set.range b)) ^ 2 < 725) :
+    ∃ x : v15QuarticHunterProjectedLattice b, x ≠ 0 ∧
+      4 * ‖((x : v15QuarticHunterProjectedLattice b) :
+        (ℝ ∙ b 0)ᗮ)‖ ^ 2 < 35 := by
+  have hfin : Module.finrank ℝ ((ℝ ∙ b 0)ᗮ) = 3 := by
+    simpa using finrank_eq_card_basis (v15QuarticHunterProjectedBasis b)
+  have hfullPos : 0 < ZLattice.covolume (span ℤ (Set.range b)) :=
+    ZLattice.covolume_pos (span ℤ (Set.range b))
+  have hfull : ZLattice.covolume (span ℤ (Set.range b)) <
+      Real.sqrt 725 := by
+    rw [← sq_lt_sq₀ hfullPos.le (Real.sqrt_nonneg 725)]
+    rw [Real.sq_sqrt (by norm_num : (0 : ℝ) ≤ 725)]
+    exact hcov
+  have hprojected :
+      ZLattice.covolume (v15QuarticHunterProjectedLattice b) <
+        Real.sqrt 725 / 2 := by
+    rw [v15QuarticHunterProjectedLattice_covolume_eq_div_two b hinner]
+    exact div_lt_div_of_pos_right hfull (by norm_num)
+  exact
+    v15_quartic_hunter_shortVector_of_covolume_lt_of_finrank_eq_three
+      (v15QuarticHunterProjectedLattice b) hfin hprojected
 
 end ProjectedBasis
 

@@ -96,6 +96,29 @@ the primitive-generator issue.
 The classical fact `gamma_3^3 = 2` itself has not yet been proved in this
 project.
 
+An unconditional weaker route is now also formalized. The module
+`V15QuarticHunterGeometry` applies the three-dimensional Minkowski
+convex-body theorem to the ball of radius `sqrt(35)/2`. Exact rational bounds
+for `sqrt(35)`, `sqrt(725)`, and `pi` prove the required strict volume
+inequality. After the projection and number-field bridges this gives
+
+```text
+4*||x||^2 < 35
+```
+
+without `V15HermiteThreeInput`. The corresponding kernel-checked coefficient
+search proves that an irreducible normalized quartic then has polynomial
+discriminant in
+
+```text
+{725, 1957, 2048, 2304}.
+```
+
+Thus this route removes the sharp Hermite theorem from the geometric step,
+but does not yet prove the field-discriminant lower bound by itself. The extra
+`2048` and `2304` polynomial orders require index or maximal-order arguments;
+they must not be discarded merely because the finite enumeration compiles.
+
 ## Section 4 endpoint
 
 `V15DegreeFourPrimitiveGeneratorInput` asks that every totally real quartic
@@ -127,7 +150,7 @@ that this premise follows from `V15HermiteThreeInput` together with
 
 ## Remaining mathematical boundary
 
-Two mathematical tasks remain in the sharpened Hunter route. First, prove the
+Two mathematical tasks remain in the sharp Hunter route. First, prove the
 sharp three-dimensional Hermite theorem in the form
 `V15HermiteThreeInput`. Second, handle imprimitive quartic fields: a
 nonrational Hunter short vector may lie in a quadratic subfield, so one must
@@ -135,6 +158,11 @@ choose or modify a short vector outside every proper subfield while retaining
 the strict spread bound. This second task is exactly
 `V15QuarticPrimitiveShortSelectionInput`. The coefficient inequalities are
 now internal and are no longer part of either task.
+
+The weaker Minkowski route replaces the first task by exact treatment of the
+additional polynomial discriminants `2048` and `2304`; it still needs the
+primitive-vector selection step. This gives two separately audited ways to
+continue rather than silently assuming either missing result.
 
 Once this premise is proved, no separate degree-four minimum-discriminant table
 input remains in the strengthened Section 4 chain. The current code and axiom

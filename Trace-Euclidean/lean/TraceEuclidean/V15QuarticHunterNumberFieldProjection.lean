@@ -272,6 +272,70 @@ theorem v15_quartic_projected_shortVector
   exact v15_quartic_projected_shortVector_of_integralBasis_one
     hHermite K hreal hdegree hdisc bz hbz
 
+open scoped Classical in
+/-- Unconditional quartic Hunter short vector from the three-dimensional
+Minkowski ball.  Its bound `35` feeds the enlarged finite discriminant
+search. -/
+theorem v15_quartic_projected_shortVector_of_integralBasis_one_minkowski
+    (K : Type u) [Field K] [NumberField K]
+    (hreal : NumberField.IsTotallyReal K)
+    (hdegree : Module.finrank ℚ K = 4)
+    (hdisc : |NumberField.discr K| < 725)
+    (bz : Basis (Fin 4) ℤ
+      (NumberField.mixedEmbedding.euclidean.integerLattice K))
+    (hbzero :
+      (((bz 0 : NumberField.mixedEmbedding.euclidean.integerLattice K) :
+        NumberField.mixedEmbedding.euclidean.mixedSpace K)) =
+          v15EuclideanOne K) :
+    let b := bz.ofZLatticeBasis ℝ
+    ∃ x : v15QuarticHunterProjectedLattice b, x ≠ 0 ∧
+      4 * ‖((x : v15QuarticHunterProjectedLattice b) :
+        (ℝ ∙ b 0)ᗮ)‖ ^ 2 < 35 := by
+  let b := bz.ofZLatticeBasis ℝ
+  have hinner : inner ℝ (b 0) (b 0) = 4 := by
+    rw [show b 0 =
+        (((bz 0 : NumberField.mixedEmbedding.euclidean.integerLattice K) :
+          NumberField.mixedEmbedding.euclidean.mixedSpace K)) by
+      exact bz.ofZLatticeBasis_apply ℝ
+        (NumberField.mixedEmbedding.euclidean.integerLattice K) 0]
+    rw [hbzero]
+    exact v15_inner_euclideanOne_self_eq_four_projection K hreal hdegree
+  have hcov : ZLattice.covolume (span ℤ (Set.range b)) ^ 2 < 725 := by
+    rw [show span ℤ (Set.range b) =
+        NumberField.mixedEmbedding.euclidean.integerLattice K by
+      exact bz.ofZLatticeBasis_span ℝ]
+    rw [v15_totallyReal_euclidean_integerLattice_covolume_eq_sqrt_discr
+      K hreal]
+    rw [Real.sq_sqrt (by positivity :
+      (0 : ℝ) ≤ (|NumberField.discr K| : ℝ))]
+    exact_mod_cast hdisc
+  exact v15QuarticHunterProjectedLattice_shortVector_minkowski
+    b hinner hcov
+
+open scoped Classical in
+/-- The unconditional Minkowski short vector with the required integral
+basis constructed internally. -/
+theorem v15_quartic_projected_shortVector_minkowski
+    (K : Type u) [Field K] [NumberField K]
+    (hreal : NumberField.IsTotallyReal K)
+    (hdegree : Module.finrank ℚ K = 4)
+    (hdisc : |NumberField.discr K| < 725) :
+    ∃ bz : Basis (Fin 4) ℤ
+        (NumberField.mixedEmbedding.euclidean.integerLattice K),
+      (((bz 0 : NumberField.mixedEmbedding.euclidean.integerLattice K) :
+        NumberField.mixedEmbedding.euclidean.mixedSpace K)) =
+          v15EuclideanOne K ∧
+      ∃ x : v15QuarticHunterProjectedLattice (bz.ofZLatticeBasis ℝ),
+        x ≠ 0 ∧
+        4 * ‖((x : v15QuarticHunterProjectedLattice
+          (bz.ofZLatticeBasis ℝ)) :
+          (ℝ ∙ (bz.ofZLatticeBasis ℝ) 0)ᗮ)‖ ^ 2 < 35 := by
+  obtain ⟨bz, hbz⟩ :=
+    v15_exists_euclidean_integerLattice_basis_one_dim_four K hdegree
+  refine ⟨bz, hbz, ?_⟩
+  exact v15_quartic_projected_shortVector_of_integralBasis_one_minkowski
+    K hreal hdegree hdisc bz hbz
+
 end
 
 end TraceEuclidean

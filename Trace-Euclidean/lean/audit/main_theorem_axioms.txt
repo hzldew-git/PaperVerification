@@ -928,6 +928,33 @@ TraceEuclidean.v15_normalized_quartic_discriminant_eq_725 (s1 s2 s3 s4 : ℤ) (h
   (hnoRoot : ∀ (z : ℤ), TraceEuclidean.v15QuarticEval s1 s2 s3 s4 z ≠ 0)
   (hnoQuadratic : ∀ (u v p q : ℤ), ¬TraceEuclidean.V15QuarticQuadraticFactorWitness s1 s2 s3 s4 u v p q) :
   TraceEuclidean.v15QuarticDiscriminant s1 s2 s3 s4 = 725
+TraceEuclidean.v15_quartic_s2_bounds_of_normalized_thirtyFive (s1 s2 : ℤ) (hs1 : s1 = 0 ∨ s1 = 1 ∨ s1 = 2)
+  (hspreadPos : 0 < TraceEuclidean.v15QuarticSpread s1 s2) (hspreadLt : TraceEuclidean.v15QuarticSpread s1 s2 < 35) :
+  -4 ≤ s2 ∧ s2 ≤ 1
+TraceEuclidean.v15_quartic_s3_s4_bounds_of_normalized_thirtyFive (s1 s2 s3 s4 : ℤ) (hs1 : s1 = 0 ∨ s1 = 1 ∨ s1 = 2)
+  (hspreadPos : 0 < TraceEuclidean.v15QuarticSpread s1 s2) (hspreadLt : TraceEuclidean.v15QuarticSpread s1 s2 < 35)
+  (hminor : 0 < TraceEuclidean.v15QuarticHermiteMinorThree s1 s2 s3 s4)
+  (hdisc : 0 < TraceEuclidean.v15QuarticDiscriminant s1 s2 s3 s4) : -24 ≤ s3 ∧ s3 ≤ 24 ∧ -4 ≤ s4 ∧ s4 ≤ 4
+TraceEuclidean.v15_normalized_quartic_discriminant_candidates_of_spread_lt_thirtyFive (s1 s2 s3 s4 : ℤ) (hs1 : 0 ≤ s1)
+  (hs1' : s1 ≤ 2) (hs2 : -4 ≤ s2) (hs2' : s2 ≤ 2) (hs3 : -24 ≤ s3) (hs3' : s3 ≤ 24) (hs4 : -4 ≤ s4) (hs4' : s4 ≤ 4)
+  (hspreadPos : 0 < TraceEuclidean.v15QuarticSpread s1 s2) (hspreadLt : TraceEuclidean.v15QuarticSpread s1 s2 < 35)
+  (hminor : 0 < TraceEuclidean.v15QuarticHermiteMinorThree s1 s2 s3 s4)
+  (hdisc : 0 < TraceEuclidean.v15QuarticDiscriminant s1 s2 s3 s4)
+  (hnoRoot : ∀ (z : ℤ), TraceEuclidean.v15QuarticEval s1 s2 s3 s4 z ≠ 0)
+  (hnoQuadratic : ∀ (u v p q : ℤ), ¬TraceEuclidean.V15QuarticQuadraticFactorWitness s1 s2 s3 s4 u v p q) :
+  TraceEuclidean.v15QuarticDiscriminant s1 s2 s3 s4 = 725 ∨
+    TraceEuclidean.v15QuarticDiscriminant s1 s2 s3 s4 = 1957 ∨
+      TraceEuclidean.v15QuarticDiscriminant s1 s2 s3 s4 = 2048 ∨
+        TraceEuclidean.v15QuarticDiscriminant s1 s2 s3 s4 = 2304
+TraceEuclidean.v15_quartic_small_field_candidates_reduce_to_2048_or_2304 (s1 s2 s3 s4 d : ℤ) (index : ℕ)
+  (hindex : 0 < index) (hdLower : 29 < d) (hdUpper : d < 725)
+  (hrelation : TraceEuclidean.v15QuarticDiscriminant s1 s2 s3 s4 = ↑index ^ 2 * d)
+  (hcandidates :
+    TraceEuclidean.v15QuarticDiscriminant s1 s2 s3 s4 = 725 ∨
+      TraceEuclidean.v15QuarticDiscriminant s1 s2 s3 s4 = 1957 ∨
+        TraceEuclidean.v15QuarticDiscriminant s1 s2 s3 s4 = 2048 ∨
+          TraceEuclidean.v15QuarticDiscriminant s1 s2 s3 s4 = 2304) :
+  TraceEuclidean.v15QuarticDiscriminant s1 s2 s3 s4 = 2048 ∨ TraceEuclidean.v15QuarticDiscriminant s1 s2 s3 s4 = 2304
 TraceEuclidean.v15_coded_degree_four_discriminant_ge_725_of_hunterCertificate
   (hHunter : TraceEuclidean.V15DegreeFourHunterCertificateInput) (K : TraceEuclidean.CodedNumberField)
   (hreal : NumberField.IsTotallyReal ↥↑K) (hdegree : Module.finrank ℚ ↥↑K = 4) :
@@ -1112,6 +1139,15 @@ TraceEuclidean.v15QuarticHunterProjectedLattice_shortVector.{u} {E : Type u} [No
   (hHermite : TraceEuclidean.V15HermiteThreeInput) (b : Module.Basis (Fin 4) ℝ E) (hinner : inner ℝ (b 0) (b 0) = 4)
   (hcov : ZLattice.covolume (Submodule.span ℤ (Set.range ⇑b)) MeasureTheory.volume ^ 2 < 725) :
   ∃ x, x ≠ 0 ∧ 4 * ‖↑x‖ ^ 2 < 29
+TraceEuclidean.v15_quartic_hunter_shortVector_of_covolume_lt_of_finrank_eq_three.{u_1} {E : Type u_1}
+  [NormedAddCommGroup E] [InnerProductSpace ℝ E] [FiniteDimensional ℝ E] [MeasurableSpace E] [BorelSpace E]
+  (L : Submodule ℤ E) [DiscreteTopology ↥L] [IsZLattice ℝ L] (hfin : Module.finrank ℝ E = 3)
+  (hcov : ZLattice.covolume L MeasureTheory.volume < √725 / 2) : ∃ x, x ≠ 0 ∧ 4 * ‖↑x‖ ^ 2 < 35
+TraceEuclidean.v15QuarticHunterProjectedLattice_shortVector_minkowski.{u} {E : Type u} [NormedAddCommGroup E]
+  [InnerProductSpace ℝ E] [FiniteDimensional ℝ E] [MeasurableSpace E] [BorelSpace E] (b : Module.Basis (Fin 4) ℝ E)
+  (hinner : inner ℝ (b 0) (b 0) = 4)
+  (hcov : ZLattice.covolume (Submodule.span ℤ (Set.range ⇑b)) MeasureTheory.volume ^ 2 < 725) :
+  ∃ x, x ≠ 0 ∧ 4 * ‖↑x‖ ^ 2 < 35
 TraceEuclidean.v15_mixedEmbedding_quarticHunterAlgebraicIntegerLift.{u_1} (K : Type u_1) [Field K] [NumberField K]
   (bz : Module.Basis (Fin 4) ℤ ↥(NumberField.mixedEmbedding.euclidean.integerLattice K))
   (x :
@@ -1162,6 +1198,16 @@ TraceEuclidean.v15_quartic_projected_shortVector_of_integralBasis_one.{u}
   (hbzero : ↑(bz 0) = TraceEuclidean.v15EuclideanOne K) :
   have b := Module.Basis.ofZLatticeBasis ℝ (NumberField.mixedEmbedding.euclidean.integerLattice K) bz;
   ∃ x, x ≠ 0 ∧ 4 * ‖↑x‖ ^ 2 < 29
+TraceEuclidean.v15_quartic_projected_shortVector_of_integralBasis_one_minkowski.{u} (K : Type u) [Field K]
+  [NumberField K] (hreal : NumberField.IsTotallyReal K) (hdegree : Module.finrank ℚ K = 4)
+  (hdisc : |NumberField.discr K| < 725)
+  (bz : Module.Basis (Fin 4) ℤ ↥(NumberField.mixedEmbedding.euclidean.integerLattice K))
+  (hbzero : ↑(bz 0) = TraceEuclidean.v15EuclideanOne K) :
+  have b := Module.Basis.ofZLatticeBasis ℝ (NumberField.mixedEmbedding.euclidean.integerLattice K) bz;
+  ∃ x, x ≠ 0 ∧ 4 * ‖↑x‖ ^ 2 < 35
+TraceEuclidean.v15_quartic_projected_shortVector_minkowski.{u} (K : Type u) [Field K] [NumberField K]
+  (hreal : NumberField.IsTotallyReal K) (hdegree : Module.finrank ℚ K = 4) (hdisc : |NumberField.discr K| < 725) :
+  ∃ bz, ↑(bz 0) = TraceEuclidean.v15EuclideanOne K ∧ ∃ x, x ≠ 0 ∧ 4 * ‖↑x‖ ^ 2 < 35
 TraceEuclidean.v15_quartic_projected_shortVector.{u} (hHermite : TraceEuclidean.V15HermiteThreeInput) (K : Type u)
   [Field K] [NumberField K] (hreal : NumberField.IsTotallyReal K) (hdegree : Module.finrank ℚ K = 4)
   (hdisc : |NumberField.discr K| < 725) :
@@ -1335,6 +1381,18 @@ TraceEuclidean.v15_integral_pair_mem_of_sources (hSmall : TraceEuclidean.V15Smal
 'TraceEuclidean.v15_normalize_quartic_coefficients' depends on axioms: [propext, Classical.choice, Quot.sound]
 'TraceEuclidean.v15_quartic_s2_bounds_of_normalized' depends on axioms: [propext, Classical.choice, Quot.sound]
 'TraceEuclidean.v15_normalized_quartic_discriminant_eq_725' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15_quartic_s2_bounds_of_normalized_thirtyFive' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'TraceEuclidean.v15_quartic_s3_s4_bounds_of_normalized_thirtyFive' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'TraceEuclidean.v15_normalized_quartic_discriminant_candidates_of_spread_lt_thirtyFive' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'TraceEuclidean.v15_quartic_small_field_candidates_reduce_to_2048_or_2304' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
 'TraceEuclidean.v15_coded_degree_four_discriminant_ge_725_of_hunterCertificate' depends on axioms: [propext,
  Classical.choice,
  Quot.sound]
@@ -1383,6 +1441,12 @@ TraceEuclidean.v15_integral_pair_mem_of_sources (hSmall : TraceEuclidean.V15Smal
  Classical.choice,
  Quot.sound]
 'TraceEuclidean.v15QuarticHunterProjectedLattice_shortVector' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15_quartic_hunter_shortVector_of_covolume_lt_of_finrank_eq_three' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'TraceEuclidean.v15QuarticHunterProjectedLattice_shortVector_minkowski' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
 'TraceEuclidean.v15_mixedEmbedding_quarticHunterAlgebraicIntegerLift' depends on axioms: [propext,
  Classical.choice,
  Quot.sound]
@@ -1407,6 +1471,10 @@ TraceEuclidean.v15_integral_pair_mem_of_sources (hSmall : TraceEuclidean.V15Smal
 'TraceEuclidean.v15_quartic_projected_shortVector_of_integralBasis_one' depends on axioms: [propext,
  Classical.choice,
  Quot.sound]
+'TraceEuclidean.v15_quartic_projected_shortVector_of_integralBasis_one_minkowski' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'TraceEuclidean.v15_quartic_projected_shortVector_minkowski' depends on axioms: [propext, Classical.choice, Quot.sound]
 'TraceEuclidean.v15_quartic_projected_shortVector' depends on axioms: [propext, Classical.choice, Quot.sound]
 'TraceEuclidean.v15_degree_four_primitiveGenerator_of_hermite_and_selection' depends on axioms: [propext,
  Classical.choice,

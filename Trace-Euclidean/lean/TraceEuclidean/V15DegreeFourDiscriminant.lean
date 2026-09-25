@@ -309,6 +309,54 @@ theorem v15_quartic_s3_s4_bounds_of_normalized
       nlinarith [sq_nonneg s4, sq_nonneg (s4 + 5),
         sq_nonneg (s4 + 6), sq_nonneg (s4 + 7)]
 
+/-- The elementary Minkowski ball gives the weaker spread bound `35`; after
+trace normalization this still confines the second coefficient to a finite
+interval. -/
+theorem v15_quartic_s2_bounds_of_normalized_thirtyFive
+    (s1 s2 : ℤ) (hs1 : s1 = 0 ∨ s1 = 1 ∨ s1 = 2)
+    (hspreadPos : 0 < v15QuarticSpread s1 s2)
+    (hspreadLt : v15QuarticSpread s1 s2 < 35) :
+    -4 ≤ s2 ∧ s2 ≤ 1 := by
+  rcases hs1 with rfl | rfl | rfl <;>
+    simp only [v15QuarticSpread, v15QuarticSecondPowerSum] at hspreadPos hspreadLt
+  all_goals omega
+
+set_option maxHeartbeats 0 in
+-- Exact nonlinear elimination is repeated over the normalized coefficient cases.
+/-- The coefficient box remains finite under the weaker Minkowski spread
+bound. -/
+theorem v15_quartic_s3_s4_bounds_of_normalized_thirtyFive
+    (s1 s2 s3 s4 : ℤ)
+    (hs1 : s1 = 0 ∨ s1 = 1 ∨ s1 = 2)
+    (hspreadPos : 0 < v15QuarticSpread s1 s2)
+    (hspreadLt : v15QuarticSpread s1 s2 < 35)
+    (hminor : 0 < v15QuarticHermiteMinorThree s1 s2 s3 s4)
+    (hdisc : 0 < v15QuarticDiscriminant s1 s2 s3 s4) :
+    -24 ≤ s3 ∧ s3 ≤ 24 ∧ -4 ≤ s4 ∧ s4 ≤ 4 := by
+  have hs2 := v15_quartic_s2_bounds_of_normalized_thirtyFive
+    s1 s2 hs1 hspreadPos hspreadLt
+  rcases hs1 with rfl | rfl | rfl <;>
+    rcases hs2 with ⟨hs2lo, hs2hi⟩ <;>
+    interval_cases s2
+  all_goals norm_num [v15QuarticHermiteMinorThree] at hminor
+  all_goals norm_num [v15QuarticDiscriminant] at hdisc
+  all_goals norm_num [v15QuarticSpread,
+    v15QuarticSecondPowerSum] at hspreadPos
+  all_goals norm_num [v15QuarticSpread,
+    v15QuarticSecondPowerSum] at hspreadLt
+  all_goals
+    have hs3lo : -24 ≤ s3 := by
+      nlinarith [sq_nonneg s3, sq_nonneg (s3 + 25)]
+    have hs3hi : s3 ≤ 24 := by
+      nlinarith [sq_nonneg s3, sq_nonneg (s3 - 25)]
+    have hs4hi : s4 ≤ 4 := by
+      nlinarith [sq_nonneg s3, sq_nonneg s4,
+        sq_nonneg (s4 - 5)]
+    refine ⟨hs3lo, hs3hi, ?_, hs4hi⟩
+    interval_cases s3 <;>
+      nlinarith [sq_nonneg s4, sq_nonneg (s4 + 5),
+        sq_nonneg (s4 + 6), sq_nonneg (s4 + 7)]
+
 private instance (s1 s2 s3 s4 u v p q : ℤ) :
     Decidable (V15QuarticQuadraticFactorWitness s1 s2 s3 s4 u v p q) := by
   unfold V15QuarticQuadraticFactorWitness
@@ -417,6 +465,131 @@ theorem v15_normalized_quartic_discriminant_eq_725
     obtain ⟨p, -, hp⟩ := List.any_eq_true.mp hv
     obtain ⟨q, -, hq⟩ := List.any_eq_true.mp hp
     exact ((hnoQuadratic u v p q) (of_decide_eq_true hq)).elim
+
+private def v15QuarticAdmissibleThirtyFive
+    (s1 s2 s3 s4 : ℤ) : Bool :=
+  decide (0 < v15QuarticSpread s1 s2 ∧
+    v15QuarticSpread s1 s2 < 35 ∧
+    0 < v15QuarticHermiteMinorThree s1 s2 s3 s4 ∧
+    0 < v15QuarticDiscriminant s1 s2 s3 s4)
+
+private def v15QuarticOutcomeThirtyFive
+    (s1 s2 s3 s4 : ℤ) : Bool :=
+  decide (v15QuarticDiscriminant s1 s2 s3 s4 = 725) ||
+    decide (v15QuarticDiscriminant s1 s2 s3 s4 = 1957) ||
+    decide (v15QuarticDiscriminant s1 s2 s3 s4 = 2048) ||
+    decide (v15QuarticDiscriminant s1 s2 s3 s4 = 2304) ||
+    v15QuarticRootSearch s1 s2 s3 s4 ||
+    v15QuarticFactorSearch s1 s2 s3 s4
+
+private def v15QuarticFiniteCheckThirtyFive : Bool :=
+  v15QuarticS1Range.all fun s1 ↦
+    v15QuarticS2Range.all fun s2 ↦
+      v15QuarticS3Range.all fun s3 ↦
+        v15QuarticS4Range.all fun s4 ↦
+          !v15QuarticAdmissibleThirtyFive s1 s2 s3 s4 ||
+            v15QuarticOutcomeThirtyFive s1 s2 s3 s4
+
+set_option maxHeartbeats 0 in
+-- Kernel reduction checks every row in the enlarged quartic coefficient box.
+set_option maxRecDepth 100000 in
+private theorem v15_quarticFiniteCheckThirtyFive_true :
+    v15QuarticFiniteCheckThirtyFive = true := by
+  decide
+
+/-- Under the weaker Minkowski spread bound, the irreducible normalized
+quartics have one of four explicitly checked polynomial discriminants. -/
+theorem v15_normalized_quartic_discriminant_candidates_of_spread_lt_thirtyFive
+    (s1 s2 s3 s4 : ℤ)
+    (hs1 : 0 ≤ s1) (hs1' : s1 ≤ 2)
+    (hs2 : -4 ≤ s2) (hs2' : s2 ≤ 2)
+    (hs3 : -24 ≤ s3) (hs3' : s3 ≤ 24)
+    (hs4 : -4 ≤ s4) (hs4' : s4 ≤ 4)
+    (hspreadPos : 0 < v15QuarticSpread s1 s2)
+    (hspreadLt : v15QuarticSpread s1 s2 < 35)
+    (hminor : 0 < v15QuarticHermiteMinorThree s1 s2 s3 s4)
+    (hdisc : 0 < v15QuarticDiscriminant s1 s2 s3 s4)
+    (hnoRoot : ∀ z : ℤ, v15QuarticEval s1 s2 s3 s4 z ≠ 0)
+    (hnoQuadratic : ∀ u v p q : ℤ,
+      ¬V15QuarticQuadraticFactorWitness s1 s2 s3 s4 u v p q) :
+    v15QuarticDiscriminant s1 s2 s3 s4 = 725 ∨
+      v15QuarticDiscriminant s1 s2 s3 s4 = 1957 ∨
+      v15QuarticDiscriminant s1 s2 s3 s4 = 2048 ∨
+      v15QuarticDiscriminant s1 s2 s3 s4 = 2304 := by
+  have hs1mem : s1 ∈ v15QuarticS1Range := by
+    interval_cases s1 <;> decide
+  have hs2mem : s2 ∈ v15QuarticS2Range := by
+    interval_cases s2 <;> decide
+  have hs3mem : s3 ∈ v15QuarticS3Range := by
+    interval_cases s3 <;> decide
+  have hs4mem : s4 ∈ v15QuarticS4Range := by
+    interval_cases s4 <;> decide
+  have hall1 := List.all_eq_true.mp v15_quarticFiniteCheckThirtyFive_true
+  have hall2 := List.all_eq_true.mp (hall1 s1 hs1mem)
+  have hall3 := List.all_eq_true.mp (hall2 s2 hs2mem)
+  have hall4 := List.all_eq_true.mp (hall3 s3 hs3mem)
+  have hrow := hall4 s4 hs4mem
+  have hadmissible :
+      v15QuarticAdmissibleThirtyFive s1 s2 s3 s4 = true := by
+    simp [v15QuarticAdmissibleThirtyFive, hspreadPos, hspreadLt,
+      hminor, hdisc]
+  have houtcome : v15QuarticOutcomeThirtyFive s1 s2 s3 s4 = true := by
+    simpa [hadmissible] using hrow
+  simp only [v15QuarticOutcomeThirtyFive, Bool.or_eq_true,
+    decide_eq_true_eq] at houtcome
+  rcases houtcome with
+    ((((h725 | h1957) | h2048) | h2304) | hroot) | hfactor
+  · exact Or.inl h725
+  · exact Or.inr (Or.inl h1957)
+  · exact Or.inr (Or.inr (Or.inl h2048))
+  · exact Or.inr (Or.inr (Or.inr h2304))
+  · change v15QuarticSmallRange.any (fun z ↦
+      decide (v15QuarticEval s1 s2 s3 s4 z = 0)) = true at hroot
+    obtain ⟨z, -, hz⟩ := List.any_eq_true.mp hroot
+    exact ((hnoRoot z) (of_decide_eq_true hz)).elim
+  · change v15QuarticSmallRange.any (fun u ↦
+      v15QuarticSmallRange.any fun v ↦
+        v15QuarticSmallRange.any fun p ↦
+          v15QuarticSmallRange.any fun q ↦
+            decide (V15QuarticQuadraticFactorWitness
+              s1 s2 s3 s4 u v p q)) = true at hfactor
+    obtain ⟨u, -, hu⟩ := List.any_eq_true.mp hfactor
+    obtain ⟨v, -, hv⟩ := List.any_eq_true.mp hu
+    obtain ⟨p, -, hp⟩ := List.any_eq_true.mp hv
+    obtain ⟨q, -, hq⟩ := List.any_eq_true.mp hp
+    exact ((hnoQuadratic u v p q) (of_decide_eq_true hq)).elim
+
+/-- If the field discriminant lies strictly between `29` and `725`, the
+`725` and `1957` polynomial-discriminant outcomes are arithmetically
+impossible. Thus the weaker Minkowski route leaves only the two even-index
+cases. -/
+theorem v15_quartic_small_field_candidates_reduce_to_2048_or_2304
+    (s1 s2 s3 s4 d : ℤ) (index : ℕ)
+    (hindex : 0 < index) (hdLower : 29 < d) (hdUpper : d < 725)
+    (hrelation : v15QuarticDiscriminant s1 s2 s3 s4 =
+      (index : ℤ) ^ 2 * d)
+    (hcandidates :
+      v15QuarticDiscriminant s1 s2 s3 s4 = 725 ∨
+      v15QuarticDiscriminant s1 s2 s3 s4 = 1957 ∨
+      v15QuarticDiscriminant s1 s2 s3 s4 = 2048 ∨
+      v15QuarticDiscriminant s1 s2 s3 s4 = 2304) :
+    v15QuarticDiscriminant s1 s2 s3 s4 = 2048 ∨
+      v15QuarticDiscriminant s1 s2 s3 s4 = 2304 := by
+  rcases hcandidates with h725 | h1957 | h2048 | h2304
+  · have hindexLt : index < 5 := by
+      by_contra hnot
+      have hi : (5 : ℤ) ≤ index := by exact_mod_cast (by omega : 5 ≤ index)
+      rw [h725] at hrelation
+      nlinarith [sq_nonneg ((index : ℤ) - 5)]
+    interval_cases index <;> norm_num at hrelation <;> omega
+  · have hindexLt : index < 9 := by
+      by_contra hnot
+      have hi : (9 : ℤ) ≤ index := by exact_mod_cast (by omega : 9 ≤ index)
+      rw [h1957] at hrelation
+      nlinarith [sq_nonneg ((index : ℤ) - 9)]
+    interval_cases index <;> norm_num at hrelation <;> omega
+  · exact Or.inl h2048
+  · exact Or.inr h2304
 
 /-- The concrete normalized certificate needed below the hypothetical
 degree-four discriminant bound.  The finite arithmetic of the certificate is
