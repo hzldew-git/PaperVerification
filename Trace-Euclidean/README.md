@@ -24,8 +24,11 @@ nonvanishing, the absolutely convergent prime-power logarithmic derivative,
 the archimedean Gamma/digamma decomposition, the digamma partial-fraction
 series, the symmetric critical-line archimedean bracket, and its exact
 Gauss-digamma/Fubini specialization to the source's two hyperbolic terms. The
-remaining analytic proof boundary is transformed prime-power matching and the
-global Stark/Weil contour/residue identity.
+project now also proves arbitrary vertical-line Fourier inversion, exchanges
+the complete absolutely convergent prime-power series with the vertical
+integral, and identifies the transformed actual zeta logarithmic derivative
+with minus `pi` times the finite source correction. The remaining analytic
+proof boundary is the global Stark/Weil contour/residue identity.
 
 This package contains Lean 4 proofs, independent Python and Wolfram checks,
 extracted v15 inputs, machine-readable results, and an English
@@ -89,9 +92,13 @@ results are 1165 Python PASS and 112 Wolfram PASS.
   both Gauss-digamma kernels, performs the Fubini interchanges and real-place
   rescaling, and derives the normalized number-field identity
   `log |D_K| - r_1 log A_* - 2 r_2 log B_*` for the symmetric infinite-place
-  logarithmic-derivative bracket.
-  Equation (2.3) and a convergent paired-zero contribution remain the
-  mathematical inputs needed to derive the full Table 4 inequality.
+  logarithmic-derivative bracket. It proves fourth-power decay on every fixed
+  vertical line, the exact transform of each prime-power Euler term, the
+  absolute sum/integral exchange on `Re(s) > 1`, and the identity between the
+  transformed actual Dedekind-zeta logarithmic derivative and the complete
+  finite-support source correction. Equation (2.3), specifically its global
+  zero/residue contour identity, remains the mathematical input needed to
+  derive the full Table 4 inequality.
 - Theorem 1.7: an if-and-only-if classification for every nonzero fractional
   ideal presentation of a positive integral rank-one real-quadratic lattice.
   Lean proves principality, six actual module-isometry classes, six valid
@@ -141,7 +148,10 @@ derivative as an absolutely convergent prime-power series, evaluates the
 infinite-place logarithmic derivative in terms of digamma, proves the digamma
 partial-fraction series, derives the symmetric critical-line bracket, and
 proves its complete Gauss-integral, Fourier-inversion, Fubini, and hyperbolic
-specialization with the exact `A_*` and `B_*` normalization. It
+specialization with the exact `A_*` and `B_*` normalization. It also proves
+the arbitrary-line transform of the prime-power series and of the actual zeta
+logarithmic derivative, including the justified infinite sum/integral
+exchange and exact source prime correction. It
 also matches the HSW Gamma
 normalization to mathlib's Deligne factors and proves that the completed zeta
 function has the same zero positions and multiplicities in the open critical
@@ -151,9 +161,11 @@ differentiability and derivative decay, and derives the exact
 recorded in the [Odlyzko source audit](docs/audit/v15/14_odlyzko_source_reduction.md)
 and [zero-count literature note](docs/audit/v15/16_zero_count_literature.md);
 the [fourth-decay proof](docs/audit/v15/17_odlyzko_fourth_decay.md) records
-the new regularity and Fourier argument. The
+the new regularity and Fourier argument, while the
+[prime-transform certificate](docs/audit/v15/21_odlyzko_prime_transform.md)
+records the complete Euler-term and sum/integral bridge. The
 [analytic boundary progress note](docs/audit/v15/19_analytic_boundary_progress.md)
-records the four current proof tasks and their remaining dependencies.
+records the ordered proof tasks and the remaining global contour dependency.
 
 ## Version scope
 

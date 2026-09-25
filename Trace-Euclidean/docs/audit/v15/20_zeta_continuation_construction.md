@@ -134,7 +134,8 @@ The present project has now closed that gap locally. Upgrading would still
 require replaying the whole project and would not by itself supply the
 remaining number-field Stark/Weil specialization. The current route is to port
 compatible generic contour lemmas selectively and retain the stable 4.32.1
-toolchain.
+toolchain. The intervening transformed prime-power step has since been proved
+on that pinned toolchain.
 
 ## Trust and remaining work
 

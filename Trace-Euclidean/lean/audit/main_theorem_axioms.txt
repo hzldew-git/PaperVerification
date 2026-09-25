@@ -1685,6 +1685,8 @@ DedekindZeta.hasProd_primeIdeal_eulerFactors.{u_1} (K : Type u_1) [Field K] [Num
   HasProd (fun v => (1 - ↑(Ideal.absNorm v.asIdeal) ^ (-s))⁻¹) (NumberField.dedekindZeta K s)
 DedekindZeta.dedekindZeta_ne_zero_of_one_lt_re.{u_1} (K : Type u_1) [Field K] [NumberField K] {s : ℂ} (hs : 1 < s.re) :
   NumberField.dedekindZeta K s ≠ 0
+DedekindZeta.summable_norm_primePowerLogTerm.{u_1} (K : Type u_1) [Field K] [NumberField K] {s : ℂ} (hs : 1 < s.re) :
+  Summable fun p => ‖DedekindZeta.primePowerLogTerm K p.1 p.2 s‖
 DedekindZeta.summable_primePowerLogTerm.{u_1} (K : Type u_1) [Field K] [NumberField K] {s : ℂ} (hs : 1 < s.re) :
   Summable fun p => DedekindZeta.primePowerLogTerm K p.1 p.2 s
 DedekindZeta.LogDeriv.logDeriv_dedekindZeta_eq_neg_tsum_primePowers.{u_1} (K : Type u_1) [Field K] [NumberField K]
@@ -1700,6 +1702,7 @@ DedekindZeta.ArchimedeanLogDeriv.logDeriv_ZInfty.{u_1} (K : Type u_1) [Field K] 
       ↑(NumberField.InfinitePlace.nrComplexPlaces K) * (-Complex.log (2 * ↑Real.pi) + s.digamma)
 'DedekindZeta.hasProd_primeIdeal_eulerFactors' depends on axioms: [propext, Classical.choice, Quot.sound]
 'DedekindZeta.dedekindZeta_ne_zero_of_one_lt_re' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DedekindZeta.summable_norm_primePowerLogTerm' depends on axioms: [propext, Classical.choice, Quot.sound]
 'DedekindZeta.summable_primePowerLogTerm' depends on axioms: [propext, Classical.choice, Quot.sound]
 'DedekindZeta.LogDeriv.logDeriv_dedekindZeta_eq_neg_tsum_primePowers' depends on axioms: [propext,
  Classical.choice,
@@ -1854,3 +1857,56 @@ TraceEuclidean.v15OdlyzkoCritical_archimedeanBracket_re_average.{u_1} (K : Type 
 'TraceEuclidean.v15OdlyzkoCritical_archimedeanBracket_re_average' depends on axioms: [propext,
  Classical.choice,
  Quot.sound]
+TraceEuclidean.v15OdlyzkoPhi_vertical_exists_fourthPowerBound (σ : ℝ) :
+  ∃ D, 0 ≤ D ∧ ∀ (t : ℝ), ‖TraceEuclidean.v15OdlyzkoPhi (↑σ + ↑t * Complex.I)‖ ≤ D / (1 + |t|) ^ 4
+TraceEuclidean.v15OdlyzkoPhi_vertical_inversion_integral (σ x : ℝ) :
+  ∫ (t : ℝ), Complex.exp (↑(-t * x) * Complex.I) * TraceEuclidean.v15OdlyzkoPhi (↑σ + ↑t * Complex.I) =
+    (2 * Real.pi) • TraceEuclidean.v15OdlyzkoTiltedF4 (σ - 1 / 2) x
+TraceEuclidean.v15OdlyzkoPrimePowerLogTerm_vertical_eq.{u_1} {K : Type u_1} [Field K] [NumberField K]
+  (P : IsDedekindDomain.HeightOneSpectrum (NumberField.RingOfIntegers K)) (m : ℕ) (σ t : ℝ) :
+  DedekindZeta.primePowerLogTerm K P m (↑σ + ↑t * Complex.I) =
+    ↑(Real.log ↑(Ideal.absNorm P.asIdeal) * Real.exp (-σ * Real.log (↑(Ideal.absNorm P.asIdeal) ^ (m + 1)))) *
+      Complex.exp (↑(-t * Real.log (↑(Ideal.absNorm P.asIdeal) ^ (m + 1))) * Complex.I)
+TraceEuclidean.v15OdlyzkoPhi_mul_primePowerLogTerm_integral.{u_1} {K : Type u_1} [Field K] [NumberField K]
+  (P : IsDedekindDomain.HeightOneSpectrum (NumberField.RingOfIntegers K)) (m : ℕ) (σ : ℝ) :
+  ∫ (t : ℝ),
+      TraceEuclidean.v15OdlyzkoPhi (↑σ + ↑t * Complex.I) * DedekindZeta.primePowerLogTerm K P m (↑σ + ↑t * Complex.I) =
+    ↑(Real.pi * TraceEuclidean.v15OdlyzkoPrimeTerm P (m + 1))
+TraceEuclidean.v15OdlyzkoPrimePlaces_countable.{u_2} (K : Type u_2) [Field K] [NumberField K] :
+  Countable (IsDedekindDomain.HeightOneSpectrum (NumberField.RingOfIntegers K))
+TraceEuclidean.v15OdlyzkoPhi_mul_primePowerLogTerm_tsum_integral.{u_2} (K : Type u_2) [Field K] [NumberField K] (σ : ℝ)
+  (hσ : 1 < σ) :
+  ∫ (t : ℝ),
+      TraceEuclidean.v15OdlyzkoPhi (↑σ + ↑t * Complex.I) *
+        ∑' (p : IsDedekindDomain.HeightOneSpectrum (NumberField.RingOfIntegers K) × ℕ),
+          DedekindZeta.primePowerLogTerm K p.1 p.2 (↑σ + ↑t * Complex.I) =
+    ↑(Real.pi * TraceEuclidean.v15OdlyzkoPrimeCorrection K)
+TraceEuclidean.v15OdlyzkoPhi_mul_logDeriv_dedekindZeta_integral.{u_2} (K : Type u_2) [Field K] [NumberField K] (σ : ℝ)
+  (hσ : 1 < σ) :
+  ∫ (t : ℝ),
+      TraceEuclidean.v15OdlyzkoPhi (↑σ + ↑t * Complex.I) * logDeriv (NumberField.dedekindZeta K) (↑σ + ↑t * Complex.I) =
+    -↑(Real.pi * TraceEuclidean.v15OdlyzkoPrimeCorrection K)
+TraceEuclidean.v15OdlyzkoPrimePowerCriticalBracket_integral.{u_1} {K : Type u_1} [Field K] [NumberField K]
+  (P : IsDedekindDomain.HeightOneSpectrum (NumberField.RingOfIntegers K)) (m : ℕ) :
+  ∫ (t : ℝ), TraceEuclidean.v15OdlyzkoCriticalReal t * TraceEuclidean.v15OdlyzkoPrimePowerCriticalBracket P m t =
+    2 * Real.pi * TraceEuclidean.v15OdlyzkoPrimeTerm P (m + 1)
+TraceEuclidean.v15OdlyzkoPrimeCriticalBracket_average.{u_2} (K : Type u_2) [Field K] [NumberField K] :
+  1 / (2 * Real.pi) *
+      ∫ (t : ℝ),
+        TraceEuclidean.v15OdlyzkoCriticalReal t * TraceEuclidean.v15OdlyzkoPrimeCriticalBracketPartial K 4095 11 t =
+    TraceEuclidean.v15OdlyzkoPrimeCorrection K
+'TraceEuclidean.v15OdlyzkoPhi_vertical_exists_fourthPowerBound' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'TraceEuclidean.v15OdlyzkoPhi_vertical_inversion_integral' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15OdlyzkoPrimePowerLogTerm_vertical_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15OdlyzkoPhi_mul_primePowerLogTerm_integral' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15OdlyzkoPrimePlaces_countable' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15OdlyzkoPhi_mul_primePowerLogTerm_tsum_integral' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'TraceEuclidean.v15OdlyzkoPhi_mul_logDeriv_dedekindZeta_integral' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'TraceEuclidean.v15OdlyzkoPrimePowerCriticalBracket_integral' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15OdlyzkoPrimeCriticalBracket_average' depends on axioms: [propext, Classical.choice, Quot.sound]

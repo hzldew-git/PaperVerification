@@ -127,11 +127,11 @@ theorem norm_primePowerLogTerm
   rw [← Complex.natCast_log, Complex.norm_real,
     Real.norm_of_nonneg (Real.log_natCast_nonneg _)]
 
-/-- The logarithm-weighted double series over prime ideals and their positive
-powers is absolutely summable on `re s > 1`. -/
-theorem summable_primePowerLogTerm {s : ℂ} (hs : 1 < s.re) :
+/-- The norms of the logarithm-weighted double series over prime ideals and
+their positive powers are summable on `re s > 1`. -/
+theorem summable_norm_primePowerLogTerm {s : ℂ} (hs : 1 < s.re) :
     Summable (fun p : HeightOneSpectrum (𝓞 K) × ℕ =>
-      primePowerLogTerm K p.1 p.2 s) := by
+      ‖primePowerLogTerm K p.1 p.2 s‖) := by
   let ε : ℝ := (s.re - 1) / 2
   let τ : ℝ := (s.re + 1) / 2
   let c : ℝ := (2 : ℝ) ^ (-s.re)
@@ -251,7 +251,14 @@ theorem summable_primePowerLogTerm {s : ℂ} (hs : 1 < s.re) :
       (fun p : HeightOneSpectrum (𝓞 K) × ℕ =>
         ‖primePowerLogTerm K p.1 p.2 s‖) :=
     (summable_prod_of_nonneg (fun _ => norm_nonneg _)).2 ⟨hinner, houter⟩
-  exact hnorm.of_norm
+  exact hnorm
+
+/-- The logarithm-weighted double series over prime ideals and their positive
+powers is absolutely summable on `re s > 1`. -/
+theorem summable_primePowerLogTerm {s : ℂ} (hs : 1 < s.re) :
+    Summable (fun p : HeightOneSpectrum (𝓞 K) × ℕ =>
+      primePowerLogTerm K p.1 p.2 s) :=
+  (summable_norm_primePowerLogTerm K hs).of_norm
 
 /-- Fubini identity for the absolutely convergent prime-power logarithmic
 series. -/

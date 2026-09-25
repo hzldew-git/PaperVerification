@@ -1,11 +1,21 @@
 # Reproducibility report
 
+- The prime-transform update passed a full local 8818-job Lean build. The ten
+  added audit endpoints cover arbitrary vertical-line fourth-power decay and
+  inversion, exact single-term and complete prime-power transforms,
+  countability of finite places, the justified infinite sum/integral exchange,
+  the actual Dedekind-zeta logarithmic derivative, and the finite critical-line
+  bracket. Their transitive axiom sets use only `propext`, `Classical.choice`,
+  and `Quot.sound`. The transformed prime-power boundary is closed; the global
+  contour/residue identity remains.
+
 - The archimedean-bridge update passed a full local 8817-job Lean build and
   the expanded transitive-axiom audit. The new joint-integrability, Fubini,
   rescaling, digamma-pairing, and number-field bracket endpoints use only
   `propext`, `Classical.choice`, and `Quot.sound`. The manuscript-exclusion
-  guard inspected 223 files and passed. The remaining Stark/Weil boundary is
-  the transformed prime-power matching and global contour/residue identity.
+  guard inspected 223 files and passed. At that stage the remaining Stark/Weil
+  boundary consisted of the transformed prime-power matching and global
+  contour/residue identity; the former has since been closed.
 
 - The completed-growth update passed a full local 8805-job Lean build. New
   audited endpoints cover the Mellin-tail estimate, the ideal and

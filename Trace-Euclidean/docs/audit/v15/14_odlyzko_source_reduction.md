@@ -266,11 +266,21 @@ norms at most 4095 and exponents at most eleven. In particular, the complete
 prime correction is a nonnegative Lean theorem rather than an external
 infinite-sum premise.
 
-Eliminating the remaining Table 4 premise now requires the remaining two parts
-of the Stark/Weil argument: matching the transformed prime-power logarithmic
-derivative with the source correction, and proving the global contour/residue
-identity that combines the zero, prime, and archimedean terms. The completed
-Dedekind zeta, its functional equation, quadratic growth, a Jensen count for
+`V15OdlyzkoPrimeTransform` now proves the first of those two parts. It extends
+the fourth-power transform bound and Fourier inversion to every fixed vertical
+line, transforms each prime-power Euler term, proves countability of the prime
+places, uses absolute convergence to exchange the complete sum and integral,
+and obtains
+
+~~~text
+integral_R Phi(sigma+it) * (zeta_K'/zeta_K)(sigma+it) dt
+  = -pi * PrimeCorrection(K),   sigma > 1.
+~~~
+
+Eliminating the remaining Table 4 premise now requires the global
+Stark/Weil contour/residue identity that combines the zero, prime, and
+archimedean terms. The completed Dedekind zeta, its functional equation,
+quadratic growth, a Jensen count for
 actual zero occurrences, direct zero-sum convergence, and the full
 archimedean pairing are proved. The source test-function hypotheses, entire
 zero transform, uniform fourth-power vertical decay, conjugate pairing
@@ -285,10 +295,10 @@ compiler trust boundary.
 Pinned mathlib defines the Dedekind zeta Dirichlet series and its residue at
 one but does not provide this explicit formula. The local theta/Mellin
 development now supplies global continuation, the functional equation,
-growth, the required zero-sum theory, and the complete archimedean
-Gamma/digamma pairing. Therefore the full Odlyzko theorem still has one
-disclosed external mathematical input, now localized to the prime transform
-and contour/residue identity. The Lean work verifies the source
+growth, the required zero-sum theory, the complete archimedean Gamma/digamma
+pairing, and the transformed prime-power logarithmic derivative. Therefore the
+full Odlyzko theorem still has one disclosed external mathematical input, now
+localized to the global contour/residue identity. The Lean work verifies the source
 kernel, the autocorrelation and Fourier positivity of `H`, the exact
 hyperbolic-secant and tilted transforms, the product-to-convolution bridge,
 source-normalized zero-transform positivity on the closed critical strip, the

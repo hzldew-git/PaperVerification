@@ -24,7 +24,10 @@ factor, proves joint absolute integrability with the critical transform,
 justifies both Gauss-digamma Fubini interchanges and the real-place variable
 change, and derives exactly
 `log |D_K| - r_1 log A_* - 2 r_2 log B_*`. The remaining explicit-formula
-boundary consists of the transformed prime-power matching and the global
+work now also includes arbitrary vertical-line fourth-power decay and Fourier
+inversion, the exact transform of every prime-power Euler term, an absolutely
+convergent sum/integral exchange, and the resulting actual Dedekind-zeta
+logarithmic-derivative identity. The remaining boundary is the global
 contour/residue identity.
 
 Paper version: Trace-Euclidean v15, SHA-256 83a236e93648ce0802f8a0d3022de63710d089f3a4f7e61214a4c855459597b5. Proof assistant: Lean 4.32.1 with pinned mathlib. Project assessment: SUBSTANTIAL_FORMALIZATION, Grade B.
@@ -35,4 +38,4 @@ All four reviewed main results are PROVISIONAL_MATCH; none is independently VERI
 
 A finite-height exhaustion proves that multiplicity-aware strip-zero occurrences are countable. After every height there is a right interval with constant zero count. For the exact HSW Corollary 1.2 normalization, Lean extends an inequality assumed at occurrence-free heights to every T >= 1. That sharp inequality remains an explicit input but is unnecessary for the completed-function Jensen route. The direct unordered zero sum now converges from the internally proved quadratic count. The HSW Gamma factor has been matched to mathlib, with critical-strip zero positions and analytic multiplicities preserved by completion. The completed-zeta functional equation and sufficient growth bound are proved. The Stark/Weil explicit formula remains unproved. The source map is in 18_classical_analytic_sources.md.
 
-The complete local 8817-job Lean build passes. The expanded axiom audit includes the constructed zeta regularization, functional equation, Mellin growth, Jensen, zero-count, unordered-zero, and archimedean Fubini endpoints using only standard logical axioms; the final reduction also exposes the A/B interval certificate's separately disclosed native-compiler trust. The four finite-array equality proofs are kernel computations with no axiom dependencies. Local public reruns produced 1156 Python PASS and 115 Wolfram PASS, both with zero failures. Superseded release evidence is not included in the current package or v15 counts.
+The complete local 8818-job Lean build passes. The expanded axiom audit includes the constructed zeta regularization, functional equation, Mellin growth, Jensen, zero-count, unordered-zero, archimedean Fubini, and transformed prime-power endpoints using only standard logical axioms; the final reduction also exposes the A/B interval certificate's separately disclosed native-compiler trust. The four finite-array equality proofs are kernel computations with no axiom dependencies. Local public reruns produced 1156 Python PASS and 115 Wolfram PASS, both with zero failures. Superseded release evidence is not included in the current package or v15 counts.

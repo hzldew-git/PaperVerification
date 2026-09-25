@@ -683,12 +683,14 @@ import TraceEuclidean
 -- and the explicit archimedean logarithmic derivative.
 #check DedekindZeta.hasProd_primeIdeal_eulerFactors
 #check DedekindZeta.dedekindZeta_ne_zero_of_one_lt_re
+#check DedekindZeta.summable_norm_primePowerLogTerm
 #check DedekindZeta.summable_primePowerLogTerm
 #check DedekindZeta.LogDeriv.logDeriv_dedekindZeta_eq_neg_tsum_primePowers
 #check DedekindZeta.ArchimedeanLogDeriv.logDeriv_ZInfty
 
 #print axioms DedekindZeta.hasProd_primeIdeal_eulerFactors
 #print axioms DedekindZeta.dedekindZeta_ne_zero_of_one_lt_re
+#print axioms DedekindZeta.summable_norm_primePowerLogTerm
 #print axioms DedekindZeta.summable_primePowerLogTerm
 #print axioms DedekindZeta.LogDeriv.logDeriv_dedekindZeta_eq_neg_tsum_primePowers
 #print axioms DedekindZeta.ArchimedeanLogDeriv.logDeriv_ZInfty
@@ -750,3 +752,26 @@ import TraceEuclidean
 #print axioms TraceEuclidean.v15OdlyzkoCritical_mul_realPlaceBracket_integral
 #print axioms TraceEuclidean.v15OdlyzkoCritical_mul_complexPlaceBracket_integral
 #print axioms TraceEuclidean.v15OdlyzkoCritical_archimedeanBracket_re_average
+
+-- The complete transformed prime-power bridge: arbitrary vertical-line
+-- Fourier inversion, justified infinite sum/integral exchange, and the actual
+-- Dedekind-zeta logarithmic derivative on `Re s > 1`.
+#check TraceEuclidean.v15OdlyzkoPhi_vertical_exists_fourthPowerBound
+#check TraceEuclidean.v15OdlyzkoPhi_vertical_inversion_integral
+#check TraceEuclidean.v15OdlyzkoPrimePowerLogTerm_vertical_eq
+#check TraceEuclidean.v15OdlyzkoPhi_mul_primePowerLogTerm_integral
+#check TraceEuclidean.v15OdlyzkoPrimePlaces_countable
+#check TraceEuclidean.v15OdlyzkoPhi_mul_primePowerLogTerm_tsum_integral
+#check TraceEuclidean.v15OdlyzkoPhi_mul_logDeriv_dedekindZeta_integral
+#check TraceEuclidean.v15OdlyzkoPrimePowerCriticalBracket_integral
+#check TraceEuclidean.v15OdlyzkoPrimeCriticalBracket_average
+
+#print axioms TraceEuclidean.v15OdlyzkoPhi_vertical_exists_fourthPowerBound
+#print axioms TraceEuclidean.v15OdlyzkoPhi_vertical_inversion_integral
+#print axioms TraceEuclidean.v15OdlyzkoPrimePowerLogTerm_vertical_eq
+#print axioms TraceEuclidean.v15OdlyzkoPhi_mul_primePowerLogTerm_integral
+#print axioms TraceEuclidean.v15OdlyzkoPrimePlaces_countable
+#print axioms TraceEuclidean.v15OdlyzkoPhi_mul_primePowerLogTerm_tsum_integral
+#print axioms TraceEuclidean.v15OdlyzkoPhi_mul_logDeriv_dedekindZeta_integral
+#print axioms TraceEuclidean.v15OdlyzkoPrimePowerCriticalBracket_integral
+#print axioms TraceEuclidean.v15OdlyzkoPrimeCriticalBracket_average

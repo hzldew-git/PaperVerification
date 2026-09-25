@@ -61,8 +61,8 @@ certified Euler–Mascheroni lower bound. The interval calculations use
 `native_decide`, whose generated `_native.native_decide.ax_*` dependencies are a distinct trust
 boundary from kernel-only reduction. The remaining explicit-formula input is
 not asserted as a project axiom or proved source theorem. Its unformalized
-content is now localized to the transformed prime-power matching and the
-global contour/residue identity; the archimedean specialization is no longer
-part of that boundary.
+content is now localized to the global contour/residue identity. The
+archimedean specialization and transformed complete prime-power matching are
+no longer part of that boundary.
 
 The public Python and Wolfram checks trust their kernels and the extracted v15 input file. The private source-bound checks additionally verify the manuscript hash and printed data. Neither computational PASS counts nor Lean compilation certifies paper-to-code semantic fidelity. Only the active v15 computational artifacts are included in the current package.

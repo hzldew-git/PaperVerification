@@ -44,7 +44,9 @@ nonvanishing, prime-power line, complex and vertical real digamma series, Gauss
 integral representation, and critical-line archimedean integral bracket are
 proved. `TraceEuclidean/V15OdlyzkoCriticalTransform.lean` also proves the
 critical transform's integrability, a quadratic moment, and its exact
-Fourier/cosine inversion formulas. The remaining analytic work is to convert
-the paired archimedean integrals to the source's two hyperbolic terms with the
-required Fubini and limiting arguments, identify every transformed
-prime-power term, and close the Stark/Weil contour and residue identity.
+Fourier/cosine inversion formulas. `V15OdlyzkoArchimedeanBridge.lean` performs
+the required Fubini interchanges and evaluates the two source hyperbolic
+terms. `V15OdlyzkoPrimeTransform.lean` identifies every transformed
+prime-power term, justifies the infinite exchange, and proves the corresponding
+identity for the actual Dedekind-zeta logarithmic derivative. The remaining
+analytic work is the global Stark/Weil contour and residue identity.
