@@ -13,7 +13,10 @@
   source inputs. This Lean-only update did not rerun the unchanged public
   classification computations; their latest results remain 1156 Python PASS
   and 115 Wolfram PASS with zero failures. The manuscript-exclusion guard
-  inspected 257 files and passed.
+  inspected 256 files and passed. Fresh-checkout GitHub Actions passed at
+  https://github.com/hzldew-git/PaperVerification/actions/runs/36137406782
+  and
+  https://github.com/hzldew-git/PaperVerification/actions/runs/36137406742.
 
 - The quadratic-discriminant update passed a full local 8836-job Lean build
   under the pinned Lean 4.32.1 and mathlib v4.32.1 toolchain. The main audit
