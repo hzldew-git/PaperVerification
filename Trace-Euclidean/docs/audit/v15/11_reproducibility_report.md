@@ -9,6 +9,10 @@
   and reduces the Section 4 literature input to degrees three through eleven.
   Public reruns produced 1156 Python PASS and 115 Wolfram PASS with zero
   failures. The manuscript-exclusion guard inspected 244 files and passed.
+  Fresh-checkout GitHub Actions passed at
+  https://github.com/hzldew-git/PaperVerification/actions/runs/36114995702
+  and
+  https://github.com/hzldew-git/PaperVerification/actions/runs/36114995667.
 
 - The contour-closure update passed a full local 8835-job Lean build under the
   pinned Lean 4.32.1 and mathlib v4.32.1 toolchain. The refreshed main audit
