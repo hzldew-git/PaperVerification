@@ -701,6 +701,17 @@ import TraceEuclidean
 #check DedekindZeta.DigammaIdentities.logDeriv_ZInfty_critical_bracket
 #check DedekindZeta.DigammaVertical.summable_re_terms
 #check DedekindZeta.DigammaVertical.re_digamma_vertical
+#check DedekindZeta.DigammaIntegral.re_digamma_eq_gauss_integral
+#check DedekindZeta.DigammaIntegral.re_digamma_quarter_integral
+#check DedekindZeta.DigammaIntegral.re_digamma_half_integral
+#check DedekindZeta.DigammaIntegral.logDeriv_ZInfty_critical_bracket_integral
+#check TraceEuclidean.v15OdlyzkoPhi_critical_integrable
+#check TraceEuclidean.v15OdlyzkoPhi_critical_mul_sq_integrable
+#check TraceEuclidean.v15OdlyzkoTiltedF4_zero_fourier_integrable
+#check TraceEuclidean.v15OdlyzkoPhi_critical_inversion_integral
+#check TraceEuclidean.v15OdlyzkoPhi_critical_cosine_inversion
+#check TraceEuclidean.v15OdlyzkoPhi_critical_re_integral
+#check TraceEuclidean.v15OdlyzkoPhi_critical_cosine_half_inversion
 
 #print axioms DedekindZeta.DigammaSeries.digamma_series
 #print axioms DedekindZeta.DigammaIdentities.digamma_conj
@@ -708,3 +719,14 @@ import TraceEuclidean
 #print axioms DedekindZeta.DigammaIdentities.logDeriv_ZInfty_critical_bracket
 #print axioms DedekindZeta.DigammaVertical.summable_re_terms
 #print axioms DedekindZeta.DigammaVertical.re_digamma_vertical
+#print axioms DedekindZeta.DigammaIntegral.re_digamma_eq_gauss_integral
+#print axioms DedekindZeta.DigammaIntegral.re_digamma_quarter_integral
+#print axioms DedekindZeta.DigammaIntegral.re_digamma_half_integral
+#print axioms DedekindZeta.DigammaIntegral.logDeriv_ZInfty_critical_bracket_integral
+#print axioms TraceEuclidean.v15OdlyzkoPhi_critical_integrable
+#print axioms TraceEuclidean.v15OdlyzkoPhi_critical_mul_sq_integrable
+#print axioms TraceEuclidean.v15OdlyzkoTiltedF4_zero_fourier_integrable
+#print axioms TraceEuclidean.v15OdlyzkoPhi_critical_inversion_integral
+#print axioms TraceEuclidean.v15OdlyzkoPhi_critical_cosine_inversion
+#print axioms TraceEuclidean.v15OdlyzkoPhi_critical_re_integral
+#print axioms TraceEuclidean.v15OdlyzkoPhi_critical_cosine_half_inversion

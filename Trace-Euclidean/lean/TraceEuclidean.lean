@@ -78,6 +78,7 @@ import TraceEuclidean.V15OdlyzkoZeroPairing
 import TraceEuclidean.V15OdlyzkoPairedFormula
 import TraceEuclidean.V15OdlyzkoZeroSummability
 import TraceEuclidean.V15OdlyzkoFourthDecayCriterion
+import TraceEuclidean.V15OdlyzkoCriticalTransform
 import TraceEuclidean.V15OdlyzkoZeroCountLiterature
 import TraceEuclidean.V15DedekindZetaZeros
 import TraceEuclidean.V15DedekindZetaConstructed
@@ -87,6 +88,7 @@ import DedekindZeta.LogDeriv
 import DedekindZeta.ArchimedeanLogDeriv
 import DedekindZeta.DigammaIdentities
 import DedekindZeta.DigammaVertical
+import DedekindZeta.DigammaIntegral
 import TraceEuclidean.V15DedekindZetaConjugation
 import TraceEuclidean.V15DedekindZetaZeroHeight
 import TraceEuclidean.V15DedekindZetaUnorderedZeros

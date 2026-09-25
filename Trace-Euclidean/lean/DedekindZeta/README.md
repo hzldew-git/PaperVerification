@@ -11,7 +11,8 @@ with small proof adaptations for Lean 4.32.1 and this repository's existing
 copy of `MellinPrinciple` (`TraceEuclidean.AnalyticMellinPrinciple`).
 `GlobalContinuation`, `ZetaRegularization`, `DualClassReindex`,
 `FractionalIdealRescaling`, `IdealEulerProduct`, `PrimeLogDeriv`, `LogDeriv`,
-`ArchimedeanLogDeriv`, `DigammaIdentities`, and `DigammaVertical` are new
+`ArchimedeanLogDeriv`, `DigammaIdentities`, `DigammaVertical`, and
+`DigammaIntegral` are new
 modules added for this verification project.
 Their public theorems prove an entire continuation of
 `(s - 1) * NumberField.dedekindZeta K s` for every number field `K`, the
@@ -32,11 +33,18 @@ the two critical-line logarithmic derivatives of `ZInfty K` into the exact
 real-part bracket needed by the explicit-formula normalization.
 `DigammaVertical` converts the complex partial-fraction formula into an
 absolutely convergent real series for `Re ψ(a+it)` when `0 < a < 1`; this is
-the pointwise series needed for the next integral step.
+the pointwise series needed for the integral step. `DigammaIntegral` justifies
+the exchange of the sum and the improper integral, proves the Gauss integral
+representation of `Re ψ(a+it)`, specializes it at `a = 1/4` and `a = 1/2`,
+and rewrites the complete critical-line archimedean bracket as explicit
+integrals.
 
 The functional equation, quantitative growth bound, Euler-product
-nonvanishing, prime-power line, complex and vertical real digamma series, and critical-line
-archimedean bracket are proved. The remaining analytic work is to derive the
-required hyperbolic integral formulas from that series, justify the
-test-function transforms and limiting interchanges, and close the Stark/Weil
-contour identity.
+nonvanishing, prime-power line, complex and vertical real digamma series, Gauss
+integral representation, and critical-line archimedean integral bracket are
+proved. `TraceEuclidean/V15OdlyzkoCriticalTransform.lean` also proves the
+critical transform's integrability, a quadratic moment, and its exact
+Fourier/cosine inversion formulas. The remaining analytic work is to convert
+the paired archimedean integrals to the source's two hyperbolic terms with the
+required Fubini and limiting arguments, identify every transformed
+prime-power term, and close the Stark/Weil contour and residue identity.

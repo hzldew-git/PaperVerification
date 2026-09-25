@@ -47,10 +47,13 @@ Lean now also proves the ideal Euler product and Dedekind-zeta nonvanishing on
 series, its equality with the zeta logarithmic derivative, and the full
 archimedean logarithmic derivative in terms of digamma. It also checks the
 digamma partial-fraction series, conjugation and duplication, and the symmetric
-critical-line archimedean bracket. The remaining analytic boundary is the
-digamma-to-hyperbolic-integral specialization together with the test-function
-transforms, limiting interchanges, residues, and global Stark/Weil contour
-identity.
+critical-line archimedean bracket. The Gauss integral representation of the
+digamma terms, the critical transform's realness and integrability, its
+quadratic moment, and the exact Fourier and cosine inversion formulas are Lean
+theorems as well. The remaining analytic boundary is the conversion of the
+paired archimedean integrals to the source's exact hyperbolic terms with the
+required Fubini and limiting arguments, the transformed prime-power matching,
+the residues, and the global Stark/Weil contour identity.
 The Apache-2.0 number-field theta/Poisson and Mellin development from
 `mathlib-initiative/sum_product` has been ported to the pinned toolchain.
 `DedekindZeta.ZetaRegularization` proves the entire normalization factor and
