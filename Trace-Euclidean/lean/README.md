@@ -42,10 +42,12 @@ v15_integral_table_exact_global_maxima, and the associated row/column bound
 theorems. The endpoints v15_classic_analytic_grid_iff_mem and
 v15_integral_analytic_grid_iff_mem prove inside Lean that the exact analytic
 inequalities select the 24 and 63 rows throughout the complete finite grid.
-The class-level endpoints v15_classic_pair_mem_of_literature and
-v15_integral_pair_mem_of_literature connect those equivalences to separate
-degree 2--9, degree 10, degree 11, and Table 4-from-12 premises. Degree one is
-proved internally from Minkowski's bound. The public Python verifier
+The class-level endpoints v15_classic_pair_mem_of_hunterCertificate and
+v15_integral_pair_mem_of_hunterCertificate connect those equivalences to the
+cubic Hunter certificate, degree 4--9, degree 10, degree 11, and
+Table 4-from-12 premises. Degrees one and two, together with integral cubic
+trace normalization and the finite coefficient enumeration, are proved
+internally. The public Python verifier
 independently replays the interval computation.
 
 From this directory:

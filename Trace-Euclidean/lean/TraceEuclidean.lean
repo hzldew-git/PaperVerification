@@ -29,6 +29,9 @@ import TraceEuclidean.V15AbstractCoordinates
 import TraceEuclidean.V15AdmissibleTables
 import TraceEuclidean.V15AnalyticTable
 import TraceEuclidean.V15DegreeTwoDiscriminant
+import TraceEuclidean.V15HunterGeometry
+import TraceEuclidean.V15HunterNumberField
+import TraceEuclidean.V15DegreeThreeDiscriminant
 import TraceEuclidean.V15AnalyticTableBridge
 import TraceEuclidean.V15FieldTransport
 import TraceEuclidean.V15PropositionSixOne

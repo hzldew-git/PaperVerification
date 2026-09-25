@@ -1,5 +1,5 @@
 import TraceEuclidean.V15AnalyticTable
-import TraceEuclidean.V15DegreeTwoDiscriminant
+import TraceEuclidean.V15DegreeThreeDiscriminant
 import TraceEuclidean.V15OdlyzkoBridge
 
 /-!
@@ -66,6 +66,31 @@ def V15DegreeThreeToNineMinimumInput : Prop :=
     3 ≤ d → d ≤ 9 →
       (v15MinimumDiscriminant d : ℝ) ≤
         ((|K.discriminant| : ℤ) : ℝ)
+
+/-- The residual exact minimum-discriminant input in degrees four through
+nine, after replacing the cubic table row by the more structural Hunter
+certificate. -/
+def V15DegreeFourToNineMinimumInput : Prop :=
+  ∀ (K : CodedNumberField), NumberField.IsTotallyReal K.1 →
+    let d := Module.finrank ℚ K.1
+    4 ≤ d → d ≤ 9 →
+      (v15MinimumDiscriminant d : ℝ) ≤
+        ((|K.discriminant| : ℤ) : ℝ)
+
+/-- The cubic Hunter certificate and the residual degree-four to degree-nine
+source input imply the earlier degree-three to degree-nine interface. -/
+theorem v15_degreeThreeToNineMinimumInput_of_hunterCertificate
+    (hHunter : V15DegreeThreeHunterCertificateInput)
+    (hMin : V15DegreeFourToNineMinimumInput) :
+    V15DegreeThreeToNineMinimumInput := by
+  intro K hreal
+  dsimp only
+  intro hd3 hd9
+  by_cases hdegree : Module.finrank ℚ K.1 = 3
+  · simpa [hdegree, v15MinimumDiscriminant] using
+      v15_coded_degree_three_discriminant_ge_49_of_hunterCertificate
+        hHunter K hreal hdegree
+  · exact hMin K hreal (by omega) hd9
 
 /-- The internally proved quadratic bound and the residual degree-three to
 degree-nine source input imply the earlier combined interface. -/
@@ -146,6 +171,19 @@ theorem v15_smallDegreeDiscriminantInput_of_reduced_literature
     (v15_degreeTwoToNineMinimumInput_of_threeToNine hMin)
     hTen hEleven
 
+/-- Small-degree assembly with the quadratic row internal and the cubic row
+reduced to the normalized Hunter certificate. -/
+theorem v15_smallDegreeDiscriminantInput_of_hunterCertificate
+    (hHunter : V15DegreeThreeHunterCertificateInput)
+    (hMin : V15DegreeFourToNineMinimumInput)
+    (hTen : V15DegreeTenRootDiscriminantInput)
+    (hEleven : V15DegreeElevenRootDiscriminantInput) :
+    V15SmallDegreeDiscriminantInput :=
+  v15_smallDegreeDiscriminantInput_of_reduced_literature
+    (v15_degreeThreeToNineMinimumInput_of_hunterCertificate
+      hHunter hMin)
+    hTen hEleven
+
 /-- All field-discriminant estimates needed by the Section 4 tables. -/
 def V15SectionFourDiscriminantInput : Prop :=
   ∀ c : GlobalLatticeClass,
@@ -199,6 +237,20 @@ theorem v15_sectionFourDiscriminantInput_of_reduced_literature
   v15_sectionFourDiscriminantInput_of_reduced_sources
     (v15_smallDegreeDiscriminantInput_of_reduced_literature
       hMin hTen hEleven)
+    (v15_odlyzkoTable4InputFrom_of_description hDescription 12)
+
+/-- Section 4 assembly with the degree-three exact table row replaced by the
+normalized Hunter certificate. -/
+theorem v15_sectionFourDiscriminantInput_of_hunterCertificate
+    (hHunter : V15DegreeThreeHunterCertificateInput)
+    (hMin : V15DegreeFourToNineMinimumInput)
+    (hTen : V15DegreeTenRootDiscriminantInput)
+    (hEleven : V15DegreeElevenRootDiscriminantInput)
+    (hDescription : V15OdlyzkoTable4DescriptionInput) :
+    V15SectionFourDiscriminantInput :=
+  v15_sectionFourDiscriminantInput_of_reduced_sources
+    (v15_smallDegreeDiscriminantInput_of_hunterCertificate
+      hHunter hMin hTen hEleven)
     (v15_odlyzkoTable4InputFrom_of_description hDescription 12)
 
 private theorem v15_betaPower_le_discriminant_pow
@@ -334,6 +386,22 @@ theorem v15_classic_pair_mem_of_reduced_literature
       hMin hTen hEleven)
     (v15_odlyzkoTable4InputFrom_of_description hDescription 12) c hE
 
+/-- Literature-facing classic table membership with the cubic source boundary
+reduced to the normalized Hunter certificate. -/
+theorem v15_classic_pair_mem_of_hunterCertificate
+    (hHunter : V15DegreeThreeHunterCertificateInput)
+    (hMin : V15DegreeFourToNineMinimumInput)
+    (hTen : V15DegreeTenRootDiscriminantInput)
+    (hEleven : V15DegreeElevenRootDiscriminantInput)
+    (hDescription : V15OdlyzkoTable4DescriptionInput)
+    (c : GlobalLatticeClass)
+    (hE : c.IsClassicTraceEuclidean (c.degree : ℝ)) :
+    (c.rank, c.degree) ∈ v15ClassicAdmissiblePairs :=
+  v15_classic_pair_mem_of_reduced_sources
+    (v15_smallDegreeDiscriminantInput_of_hunterCertificate
+      hHunter hMin hTen hEleven)
+    (v15_odlyzkoTable4InputFrom_of_description hDescription 12) c hE
+
 /-- Every integral class in the proved finite grid belongs to exactly one of
 the 63 analytically admissible pairs. -/
 theorem v15_integral_pair_mem_of_reduced_sources
@@ -393,6 +461,24 @@ theorem v15_integral_pair_mem_of_reduced_literature
   v15_integral_pair_mem_of_reduced_sources
     (v15_smallDegreeDiscriminantInput_of_reduced_literature
       hMin hTen hEleven)
+    (v15_odlyzkoTable4InputFrom_of_description hDescription 12)
+    hRankOne c hE
+
+/-- Literature-facing integral table membership with the cubic source
+boundary reduced to the normalized Hunter certificate. -/
+theorem v15_integral_pair_mem_of_hunterCertificate
+    (hHunter : V15DegreeThreeHunterCertificateInput)
+    (hMin : V15DegreeFourToNineMinimumInput)
+    (hTen : V15DegreeTenRootDiscriminantInput)
+    (hEleven : V15DegreeElevenRootDiscriminantInput)
+    (hDescription : V15OdlyzkoTable4DescriptionInput)
+    (hRankOne : V15RankOneClassicInput)
+    (c : GlobalLatticeClass)
+    (hE : c.IsIntegralTraceEuclidean (c.degree : ℝ)) :
+    (c.rank, c.degree) ∈ v15IntegralAdmissiblePairs :=
+  v15_integral_pair_mem_of_reduced_sources
+    (v15_smallDegreeDiscriminantInput_of_hunterCertificate
+      hHunter hMin hTen hEleven)
     (v15_odlyzkoTable4InputFrom_of_description hDescription 12)
     hRankOne c hE
 

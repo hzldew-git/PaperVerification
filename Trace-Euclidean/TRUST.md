@@ -129,12 +129,19 @@ V15AdmissibleTables. V15AnalyticTableBridge proves the downstream class-level
 membership statements from source-specific field premises. Degrees one and
 two are internal. In degree two, Lean proves that the field discriminant is
 not a square in `ℚ` and combines this with positivity and Minkowski's lower
-bound to obtain `|D_F| >= 5`. Degrees 3--9 use exact minimum-discriminant data, degree 10 uses the
+bound to obtain `|D_F| >= 5`. For degree three, Lean proves integral
+translation and negation to normalize the trace, the exact finite coefficient
+enumeration, and the bridge from a conditional Hunter certificate to
+`|D_F| >= 49`. The Hunter projected-lattice certificate itself remains an
+external premise, although the full integer-ring covolume and intrinsic
+projected-lattice disk theorem are internal. Degrees 4--9 use exact
+minimum-discriminant data, degree 10 uses the
 absence of a totally real field with root discriminant at most 14, degree 11
 uses the later optimized bound 14.083, and Table 4 is required only from
 degree 12. The online November 1976 Table 2 gives 14.034 at degree 11, so the
 value 14.083 is explicitly kept separate from that table. These remaining
-arithmetic source theorems remain external; all specialization,
+arithmetic source theorems and the cubic geometric certificate remain
+external; all specialization,
 combination, analytic enclosure, and finite-grid classification steps are in
 Lean. Python and Wolfram provide independent computational checks.
 

@@ -74,7 +74,10 @@ The old single premise for degrees at most eleven is now decomposed by source:
 - degree 1 is proved in Lean from mathlib's Minkowski discriminant bound;
 - degree 2 is proved in Lean by combining Minkowski's bound with positivity
   and the nonsquareness of a quadratic field discriminant in `ℚ`;
-- degrees 3--9 use exact minimum-discriminant data;
+- degree 3 is reduced in Lean to the conditional Hunter projected-lattice
+  certificate, with integral trace normalization and the finite coefficient
+  enumeration proved internally;
+- degrees 4--9 use exact minimum-discriminant data;
 - degree 10 uses the absence of totally real degree-ten fields with root
   discriminant at most 14;
 - degree 11 uses the optimized unconditional bound `delta_F > 14.083`.

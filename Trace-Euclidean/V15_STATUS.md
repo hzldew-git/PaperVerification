@@ -65,23 +65,24 @@ integer-scalar formulas. The canonical rank-one-to-ideal bridge now works at
 an arbitrary real threshold and at the manuscript's field-degree threshold.
 
 Assessment: SUBSTANTIAL_FORMALIZATION, Grade B. Four main results are
-PROVISIONAL_MATCH pending independent review; none is marked
-VERIFIED_MATCH. Corollary 1.6 and Proposition 6.1 also await independent
-semantic review. Abstract-space transport is now proved over every totally
-real number field, including the scalar field, quadratic space, full lattice,
-and quadratic form. The finite Section 4 table arrays and maxima are Lean
-theorems, and the analytic interval-to-table-row bridge is kernel checked on
-all 476 cells. The Odlyzko source interface now mirrors the full Table 4 row,
-checks the error-term rounding and totally real specialization, and restricts
-the premise to the degrees actually used. Degree one of the small-degree
-input is internal; the cited degree 2--11 estimates, the Odlyzko
-explicit-formula theorem, selected supporting lemmas, and independent
-semantic sign-off remain outside the current signed scope. Within the
-explicit-formula theorem, the remaining analytic layers include
-Dedekind-zeta continuation and the functional equation, and the Stark/Weil
-formula with its convergent paired-zero term. Lean now proves convergence of
-both archimedean integrals and the strict tabulated-constant inequalities,
-using a disclosed native-compiler trust boundary for the interval certificates.
+PROVISIONAL_MATCH pending independent review; none is marked VERIFIED_MATCH.
+Corollary 1.6 and Proposition 6.1 also await independent semantic review.
+Abstract-space transport is proved over every totally real number field,
+including the scalar field, quadratic space, full lattice, and quadratic
+form. The finite Section 4 table arrays and maxima are Lean theorems, and the
+analytic interval-to-table-row bridge is kernel checked on all 476 cells. The
+specialized unconditional `b = 4` Odlyzko inequality is derived internally
+from the completed-zeta functional equation, finite zero sums, contour limits,
+and the exact endpoint, archimedean, and prime contributions. Degrees one and
+two are internal. In degree three, integral trace normalization, the finite
+normalized coefficient enumeration, and the certificate-to-field bridge are
+internal; the Hunter projected-lattice construction and quotient-covolume
+formula remain external, while the full integer-ring covolume and intrinsic
+disk theorem are internal. Exact minima for degrees
+4--9, the degree-ten exclusion, the optimized degree-eleven bound, selected
+supporting lemmas, and independent semantic sign-off remain outside the
+current signed scope. The strict tabulated-constant inequalities use a
+disclosed native-compiler trust boundary for the interval certificates.
 
 Start with [README.md](README.md), [THEOREM_INDEX.md](THEOREM_INDEX.md),
 and the [v15 audit](docs/audit/v15/12_executive_summary.md).

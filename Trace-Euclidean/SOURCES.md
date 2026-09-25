@@ -95,16 +95,25 @@ through its vendored and adapted number-field development.
 Voight's
 [totally real field enumeration](https://jvoight.github.io/articles/ANTS144-fixed-errata-052714.pdf)
 supplies a complete list through root discriminant 14 and proves there is no
-degree-ten field in that range. The small-degree interface is now separated
-into exact minima for degrees 3--9, the degree-ten root-discriminant input,
-and the optimized degree-eleven bound 14.083. Degrees one and two are proved
-internally. For degree two, Lean proves nonsquareness of the field
-discriminant in `ℚ` and combines it with total-real positivity and Minkowski's
-bound to obtain the exact minimum lower bound `5`. The online November 1976
+degree-ten field in that range. Martinet's
+[*Small Discriminants, Class Numbers, and the Geometry of Numbers*, Corollary 3.5](https://jamartin.perso.math.cnrs.fr/Othertexts/discgeom.pdf)
+gives the Hunter short-element bound used for the cubic minimum. Lean now
+proves the integral trace-normalization identities, finite normalized cubic
+enumeration, and the implication from the
+conditional Hunter certificate to `|D_F| >= 49`; the projected-lattice
+construction of that certificate remains external. The other small-degree
+interfaces are the exact minima for degrees 4--9, the degree-ten
+root-discriminant input, and the optimized degree-eleven bound 14.083.
+Degrees one and two are proved internally. For degree two, Lean proves
+nonsquareness of the field discriminant in `ℚ` and combines it with
+total-real positivity and Minkowski's bound to obtain the exact minimum lower
+bound `5`. The online November 1976
 [Table 2](https://www-users.cse.umn.edu/~odlyzko/unpublished/discr.bound.table2)
 lists 14.034, rather than 14.083, at degree eleven; therefore the v15 value
 14.083 is tracked as a later optimized Odlyzko--Martinet input, following
 Voight's citation, and is not attributed to the online 1976 Table 4 alone.
+The exact cubic split is recorded in
+[the cubic discriminant reduction note](docs/audit/v15/23_cubic_discriminant_reduction.md).
 
 ## Unformalized standalone material
 

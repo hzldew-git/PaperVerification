@@ -1,5 +1,19 @@
 # Reproducibility report
 
+- The cubic-discriminant reduction passed a full local 8839-job Lean build
+  under the pinned Lean 4.32.1 and mathlib v4.32.1 toolchain. The main audit
+  reports 361 declaration-level transitive axiom sets, all using only
+  `propext`, `Classical.choice`, and `Quot.sound`. The separate 20-declaration
+  numerical audit exposes exactly the five documented `native_decide`
+  dependencies. Lean now proves cubic trace normalization, positivity of the
+  conjugate spread, the full integer-ring covolume formula in the Euclidean
+  Minkowski model, the intrinsic two-dimensional disk theorem, and the finite
+  cubic enumeration. The remaining cubic premise is the field-specific
+  projected-lattice construction, its covolume formula, the lift to an
+  integral generator, and the finite-index discriminant relation. Public
+  reruns produced 1156 Python PASS and 115 Wolfram PASS with zero failures.
+  The manuscript-exclusion guard inspected 248 files and passed.
+
 - The quadratic-discriminant update passed a full local 8836-job Lean build
   under the pinned Lean 4.32.1 and mathlib v4.32.1 toolchain. The main audit
   reports 346 declaration-level transitive axiom sets, all using only

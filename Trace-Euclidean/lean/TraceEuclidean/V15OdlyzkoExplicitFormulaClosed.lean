@@ -355,6 +355,44 @@ theorem v15_integral_pair_mem_of_reduced_smallDegreeLiterature
     hMin hTen hEleven v15_odlyzkoTable4DescriptionInput_closed
     v15_rank_one_classic_input c hE
 
+/-- The Section 4 discriminant input after replacing the cubic exact-minimum
+table row by the normalized Hunter certificate. -/
+theorem v15_sectionFourDiscriminantInput_of_hunterCertificate_closed
+    (hHunter : V15DegreeThreeHunterCertificateInput)
+    (hMin : V15DegreeFourToNineMinimumInput)
+    (hTen : V15DegreeTenRootDiscriminantInput)
+    (hEleven : V15DegreeElevenRootDiscriminantInput) :
+    V15SectionFourDiscriminantInput :=
+  v15_sectionFourDiscriminantInput_of_hunterCertificate
+    hHunter hMin hTen hEleven v15_odlyzkoTable4DescriptionInput_closed
+
+/-- Membership in the classic table from the cubic Hunter certificate and
+the remaining degree-four to degree-eleven source inputs. -/
+theorem v15_classic_pair_mem_of_hunterCertificate_closed
+    (hHunter : V15DegreeThreeHunterCertificateInput)
+    (hMin : V15DegreeFourToNineMinimumInput)
+    (hTen : V15DegreeTenRootDiscriminantInput)
+    (hEleven : V15DegreeElevenRootDiscriminantInput)
+    (c : GlobalLatticeClass)
+    (hE : c.IsClassicTraceEuclidean (c.degree : ℝ)) :
+    (c.rank, c.degree) ∈ v15ClassicAdmissiblePairs :=
+  v15_classic_pair_mem_of_hunterCertificate
+    hHunter hMin hTen hEleven v15_odlyzkoTable4DescriptionInput_closed c hE
+
+/-- Membership in the integral table from the cubic Hunter certificate and
+the remaining degree-four to degree-eleven source inputs. -/
+theorem v15_integral_pair_mem_of_hunterCertificate_closed
+    (hHunter : V15DegreeThreeHunterCertificateInput)
+    (hMin : V15DegreeFourToNineMinimumInput)
+    (hTen : V15DegreeTenRootDiscriminantInput)
+    (hEleven : V15DegreeElevenRootDiscriminantInput)
+    (c : GlobalLatticeClass)
+    (hE : c.IsIntegralTraceEuclidean (c.degree : ℝ)) :
+    (c.rank, c.degree) ∈ v15IntegralAdmissiblePairs :=
+  v15_integral_pair_mem_of_hunterCertificate
+    hHunter hMin hTen hEleven v15_odlyzkoTable4DescriptionInput_closed
+    v15_rank_one_classic_input c hE
+
 /-- Theorem 1.2's global classic finiteness endpoint with the Table 4 analytic
 input discharged by the internal contour proof. -/
 theorem v15_classic_finite_closed :

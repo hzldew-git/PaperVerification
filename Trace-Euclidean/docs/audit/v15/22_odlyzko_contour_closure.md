@@ -49,9 +49,11 @@ does not assume the source explicit-formula identity as a premise.
 
 - `v15_odlyzkoTable4DescriptionInput_closed` supplies the full rounded Table
   4 interface used by the project.
-- `v15_sectionFourDiscriminantInput_of_reduced_smallDegreeLiterature` shows
-  that the remaining Section 4 field inputs are exactly the cited degree
-  `3`--`11` estimates; degrees one and two and the Table 4 range are internal.
+- `v15_sectionFourDiscriminantInput_of_hunterCertificate_closed` shows that
+  the remaining Section 4 field inputs are the cubic Hunter certificate and
+  the cited degree `4`--`11` estimates. Degrees one and two, integral cubic
+  trace normalization, the finite enumeration, and the Table 4 range are
+  internal.
 - `v15_classic_finite_closed`, `v15_integral_finite_closed`, and
   `v15_pnorm_finite_closed` discharge the Table 4 premise from the global
   finiteness endpoints.
@@ -66,7 +68,9 @@ inherits five disclosed native-computation dependencies from the certified
 and the two final strict scalar comparisons.
 
 There is no `sorry`, project axiom, or assumed explicit-formula theorem in
-this chain.  Independent mathematical and Lean review remains unsigned.  The
-degree `2`--`11` field-discriminant estimates remain cited source inputs, and
+this chain. Independent mathematical and Lean review remains unsigned. The
+remaining cubic projected-lattice and generator bridge and the degree
+`4`--`11` field-discriminant estimates
+remain cited source inputs, and
 the sharper HSW numerical zero-count theorem remains an optional unformalized
 result because the proved quadratic Jensen count is sufficient here.
