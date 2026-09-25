@@ -1,21 +1,21 @@
 # Reproducibility report
 
-- The quartic discriminant-reduction update passed a full local 8853-job Lean
+- The quartic Hunter-projection update passed a full local 8855-job Lean
   build under the pinned Lean 4.32.1 and mathlib v4.32.1 toolchain. The
-  expanded 398-declaration main audit reports only `propext`,
+  expanded 418-declaration main audit reports only `propext`,
   `Classical.choice`, and `Quot.sound`. The 29-declaration numerical audit
   exposes exactly the same five documented `native_decide` dependencies and
   tracks their propagation through all strengthened Section 4 endpoints. Lean
-  now proves quartic coefficient normalization, the complete bounded
-  discriminant-725 enumeration, the exact power-basis discriminant,
-  irreducibility, the positive-index field-discriminant relation, and the
-  centered-spread identity. The two- and three-vector Gram determinants now
-  prove positivity of the spread and third Hermite minor internally. The
-  remaining quartic boundary is
-  `V15DegreeFourPrimitiveGeneratorInput`; after it, exact-minimum source data
-  begin in degree five. Public reruns produced 1156 Python PASS and 115
-  Wolfram PASS with zero failures. The kernel-only forbidden-construct scan
-  passed, and the manuscript guard inspected 263 files and passed.
+  now proves the quartic rank-three projection, linear independence, exact
+  covolume quotient, integral lift, and the resulting strict spread estimate
+  from the sharp three-dimensional Hermite input. It also derives the
+  remaining `s3,s4` coefficient bounds inside Lean and constructs
+  `V15DegreeFourPrimitiveGeneratorInput` from that Hermite input together
+  with the explicitly isolated short-vector selection outside a possible
+  quadratic subfield. Exact-minimum source data begin in degree five. Public
+  reruns produced 1156 Python PASS and 115 Wolfram PASS with zero failures.
+  Both forbidden-construct scans passed, and the manuscript guard inspected
+  265 files and passed.
 - The closed cubic Hunter update passed a full local 8847-job Lean build under
   the pinned Lean 4.32.1 and mathlib v4.32.1 toolchain. The 366-declaration
   main audit reports only `propext`, `Classical.choice`, and `Quot.sound`. The

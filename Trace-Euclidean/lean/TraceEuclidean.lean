@@ -38,6 +38,8 @@ import TraceEuclidean.V15QuarticPowerBasis
 import TraceEuclidean.V15QuarticGeneratorArithmetic
 import TraceEuclidean.V15QuarticGeneratorSpread
 import TraceEuclidean.V15QuarticHermite
+import TraceEuclidean.V15QuarticHunterProjection
+import TraceEuclidean.V15QuarticHunterNumberFieldProjection
 import TraceEuclidean.V15DegreeFourHunterReduction
 import TraceEuclidean.V15AnalyticTableBridge
 import TraceEuclidean.V15FieldTransport

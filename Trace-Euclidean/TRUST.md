@@ -138,15 +138,19 @@ this proves `|D_F| >= 49` internally. In degree four, Lean proves trace
 normalization, the exact quartic power-basis and index discriminants,
 irreducibility, the centered-spread identity, and the bounded coefficient
 enumeration forcing discriminant 725. It also proves that the spread and third
-Hermite minor are positive from power-family linear independence. The remaining
-quartic premise is a primitive integral Hunter generator satisfying the explicit
-normalized coefficient and strict upper-spread bounds. Degrees 5--9 use exact
+Hermite minor are positive from power-family linear independence and derives
+the normalized `s3` and `s4` bounds from those positivity statements. The
+remaining quartic premise is a primitive integral Hunter generator satisfying
+only the strict upper-spread bound. The projected rank-three lattice, its
+covolume quotient, and its integral lift are internal; the sharp
+three-dimensional Hermite bound and selection outside quadratic subfields are
+isolated as the two inputs that imply this premise. Degrees 5--9 use exact
 minimum-discriminant data, degree 10 uses the
 absence of a totally real field with root discriminant at most 14, degree 11
 uses the later optimized bound 14.083, and Table 4 is required only from
 degree 12. The online November 1976 Table 2 gives 14.034 at degree 11, so the
 value 14.083 is explicitly kept separate from that table. The quartic
-generator premise and degree 5--11 arithmetic source theorems remain external;
+short-generator premise and degree 5--11 arithmetic source theorems remain external;
 all subsequent specialization, combination, analytic enclosure, and
 finite-grid classification steps are in Lean. Python and Wolfram provide
 independent computational checks.

@@ -41,6 +41,17 @@ finite coefficient box in the Lean kernel. Every row that has neither an
 integral root nor a monic quadratic factor has discriminant exactly `725`.
 This computation uses `decide`, not `native_decide`.
 
+The coefficient box is no longer an input. The theorem
+`v15_quartic_s3_s4_bounds_of_normalized` proves
+
+```text
+-24 <= s3 <= 24,  -4 <= s4 <= 4
+```
+
+from normalized trace, `0 < spread < 29`, positivity of the third Hermite
+minor, and positivity of the discriminant. Its proof uses exact integer
+nonlinear arithmetic and a finite elimination of the remaining `s3` values.
+
 ## Bridge to an algebraic integer
 
 The modules `V15QuarticPowerBasis`, `V15QuarticGeneratorArithmetic`,
@@ -62,14 +73,35 @@ for a primitive integral generator `a` of a quartic number field.
 
 Thus irreducibility, positivity of the spread, positivity of the third Hermite
 minor, positivity of the polynomial discriminant, and the index relation no
-longer occur in the residual hypothesis.
+longer occur in the residual hypothesis. Neither do trace normalization or the
+`s3,s4` bounds.
+
+## Projected lattice
+
+`V15QuarticHunterProjection` and
+`V15QuarticHunterNumberFieldProjection` formalize the geometric step before
+the primitive-generator issue.
+
+- Centering the last three vectors of an integral basis whose first vector is
+  `1` gives a basis of the three-dimensional orthogonal complement.
+- The projected Gram determinant times `||1||^2 = 4` equals the full Gram
+  determinant, so the projected covolume is exactly half the full covolume.
+- Projected integral vectors lift back to algebraic integers, and every
+  nonzero projected vector lifts outside `Q`.
+- `V15HermiteThreeInput` states the sharp three-dimensional Hermite bound in
+  the root-free form `||x||^6 <= 2*covolume^2`.
+- Under `|D_K| < 725`, that bound produces `4*||x||^2 < 29` entirely inside
+  Lean.
+
+The classical fact `gamma_3^3 = 2` itself has not yet been proved in this
+project.
 
 ## Section 4 endpoint
 
 `V15DegreeFourPrimitiveGeneratorInput` asks that every totally real quartic
 field with `|D_K| < 725` contain a primitive algebraic integer satisfying the
-normalized trace coefficient, the displayed `s3` and `s4` bounds, and the
-strict upper spread bound. Lean proves
+strict upper spread bound. It contains no separate coefficient premise. Lean
+proves
 
 ```text
 V15DegreeFourPrimitiveGeneratorInput
@@ -88,16 +120,21 @@ v15_integral_pair_mem_of_degreeFourPrimitiveGenerator_closed
 then require exact minimum-discriminant data only in degrees five through
 nine, followed by the separate degree-ten and degree-eleven inputs.
 
+The theorem
+`v15_degree_four_primitiveGenerator_of_hermite_and_selection` further proves
+that this premise follows from `V15HermiteThreeInput` together with
+`V15QuarticPrimitiveShortSelectionInput`.
+
 ## Remaining mathematical boundary
 
-The remaining task is to construct the primitive generator with the stated
-bounds. In a quartic field, a nonrational Hunter short vector need not be
-primitive: in an imprimitive quartic field it may lie in a quadratic subfield.
-The proof must either choose a short vector outside every proper subfield or
-modify one while retaining the strict spread bound. It must also derive the
-`s3` and `s4` inequalities from the real conjugates. Spread positivity and the
-third-Hermite-minor inequality are now consequences of Gram-matrix positivity
-inside Lean.
+Two mathematical tasks remain in the sharpened Hunter route. First, prove the
+sharp three-dimensional Hermite theorem in the form
+`V15HermiteThreeInput`. Second, handle imprimitive quartic fields: a
+nonrational Hunter short vector may lie in a quadratic subfield, so one must
+choose or modify a short vector outside every proper subfield while retaining
+the strict spread bound. This second task is exactly
+`V15QuarticPrimitiveShortSelectionInput`. The coefficient inequalities are
+now internal and are no longer part of either task.
 
 Once this premise is proved, no separate degree-four minimum-discriminant table
 input remains in the strengthened Section 4 chain. The current code and axiom

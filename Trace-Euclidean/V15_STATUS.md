@@ -73,15 +73,17 @@ form. The finite Section 4 table arrays and maxima are Lean theorems, and the
 analytic interval-to-table-row bridge is kernel checked on all 476 cells. The
 specialized unconditional `b = 4` Odlyzko inequality is derived internally
 from the completed-zeta functional equation, finite zero sums, contour limits,
-and the exact endpoint, archimedean, and prime contributions. Degrees one and
-two are internal. In degree three, integral trace normalization, the finite
-normalized coefficient enumeration, and the certificate-to-field bridge are
-internal; the Hunter projected-lattice construction and quotient-covolume
-formula remain external, while the full integer-ring covolume and intrinsic
-disk theorem are internal. Exact minima for degrees
-4--9, the degree-ten exclusion, the optimized degree-eleven bound, selected
-supporting lemmas, and independent semantic sign-off remain outside the
-current signed scope. The strict tabulated-constant inequalities use a
+and the exact endpoint, archimedean, and prime contributions. Degrees one
+through three are internal, including the cubic Hunter projected lattice,
+quotient covolume, integral lift, normalization, and finite enumeration. In
+degree four, the rank-three projection, exact covolume quotient, integral
+lift, normalization, coefficient bounds, field-discriminant bridges, and
+finite enumeration are internal. The remaining quartic boundary is the sharp
+three-dimensional Hermite theorem together with choosing a short lift outside
+a possible quadratic subfield. Exact minima for degrees 5--9, the degree-ten
+exclusion, the optimized degree-eleven bound, selected supporting lemmas, and
+independent semantic sign-off remain outside the current signed scope. The
+strict tabulated-constant inequalities use a
 disclosed native-compiler trust boundary for the interval certificates.
 
 Start with [README.md](README.md), [THEOREM_INDEX.md](THEOREM_INDEX.md),

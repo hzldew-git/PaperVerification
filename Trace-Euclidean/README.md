@@ -153,11 +153,14 @@ and the final rank-twelve consequence. The public Python and Wolfram runs are
     In degree four, Lean now proves coefficient normalization, the exact
     quartic power-basis discriminant and index relation, irreducibility bridges,
     the centered-spread identity, and the complete finite coefficient
-    enumeration giving polynomial discriminant 725. The remaining quartic
-    premise is the existence, under `|D_F| < 725`, of a primitive integral
-    Hunter generator satisfying the normalized coefficient and strict
-    upper-spread bounds. Lean now derives positivity of the spread and third
-    Hermite minor from power-family linear independence.
+    enumeration giving polynomial discriminant 725. Lean also derives the
+    normalized `s3` and `s4` coefficient bounds from spread, Hermite-minor,
+    and discriminant positivity. The remaining quartic premise is the
+    existence, under `|D_F| < 725`, of a primitive integral Hunter generator
+    satisfying only the strict upper-spread bound. The three-dimensional
+    projection, exact covolume quotient, integral lift, and reduction to the
+    sharp Hermite constant plus the quadratic-subfield selection problem are
+    formalized.
     The exact minima in degrees 5--9, the degree-ten enumeration result, and the
     optimized degree-eleven bound 14.083 remain explicit external mathematical
     inputs. Odlyzko's Table 4 is retained as the source and normalization

@@ -39,9 +39,9 @@ Consequently `v15_classic_finite_closed`, `v15_integral_finite_closed`, and
 table remains essential for normalization and comparison. Degrees one through
 three and the range from degree twelve are internal. In degree four, the
 polynomial and field-discriminant reduction, including positivity of the
-spread and third Hermite minor, is internal, while the existence of a
-primitive Hunter generator with the recorded normalized coefficient and
-strict upper-spread bounds remains explicit. The remaining cited exact-minimum data begin in
+spread and third Hermite minor, coefficient bounds, and projected-lattice
+covolume identity is internal, while the existence of a primitive Hunter
+generator with the strict upper-spread bound remains explicit. The remaining cited exact-minimum data begin in
 degree five.
 
 ## Trust

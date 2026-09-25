@@ -271,6 +271,44 @@ theorem v15_quartic_s2_bounds_of_normalized
     simp only [v15QuarticSpread, v15QuarticSecondPowerSum] at hspreadPos hspreadLt
   all_goals omega
 
+set_option maxHeartbeats 0 in
+-- The lower bound for the constant coefficient is the costly case: after
+-- the other three bounds have been obtained by nonlinear arithmetic, Lean
+-- checks the remaining finite interval for `s3` exactly.
+/-- The normalized spread bound and positivity of the next two Hermite
+minors force the coefficient box used by the quartic finite search. -/
+theorem v15_quartic_s3_s4_bounds_of_normalized
+    (s1 s2 s3 s4 : ℤ)
+    (hs1 : s1 = 0 ∨ s1 = 1 ∨ s1 = 2)
+    (hspreadPos : 0 < v15QuarticSpread s1 s2)
+    (hspreadLt : v15QuarticSpread s1 s2 < 29)
+    (hminor : 0 < v15QuarticHermiteMinorThree s1 s2 s3 s4)
+    (hdisc : 0 < v15QuarticDiscriminant s1 s2 s3 s4) :
+    -24 ≤ s3 ∧ s3 ≤ 24 ∧ -4 ≤ s4 ∧ s4 ≤ 4 := by
+  have hs2 := v15_quartic_s2_bounds_of_normalized
+    s1 s2 hs1 hspreadPos hspreadLt
+  rcases hs1 with rfl | rfl | rfl <;>
+    rcases hs2 with ⟨hs2lo, hs2hi⟩ <;>
+    interval_cases s2
+  all_goals norm_num [v15QuarticHermiteMinorThree] at hminor
+  all_goals norm_num [v15QuarticDiscriminant] at hdisc
+  all_goals norm_num [v15QuarticSpread,
+    v15QuarticSecondPowerSum] at hspreadPos
+  all_goals norm_num [v15QuarticSpread,
+    v15QuarticSecondPowerSum] at hspreadLt
+  all_goals
+    have hs3lo : -24 ≤ s3 := by
+      nlinarith [sq_nonneg s3, sq_nonneg (s3 + 25)]
+    have hs3hi : s3 ≤ 24 := by
+      nlinarith [sq_nonneg s3, sq_nonneg (s3 - 25)]
+    have hs4hi : s4 ≤ 4 := by
+      nlinarith [sq_nonneg s3, sq_nonneg s4,
+        sq_nonneg (s4 - 5)]
+    refine ⟨hs3lo, hs3hi, ?_, hs4hi⟩
+    interval_cases s3 <;>
+      nlinarith [sq_nonneg s4, sq_nonneg (s4 + 5),
+        sq_nonneg (s4 + 6), sq_nonneg (s4 + 7)]
+
 private instance (s1 s2 s3 s4 u v p q : ℤ) :
     Decidable (V15QuarticQuadraticFactorWitness s1 s2 s3 s4 u v p q) := by
   unfold V15QuarticQuadraticFactorWitness

@@ -59,11 +59,13 @@ and index-discriminant identities, and combines them with trace normalization
 and exact polynomial enumeration to obtain `|D_F| >= 49`. In degree four,
 Lean proves all finite polynomial arithmetic, irreducibility and
 positive-index bridges, the exact power-basis discriminant, the centered
-spread identity, and positivity of both the spread and third Hermite minor.
+spread identity, positivity of both the spread and third Hermite minor, all
+normalized coefficient bounds, and the projected rank-three covolume formula.
 The remaining quartic premise is a primitive integral Hunter generator with
-the explicit normalized coefficient and strict upper-spread bounds recorded in
-`V15DegreeFourPrimitiveGeneratorInput`; this includes handling a short vector
-that could otherwise lie in a quadratic subfield. After that reduction,
+only the strict upper-spread bound recorded in
+`V15DegreeFourPrimitiveGeneratorInput`. Its finer decomposition consists of
+the sharp three-dimensional Hermite theorem and selecting a short lift outside
+the possible quadratic subfield. After that reduction,
 Section 4 takes exact-minimum interfaces only for degrees `5`--`9`, the
 degree-ten exclusion at root discriminant at most `14`, and the optimized
 degree-eleven bound `14.083`. The online
