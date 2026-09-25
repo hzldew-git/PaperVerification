@@ -1,5 +1,15 @@
 # Reproducibility report
 
+- The quadratic-discriminant update passed a full local 8836-job Lean build
+  under the pinned Lean 4.32.1 and mathlib v4.32.1 toolchain. The main audit
+  reports 346 declaration-level transitive axiom sets, all using only
+  `propext`, `Classical.choice`, and `Quot.sound`. A separate 17-declaration
+  numerical audit exposes exactly the same five documented `native_decide`
+  dependencies. Lean now proves the exact degree-two lower bound `|D_F| >= 5`
+  and reduces the Section 4 literature input to degrees three through eleven.
+  Public reruns produced 1156 Python PASS and 115 Wolfram PASS with zero
+  failures. The manuscript-exclusion guard inspected 244 files and passed.
+
 - The contour-closure update passed a full local 8835-job Lean build under the
   pinned Lean 4.32.1 and mathlib v4.32.1 toolchain. The refreshed main audit
   reports 336 kernel-only declaration-level transitive axiom sets. The endpoint contour,
@@ -11,7 +21,10 @@
   `native_decide` dependencies of the strict numerical A/B certificate. The
   public reruns produced 1156 Python PASS and 115 Wolfram PASS, with zero
   failures. The manuscript-exclusion guard inspected 243 files and passed.
-  Fresh-checkout GitHub Actions results are pending deployment of this update.
+  Fresh-checkout GitHub Actions passed at
+  https://github.com/hzldew-git/PaperVerification/actions/runs/36108559541
+  and
+  https://github.com/hzldew-git/PaperVerification/actions/runs/36108559526.
 
 - The prime-transform update passed a full local 8818-job Lean build. The ten
   added audit endpoints cover arbitrary vertical-line fourth-power decay and

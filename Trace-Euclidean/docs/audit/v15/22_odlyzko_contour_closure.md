@@ -49,9 +49,9 @@ does not assume the source explicit-formula identity as a premise.
 
 - `v15_odlyzkoTable4DescriptionInput_closed` supplies the full rounded Table
   4 interface used by the project.
-- `v15_sectionFourDiscriminantInput_of_smallDegreeLiterature` shows that the
-  remaining Section 4 field inputs are exactly the cited degree `2`--`11`
-  estimates; degree one and the Table 4 range are internal.
+- `v15_sectionFourDiscriminantInput_of_reduced_smallDegreeLiterature` shows
+  that the remaining Section 4 field inputs are exactly the cited degree
+  `3`--`11` estimates; degrees one and two and the Table 4 range are internal.
 - `v15_classic_finite_closed`, `v15_integral_finite_closed`, and
   `v15_pnorm_finite_closed` discharge the Table 4 premise from the global
   finiteness endpoints.

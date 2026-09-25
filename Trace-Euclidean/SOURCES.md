@@ -96,9 +96,11 @@ Voight's
 [totally real field enumeration](https://jvoight.github.io/articles/ANTS144-fixed-errata-052714.pdf)
 supplies a complete list through root discriminant 14 and proves there is no
 degree-ten field in that range. The small-degree interface is now separated
-into exact minima for degrees 2--9, the degree-ten root-discriminant input,
-and the optimized degree-eleven bound 14.083. Degree one is proved internally
-from Minkowski's bound. The online November 1976
+into exact minima for degrees 3--9, the degree-ten root-discriminant input,
+and the optimized degree-eleven bound 14.083. Degrees one and two are proved
+internally. For degree two, Lean proves nonsquareness of the field
+discriminant in `ℚ` and combines it with total-real positivity and Minkowski's
+bound to obtain the exact minimum lower bound `5`. The online November 1976
 [Table 2](https://www-users.cse.umn.edu/~odlyzko/unpublished/discr.bound.table2)
 lists 14.034, rather than 14.083, at degree eleven; therefore the v15 value
 14.083 is tracked as a later optimized Odlyzko--Martinet input, following

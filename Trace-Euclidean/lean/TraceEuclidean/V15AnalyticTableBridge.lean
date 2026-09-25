@@ -1,4 +1,5 @@
 import TraceEuclidean.V15AnalyticTable
+import TraceEuclidean.V15DegreeTwoDiscriminant
 import TraceEuclidean.V15OdlyzkoBridge
 
 /-!
@@ -56,6 +57,29 @@ def V15DegreeTwoToNineMinimumInput : Prop :=
       (v15MinimumDiscriminant d : ℝ) ≤
         ((|K.discriminant| : ℤ) : ℝ)
 
+/-- The residual exact minimum-discriminant input in degrees three through
+nine.  The degree-two row is proved internally in
+`V15DegreeTwoDiscriminant`. -/
+def V15DegreeThreeToNineMinimumInput : Prop :=
+  ∀ (K : CodedNumberField), NumberField.IsTotallyReal K.1 →
+    let d := Module.finrank ℚ K.1
+    3 ≤ d → d ≤ 9 →
+      (v15MinimumDiscriminant d : ℝ) ≤
+        ((|K.discriminant| : ℤ) : ℝ)
+
+/-- The internally proved quadratic bound and the residual degree-three to
+degree-nine source input imply the earlier combined interface. -/
+theorem v15_degreeTwoToNineMinimumInput_of_threeToNine
+    (hMin : V15DegreeThreeToNineMinimumInput) :
+    V15DegreeTwoToNineMinimumInput := by
+  intro K hreal
+  dsimp only
+  intro hd2 hd9
+  by_cases hdegree : Module.finrank ℚ K.1 = 2
+  · simpa [hdegree, v15MinimumDiscriminant] using
+      v15_coded_degree_two_discriminant_ge_five K hreal hdegree
+  · exact hMin K hreal (by omega) hd9
+
 /-- Voight's empty degree-ten range at root discriminant at most fourteen,
 stated in the exact form needed by the Section 4 calculation. -/
 def V15DegreeTenRootDiscriminantInput : Prop :=
@@ -111,6 +135,17 @@ theorem v15_smallDegreeDiscriminantInput_of_literature
     simpa [v15BetaPower, v15AlgebraicBetaPower, hd9, hd10, hd11eq,
       hd12] using h.le
 
+/-- Literature-facing small-degree assembly with the quadratic row removed
+from the external premises. -/
+theorem v15_smallDegreeDiscriminantInput_of_reduced_literature
+    (hMin : V15DegreeThreeToNineMinimumInput)
+    (hTen : V15DegreeTenRootDiscriminantInput)
+    (hEleven : V15DegreeElevenRootDiscriminantInput) :
+    V15SmallDegreeDiscriminantInput :=
+  v15_smallDegreeDiscriminantInput_of_literature
+    (v15_degreeTwoToNineMinimumInput_of_threeToNine hMin)
+    hTen hEleven
+
 /-- All field-discriminant estimates needed by the Section 4 tables. -/
 def V15SectionFourDiscriminantInput : Prop :=
   ∀ c : GlobalLatticeClass,
@@ -151,6 +186,19 @@ theorem v15_sectionFourDiscriminantInput_of_literature
     V15SectionFourDiscriminantInput :=
   v15_sectionFourDiscriminantInput_of_reduced_sources
     (v15_smallDegreeDiscriminantInput_of_literature hMin hTen hEleven)
+    (v15_odlyzkoTable4InputFrom_of_description hDescription 12)
+
+/-- Section 4 assembly whose remaining small-degree minimum input begins in
+degree three. -/
+theorem v15_sectionFourDiscriminantInput_of_reduced_literature
+    (hMin : V15DegreeThreeToNineMinimumInput)
+    (hTen : V15DegreeTenRootDiscriminantInput)
+    (hEleven : V15DegreeElevenRootDiscriminantInput)
+    (hDescription : V15OdlyzkoTable4DescriptionInput) :
+    V15SectionFourDiscriminantInput :=
+  v15_sectionFourDiscriminantInput_of_reduced_sources
+    (v15_smallDegreeDiscriminantInput_of_reduced_literature
+      hMin hTen hEleven)
     (v15_odlyzkoTable4InputFrom_of_description hDescription 12)
 
 private theorem v15_betaPower_le_discriminant_pow
@@ -271,6 +319,21 @@ theorem v15_classic_pair_mem_of_literature
     (v15_smallDegreeDiscriminantInput_of_literature hMin hTen hEleven)
     (v15_odlyzkoTable4InputFrom_of_description hDescription 12) c hE
 
+/-- Literature-facing classic table membership with degree two discharged
+internally. -/
+theorem v15_classic_pair_mem_of_reduced_literature
+    (hMin : V15DegreeThreeToNineMinimumInput)
+    (hTen : V15DegreeTenRootDiscriminantInput)
+    (hEleven : V15DegreeElevenRootDiscriminantInput)
+    (hDescription : V15OdlyzkoTable4DescriptionInput)
+    (c : GlobalLatticeClass)
+    (hE : c.IsClassicTraceEuclidean (c.degree : ℝ)) :
+    (c.rank, c.degree) ∈ v15ClassicAdmissiblePairs :=
+  v15_classic_pair_mem_of_reduced_sources
+    (v15_smallDegreeDiscriminantInput_of_reduced_literature
+      hMin hTen hEleven)
+    (v15_odlyzkoTable4InputFrom_of_description hDescription 12) c hE
+
 /-- Every integral class in the proved finite grid belongs to exactly one of
 the 63 analytically admissible pairs. -/
 theorem v15_integral_pair_mem_of_reduced_sources
@@ -313,6 +376,23 @@ theorem v15_integral_pair_mem_of_literature
     (c.rank, c.degree) ∈ v15IntegralAdmissiblePairs :=
   v15_integral_pair_mem_of_reduced_sources
     (v15_smallDegreeDiscriminantInput_of_literature hMin hTen hEleven)
+    (v15_odlyzkoTable4InputFrom_of_description hDescription 12)
+    hRankOne c hE
+
+/-- Literature-facing integral table membership with degree two discharged
+internally. -/
+theorem v15_integral_pair_mem_of_reduced_literature
+    (hMin : V15DegreeThreeToNineMinimumInput)
+    (hTen : V15DegreeTenRootDiscriminantInput)
+    (hEleven : V15DegreeElevenRootDiscriminantInput)
+    (hDescription : V15OdlyzkoTable4DescriptionInput)
+    (hRankOne : V15RankOneClassicInput)
+    (c : GlobalLatticeClass)
+    (hE : c.IsIntegralTraceEuclidean (c.degree : ℝ)) :
+    (c.rank, c.degree) ∈ v15IntegralAdmissiblePairs :=
+  v15_integral_pair_mem_of_reduced_sources
+    (v15_smallDegreeDiscriminantInput_of_reduced_literature
+      hMin hTen hEleven)
     (v15_odlyzkoTable4InputFrom_of_description hDescription 12)
     hRankOne c hE
 

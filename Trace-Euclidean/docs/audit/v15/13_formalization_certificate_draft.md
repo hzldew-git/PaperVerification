@@ -37,8 +37,8 @@ rounded Table 4 interfaces internally.
 Consequently `v15_classic_finite_closed`, `v15_integral_finite_closed`, and
 `v15_pnorm_finite_closed` do not assume Odlyzko's Table 4 theorem. The source
 table remains essential for normalization and comparison. The Section 4
-class-level bridge still takes the cited degree `2`--`11` field-discriminant
-estimates; degree one and the range from degree twelve are internal.
+class-level bridge still takes the cited degree `3`--`11` field-discriminant
+estimates; degrees one and two and the range from degree twelve are internal.
 
 ## Trust
 
@@ -55,7 +55,7 @@ compilation and computation do not by themselves certify semantic fidelity.
 ## Exclusions
 
 The certificate excludes independent human approval, historical and novelty
-claims, proofs of the cited degree `2`--`11` field-discriminant estimates, the
+claims, proofs of the cited degree `3`--`11` field-discriminant estimates, the
 optional sharper HSW numerical zero-count theorem, and selected standalone
 supporting lemmas that are not needed by the audited endpoints. It does not
 claim a general reusable Stark--Weil theorem for arbitrary test functions;

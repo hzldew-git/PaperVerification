@@ -319,6 +319,42 @@ theorem v15_sectionFourDiscriminantInput_of_smallDegreeLiterature
   v15_sectionFourDiscriminantInput_of_literature hMin hTen hEleven
     v15_odlyzkoTable4DescriptionInput_closed
 
+/-- The Section 4 discriminant input with both the analytic Table 4 range and
+the quadratic minimum discharged internally.  The remaining literature inputs
+cover degrees three through eleven. -/
+theorem v15_sectionFourDiscriminantInput_of_reduced_smallDegreeLiterature
+    (hMin : V15DegreeThreeToNineMinimumInput)
+    (hTen : V15DegreeTenRootDiscriminantInput)
+    (hEleven : V15DegreeElevenRootDiscriminantInput) :
+    V15SectionFourDiscriminantInput :=
+  v15_sectionFourDiscriminantInput_of_reduced_literature
+    hMin hTen hEleven v15_odlyzkoTable4DescriptionInput_closed
+
+/-- Membership in the manuscript's 24-row classic table after reducing the
+external discriminant input to degrees three through eleven. -/
+theorem v15_classic_pair_mem_of_reduced_smallDegreeLiterature
+    (hMin : V15DegreeThreeToNineMinimumInput)
+    (hTen : V15DegreeTenRootDiscriminantInput)
+    (hEleven : V15DegreeElevenRootDiscriminantInput)
+    (c : GlobalLatticeClass)
+    (hE : c.IsClassicTraceEuclidean (c.degree : ℝ)) :
+    (c.rank, c.degree) ∈ v15ClassicAdmissiblePairs :=
+  v15_classic_pair_mem_of_reduced_literature
+    hMin hTen hEleven v15_odlyzkoTable4DescriptionInput_closed c hE
+
+/-- Membership in the manuscript's 63-row integral table after reducing the
+external discriminant input to degrees three through eleven. -/
+theorem v15_integral_pair_mem_of_reduced_smallDegreeLiterature
+    (hMin : V15DegreeThreeToNineMinimumInput)
+    (hTen : V15DegreeTenRootDiscriminantInput)
+    (hEleven : V15DegreeElevenRootDiscriminantInput)
+    (c : GlobalLatticeClass)
+    (hE : c.IsIntegralTraceEuclidean (c.degree : ℝ)) :
+    (c.rank, c.degree) ∈ v15IntegralAdmissiblePairs :=
+  v15_integral_pair_mem_of_reduced_literature
+    hMin hTen hEleven v15_odlyzkoTable4DescriptionInput_closed
+    v15_rank_one_classic_input c hE
+
 /-- Theorem 1.2's global classic finiteness endpoint with the Table 4 analytic
 input discharged by the internal contour proof. -/
 theorem v15_classic_finite_closed :

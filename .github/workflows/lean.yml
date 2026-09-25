@@ -82,8 +82,8 @@ jobs:
           source = Path('TraceEuclideanTest/NumericalAxiomAudit.lean').read_text(encoding='utf-8')
           output = ' '.join(Path('numerical-audit.log').read_text(encoding='utf-8').split())
           names = re.findall(r'^#print axioms\s+(\S+)', source, re.M)
-          if len(names) != 14:
-              raise SystemExit(f'Expected fourteen numerical audit declarations, found {len(names)}')
+          if len(names) != 17:
+              raise SystemExit(f'Expected seventeen numerical audit declarations, found {len(names)}')
           standard = {'propext', 'Classical.choice', 'Quot.sound'}
           sinh = 'TraceEuclidean.V15OdlyzkoNumerical.sinh_core_upper._native.native_decide.ax_1_1'
           cosh = 'TraceEuclidean.V15OdlyzkoNumerical.cosh_core_upper._native.native_decide.ax_1_1'

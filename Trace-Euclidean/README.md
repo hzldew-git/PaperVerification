@@ -140,10 +140,12 @@ checks all 34 by 14 cells. It proves that the analytic classic and integral
 inequalities select exactly the recorded 24 and 63 pairs, then proves all row
 and column bounds, the exact global maxima, the degree 7--9 rank-two assertion,
 and the final rank-twelve consequence. The public Python and Wolfram runs are
-independent checks of the same finite computation. Degree one of the
-small-degree discriminant input is now proved from Minkowski's bound. The
-exact minima in degrees 2--9, the degree-ten enumeration result, and the
-optimized degree-eleven bound 14.083 remain explicit external mathematical
+independent checks of the same finite computation. Degrees one and two of
+the small-degree discriminant input are now proved internally. In degree
+two, Lean combines Minkowski's bound with positivity and a proof that a
+quadratic field discriminant is not a square in `ℚ`, excluding equality at
+four. The exact minima in degrees 3--9, the degree-ten enumeration result,
+and the optimized degree-eleven bound 14.083 remain explicit external mathematical
 inputs. Odlyzko's Table 4 is retained as the source and normalization
 reference, while the `b=4` inequality used here is now derived internally.
 Lean proves the

@@ -28,6 +28,7 @@ import TraceEuclidean.V15RankOneIdealBridge
 import TraceEuclidean.V15AbstractCoordinates
 import TraceEuclidean.V15AdmissibleTables
 import TraceEuclidean.V15AnalyticTable
+import TraceEuclidean.V15DegreeTwoDiscriminant
 import TraceEuclidean.V15AnalyticTableBridge
 import TraceEuclidean.V15FieldTransport
 import TraceEuclidean.V15PropositionSixOne

@@ -19,16 +19,17 @@
 | V15OdlyzkoNumerical.sinh_core_upper, V15OdlyzkoNumerical.cosh_core_upper, V15OdlyzkoNumerical.abIntegralCertificate | Verify finite-interval dyadic enclosures and assemble the strict source-normalized `A = 36.347`, `B = 16.593` certificate. The checks use `native_decide` and are audited under that disclosed compiler trust boundary. |
 | V15OdlyzkoTable4FieldInputFrom, V15OdlyzkoTable4InputFrom | Restrict the Table 4 premise to the field degrees actually used; degree 12 begins the analytic table range and degree 15 begins the finiteness cutoff. |
 | v15_degree_one_discriminant_bound | Proves the degree-one Section 4 discriminant input internally from Minkowski's bound. |
-| V15DegreeTwoToNineMinimumInput, V15DegreeTenRootDiscriminantInput, V15DegreeElevenRootDiscriminantInput | Separate literature inputs for exact minima, Voight's empty degree-ten range at root discriminant at most 14, and the optimized degree-eleven bound 14.083. |
+| v15_field_discr_not_isSquare_of_finrank_two, v15_degree_two_discriminant_ge_five | Prove that a quadratic number-field discriminant is not a square in `ℚ`, then combine this with total-real positivity and Minkowski's lower bound to obtain the exact degree-two lower bound `5`. |
+| V15DegreeThreeToNineMinimumInput, V15DegreeTenRootDiscriminantInput, V15DegreeElevenRootDiscriminantInput | Residual literature inputs for exact minima, Voight's empty degree-ten range at root discriminant at most 14, and the optimized degree-eleven bound 14.083. `V15DegreeTwoToNineMinimumInput` is retained as a compatibility interface. |
 | V15SmallDegreeDiscriminantInput, V15SectionFourDiscriminantInput | Compatibility premise and combined piecewise discriminant bound used by Section 4. |
 | v15_unitBallVolume_sq_closed, v15AnalyticH_eq_closed | Evaluate the squared unit-ball volume through factorials and rewrite the manuscript's Gamma-defined `H(n,d)` exactly. |
 | v15HLower_le_analyticH_le_upper | Encloses the exact analytic quantity between rational expressions using proved bounds for pi and the exponential correction. |
 | v15_classic_analytic_grid_iff_mem, v15_integral_analytic_grid_iff_mem | Prove on every cell with 1 <= n <= 34 and 1 <= d <= 14 that the exact analytic classic/integral inequality is equivalent to membership in the 24/63 pair list. |
-| v15_classic_pair_mem_of_literature, v15_integral_pair_mem_of_literature | Derive the actual lattice class's table membership from the source-specific small-degree inputs, full Table 4 description, and rank-one input. |
+| v15_classic_pair_mem_of_reduced_literature, v15_integral_pair_mem_of_reduced_literature | Derive the actual lattice class's table membership from the residual degree-three to degree-eleven inputs, full Table 4 description, and rank-one input. |
 | v15_odlyzko_degree_input_of_table4_from_fifteen | Proves the numerical degree cutoff from the published constants using Table 4 only from degree fifteen. |
 | v15_rank_one_classic_input | Proves integral rank-one presentations are classically integral without freeness. |
 | v15_classic_finite_closed, v15_integral_finite_closed, v15_pnorm_finite_closed | Global finiteness at the varying threshold equal to each field degree, with the Table 4 analytic premise discharged internally. |
-| v15_sectionFourDiscriminantInput_of_smallDegreeLiterature | Combines the internal Table 4 theorem with the three cited degree `2`--`11` field-discriminant inputs needed by Section 4. |
+| v15_sectionFourDiscriminantInput_of_reduced_smallDegreeLiterature | Combines the internal degree-two and Table 4 theorems with the three residual literature inputs covering degrees `3`--`11`. |
 | v15_actual_ideal_six_rows | Obtains six surviving reduced Gram rows for every qualifying nonzero fractional ideal. |
 | v15_actual_ideal_principal | Proves the ideal principal, including the exceptional m=3 case. |
 | v15_rank_one_real_quadratic_classification_totally_positive | If and only if over all nonzero fractional ideals and totally positive integral coefficients, with actual module-isometry classes. |
