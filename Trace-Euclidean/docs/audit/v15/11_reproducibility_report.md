@@ -1,5 +1,12 @@
 # Reproducibility report
 
+- The archimedean-bridge update passed a full local 8817-job Lean build and
+  the expanded transitive-axiom audit. The new joint-integrability, Fubini,
+  rescaling, digamma-pairing, and number-field bracket endpoints use only
+  `propext`, `Classical.choice`, and `Quot.sound`. The manuscript-exclusion
+  guard inspected 223 files and passed. The remaining Stark/Weil boundary is
+  the transformed prime-power matching and global contour/residue identity.
+
 - The completed-growth update passed a full local 8805-job Lean build. New
   audited endpoints cover the Mellin-tail estimate, the ideal and
   discriminant complex-power factors, finite class-group summation, the

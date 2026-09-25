@@ -22,9 +22,10 @@ quadratic count and direct zero-sum convergence. The sharper published count
 remains optional and unproved. Lean also proves right-half-plane Euler-product
 nonvanishing, the absolutely convergent prime-power logarithmic derivative,
 the archimedean Gamma/digamma decomposition, the digamma partial-fraction
-series, and the symmetric critical-line archimedean bracket. The remaining
-analytic proof boundary is the digamma integral specialization and the global
-Stark/Weil contour identity.
+series, the symmetric critical-line archimedean bracket, and its exact
+Gauss-digamma/Fubini specialization to the source's two hyperbolic terms. The
+remaining analytic proof boundary is transformed prime-power matching and the
+global Stark/Weil contour/residue identity.
 
 This package contains Lean 4 proofs, independent Python and Wolfram checks,
 extracted v15 inputs, machine-readable results, and an English
@@ -84,6 +85,11 @@ results are 1165 Python PASS and 112 Wolfram PASS.
   `A = 36.347` and `B = 16.593` estimates are assembled from analytic
   endpoint bounds and certified dyadic integration. The numerical checks use
   `native_decide`, which adds Lean's native compiler to their trust boundary.
+  Lean also proves joint absolute integrability of the critical transform and
+  both Gauss-digamma kernels, performs the Fubini interchanges and real-place
+  rescaling, and derives the normalized number-field identity
+  `log |D_K| - r_1 log A_* - 2 r_2 log B_*` for the symmetric infinite-place
+  logarithmic-derivative bracket.
   Equation (2.3) and a convergent paired-zero contribution remain the
   mathematical inputs needed to derive the full Table 4 inequality.
 - Theorem 1.7: an if-and-only-if classification for every nonzero fractional
@@ -133,7 +139,9 @@ convergence of the direct unordered zero sum. It proves the ideal Euler
 product and nonvanishing on `Re(s) > 1`, expands the ordinary logarithmic
 derivative as an absolutely convergent prime-power series, evaluates the
 infinite-place logarithmic derivative in terms of digamma, proves the digamma
-partial-fraction series, and derives the symmetric critical-line bracket. It
+partial-fraction series, derives the symmetric critical-line bracket, and
+proves its complete Gauss-integral, Fourier-inversion, Fubini, and hyperbolic
+specialization with the exact `A_*` and `B_*` normalization. It
 also matches the HSW Gamma
 normalization to mathlib's Deligne factors and proves that the completed zeta
 function has the same zero positions and multiplicities in the open critical

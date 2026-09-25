@@ -1488,3 +1488,369 @@ TraceEuclidean.V15AnalyticMellin.regularizationOfMellinPair.{u_1} {f g : ℝ →
  Classical.choice,
  Quot.sound]
 'TraceEuclidean.V15AnalyticMellin.regularizationOfMellinPair' depends on axioms: [propext, Classical.choice, Quot.sound]
+DedekindZeta.DualClassReindex.class_dualIdeal.{u_1} (K : Type u_1) [Field K] [NumberField K]
+  (𝔞 : Ideal (NumberField.RingOfIntegers K)) (hne : 𝔞 ≠ 0) :
+  (ClassGroup.mk K) (Units.mk0 (DedekindZeta.Theta.dualIdeal K 𝔞) ⋯) =
+    (DedekindZeta.DualClassReindex.dualClassPermutation K) (ClassGroup.mk0 ⟨𝔞, ⋯⟩)
+DedekindZeta.DualClassReindex.class_dualIdeal_idealClassRep.{u_1} (K : Type u_1) [Field K] [NumberField K]
+  (c : ClassGroup (NumberField.RingOfIntegers K)) :
+  (ClassGroup.mk K) (Units.mk0 (DedekindZeta.Theta.dualIdeal K (DedekindZeta.idealClassRep K c)) ⋯) =
+    (DedekindZeta.DualClassReindex.dualClassPermutation K) c
+DedekindZeta.DualClassReindex.sum_dualClassPermutation.{u_1} (K : Type u_1) [Field K] [NumberField K]
+  (f : ClassGroup (NumberField.RingOfIntegers K) → ℂ) :
+  ∑ c, f ((DedekindZeta.DualClassReindex.dualClassPermutation K) c) = ∑ c, f c
+'DedekindZeta.DualClassReindex.class_dualIdeal' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DedekindZeta.DualClassReindex.class_dualIdeal_idealClassRep' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DedekindZeta.DualClassReindex.sum_dualClassPermutation' depends on axioms: [propext, Classical.choice, Quot.sound]
+DedekindZeta.FractionalIdealRescaling.swappedContinuation_eq_scaled_idealClassRep.{u_1} (K : Type u_1) [Field K]
+  [NumberField K] (𝔞 𝔟 : Ideal (NumberField.RingOfIntegers K)) (h𝔞 : 𝔞 ≠ 0) (h𝔟 : 𝔟 ≠ 0) (x : K) (hx : x ≠ 0)
+  (hdual :
+    DedekindZeta.Theta.dualIdeal K 𝔞 =
+      FractionalIdeal.spanSingleton (nonZeroDivisors (NumberField.RingOfIntegers K)) x * ↑𝔟)
+  {s : ℂ} (hs : 1 < s.re) :
+  DedekindZeta.MellinPrinciple.mellinContinuation (DedekindZeta.ConeRadialReduction.radialThetaDual K 𝔞)
+      (DedekindZeta.ConeRadialReduction.radialTheta K 𝔞) (DedekindZeta.ConeRadialReduction.surfaceVolume K)
+      (DedekindZeta.ConeRadialReduction.surfaceVolume K) (↑(DedekindZeta.Theta.covolume K 𝔞))⁻¹⁻¹ 1 s =
+    ↑(NumberField.mixedEmbedding.norm ((NumberField.mixedEmbedding K) x)) ^ (-s) *
+      DedekindZeta.MellinPrinciple.mellinContinuation (DedekindZeta.ConeRadialReduction.radialTheta K 𝔟)
+        (DedekindZeta.ConeRadialReduction.radialThetaDual K 𝔟) (DedekindZeta.ConeRadialReduction.surfaceVolume K)
+        (DedekindZeta.ConeRadialReduction.surfaceVolume K) (↑(DedekindZeta.Theta.covolume K 𝔟))⁻¹ 1 s
+DedekindZeta.FractionalIdealRescaling.absNorm_mul_absNorm_eq_inv_discriminant.{u_1} (K : Type u_1) [Field K]
+  [NumberField K] (𝔞 𝔟 : Ideal (NumberField.RingOfIntegers K)) (x : K)
+  (hdual :
+    DedekindZeta.Theta.dualIdeal K 𝔞 =
+      FractionalIdeal.spanSingleton (nonZeroDivisors (NumberField.RingOfIntegers K)) x * ↑𝔟) :
+  |(Algebra.norm ℚ) x| * ↑(Ideal.absNorm 𝔟) = (↑(Ideal.absNorm 𝔞) * ↑(NumberField.discr K).natAbs)⁻¹
+DedekindZeta.FractionalIdealRescaling.exists_dualIdeal_eq_spanSingleton_mul_idealClassRep.{u_1} (K : Type u_1) [Field K]
+  [NumberField K] (c : ClassGroup (NumberField.RingOfIntegers K)) :
+  ∃ x,
+    x ≠ 0 ∧
+      DedekindZeta.Theta.dualIdeal K (DedekindZeta.idealClassRep K c) =
+        FractionalIdeal.spanSingleton (nonZeroDivisors (NumberField.RingOfIntegers K)) x *
+          ↑(DedekindZeta.idealClassRep K ((DedekindZeta.DualClassReindex.dualClassPermutation K) c))
+DedekindZeta.FractionalIdealRescaling.completedPartialZetaContinuation_reflection_of_dual.{u_1} (K : Type u_1) [Field K]
+  [NumberField K] (𝔞 𝔟 : Ideal (NumberField.RingOfIntegers K)) (h𝔞 : 𝔞 ≠ 0) (h𝔟 : 𝔟 ≠ 0) (x : K) (hx : x ≠ 0)
+  (hdual :
+    DedekindZeta.Theta.dualIdeal K 𝔞 =
+      FractionalIdeal.spanSingleton (nonZeroDivisors (NumberField.RingOfIntegers K)) x * ↑𝔟)
+  (s : ℂ) (hs : s.re < 0) :
+  DedekindZeta.GlobalContinuation.completedPartialZetaContinuation K 𝔞 s =
+    DedekindZeta.GlobalContinuation.completedPartialZetaContinuation K 𝔟 (1 - s)
+DedekindZeta.FractionalIdealRescaling.completedZetaContinuation_reflection_left.{u_1} (K : Type u_1) [Field K]
+  [NumberField K] (s : ℂ) (hs : s.re < 0) :
+  DedekindZeta.GlobalContinuation.completedZetaContinuation K s =
+    DedekindZeta.GlobalContinuation.completedZetaContinuation K (1 - s)
+DedekindZeta.FractionalIdealRescaling.completedZetaPoleRemoved_reflection.{u_1} (K : Type u_1) [Field K] [NumberField K]
+  (s : ℂ) :
+  DedekindZeta.GlobalContinuation.completedZetaPoleRemoved K s =
+    DedekindZeta.GlobalContinuation.completedZetaPoleRemoved K (1 - s)
+DedekindZeta.FractionalIdealRescaling.completedZetaContinuation_reflection.{u_1} (K : Type u_1) [Field K]
+  [NumberField K] (s : ℂ) (hs₀ : s ≠ 0) (hs₁ : s ≠ 1) :
+  DedekindZeta.GlobalContinuation.completedZetaContinuation K s =
+    DedekindZeta.GlobalContinuation.completedZetaContinuation K (1 - s)
+'DedekindZeta.FractionalIdealRescaling.swappedContinuation_eq_scaled_idealClassRep' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'DedekindZeta.FractionalIdealRescaling.absNorm_mul_absNorm_eq_inv_discriminant' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'DedekindZeta.FractionalIdealRescaling.exists_dualIdeal_eq_spanSingleton_mul_idealClassRep' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'DedekindZeta.FractionalIdealRescaling.completedPartialZetaContinuation_reflection_of_dual' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'DedekindZeta.FractionalIdealRescaling.completedZetaContinuation_reflection_left' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'DedekindZeta.FractionalIdealRescaling.completedZetaPoleRemoved_reflection' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'DedekindZeta.FractionalIdealRescaling.completedZetaContinuation_reflection' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+TraceEuclidean.v15_completedFromConstructed_eq_poleRemoved_of_re_pos.{u_1} {K : Type u_1} [Field K] [NumberField K]
+  {s : ℂ} (hs : 0 < s.re) :
+  TraceEuclidean.v15CompletedFromRegularization K (TraceEuclidean.v15ConstructedDedekindZetaRegularization K) s =
+    DedekindZeta.GlobalContinuation.completedZetaPoleRemoved K s
+TraceEuclidean.v15_completedPoleRemoved_zero_order_eq_constructed.{u_1} {K : Type u_1} [Field K] [NumberField K] {s : ℂ}
+  (hs : 0 < s.re) :
+  analyticOrderNatAt (DedekindZeta.GlobalContinuation.completedZetaPoleRemoved K) s =
+    analyticOrderNatAt (TraceEuclidean.v15ConstructedDedekindZetaRegularization K).value s
+TraceEuclidean.v15_completedZetaPoleRemoved_exists_nonzero.{u_1} {K : Type u_1} [Field K] [NumberField K] :
+  ∃ s, DedekindZeta.GlobalContinuation.completedZetaPoleRemoved K s ≠ 0
+TraceEuclidean.V15DedekindZetaZeroOccurrence.quadraticCount_of_completed_circle_growth.{u_1} {K : Type u_1} [Field K]
+  [NumberField K] (c : ℂ) (hc : DedekindZeta.GlobalContinuation.completedZetaPoleRemoved K c ≠ 0) (A : ℝ) (hA : 0 ≤ A)
+  (hGrowth :
+    ∀ (T : ℝ),
+      0 ≤ T →
+        ∀ z ∈ Metric.sphere c (2 * (‖c‖ + T + 2)),
+          ‖DedekindZeta.GlobalContinuation.completedZetaPoleRemoved K z‖ ≤ Real.exp (A * (1 + T) ^ 2)) :
+  TraceEuclidean.V15DedekindZetaZeroOccurrence.QuadraticCountInput
+    (TraceEuclidean.v15ConstructedDedekindZetaRegularization K)
+    ((A + |Real.log ‖DedekindZeta.GlobalContinuation.completedZetaPoleRemoved K c‖|) / Real.log 2)
+TraceEuclidean.V15MellinGrowth.exists_poleRemovedRadial_quadratic_bound.{u_1} (K : Type u_1) [Field K] [NumberField K]
+  (𝔞 : Ideal (NumberField.RingOfIntegers K)) (hne : 𝔞 ≠ 0) :
+  ∃ A D,
+    0 ≤ A ∧
+      0 ≤ D ∧ ∀ (s : ℂ), ‖DedekindZeta.GlobalContinuation.poleRemovedRadial K 𝔞 s‖ ≤ D * Real.exp (A * (1 + ‖s‖) ^ 2)
+TraceEuclidean.V15MellinGrowth.exists_partialFactor_quadratic_bound.{u_1} (K : Type u_1) [Field K] [NumberField K]
+  (𝔞 : Ideal (NumberField.RingOfIntegers K)) (hne : 𝔞 ≠ 0) :
+  ∃ A D,
+    0 ≤ A ∧ 0 ≤ D ∧ ∀ (s : ℂ), ‖DedekindZeta.GlobalContinuation.partialFactor K 𝔞 s‖ ≤ D * Real.exp (A * (1 + ‖s‖) ^ 2)
+TraceEuclidean.V15MellinGrowth.completedZetaPoleRemoved_hasQuadraticExponentialBound.{u_1} (K : Type u_1) [Field K]
+  [NumberField K] :
+  TraceEuclidean.V15MellinGrowth.HasQuadraticExponentialBound
+    (DedekindZeta.GlobalContinuation.completedZetaPoleRemoved K)
+TraceEuclidean.V15MellinGrowth.exists_completedZetaPoleRemoved_circle_growth.{u_1} (K : Type u_1) [Field K]
+  [NumberField K] :
+  ∃ c A,
+    DedekindZeta.GlobalContinuation.completedZetaPoleRemoved K c ≠ 0 ∧
+      0 ≤ A ∧
+        ∀ (T : ℝ),
+          0 ≤ T →
+            ∀ z ∈ Metric.sphere c (2 * (‖c‖ + T + 2)),
+              ‖DedekindZeta.GlobalContinuation.completedZetaPoleRemoved K z‖ ≤ Real.exp (A * (1 + T) ^ 2)
+TraceEuclidean.V15MellinGrowth.exists_constructedDedekindZeta_quadraticCountInput.{u_1} (K : Type u_1) [Field K]
+  [NumberField K] :
+  ∃ C,
+    0 ≤ C ∧
+      TraceEuclidean.V15DedekindZetaZeroOccurrence.QuadraticCountInput
+        (TraceEuclidean.v15ConstructedDedekindZetaRegularization K) C
+TraceEuclidean.V15MellinGrowth.constructedDedekindZeta_odlyzkoPhi_summable.{u_1} (K : Type u_1) [Field K]
+  [NumberField K] : Summable fun o => TraceEuclidean.v15OdlyzkoPhi o.value
+TraceEuclidean.V15MellinGrowth.v15_odlyzkoTable4_of_constructed_explicitFormula
+  (hFormula :
+    TraceEuclidean.V15OdlyzkoExplicitFormulaInput fun K =>
+      (∑' (o : TraceEuclidean.V15DedekindZetaZeroOccurrence (TraceEuclidean.v15ConstructedRegularizationFamily K)),
+          TraceEuclidean.v15OdlyzkoPhi o.value).re) :
+  TraceEuclidean.V15OdlyzkoTable4ExplicitCorrectionInput
+'TraceEuclidean.v15_completedFromConstructed_eq_poleRemoved_of_re_pos' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'TraceEuclidean.v15_completedPoleRemoved_zero_order_eq_constructed' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'TraceEuclidean.v15_completedZetaPoleRemoved_exists_nonzero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.V15DedekindZetaZeroOccurrence.quadraticCount_of_completed_circle_growth' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'TraceEuclidean.V15MellinGrowth.exists_poleRemovedRadial_quadratic_bound' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'TraceEuclidean.V15MellinGrowth.exists_partialFactor_quadratic_bound' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'TraceEuclidean.V15MellinGrowth.completedZetaPoleRemoved_hasQuadraticExponentialBound' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'TraceEuclidean.V15MellinGrowth.exists_completedZetaPoleRemoved_circle_growth' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'TraceEuclidean.V15MellinGrowth.exists_constructedDedekindZeta_quadraticCountInput' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'TraceEuclidean.V15MellinGrowth.constructedDedekindZeta_odlyzkoPhi_summable' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'TraceEuclidean.V15MellinGrowth.v15_odlyzkoTable4_of_constructed_explicitFormula' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ EulerMascheroni.harmonic_N_ge._native.native_decide.ax_1_2,
+ TraceEuclidean.V15OdlyzkoNumerical.cosh_core_upper._native.native_decide.ax_1_1,
+ TraceEuclidean.V15OdlyzkoNumerical.sinh_core_upper._native.native_decide.ax_1_1,
+ TraceEuclidean.V15OdlyzkoNumerical.scalarA_strict._native.native_decide.ax_1_1✝,
+ TraceEuclidean.V15OdlyzkoNumerical.scalarB_strict._native.native_decide.ax_1_1✝]
+DedekindZeta.LogDeriv.ZInfty_ne_zero_of_re_pos.{u_1} (K : Type u_1) [Field K] [NumberField K] {s : ℂ} (hs : 0 < s.re) :
+  DedekindZeta.ZInfty K s ≠ 0
+DedekindZeta.LogDeriv.differentiableAt_ZInfty.{u_1} (K : Type u_1) [Field K] [NumberField K] {s : ℂ} (hs : 0 < s.re) :
+  DifferentiableAt ℂ (DedekindZeta.ZInfty K) s
+DedekindZeta.LogDeriv.differentiableAt_dedekindZeta.{u_1} (K : Type u_1) [Field K] [NumberField K] {s : ℂ}
+  (hs : 1 < s.re) : DifferentiableAt ℂ (NumberField.dedekindZeta K) s
+DedekindZeta.LogDeriv.logDeriv_completedZetaPoleRemoved.{u_1} (K : Type u_1) [Field K] [NumberField K] {s : ℂ}
+  (hs : 1 < s.re) :
+  logDeriv (DedekindZeta.GlobalContinuation.completedZetaPoleRemoved K) s =
+    1 / s + 1 / (s - 1) + logDeriv (DedekindZeta.ZInfty K) s + logDeriv (NumberField.dedekindZeta K) s
+DedekindZeta.LogDeriv.logDeriv_completedZetaPoleRemoved_one_sub.{u_1} (K : Type u_1) [Field K] [NumberField K] (s : ℂ) :
+  logDeriv (DedekindZeta.GlobalContinuation.completedZetaPoleRemoved K) (1 - s) =
+    -logDeriv (DedekindZeta.GlobalContinuation.completedZetaPoleRemoved K) s
+'DedekindZeta.LogDeriv.ZInfty_ne_zero_of_re_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DedekindZeta.LogDeriv.differentiableAt_ZInfty' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DedekindZeta.LogDeriv.differentiableAt_dedekindZeta' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DedekindZeta.LogDeriv.logDeriv_completedZetaPoleRemoved' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DedekindZeta.LogDeriv.logDeriv_completedZetaPoleRemoved_one_sub' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+DedekindZeta.hasProd_primeIdeal_eulerFactors.{u_1} (K : Type u_1) [Field K] [NumberField K] {s : ℂ} (hs : 1 < s.re) :
+  HasProd (fun v => (1 - ↑(Ideal.absNorm v.asIdeal) ^ (-s))⁻¹) (NumberField.dedekindZeta K s)
+DedekindZeta.dedekindZeta_ne_zero_of_one_lt_re.{u_1} (K : Type u_1) [Field K] [NumberField K] {s : ℂ} (hs : 1 < s.re) :
+  NumberField.dedekindZeta K s ≠ 0
+DedekindZeta.summable_primePowerLogTerm.{u_1} (K : Type u_1) [Field K] [NumberField K] {s : ℂ} (hs : 1 < s.re) :
+  Summable fun p => DedekindZeta.primePowerLogTerm K p.1 p.2 s
+DedekindZeta.LogDeriv.logDeriv_dedekindZeta_eq_neg_tsum_primePowers.{u_1} (K : Type u_1) [Field K] [NumberField K]
+  {s : ℂ} (hs : 1 < s.re) :
+  logDeriv (NumberField.dedekindZeta K) s =
+    -∑' (p : IsDedekindDomain.HeightOneSpectrum (NumberField.RingOfIntegers K) × ℕ),
+        DedekindZeta.primePowerLogTerm K p.1 p.2 s
+DedekindZeta.ArchimedeanLogDeriv.logDeriv_ZInfty.{u_1} (K : Type u_1) [Field K] [NumberField K] {s : ℂ}
+  (hs : 0 < s.re) :
+  logDeriv (DedekindZeta.ZInfty K) s =
+    Complex.log ↑|NumberField.discr K| / 2 +
+        ↑(NumberField.InfinitePlace.nrRealPlaces K) * (-Complex.log ↑Real.pi / 2 + (s / 2).digamma / 2) +
+      ↑(NumberField.InfinitePlace.nrComplexPlaces K) * (-Complex.log (2 * ↑Real.pi) + s.digamma)
+'DedekindZeta.hasProd_primeIdeal_eulerFactors' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DedekindZeta.dedekindZeta_ne_zero_of_one_lt_re' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DedekindZeta.summable_primePowerLogTerm' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DedekindZeta.LogDeriv.logDeriv_dedekindZeta_eq_neg_tsum_primePowers' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'DedekindZeta.ArchimedeanLogDeriv.logDeriv_ZInfty' depends on axioms: [propext, Classical.choice, Quot.sound]
+DedekindZeta.DigammaSeries.digamma_series {z : ℂ} (hz : z ∈ Complex.integerComplement) :
+  z.digamma = -↑Real.eulerMascheroniConstant - 1 / z + ∑' (n : ℕ), (1 / (↑n + 1) - 1 / (z + ↑n + 1))
+DedekindZeta.DigammaIdentities.digamma_conj (z : ℂ) : ((starRingEnd ℂ) z).digamma = (starRingEnd ℂ) z.digamma
+DedekindZeta.DigammaIdentities.digamma_duplication {z : ℂ} (hz : 0 < z.re) :
+  z.digamma + (z + 1 / 2).digamma = 2 * (2 * z).digamma - 2 * Complex.log 2
+DedekindZeta.DigammaIdentities.logDeriv_ZInfty_critical_bracket.{u_1} (K : Type u_1) [Field K] [NumberField K] (t : ℝ) :
+  logDeriv (DedekindZeta.ZInfty K) (1 / 2 + ↑t * Complex.I) +
+      logDeriv (DedekindZeta.ZInfty K) (1 / 2 - ↑t * Complex.I) =
+    Complex.log ↑|NumberField.discr K| +
+        ↑(NumberField.InfinitePlace.nrRealPlaces K) *
+          (-Complex.log ↑Real.pi + ↑(1 / 4 + ↑(t / 2) * Complex.I).digamma.re) +
+      ↑(NumberField.InfinitePlace.nrComplexPlaces K) *
+        (-2 * Complex.log (2 * ↑Real.pi) + 2 * ↑(1 / 2 + ↑t * Complex.I).digamma.re)
+DedekindZeta.DigammaVertical.summable_re_terms {a : ℝ} (ha0 : 0 < a) (ha1 : a < 1) (t : ℝ) :
+  Summable fun n => 1 / (↑n + 1) - (↑n + 1 + a) / ((↑n + 1 + a) ^ 2 + t ^ 2)
+DedekindZeta.DigammaVertical.re_digamma_vertical {a : ℝ} (ha0 : 0 < a) (ha1 : a < 1) (t : ℝ) :
+  (↑a + Complex.I * ↑t).digamma.re =
+    -Real.eulerMascheroniConstant - a / (a ^ 2 + t ^ 2) +
+      ∑' (n : ℕ), (1 / (↑n + 1) - (↑n + 1 + a) / ((↑n + 1 + a) ^ 2 + t ^ 2))
+DedekindZeta.DigammaIntegral.re_digamma_eq_gauss_integral {a : ℝ} (ha0 : 0 < a) (ha1 : a < 1) (t : ℝ) :
+  (↑a + Complex.I * ↑t).digamma.re =
+    -Real.eulerMascheroniConstant +
+      ∫ (x : ℝ) in Set.Ioi 0, (Real.exp (-x) - Real.exp (-a * x) * Real.cos (t * x)) / (1 - Real.exp (-x))
+DedekindZeta.DigammaIntegral.re_digamma_quarter_integral (t : ℝ) :
+  (1 / 4 + ↑(t / 2) * Complex.I).digamma.re =
+    -Real.eulerMascheroniConstant +
+      ∫ (x : ℝ) in Set.Ioi 0, (Real.exp (-x) - Real.exp (-(1 / 4) * x) * Real.cos (t / 2 * x)) / (1 - Real.exp (-x))
+DedekindZeta.DigammaIntegral.re_digamma_half_integral (t : ℝ) :
+  (1 / 2 + ↑t * Complex.I).digamma.re =
+    -Real.eulerMascheroniConstant +
+      ∫ (x : ℝ) in Set.Ioi 0, (Real.exp (-x) - Real.exp (-(1 / 2) * x) * Real.cos (t * x)) / (1 - Real.exp (-x))
+DedekindZeta.DigammaIntegral.logDeriv_ZInfty_critical_bracket_integral.{u_1} (K : Type u_1) [Field K] [NumberField K]
+  (t : ℝ) :
+  logDeriv (DedekindZeta.ZInfty K) (1 / 2 + ↑t * Complex.I) +
+      logDeriv (DedekindZeta.ZInfty K) (1 / 2 - ↑t * Complex.I) =
+    Complex.log ↑|NumberField.discr K| +
+        ↑(NumberField.InfinitePlace.nrRealPlaces K) *
+          (-Complex.log ↑Real.pi +
+            ↑(-Real.eulerMascheroniConstant +
+                ∫ (x : ℝ) in Set.Ioi 0,
+                  (Real.exp (-x) - Real.exp (-(1 / 4) * x) * Real.cos (t / 2 * x)) / (1 - Real.exp (-x)))) +
+      ↑(NumberField.InfinitePlace.nrComplexPlaces K) *
+        (-2 * Complex.log (2 * ↑Real.pi) +
+          2 *
+            ↑(-Real.eulerMascheroniConstant +
+                ∫ (x : ℝ) in Set.Ioi 0,
+                  (Real.exp (-x) - Real.exp (-(1 / 2) * x) * Real.cos (t * x)) / (1 - Real.exp (-x))))
+TraceEuclidean.v15OdlyzkoPhi_critical_integrable :
+  MeasureTheory.Integrable (fun t => TraceEuclidean.v15OdlyzkoPhi (1 / 2 + ↑t * Complex.I)) MeasureTheory.volume
+TraceEuclidean.v15OdlyzkoPhi_critical_mul_sq_integrable :
+  MeasureTheory.Integrable (fun t => ↑(t ^ 2) * TraceEuclidean.v15OdlyzkoPhi (1 / 2 + ↑t * Complex.I))
+    MeasureTheory.volume
+TraceEuclidean.v15OdlyzkoTiltedF4_zero_fourier_integrable :
+  MeasureTheory.Integrable (FourierTransform.fourier (TraceEuclidean.v15OdlyzkoTiltedF4 0)) MeasureTheory.volume
+TraceEuclidean.v15OdlyzkoPhi_critical_inversion_integral (x : ℝ) :
+  ∫ (t : ℝ), Complex.exp (↑(-t * x) * Complex.I) * TraceEuclidean.v15OdlyzkoPhi (1 / 2 + ↑t * Complex.I) =
+    ↑(2 * Real.pi * TraceEuclidean.v15OdlyzkoF4 x)
+TraceEuclidean.v15OdlyzkoPhi_critical_cosine_inversion (x : ℝ) :
+  ∫ (t : ℝ), (TraceEuclidean.v15OdlyzkoPhi (1 / 2 + ↑t * Complex.I)).re * Real.cos (t * x) =
+    2 * Real.pi * TraceEuclidean.v15OdlyzkoF4 x
+TraceEuclidean.v15OdlyzkoPhi_critical_re_integral :
+  ∫ (t : ℝ), (TraceEuclidean.v15OdlyzkoPhi (1 / 2 + ↑t * Complex.I)).re = 2 * Real.pi
+TraceEuclidean.v15OdlyzkoPhi_critical_cosine_half_inversion (x : ℝ) :
+  ∫ (t : ℝ), (TraceEuclidean.v15OdlyzkoPhi (1 / 2 + ↑t * Complex.I)).re * Real.cos (t / 2 * x) =
+    2 * Real.pi * TraceEuclidean.v15OdlyzkoF4 (x / 2)
+'DedekindZeta.DigammaSeries.digamma_series' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DedekindZeta.DigammaIdentities.digamma_conj' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DedekindZeta.DigammaIdentities.digamma_duplication' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DedekindZeta.DigammaIdentities.logDeriv_ZInfty_critical_bracket' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'DedekindZeta.DigammaVertical.summable_re_terms' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DedekindZeta.DigammaVertical.re_digamma_vertical' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DedekindZeta.DigammaIntegral.re_digamma_eq_gauss_integral' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DedekindZeta.DigammaIntegral.re_digamma_quarter_integral' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DedekindZeta.DigammaIntegral.re_digamma_half_integral' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DedekindZeta.DigammaIntegral.logDeriv_ZInfty_critical_bracket_integral' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'TraceEuclidean.v15OdlyzkoPhi_critical_integrable' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15OdlyzkoPhi_critical_mul_sq_integrable' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15OdlyzkoTiltedF4_zero_fourier_integrable' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15OdlyzkoPhi_critical_inversion_integral' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15OdlyzkoPhi_critical_cosine_inversion' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15OdlyzkoPhi_critical_re_integral' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15OdlyzkoPhi_critical_cosine_half_inversion' depends on axioms: [propext, Classical.choice, Quot.sound]
+TraceEuclidean.v15OdlyzkoCritical_mul_digammaKernel_integrable {a : ℝ} (ha0 : 0 < a) (ha1 : a < 1) :
+  MeasureTheory.Integrable
+    (fun z => TraceEuclidean.v15OdlyzkoCriticalReal z.1 * TraceEuclidean.v15OdlyzkoDigammaKernel a z.1 z.2)
+    (MeasureTheory.volume.prod (MeasureTheory.volume.restrict (Set.Ioi 0)))
+TraceEuclidean.v15OdlyzkoCritical_mul_digammaKernel_fubini {a : ℝ} (ha0 : 0 < a) (ha1 : a < 1) :
+  ∫ (t : ℝ),
+      ∫ (x : ℝ) in Set.Ioi 0, TraceEuclidean.v15OdlyzkoCriticalReal t * TraceEuclidean.v15OdlyzkoDigammaKernel a t x =
+    2 * Real.pi *
+      ∫ (x : ℝ) in Set.Ioi 0,
+        (Real.exp (-x) - Real.exp (-(a * x)) * TraceEuclidean.v15OdlyzkoF4 x) / (1 - Real.exp (-x))
+TraceEuclidean.v15OdlyzkoCritical_mul_digammaKernel_scaled_fubini {a : ℝ} (ha0 : 0 < a) (ha1 : a < 1) (b : ℝ) :
+  ∫ (t : ℝ),
+      ∫ (x : ℝ) in Set.Ioi 0,
+        TraceEuclidean.v15OdlyzkoCriticalReal t * TraceEuclidean.v15OdlyzkoDigammaKernel a (b * t) x =
+    2 * Real.pi *
+      ∫ (x : ℝ) in Set.Ioi 0,
+        (Real.exp (-x) - Real.exp (-(a * x)) * TraceEuclidean.v15OdlyzkoF4 (b * x)) / (1 - Real.exp (-x))
+TraceEuclidean.v15OdlyzkoCritical_mul_re_digamma_half_integral :
+  ∫ (t : ℝ), TraceEuclidean.v15OdlyzkoCriticalReal t * (1 / 2 + ↑t * Complex.I).digamma.re =
+    2 * Real.pi * (-Real.eulerMascheroniConstant + TraceEuclidean.v15OdlyzkoSinhIntegral - 2 * Real.log 2)
+TraceEuclidean.v15OdlyzkoCritical_mul_re_digamma_quarter_integral :
+  ∫ (t : ℝ), TraceEuclidean.v15OdlyzkoCriticalReal t * (1 / 4 + ↑(t / 2) * Complex.I).digamma.re =
+    2 * Real.pi *
+      (-Real.eulerMascheroniConstant + TraceEuclidean.v15OdlyzkoSinhIntegral + TraceEuclidean.v15OdlyzkoCoshIntegral -
+        (3 * Real.log 2 + Real.pi / 2))
+TraceEuclidean.v15OdlyzkoCritical_mul_realPlaceBracket_integral :
+  ∫ (t : ℝ), TraceEuclidean.v15OdlyzkoCriticalReal t * (-Real.log Real.pi + (1 / 4 + ↑(t / 2) * Complex.I).digamma.re) =
+    -(2 * Real.pi) * TraceEuclidean.v15OdlyzkoArchLogA
+TraceEuclidean.v15OdlyzkoCritical_mul_complexPlaceBracket_integral :
+  ∫ (t : ℝ),
+      TraceEuclidean.v15OdlyzkoCriticalReal t *
+        (-2 * Real.log (2 * Real.pi) + 2 * (1 / 2 + ↑t * Complex.I).digamma.re) =
+    -(4 * Real.pi) * TraceEuclidean.v15OdlyzkoArchLogB
+TraceEuclidean.v15OdlyzkoCritical_archimedeanBracket_re_average.{u_1} (K : Type u_1) [Field K] [NumberField K] :
+  1 / (2 * Real.pi) *
+      ∫ (t : ℝ),
+        TraceEuclidean.v15OdlyzkoCriticalReal t *
+          (logDeriv (DedekindZeta.ZInfty K) (1 / 2 + ↑t * Complex.I) +
+              logDeriv (DedekindZeta.ZInfty K) (1 / 2 - ↑t * Complex.I)).re =
+    Real.log ↑|NumberField.discr K| - ↑(NumberField.InfinitePlace.nrRealPlaces K) * TraceEuclidean.v15OdlyzkoArchLogA -
+      2 * ↑(NumberField.InfinitePlace.nrComplexPlaces K) * TraceEuclidean.v15OdlyzkoArchLogB
+'TraceEuclidean.v15OdlyzkoCritical_mul_digammaKernel_integrable' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'TraceEuclidean.v15OdlyzkoCritical_mul_digammaKernel_fubini' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15OdlyzkoCritical_mul_digammaKernel_scaled_fubini' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'TraceEuclidean.v15OdlyzkoCritical_mul_re_digamma_half_integral' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'TraceEuclidean.v15OdlyzkoCritical_mul_re_digamma_quarter_integral' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'TraceEuclidean.v15OdlyzkoCritical_mul_realPlaceBracket_integral' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'TraceEuclidean.v15OdlyzkoCritical_mul_complexPlaceBracket_integral' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'TraceEuclidean.v15OdlyzkoCritical_archimedeanBracket_re_average' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

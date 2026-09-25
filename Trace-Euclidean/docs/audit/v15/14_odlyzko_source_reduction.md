@@ -234,9 +234,25 @@ correction, and a real zero contribution. Lean proves that this formula, a
 nonnegative zero contribution, and the strict integral certificate imply
 `V15OdlyzkoTable4ExplicitCorrectionInput` for every number field. A second
 bridge uses the proved `Phi` sign theorem when the zero contribution is a
-summable enumerated family in the closed critical strip. These two analytic
-premises are explicit and unproved; the reduction does not establish the
-Dedekind-zeta zero enumeration or the formula itself.
+summable family in the closed critical strip. The concrete multiplicity-aware
+zero-occurrence family and its summability are now proved internally; only the
+explicit-formula identity remains a mathematical premise at this interface.
+
+`V15OdlyzkoArchimedeanBridge` starts from the actual logarithmic derivative of
+the completed Dedekind-zeta archimedean factor. It proves joint absolute
+integrability of the critical transform against the Gauss digamma kernels,
+justifies both Fubini interchanges and the real-place rescaling, and evaluates
+the half- and quarter-digamma pairings. The resulting kernel-only theorem is
+
+~~~text
+(1/(2*pi)) * integral_R Phi(1/2+it)
+  * Re((log Z_infinity)'/Z_infinity(1/2+it)
+     +(log Z_infinity)'/Z_infinity(1/2-it)) dt
+= log |D_K| - r_1 log A_* - 2 r_2 log B_*.
+~~~
+
+Thus the Gamma/digamma normalization, the two source hyperbolic integrals, and
+their signature coefficients no longer belong to the external formula input.
 
 `V15OdlyzkoPrimeCorrection` defines the source's exact summand for a nonzero
 prime ideal and a positive exponent. It constructs the finite set of prime
@@ -250,12 +266,15 @@ norms at most 4095 and exponents at most eleven. In particular, the complete
 prime correction is a nonnegative Lean theorem rather than an external
 infinite-sum premise.
 
-Eliminating the remaining Table 4 premise now requires the Stark/Weil explicit
-formula. The completed Dedekind zeta, its functional equation, quadratic
-growth, a Jensen count for actual zero occurrences, and direct zero-sum
-convergence are proved. The source test-function hypotheses, entire zero
-transform, uniform fourth-power vertical decay, conjugate pairing identities,
-and pointwise sign are also proved.
+Eliminating the remaining Table 4 premise now requires the remaining two parts
+of the Stark/Weil argument: matching the transformed prime-power logarithmic
+derivative with the source correction, and proving the global contour/residue
+identity that combines the zero, prime, and archimedean terms. The completed
+Dedekind zeta, its functional equation, quadratic growth, a Jensen count for
+actual zero occurrences, direct zero-sum convergence, and the full
+archimedean pairing are proved. The source test-function hypotheses, entire
+zero transform, uniform fourth-power vertical decay, conjugate pairing
+identities, and pointwise sign are also proved.
 
 The sinh integral's convergence and the strict numerical estimates for
 `A = 36.347` and `B = 16.593` are supplied by the separate
@@ -266,12 +285,15 @@ compiler trust boundary.
 Pinned mathlib defines the Dedekind zeta Dirichlet series and its residue at
 one but does not provide this explicit formula. The local theta/Mellin
 development now supplies global continuation, the functional equation,
-growth, and the required zero-sum theory. Therefore the full Odlyzko theorem
-still has one disclosed external mathematical input. The Lean work verifies the source
+growth, the required zero-sum theory, and the complete archimedean
+Gamma/digamma pairing. Therefore the full Odlyzko theorem still has one
+disclosed external mathematical input, now localized to the prime transform
+and contour/residue identity. The Lean work verifies the source
 kernel, the autocorrelation and Fourier positivity of `H`, the exact
 hyperbolic-secant and tilted transforms, the product-to-convolution bridge,
 source-normalized zero-transform positivity on the closed critical strip, the
 test function's differentiability and derivative decay, the exact `E = 32/3`
-integral, the exact endpoint-transform values, the complete prime-ideal correction and its
+integral, the exact endpoint-transform values, the exact field-level
+archimedean bracket, the complete prime-ideal correction and its
 exact finite-support reduction, every specialization and rounding, and every
 downstream use needed by v15.

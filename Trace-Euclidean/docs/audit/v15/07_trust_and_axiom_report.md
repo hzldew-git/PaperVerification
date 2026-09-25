@@ -48,7 +48,11 @@ Stark/Weil explicit formula remains external mathematics. Lean now
 proves the test function's `C^4` regularity, derivative decay, uniform
 fourth-power transform decay, and direct zero-occurrence convergence. It also
 evaluates the exact E = 32/3 archimedean error integral and both endpoint
-transforms `Phi(0) = Phi(1) = 16/3`.
+transforms `Phi(0) = Phi(1) = 16/3`. The kernel-only
+`V15OdlyzkoArchimedeanBridge` proves joint absolute integrability for the
+critical transform and both Gauss digamma kernels, the required Fubini
+interchanges and real-place rescaling, and the exact number-field identity
+whose right side is `log |D_K| - r_1 log A_* - 2 r_2 log B_*`.
 The source-exact equation (2.3) remains a named unproved premise in a
 conditional theorem that derives the Table 4 interface. Both archimedean
 integrals are proved convergent and the strict `A,B` certificate is supplied
@@ -56,6 +60,9 @@ by analytic endpoint bounds, verified dyadic interval enclosures, and a
 certified Euler–Mascheroni lower bound. The interval calculations use
 `native_decide`, whose generated `_native.native_decide.ax_*` dependencies are a distinct trust
 boundary from kernel-only reduction. The remaining explicit-formula input is
-not asserted as a project axiom or proved source theorem.
+not asserted as a project axiom or proved source theorem. Its unformalized
+content is now localized to the transformed prime-power matching and the
+global contour/residue identity; the archimedean specialization is no longer
+part of that boundary.
 
 The public Python and Wolfram checks trust their kernels and the extracted v15 input file. The private source-bound checks additionally verify the manuscript hash and printed data. Neither computational PASS counts nor Lean compilation certifies paper-to-code semantic fidelity. Only the active v15 computational artifacts are included in the current package.
