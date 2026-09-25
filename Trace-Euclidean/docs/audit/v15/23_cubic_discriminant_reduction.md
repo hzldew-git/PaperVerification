@@ -100,6 +100,5 @@ modules.
 Finally,
 `v15_sectionFourDiscriminantInput_of_degreeFourToEleven_closed` and its two
 table-membership corollaries substitute the proved certificate into the
-Section 4 chain. The remaining field-discriminant inputs begin in degree four:
-the exact minima for degrees `4`--`9`, the degree-ten exclusion, and the
-optimized degree-eleven estimate.
+Section 4 chain. The subsequent quartic reduction is recorded separately in
+`24_quartic_discriminant_reduction.md`.

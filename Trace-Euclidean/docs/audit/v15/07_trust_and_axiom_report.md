@@ -56,9 +56,17 @@ Minkowski's bound then give `|D_F| >= 5`. The Table 4 range is now internal.
 For degree three, Lean constructs the projected lattice and its covolume,
 lifts the Hunter vector to a nonrational integral generator, proves the spread
 and index-discriminant identities, and combines them with trace normalization
-and exact polynomial enumeration to obtain `|D_F| >= 49`. Section 4 still
-takes source interfaces for the exact degree `4`--`9` minima, the degree-ten exclusion at root discriminant at most
-`14`, and the optimized degree-eleven bound `14.083`. The online
+and exact polynomial enumeration to obtain `|D_F| >= 49`. In degree four,
+Lean proves all finite polynomial arithmetic, irreducibility and
+positive-index bridges, the exact power-basis discriminant, the centered
+spread identity, and positivity of both the spread and third Hermite minor.
+The remaining quartic premise is a primitive integral Hunter generator with
+the explicit normalized coefficient and strict upper-spread bounds recorded in
+`V15DegreeFourPrimitiveGeneratorInput`; this includes handling a short vector
+that could otherwise lie in a quadratic subfield. After that reduction,
+Section 4 takes exact-minimum interfaces only for degrees `5`--`9`, the
+degree-ten exclusion at root discriminant at most `14`, and the optimized
+degree-eleven bound `14.083`. The online
 November 1976 Table 2 gives `14.034` at degree eleven, so `14.083` remains a
 separately attributed later optimized input.
 

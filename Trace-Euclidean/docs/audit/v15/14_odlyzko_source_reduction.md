@@ -78,7 +78,12 @@ The old single premise for degrees at most eleven is now decomposed by source:
   short-vector lift, cubic generator, spread identity, positive-index
   discriminant relation, trace normalization, and finite coefficient
   enumeration are all internal;
-- degrees 4--9 use exact minimum-discriminant data;
+- degree 4 is reduced in Lean to a primitive integral Hunter generator with
+  explicit normalized coefficient and strict upper-spread bounds. Given that
+  generator, Lean proves spread and third-Hermite-minor positivity,
+  irreducibility, the exact positive-index discriminant relation, and the
+  complete finite enumeration forcing polynomial discriminant `725`;
+- degrees 5--9 use exact minimum-discriminant data;
 - degree 10 uses the absence of totally real degree-ten fields with root
   discriminant at most 14;
 - degree 11 uses the optimized unconditional bound `delta_F > 14.083`.

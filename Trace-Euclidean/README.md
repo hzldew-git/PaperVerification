@@ -150,7 +150,15 @@ and the final rank-twelve consequence. The public Python and Wolfram runs are
     spread, and proves the positive-index discriminant relation. Combined with
     trace normalization and the complete finite enumeration, this gives the
     unconditional Lean theorem `|D_F| >= 49`.
-    The exact minima in degrees 4--9, the degree-ten enumeration result, and the
+    In degree four, Lean now proves coefficient normalization, the exact
+    quartic power-basis discriminant and index relation, irreducibility bridges,
+    the centered-spread identity, and the complete finite coefficient
+    enumeration giving polynomial discriminant 725. The remaining quartic
+    premise is the existence, under `|D_F| < 725`, of a primitive integral
+    Hunter generator satisfying the normalized coefficient and strict
+    upper-spread bounds. Lean now derives positivity of the spread and third
+    Hermite minor from power-family linear independence.
+    The exact minima in degrees 5--9, the degree-ten enumeration result, and the
     optimized degree-eleven bound 14.083 remain explicit external mathematical
     inputs. Odlyzko's Table 4 is retained as the source and normalization
 reference, while the `b=4` inequality used here is now derived internally.

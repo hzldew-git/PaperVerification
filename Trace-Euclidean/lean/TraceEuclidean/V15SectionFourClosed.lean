@@ -5,8 +5,10 @@ import TraceEuclidean.V15OdlyzkoExplicitFormulaClosed
 # Closed Section 4 interfaces
 
 This module substitutes the internally proved cubic Hunter certificate into
-the Section 4 discriminant and table-membership endpoints.  The only remaining
-source inputs in these endpoints concern degrees four through eleven.
+the Section 4 discriminant and table-membership endpoints. Compatibility
+endpoints retain the degree-four through degree-eleven inputs; strengthened
+endpoints reduce degree four to a primitive Hunter generator and begin the
+exact-minimum data in degree five.
 -/
 
 namespace TraceEuclidean
@@ -23,6 +25,32 @@ theorem v15_sectionFourDiscriminantInput_of_degreeFourToEleven_closed
   v15_sectionFourDiscriminantInput_of_hunterCertificate_closed
     v15_degree_three_hunterCertificate hMin hTen hEleven
 
+/-- The Section 4 discriminant input after reducing the quartic row to its
+normalized Hunter certificate.  The exact-minimum table premise now begins
+in degree five. -/
+theorem v15_sectionFourDiscriminantInput_of_degreeFourHunterCertificate_closed
+    (hFour : V15DegreeFourHunterCertificateInput)
+    (hMin : V15DegreeFiveToNineMinimumInput)
+    (hTen : V15DegreeTenRootDiscriminantInput)
+    (hEleven : V15DegreeElevenRootDiscriminantInput) :
+    V15SectionFourDiscriminantInput :=
+  v15_sectionFourDiscriminantInput_of_degreeFourToEleven_closed
+    (v15_degreeFourToNineMinimumInput_of_hunterCertificate hFour hMin)
+    hTen hEleven
+
+/-- The Section 4 discriminant input with the quartic row reduced to an
+actual primitive Hunter generator and its normalized coefficient and strict
+upper-spread bounds. -/
+theorem v15_sectionFourDiscriminantInput_of_degreeFourPrimitiveGenerator_closed
+    (hFour : V15DegreeFourPrimitiveGeneratorInput)
+    (hMin : V15DegreeFiveToNineMinimumInput)
+    (hTen : V15DegreeTenRootDiscriminantInput)
+    (hEleven : V15DegreeElevenRootDiscriminantInput) :
+    V15SectionFourDiscriminantInput :=
+  v15_sectionFourDiscriminantInput_of_degreeFourHunterCertificate_closed
+    (v15_degree_four_hunterCertificate_of_primitiveGenerator hFour)
+    hMin hTen hEleven
+
 /-- Membership in the manuscript's classic table, with only the degree-four
 through degree-eleven discriminant source inputs remaining. -/
 theorem v15_classic_pair_mem_of_degreeFourToEleven_closed
@@ -35,6 +63,36 @@ theorem v15_classic_pair_mem_of_degreeFourToEleven_closed
   v15_classic_pair_mem_of_hunterCertificate_closed
     v15_degree_three_hunterCertificate hMin hTen hEleven c hE
 
+/-- Classic-table membership with the quartic row represented by its Hunter
+certificate and exact-minimum data required only in degrees five through
+nine. -/
+theorem v15_classic_pair_mem_of_degreeFourHunterCertificate_closed
+    (hFour : V15DegreeFourHunterCertificateInput)
+    (hMin : V15DegreeFiveToNineMinimumInput)
+    (hTen : V15DegreeTenRootDiscriminantInput)
+    (hEleven : V15DegreeElevenRootDiscriminantInput)
+    (c : GlobalLatticeClass)
+    (hE : c.IsClassicTraceEuclidean (c.degree : ℝ)) :
+    (c.rank, c.degree) ∈ v15ClassicAdmissiblePairs :=
+  v15_classic_pair_mem_of_degreeFourToEleven_closed
+    (v15_degreeFourToNineMinimumInput_of_hunterCertificate hFour hMin)
+    hTen hEleven c hE
+
+/-- Classic-table membership with the quartic source boundary reduced to an
+actual primitive Hunter generator and its normalized coefficient and strict
+upper-spread bounds. -/
+theorem v15_classic_pair_mem_of_degreeFourPrimitiveGenerator_closed
+    (hFour : V15DegreeFourPrimitiveGeneratorInput)
+    (hMin : V15DegreeFiveToNineMinimumInput)
+    (hTen : V15DegreeTenRootDiscriminantInput)
+    (hEleven : V15DegreeElevenRootDiscriminantInput)
+    (c : GlobalLatticeClass)
+    (hE : c.IsClassicTraceEuclidean (c.degree : ℝ)) :
+    (c.rank, c.degree) ∈ v15ClassicAdmissiblePairs :=
+  v15_classic_pair_mem_of_degreeFourHunterCertificate_closed
+    (v15_degree_four_hunterCertificate_of_primitiveGenerator hFour)
+    hMin hTen hEleven c hE
+
 /-- Membership in the manuscript's integral table, with only the degree-four
 through degree-eleven discriminant source inputs remaining. -/
 theorem v15_integral_pair_mem_of_degreeFourToEleven_closed
@@ -46,6 +104,36 @@ theorem v15_integral_pair_mem_of_degreeFourToEleven_closed
     (c.rank, c.degree) ∈ v15IntegralAdmissiblePairs :=
   v15_integral_pair_mem_of_hunterCertificate_closed
     v15_degree_three_hunterCertificate hMin hTen hEleven c hE
+
+/-- Integral-table membership with the quartic row represented by its Hunter
+certificate and exact-minimum data required only in degrees five through
+nine. -/
+theorem v15_integral_pair_mem_of_degreeFourHunterCertificate_closed
+    (hFour : V15DegreeFourHunterCertificateInput)
+    (hMin : V15DegreeFiveToNineMinimumInput)
+    (hTen : V15DegreeTenRootDiscriminantInput)
+    (hEleven : V15DegreeElevenRootDiscriminantInput)
+    (c : GlobalLatticeClass)
+    (hE : c.IsIntegralTraceEuclidean (c.degree : ℝ)) :
+    (c.rank, c.degree) ∈ v15IntegralAdmissiblePairs :=
+  v15_integral_pair_mem_of_degreeFourToEleven_closed
+    (v15_degreeFourToNineMinimumInput_of_hunterCertificate hFour hMin)
+    hTen hEleven c hE
+
+/-- Integral-table membership with the quartic source boundary reduced to an
+actual primitive Hunter generator and its normalized coefficient and strict
+upper-spread bounds. -/
+theorem v15_integral_pair_mem_of_degreeFourPrimitiveGenerator_closed
+    (hFour : V15DegreeFourPrimitiveGeneratorInput)
+    (hMin : V15DegreeFiveToNineMinimumInput)
+    (hTen : V15DegreeTenRootDiscriminantInput)
+    (hEleven : V15DegreeElevenRootDiscriminantInput)
+    (c : GlobalLatticeClass)
+    (hE : c.IsIntegralTraceEuclidean (c.degree : ℝ)) :
+    (c.rank, c.degree) ∈ v15IntegralAdmissiblePairs :=
+  v15_integral_pair_mem_of_degreeFourHunterCertificate_closed
+    (v15_degree_four_hunterCertificate_of_primitiveGenerator hFour)
+    hMin hTen hEleven c hE
 
 end
 

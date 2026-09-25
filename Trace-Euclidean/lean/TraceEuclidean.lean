@@ -33,6 +33,12 @@ import TraceEuclidean.V15HunterGeometry
 import TraceEuclidean.V15HunterNumberField
 import TraceEuclidean.V15DegreeThreeDiscriminant
 import TraceEuclidean.V15DegreeThreeHunterClosed
+import TraceEuclidean.V15DegreeFourDiscriminant
+import TraceEuclidean.V15QuarticPowerBasis
+import TraceEuclidean.V15QuarticGeneratorArithmetic
+import TraceEuclidean.V15QuarticGeneratorSpread
+import TraceEuclidean.V15QuarticHermite
+import TraceEuclidean.V15DegreeFourHunterReduction
 import TraceEuclidean.V15AnalyticTableBridge
 import TraceEuclidean.V15FieldTransport
 import TraceEuclidean.V15PropositionSixOne

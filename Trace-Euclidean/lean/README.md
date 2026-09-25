@@ -25,7 +25,8 @@ The v15 proof chain is organized as follows:
 | V15AdmissibleTables | Kernel-checked 24/63 finite tables, all rank/degree bound arrays, exact maxima, and quoted table consequences |
 | V15AnalyticTable, V15AnalyticTableBridge | Exact Gamma normalization of `H(n,d)`, proved rational enclosures, full 34 by 14 analytic-table equivalences, and the field-discriminant-to-table bridge |
 | V15HunterProjection, V15PrimitiveBasis, V15HunterNumberFieldProjection, V15CubicPowerBasis, V15CubicGeneratorArithmetic, V15CubicGeneratorSpread, V15DegreeThreeHunterClosed | Projected integer-ring covolume, primitive basis extension, Hunter generator, cubic trace and spread identities, positive-index discriminant relation, and the unconditional degree-three bound `|D_K| >= 49` |
-| V15SectionFourClosed | Final Section 4 table-membership interfaces with only the degree 4--11 field-discriminant source inputs remaining |
+| V15DegreeFourDiscriminant, V15QuarticPowerBasis, V15QuarticGeneratorArithmetic, V15QuarticGeneratorSpread, V15QuarticHermite, V15DegreeFourHunterReduction | Kernel-checked quartic coefficient normalization and finite enumeration, exact power-basis discriminant, irreducibility and positive-index bridges, automatic Hermite-minor positivity, and reduction of the degree-four bound to a primitive Hunter generator with explicit coefficient and spread bounds |
+| V15SectionFourClosed | Final Section 4 interfaces, including strengthened endpoints whose exact-minimum data begin in degree five and whose separate quartic premise is the primitive-generator reduction |
 
 The public classification endpoint is
 v15_rank_one_real_quadratic_classification_totally_positive. It quantifies
@@ -44,12 +45,16 @@ v15_integral_table_exact_global_maxima, and the associated row/column bound
 theorems. The endpoints v15_classic_analytic_grid_iff_mem and
 v15_integral_analytic_grid_iff_mem prove inside Lean that the exact analytic
 inequalities select the 24 and 63 rows throughout the complete finite grid.
-The class-level endpoints
+The compatibility endpoints
 v15_classic_pair_mem_of_degreeFourToEleven_closed and
-v15_integral_pair_mem_of_degreeFourToEleven_closed connect those equivalences
-to the remaining degree 4--9, degree 10, and degree 11 source inputs. Degrees
-one through three and the Table 4 range are proved internally. The public Python verifier
-independently replays the interval computation.
+v15_integral_pair_mem_of_degreeFourToEleven_closed retain the combined degree
+4--9 source input. The stronger
+v15_classic_pair_mem_of_degreeFourPrimitiveGenerator_closed and
+v15_integral_pair_mem_of_degreeFourPrimitiveGenerator_closed replace its
+degree-four row by an explicit primitive-generator premise; their exact-minimum
+data begin in degree five. Degrees one through three, all quartic algebra and
+finite arithmetic after that premise, and the Table 4 range are internal. The
+public Python verifier independently replays the interval computation.
 
 From this directory:
 

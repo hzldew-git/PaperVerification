@@ -1,5 +1,5 @@
 import TraceEuclidean.V15AnalyticTable
-import TraceEuclidean.V15DegreeThreeDiscriminant
+import TraceEuclidean.V15DegreeFourHunterReduction
 import TraceEuclidean.V15OdlyzkoBridge
 
 /-!
@@ -76,6 +76,42 @@ def V15DegreeFourToNineMinimumInput : Prop :=
     4 ≤ d → d ≤ 9 →
       (v15MinimumDiscriminant d : ℝ) ≤
         ((|K.discriminant| : ℤ) : ℝ)
+
+/-- The residual exact minimum-discriminant input in degrees five through
+nine, after reducing the quartic row to a normalized Hunter certificate. -/
+def V15DegreeFiveToNineMinimumInput : Prop :=
+  ∀ (K : CodedNumberField), NumberField.IsTotallyReal K.1 →
+    let d := Module.finrank ℚ K.1
+    5 ≤ d → d ≤ 9 →
+      (v15MinimumDiscriminant d : ℝ) ≤
+        ((|K.discriminant| : ℤ) : ℝ)
+
+/-- The quartic Hunter certificate and the residual degree-five to
+degree-nine source input imply the earlier degree-four to degree-nine
+interface. -/
+theorem v15_degreeFourToNineMinimumInput_of_hunterCertificate
+    (hHunter : V15DegreeFourHunterCertificateInput)
+    (hMin : V15DegreeFiveToNineMinimumInput) :
+    V15DegreeFourToNineMinimumInput := by
+  intro K hreal
+  dsimp only
+  intro hd4 hd9
+  by_cases hdegree : Module.finrank ℚ K.1 = 4
+  · simpa [hdegree, v15MinimumDiscriminant] using
+      v15_coded_degree_four_discriminant_ge_725_of_hunterCertificate
+        hHunter K hreal hdegree
+  · exact hMin K hreal (by omega) hd9
+
+/-- The residual primitive-generator input implies the degree-four Hunter
+certificate, so the exact minimum-discriminant table is needed only in
+degrees five through nine. -/
+theorem v15_degreeFourToNineMinimumInput_of_primitiveGenerator
+    (hGenerator : V15DegreeFourPrimitiveGeneratorInput)
+    (hMin : V15DegreeFiveToNineMinimumInput) :
+    V15DegreeFourToNineMinimumInput :=
+  v15_degreeFourToNineMinimumInput_of_hunterCertificate
+    (v15_degree_four_hunterCertificate_of_primitiveGenerator hGenerator)
+    hMin
 
 /-- The cubic Hunter certificate and the residual degree-four to degree-nine
 source input imply the earlier degree-three to degree-nine interface. -/

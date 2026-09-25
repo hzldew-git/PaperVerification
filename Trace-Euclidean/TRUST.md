@@ -134,15 +134,22 @@ integer-ring lattice, proves the quotient-covolume relation, obtains and lifts
 the Hunter short vector to a nonrational integral generator, identifies the
 conjugate spread, and proves the positive-index discriminant relation. Together
 with integral trace normalization and exact finite coefficient enumeration,
-this proves `|D_F| >= 49` internally. Degrees 4--9 use exact
+this proves `|D_F| >= 49` internally. In degree four, Lean proves trace
+normalization, the exact quartic power-basis and index discriminants,
+irreducibility, the centered-spread identity, and the bounded coefficient
+enumeration forcing discriminant 725. It also proves that the spread and third
+Hermite minor are positive from power-family linear independence. The remaining
+quartic premise is a primitive integral Hunter generator satisfying the explicit
+normalized coefficient and strict upper-spread bounds. Degrees 5--9 use exact
 minimum-discriminant data, degree 10 uses the
 absence of a totally real field with root discriminant at most 14, degree 11
 uses the later optimized bound 14.083, and Table 4 is required only from
 degree 12. The online November 1976 Table 2 gives 14.034 at degree 11, so the
-value 14.083 is explicitly kept separate from that table. These remaining
-degree 4--11 arithmetic source theorems remain external; all specialization,
-combination, analytic enclosure, and finite-grid classification steps are in
-Lean. Python and Wolfram provide independent computational checks.
+value 14.083 is explicitly kept separate from that table. The quartic
+generator premise and degree 5--11 arithmetic source theorems remain external;
+all subsequent specialization, combination, analytic enclosure, and
+finite-grid classification steps are in Lean. Python and Wolfram provide
+independent computational checks.
 
 Compilation and PASS counts do not certify the complete manuscript.
 The first-party [v15 semantic audit](docs/audit/v15/12_executive_summary.md)
