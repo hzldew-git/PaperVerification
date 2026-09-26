@@ -1,5 +1,15 @@
 # Reproducibility report
 
+- The all-row Voight irreducibility update passed a complete local 8,959-job
+  Lean build on the unchanged pinned Lean 4.32.1 toolchain. The 562-declaration
+  main axiom audit reports only `propext`, `Classical.choice`, and `Quot.sound`.
+  The 57-declaration numerical audit explicitly exposes the finite native
+  replays. Thirty-one Rabin batches prove 2,742 rows, four multi-prime batches
+  prove thirty exceptional rows, and seven modular checks support the final
+  degree-eight coefficient argument. All three Voight generators reproduce
+  their committed files exactly, and
+  `v15_allVoightPolynomialRows_irreducible` covers all 2,773 rows.
+
 - The exact Voight resultant-certificate update passed a complete local
   8920-job Lean build on the unchanged pinned Lean 4.32.1 toolchain. The
   557-declaration main axiom audit reports only `propext`,

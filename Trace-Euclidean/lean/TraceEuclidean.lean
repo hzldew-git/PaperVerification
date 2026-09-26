@@ -66,6 +66,7 @@ import TraceEuclidean.V15VoightDiscriminantData
 import TraceEuclidean.V15IntegralDeterminantCertificate
 import TraceEuclidean.V15DeterminantCertificate
 import TraceEuclidean.V15VoightResultantCertificates
+import TraceEuclidean.V15VoightAllIrreducible
 import TraceEuclidean.V15VoightPolynomialBridge
 import TraceEuclidean.V15VoightEnumerationBridge
 import TraceEuclidean.V15DegreeElevenSensitivity

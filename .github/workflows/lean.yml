@@ -35,7 +35,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          if git grep -n -E '(^|[^[:alpha:]])sorry([^[:alpha:]]|$)|sorryAx|^[[:space:]]*axiom[[:space:]]|native_decide|run_tac|^[[:space:]]*unsafe[[:space:]]|^[[:space:]]*extern[[:space:]]|implemented_by' -- 'Trace-Euclidean/lean/*.lean' 'Trace-Euclidean/lean/**/*.lean' ':(exclude)Trace-Euclidean/lean/LeanCert/**' ':(exclude)Trace-Euclidean/lean/TraceEuclidean/V15OdlyzkoNumerical.lean' ':(exclude)Trace-Euclidean/lean/TraceEuclidean/V15VoightDiscriminantData.lean' ':(exclude)Trace-Euclidean/lean/TraceEuclidean/V15VoightResultantCertificates/**'; then
+          if git grep -n -E '(^|[^[:alpha:]])sorry([^[:alpha:]]|$)|sorryAx|^[[:space:]]*axiom[[:space:]]|native_decide|run_tac|^[[:space:]]*unsafe[[:space:]]|^[[:space:]]*extern[[:space:]]|implemented_by' -- 'Trace-Euclidean/lean/*.lean' 'Trace-Euclidean/lean/**/*.lean' ':(exclude)Trace-Euclidean/lean/LeanCert/**' ':(exclude)Trace-Euclidean/lean/TraceEuclidean/V15OdlyzkoNumerical.lean' ':(exclude)Trace-Euclidean/lean/TraceEuclidean/V15VoightDiscriminantData.lean' ':(exclude)Trace-Euclidean/lean/TraceEuclidean/V15VoightResultantCertificates/**' ':(exclude)Trace-Euclidean/lean/TraceEuclidean/V15VoightIrreducibilityCertificates/**' ':(exclude)Trace-Euclidean/lean/TraceEuclidean/V15VoightIrreducibilityCertificates.lean' ':(exclude)Trace-Euclidean/lean/TraceEuclidean/V15VoightExceptionalIrreducibilityCertificates.lean' ':(exclude)Trace-Euclidean/lean/TraceEuclidean/V15VoightAllIrreducible.lean'; then
             echo 'Forbidden proof construct found.' >&2
             exit 1
           fi
@@ -45,7 +45,7 @@ jobs:
         run: |
           set -euo pipefail
           # These files use native_decide; its compiler trust is audited separately.
-          if git grep -n -E '^[[:space:]]*(sorry|axiom|unsafe|extern|run_tac)([[:space:]]|$)|sorryAx|implemented_by' -- 'Trace-Euclidean/lean/LeanCert/**/*.lean' 'Trace-Euclidean/lean/TraceEuclidean/V15OdlyzkoNumerical.lean' 'Trace-Euclidean/lean/TraceEuclidean/V15VoightDiscriminantData.lean' 'Trace-Euclidean/lean/TraceEuclidean/V15VoightResultantCertificates/**'; then
+          if git grep -n -E '^[[:space:]]*(sorry|axiom|unsafe|extern|run_tac)([[:space:]]|$)|sorryAx|implemented_by' -- 'Trace-Euclidean/lean/LeanCert/**/*.lean' 'Trace-Euclidean/lean/TraceEuclidean/V15OdlyzkoNumerical.lean' 'Trace-Euclidean/lean/TraceEuclidean/V15VoightDiscriminantData.lean' 'Trace-Euclidean/lean/TraceEuclidean/V15VoightResultantCertificates/**' 'Trace-Euclidean/lean/TraceEuclidean/V15VoightIrreducibilityCertificates/**' 'Trace-Euclidean/lean/TraceEuclidean/V15VoightIrreducibilityCertificates.lean' 'Trace-Euclidean/lean/TraceEuclidean/V15VoightExceptionalIrreducibilityCertificates.lean' 'Trace-Euclidean/lean/TraceEuclidean/V15VoightAllIrreducible.lean'; then
             echo 'Unfinished construct found in a numerical dependency.' >&2
             exit 1
           fi
@@ -97,8 +97,8 @@ jobs:
           source = Path('TraceEuclideanTest/NumericalAxiomAudit.lean').read_text(encoding='utf-8')
           output = ' '.join(Path('numerical-audit.log').read_text(encoding='utf-8').split())
           names = re.findall(r'^#print axioms\s+(\S+)', source, re.M)
-          if len(names) != 53:
-              raise SystemExit(f'Expected fifty-three numerical audit declarations, found {len(names)}')
+          if len(names) != 57:
+              raise SystemExit(f'Expected fifty-seven numerical audit declarations, found {len(names)}')
           standard = {'propext', 'Classical.choice', 'Quot.sound'}
           sinh = 'TraceEuclidean.V15OdlyzkoNumerical.sinh_core_upper._native.native_decide.ax_1_1'
           cosh = 'TraceEuclidean.V15OdlyzkoNumerical.cosh_core_upper._native.native_decide.ax_1_1'
@@ -135,8 +135,70 @@ jobs:
               expected[name] = standard | {sinh, cosh, gamma, scalar_a, scalar_b}
           expected[names[48]] = {voight_rows}
           expected[names[49]] = standard | voight_resultants
-          for name in names[50:]:
+          for name in names[50:53]:
               expected[name] = standard | {voight_rows} | voight_resultants
+
+          native = lambda theorem: (
+              'TraceEuclidean.' + theorem + '._native.native_decide.ax_1_1'
+          )
+          rabin_dir = Path('TraceEuclidean/V15VoightIrreducibilityCertificates')
+          rabin_checks = {
+              native(theorem)
+              for path in rabin_dir.glob('*.lean')
+              for theorem in re.findall(
+                  r'^theorem\s+(\S+_check)\s*:',
+                  path.read_text(encoding='utf-8'), re.M
+              )
+          }
+          umbrella_source = Path(
+              'TraceEuclidean/V15VoightIrreducibilityCertificates.lean'
+          ).read_text(encoding='utf-8')
+          regular_partitions = {
+              native(theorem)
+              for theorem in re.findall(
+                  r'^theorem\s+(\S+_rabin_irreducible)\s*:',
+                  umbrella_source, re.M
+              )
+          }
+          exceptional_source = Path(
+              'TraceEuclidean/V15VoightExceptionalIrreducibilityCertificates.lean'
+          ).read_text(encoding='utf-8')
+          multi_checks = {
+              native(theorem)
+              for theorem in re.findall(
+                  r'^theorem\s+(v15_voightMultiPrimeCertificates\S+_check)\s*:',
+                  exceptional_source, re.M
+              )
+          }
+          special_checks = {
+              native(theorem)
+              for theorem in re.findall(
+                  r'^theorem\s+(v15_voightSpecialEight\S+)\s*:',
+                  exceptional_source, re.M
+              )
+          }
+          exception_partitions = {
+              native(
+                  'v15_voightRabinExceptions' + degree + '_irreducible'
+              )
+              for degree in ('Six', 'Eight', 'Nine', 'Ten')
+          }
+          all_irreducibility = (
+              rabin_checks | regular_partitions | multi_checks |
+              special_checks | exception_partitions
+          )
+          expected[names[53]] = {
+              native('v15_allVoightPolynomialRows_length')
+          }
+          special_no_quartic = {
+              native('v15_voightSpecialEightFactorizationThree_valid'),
+              native('v15_voightSpecialEightFactorizationFive_valid'),
+              native('v15_voightSpecialEight_forces_constant_three'),
+              native('v15_voightSpecialEight_forces_constant_five'),
+          }
+          expected[names[54]] = standard | special_no_quartic
+          expected[names[55]] = standard | special_checks
+          expected[names[56]] = standard | all_irreducibility
           for name in names:
               match = re.search("'" + re.escape(name) + r"' depends on axioms: \[([^]]*)\]", output)
               if match is None:
@@ -149,13 +211,17 @@ jobs:
 
       - name: Validate archived Voight data and generated Lean source
         shell: bash
-        run: python Trace-Euclidean/tools/generate_voight_discriminant_data.py --check
+        run: |
+          set -euo pipefail
+          python -m pip install sympy==1.14.0 mpmath==1.3.0
+          python Trace-Euclidean/tools/generate_voight_discriminant_data.py --check
+          python Trace-Euclidean/tools/generate_voight_irreducibility_certificates.py --check
+          python Trace-Euclidean/tools/generate_voight_exception_irreducibility_certificates.py --check
 
       - name: Rerun public v15 Python certificates
         shell: bash
         run: |
           set -euo pipefail
-          python -m pip install sympy==1.14.0 mpmath==1.3.0
           python Trace-Euclidean/tools/verify_public_v15.py
 
       - name: Verify clean generated state

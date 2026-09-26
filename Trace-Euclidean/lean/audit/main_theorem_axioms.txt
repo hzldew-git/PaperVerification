@@ -3509,3 +3509,46 @@ TraceEuclidean.v15_voightPolynomialRow_structurallyValid_iff (degree : ℕ)
 'TraceEuclidean.v15VoightPolynomial_discr_eq_of_certificate' depends on axioms: [propext, Classical.choice, Quot.sound]
 'TraceEuclidean.v15_voightPolynomial_mem_box' depends on axioms: [propext, Classical.choice, Quot.sound]
 'TraceEuclidean.v15_voightPolynomialRow_structurallyValid_iff' depends on axioms: [propext, Quot.sound]
+TraceEuclidean.V15RabinIrreducibilityCertificate.reduced_irreducible_of_valid {degree : ℕ}
+  {row : TraceEuclidean.V15VoightPolynomialRow} {certificate : TraceEuclidean.V15RabinIrreducibilityCertificate}
+  (hvalid : TraceEuclidean.V15RabinIrreducibilityCertificate.Valid degree row certificate) :
+  Irreducible (Polynomial.map (Int.castRingHom (ZMod certificate.prime)) row.polynomial)
+TraceEuclidean.V15RabinIrreducibilityCertificate.irreducible_of_valid {degree : ℕ}
+  {row : TraceEuclidean.V15VoightPolynomialRow} {certificate : TraceEuclidean.V15RabinIrreducibilityCertificate}
+  (hvalid : TraceEuclidean.V15RabinIrreducibilityCertificate.Valid degree row certificate) : Irreducible row.polynomial
+TraceEuclidean.V15ModularFactorizationCertificate.exists_signature_submultiset_of_valid_and_dvd
+  {sourceDegree factorDegree : ℕ} {row : TraceEuclidean.V15VoightPolynomialRow}
+  {certificate : TraceEuclidean.V15ModularFactorizationCertificate}
+  (hvalid : TraceEuclidean.V15ModularFactorizationCertificate.Valid sourceDegree row certificate)
+  {divisor : Polynomial ℤ} (hdivisorMonic : divisor.Monic) (hdivisorDegree : divisor.natDegree = factorDegree)
+  (hdivides : divisor ∣ row.polynomial) :
+  ∃ signatureSubset ≤ certificate.factorSignatures,
+    (Multiset.map Prod.fst signatureSubset).sum = factorDegree ∧
+      (Multiset.map Prod.snd signatureSubset).prod = ↑(divisor.coeff 0)
+TraceEuclidean.V15ModularFactorizationCertificate.constantCoeff_mod_eq_of_valid_and_forcesConstantResidue
+  {sourceDegree factorDegree : ℕ} {row : TraceEuclidean.V15VoightPolynomialRow}
+  {certificate : TraceEuclidean.V15ModularFactorizationCertificate} {residue : ZMod certificate.prime}
+  (hvalid : TraceEuclidean.V15ModularFactorizationCertificate.Valid sourceDegree row certificate)
+  (hforces : certificate.forcesConstantResidue factorDegree residue = true) {divisor : Polynomial ℤ}
+  (hdivisorMonic : divisor.Monic) (hdivisorDegree : divisor.natDegree = factorDegree)
+  (hdivides : divisor ∣ row.polynomial) : ↑(divisor.coeff 0) = residue
+TraceEuclidean.V15ModularFactorizationCertificate.not_dvd_of_valid_and_excludesDegree {sourceDegree factorDegree : ℕ}
+  {row : TraceEuclidean.V15VoightPolynomialRow} {certificate : TraceEuclidean.V15ModularFactorizationCertificate}
+  (hvalid : TraceEuclidean.V15ModularFactorizationCertificate.Valid sourceDegree row certificate)
+  (hexcludes : certificate.excludesDegree row factorDegree = true) {divisor : Polynomial ℤ}
+  (hdivisorMonic : divisor.Monic) (hdivisorDegree : divisor.natDegree = factorDegree) : ¬divisor ∣ row.polynomial
+'TraceEuclidean.V15RabinIrreducibilityCertificate.reduced_irreducible_of_valid' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'TraceEuclidean.V15RabinIrreducibilityCertificate.irreducible_of_valid' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'TraceEuclidean.V15ModularFactorizationCertificate.exists_signature_submultiset_of_valid_and_dvd' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'TraceEuclidean.V15ModularFactorizationCertificate.constantCoeff_mod_eq_of_valid_and_forcesConstantResidue' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'TraceEuclidean.V15ModularFactorizationCertificate.not_dvd_of_valid_and_excludesDegree' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

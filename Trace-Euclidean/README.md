@@ -46,6 +46,8 @@ From this directory in PowerShell:
 
 ~~~powershell
 & 'D:\AI-Workspace\Environments\Python\math-research\Scripts\python.exe' '.\tools\generate_voight_discriminant_data.py' --check
+& 'D:\AI-Workspace\Environments\Python\math-research\Scripts\python.exe' '.\tools\generate_voight_irreducibility_certificates.py' --check
+& 'D:\AI-Workspace\Environments\Python\math-research\Scripts\python.exe' '.\tools\generate_voight_exception_irreducibility_certificates.py' --check
 & 'D:\AI-Workspace\Environments\Python\math-research\Scripts\python.exe' '.\tools\verify_public_v15.py'
 & 'C:\Program Files\Wolfram Research\WolframScript\wolframscript.exe' -file '.\checks\v15_classification.wls'
 & 'C:\Program Files\Wolfram Research\WolframScript\wolframscript.exe' -file '.\checks\voight_polynomial_integrity.wls'
@@ -166,9 +168,14 @@ and the final rank-twelve consequence. The public Python and Wolfram runs are
     earlier sharp-Hermite and relative-different interfaces remain available
     as compatibility reductions.
     All 2,773 archived Voight degree 5--10 polynomial rows are hash checked,
-    imported, and structurally certified. Python and Mathematica independently
-    verify irreducibility, total reality, the discriminant-index relation, and
-    field discriminants. In degrees five and seven, Lean proves coordinatewise
+    imported, and structurally certified. Lean proves that every defining
+    polynomial is irreducible over the integers. Generated Rabin certificates
+    handle 2,742 rows; complete modular factorizations at several primes handle
+    thirty more; and the remaining degree-eight polynomial is closed by two
+    modular factorizations and a kernel-checked integer coefficient argument.
+    Python and Mathematica independently verify irreducibility, total reality,
+    the discriminant-index relation, and field discriminants. In degrees five
+    and seven, Lean proves coordinatewise
     bounds for every coefficient, fixes the
     monic coefficient, and incorporates the exact normalized trace and second
     coefficient intervals. The resulting executable boxes have exact sizes
@@ -189,7 +196,8 @@ and the final rank-twelve consequence. The public Python and Wolfram runs are
     degree-ten exclusion from one explicit source-facing premise
     asserting completeness of Voight's enumeration through root discriminant
     14. Exhausting those finite boxes, proving the enumeration completeness,
-    treating the composite degrees, and the optimized degree-eleven bound
+    verifying maximal orders and duplicate fields, treating the composite
+    degrees, and the optimized degree-eleven bound
     14.083 remain external mathematical inputs.
     Lean checks that the
     weaker online Table 2 value 14.034 would add the integral-table cell

@@ -14,6 +14,8 @@ From Trace-Euclidean:
 
 ~~~powershell
 & 'D:\AI-Workspace\Environments\Python\math-research\Scripts\python.exe' '.\tools\generate_voight_discriminant_data.py' --check
+& 'D:\AI-Workspace\Environments\Python\math-research\Scripts\python.exe' '.\tools\generate_voight_irreducibility_certificates.py' --check
+& 'D:\AI-Workspace\Environments\Python\math-research\Scripts\python.exe' '.\tools\generate_voight_exception_irreducibility_certificates.py' --check
 & 'D:\AI-Workspace\Environments\Python\math-research\Scripts\python.exe' '.\tools\verify_public_v15.py'
 & 'C:\Program Files\Wolfram Research\WolframScript\wolframscript.exe' -file '.\checks\v15_classification.wls'
 & 'C:\Program Files\Wolfram Research\WolframScript\wolframscript.exe' -file '.\checks\voight_polynomial_integrity.wls'
@@ -36,16 +38,18 @@ From Trace-Euclidean/lean:
 & 'C:\Users\hzlde\.elan\bin\lake.exe' env lean '.\TraceEuclideanTest\NumericalAxiomAudit.lean'
 ~~~
 
-The generator check validates all six archived Voight file digests and
-structures, checks the degree-ten first discriminant against `14^10`, and
-confirms that the committed Lean data file is current. The first Lean
+The generator checks validate all six archived Voight file digests and
+structures, check the degree-ten first discriminant against `14^10`, and
+confirm that the committed Lean data and irreducibility certificate files are
+current. The first Lean
 command is needed only on a fresh checkout. The build and audit
 commands must exit successfully. Compare the axiom report with
 lean/audit/main_theorem_axioms.txt; the main v15 declarations should
 list only subsets of propext, Classical.choice, and Quot.sound. The numerical
 audit separately identifies the generated `_native.native_decide.ax_*`
-dependencies in LeanCert's interval and Euler–Mascheroni checks and in the two
-Voight finite-data certificates. On resource-limited Windows systems, set
+dependencies in LeanCert's interval and Euler–Mascheroni checks, the Voight
+finite-data and resultant certificates, and the Voight irreducibility
+certificate replays. On resource-limited Windows systems, set
 LEAN_NUM_THREADS to 4.
 
 ## Private maintainer source check

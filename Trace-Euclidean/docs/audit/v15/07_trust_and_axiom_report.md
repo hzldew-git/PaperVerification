@@ -67,6 +67,16 @@ replay all 2,773 exact resultants and close
 dependencies are listed separately by the numerical audit; the generic
 determinant and polynomial theorems remain in the kernel-only audit.
 
+Lean also proves all 2,773 archived defining polynomials irreducible over the
+integers. Thirty-one generated Rabin batches cover 2,742 rows, four generated
+multi-prime factorization batches cover thirty exceptional rows, and seven
+finite modular checks support the remaining degree-eight coefficient argument.
+Six regular-list partitions and four exception-list identifications are also
+checked by `native_decide`. Thus the final all-row irreducibility theorem has
+fifty-two explicitly printed native dependencies. The generic Rabin criterion,
+complete-factorization semantics, divisor-signature bridge, and final integer
+coefficient deductions use only the standard Lean logical axioms.
+
 ## Remaining external mathematics
 
 Degrees one and two are proved internally. For degree two, Lean proves that
@@ -90,8 +100,8 @@ as compatibility interfaces and are not dependencies of the strongest
 endpoint. Section 4 now derives the degree `5`--`9` minima and degree-ten
 exclusion from checked Voight columns and one source-facing completeness
 premise for the enumeration through root discriminant `14`. The full archived
-polynomial rows, power-order indices, and independent arithmetic checks are
-also public. The coefficient-discriminant interface is closed by the proved
+  polynomial rows, power-order indices, their Lean irreducibility theorem, and
+  independent arithmetic checks are also public. The coefficient-discriminant interface is closed by the proved
 checker and disclosed finite certificate computations. The
 enumeration-completeness proof itself and the optimized degree-eleven bound
 `14.083` remain. The online

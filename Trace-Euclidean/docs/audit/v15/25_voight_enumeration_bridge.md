@@ -32,6 +32,22 @@ resultant replays, and the umbrella module
 so the pinned build does not materialize every large certificate module at
 once. `--check` verifies the exact generated file set and contents.
 
+`tools/generate_voight_irreducibility_certificates.py` generates thirty-one
+single-prime Rabin certificate modules for 2,742 rows. Each certificate records
+the finite-field Frobenius remainders, quotient identities, and Bezout
+identities required by Rabin's criterion. The generic Lean proof derives
+irreducibility of the integer polynomial from any valid certificate.
+
+The remaining thirty-one rows have no suitable full-cycle reduction at one
+small prime. `tools/generate_voight_exception_irreducibility_certificates.py`
+uses certified complete factorizations at several primes to exclude every
+proper factor degree for thirty of them. For the final degree-eight polynomial,
+the reductions modulo `3` and `5` force the constant coefficient of a possible
+quartic factor to be `4`; direct coefficient comparison then gives three
+integer Diophantine contradictions. Consequently
+`v15_allVoightPolynomialRows_irreducible` proves irreducibility of all 2,773
+archived defining polynomials over the integers.
+
 The independent Mathematica script `voight_polynomial_integrity.wls` checks
 all 2,773 polynomials are irreducible and totally real, recomputes the
 polynomial-discriminant index equation, and verifies the number-field
@@ -62,7 +78,7 @@ directly. The bound itself remains an explicit literature premise.
 The stored data do not prove that Voight's search found every field. A fully
 internal proof would need the search completeness argument, including the
 exact polynomial enumeration from the proved prime-degree coefficient bounds,
-irreducibility and maximal-order checks, duplicate-field control, and the
+maximal-order checks, duplicate-field control, and the
 relative enumeration and coefficient bounds needed for imprimitive composite
 extensions.
 
@@ -87,8 +103,9 @@ finite Bareiss certificates for all 2,773 rows. Their umbrella theorem closes
 proves unconditionally, relative to the imported table data, that every
 structurally valid archived row belongs to the exact indexed Hunter filter.
 Python and Mathematica remain independent checks of every concrete instance;
-Mathematica additionally checks irreducibility, total reality, and the actual
-field discriminant.
+Mathematica additionally checks total reality and the actual field
+discriminant, and independently repeats the now-formalized irreducibility
+calculation.
 
 ## Hunter groundwork
 
@@ -161,12 +178,14 @@ than the cubic and quartic searches already formalized.
 
 ## Trust and status
 
-The generic Hunter, determinant, resultant, discriminant, and full-row bridge
-proofs use only the standard Lean logical axioms reported by the main audit.
-The two Voight data certificates and thirty-one resultant replay certificates
-add thirty-three separately disclosed native compiler dependencies and are
-isolated in the numerical audit. The Mathematica full-row verification is an
-independent computer-algebra check. Enumeration completeness remains a
+The generic Hunter, determinant, resultant, discriminant, irreducibility, and
+full-row bridge proofs use only the standard Lean logical axioms reported by
+the main audit. The two Voight data certificates, thirty-one resultant replay
+certificates, and generated finite irreducibility replays add separately
+disclosed native compiler dependencies and are isolated in the numerical
+audit. The generic finite-field implications and the exceptional integer
+coefficient argument are kernel checked. The Mathematica full-row verification
+is an independent computer-algebra check. Enumeration completeness remains a
 literature input, while the optimized degree-eleven bound remains a separate
 literature input. These boundaries preserve the current Grade B and
 PROVISIONAL_MATCH assessments.

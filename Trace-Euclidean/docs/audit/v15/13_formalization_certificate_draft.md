@@ -42,8 +42,11 @@ the projected Minkowski construction, transverse second-vector selection,
 quartic normalization and order maximality, and the quadratic-subfield
 compositum contradiction, yielding the unconditional bound `|D_K| >= 725`.
 All 2,773 degree 5--10 Voight polynomial rows are imported and structurally
-checked. Python and Mathematica independently verify their irreducibility,
-total reality, discriminant-index equations, and field discriminants. Lean
+checked. Lean proves every defining polynomial irreducible over the integers
+using generated Rabin and multi-prime certificates and one exceptional
+coefficient argument. Python and Mathematica independently verify their
+irreducibility, total reality, discriminant-index equations, and field
+discriminants. Lean
 proves an exact Bareiss determinant checker and the
 Sylvester/resultant/discriminant bridge. Thirty-one generated
 `native_decide` chunks replay every archived resultant and close the exact
@@ -62,8 +65,9 @@ The analytic contour core depends only on Lean's standard logical axioms
 `sorry`, `sorryAx`, or a project axiom. The strict `A = 36.347` and
 `B = 16.593` certificate uses `native_decide`; its five generated native
 dependencies form a separately disclosed compiler trust boundary. The two
-Voight finite-data certificates and thirty-one Voight resultant certificates
-add thirty-three separately audited native dependencies.
+Voight finite-data certificates, thirty-one Voight resultant certificates,
+and the generated finite-field irreducibility replays add separately audited
+native dependencies.
 
 Python and Wolfram checks trust their respective runtimes and the extracted
 inputs. Private source binding checks the author-source hash. Successful

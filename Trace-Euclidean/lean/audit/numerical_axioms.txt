@@ -253,6 +253,12 @@ TraceEuclidean.v15_voightPolynomialRow_mem_indexedDiscriminantBox {degree : ℕ}
   {row : TraceEuclidean.V15VoightPolynomialRow} (hrow : row ∈ TraceEuclidean.v15VoightPolynomialRows degree) :
   (row.polynomial, row.index) ∈
     TraceEuclidean.v15IndexedDiscriminantBox (TraceEuclidean.v15VoightPolynomialBox degree) ↑row.fieldDiscriminant
+TraceEuclidean.v15_allVoightPolynomialRows_length : TraceEuclidean.v15AllVoightPolynomialRows.length = 2773
+TraceEuclidean.v15_voightSpecialEight_no_quartic_divisor {divisor : Polynomial ℤ} (hdivisorMonic : divisor.Monic)
+  (hdivisorDegree : divisor.natDegree = 4) : ¬divisor ∣ TraceEuclidean.v15VoightSpecialEightRow.polynomial
+TraceEuclidean.v15_voightSpecialEight_irreducible : Irreducible TraceEuclidean.v15VoightSpecialEightRow.polynomial
+TraceEuclidean.v15_allVoightPolynomialRows_irreducible (row : TraceEuclidean.V15VoightPolynomialRow) :
+  row ∈ TraceEuclidean.v15AllVoightPolynomialRows → Irreducible row.polynomial
 'TraceEuclidean.v15OdlyzkoSinhIntegrand_integrableOn' depends on axioms: [propext, Classical.choice, Quot.sound]
 'TraceEuclidean.v15OdlyzkoSinhIntegral_zero_hundredth_le' depends on axioms: [propext, Classical.choice, Quot.sound]
 'TraceEuclidean.v15OdlyzkoSinhIntegral_tail_le' depends on axioms: [propext, Classical.choice, Quot.sound]
@@ -724,3 +730,76 @@ TraceEuclidean.v15_voightPolynomialRow_mem_indexedDiscriminantBox {degree : ℕ}
  TraceEuclidean.v15_voightPolynomialRowsTenChunk5_resultant_certificate._native.native_decide.ax_1_1,
  TraceEuclidean.v15_voightPolynomialRowsTenChunk6_resultant_certificate._native.native_decide.ax_1_1,
  TraceEuclidean.v15_voightPolynomialRowsTenChunk7_resultant_certificate._native.native_decide.ax_1_1]
+'TraceEuclidean.v15_allVoightPolynomialRows_length' depends on axioms: [TraceEuclidean.v15_allVoightPolynomialRows_length._native.native_decide.ax_1_1]
+'TraceEuclidean.v15_voightSpecialEight_no_quartic_divisor' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ TraceEuclidean.v15_voightSpecialEightFactorizationFive_valid._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightSpecialEightFactorizationThree_valid._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightSpecialEight_forces_constant_five._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightSpecialEight_forces_constant_three._native.native_decide.ax_1_1]
+'TraceEuclidean.v15_voightSpecialEight_irreducible' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ TraceEuclidean.v15_voightSpecialEightFactorizationFive_valid._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightSpecialEightFactorizationThree_valid._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightSpecialEight_excludes_degree_1._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightSpecialEight_excludes_degree_2._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightSpecialEight_excludes_degree_3._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightSpecialEight_forces_constant_five._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightSpecialEight_forces_constant_three._native.native_decide.ax_1_1]
+'TraceEuclidean.v15_allVoightPolynomialRows_irreducible' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ TraceEuclidean.v15_voightMultiPrimeCertificatesEight_check._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightMultiPrimeCertificatesNine_check._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightMultiPrimeCertificatesSix_check._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightMultiPrimeCertificatesTen_check._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightPolynomialRowsEight_rabin_irreducible._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightPolynomialRowsFive_rabin_irreducible._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightPolynomialRowsNine_rabin_irreducible._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightPolynomialRowsSeven_rabin_irreducible._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightPolynomialRowsSix_rabin_irreducible._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightPolynomialRowsTen_rabin_irreducible._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightRabinCertificatesEightChunk0Part0_check._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightRabinCertificatesEightChunk1Part0_check._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightRabinCertificatesFiveChunk0Part0_check._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightRabinCertificatesFiveChunk1Part0_check._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightRabinCertificatesFiveChunk2Part0_check._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightRabinCertificatesFiveChunk3Part0_check._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightRabinCertificatesFiveChunk4Part0_check._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightRabinCertificatesFiveChunk5Part0_check._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightRabinCertificatesFiveChunk6Part0_check._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightRabinCertificatesNineChunk0Part0_check._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightRabinCertificatesSevenChunk0Part0_check._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightRabinCertificatesSevenChunk1Part0_check._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightRabinCertificatesSevenChunk2Part0_check._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightRabinCertificatesSevenChunk3Part0_check._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightRabinCertificatesSixChunk0Part0_check._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightRabinCertificatesSixChunk1Part0_check._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightRabinCertificatesSixChunk2Part0_check._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightRabinCertificatesSixChunk3Part0_check._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightRabinCertificatesSixChunk4Part0_check._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightRabinCertificatesSixChunk5Part0_check._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightRabinCertificatesSixChunk6Part0_check._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightRabinCertificatesSixChunk7Part0_check._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightRabinCertificatesSixChunk8Part0_check._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightRabinCertificatesTenChunk0Part0_check._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightRabinCertificatesTenChunk1Part0_check._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightRabinCertificatesTenChunk2Part0_check._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightRabinCertificatesTenChunk3Part0_check._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightRabinCertificatesTenChunk4Part0_check._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightRabinCertificatesTenChunk5Part0_check._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightRabinCertificatesTenChunk6Part0_check._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightRabinCertificatesTenChunk7Part0_check._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightRabinExceptionsEight_irreducible._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightRabinExceptionsNine_irreducible._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightRabinExceptionsSix_irreducible._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightRabinExceptionsTen_irreducible._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightSpecialEightFactorizationFive_valid._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightSpecialEightFactorizationThree_valid._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightSpecialEight_excludes_degree_1._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightSpecialEight_excludes_degree_2._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightSpecialEight_excludes_degree_3._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightSpecialEight_forces_constant_five._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightSpecialEight_forces_constant_three._native.native_decide.ax_1_1]

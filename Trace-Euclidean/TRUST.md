@@ -4,11 +4,10 @@ Lean accepts the encoded proof terms under Lean 4.32.1 and pinned mathlib
 revision 520045ab14e26149ee970e2e617ca04b09bde5d6. The audited endpoints depend
 only on the standard logical axioms propext,
 Classical.choice, and Quot.sound. The archimedean numerical certificate, the
-two imported Voight table-data certificates, and thirty-one generated Voight
-resultant certificates use `native_decide` checks and therefore also trust
-Lean's native compiler. The separate numerical axiom audit identifies the five
-generated Odlyzko dependencies, the two generated Voight-data dependencies,
-and the thirty-one resultant-certificate dependencies.
+two imported Voight table-data certificates, the thirty-one generated Voight
+resultant certificates, and the generated finite-field irreducibility replays
+use `native_decide` checks and therefore also trust Lean's native compiler.
+The separate numerical axiom audit prints these dependencies explicitly.
 The delivered proof modules contain no sorry, sorryAx, or project axiom.
 
 The global finite-class results now receive an internally constructed
@@ -148,8 +147,15 @@ relative-different interfaces remain available only as compatibility routes.
 The archived Voight tables supply the complete degree 5--10 defining
 polynomial rows and the degree 5--9 discriminant columns. Their hashes, row
 structure, counts, first entries, sorted order, positive indices, and column
-projections are checked. Python uses an exact Bareiss determinant and
-Mathematica independently verifies irreducibility, total reality, the
+projections are checked. Lean proves all 2,773 defining polynomials
+irreducible over the integers. Thirty-one single-prime Rabin batches cover
+2,742 rows. Four complete-factorization batches at several small primes cover
+thirty exceptional rows. Two modular factorizations and a kernel-checked
+coefficient argument close the remaining degree-eight row. The generic Rabin,
+factorization, divisor-signature, and coefficient implications are ordinary
+Lean theorems; only the generated finite replays and list partitions use the
+disclosed native compiler boundary. Python uses an exact Bareiss determinant
+and Mathematica independently verifies irreducibility, total reality, the
 polynomial-discriminant index equation, and the number-field discriminant for
 all 2,773 rows. Lean proves the surrounding determinant semantics: a strict
 integer Bareiss row-operation checker agrees with matrix row operations, its

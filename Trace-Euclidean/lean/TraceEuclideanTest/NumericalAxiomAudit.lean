@@ -1,5 +1,6 @@
 import TraceEuclidean.V15SectionFourVoightClosed
 import TraceEuclidean.V15VoightPolynomialBridge
+import TraceEuclidean.V15VoightAllIrreducible
 
 /-! Explicit audit of the native interval-checking trust boundary. -/
 
@@ -52,6 +53,10 @@ import TraceEuclidean.V15VoightPolynomialBridge
 #check TraceEuclidean.v15_voightPolynomialDiscriminantInput
 #check TraceEuclidean.v15_voightPolynomialRow_mem_indexedDiscriminantBox_of_valid
 #check TraceEuclidean.v15_voightPolynomialRow_mem_indexedDiscriminantBox
+#check TraceEuclidean.v15_allVoightPolynomialRows_length
+#check TraceEuclidean.v15_voightSpecialEight_no_quartic_divisor
+#check TraceEuclidean.v15_voightSpecialEight_irreducible
+#check TraceEuclidean.v15_allVoightPolynomialRows_irreducible
 
 #print axioms TraceEuclidean.v15OdlyzkoSinhIntegrand_integrableOn
 #print axioms TraceEuclidean.v15OdlyzkoSinhIntegral_zero_hundredth_le
@@ -106,3 +111,7 @@ import TraceEuclidean.V15VoightPolynomialBridge
 #print axioms TraceEuclidean.v15_voightPolynomialDiscriminantInput
 #print axioms TraceEuclidean.v15_voightPolynomialRow_mem_indexedDiscriminantBox_of_valid
 #print axioms TraceEuclidean.v15_voightPolynomialRow_mem_indexedDiscriminantBox
+#print axioms TraceEuclidean.v15_allVoightPolynomialRows_length
+#print axioms TraceEuclidean.v15_voightSpecialEight_no_quartic_divisor
+#print axioms TraceEuclidean.v15_voightSpecialEight_irreducible
+#print axioms TraceEuclidean.v15_allVoightPolynomialRows_irreducible
