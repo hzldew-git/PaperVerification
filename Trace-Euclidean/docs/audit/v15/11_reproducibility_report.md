@@ -1,5 +1,20 @@
 # Reproducibility report
 
+- The Voight and degree-eleven boundary update passed a full local 8878-job
+  Lean build under the pinned Lean 4.32.1 and mathlib v4.32.1 toolchain. The
+  498-declaration main axiom audit reports only subsets of `propext`,
+  `Classical.choice`, and `Quot.sound`. The separate 47-declaration numerical
+  audit exposes exactly the five documented Odlyzko `native_decide`
+  dependencies and one separately identified Voight finite-data certificate.
+  Archived degree 5--10 tables pass hash and structural checks; Lean checks
+  the imported degree 5--9 counts and order and reduces their minima plus the
+  degree-ten exclusion to one source-facing completeness premise. The new
+  general Hunter bridge closes the reusable geometric front end. Lean also
+  proves that 14.034 admits the extra integral-table cell `(2,11)`, while
+  14.083 excludes it. Public reruns produced 1156 Python PASS and 115 Wolfram
+  PASS with zero failures. Both forbidden-construct scans and the Voight
+  generator check passed. The manuscript guard inspected 298 files and
+  passed.
 - The unconditional quartic-selection update passed a full local 8870-job
   Lean build under the pinned Lean 4.32.1 and mathlib v4.32.1 toolchain. The
   494-declaration main axiom audit and the separate 32-declaration numerical

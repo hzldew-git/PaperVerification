@@ -4,11 +4,12 @@ Frozen author source SHA-256:
 83a236e93648ce0802f8a0d3022de63710d089f3a4f7e61214a4c855459597b5.
 The manuscript is excluded from this public repository.
 
-The complete pinned Lean build passes. The v15 public Python and Wolfram
-reruns pass 1156 and 115 checks, respectively; private source-bound reruns
-pass 1165 and 112 checks. The 193 previously audited main Lean endpoints use
-only standard logical axioms. The new numerical certificate separately uses
-`native_decide`, with its compiler trust disclosed in TRUST.md.
+The complete pinned 8878-job Lean build passes. The v15 public Python and
+Wolfram reruns pass 1156 and 115 checks, respectively; private source-bound
+reruns pass 1165 and 112 checks. The current 498-declaration main audit uses
+only subsets of the standard logical axioms. The 47-declaration numerical
+audit separately identifies five Odlyzko and one Voight `native_decide`
+dependencies, with their compiler trust disclosed in TRUST.md.
 Formalization commit 741dc24 passed the [fresh GitHub Actions Lean, Python,
 and 95-endpoint axiom run](https://github.com/hzldew-git/PaperVerification/actions/runs/35542188896)
 and the [manuscript-exclusion run](https://github.com/hzldew-git/PaperVerification/actions/runs/35542188716).
@@ -90,11 +91,19 @@ the subfields; unequal discriminants are coprime and force quartic
 discriminant `1600`. Both cases contradict the construction. Hence
 `v15_coded_degree_four_discriminant_ge_725` is unconditional and no quartic
 source boundary remains. The sharp-Hermite and relative-different routes stay
-in the project as compatibility reductions. Exact minima for degrees 5--9, the degree-ten
-exclusion, the optimized degree-eleven bound, selected supporting lemmas, and
-independent semantic sign-off remain outside the current signed scope. The
-strict tabulated-constant inequalities use a
-disclosed native-compiler trust boundary for the interval certificates.
+in the project as compatibility reductions. Voight's archived degree 5--9
+discriminant columns are now hash checked, validated, imported, and certified
+in Lean. One source-facing statement retains the completeness of Voight's
+enumeration through root discriminant 14; it implies both the degree 5--9
+minima and the degree-ten exclusion. The optimized degree-eleven bound, a
+Lean proof of Voight enumeration completeness, selected supporting lemmas,
+and independent semantic sign-off remain outside the current signed scope.
+The source-facing degree-at-least-eleven formulation is connected to the
+exact Section 4 premise in Lean, and a separate exact check proves that the
+weaker online Table 2 value 14.034 would add the integral-table cell `(2,11)`.
+The strict tabulated-constant inequalities use a disclosed native-compiler
+trust boundary for the interval certificates and the Voight finite-data
+certificate.
 
 Start with [README.md](README.md), [THEOREM_INDEX.md](THEOREM_INDEX.md),
 and the [v15 audit](docs/audit/v15/12_executive_summary.md).

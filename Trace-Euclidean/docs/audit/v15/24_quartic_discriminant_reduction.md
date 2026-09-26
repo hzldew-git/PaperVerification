@@ -205,8 +205,9 @@ v15_classic_pair_mem_of_degreeFiveToEleven_closed
 v15_integral_pair_mem_of_degreeFiveToEleven_closed.
 ```
 
-They prove all degree-one through degree-four rows internally. Their remaining
-source premises are the exact minima in degrees five through nine, the
-degree-ten exclusion, and the optimized degree-eleven bound. The quartic
+They prove all degree-one through degree-four rows internally. After the
+Voight finite-data bridge, their remaining source premises are completeness
+of Voight's enumeration through root discriminant 14 for degrees five through
+ten and the optimized degree-eleven bound. The quartic
 selection and lower-bound theorems add no compiler trust boundary; their axiom
 reports contain only `propext`, `Classical.choice`, and `Quot.sound`.

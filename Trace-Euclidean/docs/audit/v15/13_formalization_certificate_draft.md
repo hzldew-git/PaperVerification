@@ -41,7 +41,13 @@ four and the range from degree twelve are internal. In degree four, Lean proves
 the projected Minkowski construction, transverse second-vector selection,
 quartic normalization and order maximality, and the quadratic-subfield
 compositum contradiction, yielding the unconditional bound `|D_K| >= 725`.
-The remaining cited exact-minimum data begin in degree five.
+The degree 5--9 Voight columns are imported and checked. Their use and the
+degree-ten exclusion are reduced to one cited enumeration-completeness
+statement; the optimized degree-eleven bound remains a separate input.
+The latter is stated in the all-degrees form quoted by Voight and specialized
+to Section 4 in Lean. An exact sensitivity theorem proves that the online
+Table 2 value `14.034` would add the integral-table cell `(2,11)`, while the
+manuscript's `14.083` excludes it.
 
 ## Trust
 
@@ -49,7 +55,8 @@ The analytic contour core depends only on Lean's standard logical axioms
 `propext`, `Classical.choice`, and `Quot.sound`. No checked `.lean` source uses
 `sorry`, `sorryAx`, or a project axiom. The strict `A = 36.347` and
 `B = 16.593` certificate uses `native_decide`; its five generated native
-dependencies form a separately disclosed compiler trust boundary.
+dependencies form a separately disclosed compiler trust boundary. The
+Voight finite-data certificate adds one separately audited native dependency.
 
 Python and Wolfram checks trust their respective runtimes and the extracted
 inputs. Private source binding checks the author-source hash. Successful
@@ -58,7 +65,8 @@ compilation and computation do not by themselves certify semantic fidelity.
 ## Exclusions
 
 The certificate excludes independent human approval, historical and novelty
-claims, the cited degree `5`--`11` field-discriminant estimates, the
+claims, a Lean proof of Voight enumeration completeness, the optimized
+degree-eleven field-discriminant estimate, the
 optional sharper HSW numerical zero-count theorem, and selected standalone
 supporting lemmas that are not needed by the audited endpoints. It does not
 claim a general reusable Stark--Weil theorem for arbitrary test functions;

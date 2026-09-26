@@ -84,9 +84,9 @@ The old single premise for degrees at most eleven is now decomposed by source:
   third-Hermite-minor positivity, irreducibility, the exact positive-index
   discriminant relation, and the complete finite enumeration forcing
   polynomial discriminant `725`;
-- degrees 5--9 use exact minimum-discriminant data;
-- degree 10 uses the absence of totally real degree-ten fields with root
-  discriminant at most 14;
+- degrees 5--9 use the checked Voight discriminant columns together with one
+  source-facing completeness statement for the enumeration;
+- degree 10 follows from the same completeness statement and the empty list;
 - degree 11 uses the optimized unconditional bound `delta_F > 14.083`.
 
 John Voight's
@@ -101,8 +101,10 @@ There is a source distinction that must remain visible.  The online
 which the description says is derived from Table 4, lists `14.034` at degree
 11.  It does not by itself justify the `14.083` constant in v15.  The latter
 must be cited to the later optimized Odlyzko--Martinet tables, as Voight does,
-or replaced in the manuscript by a bound directly derived from the online
-1976 table after rechecking the Section 4 computation.
+or the Section 4 table must be changed. Lean now performs the decisive
+sensitivity check: `14.034` admits the extra integral cell `(2,11)`, whereas
+`14.083` excludes it. See
+[`26_degree_eleven_boundary.md`](26_degree_eleven_boundary.md).
 
 ## Remaining analytic formalization boundary
 

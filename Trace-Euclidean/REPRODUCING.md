@@ -13,6 +13,7 @@
 From Trace-Euclidean:
 
 ~~~powershell
+& 'D:\AI-Workspace\Environments\Python\math-research\Scripts\python.exe' '.\tools\generate_voight_discriminant_data.py' --check
 & 'D:\AI-Workspace\Environments\Python\math-research\Scripts\python.exe' '.\tools\verify_public_v15.py'
 & 'C:\Program Files\Wolfram Research\WolframScript\wolframscript.exe' -file '.\checks\v15_classification.wls'
 ~~~
@@ -32,13 +33,17 @@ From Trace-Euclidean/lean:
 & 'C:\Users\hzlde\.elan\bin\lake.exe' env lean '.\TraceEuclideanTest\NumericalAxiomAudit.lean'
 ~~~
 
-The first command is needed only on a fresh checkout. The build and audit
+The generator check validates all six archived Voight file digests and
+structures, checks the degree-ten first discriminant against `14^10`, and
+confirms that the committed Lean data file is current. The first Lean
+command is needed only on a fresh checkout. The build and audit
 commands must exit successfully. Compare the axiom report with
 lean/audit/main_theorem_axioms.txt; the main v15 declarations should
-list only propext, Classical.choice, and Quot.sound. The numerical audit
-separately identifies the generated `_native.native_decide.ax_*` dependencies
-in LeanCert's interval and Euler–Mascheroni checks. On resource-limited
-Windows systems, set LEAN_NUM_THREADS to 4.
+list only subsets of propext, Classical.choice, and Quot.sound. The numerical
+audit separately identifies the generated `_native.native_decide.ax_*`
+dependencies in LeanCert's interval and Euler–Mascheroni checks and in the
+Voight finite-data certificate. On resource-limited Windows systems, set
+LEAN_NUM_THREADS to 4.
 
 ## Private maintainer source check
 

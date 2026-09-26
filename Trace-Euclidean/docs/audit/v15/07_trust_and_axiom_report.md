@@ -48,6 +48,11 @@ This is a compiler-backed numerical trust boundary. The contour,
 archimedean identity, prime transform, and logarithmic discriminant inequality
 themselves do not use it.
 
+The imported Voight table-data certificate uses a separate `native_decide`
+check for the five row counts and sorted discriminant columns. Its single
+generated native dependency is printed independently. File hashes and table
+structure are checked by the reproducible generator before Lean runs.
+
 ## Remaining external mathematics
 
 Degrees one and two are proved internally. For degree two, Lean proves that
@@ -68,11 +73,16 @@ discriminant `1600`. The new quartic selection and lower-bound theorems have
 only `propext`, `Classical.choice`, and `Quot.sound` in their axiom reports.
 The sharp-Hermite, imprimitive-minimum, and relative-different routes remain
 as compatibility interfaces and are not dependencies of the strongest
-endpoint. Section 4 takes exact-minimum interfaces only for degrees `5`--`9`, the
-degree-ten exclusion at root discriminant at most `14`, and the optimized
-degree-eleven bound `14.083`. The online
+endpoint. Section 4 now derives the degree `5`--`9` minima and degree-ten
+exclusion from checked Voight columns and one source-facing completeness
+premise for the enumeration through root discriminant `14`. Formalizing the
+completeness proof itself and the optimized degree-eleven bound `14.083`
+remain. The online
 November 1976 Table 2 gives `14.034` at degree eleven, so `14.083` remains a
-separately attributed later optimized input.
+separately attributed later optimized input. The source-facing
+degree-at-least-eleven statement is connected to the exact Section 4 premise,
+and Lean proves that `14.034` would admit the extra integral-table cell
+`(2,11)`, whereas `14.083` excludes it.
 
 The sharper HSW numerical zero-count theorem is also unproved, but it is not
 needed: the internally proved quadratic Jensen count is sufficient for the

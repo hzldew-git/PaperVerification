@@ -49,9 +49,10 @@ does not assume the source explicit-formula identity as a premise.
 
 - `v15_odlyzkoTable4DescriptionInput_closed` supplies the full rounded Table
   4 interface used by the project.
-- `v15_sectionFourDiscriminantInput_of_degreeFiveToEleven_closed` uses the
-  unconditional quartic theorem. The cited exact-minimum data therefore begin
-  in degree five; degrees one through four and the Table 4 range are internal.
+- `v15_sectionFourDiscriminantInput_of_voightEnumeration_closed` additionally
+  uses the checked Voight columns and one cited enumeration-completeness
+  premise for degrees five through ten. Degrees one through four and the
+  Table 4 range are internal; degree eleven remains a separate input.
 - `v15_classic_finite_closed`, `v15_integral_finite_closed`, and
   `v15_pnorm_finite_closed` discharge the Table 4 premise from the global
   finiteness endpoints.

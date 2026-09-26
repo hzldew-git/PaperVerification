@@ -45,6 +45,7 @@ Independent author, domain, and Lean review remains unsigned.
 From this directory in PowerShell:
 
 ~~~powershell
+& 'D:\AI-Workspace\Environments\Python\math-research\Scripts\python.exe' '.\tools\generate_voight_discriminant_data.py' --check
 & 'D:\AI-Workspace\Environments\Python\math-research\Scripts\python.exe' '.\tools\verify_public_v15.py'
 & 'C:\Program Files\Wolfram Research\WolframScript\wolframscript.exe' -file '.\checks\v15_classification.wls'
 Set-Location '.\lean'
@@ -162,9 +163,16 @@ and the final rank-twelve consequence. The public Python and Wolfram runs are
     `|D_F| = 5^2*8^2 = 1600`. Thus degree four has no external premise. The
     earlier sharp-Hermite and relative-different interfaces remain available
     as compatibility reductions.
-    The exact minima in degrees 5--9, the degree-ten enumeration result, and the
-    optimized degree-eleven bound 14.083 remain explicit external mathematical
-    inputs. Odlyzko's Table 4 is retained as the source and normalization
+    Archived Voight degree 5--9 data are hash checked, structurally validated,
+    imported, and certified for count and sorted order. Lean derives the exact
+    minima and degree-ten exclusion from one explicit source-facing premise
+    asserting completeness of Voight's enumeration through root discriminant
+    14. Reproving that enumeration algorithm and the optimized degree-eleven
+    bound 14.083 remain external mathematical inputs. Lean checks that the
+    weaker online Table 2 value 14.034 would add the integral-table cell
+    `(2,11)`, so it cannot replace 14.083 without changing the table.
+    Odlyzko's Table 4 is
+    retained as the source and normalization
 reference, while the `b=4` inequality used here is now derived internally.
 Lean proves the
 completed-zeta functional equation, a global quadratic exponential growth

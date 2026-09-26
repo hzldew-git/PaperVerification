@@ -411,6 +411,31 @@ TraceEuclidean.v15_integral_pair_mem_of_degreeFiveToEleven_closed
   (hEleven : TraceEuclidean.V15DegreeElevenRootDiscriminantInput) (c : TraceEuclidean.GlobalLatticeClass)
   (hE : TraceEuclidean.GlobalLatticeClass.IsIntegralTraceEuclidean (↑c.degree) c) :
   (c.rank, c.degree) ∈ TraceEuclidean.v15IntegralAdmissiblePairs
+TraceEuclidean.V15VoightEnumerationUpToFourteenInput : Prop
+TraceEuclidean.v15_degreeFiveToNineMinimumInput_of_voightEnumeration
+  (hEnum : TraceEuclidean.V15VoightEnumerationUpToFourteenInput) : TraceEuclidean.V15DegreeFiveToNineMinimumInput
+TraceEuclidean.v15_degreeTenRootDiscriminantInput_of_voightEnumeration
+  (hEnum : TraceEuclidean.V15VoightEnumerationUpToFourteenInput) : TraceEuclidean.V15DegreeTenRootDiscriminantInput
+TraceEuclidean.v15_sectionFourDiscriminantInput_of_voightEnumeration_closed
+  (hEnum : TraceEuclidean.V15VoightEnumerationUpToFourteenInput)
+  (hEleven : TraceEuclidean.V15DegreeElevenRootDiscriminantInput) : TraceEuclidean.V15SectionFourDiscriminantInput
+TraceEuclidean.v15_classic_pair_mem_of_voightEnumeration_closed
+  (hEnum : TraceEuclidean.V15VoightEnumerationUpToFourteenInput)
+  (hEleven : TraceEuclidean.V15DegreeElevenRootDiscriminantInput) (c : TraceEuclidean.GlobalLatticeClass)
+  (hE : TraceEuclidean.GlobalLatticeClass.IsClassicTraceEuclidean (↑c.degree) c) :
+  (c.rank, c.degree) ∈ TraceEuclidean.v15ClassicAdmissiblePairs
+TraceEuclidean.v15_integral_pair_mem_of_voightEnumeration_closed
+  (hEnum : TraceEuclidean.V15VoightEnumerationUpToFourteenInput)
+  (hEleven : TraceEuclidean.V15DegreeElevenRootDiscriminantInput) (c : TraceEuclidean.GlobalLatticeClass)
+  (hE : TraceEuclidean.GlobalLatticeClass.IsIntegralTraceEuclidean (↑c.degree) c) :
+  (c.rank, c.degree) ∈ TraceEuclidean.v15IntegralAdmissiblePairs
+TraceEuclidean.V15OdlyzkoMartinetAtLeastElevenInput : Prop
+TraceEuclidean.v15_degreeElevenRootDiscriminantInput_of_odlyzkoMartinet
+  (hBound : TraceEuclidean.V15OdlyzkoMartinetAtLeastElevenInput) : TraceEuclidean.V15DegreeElevenRootDiscriminantInput
+TraceEuclidean.v15_degreeEleven_tableTwo_bound_admits_integral_pair :
+  TraceEuclidean.v15IntegralThreshold 2 11 ≤ TraceEuclidean.v15DegreeElevenTableTwoAnalyticH 2
+TraceEuclidean.v15_degreeEleven_optimized_bound_excludes_integral_pair :
+  TraceEuclidean.v15AnalyticH 2 11 < TraceEuclidean.v15IntegralThreshold 2 11
 TraceEuclidean.v15_degreeFourToNineMinimumInput_of_radicand_and_norm
   (hRadicand : TraceEuclidean.V15QuarticSmallDiscriminantQuadraticRadicandInput)
   (hNorm : TraceEuclidean.V15QuarticSmallDiscriminantRelativeDifferentNormInput)
@@ -2001,30 +2026,6 @@ TraceEuclidean.v15_integral_pair_mem_of_sources (hSmall : TraceEuclidean.V15Smal
 'TraceEuclidean.v15_integral_pair_mem_of_reduced_literature' depends on axioms: [propext, Classical.choice, Quot.sound]
 'TraceEuclidean.v15_integral_pair_mem_of_hunterCertificate' depends on axioms: [propext, Classical.choice, Quot.sound]
 'TraceEuclidean.v15_degreeFourToNineMinimumInput_closed' depends on axioms: [propext, Classical.choice, Quot.sound]
-'TraceEuclidean.v15_sectionFourDiscriminantInput_of_degreeFiveToEleven_closed' depends on axioms: [propext,
- Classical.choice,
- Quot.sound,
- EulerMascheroni.harmonic_N_ge._native.native_decide.ax_1_2,
- TraceEuclidean.V15OdlyzkoNumerical.cosh_core_upper._native.native_decide.ax_1_1,
- TraceEuclidean.V15OdlyzkoNumerical.sinh_core_upper._native.native_decide.ax_1_1,
- TraceEuclidean.V15OdlyzkoNumerical.scalarA_strict._native.native_decide.ax_1_1✝,
- TraceEuclidean.V15OdlyzkoNumerical.scalarB_strict._native.native_decide.ax_1_1✝]
-'TraceEuclidean.v15_classic_pair_mem_of_degreeFiveToEleven_closed' depends on axioms: [propext,
- Classical.choice,
- Quot.sound,
- EulerMascheroni.harmonic_N_ge._native.native_decide.ax_1_2,
- TraceEuclidean.V15OdlyzkoNumerical.cosh_core_upper._native.native_decide.ax_1_1,
- TraceEuclidean.V15OdlyzkoNumerical.sinh_core_upper._native.native_decide.ax_1_1,
- TraceEuclidean.V15OdlyzkoNumerical.scalarA_strict._native.native_decide.ax_1_1✝,
- TraceEuclidean.V15OdlyzkoNumerical.scalarB_strict._native.native_decide.ax_1_1✝]
-'TraceEuclidean.v15_integral_pair_mem_of_degreeFiveToEleven_closed' depends on axioms: [propext,
- Classical.choice,
- Quot.sound,
- EulerMascheroni.harmonic_N_ge._native.native_decide.ax_1_2,
- TraceEuclidean.V15OdlyzkoNumerical.cosh_core_upper._native.native_decide.ax_1_1,
- TraceEuclidean.V15OdlyzkoNumerical.sinh_core_upper._native.native_decide.ax_1_1,
- TraceEuclidean.V15OdlyzkoNumerical.scalarA_strict._native.native_decide.ax_1_1✝,
- TraceEuclidean.V15OdlyzkoNumerical.scalarB_strict._native.native_decide.ax_1_1✝]
 'TraceEuclidean.v15_sectionFourDiscriminantInput_of_sources' depends on axioms: [propext, Classical.choice, Quot.sound]
 'TraceEuclidean.v15_classic_pair_mem_of_sources' depends on axioms: [propext, Classical.choice, Quot.sound]
 'TraceEuclidean.v15_integral_pair_mem_of_sources' depends on axioms: [propext, Classical.choice, Quot.sound]
@@ -2034,54 +2035,89 @@ TraceEuclidean.v15_integral_pair_mem_of_sources (hSmall : TraceEuclidean.V15Smal
 'TraceEuclidean.v15_degreeFourToNineMinimumInput_of_relativeDifferentNorm' depends on axioms: [propext,
  Classical.choice,
  Quot.sound]
-'TraceEuclidean.v15_sectionFourDiscriminantInput_of_quarticRelativeDifferent_closed' depends on axioms: [propext,
+TraceEuclidean.v15_exists_fin_succ_basis_zero_eq_of_primitive.{u_1} {M : Type u_1} [AddCommGroup M] {n : ℕ}
+  (b : Module.Basis (Fin (n + 1)) ℤ M) (v : M) (hv : TraceEuclidean.V15IsPrimitiveVector v) : ∃ b', b' 0 = v
+TraceEuclidean.v15_hunterGeneral_shortVector_of_covolume.{u_1} {E : Type u_1} [NormedAddCommGroup E]
+  [InnerProductSpace ℝ E] [FiniteDimensional ℝ E] [MeasurableSpace E] [BorelSpace E] [Nontrivial E] (L : Submodule ℤ E)
+  [DiscreteTopology ↥L] [IsZLattice ℝ L] (r : ℝ) (hr : 0 < r)
+  (hvolume :
+    ZLattice.covolume L MeasureTheory.volume * 2 ^ Module.finrank ℝ E <
+      TraceEuclidean.euclideanUnitBallVolume (Module.finrank ℝ E) * r ^ Module.finrank ℝ E) :
+  ∃ x, x ≠ 0 ∧ ‖↑x‖ < r
+TraceEuclidean.v15_exists_euclidean_integerLattice_basis_one_general.{u_1} (K : Type u_1) [Field K] [NumberField K]
+  {n : ℕ} (hdegree : Module.finrank ℚ K = n + 1) : ∃ bz, ↑(bz 0) = TraceEuclidean.v15EuclideanOne K
+TraceEuclidean.v15HunterGeneralProjectedLattice_covolume_sq_mul_inner_self.{u_1} {E : Type u_1} [NormedAddCommGroup E]
+  [InnerProductSpace ℝ E] {n : ℕ} [FiniteDimensional ℝ E] [MeasurableSpace E] [BorelSpace E]
+  (b : Module.Basis (Fin (n + 1)) ℝ E) :
+  ZLattice.covolume (TraceEuclidean.v15HunterGeneralProjectedLattice b) MeasureTheory.volume ^ 2 * inner ℝ (b 0) (b 0) =
+    ZLattice.covolume (Submodule.span ℤ (Set.range ⇑b)) MeasureTheory.volume ^ 2
+TraceEuclidean.v15_hunterGeneral_projected_shortVector_of_ball.{u_1} (K : Type u_1) [Field K] [NumberField K] {n : ℕ}
+  (hreal : NumberField.IsTotallyReal K) (hdegree : Module.finrank ℚ K = n + 1) (hn : 0 < n)
+  (bz : Module.Basis (Fin (n + 1)) ℤ ↥(NumberField.mixedEmbedding.euclidean.integerLattice K))
+  (hbzero : ↑(bz 0) = TraceEuclidean.v15EuclideanOne K) (r : ℝ) (hr : 0 < r)
+  (hball : ↑|NumberField.discr K| * (2 ^ n) ^ 2 < (↑n + 1) * (TraceEuclidean.euclideanUnitBallVolume n * r ^ n) ^ 2) :
+  ∃ x, x ≠ 0 ∧ ‖↑x‖ < r
+TraceEuclidean.v15_exists_trace_normalized_generator.{u_1} (K : Type u_1) [Field K] [NumberField K] (d : ℕ)
+  (hdegree : Module.finrank ℚ K = d) (hd : 0 < d) (a : NumberField.RingOfIntegers K) (hgen : ℚ⟮↑a⟯ = ⊤) :
+  ∃ b,
+    ℚ⟮↑b⟯ = ⊤ ∧
+      0 ≤ (Algebra.intTrace ℤ (NumberField.RingOfIntegers K)) b ∧
+        2 * (Algebra.intTrace ℤ (NumberField.RingOfIntegers K)) b ≤ ↑d ∧
+          ↑d * (Algebra.trace ℚ K) (↑b ^ 2) - (Algebra.trace ℚ K) ↑b ^ 2 =
+            ↑d * (Algebra.trace ℚ K) (↑a ^ 2) - (Algebra.trace ℚ K) ↑a ^ 2
+TraceEuclidean.v15_adjoin_eq_top_of_finrank_prime_of_not_rat.{u_1} (K : Type u_1) [Field K] [NumberField K]
+  (hprime : Nat.Prime (Module.finrank ℚ K)) (a : K) (hnotrat : ¬∃ q, a = (algebraMap ℚ K) q) : ℚ⟮a⟯ = ⊤
+TraceEuclidean.v15_exists_nonrational_integer_of_hunterBall.{u_1} (K : Type u_1) [Field K] [NumberField K] {n : ℕ}
+  (hreal : NumberField.IsTotallyReal K) (hdegree : Module.finrank ℚ K = n + 1) (hn : 0 < n) (r : ℝ) (hr : 0 < r)
+  (hball : ↑|NumberField.discr K| * (2 ^ n) ^ 2 < (↑n + 1) * (TraceEuclidean.euclideanUnitBallVolume n * r ^ n) ^ 2) :
+  ∃ a,
+    (¬∃ q, ↑a = (algebraMap ℚ K) q) ∧
+      (↑n + 1) * ↑((Algebra.trace ℚ K) (↑a ^ 2)) - ↑((Algebra.trace ℚ K) ↑a) ^ 2 < (↑n + 1) * r ^ 2
+TraceEuclidean.v15_exists_primitive_integer_of_hunterBall.{u_1} (K : Type u_1) [Field K] [NumberField K] {n : ℕ}
+  (hreal : NumberField.IsTotallyReal K) (hdegree : Module.finrank ℚ K = n + 1) (hprime : Nat.Prime (n + 1)) (hn : 0 < n)
+  (r : ℝ) (hr : 0 < r)
+  (hball : ↑|NumberField.discr K| * (2 ^ n) ^ 2 < (↑n + 1) * (TraceEuclidean.euclideanUnitBallVolume n * r ^ n) ^ 2) :
+  ∃ a, ℚ⟮↑a⟯ = ⊤ ∧ (↑n + 1) * ↑((Algebra.trace ℚ K) (↑a ^ 2)) - ↑((Algebra.trace ℚ K) ↑a) ^ 2 < (↑n + 1) * r ^ 2
+TraceEuclidean.v15_exists_trace_normalized_primitive_integer_of_hunterBall.{u_1} (K : Type u_1) [Field K]
+  [NumberField K] {n : ℕ} (hreal : NumberField.IsTotallyReal K) (hdegree : Module.finrank ℚ K = n + 1)
+  (hprime : Nat.Prime (n + 1)) (hn : 0 < n) (r : ℝ) (hr : 0 < r)
+  (hball : ↑|NumberField.discr K| * (2 ^ n) ^ 2 < (↑n + 1) * (TraceEuclidean.euclideanUnitBallVolume n * r ^ n) ^ 2) :
+  ∃ a,
+    ℚ⟮↑a⟯ = ⊤ ∧
+      0 ≤ (Algebra.intTrace ℤ (NumberField.RingOfIntegers K)) a ∧
+        2 * (Algebra.intTrace ℤ (NumberField.RingOfIntegers K)) a ≤ ↑n + 1 ∧
+          (↑n + 1) * ↑((Algebra.trace ℚ K) (↑a ^ 2)) - ↑((Algebra.trace ℚ K) ↑a) ^ 2 < (↑n + 1) * r ^ 2
+'TraceEuclidean.v15_exists_fin_succ_basis_zero_eq_of_primitive' depends on axioms: [propext,
  Classical.choice,
- Quot.sound,
- EulerMascheroni.harmonic_N_ge._native.native_decide.ax_1_2,
- TraceEuclidean.V15OdlyzkoNumerical.cosh_core_upper._native.native_decide.ax_1_1,
- TraceEuclidean.V15OdlyzkoNumerical.sinh_core_upper._native.native_decide.ax_1_1,
- TraceEuclidean.V15OdlyzkoNumerical.scalarA_strict._native.native_decide.ax_1_1✝,
- TraceEuclidean.V15OdlyzkoNumerical.scalarB_strict._native.native_decide.ax_1_1✝]
-'TraceEuclidean.v15_sectionFourDiscriminantInput_of_relativeDifferentNorm_closed' depends on axioms: [propext,
+ Quot.sound]
+'TraceEuclidean.v15_hunterGeneral_shortVector_of_covolume' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15_exists_euclidean_integerLattice_basis_one_general' depends on axioms: [propext,
  Classical.choice,
- Quot.sound,
- EulerMascheroni.harmonic_N_ge._native.native_decide.ax_1_2,
- TraceEuclidean.V15OdlyzkoNumerical.cosh_core_upper._native.native_decide.ax_1_1,
- TraceEuclidean.V15OdlyzkoNumerical.sinh_core_upper._native.native_decide.ax_1_1,
- TraceEuclidean.V15OdlyzkoNumerical.scalarA_strict._native.native_decide.ax_1_1✝,
- TraceEuclidean.V15OdlyzkoNumerical.scalarB_strict._native.native_decide.ax_1_1✝]
-'TraceEuclidean.v15_classic_pair_mem_of_quarticRelativeDifferent_closed' depends on axioms: [propext,
+ Quot.sound]
+'TraceEuclidean.v15HunterGeneralProjectedLattice_covolume_sq_mul_inner_self' depends on axioms: [propext,
  Classical.choice,
- Quot.sound,
- EulerMascheroni.harmonic_N_ge._native.native_decide.ax_1_2,
- TraceEuclidean.V15OdlyzkoNumerical.cosh_core_upper._native.native_decide.ax_1_1,
- TraceEuclidean.V15OdlyzkoNumerical.sinh_core_upper._native.native_decide.ax_1_1,
- TraceEuclidean.V15OdlyzkoNumerical.scalarA_strict._native.native_decide.ax_1_1✝,
- TraceEuclidean.V15OdlyzkoNumerical.scalarB_strict._native.native_decide.ax_1_1✝]
-'TraceEuclidean.v15_classic_pair_mem_of_relativeDifferentNorm_closed' depends on axioms: [propext,
+ Quot.sound]
+'TraceEuclidean.v15_hunterGeneral_projected_shortVector_of_ball' depends on axioms: [propext,
  Classical.choice,
- Quot.sound,
- EulerMascheroni.harmonic_N_ge._native.native_decide.ax_1_2,
- TraceEuclidean.V15OdlyzkoNumerical.cosh_core_upper._native.native_decide.ax_1_1,
- TraceEuclidean.V15OdlyzkoNumerical.sinh_core_upper._native.native_decide.ax_1_1,
- TraceEuclidean.V15OdlyzkoNumerical.scalarA_strict._native.native_decide.ax_1_1✝,
- TraceEuclidean.V15OdlyzkoNumerical.scalarB_strict._native.native_decide.ax_1_1✝]
-'TraceEuclidean.v15_integral_pair_mem_of_quarticRelativeDifferent_closed' depends on axioms: [propext,
+ Quot.sound]
+'TraceEuclidean.v15_exists_trace_normalized_generator' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15_adjoin_eq_top_of_finrank_prime_of_not_rat' depends on axioms: [propext,
  Classical.choice,
- Quot.sound,
- EulerMascheroni.harmonic_N_ge._native.native_decide.ax_1_2,
- TraceEuclidean.V15OdlyzkoNumerical.cosh_core_upper._native.native_decide.ax_1_1,
- TraceEuclidean.V15OdlyzkoNumerical.sinh_core_upper._native.native_decide.ax_1_1,
- TraceEuclidean.V15OdlyzkoNumerical.scalarA_strict._native.native_decide.ax_1_1✝,
- TraceEuclidean.V15OdlyzkoNumerical.scalarB_strict._native.native_decide.ax_1_1✝]
-'TraceEuclidean.v15_integral_pair_mem_of_relativeDifferentNorm_closed' depends on axioms: [propext,
+ Quot.sound]
+'TraceEuclidean.v15_exists_nonrational_integer_of_hunterBall' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15_exists_primitive_integer_of_hunterBall' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15_exists_trace_normalized_primitive_integer_of_hunterBall' depends on axioms: [propext,
  Classical.choice,
- Quot.sound,
- EulerMascheroni.harmonic_N_ge._native.native_decide.ax_1_2,
- TraceEuclidean.V15OdlyzkoNumerical.cosh_core_upper._native.native_decide.ax_1_1,
- TraceEuclidean.V15OdlyzkoNumerical.sinh_core_upper._native.native_decide.ax_1_1,
- TraceEuclidean.V15OdlyzkoNumerical.scalarA_strict._native.native_decide.ax_1_1✝,
- TraceEuclidean.V15OdlyzkoNumerical.scalarB_strict._native.native_decide.ax_1_1✝]
+ Quot.sound]
+'TraceEuclidean.v15_degreeElevenRootDiscriminantInput_of_odlyzkoMartinet' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'TraceEuclidean.v15_degreeEleven_tableTwo_bound_admits_integral_pair' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'TraceEuclidean.v15_degreeEleven_optimized_bound_excludes_integral_pair' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
 TraceEuclidean.v15OdlyzkoH_hasCompactSupport : HasCompactSupport TraceEuclidean.v15OdlyzkoH
 TraceEuclidean.v15OdlyzkoH_integrable : MeasureTheory.Integrable TraceEuclidean.v15OdlyzkoH MeasureTheory.volume
 TraceEuclidean.v15OdlyzkoH4_fourier_eq (w : ℝ) :

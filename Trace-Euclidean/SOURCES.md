@@ -106,9 +106,18 @@ power-order maximality, quadratic-subfield comparison, and the unconditional
 bound `|D_F| >= 725`. Martinet's sharper three-dimensional Hermite route and
 Voight's warning about imprimitive Hunter elements remain documented as
 alternative compatibility interfaces, but the strongest Lean theorem uses no
-quartic source premise. The remaining small-degree interfaces are the exact
-minima for degrees 5--9, the degree-ten root-discriminant input, and the
-optimized degree-eleven bound 14.083.
+quartic source premise. Archived copies of Voight's degree 5--10 data are
+stored under `inputs/voight`, with archive timestamps and SHA-256 digests.
+The generator verifies those digests and validates row counts, polynomial
+degree, monicity, first entries, and sorted discriminants. Lean imports the
+degree 5--9 discriminant columns and checks their counts and sorted order.
+`V15VoightEnumerationUpToFourteenInput` isolates the source theorem that the
+enumeration is complete through root discriminant 14. From that single input,
+Lean proves the exact minima used in degrees 5--9 and the absence of a
+degree-ten field in the required range. The finite-data checks do not
+reformalize the completeness proof of Voight's enumeration algorithm. The
+only other remaining small-degree interface is the optimized degree-eleven
+bound 14.083.
 Degrees one and two are proved internally. For degree two, Lean proves
 nonsquareness of the field discriminant in `ℚ` and combines it with
 total-real positivity and Minkowski's bound to obtain the exact minimum lower
@@ -121,6 +130,11 @@ The exact cubic and quartic splits are recorded in
 [the cubic discriminant reduction note](docs/audit/v15/23_cubic_discriminant_reduction.md)
 and
 [the quartic discriminant reduction note](docs/audit/v15/24_quartic_discriminant_reduction.md).
+The general Hunter projection and the Voight data boundary are recorded in
+[the Voight enumeration note](docs/audit/v15/25_voight_enumeration_bridge.md).
+The reason the `14.083` constant cannot be replaced by the online Table 2
+value is machine checked and recorded in
+[the degree-eleven boundary note](docs/audit/v15/26_degree_eleven_boundary.md).
 
 ## Unformalized standalone material
 

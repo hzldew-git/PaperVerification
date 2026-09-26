@@ -3,10 +3,11 @@
 Lean accepts the encoded proof terms under Lean 4.32.1 and pinned mathlib
 revision 520045ab14e26149ee970e2e617ca04b09bde5d6. The audited endpoints depend
 only on the standard logical axioms propext,
-Classical.choice, and Quot.sound. The archimedean numerical certificate uses
-LeanCert's `native_decide` checks and therefore also trusts Lean's native
-compiler. The axiom audit prints five generated `_native.native_decide.ax_*`
-dependencies for the final certificate; these are checked separately.
+Classical.choice, and Quot.sound. The archimedean numerical certificate and
+the imported Voight table-data certificate use `native_decide` checks and
+therefore also trust Lean's native compiler. The separate numerical axiom
+audit identifies the five generated Odlyzko dependencies and the one
+generated Voight-data dependency.
 The delivered proof modules contain no sorry, sorryAx, or project axiom.
 
 The global finite-class results now receive an internally constructed
@@ -143,15 +144,19 @@ Two imprimitive lifts would generate distinct quadratic subfields of
 discriminant `5` and `8`; the coprime-compositum formula would force quartic
 discriminant `1600`, a contradiction. The older sharp-Hermite and
 relative-different interfaces remain available only as compatibility routes.
-Degrees 5--9 use exact
-minimum-discriminant data, degree 10 uses the
-absence of a totally real field with root discriminant at most 14, degree 11
-uses the later optimized bound 14.083, and Table 4 is required only from
-degree 12. The online November 1976 Table 2 gives 14.034 at degree 11, so the
-value 14.083 is explicitly kept separate from that table. The degree 5--11
-arithmetic source theorems remain external;
-all subsequent specialization, combination, analytic enclosure, and
-finite-grid classification steps are in Lean. Python and Wolfram provide
+The archived Voight tables supply the degree 5--9 discriminant columns.
+Their hashes, row structure, counts, first entries, and sorted order are
+checked, and Lean derives the required minima from one source-facing
+completeness premise for Voight's enumeration through root discriminant 14.
+The same premise proves the required degree-ten exclusion. It does not yet
+have an internal Lean proof of the enumeration algorithm's completeness.
+Degree 11 uses the later optimized bound 14.083, and Table 4 is required only
+from degree 12. The online November 1976 Table 2 gives 14.034 at degree 11,
+so the value 14.083 remains separate from that table. All subsequent
+specialization, combination, analytic enclosure, and finite-grid
+classification steps are in Lean. Lean also checks that replacing 14.083 by
+14.034 would add the integral-table cell `(2,11)`, so the weaker value cannot
+support the unchanged manuscript table. Python and Wolfram provide
 independent computational checks.
 
 Compilation and PASS counts do not certify the complete manuscript.
