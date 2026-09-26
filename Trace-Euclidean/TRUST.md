@@ -3,11 +3,12 @@
 Lean accepts the encoded proof terms under Lean 4.32.1 and pinned mathlib
 revision 520045ab14e26149ee970e2e617ca04b09bde5d6. The audited endpoints depend
 only on the standard logical axioms propext,
-Classical.choice, and Quot.sound. The archimedean numerical certificate and
-the two imported Voight table-data certificates use `native_decide` checks
-and therefore also trust Lean's native compiler. The separate numerical axiom
-audit identifies the five generated Odlyzko dependencies and the two
-generated Voight-data dependencies.
+Classical.choice, and Quot.sound. The archimedean numerical certificate, the
+two imported Voight table-data certificates, and thirty-one generated Voight
+resultant certificates use `native_decide` checks and therefore also trust
+Lean's native compiler. The separate numerical axiom audit identifies the five
+generated Odlyzko dependencies, the two generated Voight-data dependencies,
+and the thirty-one resultant-certificate dependencies.
 The delivered proof modules contain no sorry, sorryAx, or project axiom.
 
 The global finite-class results now receive an internally constructed
@@ -150,9 +151,14 @@ structure, counts, first entries, sorted order, positive indices, and column
 projections are checked. Python uses an exact Bareiss determinant and
 Mathematica independently verifies irreducibility, total reality, the
 polynomial-discriminant index equation, and the number-field discriminant for
-all 2,773 rows. Lean connects the full rows to its exact Hunter filter through
-`V15VoightPolynomialDiscriminantInput`; the concrete coefficient-discriminant
-equations are not yet Lean-kernel computations. Lean derives the required
+all 2,773 rows. Lean proves the surrounding determinant semantics: a strict
+integer Bareiss row-operation checker agrees with matrix row operations, its
+final scalar equals the determinant, the relevant Sylvester determinant equals
+the polynomial resultant, and the resultant gives the discriminant of each
+monic polynomial. Thirty-one generated `native_decide` chunks replay the exact
+row-operation certificates and close
+`v15_voightPolynomialDiscriminantInput`; the compiler trust of those finite
+computations is disclosed separately. Lean derives the required
 minima from one source-facing completeness premise for Voight's enumeration
 through root discriminant 14. The same premise proves the required degree-ten
 exclusion. It does not yet have an internal Lean proof of the enumeration

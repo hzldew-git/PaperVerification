@@ -25,6 +25,13 @@ discriminant columns. One Lean `native_decide` certificate checks the columns;
 a second checks all six full-row counts, structural conditions, positive
 indices, column projections, and maximum indices.
 
+The same generator produces thirty-one modules under
+`V15VoightResultantCertificates/`, each containing at most one hundred exact
+resultant replays, and the umbrella module
+`V15VoightResultantCertificates.lean`. The chunks form a serial import chain
+so the pinned build does not materialize every large certificate module at
+once. `--check` verifies the exact generated file set and contents.
+
 The independent Mathematica script `voight_polynomial_integrity.wls` checks
 all 2,773 polynomials are irreducible and totally real, recomputes the
 polynomial-discriminant index equation, and verifies the number-field
@@ -59,16 +66,29 @@ irreducibility and maximal-order checks, duplicate-field control, and the
 relative enumeration and coefficient bounds needed for imprimitive composite
 extensions.
 
-`V15VoightPolynomialBridge.lean` makes the new full-row interface explicit.
-It constructs the finite archived polynomial box and proves that a structurally
-valid row satisfying the coefficient-to-discriminant equation belongs to the
-exact indexed Hunter filter. The equation is packaged as
-`V15VoightPolynomialDiscriminantInput`. Python and Mathematica verify every
-concrete instance, but the current Lean kernel does not yet recompute the
-2,773 polynomial discriminants. Closing that smaller computational boundary
-requires a proved efficient determinant or resultant evaluator and imported
-certificates; mathlib's direct determinant expansion is impractical at this
-scale.
+`V15IntegralDeterminantCertificate.lean` defines exact integer row operations,
+proves their determinant multipliers, and gives a strict square-vector replay
+engine. The strict engine is proved equal to the corresponding `Matrix`
+execution. Its Bareiss certificate generator uses exact divisibility at every
+pivot and proves that a successful replay returns the mathematical
+determinant.
+
+`V15DeterminantCertificate.lean` constructs the integer and rational
+Sylvester matrices, connects coefficient lists to mathlib polynomials, proves
+that the Sylvester determinant is the resultant, and derives the discriminant
+of a monic polynomial from the certified resultant. Thus the determinant,
+resultant, and discriminant semantics are ordinary Lean theorems checked by
+the kernel.
+
+The thirty-one generated modules use `native_decide` only to replay the large
+finite Bareiss certificates for all 2,773 rows. Their umbrella theorem closes
+`V15VoightPolynomialDiscriminantInput` as
+`v15_voightPolynomialDiscriminantInput`. `V15VoightPolynomialBridge.lean` then
+proves unconditionally, relative to the imported table data, that every
+structurally valid archived row belongs to the exact indexed Hunter filter.
+Python and Mathematica remain independent checks of every concrete instance;
+Mathematica additionally checks irreducibility, total reality, and the actual
+field discriminant.
 
 ## Hunter groundwork
 
@@ -132,20 +152,21 @@ polynomial-index pairs before maximal-order and duplicate-field processing.
 
 This closes the geometric, algebraic, all-coefficient, finiteness, and
 field-discriminant filtering front end in degrees five and seven. The complete
-archived polynomial rows now enter the same exact filter, conditional only on
-the precisely named coefficient-discriminant input. The remaining enumeration
-proof must show that the archived rows exhaust the large Hunter boxes, verify
+archived polynomial rows now enter the same exact filter through the closed
+coefficient-discriminant theorem. The remaining enumeration proof must show
+that the archived rows exhaust the large Hunter boxes, verify
 maximal orders inside Lean, control duplicate fields, and treat the
 composite-degree relative extensions. It is finite but substantially larger
 than the cubic and quartic searches already formalized.
 
 ## Trust and status
 
-The general Hunter and full-row bridge proofs use only the standard Lean
-logical axioms reported by the main audit. The two Voight data certificates
-add two separately disclosed native compiler dependencies and are isolated in
-the numerical audit. The Mathematica full-row verification is an independent
-computer-algebra check, not a Lean-kernel theorem. Enumeration completeness
-remains a literature input, while the optimized degree-eleven bound remains a
-separate literature input. These boundaries preserve the current Grade B and
+The generic Hunter, determinant, resultant, discriminant, and full-row bridge
+proofs use only the standard Lean logical axioms reported by the main audit.
+The two Voight data certificates and thirty-one resultant replay certificates
+add thirty-three separately disclosed native compiler dependencies and are
+isolated in the numerical audit. The Mathematica full-row verification is an
+independent computer-algebra check. Enumeration completeness remains a
+literature input, while the optimized degree-eleven bound remains a separate
+literature input. These boundaries preserve the current Grade B and
 PROVISIONAL_MATCH assessments.

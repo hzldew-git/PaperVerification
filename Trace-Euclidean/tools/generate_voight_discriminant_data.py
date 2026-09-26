@@ -14,7 +14,14 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 INPUT_DIR = ROOT / "inputs" / "voight"
 OUTPUT = ROOT / "lean" / "TraceEuclidean" / "V15VoightDiscriminantData.lean"
+CERTIFICATE_OUTPUT = (
+    ROOT / "lean" / "TraceEuclidean" / "V15VoightResultantCertificates.lean"
+)
+CERTIFICATE_DIR = (
+    ROOT / "lean" / "TraceEuclidean" / "V15VoightResultantCertificates"
+)
 ROW_CHUNK_SIZE = 100
+CERTIFICATE_CHUNK_SIZES = {degree: ROW_CHUNK_SIZE for degree in range(5, 11)}
 
 
 @dataclass(frozen=True)
@@ -401,6 +408,259 @@ def render() -> str:
     return "\n".join(out)
 
 
+def certificate_metadata() -> list[tuple[Table, list[dict[str, object]]]]:
+    """Return table, original-chunk, and smaller certificate-part metadata."""
+    metadata = []
+    for table in TABLES + SUPPLEMENTAL_TABLES:
+        original_chunks = []
+        certificate_size = CERTIFICATE_CHUNK_SIZES[table.degree]
+        for chunk_index, chunk_start in enumerate(
+            range(0, table.expected_count, ROW_CHUNK_SIZE)
+        ):
+            chunk_name = (
+                f"v15VoightPolynomialRows{table.lean_name}Chunk{chunk_index}"
+            )
+            aggregate_theorem = (
+                f"v15_voightPolynomialRows{table.lean_name}Chunk{chunk_index}"
+                "_resultant_certificate"
+            )
+            chunk_count = min(
+                ROW_CHUNK_SIZE, table.expected_count - chunk_start
+            )
+            parts = []
+            for part_index, part_start in enumerate(
+                range(0, chunk_count, certificate_size)
+            ):
+                part_count = min(certificate_size, chunk_count - part_start)
+                if part_start == 0 and part_count == chunk_count:
+                    module_name = f"{table.lean_name}Chunk{chunk_index}"
+                    theorem_name = aggregate_theorem
+                    expression = chunk_name
+                else:
+                    module_name = (
+                        f"{table.lean_name}Chunk{chunk_index}Part{part_index}"
+                    )
+                    theorem_name = (
+                        f"v15_voightPolynomialRows{table.lean_name}Chunk"
+                        f"{chunk_index}Part{part_index}_resultant_certificate"
+                    )
+                    expression = (
+                        f"({chunk_name}.drop {part_start}).take {part_count}"
+                    )
+                parts.append(
+                    {
+                        "module": module_name,
+                        "expression": expression,
+                        "theorem": theorem_name,
+                    }
+                )
+            original_chunks.append(
+                {
+                    "name": chunk_name,
+                    "aggregate_theorem": aggregate_theorem,
+                    "parts": parts,
+                }
+            )
+        metadata.append((table, original_chunks))
+    return metadata
+
+
+def render_certificate_chunk(
+    table: Table,
+    expression: str,
+    theorem_name: str,
+    previous_module: str | None,
+) -> str:
+    """Render one cacheable native certificate module."""
+    if previous_module is None:
+        import_line = "import TraceEuclidean.V15DeterminantCertificate"
+    else:
+        import_line = (
+            "import TraceEuclidean.V15VoightResultantCertificates."
+            + previous_module
+        )
+    return "\n".join(
+        [
+            import_line,
+            "",
+            "/-! This generated module checks at most one hundred archived rows. -/",
+            "",
+            "namespace TraceEuclidean",
+            "",
+            "set_option maxRecDepth 10000 in",
+            "set_option maxHeartbeats 0 in",
+            "-- Exact integer elimination needs an unbounded heartbeat budget.",
+            f"theorem {theorem_name} :",
+            f"    ({expression}).all",
+            f"      (v15VoightResultantCertificate {table.degree}) = true := by",
+            "  native_decide",
+            "",
+            "end TraceEuclidean",
+            "",
+        ]
+    )
+
+
+def render_certificate_chunks() -> dict[str, str]:
+    """Render cacheable chunk modules in a memory-safe dependency chain."""
+    rendered = {}
+    previous_module = None
+    for table, original_chunks in certificate_metadata():
+        for chunk in original_chunks:
+            for part in chunk["parts"]:
+                rendered[f"{part['module']}.lean"] = render_certificate_chunk(
+                    table,
+                    str(part["expression"]),
+                    str(part["theorem"]),
+                    previous_module,
+                )
+                previous_module = str(part["module"])
+    return rendered
+
+
+def render_certificates() -> str:
+    """Render the umbrella theorem assembled from cached chunk modules."""
+    metadata = certificate_metadata()
+    out = []
+    for _, original_chunks in metadata:
+        for chunk in original_chunks:
+            for part in chunk["parts"]:
+                out.append(
+                    "import TraceEuclidean.V15VoightResultantCertificates."
+                    + str(part["module"])
+                )
+    out.extend(
+        [
+        "",
+        "/-!",
+        "# Exact resultant certificates for all archived Voight rows",
+        "",
+        "This file is generated by `tools/generate_voight_discriminant_data.py`.",
+        "Each native theorem checks at most one hundred rows so successful",
+        "certificates are cached independently and failures are localized.",
+        "-/",
+        "",
+        "namespace TraceEuclidean",
+        "",
+        ]
+    )
+    table_theorems = []
+    for table, original_chunks in metadata:
+        chunk_theorems = []
+        for chunk in original_chunks:
+            aggregate_theorem = str(chunk["aggregate_theorem"])
+            parts = list(chunk["parts"])
+            if len(parts) == 1 and str(parts[0]["theorem"]) == aggregate_theorem:
+                chunk_theorems.append(aggregate_theorem)
+                continue
+            expressions = [str(part["expression"]) for part in parts]
+            part_theorems = [str(part["theorem"]) for part in parts]
+            out.extend(
+                [
+                    f"theorem {aggregate_theorem} :",
+                    f"    {chunk['name']}.all",
+                    f"      (v15VoightResultantCertificate {table.degree}) = true := by",
+                    f"  have hsplit : {chunk['name']} =",
+                    "      " + " ++\n      ".join(expressions) + " := by",
+                    "    native_decide",
+                    "  rw [hsplit]",
+                    "  simp only [",
+                    "    List.all_append,",
+                    "    " + ",\n    ".join(part_theorems) + ",",
+                    "    Bool.true_and, Bool.and_true",
+                    "  ]",
+                    "",
+                ]
+            )
+            chunk_theorems.append(aggregate_theorem)
+        table_theorem = (
+            f"v15_voightPolynomialRows{table.lean_name}_resultant_certificate"
+        )
+        table_theorems.append((table, table_theorem))
+        simp_items = [f"v15VoightPolynomialRows{table.lean_name}"]
+        if len(chunk_theorems) > 1:
+            simp_items.append("List.all_append")
+        simp_items.extend(chunk_theorems)
+        if len(chunk_theorems) > 1:
+            simp_items.append("Bool.and_true")
+        out.extend(
+            [
+                f"theorem {table_theorem} :",
+                f"    v15VoightPolynomialRows{table.lean_name}.all",
+                f"      (v15VoightResultantCertificate {table.degree}) = true := by",
+                "  simp only [",
+                "    " + ",\n    ".join(simp_items),
+                "  ]",
+                "",
+            ]
+        )
+    out.extend(
+        [
+            "/-- All 2773 archived polynomial rows have exact rational",
+            "row-reduction certificates for their claimed resultants. -/",
+            "theorem v15_allVoightPolynomialRows_resultant_certificate :",
+        ]
+    )
+    for index, (table, theorem_name) in enumerate(table_theorems):
+        suffix = " ∧" if index + 1 < len(table_theorems) else " := by"
+        out.extend(
+            [
+                f"    v15VoightPolynomialRows{table.lean_name}.all",
+                f"      (v15VoightResultantCertificate {table.degree}) = true{suffix}",
+            ]
+        )
+    out.append("  exact ⟨")
+    for index, (_, name) in enumerate(table_theorems):
+        suffix = "," if index + 1 < len(table_theorems) else ""
+        out.append(f"    {name}{suffix}")
+    out.append("  ⟩")
+    out.extend(
+        [
+            "",
+            "/-- The certificate for the table selected by any degree. -/",
+            "theorem v15_voightPolynomialRows_resultant_certificate (degree : ℕ) :",
+            "    (v15VoightPolynomialRows degree).all",
+            "      (v15VoightResultantCertificate degree) = true :=",
+            "  match degree with",
+        ]
+    )
+    for degree in range(5):
+        out.append(f"  | {degree} => by rfl")
+    for table, theorem_name in table_theorems:
+        out.append(f"  | {table.degree} => {theorem_name}")
+    large_degree_pattern = ".succ (" * 11 + "degree" + ")" * 11
+    out.extend(
+        [
+            f"  | {large_degree_pattern} => by rfl",
+            "",
+            "/-- Every row in the table selected by a degree has the recorded",
+            "coefficient length, monicity, positive discriminant, and positive index. -/",
+            "theorem v15_voightPolynomialRows_structural_certificate (degree : ℕ) :",
+            "    (v15VoightPolynomialRows degree).all",
+            "      (V15VoightPolynomialRow.structurallyValid degree) = true :=",
+            "  match degree with",
+        ]
+    )
+    structural_start = 12
+    for degree in range(5):
+        out.append(f"  | {degree} => by rfl")
+    for index, table in enumerate(TABLES + SUPPLEMENTAL_TABLES):
+        projection = ".2" * (structural_start + index - 1) + ".1"
+        out.append(
+            f"  | {table.degree} => "
+            f"v15_voightPolynomialRowData_certificate{projection}"
+        )
+    out.extend(
+        [
+            f"  | {large_degree_pattern} => by rfl",
+            "",
+            "end TraceEuclidean",
+            "",
+        ]
+    )
+    return "\n".join(out)
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument(
@@ -410,18 +670,48 @@ def main() -> None:
     )
     args = parser.parse_args()
     generated = render()
+    generated_certificates = render_certificates()
+    generated_chunks = render_certificate_chunks()
     if args.check:
         current = OUTPUT.read_text(encoding="utf-8")
         if current != generated:
             raise SystemExit(
                 "V15VoightDiscriminantData.lean is stale; rerun the generator"
             )
+        current_certificates = CERTIFICATE_OUTPUT.read_text(encoding="utf-8")
+        if current_certificates != generated_certificates:
+            raise SystemExit(
+                "V15VoightResultantCertificates.lean is stale; rerun the generator"
+            )
+        actual_chunk_names = {
+            path.name for path in CERTIFICATE_DIR.glob("*.lean")
+        }
+        if actual_chunk_names != set(generated_chunks):
+            raise SystemExit(
+                "Voight resultant certificate chunk set is stale; rerun the generator"
+            )
+        for filename, contents in generated_chunks.items():
+            if (CERTIFICATE_DIR / filename).read_text(encoding="utf-8") != contents:
+                raise SystemExit(
+                    f"{filename} is stale; rerun the generator"
+                )
         print(
             "Voight source tables, polynomial discriminant indices, "
             "and generated Lean data: PASS"
         )
         return
     OUTPUT.write_text(generated, encoding="utf-8", newline="\n")
+    CERTIFICATE_OUTPUT.write_text(
+        generated_certificates, encoding="utf-8", newline="\n"
+    )
+    CERTIFICATE_DIR.mkdir(parents=True, exist_ok=True)
+    for stale in CERTIFICATE_DIR.glob("*.lean"):
+        if stale.name not in generated_chunks:
+            stale.unlink()
+    for filename, contents in generated_chunks.items():
+        (CERTIFICATE_DIR / filename).write_text(
+            contents, encoding="utf-8", newline="\n"
+        )
 
 
 if __name__ == "__main__":

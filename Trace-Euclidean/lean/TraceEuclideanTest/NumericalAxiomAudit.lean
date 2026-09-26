@@ -1,4 +1,5 @@
 import TraceEuclidean.V15SectionFourVoightClosed
+import TraceEuclidean.V15VoightPolynomialBridge
 
 /-! Explicit audit of the native interval-checking trust boundary. -/
 
@@ -46,6 +47,11 @@ import TraceEuclidean.V15SectionFourVoightClosed
 #check TraceEuclidean.v15_classic_pair_mem_of_relativeDifferentNorm_closed
 #check TraceEuclidean.v15_integral_pair_mem_of_quarticRelativeDifferent_closed
 #check TraceEuclidean.v15_integral_pair_mem_of_relativeDifferentNorm_closed
+#check TraceEuclidean.v15_voightPolynomialRows_structural_certificate
+#check TraceEuclidean.v15_voightPolynomialRows_resultant_certificate
+#check TraceEuclidean.v15_voightPolynomialDiscriminantInput
+#check TraceEuclidean.v15_voightPolynomialRow_mem_indexedDiscriminantBox_of_valid
+#check TraceEuclidean.v15_voightPolynomialRow_mem_indexedDiscriminantBox
 
 #print axioms TraceEuclidean.v15OdlyzkoSinhIntegrand_integrableOn
 #print axioms TraceEuclidean.v15OdlyzkoSinhIntegral_zero_hundredth_le
@@ -95,3 +101,8 @@ import TraceEuclidean.V15SectionFourVoightClosed
 #print axioms TraceEuclidean.v15_classic_pair_mem_of_relativeDifferentNorm_closed
 #print axioms TraceEuclidean.v15_integral_pair_mem_of_quarticRelativeDifferent_closed
 #print axioms TraceEuclidean.v15_integral_pair_mem_of_relativeDifferentNorm_closed
+#print axioms TraceEuclidean.v15_voightPolynomialRows_structural_certificate
+#print axioms TraceEuclidean.v15_voightPolynomialRows_resultant_certificate
+#print axioms TraceEuclidean.v15_voightPolynomialDiscriminantInput
+#print axioms TraceEuclidean.v15_voightPolynomialRow_mem_indexedDiscriminantBox_of_valid
+#print axioms TraceEuclidean.v15_voightPolynomialRow_mem_indexedDiscriminantBox

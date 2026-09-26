@@ -58,9 +58,14 @@ checked by the reproducible generator before Lean runs.
 The generator also verifies the 2,773 polynomial-discriminant index equations
 with an exact integer Bareiss determinant. Mathematica independently verifies
 irreducibility, total reality, the same equation, and the actual number-field
-discriminant for every row. These computations do not yet replace
-`V15VoightPolynomialDiscriminantInput` with a Lean-kernel proof; that boundary
-is recorded explicitly in `V15VoightPolynomialBridge.lean`.
+discriminant for every row. Lean now proves the semantics of an exact integer
+Bareiss row-operation checker, its agreement with matrix determinants, the
+Sylvester determinant/resultant identity, and the monic
+resultant/discriminant bridge. Thirty-one generated `native_decide` chunks
+replay all 2,773 exact resultants and close
+`v15_voightPolynomialDiscriminantInput`. These thirty-one compiler-backed
+dependencies are listed separately by the numerical audit; the generic
+determinant and polynomial theorems remain in the kernel-only audit.
 
 ## Remaining external mathematics
 
@@ -86,9 +91,10 @@ endpoint. Section 4 now derives the degree `5`--`9` minima and degree-ten
 exclusion from checked Voight columns and one source-facing completeness
 premise for the enumeration through root discriminant `14`. The full archived
 polynomial rows, power-order indices, and independent arithmetic checks are
-also public. Formalizing the coefficient-discriminant computation inside the
-Lean kernel, the enumeration-completeness proof itself, and the optimized
-degree-eleven bound `14.083` remain. The online
+also public. The coefficient-discriminant interface is closed by the proved
+checker and disclosed finite certificate computations. The
+enumeration-completeness proof itself and the optimized degree-eleven bound
+`14.083` remain. The online
 November 1976 Table 2 gives `14.034` at degree eleven, so `14.083` remains a
 separately attributed later optimized input. The source-facing
 degree-at-least-eleven statement is connected to the exact Section 4 premise,

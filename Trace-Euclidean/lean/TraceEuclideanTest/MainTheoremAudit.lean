@@ -1275,13 +1275,13 @@ import TraceEuclidean
 #print axioms TraceEuclidean.v15OdlyzkoPrimePowerCriticalBracket_integral
 #print axioms TraceEuclidean.v15OdlyzkoPrimeCriticalBracket_average
 
--- Full archived Voight rows and their exact Hunter discriminant-filter bridge.
+-- Kernel proof layer for the archived Voight determinant certificates.
+#check TraceEuclidean.V15IntegralRowOperation.applyAllVector?_toMatrix
+#check TraceEuclidean.v15VoightPolynomial_discr_eq_of_certificate
 #check TraceEuclidean.v15_voightPolynomial_mem_box
 #check TraceEuclidean.v15_voightPolynomialRow_structurallyValid_iff
-#check TraceEuclidean.v15_voightPolynomialRow_mem_indexedDiscriminantBox_of_valid
-#check TraceEuclidean.v15_voightPolynomialRow_mem_indexedDiscriminantBox
 
+#print axioms TraceEuclidean.V15IntegralRowOperation.applyAllVector?_toMatrix
+#print axioms TraceEuclidean.v15VoightPolynomial_discr_eq_of_certificate
 #print axioms TraceEuclidean.v15_voightPolynomial_mem_box
 #print axioms TraceEuclidean.v15_voightPolynomialRow_structurallyValid_iff
-#print axioms TraceEuclidean.v15_voightPolynomialRow_mem_indexedDiscriminantBox_of_valid
-#print axioms TraceEuclidean.v15_voightPolynomialRow_mem_indexedDiscriminantBox

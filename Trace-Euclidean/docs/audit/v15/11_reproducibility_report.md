@@ -1,5 +1,16 @@
 # Reproducibility report
 
+- The exact Voight resultant-certificate update passed a complete local
+  8920-job Lean build on the unchanged pinned Lean 4.32.1 toolchain. The
+  557-declaration main axiom audit reports only `propext`,
+  `Classical.choice`, and `Quot.sound`. The 53-declaration numerical audit
+  separately exposes five Odlyzko, two Voight table-data, and thirty-one
+  generated Voight resultant native dependencies. A kernel-checked strict
+  integer Bareiss checker is proved equivalent to matrix row operations and
+  connected through Sylvester determinants and resultants to monic polynomial
+  discriminants. The thirty-one finite certificate chunks replay all 2,773
+  archived rows, and the generator reproduces and checks the exact module set.
+
 - The full Voight polynomial-row update passed a complete local 8886-job Lean
   build on the pinned Lean 4.32.1 toolchain. The expanded 557-declaration main
   axiom audit reports only `propext`, `Classical.choice`, and `Quot.sound`.

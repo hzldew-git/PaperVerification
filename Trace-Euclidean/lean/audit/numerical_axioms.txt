@@ -1,0 +1,726 @@
+TraceEuclidean.v15OdlyzkoSinhIntegrand_integrableOn :
+  MeasureTheory.IntegrableOn (fun x => (1 - TraceEuclidean.v15OdlyzkoF4 x) / (2 * Real.sinh (x / 2))) (Set.Ioi 0)
+    MeasureTheory.volume
+TraceEuclidean.v15OdlyzkoSinhIntegral_zero_hundredth_le :
+  ∫ (x : ℝ) in 0..1 / 100, (1 - TraceEuclidean.v15OdlyzkoF4 x) / (2 * Real.sinh (x / 2)) ≤ 1 / 40000
+TraceEuclidean.v15OdlyzkoSinhIntegral_tail_le :
+  ∫ (x : ℝ) in Set.Ioi 8, (1 - TraceEuclidean.v15OdlyzkoF4 x) / (2 * Real.sinh (x / 2)) ≤ 2000 / 999 * Real.exp (-4)
+TraceEuclidean.v15OdlyzkoCoshIntegral_tail_le :
+  ∫ (x : ℝ) in Set.Ioi 8, (1 - TraceEuclidean.v15OdlyzkoF4 x) / (2 * Real.cosh (x / 2)) ≤ 2 * Real.exp (-4)
+TraceEuclidean.V15OdlyzkoNumerical.sinh_core_upper :
+  ∫ (x : ℝ) in 1 / 100..8, (1 - TraceEuclidean.v15OdlyzkoF4 x) / (2 * Real.sinh (x / 2)) ≤ 95551 / 100000
+TraceEuclidean.V15OdlyzkoNumerical.cosh_core_upper :
+  ∫ (x : ℝ) in 0..8, (1 - TraceEuclidean.v15OdlyzkoF4 x) / (2 * Real.cosh (x / 2)) ≤ 750041 / 1000000
+TraceEuclidean.V15OdlyzkoNumerical.abIntegralCertificate : TraceEuclidean.V15OdlyzkoABIntegralCertificate
+TraceEuclidean.V15MellinGrowth.v15_odlyzkoTable4_of_constructed_explicitFormula
+  (hFormula :
+    TraceEuclidean.V15OdlyzkoExplicitFormulaInput fun K =>
+      (∑' (o : TraceEuclidean.V15DedekindZetaZeroOccurrence (TraceEuclidean.v15ConstructedRegularizationFamily K)),
+          TraceEuclidean.v15OdlyzkoPhi o.value).re) :
+  TraceEuclidean.V15OdlyzkoTable4ExplicitCorrectionInput
+TraceEuclidean.v15_odlyzkoTable4ExplicitCorrectionInput_closed : TraceEuclidean.V15OdlyzkoTable4ExplicitCorrectionInput
+TraceEuclidean.v15_odlyzkoTable4DescriptionInput_closed : TraceEuclidean.V15OdlyzkoTable4DescriptionInput
+TraceEuclidean.v15_sectionFourDiscriminantInput_of_reduced_smallDegreeLiterature
+  (hMin : TraceEuclidean.V15DegreeThreeToNineMinimumInput) (hTen : TraceEuclidean.V15DegreeTenRootDiscriminantInput)
+  (hEleven : TraceEuclidean.V15DegreeElevenRootDiscriminantInput) : TraceEuclidean.V15SectionFourDiscriminantInput
+TraceEuclidean.v15_classic_pair_mem_of_reduced_smallDegreeLiterature
+  (hMin : TraceEuclidean.V15DegreeThreeToNineMinimumInput) (hTen : TraceEuclidean.V15DegreeTenRootDiscriminantInput)
+  (hEleven : TraceEuclidean.V15DegreeElevenRootDiscriminantInput) (c : TraceEuclidean.GlobalLatticeClass)
+  (hE : TraceEuclidean.GlobalLatticeClass.IsClassicTraceEuclidean (↑c.degree) c) :
+  (c.rank, c.degree) ∈ TraceEuclidean.v15ClassicAdmissiblePairs
+TraceEuclidean.v15_integral_pair_mem_of_reduced_smallDegreeLiterature
+  (hMin : TraceEuclidean.V15DegreeThreeToNineMinimumInput) (hTen : TraceEuclidean.V15DegreeTenRootDiscriminantInput)
+  (hEleven : TraceEuclidean.V15DegreeElevenRootDiscriminantInput) (c : TraceEuclidean.GlobalLatticeClass)
+  (hE : TraceEuclidean.GlobalLatticeClass.IsIntegralTraceEuclidean (↑c.degree) c) :
+  (c.rank, c.degree) ∈ TraceEuclidean.v15IntegralAdmissiblePairs
+TraceEuclidean.v15_sectionFourDiscriminantInput_of_hunterCertificate_closed
+  (hHunter : TraceEuclidean.V15DegreeThreeHunterCertificateInput)
+  (hMin : TraceEuclidean.V15DegreeFourToNineMinimumInput) (hTen : TraceEuclidean.V15DegreeTenRootDiscriminantInput)
+  (hEleven : TraceEuclidean.V15DegreeElevenRootDiscriminantInput) : TraceEuclidean.V15SectionFourDiscriminantInput
+TraceEuclidean.v15_classic_pair_mem_of_hunterCertificate_closed
+  (hHunter : TraceEuclidean.V15DegreeThreeHunterCertificateInput)
+  (hMin : TraceEuclidean.V15DegreeFourToNineMinimumInput) (hTen : TraceEuclidean.V15DegreeTenRootDiscriminantInput)
+  (hEleven : TraceEuclidean.V15DegreeElevenRootDiscriminantInput) (c : TraceEuclidean.GlobalLatticeClass)
+  (hE : TraceEuclidean.GlobalLatticeClass.IsClassicTraceEuclidean (↑c.degree) c) :
+  (c.rank, c.degree) ∈ TraceEuclidean.v15ClassicAdmissiblePairs
+TraceEuclidean.v15_integral_pair_mem_of_hunterCertificate_closed
+  (hHunter : TraceEuclidean.V15DegreeThreeHunterCertificateInput)
+  (hMin : TraceEuclidean.V15DegreeFourToNineMinimumInput) (hTen : TraceEuclidean.V15DegreeTenRootDiscriminantInput)
+  (hEleven : TraceEuclidean.V15DegreeElevenRootDiscriminantInput) (c : TraceEuclidean.GlobalLatticeClass)
+  (hE : TraceEuclidean.GlobalLatticeClass.IsIntegralTraceEuclidean (↑c.degree) c) :
+  (c.rank, c.degree) ∈ TraceEuclidean.v15IntegralAdmissiblePairs
+TraceEuclidean.v15_sectionFourDiscriminantInput_of_degreeFourToEleven_closed
+  (hMin : TraceEuclidean.V15DegreeFourToNineMinimumInput) (hTen : TraceEuclidean.V15DegreeTenRootDiscriminantInput)
+  (hEleven : TraceEuclidean.V15DegreeElevenRootDiscriminantInput) : TraceEuclidean.V15SectionFourDiscriminantInput
+TraceEuclidean.v15_classic_pair_mem_of_degreeFourToEleven_closed (hMin : TraceEuclidean.V15DegreeFourToNineMinimumInput)
+  (hTen : TraceEuclidean.V15DegreeTenRootDiscriminantInput)
+  (hEleven : TraceEuclidean.V15DegreeElevenRootDiscriminantInput) (c : TraceEuclidean.GlobalLatticeClass)
+  (hE : TraceEuclidean.GlobalLatticeClass.IsClassicTraceEuclidean (↑c.degree) c) :
+  (c.rank, c.degree) ∈ TraceEuclidean.v15ClassicAdmissiblePairs
+TraceEuclidean.v15_integral_pair_mem_of_degreeFourToEleven_closed
+  (hMin : TraceEuclidean.V15DegreeFourToNineMinimumInput) (hTen : TraceEuclidean.V15DegreeTenRootDiscriminantInput)
+  (hEleven : TraceEuclidean.V15DegreeElevenRootDiscriminantInput) (c : TraceEuclidean.GlobalLatticeClass)
+  (hE : TraceEuclidean.GlobalLatticeClass.IsIntegralTraceEuclidean (↑c.degree) c) :
+  (c.rank, c.degree) ∈ TraceEuclidean.v15IntegralAdmissiblePairs
+TraceEuclidean.v15_sectionFourDiscriminantInput_of_degreeFourHunterCertificate_closed
+  (hFour : TraceEuclidean.V15DegreeFourHunterCertificateInput) (hMin : TraceEuclidean.V15DegreeFiveToNineMinimumInput)
+  (hTen : TraceEuclidean.V15DegreeTenRootDiscriminantInput)
+  (hEleven : TraceEuclidean.V15DegreeElevenRootDiscriminantInput) : TraceEuclidean.V15SectionFourDiscriminantInput
+TraceEuclidean.v15_classic_pair_mem_of_degreeFourHunterCertificate_closed
+  (hFour : TraceEuclidean.V15DegreeFourHunterCertificateInput) (hMin : TraceEuclidean.V15DegreeFiveToNineMinimumInput)
+  (hTen : TraceEuclidean.V15DegreeTenRootDiscriminantInput)
+  (hEleven : TraceEuclidean.V15DegreeElevenRootDiscriminantInput) (c : TraceEuclidean.GlobalLatticeClass)
+  (hE : TraceEuclidean.GlobalLatticeClass.IsClassicTraceEuclidean (↑c.degree) c) :
+  (c.rank, c.degree) ∈ TraceEuclidean.v15ClassicAdmissiblePairs
+TraceEuclidean.v15_integral_pair_mem_of_degreeFourHunterCertificate_closed
+  (hFour : TraceEuclidean.V15DegreeFourHunterCertificateInput) (hMin : TraceEuclidean.V15DegreeFiveToNineMinimumInput)
+  (hTen : TraceEuclidean.V15DegreeTenRootDiscriminantInput)
+  (hEleven : TraceEuclidean.V15DegreeElevenRootDiscriminantInput) (c : TraceEuclidean.GlobalLatticeClass)
+  (hE : TraceEuclidean.GlobalLatticeClass.IsIntegralTraceEuclidean (↑c.degree) c) :
+  (c.rank, c.degree) ∈ TraceEuclidean.v15IntegralAdmissiblePairs
+TraceEuclidean.v15_sectionFourDiscriminantInput_of_degreeFourPrimitiveGenerator_closed
+  (hFour : TraceEuclidean.V15DegreeFourPrimitiveGeneratorInput) (hMin : TraceEuclidean.V15DegreeFiveToNineMinimumInput)
+  (hTen : TraceEuclidean.V15DegreeTenRootDiscriminantInput)
+  (hEleven : TraceEuclidean.V15DegreeElevenRootDiscriminantInput) : TraceEuclidean.V15SectionFourDiscriminantInput
+TraceEuclidean.v15_classic_pair_mem_of_degreeFourPrimitiveGenerator_closed
+  (hFour : TraceEuclidean.V15DegreeFourPrimitiveGeneratorInput) (hMin : TraceEuclidean.V15DegreeFiveToNineMinimumInput)
+  (hTen : TraceEuclidean.V15DegreeTenRootDiscriminantInput)
+  (hEleven : TraceEuclidean.V15DegreeElevenRootDiscriminantInput) (c : TraceEuclidean.GlobalLatticeClass)
+  (hE : TraceEuclidean.GlobalLatticeClass.IsClassicTraceEuclidean (↑c.degree) c) :
+  (c.rank, c.degree) ∈ TraceEuclidean.v15ClassicAdmissiblePairs
+TraceEuclidean.v15_integral_pair_mem_of_degreeFourPrimitiveGenerator_closed
+  (hFour : TraceEuclidean.V15DegreeFourPrimitiveGeneratorInput) (hMin : TraceEuclidean.V15DegreeFiveToNineMinimumInput)
+  (hTen : TraceEuclidean.V15DegreeTenRootDiscriminantInput)
+  (hEleven : TraceEuclidean.V15DegreeElevenRootDiscriminantInput) (c : TraceEuclidean.GlobalLatticeClass)
+  (hE : TraceEuclidean.GlobalLatticeClass.IsIntegralTraceEuclidean (↑c.degree) c) :
+  (c.rank, c.degree) ∈ TraceEuclidean.v15IntegralAdmissiblePairs
+TraceEuclidean.v15_sectionFourDiscriminantInput_of_degreeFiveToEleven_closed
+  (hMin : TraceEuclidean.V15DegreeFiveToNineMinimumInput) (hTen : TraceEuclidean.V15DegreeTenRootDiscriminantInput)
+  (hEleven : TraceEuclidean.V15DegreeElevenRootDiscriminantInput) : TraceEuclidean.V15SectionFourDiscriminantInput
+TraceEuclidean.v15_classic_pair_mem_of_degreeFiveToEleven_closed (hMin : TraceEuclidean.V15DegreeFiveToNineMinimumInput)
+  (hTen : TraceEuclidean.V15DegreeTenRootDiscriminantInput)
+  (hEleven : TraceEuclidean.V15DegreeElevenRootDiscriminantInput) (c : TraceEuclidean.GlobalLatticeClass)
+  (hE : TraceEuclidean.GlobalLatticeClass.IsClassicTraceEuclidean (↑c.degree) c) :
+  (c.rank, c.degree) ∈ TraceEuclidean.v15ClassicAdmissiblePairs
+TraceEuclidean.v15_integral_pair_mem_of_degreeFiveToEleven_closed
+  (hMin : TraceEuclidean.V15DegreeFiveToNineMinimumInput) (hTen : TraceEuclidean.V15DegreeTenRootDiscriminantInput)
+  (hEleven : TraceEuclidean.V15DegreeElevenRootDiscriminantInput) (c : TraceEuclidean.GlobalLatticeClass)
+  (hE : TraceEuclidean.GlobalLatticeClass.IsIntegralTraceEuclidean (↑c.degree) c) :
+  (c.rank, c.degree) ∈ TraceEuclidean.v15IntegralAdmissiblePairs
+TraceEuclidean.v15_voightDiscriminantData_certificate :
+  TraceEuclidean.v15VoightDiscriminantsFive.length = 674 ∧
+    List.Pairwise (fun x1 x2 => x1 ≤ x2) TraceEuclidean.v15VoightDiscriminantsFive ∧
+      TraceEuclidean.v15VoightDiscriminantsSix.length = 827 ∧
+        List.Pairwise (fun x1 x2 => x1 ≤ x2) TraceEuclidean.v15VoightDiscriminantsSix ∧
+          TraceEuclidean.v15VoightDiscriminantsSeven.length = 301 ∧
+            List.Pairwise (fun x1 x2 => x1 ≤ x2) TraceEuclidean.v15VoightDiscriminantsSeven ∧
+              TraceEuclidean.v15VoightDiscriminantsEight.length = 164 ∧
+                List.Pairwise (fun x1 x2 => x1 ≤ x2) TraceEuclidean.v15VoightDiscriminantsEight ∧
+                  TraceEuclidean.v15VoightDiscriminantsNine.length = 15 ∧
+                    List.Pairwise (fun x1 x2 => x1 ≤ x2) TraceEuclidean.v15VoightDiscriminantsNine
+TraceEuclidean.v15_voightPolynomialRowData_certificate :
+  TraceEuclidean.v15VoightPolynomialRowsFive.length = 674 ∧
+    TraceEuclidean.v15VoightPolynomialRowsSix.length = 827 ∧
+      TraceEuclidean.v15VoightPolynomialRowsSeven.length = 301 ∧
+        TraceEuclidean.v15VoightPolynomialRowsEight.length = 164 ∧
+          TraceEuclidean.v15VoightPolynomialRowsNine.length = 15 ∧
+            TraceEuclidean.v15VoightPolynomialRowsTen.length = 792 ∧
+              List.map (fun x => x.fieldDiscriminant) TraceEuclidean.v15VoightPolynomialRowsFive =
+                  TraceEuclidean.v15VoightDiscriminantsFive ∧
+                List.map (fun x => x.fieldDiscriminant) TraceEuclidean.v15VoightPolynomialRowsSix =
+                    TraceEuclidean.v15VoightDiscriminantsSix ∧
+                  List.map (fun x => x.fieldDiscriminant) TraceEuclidean.v15VoightPolynomialRowsSeven =
+                      TraceEuclidean.v15VoightDiscriminantsSeven ∧
+                    List.map (fun x => x.fieldDiscriminant) TraceEuclidean.v15VoightPolynomialRowsEight =
+                        TraceEuclidean.v15VoightDiscriminantsEight ∧
+                      List.map (fun x => x.fieldDiscriminant) TraceEuclidean.v15VoightPolynomialRowsNine =
+                          TraceEuclidean.v15VoightDiscriminantsNine ∧
+                        TraceEuclidean.v15VoightPolynomialRowsFive.all
+                              (TraceEuclidean.V15VoightPolynomialRow.structurallyValid 5) =
+                            true ∧
+                          TraceEuclidean.v15VoightPolynomialRowsSix.all
+                                (TraceEuclidean.V15VoightPolynomialRow.structurallyValid 6) =
+                              true ∧
+                            TraceEuclidean.v15VoightPolynomialRowsSeven.all
+                                  (TraceEuclidean.V15VoightPolynomialRow.structurallyValid 7) =
+                                true ∧
+                              TraceEuclidean.v15VoightPolynomialRowsEight.all
+                                    (TraceEuclidean.V15VoightPolynomialRow.structurallyValid 8) =
+                                  true ∧
+                                TraceEuclidean.v15VoightPolynomialRowsNine.all
+                                      (TraceEuclidean.V15VoightPolynomialRow.structurallyValid 9) =
+                                    true ∧
+                                  TraceEuclidean.v15VoightPolynomialRowsTen.all
+                                        (TraceEuclidean.V15VoightPolynomialRow.structurallyValid 10) =
+                                      true ∧
+                                    TraceEuclidean.v15VoightMaximumIndex TraceEuclidean.v15VoightPolynomialRowsFive =
+                                        28 ∧
+                                      TraceEuclidean.v15VoightMaximumIndex TraceEuclidean.v15VoightPolynomialRowsSix =
+                                          1651 ∧
+                                        TraceEuclidean.v15VoightMaximumIndex
+                                              TraceEuclidean.v15VoightPolynomialRowsSeven =
+                                            9 ∧
+                                          TraceEuclidean.v15VoightMaximumIndex
+                                                TraceEuclidean.v15VoightPolynomialRowsEight =
+                                              4096 ∧
+                                            TraceEuclidean.v15VoightMaximumIndex
+                                                  TraceEuclidean.v15VoightPolynomialRowsNine =
+                                                1 ∧
+                                              TraceEuclidean.v15VoightMaximumIndex
+                                                  TraceEuclidean.v15VoightPolynomialRowsTen =
+                                                3581
+TraceEuclidean.v15_degreeFiveToNineMinimumInput_of_voightEnumeration
+  (hEnum : TraceEuclidean.V15VoightEnumerationUpToFourteenInput) : TraceEuclidean.V15DegreeFiveToNineMinimumInput
+TraceEuclidean.v15_degreeTenRootDiscriminantInput_of_voightEnumeration
+  (hEnum : TraceEuclidean.V15VoightEnumerationUpToFourteenInput) : TraceEuclidean.V15DegreeTenRootDiscriminantInput
+TraceEuclidean.v15_sectionFourDiscriminantInput_of_voightEnumeration_closed
+  (hEnum : TraceEuclidean.V15VoightEnumerationUpToFourteenInput)
+  (hEleven : TraceEuclidean.V15DegreeElevenRootDiscriminantInput) : TraceEuclidean.V15SectionFourDiscriminantInput
+TraceEuclidean.v15_classic_pair_mem_of_voightEnumeration_closed
+  (hEnum : TraceEuclidean.V15VoightEnumerationUpToFourteenInput)
+  (hEleven : TraceEuclidean.V15DegreeElevenRootDiscriminantInput) (c : TraceEuclidean.GlobalLatticeClass)
+  (hE : TraceEuclidean.GlobalLatticeClass.IsClassicTraceEuclidean (↑c.degree) c) :
+  (c.rank, c.degree) ∈ TraceEuclidean.v15ClassicAdmissiblePairs
+TraceEuclidean.v15_integral_pair_mem_of_voightEnumeration_closed
+  (hEnum : TraceEuclidean.V15VoightEnumerationUpToFourteenInput)
+  (hEleven : TraceEuclidean.V15DegreeElevenRootDiscriminantInput) (c : TraceEuclidean.GlobalLatticeClass)
+  (hE : TraceEuclidean.GlobalLatticeClass.IsIntegralTraceEuclidean (↑c.degree) c) :
+  (c.rank, c.degree) ∈ TraceEuclidean.v15IntegralAdmissiblePairs
+TraceEuclidean.v15_sectionFourDiscriminantInput_of_publishedVoightBounds_closed
+  (hEnum : TraceEuclidean.V15VoightEnumerationUpToFourteenInput)
+  (hBound : TraceEuclidean.V15OdlyzkoMartinetAtLeastElevenInput) : TraceEuclidean.V15SectionFourDiscriminantInput
+TraceEuclidean.v15_classic_pair_mem_of_publishedVoightBounds_closed
+  (hEnum : TraceEuclidean.V15VoightEnumerationUpToFourteenInput)
+  (hBound : TraceEuclidean.V15OdlyzkoMartinetAtLeastElevenInput) (c : TraceEuclidean.GlobalLatticeClass)
+  (hE : TraceEuclidean.GlobalLatticeClass.IsClassicTraceEuclidean (↑c.degree) c) :
+  (c.rank, c.degree) ∈ TraceEuclidean.v15ClassicAdmissiblePairs
+TraceEuclidean.v15_integral_pair_mem_of_publishedVoightBounds_closed
+  (hEnum : TraceEuclidean.V15VoightEnumerationUpToFourteenInput)
+  (hBound : TraceEuclidean.V15OdlyzkoMartinetAtLeastElevenInput) (c : TraceEuclidean.GlobalLatticeClass)
+  (hE : TraceEuclidean.GlobalLatticeClass.IsIntegralTraceEuclidean (↑c.degree) c) :
+  (c.rank, c.degree) ∈ TraceEuclidean.v15IntegralAdmissiblePairs
+TraceEuclidean.v15_sectionFourDiscriminantInput_of_quarticRelativeDifferent_closed
+  (hRadicand : TraceEuclidean.V15QuarticSmallDiscriminantQuadraticRadicandInput)
+  (hNorm : TraceEuclidean.V15QuarticSmallDiscriminantRelativeDifferentNormInput)
+  (hMin : TraceEuclidean.V15DegreeFiveToNineMinimumInput) (hTen : TraceEuclidean.V15DegreeTenRootDiscriminantInput)
+  (hEleven : TraceEuclidean.V15DegreeElevenRootDiscriminantInput) : TraceEuclidean.V15SectionFourDiscriminantInput
+TraceEuclidean.v15_sectionFourDiscriminantInput_of_relativeDifferentNorm_closed
+  (hNorm : TraceEuclidean.V15QuarticSmallDiscriminantRelativeDifferentNormInput)
+  (hMin : TraceEuclidean.V15DegreeFiveToNineMinimumInput) (hTen : TraceEuclidean.V15DegreeTenRootDiscriminantInput)
+  (hEleven : TraceEuclidean.V15DegreeElevenRootDiscriminantInput) : TraceEuclidean.V15SectionFourDiscriminantInput
+TraceEuclidean.v15_classic_pair_mem_of_quarticRelativeDifferent_closed
+  (hRadicand : TraceEuclidean.V15QuarticSmallDiscriminantQuadraticRadicandInput)
+  (hNorm : TraceEuclidean.V15QuarticSmallDiscriminantRelativeDifferentNormInput)
+  (hMin : TraceEuclidean.V15DegreeFiveToNineMinimumInput) (hTen : TraceEuclidean.V15DegreeTenRootDiscriminantInput)
+  (hEleven : TraceEuclidean.V15DegreeElevenRootDiscriminantInput) (c : TraceEuclidean.GlobalLatticeClass)
+  (hE : TraceEuclidean.GlobalLatticeClass.IsClassicTraceEuclidean (↑c.degree) c) :
+  (c.rank, c.degree) ∈ TraceEuclidean.v15ClassicAdmissiblePairs
+TraceEuclidean.v15_classic_pair_mem_of_relativeDifferentNorm_closed
+  (hNorm : TraceEuclidean.V15QuarticSmallDiscriminantRelativeDifferentNormInput)
+  (hMin : TraceEuclidean.V15DegreeFiveToNineMinimumInput) (hTen : TraceEuclidean.V15DegreeTenRootDiscriminantInput)
+  (hEleven : TraceEuclidean.V15DegreeElevenRootDiscriminantInput) (c : TraceEuclidean.GlobalLatticeClass)
+  (hE : TraceEuclidean.GlobalLatticeClass.IsClassicTraceEuclidean (↑c.degree) c) :
+  (c.rank, c.degree) ∈ TraceEuclidean.v15ClassicAdmissiblePairs
+TraceEuclidean.v15_integral_pair_mem_of_quarticRelativeDifferent_closed
+  (hRadicand : TraceEuclidean.V15QuarticSmallDiscriminantQuadraticRadicandInput)
+  (hNorm : TraceEuclidean.V15QuarticSmallDiscriminantRelativeDifferentNormInput)
+  (hMin : TraceEuclidean.V15DegreeFiveToNineMinimumInput) (hTen : TraceEuclidean.V15DegreeTenRootDiscriminantInput)
+  (hEleven : TraceEuclidean.V15DegreeElevenRootDiscriminantInput) (c : TraceEuclidean.GlobalLatticeClass)
+  (hE : TraceEuclidean.GlobalLatticeClass.IsIntegralTraceEuclidean (↑c.degree) c) :
+  (c.rank, c.degree) ∈ TraceEuclidean.v15IntegralAdmissiblePairs
+TraceEuclidean.v15_integral_pair_mem_of_relativeDifferentNorm_closed
+  (hNorm : TraceEuclidean.V15QuarticSmallDiscriminantRelativeDifferentNormInput)
+  (hMin : TraceEuclidean.V15DegreeFiveToNineMinimumInput) (hTen : TraceEuclidean.V15DegreeTenRootDiscriminantInput)
+  (hEleven : TraceEuclidean.V15DegreeElevenRootDiscriminantInput) (c : TraceEuclidean.GlobalLatticeClass)
+  (hE : TraceEuclidean.GlobalLatticeClass.IsIntegralTraceEuclidean (↑c.degree) c) :
+  (c.rank, c.degree) ∈ TraceEuclidean.v15IntegralAdmissiblePairs
+TraceEuclidean.v15_voightPolynomialRows_structural_certificate (degree : ℕ) :
+  (TraceEuclidean.v15VoightPolynomialRows degree).all (TraceEuclidean.V15VoightPolynomialRow.structurallyValid degree) =
+    true
+TraceEuclidean.v15_voightPolynomialRows_resultant_certificate (degree : ℕ) :
+  (TraceEuclidean.v15VoightPolynomialRows degree).all (TraceEuclidean.v15VoightResultantCertificate degree) = true
+TraceEuclidean.v15_voightPolynomialDiscriminantInput : TraceEuclidean.V15VoightPolynomialDiscriminantInput
+TraceEuclidean.v15_voightPolynomialRow_mem_indexedDiscriminantBox_of_valid {degree : ℕ}
+  {row : TraceEuclidean.V15VoightPolynomialRow} (hrow : row ∈ TraceEuclidean.v15VoightPolynomialRows degree)
+  (hvalid : TraceEuclidean.V15VoightPolynomialRow.structurallyValid degree row = true) :
+  (row.polynomial, row.index) ∈
+    TraceEuclidean.v15IndexedDiscriminantBox (TraceEuclidean.v15VoightPolynomialBox degree) ↑row.fieldDiscriminant
+TraceEuclidean.v15_voightPolynomialRow_mem_indexedDiscriminantBox {degree : ℕ}
+  (hall :
+    (TraceEuclidean.v15VoightPolynomialRows degree).all
+        (TraceEuclidean.V15VoightPolynomialRow.structurallyValid degree) =
+      true)
+  {row : TraceEuclidean.V15VoightPolynomialRow} (hrow : row ∈ TraceEuclidean.v15VoightPolynomialRows degree) :
+  (row.polynomial, row.index) ∈
+    TraceEuclidean.v15IndexedDiscriminantBox (TraceEuclidean.v15VoightPolynomialBox degree) ↑row.fieldDiscriminant
+'TraceEuclidean.v15OdlyzkoSinhIntegrand_integrableOn' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15OdlyzkoSinhIntegral_zero_hundredth_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15OdlyzkoSinhIntegral_tail_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15OdlyzkoCoshIntegral_tail_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.V15OdlyzkoNumerical.sinh_core_upper' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ TraceEuclidean.V15OdlyzkoNumerical.sinh_core_upper._native.native_decide.ax_1_1]
+'TraceEuclidean.V15OdlyzkoNumerical.cosh_core_upper' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ TraceEuclidean.V15OdlyzkoNumerical.cosh_core_upper._native.native_decide.ax_1_1]
+'TraceEuclidean.V15OdlyzkoNumerical.abIntegralCertificate' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ EulerMascheroni.harmonic_N_ge._native.native_decide.ax_1_2,
+ TraceEuclidean.V15OdlyzkoNumerical.cosh_core_upper._native.native_decide.ax_1_1,
+ TraceEuclidean.V15OdlyzkoNumerical.sinh_core_upper._native.native_decide.ax_1_1,
+ TraceEuclidean.V15OdlyzkoNumerical.scalarA_strict._native.native_decide.ax_1_1✝,
+ TraceEuclidean.V15OdlyzkoNumerical.scalarB_strict._native.native_decide.ax_1_1✝]
+'TraceEuclidean.V15MellinGrowth.v15_odlyzkoTable4_of_constructed_explicitFormula' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ EulerMascheroni.harmonic_N_ge._native.native_decide.ax_1_2,
+ TraceEuclidean.V15OdlyzkoNumerical.cosh_core_upper._native.native_decide.ax_1_1,
+ TraceEuclidean.V15OdlyzkoNumerical.sinh_core_upper._native.native_decide.ax_1_1,
+ TraceEuclidean.V15OdlyzkoNumerical.scalarA_strict._native.native_decide.ax_1_1✝,
+ TraceEuclidean.V15OdlyzkoNumerical.scalarB_strict._native.native_decide.ax_1_1✝]
+'TraceEuclidean.v15_odlyzkoTable4ExplicitCorrectionInput_closed' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ EulerMascheroni.harmonic_N_ge._native.native_decide.ax_1_2,
+ TraceEuclidean.V15OdlyzkoNumerical.cosh_core_upper._native.native_decide.ax_1_1,
+ TraceEuclidean.V15OdlyzkoNumerical.sinh_core_upper._native.native_decide.ax_1_1,
+ TraceEuclidean.V15OdlyzkoNumerical.scalarA_strict._native.native_decide.ax_1_1✝,
+ TraceEuclidean.V15OdlyzkoNumerical.scalarB_strict._native.native_decide.ax_1_1✝]
+'TraceEuclidean.v15_odlyzkoTable4DescriptionInput_closed' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ EulerMascheroni.harmonic_N_ge._native.native_decide.ax_1_2,
+ TraceEuclidean.V15OdlyzkoNumerical.cosh_core_upper._native.native_decide.ax_1_1,
+ TraceEuclidean.V15OdlyzkoNumerical.sinh_core_upper._native.native_decide.ax_1_1,
+ TraceEuclidean.V15OdlyzkoNumerical.scalarA_strict._native.native_decide.ax_1_1✝,
+ TraceEuclidean.V15OdlyzkoNumerical.scalarB_strict._native.native_decide.ax_1_1✝]
+'TraceEuclidean.v15_sectionFourDiscriminantInput_of_smallDegreeLiterature' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ EulerMascheroni.harmonic_N_ge._native.native_decide.ax_1_2,
+ TraceEuclidean.V15OdlyzkoNumerical.cosh_core_upper._native.native_decide.ax_1_1,
+ TraceEuclidean.V15OdlyzkoNumerical.sinh_core_upper._native.native_decide.ax_1_1,
+ TraceEuclidean.V15OdlyzkoNumerical.scalarA_strict._native.native_decide.ax_1_1✝,
+ TraceEuclidean.V15OdlyzkoNumerical.scalarB_strict._native.native_decide.ax_1_1✝]
+'TraceEuclidean.v15_sectionFourDiscriminantInput_of_reduced_smallDegreeLiterature' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ EulerMascheroni.harmonic_N_ge._native.native_decide.ax_1_2,
+ TraceEuclidean.V15OdlyzkoNumerical.cosh_core_upper._native.native_decide.ax_1_1,
+ TraceEuclidean.V15OdlyzkoNumerical.sinh_core_upper._native.native_decide.ax_1_1,
+ TraceEuclidean.V15OdlyzkoNumerical.scalarA_strict._native.native_decide.ax_1_1✝,
+ TraceEuclidean.V15OdlyzkoNumerical.scalarB_strict._native.native_decide.ax_1_1✝]
+'TraceEuclidean.v15_classic_pair_mem_of_reduced_smallDegreeLiterature' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ EulerMascheroni.harmonic_N_ge._native.native_decide.ax_1_2,
+ TraceEuclidean.V15OdlyzkoNumerical.cosh_core_upper._native.native_decide.ax_1_1,
+ TraceEuclidean.V15OdlyzkoNumerical.sinh_core_upper._native.native_decide.ax_1_1,
+ TraceEuclidean.V15OdlyzkoNumerical.scalarA_strict._native.native_decide.ax_1_1✝,
+ TraceEuclidean.V15OdlyzkoNumerical.scalarB_strict._native.native_decide.ax_1_1✝]
+'TraceEuclidean.v15_integral_pair_mem_of_reduced_smallDegreeLiterature' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ EulerMascheroni.harmonic_N_ge._native.native_decide.ax_1_2,
+ TraceEuclidean.V15OdlyzkoNumerical.cosh_core_upper._native.native_decide.ax_1_1,
+ TraceEuclidean.V15OdlyzkoNumerical.sinh_core_upper._native.native_decide.ax_1_1,
+ TraceEuclidean.V15OdlyzkoNumerical.scalarA_strict._native.native_decide.ax_1_1✝,
+ TraceEuclidean.V15OdlyzkoNumerical.scalarB_strict._native.native_decide.ax_1_1✝]
+'TraceEuclidean.v15_classic_finite_closed' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ EulerMascheroni.harmonic_N_ge._native.native_decide.ax_1_2,
+ TraceEuclidean.V15OdlyzkoNumerical.cosh_core_upper._native.native_decide.ax_1_1,
+ TraceEuclidean.V15OdlyzkoNumerical.sinh_core_upper._native.native_decide.ax_1_1,
+ TraceEuclidean.V15OdlyzkoNumerical.scalarA_strict._native.native_decide.ax_1_1✝,
+ TraceEuclidean.V15OdlyzkoNumerical.scalarB_strict._native.native_decide.ax_1_1✝]
+'TraceEuclidean.v15_integral_finite_closed' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ EulerMascheroni.harmonic_N_ge._native.native_decide.ax_1_2,
+ TraceEuclidean.V15OdlyzkoNumerical.cosh_core_upper._native.native_decide.ax_1_1,
+ TraceEuclidean.V15OdlyzkoNumerical.sinh_core_upper._native.native_decide.ax_1_1,
+ TraceEuclidean.V15OdlyzkoNumerical.scalarA_strict._native.native_decide.ax_1_1✝,
+ TraceEuclidean.V15OdlyzkoNumerical.scalarB_strict._native.native_decide.ax_1_1✝]
+'TraceEuclidean.v15_pnorm_finite_closed' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ EulerMascheroni.harmonic_N_ge._native.native_decide.ax_1_2,
+ TraceEuclidean.V15OdlyzkoNumerical.cosh_core_upper._native.native_decide.ax_1_1,
+ TraceEuclidean.V15OdlyzkoNumerical.sinh_core_upper._native.native_decide.ax_1_1,
+ TraceEuclidean.V15OdlyzkoNumerical.scalarA_strict._native.native_decide.ax_1_1✝,
+ TraceEuclidean.V15OdlyzkoNumerical.scalarB_strict._native.native_decide.ax_1_1✝]
+'TraceEuclidean.v15_sectionFourDiscriminantInput_of_hunterCertificate_closed' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ EulerMascheroni.harmonic_N_ge._native.native_decide.ax_1_2,
+ TraceEuclidean.V15OdlyzkoNumerical.cosh_core_upper._native.native_decide.ax_1_1,
+ TraceEuclidean.V15OdlyzkoNumerical.sinh_core_upper._native.native_decide.ax_1_1,
+ TraceEuclidean.V15OdlyzkoNumerical.scalarA_strict._native.native_decide.ax_1_1✝,
+ TraceEuclidean.V15OdlyzkoNumerical.scalarB_strict._native.native_decide.ax_1_1✝]
+'TraceEuclidean.v15_classic_pair_mem_of_hunterCertificate_closed' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ EulerMascheroni.harmonic_N_ge._native.native_decide.ax_1_2,
+ TraceEuclidean.V15OdlyzkoNumerical.cosh_core_upper._native.native_decide.ax_1_1,
+ TraceEuclidean.V15OdlyzkoNumerical.sinh_core_upper._native.native_decide.ax_1_1,
+ TraceEuclidean.V15OdlyzkoNumerical.scalarA_strict._native.native_decide.ax_1_1✝,
+ TraceEuclidean.V15OdlyzkoNumerical.scalarB_strict._native.native_decide.ax_1_1✝]
+'TraceEuclidean.v15_integral_pair_mem_of_hunterCertificate_closed' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ EulerMascheroni.harmonic_N_ge._native.native_decide.ax_1_2,
+ TraceEuclidean.V15OdlyzkoNumerical.cosh_core_upper._native.native_decide.ax_1_1,
+ TraceEuclidean.V15OdlyzkoNumerical.sinh_core_upper._native.native_decide.ax_1_1,
+ TraceEuclidean.V15OdlyzkoNumerical.scalarA_strict._native.native_decide.ax_1_1✝,
+ TraceEuclidean.V15OdlyzkoNumerical.scalarB_strict._native.native_decide.ax_1_1✝]
+'TraceEuclidean.v15_sectionFourDiscriminantInput_of_degreeFourToEleven_closed' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ EulerMascheroni.harmonic_N_ge._native.native_decide.ax_1_2,
+ TraceEuclidean.V15OdlyzkoNumerical.cosh_core_upper._native.native_decide.ax_1_1,
+ TraceEuclidean.V15OdlyzkoNumerical.sinh_core_upper._native.native_decide.ax_1_1,
+ TraceEuclidean.V15OdlyzkoNumerical.scalarA_strict._native.native_decide.ax_1_1✝,
+ TraceEuclidean.V15OdlyzkoNumerical.scalarB_strict._native.native_decide.ax_1_1✝]
+'TraceEuclidean.v15_classic_pair_mem_of_degreeFourToEleven_closed' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ EulerMascheroni.harmonic_N_ge._native.native_decide.ax_1_2,
+ TraceEuclidean.V15OdlyzkoNumerical.cosh_core_upper._native.native_decide.ax_1_1,
+ TraceEuclidean.V15OdlyzkoNumerical.sinh_core_upper._native.native_decide.ax_1_1,
+ TraceEuclidean.V15OdlyzkoNumerical.scalarA_strict._native.native_decide.ax_1_1✝,
+ TraceEuclidean.V15OdlyzkoNumerical.scalarB_strict._native.native_decide.ax_1_1✝]
+'TraceEuclidean.v15_integral_pair_mem_of_degreeFourToEleven_closed' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ EulerMascheroni.harmonic_N_ge._native.native_decide.ax_1_2,
+ TraceEuclidean.V15OdlyzkoNumerical.cosh_core_upper._native.native_decide.ax_1_1,
+ TraceEuclidean.V15OdlyzkoNumerical.sinh_core_upper._native.native_decide.ax_1_1,
+ TraceEuclidean.V15OdlyzkoNumerical.scalarA_strict._native.native_decide.ax_1_1✝,
+ TraceEuclidean.V15OdlyzkoNumerical.scalarB_strict._native.native_decide.ax_1_1✝]
+'TraceEuclidean.v15_sectionFourDiscriminantInput_of_degreeFourHunterCertificate_closed' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ EulerMascheroni.harmonic_N_ge._native.native_decide.ax_1_2,
+ TraceEuclidean.V15OdlyzkoNumerical.cosh_core_upper._native.native_decide.ax_1_1,
+ TraceEuclidean.V15OdlyzkoNumerical.sinh_core_upper._native.native_decide.ax_1_1,
+ TraceEuclidean.V15OdlyzkoNumerical.scalarA_strict._native.native_decide.ax_1_1✝,
+ TraceEuclidean.V15OdlyzkoNumerical.scalarB_strict._native.native_decide.ax_1_1✝]
+'TraceEuclidean.v15_classic_pair_mem_of_degreeFourHunterCertificate_closed' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ EulerMascheroni.harmonic_N_ge._native.native_decide.ax_1_2,
+ TraceEuclidean.V15OdlyzkoNumerical.cosh_core_upper._native.native_decide.ax_1_1,
+ TraceEuclidean.V15OdlyzkoNumerical.sinh_core_upper._native.native_decide.ax_1_1,
+ TraceEuclidean.V15OdlyzkoNumerical.scalarA_strict._native.native_decide.ax_1_1✝,
+ TraceEuclidean.V15OdlyzkoNumerical.scalarB_strict._native.native_decide.ax_1_1✝]
+'TraceEuclidean.v15_integral_pair_mem_of_degreeFourHunterCertificate_closed' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ EulerMascheroni.harmonic_N_ge._native.native_decide.ax_1_2,
+ TraceEuclidean.V15OdlyzkoNumerical.cosh_core_upper._native.native_decide.ax_1_1,
+ TraceEuclidean.V15OdlyzkoNumerical.sinh_core_upper._native.native_decide.ax_1_1,
+ TraceEuclidean.V15OdlyzkoNumerical.scalarA_strict._native.native_decide.ax_1_1✝,
+ TraceEuclidean.V15OdlyzkoNumerical.scalarB_strict._native.native_decide.ax_1_1✝]
+'TraceEuclidean.v15_sectionFourDiscriminantInput_of_degreeFourPrimitiveGenerator_closed' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ EulerMascheroni.harmonic_N_ge._native.native_decide.ax_1_2,
+ TraceEuclidean.V15OdlyzkoNumerical.cosh_core_upper._native.native_decide.ax_1_1,
+ TraceEuclidean.V15OdlyzkoNumerical.sinh_core_upper._native.native_decide.ax_1_1,
+ TraceEuclidean.V15OdlyzkoNumerical.scalarA_strict._native.native_decide.ax_1_1✝,
+ TraceEuclidean.V15OdlyzkoNumerical.scalarB_strict._native.native_decide.ax_1_1✝]
+'TraceEuclidean.v15_classic_pair_mem_of_degreeFourPrimitiveGenerator_closed' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ EulerMascheroni.harmonic_N_ge._native.native_decide.ax_1_2,
+ TraceEuclidean.V15OdlyzkoNumerical.cosh_core_upper._native.native_decide.ax_1_1,
+ TraceEuclidean.V15OdlyzkoNumerical.sinh_core_upper._native.native_decide.ax_1_1,
+ TraceEuclidean.V15OdlyzkoNumerical.scalarA_strict._native.native_decide.ax_1_1✝,
+ TraceEuclidean.V15OdlyzkoNumerical.scalarB_strict._native.native_decide.ax_1_1✝]
+'TraceEuclidean.v15_integral_pair_mem_of_degreeFourPrimitiveGenerator_closed' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ EulerMascheroni.harmonic_N_ge._native.native_decide.ax_1_2,
+ TraceEuclidean.V15OdlyzkoNumerical.cosh_core_upper._native.native_decide.ax_1_1,
+ TraceEuclidean.V15OdlyzkoNumerical.sinh_core_upper._native.native_decide.ax_1_1,
+ TraceEuclidean.V15OdlyzkoNumerical.scalarA_strict._native.native_decide.ax_1_1✝,
+ TraceEuclidean.V15OdlyzkoNumerical.scalarB_strict._native.native_decide.ax_1_1✝]
+'TraceEuclidean.v15_sectionFourDiscriminantInput_of_degreeFiveToEleven_closed' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ EulerMascheroni.harmonic_N_ge._native.native_decide.ax_1_2,
+ TraceEuclidean.V15OdlyzkoNumerical.cosh_core_upper._native.native_decide.ax_1_1,
+ TraceEuclidean.V15OdlyzkoNumerical.sinh_core_upper._native.native_decide.ax_1_1,
+ TraceEuclidean.V15OdlyzkoNumerical.scalarA_strict._native.native_decide.ax_1_1✝,
+ TraceEuclidean.V15OdlyzkoNumerical.scalarB_strict._native.native_decide.ax_1_1✝]
+'TraceEuclidean.v15_classic_pair_mem_of_degreeFiveToEleven_closed' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ EulerMascheroni.harmonic_N_ge._native.native_decide.ax_1_2,
+ TraceEuclidean.V15OdlyzkoNumerical.cosh_core_upper._native.native_decide.ax_1_1,
+ TraceEuclidean.V15OdlyzkoNumerical.sinh_core_upper._native.native_decide.ax_1_1,
+ TraceEuclidean.V15OdlyzkoNumerical.scalarA_strict._native.native_decide.ax_1_1✝,
+ TraceEuclidean.V15OdlyzkoNumerical.scalarB_strict._native.native_decide.ax_1_1✝]
+'TraceEuclidean.v15_integral_pair_mem_of_degreeFiveToEleven_closed' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ EulerMascheroni.harmonic_N_ge._native.native_decide.ax_1_2,
+ TraceEuclidean.V15OdlyzkoNumerical.cosh_core_upper._native.native_decide.ax_1_1,
+ TraceEuclidean.V15OdlyzkoNumerical.sinh_core_upper._native.native_decide.ax_1_1,
+ TraceEuclidean.V15OdlyzkoNumerical.scalarA_strict._native.native_decide.ax_1_1✝,
+ TraceEuclidean.V15OdlyzkoNumerical.scalarB_strict._native.native_decide.ax_1_1✝]
+'TraceEuclidean.v15_voightDiscriminantData_certificate' depends on axioms: [TraceEuclidean.v15_voightDiscriminantData_certificate._native.native_decide.ax_1_1]
+'TraceEuclidean.v15_voightPolynomialRowData_certificate' depends on axioms: [TraceEuclidean.v15_voightPolynomialRowData_certificate._native.native_decide.ax_1_1]
+'TraceEuclidean.v15_degreeFiveToNineMinimumInput_of_voightEnumeration' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ TraceEuclidean.v15_voightDiscriminantData_certificate._native.native_decide.ax_1_1]
+'TraceEuclidean.v15_degreeTenRootDiscriminantInput_of_voightEnumeration' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'TraceEuclidean.v15_sectionFourDiscriminantInput_of_voightEnumeration_closed' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ EulerMascheroni.harmonic_N_ge._native.native_decide.ax_1_2,
+ TraceEuclidean.v15_voightDiscriminantData_certificate._native.native_decide.ax_1_1,
+ TraceEuclidean.V15OdlyzkoNumerical.cosh_core_upper._native.native_decide.ax_1_1,
+ TraceEuclidean.V15OdlyzkoNumerical.sinh_core_upper._native.native_decide.ax_1_1,
+ TraceEuclidean.V15OdlyzkoNumerical.scalarA_strict._native.native_decide.ax_1_1✝,
+ TraceEuclidean.V15OdlyzkoNumerical.scalarB_strict._native.native_decide.ax_1_1✝]
+'TraceEuclidean.v15_classic_pair_mem_of_voightEnumeration_closed' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ EulerMascheroni.harmonic_N_ge._native.native_decide.ax_1_2,
+ TraceEuclidean.v15_voightDiscriminantData_certificate._native.native_decide.ax_1_1,
+ TraceEuclidean.V15OdlyzkoNumerical.cosh_core_upper._native.native_decide.ax_1_1,
+ TraceEuclidean.V15OdlyzkoNumerical.sinh_core_upper._native.native_decide.ax_1_1,
+ TraceEuclidean.V15OdlyzkoNumerical.scalarA_strict._native.native_decide.ax_1_1✝,
+ TraceEuclidean.V15OdlyzkoNumerical.scalarB_strict._native.native_decide.ax_1_1✝]
+'TraceEuclidean.v15_integral_pair_mem_of_voightEnumeration_closed' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ EulerMascheroni.harmonic_N_ge._native.native_decide.ax_1_2,
+ TraceEuclidean.v15_voightDiscriminantData_certificate._native.native_decide.ax_1_1,
+ TraceEuclidean.V15OdlyzkoNumerical.cosh_core_upper._native.native_decide.ax_1_1,
+ TraceEuclidean.V15OdlyzkoNumerical.sinh_core_upper._native.native_decide.ax_1_1,
+ TraceEuclidean.V15OdlyzkoNumerical.scalarA_strict._native.native_decide.ax_1_1✝,
+ TraceEuclidean.V15OdlyzkoNumerical.scalarB_strict._native.native_decide.ax_1_1✝]
+'TraceEuclidean.v15_sectionFourDiscriminantInput_of_publishedVoightBounds_closed' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ EulerMascheroni.harmonic_N_ge._native.native_decide.ax_1_2,
+ TraceEuclidean.v15_voightDiscriminantData_certificate._native.native_decide.ax_1_1,
+ TraceEuclidean.V15OdlyzkoNumerical.cosh_core_upper._native.native_decide.ax_1_1,
+ TraceEuclidean.V15OdlyzkoNumerical.sinh_core_upper._native.native_decide.ax_1_1,
+ TraceEuclidean.V15OdlyzkoNumerical.scalarA_strict._native.native_decide.ax_1_1✝,
+ TraceEuclidean.V15OdlyzkoNumerical.scalarB_strict._native.native_decide.ax_1_1✝]
+'TraceEuclidean.v15_classic_pair_mem_of_publishedVoightBounds_closed' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ EulerMascheroni.harmonic_N_ge._native.native_decide.ax_1_2,
+ TraceEuclidean.v15_voightDiscriminantData_certificate._native.native_decide.ax_1_1,
+ TraceEuclidean.V15OdlyzkoNumerical.cosh_core_upper._native.native_decide.ax_1_1,
+ TraceEuclidean.V15OdlyzkoNumerical.sinh_core_upper._native.native_decide.ax_1_1,
+ TraceEuclidean.V15OdlyzkoNumerical.scalarA_strict._native.native_decide.ax_1_1✝,
+ TraceEuclidean.V15OdlyzkoNumerical.scalarB_strict._native.native_decide.ax_1_1✝]
+'TraceEuclidean.v15_integral_pair_mem_of_publishedVoightBounds_closed' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ EulerMascheroni.harmonic_N_ge._native.native_decide.ax_1_2,
+ TraceEuclidean.v15_voightDiscriminantData_certificate._native.native_decide.ax_1_1,
+ TraceEuclidean.V15OdlyzkoNumerical.cosh_core_upper._native.native_decide.ax_1_1,
+ TraceEuclidean.V15OdlyzkoNumerical.sinh_core_upper._native.native_decide.ax_1_1,
+ TraceEuclidean.V15OdlyzkoNumerical.scalarA_strict._native.native_decide.ax_1_1✝,
+ TraceEuclidean.V15OdlyzkoNumerical.scalarB_strict._native.native_decide.ax_1_1✝]
+'TraceEuclidean.v15_sectionFourDiscriminantInput_of_quarticRelativeDifferent_closed' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ EulerMascheroni.harmonic_N_ge._native.native_decide.ax_1_2,
+ TraceEuclidean.V15OdlyzkoNumerical.cosh_core_upper._native.native_decide.ax_1_1,
+ TraceEuclidean.V15OdlyzkoNumerical.sinh_core_upper._native.native_decide.ax_1_1,
+ TraceEuclidean.V15OdlyzkoNumerical.scalarA_strict._native.native_decide.ax_1_1✝,
+ TraceEuclidean.V15OdlyzkoNumerical.scalarB_strict._native.native_decide.ax_1_1✝]
+'TraceEuclidean.v15_sectionFourDiscriminantInput_of_relativeDifferentNorm_closed' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ EulerMascheroni.harmonic_N_ge._native.native_decide.ax_1_2,
+ TraceEuclidean.V15OdlyzkoNumerical.cosh_core_upper._native.native_decide.ax_1_1,
+ TraceEuclidean.V15OdlyzkoNumerical.sinh_core_upper._native.native_decide.ax_1_1,
+ TraceEuclidean.V15OdlyzkoNumerical.scalarA_strict._native.native_decide.ax_1_1✝,
+ TraceEuclidean.V15OdlyzkoNumerical.scalarB_strict._native.native_decide.ax_1_1✝]
+'TraceEuclidean.v15_classic_pair_mem_of_quarticRelativeDifferent_closed' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ EulerMascheroni.harmonic_N_ge._native.native_decide.ax_1_2,
+ TraceEuclidean.V15OdlyzkoNumerical.cosh_core_upper._native.native_decide.ax_1_1,
+ TraceEuclidean.V15OdlyzkoNumerical.sinh_core_upper._native.native_decide.ax_1_1,
+ TraceEuclidean.V15OdlyzkoNumerical.scalarA_strict._native.native_decide.ax_1_1✝,
+ TraceEuclidean.V15OdlyzkoNumerical.scalarB_strict._native.native_decide.ax_1_1✝]
+'TraceEuclidean.v15_classic_pair_mem_of_relativeDifferentNorm_closed' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ EulerMascheroni.harmonic_N_ge._native.native_decide.ax_1_2,
+ TraceEuclidean.V15OdlyzkoNumerical.cosh_core_upper._native.native_decide.ax_1_1,
+ TraceEuclidean.V15OdlyzkoNumerical.sinh_core_upper._native.native_decide.ax_1_1,
+ TraceEuclidean.V15OdlyzkoNumerical.scalarA_strict._native.native_decide.ax_1_1✝,
+ TraceEuclidean.V15OdlyzkoNumerical.scalarB_strict._native.native_decide.ax_1_1✝]
+'TraceEuclidean.v15_integral_pair_mem_of_quarticRelativeDifferent_closed' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ EulerMascheroni.harmonic_N_ge._native.native_decide.ax_1_2,
+ TraceEuclidean.V15OdlyzkoNumerical.cosh_core_upper._native.native_decide.ax_1_1,
+ TraceEuclidean.V15OdlyzkoNumerical.sinh_core_upper._native.native_decide.ax_1_1,
+ TraceEuclidean.V15OdlyzkoNumerical.scalarA_strict._native.native_decide.ax_1_1✝,
+ TraceEuclidean.V15OdlyzkoNumerical.scalarB_strict._native.native_decide.ax_1_1✝]
+'TraceEuclidean.v15_integral_pair_mem_of_relativeDifferentNorm_closed' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ EulerMascheroni.harmonic_N_ge._native.native_decide.ax_1_2,
+ TraceEuclidean.V15OdlyzkoNumerical.cosh_core_upper._native.native_decide.ax_1_1,
+ TraceEuclidean.V15OdlyzkoNumerical.sinh_core_upper._native.native_decide.ax_1_1,
+ TraceEuclidean.V15OdlyzkoNumerical.scalarA_strict._native.native_decide.ax_1_1✝,
+ TraceEuclidean.V15OdlyzkoNumerical.scalarB_strict._native.native_decide.ax_1_1✝]
+'TraceEuclidean.v15_voightPolynomialRows_structural_certificate' depends on axioms: [TraceEuclidean.v15_voightPolynomialRowData_certificate._native.native_decide.ax_1_1]
+'TraceEuclidean.v15_voightPolynomialRows_resultant_certificate' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ TraceEuclidean.v15_voightPolynomialRowsEightChunk0_resultant_certificate._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightPolynomialRowsEightChunk1_resultant_certificate._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightPolynomialRowsFiveChunk0_resultant_certificate._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightPolynomialRowsFiveChunk1_resultant_certificate._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightPolynomialRowsFiveChunk2_resultant_certificate._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightPolynomialRowsFiveChunk3_resultant_certificate._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightPolynomialRowsFiveChunk4_resultant_certificate._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightPolynomialRowsFiveChunk5_resultant_certificate._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightPolynomialRowsFiveChunk6_resultant_certificate._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightPolynomialRowsNineChunk0_resultant_certificate._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightPolynomialRowsSevenChunk0_resultant_certificate._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightPolynomialRowsSevenChunk1_resultant_certificate._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightPolynomialRowsSevenChunk2_resultant_certificate._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightPolynomialRowsSevenChunk3_resultant_certificate._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightPolynomialRowsSixChunk0_resultant_certificate._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightPolynomialRowsSixChunk1_resultant_certificate._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightPolynomialRowsSixChunk2_resultant_certificate._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightPolynomialRowsSixChunk3_resultant_certificate._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightPolynomialRowsSixChunk4_resultant_certificate._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightPolynomialRowsSixChunk5_resultant_certificate._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightPolynomialRowsSixChunk6_resultant_certificate._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightPolynomialRowsSixChunk7_resultant_certificate._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightPolynomialRowsSixChunk8_resultant_certificate._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightPolynomialRowsTenChunk0_resultant_certificate._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightPolynomialRowsTenChunk1_resultant_certificate._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightPolynomialRowsTenChunk2_resultant_certificate._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightPolynomialRowsTenChunk3_resultant_certificate._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightPolynomialRowsTenChunk4_resultant_certificate._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightPolynomialRowsTenChunk5_resultant_certificate._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightPolynomialRowsTenChunk6_resultant_certificate._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightPolynomialRowsTenChunk7_resultant_certificate._native.native_decide.ax_1_1]
+'TraceEuclidean.v15_voightPolynomialDiscriminantInput' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ TraceEuclidean.v15_voightPolynomialRowData_certificate._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightPolynomialRowsEightChunk0_resultant_certificate._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightPolynomialRowsEightChunk1_resultant_certificate._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightPolynomialRowsFiveChunk0_resultant_certificate._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightPolynomialRowsFiveChunk1_resultant_certificate._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightPolynomialRowsFiveChunk2_resultant_certificate._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightPolynomialRowsFiveChunk3_resultant_certificate._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightPolynomialRowsFiveChunk4_resultant_certificate._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightPolynomialRowsFiveChunk5_resultant_certificate._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightPolynomialRowsFiveChunk6_resultant_certificate._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightPolynomialRowsNineChunk0_resultant_certificate._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightPolynomialRowsSevenChunk0_resultant_certificate._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightPolynomialRowsSevenChunk1_resultant_certificate._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightPolynomialRowsSevenChunk2_resultant_certificate._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightPolynomialRowsSevenChunk3_resultant_certificate._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightPolynomialRowsSixChunk0_resultant_certificate._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightPolynomialRowsSixChunk1_resultant_certificate._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightPolynomialRowsSixChunk2_resultant_certificate._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightPolynomialRowsSixChunk3_resultant_certificate._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightPolynomialRowsSixChunk4_resultant_certificate._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightPolynomialRowsSixChunk5_resultant_certificate._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightPolynomialRowsSixChunk6_resultant_certificate._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightPolynomialRowsSixChunk7_resultant_certificate._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightPolynomialRowsSixChunk8_resultant_certificate._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightPolynomialRowsTenChunk0_resultant_certificate._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightPolynomialRowsTenChunk1_resultant_certificate._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightPolynomialRowsTenChunk2_resultant_certificate._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightPolynomialRowsTenChunk3_resultant_certificate._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightPolynomialRowsTenChunk4_resultant_certificate._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightPolynomialRowsTenChunk5_resultant_certificate._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightPolynomialRowsTenChunk6_resultant_certificate._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightPolynomialRowsTenChunk7_resultant_certificate._native.native_decide.ax_1_1]
+'TraceEuclidean.v15_voightPolynomialRow_mem_indexedDiscriminantBox_of_valid' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ TraceEuclidean.v15_voightPolynomialRowData_certificate._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightPolynomialRowsEightChunk0_resultant_certificate._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightPolynomialRowsEightChunk1_resultant_certificate._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightPolynomialRowsFiveChunk0_resultant_certificate._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightPolynomialRowsFiveChunk1_resultant_certificate._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightPolynomialRowsFiveChunk2_resultant_certificate._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightPolynomialRowsFiveChunk3_resultant_certificate._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightPolynomialRowsFiveChunk4_resultant_certificate._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightPolynomialRowsFiveChunk5_resultant_certificate._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightPolynomialRowsFiveChunk6_resultant_certificate._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightPolynomialRowsNineChunk0_resultant_certificate._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightPolynomialRowsSevenChunk0_resultant_certificate._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightPolynomialRowsSevenChunk1_resultant_certificate._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightPolynomialRowsSevenChunk2_resultant_certificate._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightPolynomialRowsSevenChunk3_resultant_certificate._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightPolynomialRowsSixChunk0_resultant_certificate._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightPolynomialRowsSixChunk1_resultant_certificate._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightPolynomialRowsSixChunk2_resultant_certificate._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightPolynomialRowsSixChunk3_resultant_certificate._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightPolynomialRowsSixChunk4_resultant_certificate._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightPolynomialRowsSixChunk5_resultant_certificate._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightPolynomialRowsSixChunk6_resultant_certificate._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightPolynomialRowsSixChunk7_resultant_certificate._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightPolynomialRowsSixChunk8_resultant_certificate._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightPolynomialRowsTenChunk0_resultant_certificate._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightPolynomialRowsTenChunk1_resultant_certificate._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightPolynomialRowsTenChunk2_resultant_certificate._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightPolynomialRowsTenChunk3_resultant_certificate._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightPolynomialRowsTenChunk4_resultant_certificate._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightPolynomialRowsTenChunk5_resultant_certificate._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightPolynomialRowsTenChunk6_resultant_certificate._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightPolynomialRowsTenChunk7_resultant_certificate._native.native_decide.ax_1_1]
+'TraceEuclidean.v15_voightPolynomialRow_mem_indexedDiscriminantBox' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ TraceEuclidean.v15_voightPolynomialRowData_certificate._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightPolynomialRowsEightChunk0_resultant_certificate._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightPolynomialRowsEightChunk1_resultant_certificate._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightPolynomialRowsFiveChunk0_resultant_certificate._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightPolynomialRowsFiveChunk1_resultant_certificate._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightPolynomialRowsFiveChunk2_resultant_certificate._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightPolynomialRowsFiveChunk3_resultant_certificate._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightPolynomialRowsFiveChunk4_resultant_certificate._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightPolynomialRowsFiveChunk5_resultant_certificate._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightPolynomialRowsFiveChunk6_resultant_certificate._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightPolynomialRowsNineChunk0_resultant_certificate._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightPolynomialRowsSevenChunk0_resultant_certificate._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightPolynomialRowsSevenChunk1_resultant_certificate._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightPolynomialRowsSevenChunk2_resultant_certificate._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightPolynomialRowsSevenChunk3_resultant_certificate._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightPolynomialRowsSixChunk0_resultant_certificate._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightPolynomialRowsSixChunk1_resultant_certificate._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightPolynomialRowsSixChunk2_resultant_certificate._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightPolynomialRowsSixChunk3_resultant_certificate._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightPolynomialRowsSixChunk4_resultant_certificate._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightPolynomialRowsSixChunk5_resultant_certificate._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightPolynomialRowsSixChunk6_resultant_certificate._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightPolynomialRowsSixChunk7_resultant_certificate._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightPolynomialRowsSixChunk8_resultant_certificate._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightPolynomialRowsTenChunk0_resultant_certificate._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightPolynomialRowsTenChunk1_resultant_certificate._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightPolynomialRowsTenChunk2_resultant_certificate._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightPolynomialRowsTenChunk3_resultant_certificate._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightPolynomialRowsTenChunk4_resultant_certificate._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightPolynomialRowsTenChunk5_resultant_certificate._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightPolynomialRowsTenChunk6_resultant_certificate._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightPolynomialRowsTenChunk7_resultant_certificate._native.native_decide.ax_1_1]

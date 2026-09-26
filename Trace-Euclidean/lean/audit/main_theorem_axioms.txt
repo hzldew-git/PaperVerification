@@ -3486,6 +3486,15 @@ TraceEuclidean.v15OdlyzkoPrimeCriticalBracket_average.{u_2} (K : Type u_2) [Fiel
  Quot.sound]
 'TraceEuclidean.v15OdlyzkoPrimePowerCriticalBracket_integral' depends on axioms: [propext, Classical.choice, Quot.sound]
 'TraceEuclidean.v15OdlyzkoPrimeCriticalBracket_average' depends on axioms: [propext, Classical.choice, Quot.sound]
+TraceEuclidean.V15IntegralRowOperation.applyAllVector?_toMatrix {n : ℕ}
+  (operations : List (TraceEuclidean.V15IntegralRowOperation n)) (matrix : TraceEuclidean.V15IntVectorMatrix n) :
+  Option.map TraceEuclidean.V15IntVectorMatrix.toMatrix
+      (TraceEuclidean.V15IntegralRowOperation.applyAllVector? operations matrix) =
+    TraceEuclidean.V15IntegralRowOperation.applyAll? operations matrix.toMatrix
+TraceEuclidean.v15VoightPolynomial_discr_eq_of_certificate (degree : ℕ) (row : TraceEuclidean.V15VoightPolynomialRow)
+  (hdegree : 0 < degree) (hlength : row.coefficients.length = degree + 1) (hlast : row.coefficients.getLast? = some 1)
+  (hcertificate : TraceEuclidean.v15VoightResultantCertificate degree row = true) :
+  row.polynomial.discr = ↑row.index ^ 2 * ↑row.fieldDiscriminant
 TraceEuclidean.v15_voightPolynomial_mem_box {degree : ℕ} {row : TraceEuclidean.V15VoightPolynomialRow}
   (hrow : row ∈ TraceEuclidean.v15VoightPolynomialRows degree) :
   row.polynomial ∈ TraceEuclidean.v15VoightPolynomialBox degree
@@ -3494,26 +3503,9 @@ TraceEuclidean.v15_voightPolynomialRow_structurallyValid_iff (degree : ℕ)
   TraceEuclidean.V15VoightPolynomialRow.structurallyValid degree row = true ↔
     row.coefficients.length = degree + 1 ∧
       row.coefficients.getLast? = some 1 ∧ 0 < row.fieldDiscriminant ∧ 0 < row.index
-TraceEuclidean.v15_voightPolynomialRow_mem_indexedDiscriminantBox_of_valid
-  (hdiscriminant : TraceEuclidean.V15VoightPolynomialDiscriminantInput) {degree : ℕ}
-  {row : TraceEuclidean.V15VoightPolynomialRow} (hrow : row ∈ TraceEuclidean.v15VoightPolynomialRows degree)
-  (hvalid : TraceEuclidean.V15VoightPolynomialRow.structurallyValid degree row = true) :
-  (row.polynomial, row.index) ∈
-    TraceEuclidean.v15IndexedDiscriminantBox (TraceEuclidean.v15VoightPolynomialBox degree) ↑row.fieldDiscriminant
-TraceEuclidean.v15_voightPolynomialRow_mem_indexedDiscriminantBox
-  (hdiscriminant : TraceEuclidean.V15VoightPolynomialDiscriminantInput) {degree : ℕ}
-  (hall :
-    (TraceEuclidean.v15VoightPolynomialRows degree).all
-        (TraceEuclidean.V15VoightPolynomialRow.structurallyValid degree) =
-      true)
-  {row : TraceEuclidean.V15VoightPolynomialRow} (hrow : row ∈ TraceEuclidean.v15VoightPolynomialRows degree) :
-  (row.polynomial, row.index) ∈
-    TraceEuclidean.v15IndexedDiscriminantBox (TraceEuclidean.v15VoightPolynomialBox degree) ↑row.fieldDiscriminant
+'TraceEuclidean.V15IntegralRowOperation.applyAllVector?_toMatrix' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'TraceEuclidean.v15VoightPolynomial_discr_eq_of_certificate' depends on axioms: [propext, Classical.choice, Quot.sound]
 'TraceEuclidean.v15_voightPolynomial_mem_box' depends on axioms: [propext, Classical.choice, Quot.sound]
 'TraceEuclidean.v15_voightPolynomialRow_structurallyValid_iff' depends on axioms: [propext, Quot.sound]
-'TraceEuclidean.v15_voightPolynomialRow_mem_indexedDiscriminantBox_of_valid' depends on axioms: [propext,
- Classical.choice,
- Quot.sound]
-'TraceEuclidean.v15_voightPolynomialRow_mem_indexedDiscriminantBox' depends on axioms: [propext,
- Classical.choice,
- Quot.sound]

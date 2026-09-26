@@ -179,9 +179,13 @@ and the final rank-twelve consequence. The public Python and Wolfram runs are
     relation into an executable dependent filter: for each polynomial it
     checks positive indices only up to `|disc(f)|`, and every qualifying
     degree-five or degree-seven field survives the filter. The full archived
-    rows enter the same filter through the precise
-    `V15VoightPolynomialDiscriminantInput`; a Lean-kernel evaluator for its
-    2,773 concrete equations remains. Lean derives the exact minima and
+    rows enter the same filter through the closed theorem
+    `v15_voightPolynomialDiscriminantInput`. Lean proves a generic exact
+    integer Bareiss row-operation checker, identifies its determinant with a
+    Sylvester resultant, and derives polynomial discriminants from the
+    resultant. Thirty-one generated `native_decide` certificate chunks replay
+    the 2,773 finite computations; this compiler trust is isolated in the
+    numerical audit. Lean derives the exact minima and
     degree-ten exclusion from one explicit source-facing premise
     asserting completeness of Voight's enumeration through root discriminant
     14. Exhausting those finite boxes, proving the enumeration completeness,
