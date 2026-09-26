@@ -97,8 +97,8 @@ jobs:
           source = Path('TraceEuclideanTest/NumericalAxiomAudit.lean').read_text(encoding='utf-8')
           output = ' '.join(Path('numerical-audit.log').read_text(encoding='utf-8').split())
           names = re.findall(r'^#print axioms\s+(\S+)', source, re.M)
-          if len(names) != 58:
-              raise SystemExit(f'Expected fifty-eight numerical audit declarations, found {len(names)}')
+          if len(names) != 59:
+              raise SystemExit(f'Expected fifty-nine numerical audit declarations, found {len(names)}')
           standard = {'propext', 'Classical.choice', 'Quot.sound'}
           sinh = 'TraceEuclidean.V15OdlyzkoNumerical.sinh_core_upper._native.native_decide.ax_1_1'
           cosh = 'TraceEuclidean.V15OdlyzkoNumerical.cosh_core_upper._native.native_decide.ax_1_1'
@@ -211,6 +211,10 @@ jobs:
               )
           }
           expected[names[57]] = standard | total_reality_checks
+          expected[names[58]] = (
+              standard | {voight_rows} | all_irreducibility |
+              total_reality_checks
+          )
           for name in names:
               match = re.search("'" + re.escape(name) + r"' depends on axioms: \[([^]]*)\]", output)
               if match is None:

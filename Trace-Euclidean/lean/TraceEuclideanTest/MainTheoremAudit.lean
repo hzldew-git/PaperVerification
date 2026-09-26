@@ -1310,3 +1310,15 @@ import TraceEuclidean
 
 #print axioms TraceEuclidean.V15DensePolynomial.eval_toPolynomial
 #print axioms TraceEuclidean.v15_realPolynomial_splits_of_rootIntervalCertificate
+
+-- Kernel bridge from polynomial irreducibility and real splitting to an
+-- actual totally real `AdjoinRoot` number field of the expected degree.
+#check TraceEuclidean.adjoinRoot_isTotallyReal_of_splits_over_real
+#check TraceEuclidean.v15_rationalPolynomial_map_real
+#check TraceEuclidean.v15_adjoinRoot_finrank_eq_natDegree
+#check TraceEuclidean.v15_voightPolynomialRow_presentsTotallyRealNumberField
+
+#print axioms TraceEuclidean.adjoinRoot_isTotallyReal_of_splits_over_real
+#print axioms TraceEuclidean.v15_rationalPolynomial_map_real
+#print axioms TraceEuclidean.v15_adjoinRoot_finrank_eq_natDegree
+#print axioms TraceEuclidean.v15_voightPolynomialRow_presentsTotallyRealNumberField

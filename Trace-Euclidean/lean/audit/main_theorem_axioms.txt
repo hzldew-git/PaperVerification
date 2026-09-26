@@ -3563,3 +3563,18 @@ TraceEuclidean.v15_realPolynomial_splits_of_rootIntervalCertificate {degree : �
 'TraceEuclidean.v15_realPolynomial_splits_of_rootIntervalCertificate' depends on axioms: [propext,
  Classical.choice,
  Quot.sound]
+TraceEuclidean.adjoinRoot_isTotallyReal_of_splits_over_real (q : Polynomial ℚ) [Fact (Irreducible q)]
+  (hsplits : (Polynomial.map (algebraMap ℚ ℝ) q).Splits) : NumberField.IsTotallyReal (AdjoinRoot q)
+TraceEuclidean.v15_rationalPolynomial_map_real (row : TraceEuclidean.V15VoightPolynomialRow) :
+  Polynomial.map (algebraMap ℚ ℝ) row.rationalPolynomial = row.realPolynomial
+TraceEuclidean.v15_adjoinRoot_finrank_eq_natDegree (q : Polynomial ℚ) [Fact (Irreducible q)] :
+  Module.finrank ℚ (AdjoinRoot q) = q.natDegree
+TraceEuclidean.v15_voightPolynomialRow_presentsTotallyRealNumberField (row : TraceEuclidean.V15VoightPolynomialRow)
+  (hmonic : row.polynomial.Monic) (hirr : Irreducible row.polynomial) (hsplits : row.realPolynomial.Splits) :
+  row.PresentsTotallyRealNumberField
+'TraceEuclidean.adjoinRoot_isTotallyReal_of_splits_over_real' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15_rationalPolynomial_map_real' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15_adjoinRoot_finrank_eq_natDegree' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15_voightPolynomialRow_presentsTotallyRealNumberField' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

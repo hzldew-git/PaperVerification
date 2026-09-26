@@ -171,7 +171,9 @@ and the final rank-twelve consequence. The public Python and Wolfram runs are
     All 2,773 archived Voight degree 5--10 polynomial rows are hash checked,
     imported, and structurally certified. Lean proves that every defining
     polynomial is irreducible over the integers and splits completely over the
-    real numbers. Generated Rabin certificates
+    real numbers. Lean then maps each polynomial to `ℚ[X]`, constructs its
+    `AdjoinRoot` number field, and proves that this field is totally real and
+    has degree equal to the defining-polynomial degree. Generated Rabin certificates
     handle 2,742 rows; complete modular factorizations at several primes handle
     thirty more; and the remaining degree-eight polynomial is closed by two
     modular factorizations and a kernel-checked integer coefficient argument.
@@ -202,7 +204,8 @@ and the final rank-twelve consequence. The public Python and Wolfram runs are
     degree-ten exclusion from one explicit source-facing premise
     asserting completeness of Voight's enumeration through root discriminant
     14. Exhausting those finite boxes, proving the enumeration completeness,
-    verifying maximal orders and duplicate fields, treating the composite
+    identifying the recorded index with the actual maximal order, checking
+    duplicate fields, treating the composite
     degrees, and the optimized degree-eleven bound
     14.083 remain external mathematical inputs.
     Lean checks that the

@@ -4,13 +4,14 @@ Frozen author source SHA-256:
 83a236e93648ce0802f8a0d3022de63710d089f3a4f7e61214a4c855459597b5.
 The manuscript is excluded from this public repository.
 
-The complete pinned 8992-job Lean build passes. The v15 public Python and
+The complete pinned 8993-job Lean build passes. The v15 public Python and
 Wolfram classification reruns pass 1156 and 115 checks, respectively; the
 independent Voight Mathematica check passes all 2,773 rows. Private
-source-bound reruns pass 1165 and 112 checks. The current 564-declaration main
-audit uses only subsets of the standard logical axioms. The 58-declaration
+source-bound reruns pass 1165 and 112 checks. The current 568-declaration main
+audit uses only subsets of the standard logical axioms. The 59-declaration
 numerical audit separately identifies the Odlyzko, Voight table-data,
-resultant, irreducibility, and total-reality `native_decide` dependencies,
+resultant, irreducibility, total-reality, and number-field bridge
+`native_decide` dependencies,
 with their compiler trust disclosed in TRUST.md.
 Formalization commit 741dc24 passed the [fresh GitHub Actions Lean, Python,
 and 95-endpoint axiom run](https://github.com/hzldew-git/PaperVerification/actions/runs/35542188896)

@@ -1,5 +1,14 @@
 # Reproducibility report
 
+- The Voight number-field bridge update passed a complete local 8,993-job Lean
+  build on the unchanged pinned Lean 4.32.1 toolchain. The 568-declaration main
+  axiom audit reports only `propext`, `Classical.choice`, and `Quot.sound`. The
+  59-declaration numerical audit proves that the all-row number-field theorem
+  inherits exactly the disclosed row-data, irreducibility, and total-reality
+  native dependencies. The generic bridge constructs the rational
+  `AdjoinRoot`, proves total reality from real splitting, and proves the field
+  degree from its power basis.
+
 - The Voight total-reality update passed a complete local 8,992-job Lean build
   on the unchanged pinned Lean 4.32.1 toolchain. The 564-declaration main axiom
   audit reports only `propext`, `Classical.choice`, and `Quot.sound`. The

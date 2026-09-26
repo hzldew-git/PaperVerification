@@ -2,6 +2,7 @@ import TraceEuclidean.V15SectionFourVoightClosed
 import TraceEuclidean.V15VoightPolynomialBridge
 import TraceEuclidean.V15VoightAllIrreducible
 import TraceEuclidean.V15VoightTotalRealityCertificates
+import TraceEuclidean.V15VoightNumberFieldBridge
 
 /-! Explicit audit of the native interval-checking trust boundary. -/
 
@@ -59,6 +60,7 @@ import TraceEuclidean.V15VoightTotalRealityCertificates
 #check TraceEuclidean.v15_voightSpecialEight_irreducible
 #check TraceEuclidean.v15_allVoightPolynomialRows_irreducible
 #check TraceEuclidean.v15_allVoightPolynomialRows_splits
+#check TraceEuclidean.v15_allVoightPolynomialRows_present_totallyRealNumberField
 
 #print axioms TraceEuclidean.v15OdlyzkoSinhIntegrand_integrableOn
 #print axioms TraceEuclidean.v15OdlyzkoSinhIntegral_zero_hundredth_le
@@ -118,3 +120,4 @@ import TraceEuclidean.V15VoightTotalRealityCertificates
 #print axioms TraceEuclidean.v15_voightSpecialEight_irreducible
 #print axioms TraceEuclidean.v15_allVoightPolynomialRows_irreducible
 #print axioms TraceEuclidean.v15_allVoightPolynomialRows_splits
+#print axioms TraceEuclidean.v15_allVoightPolynomialRows_present_totallyRealNumberField

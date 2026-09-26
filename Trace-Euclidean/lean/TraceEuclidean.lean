@@ -69,6 +69,7 @@ import TraceEuclidean.V15VoightResultantCertificates
 import TraceEuclidean.V15VoightAllIrreducible
 import TraceEuclidean.V15VoightTotalRealityCertificates
 import TraceEuclidean.V15VoightPolynomialBridge
+import TraceEuclidean.V15VoightNumberFieldBridge
 import TraceEuclidean.V15VoightEnumerationBridge
 import TraceEuclidean.V15DegreeElevenSensitivity
 import TraceEuclidean.V15FieldTransport

@@ -160,7 +160,11 @@ polynomials split over the reals. Thirty-one generated batches check 19,806
 exact rational intervals, strict sign changes, and pairwise
 separation. The implication from these checks to complete splitting uses the
 intermediate value theorem and a kernel-checked root-cardinality argument;
-only the finite batch replays add native compiler trust. Python uses an exact
+only the finite batch replays add native compiler trust. A kernel-checked
+bridge maps each integral polynomial to `ℚ[X]`, constructs the corresponding
+`AdjoinRoot` number field, and proves that it is totally real and has the same
+degree as the defining polynomial. This bridge adds no new trust dependency.
+Python uses an exact
 Bareiss determinant
 and Mathematica independently verifies irreducibility, total reality, the
 polynomial-discriminant index equation, and the number-field discriminant for
@@ -176,6 +180,9 @@ minima from one source-facing completeness premise for Voight's enumeration
 through root discriminant 14. The same premise proves the required degree-ten
 exclusion. It does not yet have an internal Lean proof of the enumeration
 algorithm's completeness.
+Lean has not yet identified each recorded table index with the index of the
+power order inside the ring of integers of the constructed `AdjoinRoot` field;
+that maximal-order statement remains a separate boundary.
 Degree 11 uses the later optimized bound 14.083, and Table 4 is required only
 from degree 12. The online November 1976 Table 2 gives 14.034 at degree 11,
 so the value 14.083 remains separate from that table. All subsequent
