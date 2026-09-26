@@ -2196,6 +2196,34 @@ TraceEuclidean.v15_exists_degreeSeven_hunterFieldCandidate_of_discriminant_le.{u
   [NumberField K] (hreal : NumberField.IsTotallyReal K) (hdegree : Module.finrank ℚ K = 7)
   (hdisc : ↑|NumberField.discr K| ≤ 14 ^ 7) :
   ∃ f ∈ TraceEuclidean.v15HunterPolynomialCandidates 7 ⋯ 343, TraceEuclidean.V15HunterFieldPolynomialCandidate K 7 343 f
+TraceEuclidean.v15_norm_esymm_le_choose_mul_pow {s : Multiset ℝ} {R : ℝ} (hR : 0 ≤ R) (h : ∀ z ∈ s, ‖z‖ ≤ R) (k : ℕ) :
+  ‖s.esymm k‖ ≤ ↑(s.card.choose k) * R ^ k
+TraceEuclidean.v15_hunterPolynomialCandidate_coeff_bound_at {d : ℕ} (hd : 2 ≤ d) {B : ℝ} {f : Polynomial ℤ}
+  (h : TraceEuclidean.V15HunterPolynomialCandidate d B f) (i : ℕ) (hi : i ≤ d) :
+  ‖↑(f.coeff i)‖ ≤ ↑(d.choose (d - i)) * TraceEuclidean.v15HunterRootBound d B ^ (d - i)
+TraceEuclidean.v15_card_integralPolynomialCoordinateBox (d : ℕ) (M : Fin (d + 1) → ℕ) :
+  (TraceEuclidean.v15IntegralPolynomialCoordinateBox d M).card = ∏ i, (2 * M i + 1)
+TraceEuclidean.v15_card_integralPolynomialIntervalBox (d : ℕ) (L U : Fin (d + 1) → ℤ) :
+  (TraceEuclidean.v15IntegralPolynomialIntervalBox d L U).card = ∏ i, (U i + 1 - L i).toNat
+TraceEuclidean.v15_degreeFive_hunterRootBound : TraceEuclidean.v15HunterRootBound 5 180 ≤ 15
+TraceEuclidean.v15_degreeSeven_hunterRootBound : TraceEuclidean.v15HunterRootBound 7 343 ≤ 20
+TraceEuclidean.v15_degreeFive_hunterCandidate_coeff_bound_sharp {f : Polynomial ℤ}
+  (h : TraceEuclidean.V15HunterPolynomialCandidate 5 180 f) (i : ℕ) (hi : i ≤ 5) :
+  ‖↑(f.coeff i)‖ ≤ ↑(Nat.choose 5 (5 - i)) * 15 ^ (5 - i)
+TraceEuclidean.v15_degreeFive_hunterSecondCoefficient_bounds {f : Polynomial ℤ}
+  (h : TraceEuclidean.V15HunterPolynomialCandidate 5 180 f) : -17 ≤ f.coeff 3 ∧ f.coeff 3 ≤ 2
+TraceEuclidean.v15_degreeSeven_hunterSecondCoefficient_bounds {f : Polynomial ℤ}
+  (h : TraceEuclidean.V15HunterPolynomialCandidate 7 343 f) : -24 ≤ f.coeff 5 ∧ f.coeff 5 ≤ 4
+TraceEuclidean.v15_degreeFive_hunterRefinedBox_card :
+  TraceEuclidean.v15DegreeFiveHunterRefinedBox.card = 3113966442781800060
+TraceEuclidean.v15_degreeSeven_hunterRefinedBox_card :
+  TraceEuclidean.v15DegreeSevenHunterRefinedBox.card = 224291130941773441790640579990433850560116
+TraceEuclidean.v15_exists_degreeFive_hunterFieldCandidate_mem_refinedBox.{u_1} (K : Type u_1) [Field K] [NumberField K]
+  (hreal : NumberField.IsTotallyReal K) (hdegree : Module.finrank ℚ K = 5) (hdisc : ↑|NumberField.discr K| ≤ 14 ^ 5) :
+  ∃ f ∈ TraceEuclidean.v15DegreeFiveHunterRefinedBox, TraceEuclidean.V15HunterFieldPolynomialCandidate K 5 180 f
+TraceEuclidean.v15_exists_degreeSeven_hunterFieldCandidate_mem_refinedBox.{u_1} (K : Type u_1) [Field K] [NumberField K]
+  (hreal : NumberField.IsTotallyReal K) (hdegree : Module.finrank ℚ K = 7) (hdisc : ↑|NumberField.discr K| ≤ 14 ^ 7) :
+  ∃ f ∈ TraceEuclidean.v15DegreeSevenHunterRefinedBox, TraceEuclidean.V15HunterFieldPolynomialCandidate K 7 343 f
 'TraceEuclidean.v15_exists_fin_succ_basis_zero_eq_of_primitive' depends on axioms: [propext,
  Classical.choice,
  Quot.sound]
@@ -2267,6 +2295,29 @@ TraceEuclidean.v15_exists_degreeSeven_hunterFieldCandidate_of_discriminant_le.{u
  Classical.choice,
  Quot.sound]
 'TraceEuclidean.v15_exists_degreeSeven_hunterFieldCandidate_of_discriminant_le' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'TraceEuclidean.v15_norm_esymm_le_choose_mul_pow' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15_hunterPolynomialCandidate_coeff_bound_at' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15_card_integralPolynomialCoordinateBox' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15_card_integralPolynomialIntervalBox' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15_degreeFive_hunterRootBound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15_degreeSeven_hunterRootBound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15_degreeFive_hunterCandidate_coeff_bound_sharp' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'TraceEuclidean.v15_degreeFive_hunterSecondCoefficient_bounds' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'TraceEuclidean.v15_degreeSeven_hunterSecondCoefficient_bounds' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'TraceEuclidean.v15_degreeFive_hunterRefinedBox_card' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15_degreeSeven_hunterRefinedBox_card' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15_exists_degreeFive_hunterFieldCandidate_mem_refinedBox' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'TraceEuclidean.v15_exists_degreeSeven_hunterFieldCandidate_mem_refinedBox' depends on axioms: [propext,
  Classical.choice,
  Quot.sound]
 'TraceEuclidean.v15_degreeElevenRootDiscriminantInput_of_odlyzkoMartinet' depends on axioms: [propext,

@@ -1,5 +1,13 @@
 # Reproducibility report
 
+- The Hunter coordinate-box refinement passed a full local 8884-job Lean
+  build under the unchanged pinned Lean 4.32.1 and mathlib v4.32.1 toolchain.
+  The expanded 544-declaration main axiom audit reports only subsets of
+  `propext`, `Classical.choice`, and `Quot.sound`. The new kernel-checked
+  endpoints prove the coordinatewise elementary-symmetric bound, independent
+  interval boxes and their cardinalities, exact degree-five and degree-seven
+  trace and second-coefficient intervals, and field realization in the
+  refined boxes with the positive-index discriminant relation.
 - The Hunter finite-box and discriminant-index update passed a full local
   8883-job Lean build under the pinned Lean 4.32.1 and mathlib v4.32.1
   toolchain. The expanded 531-declaration main axiom audit reports only

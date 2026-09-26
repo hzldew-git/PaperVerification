@@ -4,9 +4,9 @@ Frozen author source SHA-256:
 83a236e93648ce0802f8a0d3022de63710d089f3a4f7e61214a4c855459597b5.
 The manuscript is excluded from this public repository.
 
-The complete pinned 8883-job Lean build passes. The v15 public Python and
+The complete pinned 8884-job Lean build passes. The v15 public Python and
 Wolfram reruns pass 1156 and 115 checks, respectively; private source-bound
-reruns pass 1165 and 112 checks. The current 531-declaration main audit uses
+reruns pass 1165 and 112 checks. The current 544-declaration main audit uses
 only subsets of the standard logical axioms. The 47-declaration numerical
 audit separately identifies five Odlyzko and one Voight `native_decide`
 dependencies, with their compiler trust disclosed in TRUST.md.
@@ -94,9 +94,12 @@ source boundary remains. The sharp-Hermite and relative-different routes stay
 in the project as compatibility reductions. Voight's archived degree 5--9
 discriminant columns are now hash checked, validated, imported, and certified
 in Lean. For degrees five and seven, Lean now proves explicit Hunter ball and
-all-coefficient bounds, constructs a finite polynomial candidate set, proves
-that every field below root discriminant 14 lands in that set, and derives the
-computable relation `disc(f) = index^2 disc(K)` with positive index. One
+coordinatewise all-coefficient bounds. It fixes the monic coefficient and
+uses the normalized trace and spread conditions to give refined executable
+boxes of exact sizes `3113966442781800060` and
+`224291130941773441790640579990433850560116`. Every field below root
+discriminant 14 lands in the appropriate refined box with the computable
+relation `disc(f) = index^2 disc(K)` and positive index. One
 source-facing statement retains the completeness of Voight's enumeration
 through root discriminant 14; it implies both the degree 5--9 minima and the
 degree-ten exclusion. The optimized degree-eleven bound, a Lean exhaustion of

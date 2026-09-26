@@ -74,6 +74,14 @@ step. It derives a uniform root bound from the Hunter spread, applies Vieta's
 formulas to every coefficient, constructs both an executable integer box and
 a finite set of all Hunter candidates, and proves the exact box cardinality.
 
+`V15HunterCoordinateBoxes.lean` sharpens this to the actual elementary-
+symmetric degree of each coefficient and supplies executable interval boxes
+with independent endpoints. In degrees five and seven, monicity, normalized
+trace, the sum of squared roots, and the strict spread inequality reduce the
+top three intervals further. The exact refined box sizes are
+`3113966442781800060` and
+`224291130941773441790640579990433850560116`.
+
 `V15PowerBasisPolynomialDiscriminant.lean` and
 `V15GeneralPowerIndex.lean` prove in arbitrary degree that the trace-pairing
 discriminant of a separable power basis equals the polynomial discriminant of
@@ -86,7 +94,8 @@ discriminant 14. Radius 6 gives the degree-five spread bound 180 and the
 uniform coefficient bound 7,593,750. Radius 7 gives the degree-seven spread
 bound 343 and the uniform coefficient bound 44,800,000,000. Every qualifying
 degree-five or degree-seven field lands in the corresponding finite candidate
-set together with its generator and exact positive-index formula.
+set, and now in the corresponding refined executable box, together with its
+generator and exact positive-index formula.
 
 This closes the geometric, algebraic, all-coefficient, finiteness, and
 field-discriminant front end in degrees five and seven. The remaining
