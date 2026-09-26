@@ -3552,3 +3552,14 @@ TraceEuclidean.V15ModularFactorizationCertificate.not_dvd_of_valid_and_excludesD
 'TraceEuclidean.V15ModularFactorizationCertificate.not_dvd_of_valid_and_excludesDegree' depends on axioms: [propext,
  Classical.choice,
  Quot.sound]
+TraceEuclidean.V15DensePolynomial.eval_toPolynomial.{u_1} {R : Type u_1} [CommSemiring R] (values : List R)
+  (value : R) :
+  Polynomial.eval value (TraceEuclidean.V15DensePolynomial.toPolynomial values) =
+    TraceEuclidean.V15DensePolynomial.eval values value
+TraceEuclidean.v15_realPolynomial_splits_of_rootIntervalCertificate {degree : ℕ}
+  {row : TraceEuclidean.V15VoightPolynomialRow} {intervals : List TraceEuclidean.V15RationalRootInterval}
+  (hvalid : TraceEuclidean.V15RationalRootIntervalCertificate.Valid degree row intervals) : row.realPolynomial.Splits
+'TraceEuclidean.V15DensePolynomial.eval_toPolynomial' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15_realPolynomial_splits_of_rootIntervalCertificate' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

@@ -4,14 +4,14 @@ Frozen author source SHA-256:
 83a236e93648ce0802f8a0d3022de63710d089f3a4f7e61214a4c855459597b5.
 The manuscript is excluded from this public repository.
 
-The complete pinned 8920-job Lean build passes. The v15 public Python and
+The complete pinned 8992-job Lean build passes. The v15 public Python and
 Wolfram classification reruns pass 1156 and 115 checks, respectively; the
 independent Voight Mathematica check passes all 2,773 rows. Private
-source-bound reruns pass 1165 and 112 checks. The current 557-declaration main
-audit uses only subsets of the standard logical axioms. The 53-declaration
-numerical audit separately identifies five Odlyzko, two Voight table-data,
-and thirty-one Voight resultant `native_decide` dependencies, with their
-compiler trust disclosed in TRUST.md.
+source-bound reruns pass 1165 and 112 checks. The current 564-declaration main
+audit uses only subsets of the standard logical axioms. The 58-declaration
+numerical audit separately identifies the Odlyzko, Voight table-data,
+resultant, irreducibility, and total-reality `native_decide` dependencies,
+with their compiler trust disclosed in TRUST.md.
 Formalization commit 741dc24 passed the [fresh GitHub Actions Lean, Python,
 and 95-endpoint axiom run](https://github.com/hzldew-git/PaperVerification/actions/runs/35542188896)
 and the [manuscript-exclusion run](https://github.com/hzldew-git/PaperVerification/actions/runs/35542188716).
@@ -95,9 +95,12 @@ discriminant `1600`. Both cases contradict the construction. Hence
 source boundary remains. The sharp-Hermite and relative-different routes stay
 in the project as compatibility reductions. Voight's 2,773 archived degree
 5--10 polynomial rows and degree 5--9 discriminant columns are now hash
-checked, imported, and structurally certified in Lean. Exact Python and
-independent Mathematica checks verify irreducibility, total reality, the
-polynomial-discriminant index relation, and the number-field discriminant for
+checked, imported, and structurally certified in Lean. Lean proves every
+defining polynomial irreducible over the integers and split completely over
+the reals. The latter proof uses 19,806 exact rational root intervals and a
+kernel-checked intermediate-value/root-cardinality bridge. Exact Python and
+independent Mathematica checks repeat these computations and verify the
+polynomial-discriminant index relation and the number-field discriminant for
 every row. For degrees five and seven, Lean now proves explicit Hunter ball and
 coordinatewise all-coefficient bounds. It fixes the monic coefficient and
 uses the normalized trace and spread conditions to give refined executable
@@ -125,8 +128,10 @@ The source-facing degree-at-least-eleven formulation is connected to the
 exact Section 4 premise in Lean, and a separate exact check proves that the
 weaker online Table 2 value 14.034 would add the integral-table cell `(2,11)`.
 The strict tabulated-constant inequalities use a disclosed native-compiler
-trust boundary for the interval certificates, the two Voight finite-data
-certificates, and the thirty-one exact resultant certificates.
+trust boundary for the numerical interval certificates. The two Voight
+finite-data certificates, thirty-one exact resultant certificates, generated
+irreducibility replays, and thirty-one total-reality batches form separately
+audited native-compiler boundaries.
 
 Start with [README.md](README.md), [THEOREM_INDEX.md](THEOREM_INDEX.md),
 and the [v15 audit](docs/audit/v15/12_executive_summary.md).

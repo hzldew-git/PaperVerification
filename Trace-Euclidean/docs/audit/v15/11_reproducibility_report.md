@@ -1,5 +1,15 @@
 # Reproducibility report
 
+- The Voight total-reality update passed a complete local 8,992-job Lean build
+  on the unchanged pinned Lean 4.32.1 toolchain. The 564-declaration main axiom
+  audit reports only `propext`, `Classical.choice`, and `Quot.sound`. The
+  58-declaration numerical audit exposes exactly thirty-one generated
+  root-interval replay dependencies at the final splitting theorem. The four
+  Voight generators reproduce their committed files exactly. They isolate
+  19,806 rational intervals, and
+  `v15_allVoightPolynomialRows_splits` proves complete real splitting for all
+  2,773 archived polynomials. The public Python rerun returned 1156/1156 PASS.
+
 - The all-row Voight irreducibility update passed a complete local 8,959-job
   Lean build on the unchanged pinned Lean 4.32.1 toolchain. The 562-declaration
   main axiom audit reports only `propext`, `Classical.choice`, and `Quot.sound`.

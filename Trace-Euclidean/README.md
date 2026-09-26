@@ -48,6 +48,7 @@ From this directory in PowerShell:
 & 'D:\AI-Workspace\Environments\Python\math-research\Scripts\python.exe' '.\tools\generate_voight_discriminant_data.py' --check
 & 'D:\AI-Workspace\Environments\Python\math-research\Scripts\python.exe' '.\tools\generate_voight_irreducibility_certificates.py' --check
 & 'D:\AI-Workspace\Environments\Python\math-research\Scripts\python.exe' '.\tools\generate_voight_exception_irreducibility_certificates.py' --check
+& 'D:\AI-Workspace\Environments\Python\math-research\Scripts\python.exe' '.\tools\generate_voight_total_reality_certificates.py' --check
 & 'D:\AI-Workspace\Environments\Python\math-research\Scripts\python.exe' '.\tools\verify_public_v15.py'
 & 'C:\Program Files\Wolfram Research\WolframScript\wolframscript.exe' -file '.\checks\v15_classification.wls'
 & 'C:\Program Files\Wolfram Research\WolframScript\wolframscript.exe' -file '.\checks\voight_polynomial_integrity.wls'
@@ -169,10 +170,15 @@ and the final rank-twelve consequence. The public Python and Wolfram runs are
     as compatibility reductions.
     All 2,773 archived Voight degree 5--10 polynomial rows are hash checked,
     imported, and structurally certified. Lean proves that every defining
-    polynomial is irreducible over the integers. Generated Rabin certificates
+    polynomial is irreducible over the integers and splits completely over the
+    real numbers. Generated Rabin certificates
     handle 2,742 rows; complete modular factorizations at several primes handle
     thirty more; and the remaining degree-eight polynomial is closed by two
     modular factorizations and a kernel-checked integer coefficient argument.
+    For total reality, 19,806 exact rational intervals give one strictly
+    sign-changing interval for every root. A generic kernel-checked
+    intermediate-value and root-cardinality proof converts thirty-one generated
+    batch checks into `v15_allVoightPolynomialRows_splits`.
     Python and Mathematica independently verify irreducibility, total reality,
     the discriminant-index relation, and field discriminants. In degrees five
     and seven, Lean proves coordinatewise

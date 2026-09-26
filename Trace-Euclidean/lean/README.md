@@ -27,6 +27,7 @@ The v15 proof chain is organized as follows:
 | V15HunterProjection, V15PrimitiveBasis, V15HunterNumberFieldProjection, V15CubicPowerBasis, V15CubicGeneratorArithmetic, V15CubicGeneratorSpread, V15DegreeThreeHunterClosed | Projected integer-ring covolume, primitive basis extension, Hunter generator, cubic trace and spread identities, positive-index discriminant relation, and the unconditional degree-three bound `|D_K| >= 49` |
 | V15DegreeFourDiscriminant through V15QuarticPrimitiveShortSelection | Kernel-checked quartic normalization and exact finite row enumeration, rank-three projection and covolume, maximality of both the 2048 and 2304 power orders, a first and transverse second Minkowski short vector, equality of quadratic subfields with equal discriminant, the coprime quadratic-compositum formula, and the unconditional bound `|D_K| >= 725` |
 | V15SectionFourClosed | Final Section 4 interfaces; all degree-one through degree-four bounds are internal and the remaining exact-minimum data begin in degree five |
+| V15RealRootIntervalCertificate, V15VoightTotalRealityCertificates | Exact rational sign-change intervals, a kernel-checked intermediate-value/root-cardinality bridge, and real splitting of all 2,773 archived Voight polynomials |
 
 The public classification endpoint is
 v15_rank_one_real_quadratic_classification_totally_positive. It quantifies

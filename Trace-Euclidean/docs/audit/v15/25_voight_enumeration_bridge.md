@@ -48,6 +48,15 @@ integer Diophantine contradictions. Consequently
 `v15_allVoightPolynomialRows_irreducible` proves irreducibility of all 2,773
 archived defining polynomials over the integers.
 
+`tools/generate_voight_total_reality_certificates.py` isolates every real root
+inside an exact rational interval. The generated data contain 19,806 pairwise
+separated intervals, exactly degree-many for each polynomial, with a strict rational sign
+change at every pair of endpoints. `V15RealRootIntervalCertificate.lean`
+proves, using the intermediate value theorem and the polynomial root-cardinality
+bound, that any successful finite check forces complete splitting over the
+reals. Thirty-one generated batch checks therefore yield
+`v15_allVoightPolynomialRows_splits` for all 2,773 rows.
+
 The independent Mathematica script `voight_polynomial_integrity.wls` checks
 all 2,773 polynomials are irreducible and totally real, recomputes the
 polynomial-discriminant index equation, and verifies the number-field
@@ -103,9 +112,8 @@ finite Bareiss certificates for all 2,773 rows. Their umbrella theorem closes
 proves unconditionally, relative to the imported table data, that every
 structurally valid archived row belongs to the exact indexed Hunter filter.
 Python and Mathematica remain independent checks of every concrete instance;
-Mathematica additionally checks total reality and the actual field
-discriminant, and independently repeats the now-formalized irreducibility
-calculation.
+Mathematica independently repeats the now-formalized irreducibility and total
+reality calculations and additionally checks the actual field discriminant.
 
 ## Hunter groundwork
 
@@ -178,13 +186,16 @@ than the cubic and quartic searches already formalized.
 
 ## Trust and status
 
-The generic Hunter, determinant, resultant, discriminant, irreducibility, and
-full-row bridge proofs use only the standard Lean logical axioms reported by
+The generic Hunter, determinant, resultant, discriminant, irreducibility,
+root-interval, and full-row bridge proofs use only the standard Lean logical
+axioms reported by
 the main audit. The two Voight data certificates, thirty-one resultant replay
-certificates, and generated finite irreducibility replays add separately
+certificates, generated finite irreducibility replays, and thirty-one
+total-reality batch replays add separately
 disclosed native compiler dependencies and are isolated in the numerical
-audit. The generic finite-field implications and the exceptional integer
-coefficient argument are kernel checked. The Mathematica full-row verification
+audit. The generic finite-field implications, exceptional integer coefficient
+argument, and interval-to-splitting implication are kernel checked. The
+Mathematica full-row verification
 is an independent computer-algebra check. Enumeration completeness remains a
 literature input, while the optimized degree-eleven bound remains a separate
 literature input. These boundaries preserve the current Grade B and

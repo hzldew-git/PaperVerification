@@ -259,6 +259,8 @@ TraceEuclidean.v15_voightSpecialEight_no_quartic_divisor {divisor : Polynomial �
 TraceEuclidean.v15_voightSpecialEight_irreducible : Irreducible TraceEuclidean.v15VoightSpecialEightRow.polynomial
 TraceEuclidean.v15_allVoightPolynomialRows_irreducible (row : TraceEuclidean.V15VoightPolynomialRow) :
   row ∈ TraceEuclidean.v15AllVoightPolynomialRows → Irreducible row.polynomial
+TraceEuclidean.v15_allVoightPolynomialRows_splits (row : TraceEuclidean.V15VoightPolynomialRow) :
+  row ∈ TraceEuclidean.v15AllVoightPolynomialRows → row.realPolynomial.Splits
 'TraceEuclidean.v15OdlyzkoSinhIntegrand_integrableOn' depends on axioms: [propext, Classical.choice, Quot.sound]
 'TraceEuclidean.v15OdlyzkoSinhIntegral_zero_hundredth_le' depends on axioms: [propext, Classical.choice, Quot.sound]
 'TraceEuclidean.v15OdlyzkoSinhIntegral_tail_le' depends on axioms: [propext, Classical.choice, Quot.sound]
@@ -803,3 +805,37 @@ TraceEuclidean.v15_allVoightPolynomialRows_irreducible (row : TraceEuclidean.V15
  TraceEuclidean.v15_voightSpecialEight_excludes_degree_3._native.native_decide.ax_1_1,
  TraceEuclidean.v15_voightSpecialEight_forces_constant_five._native.native_decide.ax_1_1,
  TraceEuclidean.v15_voightSpecialEight_forces_constant_three._native.native_decide.ax_1_1]
+'TraceEuclidean.v15_allVoightPolynomialRows_splits' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ TraceEuclidean.v15_voightRootIntervalsEightChunk0_check._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightRootIntervalsEightChunk1_check._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightRootIntervalsFiveChunk0_check._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightRootIntervalsFiveChunk1_check._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightRootIntervalsFiveChunk2_check._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightRootIntervalsFiveChunk3_check._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightRootIntervalsFiveChunk4_check._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightRootIntervalsFiveChunk5_check._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightRootIntervalsFiveChunk6_check._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightRootIntervalsNineChunk0_check._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightRootIntervalsSevenChunk0_check._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightRootIntervalsSevenChunk1_check._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightRootIntervalsSevenChunk2_check._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightRootIntervalsSevenChunk3_check._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightRootIntervalsSixChunk0_check._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightRootIntervalsSixChunk1_check._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightRootIntervalsSixChunk2_check._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightRootIntervalsSixChunk3_check._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightRootIntervalsSixChunk4_check._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightRootIntervalsSixChunk5_check._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightRootIntervalsSixChunk6_check._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightRootIntervalsSixChunk7_check._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightRootIntervalsSixChunk8_check._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightRootIntervalsTenChunk0_check._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightRootIntervalsTenChunk1_check._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightRootIntervalsTenChunk2_check._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightRootIntervalsTenChunk3_check._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightRootIntervalsTenChunk4_check._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightRootIntervalsTenChunk5_check._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightRootIntervalsTenChunk6_check._native.native_decide.ax_1_1,
+ TraceEuclidean.v15_voightRootIntervalsTenChunk7_check._native.native_decide.ax_1_1]

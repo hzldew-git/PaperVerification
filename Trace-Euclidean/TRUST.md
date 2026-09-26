@@ -6,7 +6,8 @@ only on the standard logical axioms propext,
 Classical.choice, and Quot.sound. The archimedean numerical certificate, the
 two imported Voight table-data certificates, the thirty-one generated Voight
 resultant certificates, and the generated finite-field irreducibility replays
-use `native_decide` checks and therefore also trust Lean's native compiler.
+and rational root-interval replays use `native_decide` checks and therefore
+also trust Lean's native compiler.
 The separate numerical axiom audit prints these dependencies explicitly.
 The delivered proof modules contain no sorry, sorryAx, or project axiom.
 
@@ -154,7 +155,13 @@ thirty exceptional rows. Two modular factorizations and a kernel-checked
 coefficient argument close the remaining degree-eight row. The generic Rabin,
 factorization, divisor-signature, and coefficient implications are ordinary
 Lean theorems; only the generated finite replays and list partitions use the
-disclosed native compiler boundary. Python uses an exact Bareiss determinant
+disclosed native compiler boundary. Lean also proves that all 2,773
+polynomials split over the reals. Thirty-one generated batches check 19,806
+exact rational intervals, strict sign changes, and pairwise
+separation. The implication from these checks to complete splitting uses the
+intermediate value theorem and a kernel-checked root-cardinality argument;
+only the finite batch replays add native compiler trust. Python uses an exact
+Bareiss determinant
 and Mathematica independently verifies irreducibility, total reality, the
 polynomial-discriminant index equation, and the number-field discriminant for
 all 2,773 rows. Lean proves the surrounding determinant semantics: a strict

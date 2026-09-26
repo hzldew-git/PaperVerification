@@ -44,8 +44,11 @@ compositum contradiction, yielding the unconditional bound `|D_K| >= 725`.
 All 2,773 degree 5--10 Voight polynomial rows are imported and structurally
 checked. Lean proves every defining polynomial irreducible over the integers
 using generated Rabin and multi-prime certificates and one exceptional
-coefficient argument. Python and Mathematica independently verify their
-irreducibility, total reality, discriminant-index equations, and field
+coefficient argument. Lean also proves every defining polynomial splits over
+the reals from 19,806 exact rational sign-changing root intervals and a
+kernel-checked intermediate-value/root-cardinality bridge. Python and
+Mathematica independently verify their irreducibility, total reality,
+discriminant-index equations, and field
 discriminants. Lean
 proves an exact Bareiss determinant checker and the
 Sylvester/resultant/discriminant bridge. Thirty-one generated
@@ -66,8 +69,8 @@ The analytic contour core depends only on Lean's standard logical axioms
 `B = 16.593` certificate uses `native_decide`; its five generated native
 dependencies form a separately disclosed compiler trust boundary. The two
 Voight finite-data certificates, thirty-one Voight resultant certificates,
-and the generated finite-field irreducibility replays add separately audited
-native dependencies.
+the generated finite-field irreducibility replays, and thirty-one generated
+total-reality batch replays add separately audited native dependencies.
 
 Python and Wolfram checks trust their respective runtimes and the extracted
 inputs. Private source binding checks the author-source hash. Successful

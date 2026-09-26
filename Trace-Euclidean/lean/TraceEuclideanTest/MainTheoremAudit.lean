@@ -1302,3 +1302,11 @@ import TraceEuclidean
 #print axioms
   TraceEuclidean.V15ModularFactorizationCertificate.constantCoeff_mod_eq_of_valid_and_forcesConstantResidue
 #print axioms TraceEuclidean.V15ModularFactorizationCertificate.not_dvd_of_valid_and_excludesDegree
+
+-- Kernel proof layer converting exact rational sign-change intervals into
+-- complete splitting over the reals.
+#check TraceEuclidean.V15DensePolynomial.eval_toPolynomial
+#check TraceEuclidean.v15_realPolynomial_splits_of_rootIntervalCertificate
+
+#print axioms TraceEuclidean.V15DensePolynomial.eval_toPolynomial
+#print axioms TraceEuclidean.v15_realPolynomial_splits_of_rootIntervalCertificate

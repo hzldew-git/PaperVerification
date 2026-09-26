@@ -5,7 +5,7 @@ import Mathlib
 
 `Polynomial` deliberately uses noncomputable algebra instances in mathlib.
 This module provides a small list-backed polynomial language whose operations
-can be replayed by `native_decide`, together with a semantic map to mathlib
+can be replayed by the native evaluator, together with a semantic map to mathlib
 polynomials and proofs that the replayed operations have their usual meaning.
 -/
 
@@ -50,6 +50,11 @@ def prod {R : Type*} [Semiring R] : List (List R) → List R
   | [] => [1]
   | values :: rest => mul values (prod rest)
 
+/-- Horner evaluation of an ascending coefficient list. -/
+def eval {R : Type*} [Semiring R] : List R → R → R
+  | [], _ => 0
+  | head :: tail, value => head + value * eval tail value
+
 /-- Extensional equality of two coefficient lists, ignoring trailing zeroes. -/
 def equal {R : Type*} [Zero R] [DecidableEq R]
     (left right : List R) : Bool :=
@@ -69,6 +74,35 @@ theorem toPolynomial_nil {R : Type*} [Semiring R] :
 theorem toPolynomial_cons {R : Type*} [Semiring R]
     (head : R) (tail : List R) :
     toPolynomial (head :: tail) = C head + X * toPolynomial tail := rfl
+
+@[simp]
+theorem eval_toPolynomial {R : Type*} [CommSemiring R]
+    (values : List R) (value : R) :
+    (toPolynomial values).eval value = eval values value := by
+  induction values with
+  | nil => simp [eval]
+  | cons head tail induction =>
+      rw [toPolynomial_cons, eval_add, eval_C, eval_mul, eval_X,
+        induction]
+      rfl
+
+@[simp]
+theorem eval_map {R S : Type*} [CommSemiring R] [CommSemiring S]
+    (map : R →+* S) (values : List R) (value : R) :
+    eval (values.map map) (map value) = map (eval values value) := by
+  induction values with
+  | nil => simp [eval]
+  | cons head tail induction =>
+      simp [eval, induction]
+
+@[simp]
+theorem toPolynomial_map {R S : Type*} [Semiring R] [Semiring S]
+    (map : R →+* S) (values : List R) :
+    toPolynomial (values.map map) = (toPolynomial values).map map := by
+  induction values with
+  | nil => simp
+  | cons head tail induction =>
+      simp [induction]
 
 @[simp]
 theorem coeff_toPolynomial {R : Type*} [Semiring R]

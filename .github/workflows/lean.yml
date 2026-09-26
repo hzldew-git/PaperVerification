@@ -35,7 +35,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          if git grep -n -E '(^|[^[:alpha:]])sorry([^[:alpha:]]|$)|sorryAx|^[[:space:]]*axiom[[:space:]]|native_decide|run_tac|^[[:space:]]*unsafe[[:space:]]|^[[:space:]]*extern[[:space:]]|implemented_by' -- 'Trace-Euclidean/lean/*.lean' 'Trace-Euclidean/lean/**/*.lean' ':(exclude)Trace-Euclidean/lean/LeanCert/**' ':(exclude)Trace-Euclidean/lean/TraceEuclidean/V15OdlyzkoNumerical.lean' ':(exclude)Trace-Euclidean/lean/TraceEuclidean/V15VoightDiscriminantData.lean' ':(exclude)Trace-Euclidean/lean/TraceEuclidean/V15VoightResultantCertificates/**' ':(exclude)Trace-Euclidean/lean/TraceEuclidean/V15VoightIrreducibilityCertificates/**' ':(exclude)Trace-Euclidean/lean/TraceEuclidean/V15VoightIrreducibilityCertificates.lean' ':(exclude)Trace-Euclidean/lean/TraceEuclidean/V15VoightExceptionalIrreducibilityCertificates.lean' ':(exclude)Trace-Euclidean/lean/TraceEuclidean/V15VoightAllIrreducible.lean'; then
+          if git grep -n -E '(^|[^[:alpha:]])sorry([^[:alpha:]]|$)|sorryAx|^[[:space:]]*axiom[[:space:]]|native_decide|run_tac|^[[:space:]]*unsafe[[:space:]]|^[[:space:]]*extern[[:space:]]|implemented_by' -- 'Trace-Euclidean/lean/*.lean' 'Trace-Euclidean/lean/**/*.lean' ':(exclude)Trace-Euclidean/lean/LeanCert/**' ':(exclude)Trace-Euclidean/lean/TraceEuclidean/V15OdlyzkoNumerical.lean' ':(exclude)Trace-Euclidean/lean/TraceEuclidean/V15VoightDiscriminantData.lean' ':(exclude)Trace-Euclidean/lean/TraceEuclidean/V15VoightResultantCertificates/**' ':(exclude)Trace-Euclidean/lean/TraceEuclidean/V15VoightIrreducibilityCertificates/**' ':(exclude)Trace-Euclidean/lean/TraceEuclidean/V15VoightIrreducibilityCertificates.lean' ':(exclude)Trace-Euclidean/lean/TraceEuclidean/V15VoightExceptionalIrreducibilityCertificates.lean' ':(exclude)Trace-Euclidean/lean/TraceEuclidean/V15VoightAllIrreducible.lean' ':(exclude)Trace-Euclidean/lean/TraceEuclidean/V15VoightTotalRealityCertificates/**'; then
             echo 'Forbidden proof construct found.' >&2
             exit 1
           fi
@@ -45,7 +45,7 @@ jobs:
         run: |
           set -euo pipefail
           # These files use native_decide; its compiler trust is audited separately.
-          if git grep -n -E '^[[:space:]]*(sorry|axiom|unsafe|extern|run_tac)([[:space:]]|$)|sorryAx|implemented_by' -- 'Trace-Euclidean/lean/LeanCert/**/*.lean' 'Trace-Euclidean/lean/TraceEuclidean/V15OdlyzkoNumerical.lean' 'Trace-Euclidean/lean/TraceEuclidean/V15VoightDiscriminantData.lean' 'Trace-Euclidean/lean/TraceEuclidean/V15VoightResultantCertificates/**' 'Trace-Euclidean/lean/TraceEuclidean/V15VoightIrreducibilityCertificates/**' 'Trace-Euclidean/lean/TraceEuclidean/V15VoightIrreducibilityCertificates.lean' 'Trace-Euclidean/lean/TraceEuclidean/V15VoightExceptionalIrreducibilityCertificates.lean' 'Trace-Euclidean/lean/TraceEuclidean/V15VoightAllIrreducible.lean'; then
+          if git grep -n -E '^[[:space:]]*(sorry|axiom|unsafe|extern|run_tac)([[:space:]]|$)|sorryAx|implemented_by' -- 'Trace-Euclidean/lean/LeanCert/**/*.lean' 'Trace-Euclidean/lean/TraceEuclidean/V15OdlyzkoNumerical.lean' 'Trace-Euclidean/lean/TraceEuclidean/V15VoightDiscriminantData.lean' 'Trace-Euclidean/lean/TraceEuclidean/V15VoightResultantCertificates/**' 'Trace-Euclidean/lean/TraceEuclidean/V15VoightIrreducibilityCertificates/**' 'Trace-Euclidean/lean/TraceEuclidean/V15VoightIrreducibilityCertificates.lean' 'Trace-Euclidean/lean/TraceEuclidean/V15VoightExceptionalIrreducibilityCertificates.lean' 'Trace-Euclidean/lean/TraceEuclidean/V15VoightAllIrreducible.lean' 'Trace-Euclidean/lean/TraceEuclidean/V15VoightTotalRealityCertificates/**'; then
             echo 'Unfinished construct found in a numerical dependency.' >&2
             exit 1
           fi
@@ -97,8 +97,8 @@ jobs:
           source = Path('TraceEuclideanTest/NumericalAxiomAudit.lean').read_text(encoding='utf-8')
           output = ' '.join(Path('numerical-audit.log').read_text(encoding='utf-8').split())
           names = re.findall(r'^#print axioms\s+(\S+)', source, re.M)
-          if len(names) != 57:
-              raise SystemExit(f'Expected fifty-seven numerical audit declarations, found {len(names)}')
+          if len(names) != 58:
+              raise SystemExit(f'Expected fifty-eight numerical audit declarations, found {len(names)}')
           standard = {'propext', 'Classical.choice', 'Quot.sound'}
           sinh = 'TraceEuclidean.V15OdlyzkoNumerical.sinh_core_upper._native.native_decide.ax_1_1'
           cosh = 'TraceEuclidean.V15OdlyzkoNumerical.cosh_core_upper._native.native_decide.ax_1_1'
@@ -199,6 +199,18 @@ jobs:
           expected[names[54]] = standard | special_no_quartic
           expected[names[55]] = standard | special_checks
           expected[names[56]] = standard | all_irreducibility
+          total_reality_dir = Path(
+              'TraceEuclidean/V15VoightTotalRealityCertificates'
+          )
+          total_reality_checks = {
+              native(theorem)
+              for path in total_reality_dir.glob('*.lean')
+              for theorem in re.findall(
+                  r'^theorem\s+(\S+_check)\s*:',
+                  path.read_text(encoding='utf-8'), re.M
+              )
+          }
+          expected[names[57]] = standard | total_reality_checks
           for name in names:
               match = re.search("'" + re.escape(name) + r"' depends on axioms: \[([^]]*)\]", output)
               if match is None:
@@ -217,6 +229,7 @@ jobs:
           python Trace-Euclidean/tools/generate_voight_discriminant_data.py --check
           python Trace-Euclidean/tools/generate_voight_irreducibility_certificates.py --check
           python Trace-Euclidean/tools/generate_voight_exception_irreducibility_certificates.py --check
+          python Trace-Euclidean/tools/generate_voight_total_reality_certificates.py --check
 
       - name: Rerun public v15 Python certificates
         shell: bash
