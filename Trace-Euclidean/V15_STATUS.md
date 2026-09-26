@@ -80,10 +80,17 @@ degree four, the rank-three projection, exact covolume quotient, integral
 lift, normalization, coefficient bounds, field-discriminant bridges, and
 finite enumeration are internal. An unconditional Minkowski-ball alternative
 now gives spread below 35 and reduces the arithmetic to polynomial
-discriminants 725, 1957, 2048, and 2304. The quartic boundary can therefore be
-closed either by the sharp three-dimensional Hermite theorem or by handling
-the 2048 and 2304 index cases; both routes still require choosing a short lift
-outside a possible quadratic subfield. Exact minima for degrees 5--9, the degree-ten
+discriminants 725, 1957, 2048, and 2304. Both residual power-order index cases
+are closed: Lean proves maximality for the 2048 and 2304 rows and derives a
+contradiction whenever a primitive generator satisfies the weak spread bound.
+If the first lift is imprimitive, Lean produces a second transverse short
+lift. If the second lift is also imprimitive, the two distinct quadratic
+subfields have discriminants in `{5,8}`. Equal discriminants force equality of
+the subfields; unequal discriminants are coprime and force quartic
+discriminant `1600`. Both cases contradict the construction. Hence
+`v15_coded_degree_four_discriminant_ge_725` is unconditional and no quartic
+source boundary remains. The sharp-Hermite and relative-different routes stay
+in the project as compatibility reductions. Exact minima for degrees 5--9, the degree-ten
 exclusion, the optimized degree-eleven bound, selected supporting lemmas, and
 independent semantic sign-off remain outside the current signed scope. The
 strict tabulated-constant inequalities use a

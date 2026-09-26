@@ -396,6 +396,63 @@ TraceEuclidean.v15_integral_pair_mem_of_degreeFourToEleven_closed
   (hEleven : TraceEuclidean.V15DegreeElevenRootDiscriminantInput) (c : TraceEuclidean.GlobalLatticeClass)
   (hE : TraceEuclidean.GlobalLatticeClass.IsIntegralTraceEuclidean (↑c.degree) c) :
   (c.rank, c.degree) ∈ TraceEuclidean.v15IntegralAdmissiblePairs
+TraceEuclidean.v15_degreeFourToNineMinimumInput_closed (hMin : TraceEuclidean.V15DegreeFiveToNineMinimumInput) :
+  TraceEuclidean.V15DegreeFourToNineMinimumInput
+TraceEuclidean.v15_sectionFourDiscriminantInput_of_degreeFiveToEleven_closed
+  (hMin : TraceEuclidean.V15DegreeFiveToNineMinimumInput) (hTen : TraceEuclidean.V15DegreeTenRootDiscriminantInput)
+  (hEleven : TraceEuclidean.V15DegreeElevenRootDiscriminantInput) : TraceEuclidean.V15SectionFourDiscriminantInput
+TraceEuclidean.v15_classic_pair_mem_of_degreeFiveToEleven_closed (hMin : TraceEuclidean.V15DegreeFiveToNineMinimumInput)
+  (hTen : TraceEuclidean.V15DegreeTenRootDiscriminantInput)
+  (hEleven : TraceEuclidean.V15DegreeElevenRootDiscriminantInput) (c : TraceEuclidean.GlobalLatticeClass)
+  (hE : TraceEuclidean.GlobalLatticeClass.IsClassicTraceEuclidean (↑c.degree) c) :
+  (c.rank, c.degree) ∈ TraceEuclidean.v15ClassicAdmissiblePairs
+TraceEuclidean.v15_integral_pair_mem_of_degreeFiveToEleven_closed
+  (hMin : TraceEuclidean.V15DegreeFiveToNineMinimumInput) (hTen : TraceEuclidean.V15DegreeTenRootDiscriminantInput)
+  (hEleven : TraceEuclidean.V15DegreeElevenRootDiscriminantInput) (c : TraceEuclidean.GlobalLatticeClass)
+  (hE : TraceEuclidean.GlobalLatticeClass.IsIntegralTraceEuclidean (↑c.degree) c) :
+  (c.rank, c.degree) ∈ TraceEuclidean.v15IntegralAdmissiblePairs
+TraceEuclidean.v15_degreeFourToNineMinimumInput_of_radicand_and_norm
+  (hRadicand : TraceEuclidean.V15QuarticSmallDiscriminantQuadraticRadicandInput)
+  (hNorm : TraceEuclidean.V15QuarticSmallDiscriminantRelativeDifferentNormInput)
+  (hMin : TraceEuclidean.V15DegreeFiveToNineMinimumInput) : TraceEuclidean.V15DegreeFourToNineMinimumInput
+TraceEuclidean.v15_degreeFourToNineMinimumInput_of_relativeDifferentNorm
+  (hNorm : TraceEuclidean.V15QuarticSmallDiscriminantRelativeDifferentNormInput)
+  (hMin : TraceEuclidean.V15DegreeFiveToNineMinimumInput) : TraceEuclidean.V15DegreeFourToNineMinimumInput
+TraceEuclidean.v15_sectionFourDiscriminantInput_of_quarticRelativeDifferent_closed
+  (hRadicand : TraceEuclidean.V15QuarticSmallDiscriminantQuadraticRadicandInput)
+  (hNorm : TraceEuclidean.V15QuarticSmallDiscriminantRelativeDifferentNormInput)
+  (hMin : TraceEuclidean.V15DegreeFiveToNineMinimumInput) (hTen : TraceEuclidean.V15DegreeTenRootDiscriminantInput)
+  (hEleven : TraceEuclidean.V15DegreeElevenRootDiscriminantInput) : TraceEuclidean.V15SectionFourDiscriminantInput
+TraceEuclidean.v15_sectionFourDiscriminantInput_of_relativeDifferentNorm_closed
+  (hNorm : TraceEuclidean.V15QuarticSmallDiscriminantRelativeDifferentNormInput)
+  (hMin : TraceEuclidean.V15DegreeFiveToNineMinimumInput) (hTen : TraceEuclidean.V15DegreeTenRootDiscriminantInput)
+  (hEleven : TraceEuclidean.V15DegreeElevenRootDiscriminantInput) : TraceEuclidean.V15SectionFourDiscriminantInput
+TraceEuclidean.v15_classic_pair_mem_of_quarticRelativeDifferent_closed
+  (hRadicand : TraceEuclidean.V15QuarticSmallDiscriminantQuadraticRadicandInput)
+  (hNorm : TraceEuclidean.V15QuarticSmallDiscriminantRelativeDifferentNormInput)
+  (hMin : TraceEuclidean.V15DegreeFiveToNineMinimumInput) (hTen : TraceEuclidean.V15DegreeTenRootDiscriminantInput)
+  (hEleven : TraceEuclidean.V15DegreeElevenRootDiscriminantInput) (c : TraceEuclidean.GlobalLatticeClass)
+  (hE : TraceEuclidean.GlobalLatticeClass.IsClassicTraceEuclidean (↑c.degree) c) :
+  (c.rank, c.degree) ∈ TraceEuclidean.v15ClassicAdmissiblePairs
+TraceEuclidean.v15_classic_pair_mem_of_relativeDifferentNorm_closed
+  (hNorm : TraceEuclidean.V15QuarticSmallDiscriminantRelativeDifferentNormInput)
+  (hMin : TraceEuclidean.V15DegreeFiveToNineMinimumInput) (hTen : TraceEuclidean.V15DegreeTenRootDiscriminantInput)
+  (hEleven : TraceEuclidean.V15DegreeElevenRootDiscriminantInput) (c : TraceEuclidean.GlobalLatticeClass)
+  (hE : TraceEuclidean.GlobalLatticeClass.IsClassicTraceEuclidean (↑c.degree) c) :
+  (c.rank, c.degree) ∈ TraceEuclidean.v15ClassicAdmissiblePairs
+TraceEuclidean.v15_integral_pair_mem_of_quarticRelativeDifferent_closed
+  (hRadicand : TraceEuclidean.V15QuarticSmallDiscriminantQuadraticRadicandInput)
+  (hNorm : TraceEuclidean.V15QuarticSmallDiscriminantRelativeDifferentNormInput)
+  (hMin : TraceEuclidean.V15DegreeFiveToNineMinimumInput) (hTen : TraceEuclidean.V15DegreeTenRootDiscriminantInput)
+  (hEleven : TraceEuclidean.V15DegreeElevenRootDiscriminantInput) (c : TraceEuclidean.GlobalLatticeClass)
+  (hE : TraceEuclidean.GlobalLatticeClass.IsIntegralTraceEuclidean (↑c.degree) c) :
+  (c.rank, c.degree) ∈ TraceEuclidean.v15IntegralAdmissiblePairs
+TraceEuclidean.v15_integral_pair_mem_of_relativeDifferentNorm_closed
+  (hNorm : TraceEuclidean.V15QuarticSmallDiscriminantRelativeDifferentNormInput)
+  (hMin : TraceEuclidean.V15DegreeFiveToNineMinimumInput) (hTen : TraceEuclidean.V15DegreeTenRootDiscriminantInput)
+  (hEleven : TraceEuclidean.V15DegreeElevenRootDiscriminantInput) (c : TraceEuclidean.GlobalLatticeClass)
+  (hE : TraceEuclidean.GlobalLatticeClass.IsIntegralTraceEuclidean (↑c.degree) c) :
+  (c.rank, c.degree) ∈ TraceEuclidean.v15IntegralAdmissiblePairs
 TraceEuclidean.v15_classic_finite_closed :
   {c | TraceEuclidean.GlobalLatticeClass.IsClassicTraceEuclidean (↑c.degree) c}.Finite
 TraceEuclidean.v15_integral_finite_closed :
@@ -901,6 +958,29 @@ TraceEuclidean.v15_coded_degree_three_discriminant_ge_49 (K : TraceEuclidean.Cod
 TraceEuclidean.V15DegreeFourHunterCertificateInput : Prop
 TraceEuclidean.V15DegreeFourPrimitiveGeneratorInput : Prop
 TraceEuclidean.V15DegreeFiveToNineMinimumInput : Prop
+TraceEuclidean.v15_quadratic_generator_centered_sq_eq_traceDiscriminant.{u_1} (K : Type u_1) [Field K] [NumberField K]
+  (hdegree : Module.finrank ℚ K = 2) (a : K) (hgen : ℚ⟮a⟯ = ⊤) :
+  (2 * a - (algebraMap ℚ K) ((Algebra.trace ℚ K) a)) ^ 2 =
+    (algebraMap ℚ K) (2 * (Algebra.trace ℚ K) (a ^ 2) - (Algebra.trace ℚ K) a ^ 2)
+TraceEuclidean.v15_quadratic_generator_centered_sq_eq_fieldDiscriminant.{u_1} (K : Type u_1) [Field K] [NumberField K]
+  (hdegree : Module.finrank ℚ K = 2) (a : NumberField.RingOfIntegers K) (hgen : ℚ⟮↑a⟯ = ⊤)
+  (hdisc : Algebra.discr ℤ (TraceEuclidean.v15QuadraticPowerFamily K a) = NumberField.discr K) :
+  (2 * ↑a - (algebraMap ℚ K) ((Algebra.trace ℚ K) ↑a)) ^ 2 = (algebraMap ℚ K) ↑(NumberField.discr K)
+TraceEuclidean.v15_mem_quadratic_adjoin_eq_rat_add_rat_mul.{u_1} (L : Type u_1) [Field L] [NumberField L] (a c : L)
+  (hdegree : Module.finrank ℚ ↥ℚ⟮a⟯ = 2) (hc : c ∈ ℚ⟮a⟯) : ∃ r s, c = (algebraMap ℚ L) r + (algebraMap ℚ L) s * a
+TraceEuclidean.v15_quadratic_adjoin_eq_of_powerFamily_discr_eq.{u_1} (L : Type u_1) [Field L] [NumberField L]
+  (a c : NumberField.RingOfIntegers L) :
+  let E := ℚ⟮↑a⟯;
+  let F := ℚ⟮↑c⟯;
+  Module.finrank ℚ ↥E = 2 →
+    Module.finrank ℚ ↥F = 2 →
+      Algebra.discr ℤ
+            (TraceEuclidean.v15QuadraticPowerFamily (↥E) (TraceEuclidean.v15AdjoinRingOfIntegersGenerator L a)) =
+          NumberField.discr ↥E →
+        Algebra.discr ℤ
+              (TraceEuclidean.v15QuadraticPowerFamily (↥F) (TraceEuclidean.v15AdjoinRingOfIntegersGenerator L c)) =
+            NumberField.discr ↥F →
+          NumberField.discr ↥E = NumberField.discr ↥F → E = F
 TraceEuclidean.v15_quartic_shift_discriminant (s1 s2 s3 s4 k : ℤ) :
   TraceEuclidean.v15QuarticDiscriminant (TraceEuclidean.v15QuarticShiftS1 s1 k)
       (TraceEuclidean.v15QuarticShiftS2 s1 s2 k) (TraceEuclidean.v15QuarticShiftS3 s1 s2 s3 k)
@@ -935,6 +1015,17 @@ TraceEuclidean.v15_quartic_s3_s4_bounds_of_normalized_thirtyFive (s1 s2 s3 s4 : 
   (hspreadPos : 0 < TraceEuclidean.v15QuarticSpread s1 s2) (hspreadLt : TraceEuclidean.v15QuarticSpread s1 s2 < 35)
   (hminor : 0 < TraceEuclidean.v15QuarticHermiteMinorThree s1 s2 s3 s4)
   (hdisc : 0 < TraceEuclidean.v15QuarticDiscriminant s1 s2 s3 s4) : -24 ≤ s3 ∧ s3 ≤ 24 ∧ -4 ≤ s4 ∧ s4 ≤ 4
+TraceEuclidean.v15_normalized_quartic_rows_of_spread_lt_thirtyFive (s1 s2 s3 s4 : ℤ) (hs1 : 0 ≤ s1) (hs1' : s1 ≤ 2)
+  (hs2 : -4 ≤ s2) (hs2' : s2 ≤ 2) (hs3 : -24 ≤ s3) (hs3' : s3 ≤ 24) (hs4 : -4 ≤ s4) (hs4' : s4 ≤ 4)
+  (hspreadPos : 0 < TraceEuclidean.v15QuarticSpread s1 s2) (hspreadLt : TraceEuclidean.v15QuarticSpread s1 s2 < 35)
+  (hminor : 0 < TraceEuclidean.v15QuarticHermiteMinorThree s1 s2 s3 s4)
+  (hdisc : 0 < TraceEuclidean.v15QuarticDiscriminant s1 s2 s3 s4)
+  (hnoRoot : ∀ (z : ℤ), TraceEuclidean.v15QuarticEval s1 s2 s3 s4 z ≠ 0)
+  (hnoQuadratic : ∀ (u v p q : ℤ), ¬TraceEuclidean.V15QuarticQuadraticFactorWitness s1 s2 s3 s4 u v p q) :
+  s1 = 0 ∧ s2 = -4 ∧ s3 = -1 ∧ s4 = 1 ∨
+    s1 = 0 ∧ s2 = -4 ∧ s3 = 0 ∧ s4 = 1 ∨
+      s1 = 0 ∧ s2 = -4 ∧ s3 = 0 ∧ s4 = 2 ∨
+        s1 = 0 ∧ s2 = -4 ∧ s3 = 1 ∧ s4 = 1 ∨ s1 = 1 ∧ s2 = -3 ∧ s3 = -1 ∧ s4 = 1 ∨ s1 = 2 ∧ s2 = -2 ∧ s3 = -3 ∧ s4 = 1
 TraceEuclidean.v15_normalized_quartic_discriminant_candidates_of_spread_lt_thirtyFive (s1 s2 s3 s4 : ℤ) (hs1 : 0 ≤ s1)
   (hs1' : s1 ≤ 2) (hs2 : -4 ≤ s2) (hs2' : s2 ≤ 2) (hs3 : -24 ≤ s3) (hs3' : s3 ≤ 24) (hs4 : -4 ≤ s4) (hs4' : s4 ≤ 4)
   (hspreadPos : 0 < TraceEuclidean.v15QuarticSpread s1 s2) (hspreadLt : TraceEuclidean.v15QuarticSpread s1 s2 < 35)
@@ -955,6 +1046,213 @@ TraceEuclidean.v15_quartic_small_field_candidates_reduce_to_2048_or_2304 (s1 s2 
         TraceEuclidean.v15QuarticDiscriminant s1 s2 s3 s4 = 2048 ∨
           TraceEuclidean.v15QuarticDiscriminant s1 s2 s3 s4 = 2304) :
   TraceEuclidean.v15QuarticDiscriminant s1 s2 s3 s4 = 2048 ∨ TraceEuclidean.v15QuarticDiscriminant s1 s2 s3 s4 = 2304
+TraceEuclidean.v15_quarticPolynomial_2048_isEisensteinAt_two :
+  (TraceEuclidean.v15QuarticPolynomial 0 (-4) 0 2).IsEisensteinAt (ℤ ∙ 2)
+TraceEuclidean.v15_quartic_2048_adjoin_ringOfIntegers_eq_top.{u_1} (K : Type u_1) [Field K] [NumberField K]
+  (hdegree : Module.finrank ℚ K = 4) (a : NumberField.RingOfIntegers K) (hgen : ℚ⟮↑a⟯ = ⊤)
+  (hs1 : TraceEuclidean.v15QuarticS1 K a = 0) (hs2 : TraceEuclidean.v15QuarticS2 K a = -4)
+  (hs3 : TraceEuclidean.v15QuarticS3 K a = 0) (hs4 : TraceEuclidean.v15QuarticS4 K a = 2) : ℤ[a] = ⊤
+TraceEuclidean.v15_quartic_field_discriminant_eq_2048.{u_1} (K : Type u_1) [Field K] [NumberField K]
+  (hdegree : Module.finrank ℚ K = 4) (a : NumberField.RingOfIntegers K) (hgen : ℚ⟮↑a⟯ = ⊤)
+  (hs1 : TraceEuclidean.v15QuarticS1 K a = 0) (hs2 : TraceEuclidean.v15QuarticS2 K a = -4)
+  (hs3 : TraceEuclidean.v15QuarticS3 K a = 0) (hs4 : TraceEuclidean.v15QuarticS4 K a = 2) : NumberField.discr K = 2048
+TraceEuclidean.v15_quarticPolynomial_2304_shift_isEisensteinAt_two :
+  ((TraceEuclidean.v15QuarticPolynomial 0 (-4) 0 1).comp (Polynomial.X + Polynomial.C 1)).IsEisensteinAt (ℤ ∙ 2)
+TraceEuclidean.v15_quartic_2304_nine_smul_integral_mem_adjoin.{u_1} (K : Type u_1) [Field K] [NumberField K]
+  (hdegree : Module.finrank ℚ K = 4) (a : NumberField.RingOfIntegers K) (hgen : ℚ⟮↑a⟯ = ⊤)
+  (hs1 : TraceEuclidean.v15QuarticS1 K a = 0) (hs2 : TraceEuclidean.v15QuarticS2 K a = -4)
+  (hs3 : TraceEuclidean.v15QuarticS3 K a = 0) (hs4 : TraceEuclidean.v15QuarticS4 K a = 1) (x : K) :
+  IsIntegral ℤ x → 3 ^ 2 • x ∈ ℤ[↑a]
+TraceEuclidean.v15_quartic_2304_coefficients_divisible_by_three (A B C D : ℤ)
+  (h1 : 3 ∣ TraceEuclidean.v15Quartic2304T1✝ A B C D) (h2 : 9 ∣ TraceEuclidean.v15Quartic2304T2✝ A B C D)
+  (h4 : 81 ∣ TraceEuclidean.v15Quartic2304T4✝ A B C D) : 3 ∣ A ∧ 3 ∣ B ∧ 3 ∣ C ∧ 3 ∣ D
+TraceEuclidean.v15_quartic_2304_trace_identities.{u_1} (K : Type u_1) [Field K] [NumberField K]
+  (hdegree : Module.finrank ℚ K = 4) (a : NumberField.RingOfIntegers K) (hgen : ℚ⟮↑a⟯ = ⊤)
+  (hs1 : TraceEuclidean.v15QuarticS1 K a = 0) (hs2 : TraceEuclidean.v15QuarticS2 K a = -4)
+  (hs3 : TraceEuclidean.v15QuarticS3 K a = 0) (hs4 : TraceEuclidean.v15QuarticS4 K a = 1) (A B C D : ℤ) :
+  have y := (algebraMap ℤ K) A + (algebraMap ℤ K) B * ↑a + (algebraMap ℤ K) C * ↑a ^ 2 + (algebraMap ℤ K) D * ↑a ^ 3;
+  (Algebra.trace ℚ K) y = ↑(4 * TraceEuclidean.v15Quartic2304T1✝ A B C D) ∧
+    (Algebra.trace ℚ K) (y ^ 2) = ↑(4 * TraceEuclidean.v15Quartic2304T2✝ A B C D) ∧
+      (Algebra.trace ℚ K) (y ^ 4) = ↑(4 * TraceEuclidean.v15Quartic2304T4✝ A B C D)
+TraceEuclidean.v15_quartic_2304_three_saturated.{u_1} (K : Type u_1) [Field K] [NumberField K]
+  (hdegree : Module.finrank ℚ K = 4) (a : NumberField.RingOfIntegers K) (hgen : ℚ⟮↑a⟯ = ⊤)
+  (hs1 : TraceEuclidean.v15QuarticS1 K a = 0) (hs2 : TraceEuclidean.v15QuarticS2 K a = -4)
+  (hs3 : TraceEuclidean.v15QuarticS3 K a = 0) (hs4 : TraceEuclidean.v15QuarticS4 K a = 1) (z : K)
+  (hzint : IsIntegral ℤ z) (hz : 3 • z ∈ ℤ[↑a]) : z ∈ ℤ[↑a]
+TraceEuclidean.v15_quartic_2304_all_integral_mem_adjoin.{u_1} (K : Type u_1) [Field K] [NumberField K]
+  (hdegree : Module.finrank ℚ K = 4) (a : NumberField.RingOfIntegers K) (hgen : ℚ⟮↑a⟯ = ⊤)
+  (hs1 : TraceEuclidean.v15QuarticS1 K a = 0) (hs2 : TraceEuclidean.v15QuarticS2 K a = -4)
+  (hs3 : TraceEuclidean.v15QuarticS3 K a = 0) (hs4 : TraceEuclidean.v15QuarticS4 K a = 1) (x : K) :
+  IsIntegral ℤ x → x ∈ ℤ[↑a]
+TraceEuclidean.v15_quartic_2304_adjoin_ringOfIntegers_eq_top.{u_1} (K : Type u_1) [Field K] [NumberField K]
+  (hdegree : Module.finrank ℚ K = 4) (a : NumberField.RingOfIntegers K) (hgen : ℚ⟮↑a⟯ = ⊤)
+  (hs1 : TraceEuclidean.v15QuarticS1 K a = 0) (hs2 : TraceEuclidean.v15QuarticS2 K a = -4)
+  (hs3 : TraceEuclidean.v15QuarticS3 K a = 0) (hs4 : TraceEuclidean.v15QuarticS4 K a = 1) : ℤ[a] = ⊤
+TraceEuclidean.v15_quartic_field_discriminant_eq_2304.{u_1} (K : Type u_1) [Field K] [NumberField K]
+  (hdegree : Module.finrank ℚ K = 4) (a : NumberField.RingOfIntegers K) (hgen : ℚ⟮↑a⟯ = ⊤)
+  (hs1 : TraceEuclidean.v15QuarticS1 K a = 0) (hs2 : TraceEuclidean.v15QuarticS2 K a = -4)
+  (hs3 : TraceEuclidean.v15QuarticS3 K a = 0) (hs4 : TraceEuclidean.v15QuarticS4 K a = 1) : NumberField.discr K = 2304
+TraceEuclidean.v15_exists_normalized_quartic_generator.{u_1} (K : Type u_1) [Field K] [NumberField K]
+  (hdegree : Module.finrank ℚ K = 4) (a : NumberField.RingOfIntegers K) (hgen : ℚ⟮↑a⟯ = ⊤) :
+  ∃ b,
+    ℚ⟮↑b⟯ = ⊤ ∧
+      (TraceEuclidean.v15QuarticS1 K b = 0 ∨
+          TraceEuclidean.v15QuarticS1 K b = 1 ∨ TraceEuclidean.v15QuarticS1 K b = 2) ∧
+        TraceEuclidean.v15QuarticSpread (TraceEuclidean.v15QuarticS1 K b) (TraceEuclidean.v15QuarticS2 K b) =
+            TraceEuclidean.v15QuarticSpread (TraceEuclidean.v15QuarticS1 K a) (TraceEuclidean.v15QuarticS2 K a) ∧
+          TraceEuclidean.v15QuarticHermiteMinorThree (TraceEuclidean.v15QuarticS1 K b) (TraceEuclidean.v15QuarticS2 K b)
+                (TraceEuclidean.v15QuarticS3 K b) (TraceEuclidean.v15QuarticS4 K b) =
+              TraceEuclidean.v15QuarticHermiteMinorThree (TraceEuclidean.v15QuarticS1 K a)
+                (TraceEuclidean.v15QuarticS2 K a) (TraceEuclidean.v15QuarticS3 K a) (TraceEuclidean.v15QuarticS4 K a) ∧
+            TraceEuclidean.v15QuarticDiscriminant (TraceEuclidean.v15QuarticS1 K b) (TraceEuclidean.v15QuarticS2 K b)
+                (TraceEuclidean.v15QuarticS3 K b) (TraceEuclidean.v15QuarticS4 K b) =
+              TraceEuclidean.v15QuarticDiscriminant (TraceEuclidean.v15QuarticS1 K a) (TraceEuclidean.v15QuarticS2 K a)
+                (TraceEuclidean.v15QuarticS3 K a) (TraceEuclidean.v15QuarticS4 K a)
+TraceEuclidean.v15_quartic_weak_minkowski_normalized_row_2048_or_2304.{u_1} (K : Type u_1) [Field K] [NumberField K]
+  (hreal : NumberField.IsTotallyReal K) (hdegree : Module.finrank ℚ K = 4) (a : NumberField.RingOfIntegers K)
+  (hgen : ℚ⟮↑a⟯ = ⊤)
+  (hspreadLt : TraceEuclidean.v15QuarticSpread (TraceEuclidean.v15QuarticS1 K a) (TraceEuclidean.v15QuarticS2 K a) < 35)
+  (hfieldLower : 29 < NumberField.discr K) (hfieldUpper : NumberField.discr K < 725) :
+  ∃ b,
+    ℚ⟮↑b⟯ = ⊤ ∧
+      (TraceEuclidean.v15QuarticS1 K b = 0 ∧
+          TraceEuclidean.v15QuarticS2 K b = -4 ∧
+            TraceEuclidean.v15QuarticS3 K b = 0 ∧ TraceEuclidean.v15QuarticS4 K b = 2 ∨
+        TraceEuclidean.v15QuarticS1 K b = 0 ∧
+          TraceEuclidean.v15QuarticS2 K b = -4 ∧
+            TraceEuclidean.v15QuarticS3 K b = 0 ∧ TraceEuclidean.v15QuarticS4 K b = 1)
+TraceEuclidean.v15_quartic_weak_minkowski_normalized_row_2304.{u_1} (K : Type u_1) [Field K] [NumberField K]
+  (hreal : NumberField.IsTotallyReal K) (hdegree : Module.finrank ℚ K = 4) (a : NumberField.RingOfIntegers K)
+  (hgen : ℚ⟮↑a⟯ = ⊤)
+  (hspreadLt : TraceEuclidean.v15QuarticSpread (TraceEuclidean.v15QuarticS1 K a) (TraceEuclidean.v15QuarticS2 K a) < 35)
+  (hfieldLower : 29 < NumberField.discr K) (hfieldUpper : NumberField.discr K < 725) :
+  ∃ b,
+    ℚ⟮↑b⟯ = ⊤ ∧
+      TraceEuclidean.v15QuarticS1 K b = 0 ∧
+        TraceEuclidean.v15QuarticS2 K b = -4 ∧ TraceEuclidean.v15QuarticS3 K b = 0 ∧ TraceEuclidean.v15QuarticS4 K b = 1
+TraceEuclidean.v15_quartic_weak_minkowski_contradiction.{u_1} (K : Type u_1) [Field K] [NumberField K]
+  (hreal : NumberField.IsTotallyReal K) (hdegree : Module.finrank ℚ K = 4) (a : NumberField.RingOfIntegers K)
+  (hgen : ℚ⟮↑a⟯ = ⊤)
+  (hspreadLt : TraceEuclidean.v15QuarticSpread (TraceEuclidean.v15QuarticS1 K a) (TraceEuclidean.v15QuarticS2 K a) < 35)
+  (hfieldLower : 29 < NumberField.discr K) (hfieldUpper : NumberField.discr K < 725) : False
+TraceEuclidean.v15_quartic_discriminant_eq_product_of_coprime_quadratic_subfields.{u_1} (K : Type u_1) [Field K]
+  [NumberField K] (hdegree : Module.finrank ℚ K = 4) (E F : IntermediateField ℚ K) (hdegreeE : Module.finrank ℚ ↥E = 2)
+  (hdegreeF : Module.finrank ℚ ↥F = 2) (hne : E ≠ F)
+  (hcoprime : IsCoprime (NumberField.discr ↥E) (NumberField.discr ↥F)) :
+  (NumberField.discr K).natAbs = (NumberField.discr ↥E).natAbs ^ 2 * (NumberField.discr ↥F).natAbs ^ 2
+TraceEuclidean.V15QuarticPrimitiveShortSelectionThirtyFiveInput : Prop
+TraceEuclidean.V15DegreeFourPrimitiveGeneratorThirtyFiveInput : Prop
+TraceEuclidean.v15_degree_four_primitiveGenerator_thirtyFive_of_selection
+  (hSelection : TraceEuclidean.V15QuarticPrimitiveShortSelectionThirtyFiveInput) :
+  TraceEuclidean.V15DegreeFourPrimitiveGeneratorThirtyFiveInput
+TraceEuclidean.v15_totallyReal_quartic_discriminant_gt_twentyNine.{u_1} (K : Type u_1) [Field K] [NumberField K]
+  (hreal : NumberField.IsTotallyReal K) (hdegree : Module.finrank ℚ K = 4) : 29 < NumberField.discr K
+TraceEuclidean.v15_coded_degree_four_discriminant_ge_725_of_minkowski_selection
+  (hSelection : TraceEuclidean.V15QuarticPrimitiveShortSelectionThirtyFiveInput) (K : TraceEuclidean.CodedNumberField)
+  (hreal : NumberField.IsTotallyReal ↥↑K) (hdegree : Module.finrank ℚ ↥↑K = 4) :
+  725 ≤ |TraceEuclidean.NumberFieldCode.discriminant K|
+TraceEuclidean.V15QuarticSmallDiscriminantNoProperSubfieldInput : Prop
+TraceEuclidean.V15ImprimitiveTotallyRealQuarticMinimumInput : Prop
+TraceEuclidean.v15_quartic_noProperSubfield_of_imprimitiveMinimum
+  (hMinimum : TraceEuclidean.V15ImprimitiveTotallyRealQuarticMinimumInput) :
+  TraceEuclidean.V15QuarticSmallDiscriminantNoProperSubfieldInput
+TraceEuclidean.v15_quartic_properIntermediateField_finranks.{u_1} (K : Type u_1) [Field K] [NumberField K]
+  (hdegree : Module.finrank ℚ K = 4) (E : IntermediateField ℚ K) (hbot : E ≠ ⊥) (htop : E ≠ ⊤) :
+  Module.finrank ℚ ↥E = 2 ∧ Module.finrank (↥E) K = 2
+TraceEuclidean.v15_quartic_discriminant_tower_of_properIntermediateField.{u_1} (K : Type u_1) [Field K] [NumberField K]
+  (hdegree : Module.finrank ℚ K = 4) (E : IntermediateField ℚ K) (hbot : E ≠ ⊥) (htop : E ≠ ⊤) :
+  (NumberField.discr K).natAbs =
+    Ideal.absNorm (differentIdeal (NumberField.RingOfIntegers ↥E) (NumberField.RingOfIntegers K)) *
+      (NumberField.discr ↥E).natAbs ^ 2
+TraceEuclidean.v15_quartic_subfield_discriminant_sq_dvd.{u_1} (K : Type u_1) [Field K] [NumberField K]
+  (hdegree : Module.finrank ℚ K = 4) (E : IntermediateField ℚ K) (hbot : E ≠ ⊥) (htop : E ≠ ⊤) :
+  (NumberField.discr ↥E).natAbs ^ 2 ∣ (NumberField.discr K).natAbs
+TraceEuclidean.v15_quartic_subfield_discriminant_sq_le.{u_1} (K : Type u_1) [Field K] [NumberField K]
+  (hdegree : Module.finrank ℚ K = 4) (E : IntermediateField ℚ K) (hbot : E ≠ ⊥) (htop : E ≠ ⊤) :
+  (NumberField.discr ↥E).natAbs ^ 2 ≤ (NumberField.discr K).natAbs
+TraceEuclidean.v15_quartic_properSubfield_natAbs_discr_le_twentySix.{u_1} (K : Type u_1) [Field K] [NumberField K]
+  (hdegree : Module.finrank ℚ K = 4) (hdisc : |NumberField.discr K| < 725) (E : IntermediateField ℚ K) (hbot : E ≠ ⊥)
+  (htop : E ≠ ⊤) : (NumberField.discr ↥E).natAbs ≤ 26
+TraceEuclidean.v15_quarticHunterAlgebraicIntegerLift_adjoin_eq_top_of_noProperSubfield.{u_1} (K : Type u_1) [Field K]
+  [NumberField K] (bz : Module.Basis (Fin 4) ℤ ↥(NumberField.mixedEmbedding.euclidean.integerLattice K))
+  (hbzero : ↑(bz 0) = TraceEuclidean.v15EuclideanOne K) (hNoProper : ∀ (E : IntermediateField ℚ K), E = ⊥ ∨ E = ⊤)
+  (x :
+    ↥(TraceEuclidean.v15QuarticHunterProjectedLattice
+        (Module.Basis.ofZLatticeBasis ℝ (NumberField.mixedEmbedding.euclidean.integerLattice K) bz)))
+  (hx : x ≠ 0) : ℚ⟮↑(TraceEuclidean.v15QuarticHunterAlgebraicIntegerLift K bz x)⟯ = ⊤
+TraceEuclidean.v15_quartic_primitiveShortSelectionThirtyFive_of_noProperSubfield
+  (hNoProper : TraceEuclidean.V15QuarticSmallDiscriminantNoProperSubfieldInput) :
+  TraceEuclidean.V15QuarticPrimitiveShortSelectionThirtyFiveInput
+TraceEuclidean.v15_coded_degree_four_discriminant_ge_725_of_noProperSubfield
+  (hNoProper : TraceEuclidean.V15QuarticSmallDiscriminantNoProperSubfieldInput) (K : TraceEuclidean.CodedNumberField)
+  (hreal : NumberField.IsTotallyReal ↥↑K) (hdegree : Module.finrank ℚ ↥↑K = 4) :
+  725 ≤ |TraceEuclidean.NumberFieldCode.discriminant K|
+TraceEuclidean.v15_coded_degree_four_discriminant_ge_725_of_imprimitiveMinimum
+  (hMinimum : TraceEuclidean.V15ImprimitiveTotallyRealQuarticMinimumInput) (K : TraceEuclidean.CodedNumberField)
+  (hreal : NumberField.IsTotallyReal ↥↑K) (hdegree : Module.finrank ℚ ↥↑K = 4) :
+  725 ≤ |TraceEuclidean.NumberFieldCode.discriminant K|
+TraceEuclidean.v15QuadraticDiscriminantsBelowTwentySeven : Finset ℕ
+TraceEuclidean.v15QuarticRelativeDifferentLowerBound (d : ℕ) : ℕ
+TraceEuclidean.v15_bounded_quadratic_radicands_twentySix {m : ℕ} (hm : 1 < m) (hsq : TraceEuclidean.IsSquarefreeNat m)
+  (hdisc : TraceEuclidean.v15QuadraticDiscriminant m ≤ 26) : m = 2 ∨ m = 3 ∨ m = 5 ∨ m = 6 ∨ m = 13 ∨ m = 17 ∨ m = 21
+TraceEuclidean.v15_bounded_quadratic_discriminant_mem_twentySevenRows {m : ℕ} (hm : 1 < m)
+  (hsq : TraceEuclidean.IsSquarefreeNat m) (hdisc : TraceEuclidean.v15QuadraticDiscriminant m ≤ 26) :
+  TraceEuclidean.v15QuadraticDiscriminant m ∈ TraceEuclidean.v15QuadraticDiscriminantsBelowTwentySeven
+TraceEuclidean.v15_ringOfIntegers_one_isPrimitive_dim_two.{u_1} (K : Type u_1) [Field K] [NumberField K]
+  (hdegree : Module.finrank ℚ K = 2) : TraceEuclidean.V15IsPrimitiveVector 1
+TraceEuclidean.v15_exists_ringOfIntegers_basis_one_dim_two.{u_1} (K : Type u_1) [Field K] [NumberField K]
+  (hdegree : Module.finrank ℚ K = 2) : ∃ bz, bz 0 = 1
+TraceEuclidean.v15_quadratic_integral_basis_trace_second.{u_1} (K : Type u_1) [Field K] [NumberField K]
+  (b : Module.Basis (Fin 2) ℤ (NumberField.RingOfIntegers K)) (hb0 : b 0 = 1) :
+  (Algebra.trace ℚ K) ↑(b 1) = ↑((b.repr (b 1 * b 1)) 1)
+TraceEuclidean.v15_quadratic_integral_basis_discriminant_formula.{u_1} (K : Type u_1) [Field K] [NumberField K]
+  (hdegree : Module.finrank ℚ K = 2) (b : Module.Basis (Fin 2) ℤ (NumberField.RingOfIntegers K)) (hb0 : b 0 = 1) :
+  NumberField.discr K = (b.repr (b 1 * b 1)) 1 ^ 2 + 4 * (b.repr (b 1 * b 1)) 0
+TraceEuclidean.v15_quadratic_discriminant_emod_four.{u_1} (K : Type u_1) [Field K] [NumberField K]
+  (hdegree : Module.finrank ℚ K = 2) : NumberField.discr K % 4 = 0 ∨ NumberField.discr K % 4 = 1
+TraceEuclidean.v15_quadratic_discriminant_ne_twenty.{u_1} (K : Type u_1) [Field K] [NumberField K]
+  (hdegree : Module.finrank ℚ K = 2) : NumberField.discr K ≠ 20
+TraceEuclidean.v15_totallyReal_quadratic_discriminant_rows.{u_1} (K : Type u_1) [Field K] [NumberField K]
+  (hreal : NumberField.IsTotallyReal K) (hdegree : Module.finrank ℚ K = 2)
+  (hupper : (NumberField.discr K).natAbs ≤ 26) :
+  (NumberField.discr K).natAbs = 5 ∨
+    (NumberField.discr K).natAbs = 8 ∨
+      (NumberField.discr K).natAbs = 12 ∨
+        (NumberField.discr K).natAbs = 13 ∨
+          (NumberField.discr K).natAbs = 17 ∨ (NumberField.discr K).natAbs = 21 ∨ (NumberField.discr K).natAbs = 24
+TraceEuclidean.V15QuarticSmallDiscriminantQuadraticRadicandInput : Prop
+TraceEuclidean.V15QuarticSmallDiscriminantRelativeDifferentNormInput : Prop
+TraceEuclidean.V15QuarticSmallDiscriminantRelativeDifferentRowsInput : Prop
+TraceEuclidean.v15_quartic_properSubfield_discriminant_mem_twentySevenRows (K : TraceEuclidean.CodedNumberField)
+  (hreal : NumberField.IsTotallyReal ↥↑K) (hdegree : Module.finrank ℚ ↥↑K = 4)
+  (hsmall : |TraceEuclidean.NumberFieldCode.discriminant K| < 725) (E : IntermediateField ℚ ↥↑K) (hbot : E ≠ ⊥)
+  (htop : E ≠ ⊤) : (NumberField.discr ↥E).natAbs ∈ TraceEuclidean.v15QuadraticDiscriminantsBelowTwentySeven
+TraceEuclidean.v15_relativeDifferentRows_of_norm
+  (hNorm : TraceEuclidean.V15QuarticSmallDiscriminantRelativeDifferentNormInput) :
+  TraceEuclidean.V15QuarticSmallDiscriminantRelativeDifferentRowsInput
+TraceEuclidean.v15_relativeDifferentRows_of_radicand_and_norm
+  (hRadicand : TraceEuclidean.V15QuarticSmallDiscriminantQuadraticRadicandInput)
+  (hNorm : TraceEuclidean.V15QuarticSmallDiscriminantRelativeDifferentNormInput) :
+  TraceEuclidean.V15QuarticSmallDiscriminantRelativeDifferentRowsInput
+TraceEuclidean.v15_quartic_relativeDifferent_row_product_ge_725 {d r : ℕ}
+  (hd : d ∈ TraceEuclidean.v15QuadraticDiscriminantsBelowTwentySeven)
+  (hr : TraceEuclidean.v15QuarticRelativeDifferentLowerBound d ≤ r) : 725 ≤ r * d ^ 2
+TraceEuclidean.v15_imprimitiveMinimum_of_relativeDifferentRows
+  (hRows : TraceEuclidean.V15QuarticSmallDiscriminantRelativeDifferentRowsInput) :
+  TraceEuclidean.V15ImprimitiveTotallyRealQuarticMinimumInput
+TraceEuclidean.v15_coded_degree_four_discriminant_ge_725_of_relativeDifferentRows
+  (hRows : TraceEuclidean.V15QuarticSmallDiscriminantRelativeDifferentRowsInput) (K : TraceEuclidean.CodedNumberField)
+  (hreal : NumberField.IsTotallyReal ↥↑K) (hdegree : Module.finrank ℚ ↥↑K = 4) :
+  725 ≤ |TraceEuclidean.NumberFieldCode.discriminant K|
+TraceEuclidean.v15_coded_degree_four_discriminant_ge_725_of_relativeDifferentNorm
+  (hNorm : TraceEuclidean.V15QuarticSmallDiscriminantRelativeDifferentNormInput) (K : TraceEuclidean.CodedNumberField)
+  (hreal : NumberField.IsTotallyReal ↥↑K) (hdegree : Module.finrank ℚ ↥↑K = 4) :
+  725 ≤ |TraceEuclidean.NumberFieldCode.discriminant K|
+TraceEuclidean.v15_coded_degree_four_discriminant_ge_725_of_radicand_and_norm
+  (hRadicand : TraceEuclidean.V15QuarticSmallDiscriminantQuadraticRadicandInput)
+  (hNorm : TraceEuclidean.V15QuarticSmallDiscriminantRelativeDifferentNormInput) (K : TraceEuclidean.CodedNumberField)
+  (hreal : NumberField.IsTotallyReal ↥↑K) (hdegree : Module.finrank ℚ ↥↑K = 4) :
+  725 ≤ |TraceEuclidean.NumberFieldCode.discriminant K|
 TraceEuclidean.v15_coded_degree_four_discriminant_ge_725_of_hunterCertificate
   (hHunter : TraceEuclidean.V15DegreeFourHunterCertificateInput) (K : TraceEuclidean.CodedNumberField)
   (hreal : NumberField.IsTotallyReal ↥↑K) (hdegree : Module.finrank ℚ ↥↑K = 4) :
@@ -1212,6 +1510,70 @@ TraceEuclidean.v15_quartic_projected_shortVector.{u} (hHermite : TraceEuclidean.
   [Field K] [NumberField K] (hreal : NumberField.IsTotallyReal K) (hdegree : Module.finrank ℚ K = 4)
   (hdisc : |NumberField.discr K| < 725) :
   ∃ bz, ↑(bz 0) = TraceEuclidean.v15EuclideanOne K ∧ ∃ x, x ≠ 0 ∧ 4 * ‖↑x‖ ^ 2 < 29
+TraceEuclidean.v15_exists_hunterRounded_shortVector.{u} {V : Type u} [NormedAddCommGroup V] [InnerProductSpace ℝ V]
+  [FiniteDimensional ℝ V] [MeasurableSpace V] [BorelSpace V] (L : Submodule ℤ V) [DiscreteTopology ↥L] [IsZLattice ℝ L]
+  (B : Module.Basis (Fin 3) ℤ ↥L) (d : ℕ) (hd : 0 < d)
+  (hinner : inner ℝ ((Module.Basis.ofZLatticeBasis ℝ L B) 0) ((Module.Basis.ofZLatticeBasis ℝ L B) 0) = ↑d)
+  (hIntegral : ∀ (x y : ↥L), ∃ z, ↑z = 4 * inner ℝ ↑x ↑y) (bound : ℝ)
+  (hbound :
+    ∀ (r qCov : ℝ),
+      3 * r ^ 4 ≤ 4 * qCov ^ 2 → qCov ^ 2 * ↑d = ZLattice.covolume L MeasureTheory.volume ^ 2 → r ^ 2 < bound)
+  (hfinal : 4 * (bound + ↑d / 4) < 35) :
+  ∃ y,
+    y ≠ 0 ∧
+      4 * ‖↑y‖ ^ 2 < 35 ∧ (TraceEuclidean.v15HunterCenterLinearMap ((Module.Basis.ofZLatticeBasis ℝ L B) 0) ⋯) ↑y ≠ 0
+TraceEuclidean.v15_exists_quartic_second_shortVector.{u} (K : Type u) [Field K] [NumberField K]
+  (hreal : NumberField.IsTotallyReal K) (hdegree : Module.finrank ℚ K = 4) (hdisc : |NumberField.discr K| < 725)
+  (bz : Module.Basis (Fin 4) ℤ ↥(NumberField.mixedEmbedding.euclidean.integerLattice K))
+  (hbzero : ↑(bz 0) = TraceEuclidean.v15EuclideanOne K)
+  (x :
+    ↥(TraceEuclidean.v15QuarticHunterProjectedLattice
+        (Module.Basis.ofZLatticeBasis ℝ (NumberField.mixedEmbedding.euclidean.integerLattice K) bz)))
+  (hx : x ≠ 0) (htop : ℚ⟮↑(TraceEuclidean.v15QuarticHunterAlgebraicIntegerLift K bz x)⟯ ≠ ⊤)
+  (hshort : 4 * ‖↑x‖ ^ 2 < 35) :
+  ∃ B,
+    B 0 = x ∧
+      ∃ y,
+        y ≠ 0 ∧
+          4 * ‖↑y‖ ^ 2 < 35 ∧
+            (TraceEuclidean.v15HunterCenterLinearMap
+                  ((Module.Basis.ofZLatticeBasis ℝ
+                      (TraceEuclidean.v15QuarticHunterProjectedLattice
+                        (Module.Basis.ofZLatticeBasis ℝ (NumberField.mixedEmbedding.euclidean.integerLattice K) bz))
+                      B)
+                    0)
+                  ⋯)
+                ↑y ≠
+              0
+TraceEuclidean.v15_quartic_adjoin_ne_of_second_center_ne.{u} (K : Type u) [Field K] [NumberField K]
+  (bz : Module.Basis (Fin 4) ℤ ↥(NumberField.mixedEmbedding.euclidean.integerLattice K))
+  (hbzero : ↑(bz 0) = TraceEuclidean.v15EuclideanOne K)
+  (x y :
+    ↥(TraceEuclidean.v15QuarticHunterProjectedLattice
+        (Module.Basis.ofZLatticeBasis ℝ (NumberField.mixedEmbedding.euclidean.integerLattice K) bz)))
+  (hdegreeE : Module.finrank ℚ ↥ℚ⟮↑(TraceEuclidean.v15QuarticHunterAlgebraicIntegerLift K bz x)⟯ = 2)
+  (B :
+    Module.Basis (Fin 3) ℤ
+      ↥(TraceEuclidean.v15QuarticHunterProjectedLattice
+          (Module.Basis.ofZLatticeBasis ℝ (NumberField.mixedEmbedding.euclidean.integerLattice K) bz)))
+  (hB0 : B 0 = x)
+  (hycenter :
+    (TraceEuclidean.v15HunterCenterLinearMap
+          ((Module.Basis.ofZLatticeBasis ℝ
+              (TraceEuclidean.v15QuarticHunterProjectedLattice
+                (Module.Basis.ofZLatticeBasis ℝ (NumberField.mixedEmbedding.euclidean.integerLattice K) bz))
+              B)
+            0)
+          ⋯)
+        ↑y ≠
+      0) :
+  ℚ⟮↑(TraceEuclidean.v15QuarticHunterAlgebraicIntegerLift K bz x)⟯ ≠
+    ℚ⟮↑(TraceEuclidean.v15QuarticHunterAlgebraicIntegerLift K bz y)⟯
+TraceEuclidean.v15_quartic_primitiveShortSelectionThirtyFive :
+  TraceEuclidean.V15QuarticPrimitiveShortSelectionThirtyFiveInput
+TraceEuclidean.v15_coded_degree_four_discriminant_ge_725 (K : TraceEuclidean.CodedNumberField)
+  (hreal : NumberField.IsTotallyReal ↥↑K) (hdegree : Module.finrank ℚ ↥↑K = 4) :
+  725 ≤ |TraceEuclidean.NumberFieldCode.discriminant K|
 TraceEuclidean.V15QuarticPrimitiveShortSelectionInput : Prop
 TraceEuclidean.v15_degree_four_primitiveGenerator_of_hermite_and_selection
   (hHermite : TraceEuclidean.V15HermiteThreeInput)
@@ -1378,6 +1740,16 @@ TraceEuclidean.v15_integral_pair_mem_of_sources (hSmall : TraceEuclidean.V15Smal
 'TraceEuclidean.v15_cubicSpread_cast_eq_center_norm' depends on axioms: [propext, Classical.choice, Quot.sound]
 'TraceEuclidean.v15_degree_three_hunterCertificate' depends on axioms: [propext, Classical.choice, Quot.sound]
 'TraceEuclidean.v15_coded_degree_three_discriminant_ge_49' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15_quadratic_generator_centered_sq_eq_traceDiscriminant' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'TraceEuclidean.v15_quadratic_generator_centered_sq_eq_fieldDiscriminant' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'TraceEuclidean.v15_mem_quadratic_adjoin_eq_rat_add_rat_mul' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15_quadratic_adjoin_eq_of_powerFamily_discr_eq' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
 'TraceEuclidean.v15_normalize_quartic_coefficients' depends on axioms: [propext, Classical.choice, Quot.sound]
 'TraceEuclidean.v15_quartic_s2_bounds_of_normalized' depends on axioms: [propext, Classical.choice, Quot.sound]
 'TraceEuclidean.v15_normalized_quartic_discriminant_eq_725' depends on axioms: [propext, Classical.choice, Quot.sound]
@@ -1387,10 +1759,113 @@ TraceEuclidean.v15_integral_pair_mem_of_sources (hSmall : TraceEuclidean.V15Smal
 'TraceEuclidean.v15_quartic_s3_s4_bounds_of_normalized_thirtyFive' depends on axioms: [propext,
  Classical.choice,
  Quot.sound]
+'TraceEuclidean.v15_normalized_quartic_rows_of_spread_lt_thirtyFive' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
 'TraceEuclidean.v15_normalized_quartic_discriminant_candidates_of_spread_lt_thirtyFive' depends on axioms: [propext,
  Classical.choice,
  Quot.sound]
 'TraceEuclidean.v15_quartic_small_field_candidates_reduce_to_2048_or_2304' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'TraceEuclidean.v15_quarticPolynomial_2048_isEisensteinAt_two' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'TraceEuclidean.v15_quartic_2048_adjoin_ringOfIntegers_eq_top' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'TraceEuclidean.v15_quartic_field_discriminant_eq_2048' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15_quarticPolynomial_2304_shift_isEisensteinAt_two' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'TraceEuclidean.v15_quartic_2304_nine_smul_integral_mem_adjoin' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'TraceEuclidean.v15_quartic_2304_coefficients_divisible_by_three' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'TraceEuclidean.v15_quartic_2304_trace_identities' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15_quartic_2304_three_saturated' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15_quartic_2304_all_integral_mem_adjoin' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15_quartic_2304_adjoin_ringOfIntegers_eq_top' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'TraceEuclidean.v15_quartic_field_discriminant_eq_2304' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15_exists_normalized_quartic_generator' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15_quartic_weak_minkowski_normalized_row_2048_or_2304' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'TraceEuclidean.v15_quartic_weak_minkowski_normalized_row_2304' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'TraceEuclidean.v15_quartic_weak_minkowski_contradiction' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15_quartic_discriminant_eq_product_of_coprime_quadratic_subfields' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'TraceEuclidean.v15_degree_four_primitiveGenerator_thirtyFive_of_selection' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'TraceEuclidean.v15_totallyReal_quartic_discriminant_gt_twentyNine' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'TraceEuclidean.v15_coded_degree_four_discriminant_ge_725_of_minkowski_selection' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'TraceEuclidean.v15_quartic_noProperSubfield_of_imprimitiveMinimum' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'TraceEuclidean.v15_quartic_properIntermediateField_finranks' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15_quartic_discriminant_tower_of_properIntermediateField' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'TraceEuclidean.v15_quartic_subfield_discriminant_sq_dvd' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15_quartic_subfield_discriminant_sq_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15_quartic_properSubfield_natAbs_discr_le_twentySix' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'TraceEuclidean.v15_quarticHunterAlgebraicIntegerLift_adjoin_eq_top_of_noProperSubfield' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'TraceEuclidean.v15_quartic_primitiveShortSelectionThirtyFive_of_noProperSubfield' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'TraceEuclidean.v15_coded_degree_four_discriminant_ge_725_of_noProperSubfield' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'TraceEuclidean.v15_coded_degree_four_discriminant_ge_725_of_imprimitiveMinimum' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'TraceEuclidean.v15_bounded_quadratic_radicands_twentySix' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15_bounded_quadratic_discriminant_mem_twentySevenRows' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'TraceEuclidean.v15_ringOfIntegers_one_isPrimitive_dim_two' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15_exists_ringOfIntegers_basis_one_dim_two' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15_quadratic_integral_basis_trace_second' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15_quadratic_integral_basis_discriminant_formula' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'TraceEuclidean.v15_quadratic_discriminant_emod_four' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15_quadratic_discriminant_ne_twenty' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15_totallyReal_quadratic_discriminant_rows' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15_quartic_properSubfield_discriminant_mem_twentySevenRows' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'TraceEuclidean.v15_relativeDifferentRows_of_norm' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15_relativeDifferentRows_of_radicand_and_norm' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'TraceEuclidean.v15_quartic_relativeDifferent_row_product_ge_725' depends on axioms: [propext, Quot.sound]
+'TraceEuclidean.v15_imprimitiveMinimum_of_relativeDifferentRows' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'TraceEuclidean.v15_coded_degree_four_discriminant_ge_725_of_relativeDifferentRows' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'TraceEuclidean.v15_coded_degree_four_discriminant_ge_725_of_relativeDifferentNorm' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'TraceEuclidean.v15_coded_degree_four_discriminant_ge_725_of_radicand_and_norm' depends on axioms: [propext,
  Classical.choice,
  Quot.sound]
 'TraceEuclidean.v15_coded_degree_four_discriminant_ge_725_of_hunterCertificate' depends on axioms: [propext,
@@ -1476,6 +1951,13 @@ TraceEuclidean.v15_integral_pair_mem_of_sources (hSmall : TraceEuclidean.V15Smal
  Quot.sound]
 'TraceEuclidean.v15_quartic_projected_shortVector_minkowski' depends on axioms: [propext, Classical.choice, Quot.sound]
 'TraceEuclidean.v15_quartic_projected_shortVector' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15_exists_hunterRounded_shortVector' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15_exists_quartic_second_shortVector' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15_quartic_adjoin_ne_of_second_center_ne' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15_quartic_primitiveShortSelectionThirtyFive' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'TraceEuclidean.v15_coded_degree_four_discriminant_ge_725' depends on axioms: [propext, Classical.choice, Quot.sound]
 'TraceEuclidean.v15_degree_four_primitiveGenerator_of_hermite_and_selection' depends on axioms: [propext,
  Classical.choice,
  Quot.sound]
@@ -1518,9 +2000,88 @@ TraceEuclidean.v15_integral_pair_mem_of_sources (hSmall : TraceEuclidean.V15Smal
 'TraceEuclidean.v15_integral_pair_mem_of_literature' depends on axioms: [propext, Classical.choice, Quot.sound]
 'TraceEuclidean.v15_integral_pair_mem_of_reduced_literature' depends on axioms: [propext, Classical.choice, Quot.sound]
 'TraceEuclidean.v15_integral_pair_mem_of_hunterCertificate' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15_degreeFourToNineMinimumInput_closed' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15_sectionFourDiscriminantInput_of_degreeFiveToEleven_closed' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ EulerMascheroni.harmonic_N_ge._native.native_decide.ax_1_2,
+ TraceEuclidean.V15OdlyzkoNumerical.cosh_core_upper._native.native_decide.ax_1_1,
+ TraceEuclidean.V15OdlyzkoNumerical.sinh_core_upper._native.native_decide.ax_1_1,
+ TraceEuclidean.V15OdlyzkoNumerical.scalarA_strict._native.native_decide.ax_1_1✝,
+ TraceEuclidean.V15OdlyzkoNumerical.scalarB_strict._native.native_decide.ax_1_1✝]
+'TraceEuclidean.v15_classic_pair_mem_of_degreeFiveToEleven_closed' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ EulerMascheroni.harmonic_N_ge._native.native_decide.ax_1_2,
+ TraceEuclidean.V15OdlyzkoNumerical.cosh_core_upper._native.native_decide.ax_1_1,
+ TraceEuclidean.V15OdlyzkoNumerical.sinh_core_upper._native.native_decide.ax_1_1,
+ TraceEuclidean.V15OdlyzkoNumerical.scalarA_strict._native.native_decide.ax_1_1✝,
+ TraceEuclidean.V15OdlyzkoNumerical.scalarB_strict._native.native_decide.ax_1_1✝]
+'TraceEuclidean.v15_integral_pair_mem_of_degreeFiveToEleven_closed' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ EulerMascheroni.harmonic_N_ge._native.native_decide.ax_1_2,
+ TraceEuclidean.V15OdlyzkoNumerical.cosh_core_upper._native.native_decide.ax_1_1,
+ TraceEuclidean.V15OdlyzkoNumerical.sinh_core_upper._native.native_decide.ax_1_1,
+ TraceEuclidean.V15OdlyzkoNumerical.scalarA_strict._native.native_decide.ax_1_1✝,
+ TraceEuclidean.V15OdlyzkoNumerical.scalarB_strict._native.native_decide.ax_1_1✝]
 'TraceEuclidean.v15_sectionFourDiscriminantInput_of_sources' depends on axioms: [propext, Classical.choice, Quot.sound]
 'TraceEuclidean.v15_classic_pair_mem_of_sources' depends on axioms: [propext, Classical.choice, Quot.sound]
 'TraceEuclidean.v15_integral_pair_mem_of_sources' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15_degreeFourToNineMinimumInput_of_radicand_and_norm' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'TraceEuclidean.v15_degreeFourToNineMinimumInput_of_relativeDifferentNorm' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'TraceEuclidean.v15_sectionFourDiscriminantInput_of_quarticRelativeDifferent_closed' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ EulerMascheroni.harmonic_N_ge._native.native_decide.ax_1_2,
+ TraceEuclidean.V15OdlyzkoNumerical.cosh_core_upper._native.native_decide.ax_1_1,
+ TraceEuclidean.V15OdlyzkoNumerical.sinh_core_upper._native.native_decide.ax_1_1,
+ TraceEuclidean.V15OdlyzkoNumerical.scalarA_strict._native.native_decide.ax_1_1✝,
+ TraceEuclidean.V15OdlyzkoNumerical.scalarB_strict._native.native_decide.ax_1_1✝]
+'TraceEuclidean.v15_sectionFourDiscriminantInput_of_relativeDifferentNorm_closed' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ EulerMascheroni.harmonic_N_ge._native.native_decide.ax_1_2,
+ TraceEuclidean.V15OdlyzkoNumerical.cosh_core_upper._native.native_decide.ax_1_1,
+ TraceEuclidean.V15OdlyzkoNumerical.sinh_core_upper._native.native_decide.ax_1_1,
+ TraceEuclidean.V15OdlyzkoNumerical.scalarA_strict._native.native_decide.ax_1_1✝,
+ TraceEuclidean.V15OdlyzkoNumerical.scalarB_strict._native.native_decide.ax_1_1✝]
+'TraceEuclidean.v15_classic_pair_mem_of_quarticRelativeDifferent_closed' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ EulerMascheroni.harmonic_N_ge._native.native_decide.ax_1_2,
+ TraceEuclidean.V15OdlyzkoNumerical.cosh_core_upper._native.native_decide.ax_1_1,
+ TraceEuclidean.V15OdlyzkoNumerical.sinh_core_upper._native.native_decide.ax_1_1,
+ TraceEuclidean.V15OdlyzkoNumerical.scalarA_strict._native.native_decide.ax_1_1✝,
+ TraceEuclidean.V15OdlyzkoNumerical.scalarB_strict._native.native_decide.ax_1_1✝]
+'TraceEuclidean.v15_classic_pair_mem_of_relativeDifferentNorm_closed' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ EulerMascheroni.harmonic_N_ge._native.native_decide.ax_1_2,
+ TraceEuclidean.V15OdlyzkoNumerical.cosh_core_upper._native.native_decide.ax_1_1,
+ TraceEuclidean.V15OdlyzkoNumerical.sinh_core_upper._native.native_decide.ax_1_1,
+ TraceEuclidean.V15OdlyzkoNumerical.scalarA_strict._native.native_decide.ax_1_1✝,
+ TraceEuclidean.V15OdlyzkoNumerical.scalarB_strict._native.native_decide.ax_1_1✝]
+'TraceEuclidean.v15_integral_pair_mem_of_quarticRelativeDifferent_closed' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ EulerMascheroni.harmonic_N_ge._native.native_decide.ax_1_2,
+ TraceEuclidean.V15OdlyzkoNumerical.cosh_core_upper._native.native_decide.ax_1_1,
+ TraceEuclidean.V15OdlyzkoNumerical.sinh_core_upper._native.native_decide.ax_1_1,
+ TraceEuclidean.V15OdlyzkoNumerical.scalarA_strict._native.native_decide.ax_1_1✝,
+ TraceEuclidean.V15OdlyzkoNumerical.scalarB_strict._native.native_decide.ax_1_1✝]
+'TraceEuclidean.v15_integral_pair_mem_of_relativeDifferentNorm_closed' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ EulerMascheroni.harmonic_N_ge._native.native_decide.ax_1_2,
+ TraceEuclidean.V15OdlyzkoNumerical.cosh_core_upper._native.native_decide.ax_1_1,
+ TraceEuclidean.V15OdlyzkoNumerical.sinh_core_upper._native.native_decide.ax_1_1,
+ TraceEuclidean.V15OdlyzkoNumerical.scalarA_strict._native.native_decide.ax_1_1✝,
+ TraceEuclidean.V15OdlyzkoNumerical.scalarB_strict._native.native_decide.ax_1_1✝]
 TraceEuclidean.v15OdlyzkoH_hasCompactSupport : HasCompactSupport TraceEuclidean.v15OdlyzkoH
 TraceEuclidean.v15OdlyzkoH_integrable : MeasureTheory.Integrable TraceEuclidean.v15OdlyzkoH MeasureTheory.volume
 TraceEuclidean.v15OdlyzkoH4_fourier_eq (w : ℝ) :

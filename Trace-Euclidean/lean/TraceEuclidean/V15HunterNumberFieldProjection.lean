@@ -48,6 +48,18 @@ theorem v15EuclideanIntegerLatticeToMixed_coe
           ((x : NumberField.mixedEmbedding.euclidean.integerLattice K) :
             NumberField.mixedEmbedding.euclidean.mixedSpace K) := rfl
 
+@[simp]
+theorem v15EuclideanIntegerLatticeToMixed_zsmul
+    (K : Type*) [Field K] [NumberField K] (n : ℤ)
+    (x : NumberField.mixedEmbedding.euclidean.integerLattice K) :
+    v15EuclideanIntegerLatticeToMixed K (n • x) =
+      n • v15EuclideanIntegerLatticeToMixed K x := by
+  apply Subtype.ext
+  simpa [v15EuclideanIntegerLatticeToMixed] using
+    map_zsmul (NumberField.mixedEmbedding.euclidean.toMixed K)
+      n (((x : NumberField.mixedEmbedding.euclidean.integerLattice K) :
+        NumberField.mixedEmbedding.euclidean.mixedSpace K))
+
 open scoped Classical in
 /-- Lift an integral vector from the Euclidean Minkowski lattice back to the
 ring of integers. -/

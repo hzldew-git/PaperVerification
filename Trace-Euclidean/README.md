@@ -150,24 +150,18 @@ and the final rank-twelve consequence. The public Python and Wolfram runs are
     spread, and proves the positive-index discriminant relation. Combined with
     trace normalization and the complete finite enumeration, this gives the
     unconditional Lean theorem `|D_F| >= 49`.
-    In degree four, Lean now proves coefficient normalization, the exact
-    quartic power-basis discriminant and index relation, irreducibility bridges,
-    the centered-spread identity, and the complete finite coefficient
-    enumeration giving polynomial discriminant 725. Lean also derives the
-    normalized `s3` and `s4` coefficient bounds from spread, Hermite-minor,
-    and discriminant positivity. The remaining quartic premise is the
-    existence, under `|D_F| < 725`, of a primitive integral Hunter generator
-    satisfying only the strict upper-spread bound. The three-dimensional
-    projection, exact covolume quotient, integral lift, and reduction to the
-    sharp Hermite constant plus the quadratic-subfield selection problem are
-    formalized. An unconditional three-dimensional Minkowski-ball route also
-    gives spread below 35. Its kernel-checked enlarged enumeration identifies
-    the exact six coefficient rows. Actual-generator normalization and the
-    index relation reduce these to the 2048 and 2304 rows; Lean proves the 2048
-    power order maximal and eliminates it below field discriminant 725. For the
-    remaining 2304 row, Lean removes every 2-primary denominator. The weaker
-    route still requires primitive-vector selection and the remaining
-    3-primary maximal-order argument.
+    In degree four, Lean proves the unconditional theorem `|D_F| >= 725`.
+    The proof constructs a projected short vector with spread below `35` and,
+    when necessary, a second transverse short vector. If either lift generates
+    the field, exact normalization and the six-row search reduce it to the
+    `2048` or `2304` power order; Lean proves both orders maximal, so each row
+    contradicts `|D_F| < 725`. If both lifts generate quadratic subfields,
+    their discriminants are each `5` or `8`. Equal discriminants force the two
+    subfields to coincide, contrary to transversality; unequal discriminants
+    are coprime and the compositum discriminant formula gives
+    `|D_F| = 5^2*8^2 = 1600`. Thus degree four has no external premise. The
+    earlier sharp-Hermite and relative-different interfaces remain available
+    as compatibility reductions.
     The exact minima in degrees 5--9, the degree-ten enumeration result, and the
     optimized degree-eleven bound 14.083 remain explicit external mathematical
     inputs. Odlyzko's Table 4 is retained as the source and normalization

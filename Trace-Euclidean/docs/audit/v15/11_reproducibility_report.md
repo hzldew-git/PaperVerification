@@ -1,16 +1,29 @@
 # Reproducibility report
 
-- The quartic weak-Minkowski order update passed a full local 8858-job Lean
+- The unconditional quartic-selection update passed a full local 8870-job
+  Lean build under the pinned Lean 4.32.1 and mathlib v4.32.1 toolchain. The
+  494-declaration main axiom audit and the separate 32-declaration numerical
+  audit both passed. The quartic selection and lower-bound endpoints depend
+  only on `propext`, `Classical.choice`, and `Quot.sound`; endpoints using the
+  strict Odlyzko `A,B` certificate expose the same five documented
+  `native_decide` dependencies. Lean now produces a transverse second short
+  vector when the first quartic lift is imprimitive and closes the two
+  quadratic-subfield cases by equality at a common discriminant or the
+  coprime-compositum discriminant `1600`. Public reruns produced 1156 Python
+  PASS and 115 Wolfram PASS with zero failures. The manuscript guard inspected
+  280 files and passed.
+- The quartic weak-Minkowski order update passed a full local 8859-job Lean
   build under the pinned Lean 4.32.1 and mathlib v4.32.1 toolchain. The
-  expanded 435-declaration main audit reports only `propext`,
+  expanded 442-declaration main audit reports only `propext`,
   `Classical.choice`, and `Quot.sound`; the separate 29-declaration numerical
   audit exposes exactly the same five documented `native_decide`
   dependencies. Lean now kernel-checks the exact six normalized rows under
   spread below `35`, normalizes the actual primitive generator, proves the
   `2048` power order maximal, reduces the weak route to the single `2304`
-  row under `29 < |D_K| < 725`, and removes that row's complete `2`-primary
-  denominator. Its `3`-primary saturation and primitive-vector selection
-  remain explicit boundaries. Public reruns produced 1156 Python PASS and
+  row under `29 < |D_K| < 725`, removes that row's complete `2`-primary
+  denominator, proves `3`-saturation from exact power-trace identities, and
+  derives a contradiction. Primitive-vector selection outside a possible
+  quadratic subfield remains the quartic boundary. Public reruns produced 1156 Python PASS and
   115 Wolfram PASS with zero failures. Both forbidden-construct scans passed,
   and the manuscript guard inspected 268 files and passed.
 - The quartic Hunter-projection update passed a full local 8855-job Lean

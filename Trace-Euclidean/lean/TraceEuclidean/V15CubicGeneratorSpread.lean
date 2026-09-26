@@ -80,6 +80,40 @@ def v15EuclideanEmbedding
     (NumberField.mixedEmbedding K a)
 
 open scoped Classical in
+/-- Multiplication by a rational scalar before the Euclidean Minkowski
+embedding agrees with the corresponding real scalar multiplication. -/
+theorem v15_euclideanEmbedding_rat_smul
+    (K : Type*) [Field K] [NumberField K]
+    (q : ℚ) (a : K) :
+    v15EuclideanEmbedding K (algebraMap ℚ K q * a) =
+      (q : ℝ) • v15EuclideanEmbedding K a := by
+  apply (NumberField.mixedEmbedding.euclidean.toMixed K).injective
+  unfold v15EuclideanEmbedding
+  rw [ContinuousLinearEquiv.apply_symm_apply, map_smul]
+  ext <;> simp
+
+open scoped Classical in
+/-- The Euclidean Minkowski embedding of a rational affine expression in
+one element is the same real affine expression in its embedded vectors. -/
+theorem v15_euclideanEmbedding_rat_add_rat_mul
+    (K : Type*) [Field K] [NumberField K]
+    (r s : ℚ) (a : K) :
+    v15EuclideanEmbedding K
+        (algebraMap ℚ K r + algebraMap ℚ K s * a) =
+      (r : ℝ) • v15EuclideanOne K +
+        (s : ℝ) • v15EuclideanEmbedding K a := by
+  unfold v15EuclideanEmbedding
+  rw [map_add, map_add]
+  rw [v15_euclideanEmbedding_algebraMap_rat K r]
+  rw [show
+    (NumberField.mixedEmbedding.euclidean.toMixed K).symm
+        (NumberField.mixedEmbedding K (algebraMap ℚ K s * a)) =
+      (s : ℝ) • v15EuclideanEmbedding K a by
+    simpa [v15EuclideanEmbedding] using
+      v15_euclideanEmbedding_rat_smul K s a]
+  rfl
+
+open scoped Classical in
 /-- Coordinate description of the Euclidean Minkowski embedding. -/
 theorem v15_euclideanEmbedding_eq
     (K : Type*) [Field K] [NumberField K] (a : K) :

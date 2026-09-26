@@ -152,6 +152,14 @@ noncomputable def v15QuarticHunterIntegralLift
   let c := ((v15QuarticHunterProjectedBasis b).restrictScalars ℤ).repr x
   ∑ i : Fin 3, c i • bz i.succ
 
+@[simp]
+theorem v15QuarticHunterIntegralLift_zsmul
+    (bz : Basis (Fin 4) ℤ L) (n : ℤ)
+    (x : v15QuarticHunterProjectedLattice (bz.ofZLatticeBasis ℝ)) :
+    v15QuarticHunterIntegralLift bz (n • x) =
+      n • v15QuarticHunterIntegralLift bz x := by
+  simp [v15QuarticHunterIntegralLift, Finset.smul_sum, smul_smul]
+
 omit [FiniteDimensional ℝ E] in
 /-- Centering a lifted quartic basis vector gives the corresponding
 projected basis vector. -/

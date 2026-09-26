@@ -49,12 +49,9 @@ does not assume the source explicit-formula identity as a premise.
 
 - `v15_odlyzkoTable4DescriptionInput_closed` supplies the full rounded Table
   4 interface used by the project.
-- `v15_sectionFourDiscriminantInput_of_degreeFourPrimitiveGenerator_closed`
-  replaces the degree-four exact-minimum row by the explicit primitive Hunter
-  short-generator premise. The cited exact-minimum data then begin in degree
-  five; degrees one through three, the quartic projection, coefficient bounds,
-  algebra and finite enumeration after that premise, and the Table 4 range are
-  internal.
+- `v15_sectionFourDiscriminantInput_of_degreeFiveToEleven_closed` uses the
+  unconditional quartic theorem. The cited exact-minimum data therefore begin
+  in degree five; degrees one through four and the Table 4 range are internal.
 - `v15_classic_finite_closed`, `v15_integral_finite_closed`, and
   `v15_pnorm_finite_closed` discharge the Table 4 premise from the global
   finiteness endpoints.
@@ -70,7 +67,6 @@ and the two final strict scalar comparisons.
 
 There is no `sorry`, project axiom, or assumed explicit-formula theorem in
 this chain. Independent mathematical and Lean review remains unsigned. The
-quartic primitive-short-generator premise and degree `5`--`11` source estimates
-remain outside the closed proof, and
+degree `5`--`11` source estimates remain outside the closed proof, and
 the sharper HSW numerical zero-count theorem remains an optional unformalized
 result because the proved quadratic Jensen count is sufficient here.

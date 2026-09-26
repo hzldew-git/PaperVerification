@@ -25,8 +25,8 @@ The v15 proof chain is organized as follows:
 | V15AdmissibleTables | Kernel-checked 24/63 finite tables, all rank/degree bound arrays, exact maxima, and quoted table consequences |
 | V15AnalyticTable, V15AnalyticTableBridge | Exact Gamma normalization of `H(n,d)`, proved rational enclosures, full 34 by 14 analytic-table equivalences, and the field-discriminant-to-table bridge |
 | V15HunterProjection, V15PrimitiveBasis, V15HunterNumberFieldProjection, V15CubicPowerBasis, V15CubicGeneratorArithmetic, V15CubicGeneratorSpread, V15DegreeThreeHunterClosed | Projected integer-ring covolume, primitive basis extension, Hunter generator, cubic trace and spread identities, positive-index discriminant relation, and the unconditional degree-three bound `|D_K| >= 49` |
-| V15DegreeFourDiscriminant, V15QuarticPowerBasis, V15QuarticGeneratorArithmetic, V15QuarticGeneratorNormalization, V15QuarticGeneratorSpread, V15QuarticHermite, V15QuarticHunterProjection, V15QuarticHunterNumberFieldProjection, V15QuarticOrderMaximality, V15DegreeFourHunterReduction | Kernel-checked quartic normalization and exact finite row enumeration, actual-generator normalization, internally derived coefficient bounds, exact power-basis discriminant, irreducibility and positive-index bridges, rank-three projection and covolume, automatic Hermite-minor positivity, maximality of the 2048 order, removal of the 2304 order's 2-primary denominator, and reduction of the degree-four bound to the remaining primitive-generator and 3-primary steps |
-| V15SectionFourClosed | Final Section 4 interfaces, including strengthened endpoints whose exact-minimum data begin in degree five and whose separate quartic premise is the primitive-generator reduction |
+| V15DegreeFourDiscriminant through V15QuarticPrimitiveShortSelection | Kernel-checked quartic normalization and exact finite row enumeration, rank-three projection and covolume, maximality of both the 2048 and 2304 power orders, a first and transverse second Minkowski short vector, equality of quadratic subfields with equal discriminant, the coprime quadratic-compositum formula, and the unconditional bound `|D_K| >= 725` |
+| V15SectionFourClosed | Final Section 4 interfaces; all degree-one through degree-four bounds are internal and the remaining exact-minimum data begin in degree five |
 
 The public classification endpoint is
 v15_rank_one_real_quadratic_classification_totally_positive. It quantifies
@@ -48,13 +48,12 @@ inequalities select the 24 and 63 rows throughout the complete finite grid.
 The compatibility endpoints
 v15_classic_pair_mem_of_degreeFourToEleven_closed and
 v15_integral_pair_mem_of_degreeFourToEleven_closed retain the combined degree
-4--9 source input. The stronger
-v15_classic_pair_mem_of_degreeFourPrimitiveGenerator_closed and
-v15_integral_pair_mem_of_degreeFourPrimitiveGenerator_closed replace its
-degree-four row by an explicit primitive-generator premise; their exact-minimum
-data begin in degree five. Degrees one through three, all quartic algebra and
-finite arithmetic after that premise, and the Table 4 range are internal. The
-public Python verifier independently replays the interval computation.
+4--9 source input. The strongest endpoints are
+v15_classic_pair_mem_of_degreeFiveToEleven_closed and
+v15_integral_pair_mem_of_degreeFiveToEleven_closed. Degrees one through four
+and the Table 4 range are internal; their remaining source inputs cover only
+degrees five through eleven. The public Python verifier independently replays
+the interval computation.
 
 From this directory:
 

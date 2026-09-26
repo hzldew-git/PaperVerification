@@ -57,22 +57,18 @@ For degree three, Lean constructs the projected lattice and its covolume,
 lifts the Hunter vector to a nonrational integral generator, proves the spread
 and index-discriminant identities, and combines them with trace normalization
 and exact polynomial enumeration to obtain `|D_F| >= 49`. In degree four,
-Lean proves all finite polynomial arithmetic, irreducibility and
-positive-index bridges, the exact power-basis discriminant, the centered
-spread identity, positivity of both the spread and third Hermite minor, all
-normalized coefficient bounds, and the projected rank-three covolume formula.
-The remaining quartic premise is a primitive integral Hunter generator with
-only the strict upper-spread bound recorded in
-`V15DegreeFourPrimitiveGeneratorInput`. Its finer decomposition consists of
-the sharp three-dimensional Hermite theorem and selecting a short lift outside
-the possible quadratic subfield. The weaker Minkowski route avoids the sharp
-Hermite input: Lean normalizes the actual primitive generator, kernel-checks
-the exact six rows, proves the `2048` power order maximal, reduces the field
-discriminant interval to the `2304` row, and removes its complete `2`-primary
-denominator. That route still requires the same primitive-vector selection
-and the remaining `3`-primary saturation of the `2304` order. After the sharp
-reduction,
-Section 4 takes exact-minimum interfaces only for degrees `5`--`9`, the
+Lean proves the unconditional bound `|D_F| >= 725`. A Minkowski argument
+produces a first projected short vector and, when its lift is imprimitive, a
+second transverse vector. Primitive lifts are impossible by the exact six-row
+enumeration and maximality of both residual power orders. If both lifts are
+imprimitive, their distinct quadratic subfields have discriminants in
+`{5,8}`. Equal discriminants force equality of the subfields; unequal
+discriminants are coprime and the compositum theorem forces quartic
+discriminant `1600`. The new quartic selection and lower-bound theorems have
+only `propext`, `Classical.choice`, and `Quot.sound` in their axiom reports.
+The sharp-Hermite, imprimitive-minimum, and relative-different routes remain
+as compatibility interfaces and are not dependencies of the strongest
+endpoint. Section 4 takes exact-minimum interfaces only for degrees `5`--`9`, the
 degree-ten exclusion at root discriminant at most `14`, and the optimized
 degree-eleven bound `14.083`. The online
 November 1976 Table 2 gives `14.034` at degree eleven, so `14.083` remains a

@@ -33,6 +33,18 @@ noncomputable def v15QuarticHunterAlgebraicIntegerLift
       (v15QuarticHunterIntegralLift bz x))
 
 open scoped Classical in
+@[simp]
+theorem v15QuarticHunterAlgebraicIntegerLift_zsmul
+    (K : Type*) [Field K] [NumberField K]
+    (bz : Basis (Fin 4) ℤ
+      (NumberField.mixedEmbedding.euclidean.integerLattice K))
+    (n : ℤ)
+    (x : v15QuarticHunterProjectedLattice (bz.ofZLatticeBasis ℝ)) :
+    v15QuarticHunterAlgebraicIntegerLift K bz (n • x) =
+      n • v15QuarticHunterAlgebraicIntegerLift K bz x := by
+  simp [v15QuarticHunterAlgebraicIntegerLift]
+
+open scoped Classical in
 /-- The mixed embedding of the quartic algebraic-integer lift is the mixed
 image of the original Euclidean lattice vector. -/
 theorem v15_mixedEmbedding_quarticHunterAlgebraicIntegerLift

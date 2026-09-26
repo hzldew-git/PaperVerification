@@ -37,12 +37,11 @@ rounded Table 4 interfaces internally.
 Consequently `v15_classic_finite_closed`, `v15_integral_finite_closed`, and
 `v15_pnorm_finite_closed` do not assume Odlyzko's Table 4 theorem. The source
 table remains essential for normalization and comparison. Degrees one through
-three and the range from degree twelve are internal. In degree four, the
-polynomial and field-discriminant reduction, including positivity of the
-spread and third Hermite minor, coefficient bounds, and projected-lattice
-covolume identity is internal, while the existence of a primitive Hunter
-generator with the strict upper-spread bound remains explicit. The remaining cited exact-minimum data begin in
-degree five.
+four and the range from degree twelve are internal. In degree four, Lean proves
+the projected Minkowski construction, transverse second-vector selection,
+quartic normalization and order maximality, and the quadratic-subfield
+compositum contradiction, yielding the unconditional bound `|D_K| >= 725`.
+The remaining cited exact-minimum data begin in degree five.
 
 ## Trust
 
@@ -59,8 +58,7 @@ compilation and computation do not by themselves certify semantic fidelity.
 ## Exclusions
 
 The certificate excludes independent human approval, historical and novelty
-claims, the residual quartic primitive-generator theorem, the cited degree
-`5`--`11` field-discriminant estimates, the
+claims, the cited degree `5`--`11` field-discriminant estimates, the
 optional sharper HSW numerical zero-count theorem, and selected standalone
 supporting lemmas that are not needed by the audited endpoints. It does not
 claim a general reusable Stark--Weil theorem for arbitrary test functions;

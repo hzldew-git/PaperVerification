@@ -134,23 +134,22 @@ integer-ring lattice, proves the quotient-covolume relation, obtains and lifts
 the Hunter short vector to a nonrational integral generator, identifies the
 conjugate spread, and proves the positive-index discriminant relation. Together
 with integral trace normalization and exact finite coefficient enumeration,
-this proves `|D_F| >= 49` internally. In degree four, Lean proves trace
-normalization, the exact quartic power-basis and index discriminants,
-irreducibility, the centered-spread identity, and the bounded coefficient
-enumeration forcing discriminant 725. It also proves that the spread and third
-Hermite minor are positive from power-family linear independence and derives
-the normalized `s3` and `s4` bounds from those positivity statements. The
-remaining quartic premise is a primitive integral Hunter generator satisfying
-only the strict upper-spread bound. The projected rank-three lattice, its
-covolume quotient, and its integral lift are internal; the sharp
-three-dimensional Hermite bound and selection outside quadratic subfields are
-isolated as the two inputs that imply this premise. Degrees 5--9 use exact
+this proves `|D_F| >= 49` internally. In degree four, Lean proves the
+unconditional lower bound `|D_F| >= 725`. The projected rank-three lattice,
+Minkowski short vectors, integral lifts, normalization, exact six-row search,
+and maximality of the `2048` and `2304` power orders are internal. If the first
+short lift lies in a quadratic subfield, a second transverse lift is produced.
+Two imprimitive lifts would generate distinct quadratic subfields of
+discriminant `5` and `8`; the coprime-compositum formula would force quartic
+discriminant `1600`, a contradiction. The older sharp-Hermite and
+relative-different interfaces remain available only as compatibility routes.
+Degrees 5--9 use exact
 minimum-discriminant data, degree 10 uses the
 absence of a totally real field with root discriminant at most 14, degree 11
 uses the later optimized bound 14.083, and Table 4 is required only from
 degree 12. The online November 1976 Table 2 gives 14.034 at degree 11, so the
-value 14.083 is explicitly kept separate from that table. The quartic
-short-generator premise and degree 5--11 arithmetic source theorems remain external;
+value 14.083 is explicitly kept separate from that table. The degree 5--11
+arithmetic source theorems remain external;
 all subsequent specialization, combination, analytic enclosure, and
 finite-grid classification steps are in Lean. Python and Wolfram provide
 independent computational checks.

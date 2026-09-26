@@ -100,16 +100,15 @@ degree-ten field in that range. Martinet's
 gives the Hunter short-element bound. For degree three, Lean now proves the
 orthogonal projected-lattice construction, its covolume, the integral lift,
 trace normalization, finite normalized enumeration, and the resulting lower
-bound `|D_F| >= 49`. For degree four, Lean likewise proves the rank-three
-projection and covolume identity, the integral lift, coefficient
-normalization, and all discriminant inequalities. The remaining geometric
-input is the sharp three-dimensional Hermite bound
-`gamma_3^3 = 2`. Voight also observes that in an imprimitive field a Hunter
-element can generate a proper subfield; the corresponding choice of a short
-element outside the quadratic subfield is therefore recorded separately as
-`V15QuarticPrimitiveShortSelectionInput`. The other small-degree interfaces
-are the exact minima for degrees 5--9, the degree-ten root-discriminant input,
-and the optimized degree-eleven bound 14.083.
+bound `|D_F| >= 49`. For degree four, Lean proves the rank-three projection,
+Minkowski short-vector bounds, integral lifts, coefficient normalization,
+power-order maximality, quadratic-subfield comparison, and the unconditional
+bound `|D_F| >= 725`. Martinet's sharper three-dimensional Hermite route and
+Voight's warning about imprimitive Hunter elements remain documented as
+alternative compatibility interfaces, but the strongest Lean theorem uses no
+quartic source premise. The remaining small-degree interfaces are the exact
+minima for degrees 5--9, the degree-ten root-discriminant input, and the
+optimized degree-eleven bound 14.083.
 Degrees one and two are proved internally. For degree two, Lean proves
 nonsquareness of the field discriminant in `ℚ` and combines it with
 total-real positivity and Minkowski's bound to obtain the exact minimum lower
