@@ -1,5 +1,14 @@
 # Reproducibility report
 
+- The Hunter finite-box and discriminant-index update passed a full local
+  8883-job Lean build under the pinned Lean 4.32.1 and mathlib v4.32.1
+  toolchain. The expanded 531-declaration main axiom audit reports only
+  subsets of `propext`, `Classical.choice`, and `Quot.sound`; the unchanged
+  47-declaration numerical audit retains the documented native boundaries.
+  The new endpoints bound all Hunter coefficients, construct finite candidate
+  sets, identify power-basis and polynomial discriminants in arbitrary degree,
+  and put every qualifying degree-five or degree-seven field into the finite
+  search with `disc(f) = index^2 disc(K)` and positive index.
 - The Hunter coefficient-front-end update passed a full local 8879-job Lean
   build under the pinned Lean 4.32.1 and mathlib v4.32.1 toolchain. The
   expanded 509-declaration main axiom audit reports only subsets of

@@ -2129,6 +2129,73 @@ TraceEuclidean.v15_exists_hunterPolynomialCandidate_of_hunterBall.{u_1} (K : Typ
   (r : ℝ) (hr : 0 < r)
   (hball : ↑|NumberField.discr K| * (2 ^ n) ^ 2 < (↑n + 1) * (TraceEuclidean.euclideanUnitBallVolume n * r ^ n) ^ 2) :
   ∃ f, TraceEuclidean.V15HunterPolynomialCandidate (n + 1) ((↑n + 1) * r ^ 2) f
+TraceEuclidean.v15_hunter_roots_sum_sq_eq_coefficients (d : ℕ) (hd : 2 ≤ d) (f : Polynomial ℤ) (hmonic : f.Monic)
+  (hdeg : f.natDegree = d) (hsplit : (Polynomial.map (algebraMap ℤ ℝ) f).Splits) :
+  (Multiset.map (fun x => x ^ 2) (Polynomial.map (algebraMap ℤ ℝ) f).roots).sum =
+    ↑(-f.coeff (d - 1)) ^ 2 - 2 * ↑(f.coeff (d - 2))
+TraceEuclidean.v15_hunterPolynomialCandidate_root_bound {d : ℕ} (hd : 2 ≤ d) {B : ℝ} {f : Polynomial ℤ}
+  (h : TraceEuclidean.V15HunterPolynomialCandidate d B f) (z : ℝ) :
+  z ∈ (Polynomial.map (algebraMap ℤ ℝ) f).roots → ‖z‖ ≤ TraceEuclidean.v15HunterRootBound d B
+TraceEuclidean.v15_hunterPolynomialCandidate_coeff_bound {d : ℕ} (hd : 2 ≤ d) {B : ℝ} {f : Polynomial ℤ}
+  (h : TraceEuclidean.V15HunterPolynomialCandidate d B f) (i : ℕ) :
+  ‖↑(f.coeff i)‖ ≤ TraceEuclidean.v15HunterCoefficientBound d B
+TraceEuclidean.v15_card_integralPolynomialBox (d M : ℕ) :
+  (TraceEuclidean.v15IntegralPolynomialBox d M).card = (2 * M + 1) ^ (d + 1)
+TraceEuclidean.v15_hunterPolynomialCandidates_finite {d : ℕ} (hd : 2 ≤ d) (B : ℝ) :
+  {f | TraceEuclidean.V15HunterPolynomialCandidate d B f}.Finite
+TraceEuclidean.v15_exists_mem_hunterPolynomialCandidates_of_hunterBall.{u_1} (K : Type u_1) [Field K] [NumberField K]
+  {n : ℕ} (hreal : NumberField.IsTotallyReal K) (hdegree : Module.finrank ℚ K = n + 1) (hprime : Nat.Prime (n + 1))
+  (hn : 0 < n) (r : ℝ) (hr : 0 < r)
+  (hball : ↑|NumberField.discr K| * (2 ^ n) ^ 2 < (↑n + 1) * (TraceEuclidean.euclideanUnitBallVolume n * r ^ n) ^ 2) :
+  ∃ f ∈ TraceEuclidean.v15HunterPolynomialCandidates (n + 1) ⋯ ((↑n + 1) * r ^ 2),
+    TraceEuclidean.V15HunterPolynomialCandidate (n + 1) ((↑n + 1) * r ^ 2) f
+TraceEuclidean.v15_powerBasis_discr_eq_minpoly_discr.{u_1, u_2} {K : Type u_1} {L : Type u_2} [Field K] [Field L]
+  [Algebra K L] [FiniteDimensional K L] [Algebra.IsSeparable K L] (pb : PowerBasis K L) :
+  Algebra.discr K ⇑pb.basis = (minpoly K pb.gen).discr
+TraceEuclidean.v15_intCast_discr_eq_discr_map (f : Polynomial ℤ) (hmonic : f.Monic) (hpos : 0 < f.natDegree) :
+  ↑f.discr = (Polynomial.map (algebraMap ℤ ℚ) f).discr
+TraceEuclidean.v15_exists_ringOfIntegers_basis_fin.{u_1} (K : Type u_1) [Field K] [NumberField K] (d : ℕ)
+  (hdegree : Module.finrank ℚ K = d) : Nonempty (Module.Basis (Fin d) ℤ (NumberField.RingOfIntegers K))
+TraceEuclidean.v15_generalPowerFamily_discr_eq_powerBasis.{u_1} (K : Type u_1) [Field K] [NumberField K] (d : ℕ)
+  (hdegree : Module.finrank ℚ K = d) (a : NumberField.RingOfIntegers K) (hgen : ℚ⟮↑a⟯ = ⊤) :
+  (Algebra.discr ℚ fun i => ↑(TraceEuclidean.v15GeneralPowerFamily K d a i)) =
+    Algebra.discr ℚ ⇑(PowerBasis.ofAdjoinEqTop ⋯ ⋯).basis
+TraceEuclidean.v15_generalPowerFamily_discr_eq_minpoly_discr.{u_1} (K : Type u_1) [Field K] [NumberField K] (d : ℕ)
+  (hdegree : Module.finrank ℚ K = d) (a : NumberField.RingOfIntegers K) (hgen : ℚ⟮↑a⟯ = ⊤) :
+  Algebra.discr ℤ (TraceEuclidean.v15GeneralPowerFamily K d a) = (minpoly ℤ ↑a).discr
+TraceEuclidean.v15_generalPowerFamily_discr_ne_zero.{u_1} (K : Type u_1) [Field K] [NumberField K] (d : ℕ)
+  (hdegree : Module.finrank ℚ K = d) (a : NumberField.RingOfIntegers K) (hgen : ℚ⟮↑a⟯ = ⊤) :
+  Algebra.discr ℤ (TraceEuclidean.v15GeneralPowerFamily K d a) ≠ 0
+TraceEuclidean.v15_generalPowerFamily_exists_positive_index.{u_1} (K : Type u_1) [Field K] [NumberField K] (d : ℕ)
+  (hdegree : Module.finrank ℚ K = d) (a : NumberField.RingOfIntegers K) (hgen : ℚ⟮↑a⟯ = ⊤)
+  (bO : Module.Basis (Fin d) ℤ (NumberField.RingOfIntegers K)) :
+  ∃ index, 0 < index ∧ Algebra.discr ℤ (TraceEuclidean.v15GeneralPowerFamily K d a) = ↑index ^ 2 * NumberField.discr K
+TraceEuclidean.v15_minpoly_discr_exists_positive_index.{u_1} (K : Type u_1) [Field K] [NumberField K] (d : ℕ)
+  (hdegree : Module.finrank ℚ K = d) (a : NumberField.RingOfIntegers K) (hgen : ℚ⟮↑a⟯ = ⊤) :
+  ∃ index, 0 < index ∧ (minpoly ℤ ↑a).discr = ↑index ^ 2 * NumberField.discr K
+TraceEuclidean.v15_exists_hunterFieldPolynomialCandidate_of_hunterBall.{u_1} (K : Type u_1) [Field K] [NumberField K]
+  {n : ℕ} (hreal : NumberField.IsTotallyReal K) (hdegree : Module.finrank ℚ K = n + 1) (hprime : Nat.Prime (n + 1))
+  (hn : 0 < n) (r : ℝ) (hr : 0 < r)
+  (hball : ↑|NumberField.discr K| * (2 ^ n) ^ 2 < (↑n + 1) * (TraceEuclidean.euclideanUnitBallVolume n * r ^ n) ^ 2) :
+  ∃ f, TraceEuclidean.V15HunterFieldPolynomialCandidate K (n + 1) ((↑n + 1) * r ^ 2) f
+TraceEuclidean.v15_hunterFieldPolynomialCandidates_finite.{u_1} (K : Type u_1) [Field K] [NumberField K] {d : ℕ}
+  (hd : 2 ≤ d) (B : ℝ) : {f | TraceEuclidean.V15HunterFieldPolynomialCandidate K d B f}.Finite
+TraceEuclidean.v15_degreeFive_hunterBall_numerical :
+  14 ^ 5 * (2 ^ 4) ^ 2 < 5 * (TraceEuclidean.euclideanUnitBallVolume 4 * 6 ^ 4) ^ 2
+TraceEuclidean.v15_degreeSeven_hunterBall_numerical :
+  14 ^ 7 * (2 ^ 6) ^ 2 < 7 * (TraceEuclidean.euclideanUnitBallVolume 6 * 7 ^ 6) ^ 2
+TraceEuclidean.v15_degreeFive_hunterCandidate_coeff_bound {f : Polynomial ℤ}
+  (h : TraceEuclidean.V15HunterPolynomialCandidate 5 180 f) (i : ℕ) : ‖↑(f.coeff i)‖ ≤ 7593750
+TraceEuclidean.v15_degreeSeven_hunterCandidate_coeff_bound {f : Polynomial ℤ}
+  (h : TraceEuclidean.V15HunterPolynomialCandidate 7 343 f) (i : ℕ) : ‖↑(f.coeff i)‖ ≤ 44800000000
+TraceEuclidean.v15_exists_degreeFive_hunterFieldCandidate_of_discriminant_le.{u_1} (K : Type u_1) [Field K]
+  [NumberField K] (hreal : NumberField.IsTotallyReal K) (hdegree : Module.finrank ℚ K = 5)
+  (hdisc : ↑|NumberField.discr K| ≤ 14 ^ 5) :
+  ∃ f ∈ TraceEuclidean.v15HunterPolynomialCandidates 5 ⋯ 180, TraceEuclidean.V15HunterFieldPolynomialCandidate K 5 180 f
+TraceEuclidean.v15_exists_degreeSeven_hunterFieldCandidate_of_discriminant_le.{u_1} (K : Type u_1) [Field K]
+  [NumberField K] (hreal : NumberField.IsTotallyReal K) (hdegree : Module.finrank ℚ K = 7)
+  (hdisc : ↑|NumberField.discr K| ≤ 14 ^ 7) :
+  ∃ f ∈ TraceEuclidean.v15HunterPolynomialCandidates 7 ⋯ 343, TraceEuclidean.V15HunterFieldPolynomialCandidate K 7 343 f
 'TraceEuclidean.v15_exists_fin_succ_basis_zero_eq_of_primitive' depends on axioms: [propext,
  Classical.choice,
  Quot.sound]
@@ -2168,6 +2235,38 @@ TraceEuclidean.v15_exists_hunterPolynomialCandidate_of_hunterBall.{u_1} (K : Typ
  Classical.choice,
  Quot.sound]
 'TraceEuclidean.v15_exists_hunterPolynomialCandidate_of_hunterBall' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'TraceEuclidean.v15_hunter_roots_sum_sq_eq_coefficients' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15_hunterPolynomialCandidate_root_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15_hunterPolynomialCandidate_coeff_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15_card_integralPolynomialBox' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15_hunterPolynomialCandidates_finite' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15_exists_mem_hunterPolynomialCandidates_of_hunterBall' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'TraceEuclidean.v15_powerBasis_discr_eq_minpoly_discr' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15_intCast_discr_eq_discr_map' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15_exists_ringOfIntegers_basis_fin' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15_generalPowerFamily_discr_eq_powerBasis' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15_generalPowerFamily_discr_eq_minpoly_discr' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'TraceEuclidean.v15_generalPowerFamily_discr_ne_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15_generalPowerFamily_exists_positive_index' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15_minpoly_discr_exists_positive_index' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15_exists_hunterFieldPolynomialCandidate_of_hunterBall' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'TraceEuclidean.v15_hunterFieldPolynomialCandidates_finite' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15_degreeFive_hunterBall_numerical' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15_degreeSeven_hunterBall_numerical' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15_degreeFive_hunterCandidate_coeff_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15_degreeSeven_hunterCandidate_coeff_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15_exists_degreeFive_hunterFieldCandidate_of_discriminant_le' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'TraceEuclidean.v15_exists_degreeSeven_hunterFieldCandidate_of_discriminant_le' depends on axioms: [propext,
  Classical.choice,
  Quot.sound]
 'TraceEuclidean.v15_degreeElevenRootDiscriminantInput_of_odlyzkoMartinet' depends on axioms: [propext,

@@ -4,9 +4,9 @@ Frozen author source SHA-256:
 83a236e93648ce0802f8a0d3022de63710d089f3a4f7e61214a4c855459597b5.
 The manuscript is excluded from this public repository.
 
-The complete pinned 8879-job Lean build passes. The v15 public Python and
+The complete pinned 8883-job Lean build passes. The v15 public Python and
 Wolfram reruns pass 1156 and 115 checks, respectively; private source-bound
-reruns pass 1165 and 112 checks. The current 509-declaration main audit uses
+reruns pass 1165 and 112 checks. The current 531-declaration main audit uses
 only subsets of the standard logical axioms. The 47-declaration numerical
 audit separately identifies five Odlyzko and one Voight `native_decide`
 dependencies, with their compiler trust disclosed in TRUST.md.
@@ -93,11 +93,16 @@ discriminant `1600`. Both cases contradict the construction. Hence
 source boundary remains. The sharp-Hermite and relative-different routes stay
 in the project as compatibility reductions. Voight's archived degree 5--9
 discriminant columns are now hash checked, validated, imported, and certified
-in Lean. One source-facing statement retains the completeness of Voight's
-enumeration through root discriminant 14; it implies both the degree 5--9
-minima and the degree-ten exclusion. The optimized degree-eleven bound, a
-Lean proof of Voight enumeration completeness, selected supporting lemmas,
-and independent semantic sign-off remain outside the current signed scope.
+in Lean. For degrees five and seven, Lean now proves explicit Hunter ball and
+all-coefficient bounds, constructs a finite polynomial candidate set, proves
+that every field below root discriminant 14 lands in that set, and derives the
+computable relation `disc(f) = index^2 disc(K)` with positive index. One
+source-facing statement retains the completeness of Voight's enumeration
+through root discriminant 14; it implies both the degree 5--9 minima and the
+degree-ten exclusion. The optimized degree-eleven bound, a Lean exhaustion of
+the finite prime-degree boxes, the composite-degree relative enumeration,
+selected supporting lemmas, and independent semantic sign-off remain outside
+the current signed scope.
 The source-facing degree-at-least-eleven formulation is connected to the
 exact Section 4 premise in Lean, and a separate exact check proves that the
 weaker online Table 2 value 14.034 would add the integral-table cell `(2,11)`.

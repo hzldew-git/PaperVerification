@@ -20,10 +20,15 @@ integral minimal polynomial, and the combined Hunter polynomial-candidate
 theorem are also proved. The candidate is monic, irreducible, totally real,
 and satisfies the normalized first-coefficient and strict first-two-coefficient
 spread conditions. In degrees five and seven Lean reduces the normalized
-trace coefficient to the exact finite starting cases. This supplies the
-reusable polynomial front end for an internal reconstruction of those two
-prime-degree enumerations; higher-coefficient exhaustion and the
-composite-degree relative cases remain.
+trace coefficient to the exact finite starting cases, bounds every root and
+coefficient, and constructs an explicit finite set of integral polynomials.
+It proves the general equality between a separable power-basis discriminant
+and the discriminant of its minimal polynomial, its integral-to-rational map
+form, and the positive-index formula `disc(f) = index^2 disc(K)`. Every
+totally real field of degree five or seven and root discriminant at most 14
+therefore lands in the finite candidate set with this exact formula.
+Exhausting the large boxes, checking the resulting orders and duplicate
+fields, and handling the composite-degree relative cases remain.
 
 Degree-eleven update: the all-degrees Odlyzko--Martinet statement quoted by
 Voight now has a source-aligned Lean interface and specializes to the exact
@@ -74,4 +79,4 @@ All four reviewed main results are PROVISIONAL_MATCH; none is independently VERI
 
 A finite-height exhaustion proves that multiplicity-aware strip-zero occurrences are countable. After every height there is a right interval with constant zero count. For the exact HSW Corollary 1.2 normalization, Lean extends an inequality assumed at occurrence-free heights to every T >= 1. That sharp inequality remains an optional explicit input but is unnecessary for the completed-function Jensen and contour routes. The direct unordered zero sum converges from the internally proved quadratic count. The HSW Gamma factor has been matched to mathlib, with critical-strip zero positions and analytic multiplicities preserved by completion. The completed-zeta functional equation, sufficient growth bound, and specialized `b=4` contour inequality are proved. The source map is in 18_classical_analytic_sources.md.
 
-The complete local 8879-job Lean build passes. The 509-declaration main axiom audit includes the unconditional quartic short-vector selection, general Hunter coefficient bridge, and degree-eleven sensitivity checks; every endpoint uses only a subset of `propext`, `Classical.choice`, and `Quot.sound`. Final endpoints that use the strict Odlyzko numerical certificate show its five disclosed native-compiler dependencies. The separate 47-declaration numerical audit also isolates the single Voight finite-data native certificate and its propagation. The finite quartic searches use kernel `decide` and add no compiler trust. The Voight generator check passes. Local public reruns produced 1156 Python PASS and 115 Wolfram PASS, both with zero failures. The manuscript guard inspected 298 files and passed. Superseded release evidence is not included in the current package or v15 counts.
+The complete local 8883-job Lean build passes. The 531-declaration main axiom audit includes the unconditional quartic short-vector selection, general Hunter coefficient and discriminant bridges, finite degree-five and degree-seven boxes, and degree-eleven sensitivity checks; every endpoint uses only a subset of `propext`, `Classical.choice`, and `Quot.sound`. Final endpoints that use the strict Odlyzko numerical certificate show its five disclosed native-compiler dependencies. The separate 47-declaration numerical audit also isolates the single Voight finite-data native certificate and its propagation. The finite quartic searches use kernel `decide` and add no compiler trust. The Voight generator check passes. Local public reruns produced 1156 Python PASS and 115 Wolfram PASS, both with zero failures. Superseded release evidence is not included in the current package or v15 counts.

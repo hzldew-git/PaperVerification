@@ -40,9 +40,10 @@ directly. The bound itself remains an explicit literature premise.
 
 The stored data do not prove that Voight's search found every field. A fully
 internal proof would need the search completeness argument, including the
-coefficient bounds, exact polynomial enumeration, irreducibility and maximal
-order checks, duplicate-field control, and the relative enumeration needed
-for imprimitive extensions.
+exact polynomial enumeration from the proved prime-degree coefficient bounds,
+irreducibility and maximal-order checks, duplicate-field control, and the
+relative enumeration and coefficient bounds needed for imprimitive composite
+extensions.
 
 ## Hunter groundwork
 
@@ -68,12 +69,31 @@ coefficient, and satisfies the strict Hunter spread bound. Lean also reduces
 the normalized trace coefficient to `0,1,2` in degree five and to `0,1,2,3`
 in degree seven.
 
-This closes the geometric, algebraic, and first-two-coefficient front end in
-degrees five and seven. The remaining enumeration proof must bound the higher
-coefficients, exhaust the resulting polynomial boxes, verify the associated
-maximal orders and discriminants, control duplicate fields, and treat the
-composite-degree relative extensions. It is finite but substantially larger
-than the cubic and quartic searches already formalized.
+`V15HunterCoefficientFiniteness.lean` completes the coefficient-bounding
+step. It derives a uniform root bound from the Hunter spread, applies Vieta's
+formulas to every coefficient, constructs both an executable integer box and
+a finite set of all Hunter candidates, and proves the exact box cardinality.
+
+`V15PowerBasisPolynomialDiscriminant.lean` and
+`V15GeneralPowerIndex.lean` prove in arbitrary degree that the trace-pairing
+discriminant of a separable power basis equals the polynomial discriminant of
+its minimal polynomial, that the equality commutes with the integral-to-
+rational map, and that a primitive integral generator satisfies
+`disc(f) = index^2 disc(K)` for a positive natural index.
+
+`V15HunterPrimeDegreeBoxes.lean` specializes the construction at root
+discriminant 14. Radius 6 gives the degree-five spread bound 180 and the
+uniform coefficient bound 7,593,750. Radius 7 gives the degree-seven spread
+bound 343 and the uniform coefficient bound 44,800,000,000. Every qualifying
+degree-five or degree-seven field lands in the corresponding finite candidate
+set together with its generator and exact positive-index formula.
+
+This closes the geometric, algebraic, all-coefficient, finiteness, and
+field-discriminant front end in degrees five and seven. The remaining
+enumeration proof must exhaust these large boxes more efficiently, verify the
+associated maximal orders and discriminants, control duplicate fields, and
+treat the composite-degree relative extensions. It is finite but
+substantially larger than the cubic and quartic searches already formalized.
 
 ## Trust and status
 
