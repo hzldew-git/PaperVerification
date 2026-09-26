@@ -1,5 +1,14 @@
 # Reproducibility report
 
+- The Hunter coefficient-front-end update passed a full local 8879-job Lean
+  build under the pinned Lean 4.32.1 and mathlib v4.32.1 toolchain. The
+  expanded 509-declaration main axiom audit reports only subsets of
+  `propext`, `Classical.choice`, and `Quot.sound`; the unchanged
+  47-declaration numerical audit retains the documented native boundaries.
+  The new kernel-checked endpoints prove arbitrary-degree Newton and trace
+  coefficient identities, real splitting of the primitive integral minimal
+  polynomial, the combined Hunter polynomial candidate, and the exact
+  normalized trace cases in degrees five and seven.
 - The Voight and degree-eleven boundary update passed a full local 8878-job
   Lean build under the pinned Lean 4.32.1 and mathlib v4.32.1 toolchain. The
   498-declaration main axiom audit reports only subsets of `propext`,

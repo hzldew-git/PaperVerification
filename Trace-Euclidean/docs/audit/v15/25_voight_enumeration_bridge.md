@@ -57,9 +57,23 @@ polynomial search:
    trace expression; and
 5. in prime degree, nonrationality makes the element primitive.
 
-This closes the geometric and algebraic front end in degrees five and seven.
-The remaining enumeration proof is finite but substantially larger than the
-cubic and quartic searches already formalized.
+`V15HunterGeneralCoefficientBridge.lean` now continues this chain through the
+polynomial interface. It proves Newton's second identity for arbitrary finite
+multisets, identifies the first two integral-minimal-polynomial coefficients
+with the trace and square trace, proves that the integral minimal polynomial
+of a primitive element in a totally real field splits over the reals, and
+packages the output as `V15HunterPolynomialCandidate`. The candidate is monic,
+irreducible, has the required degree and only real roots, has normalized first
+coefficient, and satisfies the strict Hunter spread bound. Lean also reduces
+the normalized trace coefficient to `0,1,2` in degree five and to `0,1,2,3`
+in degree seven.
+
+This closes the geometric, algebraic, and first-two-coefficient front end in
+degrees five and seven. The remaining enumeration proof must bound the higher
+coefficients, exhaust the resulting polynomial boxes, verify the associated
+maximal orders and discriminants, control duplicate fields, and treat the
+composite-degree relative extensions. It is finite but substantially larger
+than the cubic and quartic searches already formalized.
 
 ## Trust and status
 

@@ -4,9 +4,9 @@ Frozen author source SHA-256:
 83a236e93648ce0802f8a0d3022de63710d089f3a4f7e61214a4c855459597b5.
 The manuscript is excluded from this public repository.
 
-The complete pinned 8878-job Lean build passes. The v15 public Python and
+The complete pinned 8879-job Lean build passes. The v15 public Python and
 Wolfram reruns pass 1156 and 115 checks, respectively; private source-bound
-reruns pass 1165 and 112 checks. The current 498-declaration main audit uses
+reruns pass 1165 and 112 checks. The current 509-declaration main audit uses
 only subsets of the standard logical axioms. The 47-declaration numerical
 audit separately identifies five Odlyzko and one Voight `native_decide`
 dependencies, with their compiler trust disclosed in TRUST.md.

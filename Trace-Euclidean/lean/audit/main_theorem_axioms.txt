@@ -2087,6 +2087,48 @@ TraceEuclidean.v15_exists_trace_normalized_primitive_integer_of_hunterBall.{u_1}
       0 ≤ (Algebra.intTrace ℤ (NumberField.RingOfIntegers K)) a ∧
         2 * (Algebra.intTrace ℤ (NumberField.RingOfIntegers K)) a ≤ ↑n + 1 ∧
           (↑n + 1) * ↑((Algebra.trace ℚ K) (↑a ^ 2)) - ↑((Algebra.trace ℚ K) ↑a) ^ 2 < (↑n + 1) * r ^ 2
+TraceEuclidean.v15_multiset_sum_sq_eq_sum_sq_sub_two_esymm.{u_1} {R : Type u_1} [CommRing R] (s : Multiset R) :
+  (Multiset.map (fun x => x ^ 2) s).sum = s.sum ^ 2 - 2 * s.esymm 2
+TraceEuclidean.v15_powerBasis_trace_gen_sq.{u_1, u_2} {F : Type u_1} {L : Type u_2} [Field F] [Field L] [Algebra F L]
+  [FiniteDimensional F L] [Algebra.IsSeparable F L] (pb : PowerBasis F L) (hdim : 2 ≤ pb.dim) :
+  (Algebra.trace F L) (pb.gen ^ 2) = pb.minpolyGen.coeff (pb.dim - 1) ^ 2 - 2 * pb.minpolyGen.coeff (pb.dim - 2)
+TraceEuclidean.v15_general_trace_eq_s1.{u_1} (K : Type u_1) [Field K] [NumberField K] (d : ℕ)
+  (hdegree : Module.finrank ℚ K = d) (hd : 0 < d) (a : NumberField.RingOfIntegers K) (hgen : ℚ⟮↑a⟯ = ⊤) :
+  (Algebra.trace ℚ K) ↑a = ↑(TraceEuclidean.v15GeneralS1 K d a)
+TraceEuclidean.v15_general_trace_sq_eq_s1_sq_sub_two_s2.{u_1} (K : Type u_1) [Field K] [NumberField K] (d : ℕ)
+  (hdegree : Module.finrank ℚ K = d) (hd : 2 ≤ d) (a : NumberField.RingOfIntegers K) (hgen : ℚ⟮↑a⟯ = ⊤) :
+  (Algebra.trace ℚ K) (↑a ^ 2) = ↑(TraceEuclidean.v15GeneralS1 K d a) ^ 2 - 2 * ↑(TraceEuclidean.v15GeneralS2 K d a)
+TraceEuclidean.v15_general_intTrace_eq_s1.{u_1} (K : Type u_1) [Field K] [NumberField K] (d : ℕ)
+  (hdegree : Module.finrank ℚ K = d) (hd : 0 < d) (a : NumberField.RingOfIntegers K) (hgen : ℚ⟮↑a⟯ = ⊤) :
+  (Algebra.intTrace ℤ (NumberField.RingOfIntegers K)) a = TraceEuclidean.v15GeneralS1 K d a
+TraceEuclidean.v15_general_trace_expression_eq_spread.{u_1} (K : Type u_1) [Field K] [NumberField K] (d : ℕ)
+  (hdegree : Module.finrank ℚ K = d) (hd : 2 ≤ d) (a : NumberField.RingOfIntegers K) (hgen : ℚ⟮↑a⟯ = ⊤) :
+  ↑d * (Algebra.trace ℚ K) (↑a ^ 2) - (Algebra.trace ℚ K) ↑a ^ 2 =
+    ↑(TraceEuclidean.v15GeneralSpread d (TraceEuclidean.v15GeneralS1 K d a) (TraceEuclidean.v15GeneralS2 K d a))
+TraceEuclidean.v15_primitive_integral_minpoly_splits_real.{u_1} (K : Type u_1) [Field K] [NumberField K]
+  (hreal : NumberField.IsTotallyReal K) (a : NumberField.RingOfIntegers K) (hgen : ℚ⟮↑a⟯ = ⊤) :
+  (Polynomial.map (algebraMap ℤ ℝ) (minpoly ℤ ↑a)).Splits
+TraceEuclidean.v15_exists_trace_normalized_primitive_coefficients_of_hunterBall.{u_1} (K : Type u_1) [Field K]
+  [NumberField K] {n : ℕ} (hreal : NumberField.IsTotallyReal K) (hdegree : Module.finrank ℚ K = n + 1)
+  (hprime : Nat.Prime (n + 1)) (hn : 0 < n) (r : ℝ) (hr : 0 < r)
+  (hball : ↑|NumberField.discr K| * (2 ^ n) ^ 2 < (↑n + 1) * (TraceEuclidean.euclideanUnitBallVolume n * r ^ n) ^ 2) :
+  ∃ a,
+    ℚ⟮↑a⟯ = ⊤ ∧
+      0 ≤ TraceEuclidean.v15GeneralS1 K (n + 1) a ∧
+        2 * TraceEuclidean.v15GeneralS1 K (n + 1) a ≤ ↑n + 1 ∧
+          ↑(TraceEuclidean.v15GeneralSpread (n + 1) (TraceEuclidean.v15GeneralS1 K (n + 1) a)
+                (TraceEuclidean.v15GeneralS2 K (n + 1) a)) <
+            (↑n + 1) * r ^ 2
+TraceEuclidean.v15_hunterPolynomialCandidate_degreeFive_trace_cases {B : ℝ} {f : Polynomial ℤ}
+  (h : TraceEuclidean.V15HunterPolynomialCandidate 5 B f) : -f.coeff 4 = 0 ∨ -f.coeff 4 = 1 ∨ -f.coeff 4 = 2
+TraceEuclidean.v15_hunterPolynomialCandidate_degreeSeven_trace_cases {B : ℝ} {f : Polynomial ℤ}
+  (h : TraceEuclidean.V15HunterPolynomialCandidate 7 B f) :
+  -f.coeff 6 = 0 ∨ -f.coeff 6 = 1 ∨ -f.coeff 6 = 2 ∨ -f.coeff 6 = 3
+TraceEuclidean.v15_exists_hunterPolynomialCandidate_of_hunterBall.{u_1} (K : Type u_1) [Field K] [NumberField K] {n : ℕ}
+  (hreal : NumberField.IsTotallyReal K) (hdegree : Module.finrank ℚ K = n + 1) (hprime : Nat.Prime (n + 1)) (hn : 0 < n)
+  (r : ℝ) (hr : 0 < r)
+  (hball : ↑|NumberField.discr K| * (2 ^ n) ^ 2 < (↑n + 1) * (TraceEuclidean.euclideanUnitBallVolume n * r ^ n) ^ 2) :
+  ∃ f, TraceEuclidean.V15HunterPolynomialCandidate (n + 1) ((↑n + 1) * r ^ 2) f
 'TraceEuclidean.v15_exists_fin_succ_basis_zero_eq_of_primitive' depends on axioms: [propext,
  Classical.choice,
  Quot.sound]
@@ -2107,6 +2149,25 @@ TraceEuclidean.v15_exists_trace_normalized_primitive_integer_of_hunterBall.{u_1}
 'TraceEuclidean.v15_exists_nonrational_integer_of_hunterBall' depends on axioms: [propext, Classical.choice, Quot.sound]
 'TraceEuclidean.v15_exists_primitive_integer_of_hunterBall' depends on axioms: [propext, Classical.choice, Quot.sound]
 'TraceEuclidean.v15_exists_trace_normalized_primitive_integer_of_hunterBall' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'TraceEuclidean.v15_multiset_sum_sq_eq_sum_sq_sub_two_esymm' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15_powerBasis_trace_gen_sq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15_general_trace_eq_s1' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15_general_trace_sq_eq_s1_sq_sub_two_s2' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15_general_intTrace_eq_s1' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15_general_trace_expression_eq_spread' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15_primitive_integral_minpoly_splits_real' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15_exists_trace_normalized_primitive_coefficients_of_hunterBall' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'TraceEuclidean.v15_hunterPolynomialCandidate_degreeFive_trace_cases' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'TraceEuclidean.v15_hunterPolynomialCandidate_degreeSeven_trace_cases' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'TraceEuclidean.v15_exists_hunterPolynomialCandidate_of_hunterBall' depends on axioms: [propext,
  Classical.choice,
  Quot.sound]
 'TraceEuclidean.v15_degreeElevenRootDiscriminantInput_of_odlyzkoMartinet' depends on axioms: [propext,

@@ -14,9 +14,16 @@ of Voight's enumeration algorithm.
 Hunter update: the arbitrary-dimensional projected integer-ring lattice,
 its covolume identity, the Minkowski ball short-vector theorem, integral lift,
 quadratic trace expression, trace normalization, and the prime-degree
-nonrational-to-primitive bridge are Lean theorems. This supplies the reusable
-geometric and algebraic front end for a future internal reconstruction of the
-degree-five and degree-seven enumeration.
+nonrational-to-primitive bridge are Lean theorems. Newton's second identity,
+the arbitrary-degree trace-to-coefficient formulas, real splitting of the
+integral minimal polynomial, and the combined Hunter polynomial-candidate
+theorem are also proved. The candidate is monic, irreducible, totally real,
+and satisfies the normalized first-coefficient and strict first-two-coefficient
+spread conditions. In degrees five and seven Lean reduces the normalized
+trace coefficient to the exact finite starting cases. This supplies the
+reusable polynomial front end for an internal reconstruction of those two
+prime-degree enumerations; higher-coefficient exhaustion and the
+composite-degree relative cases remain.
 
 Degree-eleven update: the all-degrees Odlyzko--Martinet statement quoted by
 Voight now has a source-aligned Lean interface and specializes to the exact
@@ -67,4 +74,4 @@ All four reviewed main results are PROVISIONAL_MATCH; none is independently VERI
 
 A finite-height exhaustion proves that multiplicity-aware strip-zero occurrences are countable. After every height there is a right interval with constant zero count. For the exact HSW Corollary 1.2 normalization, Lean extends an inequality assumed at occurrence-free heights to every T >= 1. That sharp inequality remains an optional explicit input but is unnecessary for the completed-function Jensen and contour routes. The direct unordered zero sum converges from the internally proved quadratic count. The HSW Gamma factor has been matched to mathlib, with critical-strip zero positions and analytic multiplicities preserved by completion. The completed-zeta functional equation, sufficient growth bound, and specialized `b=4` contour inequality are proved. The source map is in 18_classical_analytic_sources.md.
 
-The complete local 8878-job Lean build passes. The 498-declaration main axiom audit includes the unconditional quartic short-vector selection, general Hunter bridge, and degree-eleven sensitivity checks; every endpoint uses only a subset of `propext`, `Classical.choice`, and `Quot.sound`. Final endpoints that use the strict Odlyzko numerical certificate show its five disclosed native-compiler dependencies. The separate 47-declaration numerical audit also isolates the single Voight finite-data native certificate and its propagation. The finite quartic searches use kernel `decide` and add no compiler trust. The Voight generator check passes. Local public reruns produced 1156 Python PASS and 115 Wolfram PASS, both with zero failures. The manuscript guard inspected 298 files and passed. Superseded release evidence is not included in the current package or v15 counts.
+The complete local 8879-job Lean build passes. The 509-declaration main axiom audit includes the unconditional quartic short-vector selection, general Hunter coefficient bridge, and degree-eleven sensitivity checks; every endpoint uses only a subset of `propext`, `Classical.choice`, and `Quot.sound`. Final endpoints that use the strict Odlyzko numerical certificate show its five disclosed native-compiler dependencies. The separate 47-declaration numerical audit also isolates the single Voight finite-data native certificate and its propagation. The finite quartic searches use kernel `decide` and add no compiler trust. The Voight generator check passes. Local public reruns produced 1156 Python PASS and 115 Wolfram PASS, both with zero failures. The manuscript guard inspected 298 files and passed. Superseded release evidence is not included in the current package or v15 counts.

@@ -54,6 +54,7 @@ import TraceEuclidean.V15HunterGeneralProjection
 import TraceEuclidean.V15HunterGeneralGeometry
 import TraceEuclidean.V15HunterGeneralNumberFieldProjection
 import TraceEuclidean.V15HunterGeneralTraceBound
+import TraceEuclidean.V15HunterGeneralCoefficientBridge
 import TraceEuclidean.V15AnalyticTableBridge
 import TraceEuclidean.V15VoightDiscriminantData
 import TraceEuclidean.V15VoightEnumerationBridge
