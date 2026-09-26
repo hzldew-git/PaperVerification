@@ -1,5 +1,13 @@
 # Reproducibility report
 
+- The discriminant-filtered Hunter-box update passed a full local 8885-job
+  Lean build under the unchanged pinned Lean 4.32.1 and mathlib v4.32.1
+  toolchain. The expanded 553-declaration main axiom audit reports only
+  subsets of `propext`, `Classical.choice`, and `Quot.sound`. The new
+  executable finite filter gives each polynomial its own positive index range
+  ending at `|disc(f)|`, retains exactly the pairs satisfying
+  `disc(f) = index^2 D`, and contains a field-realizing pair for every
+  qualifying degree-five or degree-seven field.
 - The Hunter coordinate-box refinement passed a full local 8884-job Lean
   build under the unchanged pinned Lean 4.32.1 and mathlib v4.32.1 toolchain.
   The expanded 544-declaration main axiom audit reports only subsets of

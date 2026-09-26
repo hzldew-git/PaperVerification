@@ -60,6 +60,7 @@ import TraceEuclidean.V15HunterCoordinateBoxes
 import TraceEuclidean.V15PowerBasisPolynomialDiscriminant
 import TraceEuclidean.V15GeneralPowerIndex
 import TraceEuclidean.V15HunterPrimeDegreeBoxes
+import TraceEuclidean.V15HunterDiscriminantBoxes
 import TraceEuclidean.V15AnalyticTableBridge
 import TraceEuclidean.V15VoightDiscriminantData
 import TraceEuclidean.V15VoightEnumerationBridge

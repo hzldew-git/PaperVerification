@@ -2224,6 +2224,47 @@ TraceEuclidean.v15_exists_degreeFive_hunterFieldCandidate_mem_refinedBox.{u_1} (
 TraceEuclidean.v15_exists_degreeSeven_hunterFieldCandidate_mem_refinedBox.{u_1} (K : Type u_1) [Field K] [NumberField K]
   (hreal : NumberField.IsTotallyReal K) (hdegree : Module.finrank ℚ K = 7) (hdisc : ↑|NumberField.discr K| ≤ 14 ^ 7) :
   ∃ f ∈ TraceEuclidean.v15DegreeSevenHunterRefinedBox, TraceEuclidean.V15HunterFieldPolynomialCandidate K 7 343 f
+TraceEuclidean.v15_discriminant_le_polynomialBoxDiscriminantBound {S : Finset (Polynomial ℤ)} {f : Polynomial ℤ}
+  (hf : f ∈ S) : f.discr.natAbs ≤ TraceEuclidean.v15PolynomialBoxDiscriminantBound S
+TraceEuclidean.v15_mem_indexedDiscriminantBox_iff (S : Finset (Polynomial ℤ)) (D : ℤ) (f : Polynomial ℤ) (index : ℕ) :
+  (f, index) ∈ TraceEuclidean.v15IndexedDiscriminantBox S D ↔
+    f ∈ S ∧ 1 ≤ index ∧ index ≤ f.discr.natAbs ∧ f.discr = ↑index ^ 2 * D
+TraceEuclidean.v15_index_le_natAbs_discriminant {f : Polynomial ℤ} {D : ℤ} {index : ℕ} (hD : D ≠ 0) (hindex : 0 < index)
+  (hdiscr : f.discr = ↑index ^ 2 * D) : index ≤ f.discr.natAbs
+TraceEuclidean.v15_mem_indexedDiscriminantBox_of_relation {S : Finset (Polynomial ℤ)} {D : ℤ} {f : Polynomial ℤ}
+  {index : ℕ} (hf : f ∈ S) (hD : D ≠ 0) (hindex : 0 < index) (hdiscr : f.discr = ↑index ^ 2 * D) :
+  (f, index) ∈ TraceEuclidean.v15IndexedDiscriminantBox S D
+TraceEuclidean.v15_hunterFieldPolynomialCandidate_exists_mem_indexedDiscriminantBox.{u_1} {K : Type u_1} [Field K]
+  [NumberField K] {d : ℕ} {B : ℝ} {S : Finset (Polynomial ℤ)} {f : Polynomial ℤ} (hfbox : f ∈ S)
+  (hf : TraceEuclidean.V15HunterFieldPolynomialCandidate K d B f) :
+  ∃ index,
+    (f, index) ∈ TraceEuclidean.v15IndexedDiscriminantBox S (NumberField.discr K) ∧
+      0 < index ∧ f.discr = ↑index ^ 2 * NumberField.discr K
+TraceEuclidean.v15_exists_hunterFieldPolynomialCandidate_mem_indexedDiscriminantBox.{u_1} {K : Type u_1} [Field K]
+  [NumberField K] {d : ℕ} {B : ℝ} {S : Finset (Polynomial ℤ)}
+  (h : ∃ f ∈ S, TraceEuclidean.V15HunterFieldPolynomialCandidate K d B f) :
+  ∃ f index,
+    (f, index) ∈ TraceEuclidean.v15IndexedDiscriminantBox S (NumberField.discr K) ∧
+      TraceEuclidean.V15HunterFieldPolynomialCandidate K d B f ∧ 0 < index ∧ f.discr = ↑index ^ 2 * NumberField.discr K
+TraceEuclidean.v15_mem_discriminantCompatiblePolynomialBox_iff (S : Finset (Polynomial ℤ)) (D : ℤ) (f : Polynomial ℤ) :
+  f ∈ TraceEuclidean.v15DiscriminantCompatiblePolynomialBox S D ↔
+    ∃ index, f ∈ S ∧ 1 ≤ index ∧ index ≤ f.discr.natAbs ∧ f.discr = ↑index ^ 2 * D
+TraceEuclidean.v15_exists_degreeFive_hunterFieldCandidate_mem_discriminantBox.{u_1} (K : Type u_1) [Field K]
+  [NumberField K] (hreal : NumberField.IsTotallyReal K) (hdegree : Module.finrank ℚ K = 5)
+  (hdisc : ↑|NumberField.discr K| ≤ 14 ^ 5) :
+  ∃ f index,
+    (f, index) ∈
+        TraceEuclidean.v15IndexedDiscriminantBox TraceEuclidean.v15DegreeFiveHunterRefinedBox (NumberField.discr K) ∧
+      TraceEuclidean.V15HunterFieldPolynomialCandidate K 5 180 f ∧
+        0 < index ∧ f.discr = ↑index ^ 2 * NumberField.discr K
+TraceEuclidean.v15_exists_degreeSeven_hunterFieldCandidate_mem_discriminantBox.{u_1} (K : Type u_1) [Field K]
+  [NumberField K] (hreal : NumberField.IsTotallyReal K) (hdegree : Module.finrank ℚ K = 7)
+  (hdisc : ↑|NumberField.discr K| ≤ 14 ^ 7) :
+  ∃ f index,
+    (f, index) ∈
+        TraceEuclidean.v15IndexedDiscriminantBox TraceEuclidean.v15DegreeSevenHunterRefinedBox (NumberField.discr K) ∧
+      TraceEuclidean.V15HunterFieldPolynomialCandidate K 7 343 f ∧
+        0 < index ∧ f.discr = ↑index ^ 2 * NumberField.discr K
 'TraceEuclidean.v15_exists_fin_succ_basis_zero_eq_of_primitive' depends on axioms: [propext,
  Classical.choice,
  Quot.sound]
@@ -2318,6 +2359,27 @@ TraceEuclidean.v15_exists_degreeSeven_hunterFieldCandidate_mem_refinedBox.{u_1} 
  Classical.choice,
  Quot.sound]
 'TraceEuclidean.v15_exists_degreeSeven_hunterFieldCandidate_mem_refinedBox' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'TraceEuclidean.v15_discriminant_le_polynomialBoxDiscriminantBound' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'TraceEuclidean.v15_mem_indexedDiscriminantBox_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15_index_le_natAbs_discriminant' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15_mem_indexedDiscriminantBox_of_relation' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TraceEuclidean.v15_hunterFieldPolynomialCandidate_exists_mem_indexedDiscriminantBox' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'TraceEuclidean.v15_exists_hunterFieldPolynomialCandidate_mem_indexedDiscriminantBox' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'TraceEuclidean.v15_mem_discriminantCompatiblePolynomialBox_iff' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'TraceEuclidean.v15_exists_degreeFive_hunterFieldCandidate_mem_discriminantBox' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'TraceEuclidean.v15_exists_degreeSeven_hunterFieldCandidate_mem_discriminantBox' depends on axioms: [propext,
  Classical.choice,
  Quot.sound]
 'TraceEuclidean.v15_degreeElevenRootDiscriminantInput_of_odlyzkoMartinet' depends on axioms: [propext,

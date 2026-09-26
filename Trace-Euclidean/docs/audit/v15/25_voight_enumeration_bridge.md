@@ -97,8 +97,16 @@ degree-five or degree-seven field lands in the corresponding finite candidate
 set, and now in the corresponding refined executable box, together with its
 generator and exact positive-index formula.
 
+`V15HunterDiscriminantBoxes.lean` turns that formula into a finite dependent
+filter. For each polynomial `f` it checks only positive indices up to
+`|disc(f)|`, retains exactly the pairs satisfying
+`disc(f) = index^2 D`, and projects the surviving pairs back to a polynomial
+box. The general index bound and both degree-five and degree-seven field
+existence statements are kernel checked. This removes incompatible
+polynomial-index pairs before maximal-order and duplicate-field processing.
+
 This closes the geometric, algebraic, all-coefficient, finiteness, and
-field-discriminant front end in degrees five and seven. The remaining
+field-discriminant filtering front end in degrees five and seven. The remaining
 enumeration proof must exhaust these large boxes more efficiently, verify the
 associated maximal orders and discriminants, control duplicate fields, and
 treat the composite-degree relative extensions. It is finite but

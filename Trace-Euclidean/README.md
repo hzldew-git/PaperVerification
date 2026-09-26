@@ -171,7 +171,10 @@ and the final rank-twelve consequence. The public Python and Wolfram runs are
     `3113966442781800060` and
     `224291130941773441790640579990433850560116`. Every field of root
     discriminant at most 14 lands in the appropriate box with the exact
-    positive-index relation `disc(f) = index^2 disc(K)`. Lean derives the exact minima and degree-ten
+    positive-index relation `disc(f) = index^2 disc(K)`. Lean turns this
+    relation into an executable dependent filter: for each polynomial it
+    checks positive indices only up to `|disc(f)|`, and every qualifying
+    degree-five or degree-seven field survives the filter. Lean derives the exact minima and degree-ten
     exclusion from one explicit source-facing premise
     asserting completeness of Voight's enumeration through root discriminant
     14. Exhausting those finite boxes, treating the composite degrees, and the
