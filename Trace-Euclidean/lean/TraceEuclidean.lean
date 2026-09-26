@@ -63,6 +63,7 @@ import TraceEuclidean.V15HunterPrimeDegreeBoxes
 import TraceEuclidean.V15HunterDiscriminantBoxes
 import TraceEuclidean.V15AnalyticTableBridge
 import TraceEuclidean.V15VoightDiscriminantData
+import TraceEuclidean.V15VoightPolynomialBridge
 import TraceEuclidean.V15VoightEnumerationBridge
 import TraceEuclidean.V15DegreeElevenSensitivity
 import TraceEuclidean.V15FieldTransport

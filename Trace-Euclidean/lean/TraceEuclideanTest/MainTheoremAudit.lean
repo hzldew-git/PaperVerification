@@ -1274,3 +1274,14 @@ import TraceEuclidean
 #print axioms TraceEuclidean.v15OdlyzkoPhi_mul_logDeriv_dedekindZeta_integral
 #print axioms TraceEuclidean.v15OdlyzkoPrimePowerCriticalBracket_integral
 #print axioms TraceEuclidean.v15OdlyzkoPrimeCriticalBracket_average
+
+-- Full archived Voight rows and their exact Hunter discriminant-filter bridge.
+#check TraceEuclidean.v15_voightPolynomial_mem_box
+#check TraceEuclidean.v15_voightPolynomialRow_structurallyValid_iff
+#check TraceEuclidean.v15_voightPolynomialRow_mem_indexedDiscriminantBox_of_valid
+#check TraceEuclidean.v15_voightPolynomialRow_mem_indexedDiscriminantBox
+
+#print axioms TraceEuclidean.v15_voightPolynomial_mem_box
+#print axioms TraceEuclidean.v15_voightPolynomialRow_structurallyValid_iff
+#print axioms TraceEuclidean.v15_voightPolynomialRow_mem_indexedDiscriminantBox_of_valid
+#print axioms TraceEuclidean.v15_voightPolynomialRow_mem_indexedDiscriminantBox

@@ -48,13 +48,15 @@ From this directory in PowerShell:
 & 'D:\AI-Workspace\Environments\Python\math-research\Scripts\python.exe' '.\tools\generate_voight_discriminant_data.py' --check
 & 'D:\AI-Workspace\Environments\Python\math-research\Scripts\python.exe' '.\tools\verify_public_v15.py'
 & 'C:\Program Files\Wolfram Research\WolframScript\wolframscript.exe' -file '.\checks\v15_classification.wls'
+& 'C:\Program Files\Wolfram Research\WolframScript\wolframscript.exe' -file '.\checks\voight_polynomial_integrity.wls'
 Set-Location '.\lean'
 & 'C:\Users\hzlde\.elan\bin\lake.exe' build
 & 'C:\Users\hzlde\.elan\bin\lake.exe' env lean '.\TraceEuclideanTest\MainTheoremAudit.lean'
 & 'C:\Users\hzlde\.elan\bin\lake.exe' env lean '.\TraceEuclideanTest\NumericalAxiomAudit.lean'
 ~~~
 
-Expected public computation: 1156 Python PASS and 115 Wolfram PASS, with zero
+Expected public computation: 1156 Python PASS, 115 Wolfram classification
+PASS, and the Voight polynomial-integrity PASS for all 2,773 rows, with zero
 failures. The Lean project pins Lean 4.32.1 and mathlib. The two audit commands
 print main theorem signatures and the separate numerical trust dependencies.
 The v15 source-bound checks
@@ -163,9 +165,11 @@ and the final rank-twelve consequence. The public Python and Wolfram runs are
     `|D_F| = 5^2*8^2 = 1600`. Thus degree four has no external premise. The
     earlier sharp-Hermite and relative-different interfaces remain available
     as compatibility reductions.
-    Archived Voight degree 5--9 data are hash checked, structurally validated,
-    imported, and certified for count and sorted order. In degrees five and
-    seven, Lean proves coordinatewise bounds for every coefficient, fixes the
+    All 2,773 archived Voight degree 5--10 polynomial rows are hash checked,
+    imported, and structurally certified. Python and Mathematica independently
+    verify irreducibility, total reality, the discriminant-index relation, and
+    field discriminants. In degrees five and seven, Lean proves coordinatewise
+    bounds for every coefficient, fixes the
     monic coefficient, and incorporates the exact normalized trace and second
     coefficient intervals. The resulting executable boxes have exact sizes
     `3113966442781800060` and
@@ -174,11 +178,15 @@ and the final rank-twelve consequence. The public Python and Wolfram runs are
     positive-index relation `disc(f) = index^2 disc(K)`. Lean turns this
     relation into an executable dependent filter: for each polynomial it
     checks positive indices only up to `|disc(f)|`, and every qualifying
-    degree-five or degree-seven field survives the filter. Lean derives the exact minima and degree-ten
-    exclusion from one explicit source-facing premise
+    degree-five or degree-seven field survives the filter. The full archived
+    rows enter the same filter through the precise
+    `V15VoightPolynomialDiscriminantInput`; a Lean-kernel evaluator for its
+    2,773 concrete equations remains. Lean derives the exact minima and
+    degree-ten exclusion from one explicit source-facing premise
     asserting completeness of Voight's enumeration through root discriminant
-    14. Exhausting those finite boxes, treating the composite degrees, and the
-    optimized degree-eleven bound 14.083 remain external mathematical inputs.
+    14. Exhausting those finite boxes, proving the enumeration completeness,
+    treating the composite degrees, and the optimized degree-eleven bound
+    14.083 remain external mathematical inputs.
     Lean checks that the
     weaker online Table 2 value 14.034 would add the integral-table cell
     `(2,11)`, so it cannot replace 14.083 without changing the table.

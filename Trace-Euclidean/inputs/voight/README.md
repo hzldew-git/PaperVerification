@@ -17,10 +17,21 @@ the files below were recovered from the Internet Archive on 2026-09-26.
 The archived URL pattern is
 `https://web.archive.org/web/TIMESTAMPid_/https://math.dartmouth.edu/~jvoight/nf-tables/FILE`.
 The generator validates all six hashes and, for every file, its row structure,
-degree, monicity, row count, first discriminant, and sorted order. It also
-checks that the first degree-ten discriminant exceeds `14^10` before writing
-the degree 5--9 Lean discriminant lists. Lean then repeats the five imported
-row-count and sorted-order checks with one `native_decide` certificate.
+degree, monicity, row count, first discriminant, and sorted order. An exact
+integer Bareiss determinant calculation also checks for all 2,773 rows that
+the defining-polynomial discriminant is the recorded positive index squared
+times the field discriminant. It checks that the first degree-ten
+discriminant exceeds `14^10` before writing the complete degree 5--10 rows and
+the degree 5--9 discriminant columns to Lean.
+
+Lean separately checks both the five imported column lengths and order and
+the six full-row counts, structural conditions, positive indices, column
+projections, and maximum indices. These are two disclosed `native_decide`
+certificates. The independent Mathematica script
+`checks/voight_polynomial_integrity.wls` additionally verifies all 2,773
+defining polynomials are irreducible and totally real, recomputes the
+polynomial-discriminant index equation, and confirms the actual number-field
+discriminant.
 
 These finite checks do not establish enumeration completeness. That statement
 is isolated separately as the source-facing Voight input.

@@ -97,8 +97,8 @@ jobs:
           source = Path('TraceEuclideanTest/NumericalAxiomAudit.lean').read_text(encoding='utf-8')
           output = ' '.join(Path('numerical-audit.log').read_text(encoding='utf-8').split())
           names = re.findall(r'^#print axioms\s+(\S+)', source, re.M)
-          if len(names) != 47:
-              raise SystemExit(f'Expected forty-seven numerical audit declarations, found {len(names)}')
+          if len(names) != 48:
+              raise SystemExit(f'Expected forty-eight numerical audit declarations, found {len(names)}')
           standard = {'propext', 'Classical.choice', 'Quot.sound'}
           sinh = 'TraceEuclidean.V15OdlyzkoNumerical.sinh_core_upper._native.native_decide.ax_1_1'
           cosh = 'TraceEuclidean.V15OdlyzkoNumerical.cosh_core_upper._native.native_decide.ax_1_1'
@@ -106,6 +106,7 @@ jobs:
           scalar_a = 'TraceEuclidean.V15OdlyzkoNumerical.scalarA_strict._native.native_decide.ax_1_1'
           scalar_b = 'TraceEuclidean.V15OdlyzkoNumerical.scalarB_strict._native.native_decide.ax_1_1'
           voight = 'TraceEuclidean.v15_voightDiscriminantData_certificate._native.native_decide.ax_1_1'
+          voight_rows = 'TraceEuclidean.v15_voightPolynomialRowData_certificate._native.native_decide.ax_1_1'
           expected = {name: standard for name in names[:4]}
           expected[names[4]] = standard | {sinh}
           expected[names[5]] = standard | {cosh}
@@ -113,13 +114,14 @@ jobs:
           for name in names[7:32]:
               expected[name] = standard | {sinh, cosh, gamma, scalar_a, scalar_b}
           expected[names[32]] = {voight}
-          expected[names[33]] = standard | {voight}
-          expected[names[34]] = standard
-          for name in names[35:41]:
+          expected[names[33]] = {voight_rows}
+          expected[names[34]] = standard | {voight}
+          expected[names[35]] = standard
+          for name in names[36:42]:
               expected[name] = standard | {
                   sinh, cosh, gamma, scalar_a, scalar_b, voight
               }
-          for name in names[41:]:
+          for name in names[42:]:
               expected[name] = standard | {sinh, cosh, gamma, scalar_a, scalar_b}
           for name in names:
               match = re.search("'" + re.escape(name) + r"' depends on axioms: \[([^]]*)\]", output)

@@ -11,11 +11,25 @@ Their archive timestamps and SHA-256 digests appear in that directory's
 README.
 
 `tools/generate_voight_discriminant_data.py` verifies all six recorded
-digests. For the degree 5--9 files used by Lean, it also checks the row count,
-row shape, polynomial degree, monicity, first discriminant, and sorted order.
-It generates `V15VoightDiscriminantData.lean`, which contains only the five
-discriminant columns. A separate `native_decide` certificate checks the five
-lengths and nondecreasing order inside Lean.
+digests, row counts, row shapes, degrees, monicity, first discriminants, and
+sorted order. Its exact integer Bareiss determinant calculation verifies all
+2,773 relations
+
+```text
+disc(f) = index^2 fieldDiscriminant.
+```
+
+It generates `V15VoightDiscriminantData.lean`, containing every archived
+degree 5--10 coefficient row and index, together with the five degree 5--9
+discriminant columns. One Lean `native_decide` certificate checks the columns;
+a second checks all six full-row counts, structural conditions, positive
+indices, column projections, and maximum indices.
+
+The independent Mathematica script `voight_polynomial_integrity.wls` checks
+all 2,773 polynomials are irreducible and totally real, recomputes the
+polynomial-discriminant index equation, and verifies the number-field
+discriminant. Its machine-readable output is
+`results/voight-polynomial-integrity.json`.
 
 ## Exact proof boundary
 
@@ -44,6 +58,17 @@ exact polynomial enumeration from the proved prime-degree coefficient bounds,
 irreducibility and maximal-order checks, duplicate-field control, and the
 relative enumeration and coefficient bounds needed for imprimitive composite
 extensions.
+
+`V15VoightPolynomialBridge.lean` makes the new full-row interface explicit.
+It constructs the finite archived polynomial box and proves that a structurally
+valid row satisfying the coefficient-to-discriminant equation belongs to the
+exact indexed Hunter filter. The equation is packaged as
+`V15VoightPolynomialDiscriminantInput`. Python and Mathematica verify every
+concrete instance, but the current Lean kernel does not yet recompute the
+2,773 polynomial discriminants. Closing that smaller computational boundary
+requires a proved efficient determinant or resultant evaluator and imported
+certificates; mathlib's direct determinant expansion is impractical at this
+scale.
 
 ## Hunter groundwork
 
@@ -106,17 +131,21 @@ existence statements are kernel checked. This removes incompatible
 polynomial-index pairs before maximal-order and duplicate-field processing.
 
 This closes the geometric, algebraic, all-coefficient, finiteness, and
-field-discriminant filtering front end in degrees five and seven. The remaining
-enumeration proof must exhaust these large boxes more efficiently, verify the
-associated maximal orders and discriminants, control duplicate fields, and
-treat the composite-degree relative extensions. It is finite but
-substantially larger than the cubic and quartic searches already formalized.
+field-discriminant filtering front end in degrees five and seven. The complete
+archived polynomial rows now enter the same exact filter, conditional only on
+the precisely named coefficient-discriminant input. The remaining enumeration
+proof must show that the archived rows exhaust the large Hunter boxes, verify
+maximal orders inside Lean, control duplicate fields, and treat the
+composite-degree relative extensions. It is finite but substantially larger
+than the cubic and quartic searches already formalized.
 
 ## Trust and status
 
-The general Hunter proofs use only the standard Lean logical axioms reported
-by the main audit. The Voight list certificate adds one disclosed native
-compiler dependency and is isolated in the numerical audit. Enumeration
-completeness remains a literature input, while the optimized degree-eleven
-bound remains a separate literature input. These boundaries preserve the
-current Grade B and PROVISIONAL_MATCH assessments.
+The general Hunter and full-row bridge proofs use only the standard Lean
+logical axioms reported by the main audit. The two Voight data certificates
+add two separately disclosed native compiler dependencies and are isolated in
+the numerical audit. The Mathematica full-row verification is an independent
+computer-algebra check, not a Lean-kernel theorem. Enumeration completeness
+remains a literature input, while the optimized degree-eleven bound remains a
+separate literature input. These boundaries preserve the current Grade B and
+PROVISIONAL_MATCH assessments.

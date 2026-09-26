@@ -41,9 +41,13 @@ four and the range from degree twelve are internal. In degree four, Lean proves
 the projected Minkowski construction, transverse second-vector selection,
 quartic normalization and order maximality, and the quadratic-subfield
 compositum contradiction, yielding the unconditional bound `|D_K| >= 725`.
-The degree 5--9 Voight columns are imported and checked. Their use and the
-degree-ten exclusion are reduced to one cited enumeration-completeness
-statement; the optimized degree-eleven bound remains a separate input.
+All 2,773 degree 5--10 Voight polynomial rows are imported and structurally
+checked. Python and Mathematica independently verify their irreducibility,
+total reality, discriminant-index equations, and field discriminants. Lean
+bridges the exact equations to its Hunter filter as one precisely named
+input. Use of the degree 5--9 columns and the degree-ten exclusion is reduced
+to one cited enumeration-completeness statement; the optimized degree-eleven
+bound remains a separate input.
 The latter is stated in the all-degrees form quoted by Voight and specialized
 to Section 4 in Lean. An exact sensitivity theorem proves that the online
 Table 2 value `14.034` would add the integral-table cell `(2,11)`, while the
@@ -56,7 +60,8 @@ The analytic contour core depends only on Lean's standard logical axioms
 `sorry`, `sorryAx`, or a project axiom. The strict `A = 36.347` and
 `B = 16.593` certificate uses `native_decide`; its five generated native
 dependencies form a separately disclosed compiler trust boundary. The
-Voight finite-data certificate adds one separately audited native dependency.
+The two Voight finite-data certificates add two separately audited native
+dependencies.
 
 Python and Wolfram checks trust their respective runtimes and the extracted
 inputs. Private source binding checks the author-source hash. Successful
@@ -65,8 +70,9 @@ compilation and computation do not by themselves certify semantic fidelity.
 ## Exclusions
 
 The certificate excludes independent human approval, historical and novelty
-claims, a Lean proof of Voight enumeration completeness, the optimized
-degree-eleven field-discriminant estimate, the
+claims, Lean-kernel proofs of the concrete Voight polynomial-discriminant
+equations and enumeration completeness, the optimized degree-eleven
+field-discriminant estimate, the
 optional sharper HSW numerical zero-count theorem, and selected standalone
 supporting lemmas that are not needed by the audited endpoints. It does not
 claim a general reusable Stark--Weil theorem for arbitrary test functions;

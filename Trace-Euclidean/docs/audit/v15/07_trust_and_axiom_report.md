@@ -48,10 +48,19 @@ This is a compiler-backed numerical trust boundary. The contour,
 archimedean identity, prime transform, and logarithmic discriminant inequality
 themselves do not use it.
 
-The imported Voight table-data certificate uses a separate `native_decide`
-check for the five row counts and sorted discriminant columns. Its single
-generated native dependency is printed independently. File hashes and table
-structure are checked by the reproducible generator before Lean runs.
+The imported Voight data use two separate `native_decide` certificates. The
+first checks the five discriminant-column counts and sorted order. The second
+checks all six full polynomial-row counts, structural conditions, positive
+indices, column projections, and maximum indices. Their two generated native
+dependencies are printed independently. File hashes and table structure are
+checked by the reproducible generator before Lean runs.
+
+The generator also verifies the 2,773 polynomial-discriminant index equations
+with an exact integer Bareiss determinant. Mathematica independently verifies
+irreducibility, total reality, the same equation, and the actual number-field
+discriminant for every row. These computations do not yet replace
+`V15VoightPolynomialDiscriminantInput` with a Lean-kernel proof; that boundary
+is recorded explicitly in `V15VoightPolynomialBridge.lean`.
 
 ## Remaining external mathematics
 
@@ -75,9 +84,11 @@ The sharp-Hermite, imprimitive-minimum, and relative-different routes remain
 as compatibility interfaces and are not dependencies of the strongest
 endpoint. Section 4 now derives the degree `5`--`9` minima and degree-ten
 exclusion from checked Voight columns and one source-facing completeness
-premise for the enumeration through root discriminant `14`. Formalizing the
-completeness proof itself and the optimized degree-eleven bound `14.083`
-remain. The online
+premise for the enumeration through root discriminant `14`. The full archived
+polynomial rows, power-order indices, and independent arithmetic checks are
+also public. Formalizing the coefficient-discriminant computation inside the
+Lean kernel, the enumeration-completeness proof itself, and the optimized
+degree-eleven bound `14.083` remain. The online
 November 1976 Table 2 gives `14.034` at degree eleven, so `14.083` remains a
 separately attributed later optimized input. The source-facing
 degree-at-least-eleven statement is connected to the exact Section 4 premise,

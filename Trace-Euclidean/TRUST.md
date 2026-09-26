@@ -4,10 +4,10 @@ Lean accepts the encoded proof terms under Lean 4.32.1 and pinned mathlib
 revision 520045ab14e26149ee970e2e617ca04b09bde5d6. The audited endpoints depend
 only on the standard logical axioms propext,
 Classical.choice, and Quot.sound. The archimedean numerical certificate and
-the imported Voight table-data certificate use `native_decide` checks and
-therefore also trust Lean's native compiler. The separate numerical axiom
-audit identifies the five generated Odlyzko dependencies and the one
-generated Voight-data dependency.
+the two imported Voight table-data certificates use `native_decide` checks
+and therefore also trust Lean's native compiler. The separate numerical axiom
+audit identifies the five generated Odlyzko dependencies and the two
+generated Voight-data dependencies.
 The delivered proof modules contain no sorry, sorryAx, or project axiom.
 
 The global finite-class results now receive an internally constructed
@@ -144,12 +144,19 @@ Two imprimitive lifts would generate distinct quadratic subfields of
 discriminant `5` and `8`; the coprime-compositum formula would force quartic
 discriminant `1600`, a contradiction. The older sharp-Hermite and
 relative-different interfaces remain available only as compatibility routes.
-The archived Voight tables supply the degree 5--9 discriminant columns.
-Their hashes, row structure, counts, first entries, and sorted order are
-checked, and Lean derives the required minima from one source-facing
-completeness premise for Voight's enumeration through root discriminant 14.
-The same premise proves the required degree-ten exclusion. It does not yet
-have an internal Lean proof of the enumeration algorithm's completeness.
+The archived Voight tables supply the complete degree 5--10 defining
+polynomial rows and the degree 5--9 discriminant columns. Their hashes, row
+structure, counts, first entries, sorted order, positive indices, and column
+projections are checked. Python uses an exact Bareiss determinant and
+Mathematica independently verifies irreducibility, total reality, the
+polynomial-discriminant index equation, and the number-field discriminant for
+all 2,773 rows. Lean connects the full rows to its exact Hunter filter through
+`V15VoightPolynomialDiscriminantInput`; the concrete coefficient-discriminant
+equations are not yet Lean-kernel computations. Lean derives the required
+minima from one source-facing completeness premise for Voight's enumeration
+through root discriminant 14. The same premise proves the required degree-ten
+exclusion. It does not yet have an internal Lean proof of the enumeration
+algorithm's completeness.
 Degree 11 uses the later optimized bound 14.083, and Table 4 is required only
 from degree 12. The online November 1976 Table 2 gives 14.034 at degree 11,
 so the value 14.083 remains separate from that table. All subsequent

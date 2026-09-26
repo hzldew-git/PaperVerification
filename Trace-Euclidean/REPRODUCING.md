@@ -16,11 +16,14 @@ From Trace-Euclidean:
 & 'D:\AI-Workspace\Environments\Python\math-research\Scripts\python.exe' '.\tools\generate_voight_discriminant_data.py' --check
 & 'D:\AI-Workspace\Environments\Python\math-research\Scripts\python.exe' '.\tools\verify_public_v15.py'
 & 'C:\Program Files\Wolfram Research\WolframScript\wolframscript.exe' -file '.\checks\v15_classification.wls'
+& 'C:\Program Files\Wolfram Research\WolframScript\wolframscript.exe' -file '.\checks\voight_polynomial_integrity.wls'
 ~~~
 
-Expected: 1156 Python PASS, 115 Wolfram PASS, zero failures. The v15 summaries
-are under results/python_v15_summary.json and
-results/v15-mathematica-transcript.txt. Executable paths may be adapted.
+Expected: 1156 Python PASS, 115 Wolfram classification PASS, and the Voight
+polynomial-integrity PASS for all 2,773 rows, with zero failures. The v15
+summaries are under results/python_v15_summary.json,
+results/v15-mathematica-transcript.txt, and
+results/voight-polynomial-integrity.json. Executable paths may be adapted.
 
 ## Lean rerun
 
@@ -41,8 +44,8 @@ commands must exit successfully. Compare the axiom report with
 lean/audit/main_theorem_axioms.txt; the main v15 declarations should
 list only subsets of propext, Classical.choice, and Quot.sound. The numerical
 audit separately identifies the generated `_native.native_decide.ax_*`
-dependencies in LeanCert's interval and Euler–Mascheroni checks and in the
-Voight finite-data certificate. On resource-limited Windows systems, set
+dependencies in LeanCert's interval and Euler–Mascheroni checks and in the two
+Voight finite-data certificates. On resource-limited Windows systems, set
 LEAN_NUM_THREADS to 4.
 
 ## Private maintainer source check

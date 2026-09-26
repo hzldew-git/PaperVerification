@@ -1,5 +1,14 @@
 # Reproducibility report
 
+- The full Voight polynomial-row update passed a complete local 8886-job Lean
+  build on the pinned Lean 4.32.1 toolchain. The expanded 557-declaration main
+  axiom audit reports only `propext`, `Classical.choice`, and `Quot.sound`.
+  The 48-declaration numerical audit separately exposes the five documented
+  Odlyzko native dependencies and the two Voight data certificates. The exact
+  Python generator validates every archived polynomial-discriminant index
+  equation, and an independent Mathematica run verifies irreducibility, total
+  reality, the equation, and the field discriminant on all 2,773 rows.
+
 - The discriminant-filtered Hunter-box update passed a full local 8885-job
   Lean build under the unchanged pinned Lean 4.32.1 and mathlib v4.32.1
   toolchain. The expanded 553-declaration main axiom audit reports only

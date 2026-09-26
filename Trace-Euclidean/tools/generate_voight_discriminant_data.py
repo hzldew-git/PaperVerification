@@ -6,6 +6,7 @@ from __future__ import annotations
 import ast
 import argparse
 import hashlib
+import math
 from dataclasses import dataclass
 from pathlib import Path
 
@@ -13,6 +14,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 INPUT_DIR = ROOT / "inputs" / "voight"
 OUTPUT = ROOT / "lean" / "TraceEuclidean" / "V15VoightDiscriminantData.lean"
+ROW_CHUNK_SIZE = 100
 
 
 @dataclass(frozen=True)
@@ -23,6 +25,13 @@ class Table:
     expected_minimum: int
     lean_name: str
     line_records: bool = False
+
+
+@dataclass(frozen=True)
+class PolynomialRow:
+    field_discriminant: int
+    coefficients: tuple[int, ...]
+    index: int
 
 
 TABLES = (
@@ -54,7 +63,75 @@ def validate_hashes() -> None:
             raise ValueError(f"{filename}: expected SHA-256 {expected}, found {actual}")
 
 
-def read_table(table: Table) -> list[int]:
+def bareiss_determinant(matrix: list[list[int]]) -> int:
+    """Compute an exact integer determinant by fraction-free elimination."""
+    size = len(matrix)
+    if size == 0:
+        return 1
+    work = [row.copy() for row in matrix]
+    sign = 1
+    previous_pivot = 1
+    for pivot_index in range(size - 1):
+        pivot_row = next(
+            (
+                row
+                for row in range(pivot_index, size)
+                if work[row][pivot_index] != 0
+            ),
+            None,
+        )
+        if pivot_row is None:
+            return 0
+        if pivot_row != pivot_index:
+            work[pivot_index], work[pivot_row] = (
+                work[pivot_row],
+                work[pivot_index],
+            )
+            sign = -sign
+        pivot = work[pivot_index][pivot_index]
+        for row in range(pivot_index + 1, size):
+            for column in range(pivot_index + 1, size):
+                numerator = (
+                    work[row][column] * pivot
+                    - work[row][pivot_index] * work[pivot_index][column]
+                )
+                quotient, remainder = divmod(numerator, previous_pivot)
+                if remainder != 0:
+                    raise ArithmeticError("nonexact Bareiss division")
+                work[row][column] = quotient
+            work[row][pivot_index] = 0
+        previous_pivot = pivot
+    return sign * work[-1][-1]
+
+
+def polynomial_discriminant(coefficients: list[int]) -> int:
+    """Return the discriminant of a monic polynomial in ascending order."""
+    degree = len(coefficients) - 1
+    if degree <= 1:
+        return 1
+    polynomial_descending = list(reversed(coefficients))
+    derivative_descending = [
+        coefficient * exponent
+        for exponent, coefficient in zip(
+            range(degree, 0, -1), polynomial_descending[:-1]
+        )
+    ]
+    derivative_degree = degree - 1
+    size = degree + derivative_degree
+    sylvester = [[0 for _ in range(size)] for _ in range(size)]
+    for row in range(derivative_degree):
+        sylvester[row][row : row + degree + 1] = polynomial_descending
+    for offset in range(degree):
+        row = derivative_degree + offset
+        sylvester[row][offset : offset + derivative_degree + 1] = (
+            derivative_descending
+        )
+    resultant = bareiss_determinant(sylvester)
+    sign = -1 if degree * (degree - 1) // 2 % 2 else 1
+    return sign * resultant // coefficients[-1]
+
+
+def read_table(table: Table) -> list[PolynomialRow]:
     source = (INPUT_DIR / table.filename).read_text(encoding="utf-8")
     if table.line_records:
         rows = [ast.literal_eval(line) for line in source.splitlines() if line.strip()]
@@ -64,7 +141,7 @@ def read_table(table: Table) -> list[int]:
         raise ValueError(
             f"{table.filename}: expected {table.expected_count} rows, found {len(rows)}"
         )
-    discriminants: list[int] = []
+    parsed_rows: list[PolynomialRow] = []
     for row_number, row in enumerate(rows, 1):
         if not (
             isinstance(row, list)
@@ -79,7 +156,19 @@ def read_table(table: Table) -> list[int]:
             raise ValueError(f"{table.filename}:{row_number}: nonpositive discriminant")
         if len(coefficients) != table.degree + 1 or coefficients[-1] != 1:
             raise ValueError(f"{table.filename}:{row_number}: malformed monic polynomial")
-        discriminants.append(discriminant)
+        polynomial_disc = polynomial_discriminant(coefficients)
+        quotient, remainder = divmod(polynomial_disc, discriminant)
+        index = math.isqrt(quotient) if quotient >= 0 else -1
+        if remainder != 0 or index <= 0 or index * index != quotient:
+            raise ValueError(
+                f"{table.filename}:{row_number}: polynomial discriminant "
+                f"{polynomial_disc} is not a positive square multiple of "
+                f"field discriminant {discriminant}"
+            )
+        parsed_rows.append(
+            PolynomialRow(discriminant, tuple(coefficients), index)
+        )
+    discriminants = [row.field_discriminant for row in parsed_rows]
     if discriminants[0] != table.expected_minimum:
         raise ValueError(
             f"{table.filename}: expected first discriminant {table.expected_minimum}, "
@@ -87,7 +176,7 @@ def read_table(table: Table) -> list[int]:
         )
     if discriminants != sorted(discriminants):
         raise ValueError(f"{table.filename}: discriminants are not sorted")
-    return discriminants
+    return parsed_rows
 
 
 def format_list(values: list[int]) -> str:
@@ -98,13 +187,33 @@ def format_list(values: list[int]) -> str:
     return "[\n" + ",\n".join(lines) + "\n  ]"
 
 
+def format_integer_list(values: tuple[int, ...]) -> str:
+    return "[" + ", ".join(str(value) for value in values) + "]"
+
+
+def format_polynomial_rows(rows: list[PolynomialRow]) -> str:
+    rendered = [
+        "    ⟨"
+        f"{row.field_discriminant}, "
+        f"{format_integer_list(row.coefficients)}, "
+        f"{row.index}"
+        "⟩"
+        for row in rows
+    ]
+    return "[\n" + ",\n".join(rendered) + "\n  ]"
+
+
+def format_chunk_concatenation(names: list[str]) -> str:
+    return " ++\n    ".join(names)
+
+
 def render() -> str:
     validate_hashes()
     data = {table.degree: read_table(table) for table in TABLES}
     supplemental = {
         table.degree: read_table(table) for table in SUPPLEMENTAL_TABLES
     }
-    if supplemental[10][0] <= 14**10:
+    if supplemental[10][0].field_discriminant <= 14**10:
         raise ValueError("10.txt: first discriminant does not exceed 14^10")
     out = [
         "import Mathlib",
@@ -113,19 +222,63 @@ def render() -> str:
         "# Discriminants from Voight's archived totally real field tables",
         "",
         "This file is generated by `tools/generate_voight_discriminant_data.py`.",
-        "It contains only the discriminant columns.  The source tables, archive",
-        "timestamps, and checksums are recorded under `inputs/voight`.",
+        "It contains the archived defining-polynomial rows and their discriminant",
+        "columns.  The source tables, archive timestamps, and checksums are",
+        "recorded under `inputs/voight`.",
         "-/",
         "",
         "namespace TraceEuclidean",
         "",
+        "open scoped Polynomial",
+        "",
+        "/-- One archived Voight row: field discriminant, ascending defining-",
+        "polynomial coefficients, and the positive power-order index. -/",
+        "structure V15VoightPolynomialRow where",
+        "  fieldDiscriminant : ℕ",
+        "  coefficients : List ℤ",
+        "  index : ℕ",
+        "deriving DecidableEq, Repr",
+        "",
+        "/-- The integral defining polynomial encoded by an archived row. -/",
+        "def V15VoightPolynomialRow.polynomial",
+        "    (row : V15VoightPolynomialRow) : ℤ[X] :=",
+        "  Polynomial.ofFinsupp",
+        "    (AddMonoidAlgebra.ofCoeff row.coefficients.toFinsupp)",
+        "",
     ]
+    for table in TABLES + SUPPLEMENTAL_TABLES:
+        rows = data[table.degree] if table.degree in data else supplemental[table.degree]
+        chunk_names = []
+        for chunk_index, start in enumerate(range(0, len(rows), ROW_CHUNK_SIZE)):
+            chunk_name = (
+                f"v15VoightPolynomialRows{table.lean_name}Chunk{chunk_index}"
+            )
+            chunk_names.append(chunk_name)
+            chunk = rows[start : start + ROW_CHUNK_SIZE]
+            out.extend(
+                [
+                    f"/-- Chunk {chunk_index + 1} of the archived degree-"
+                    f"{table.degree} polynomial rows. -/",
+                    f"def {chunk_name} : List V15VoightPolynomialRow :=",
+                    f"  {format_polynomial_rows(chunk)}",
+                    "",
+                ]
+            )
+        out.extend(
+            [
+                f"/-- Complete archived degree-{table.degree} polynomial rows. -/",
+                f"def v15VoightPolynomialRows{table.lean_name} :",
+                "    List V15VoightPolynomialRow :=",
+                f"  {format_chunk_concatenation(chunk_names)}",
+                "",
+            ]
+        )
     for table in TABLES:
         out.extend(
             [
                 f"/-- Degree-{table.degree} discriminants in Voight's `{table.filename}` table. -/",
                 f"def v15VoightDiscriminants{table.lean_name} : List ℕ :=",
-                f"  {format_list(data[table.degree])}",
+                f"  {format_list([row.field_discriminant for row in data[table.degree]])}",
                 "",
             ]
         )
@@ -141,6 +294,28 @@ def render() -> str:
             "  | 9 => v15VoightDiscriminantsNine",
             "  | _ => []",
             "",
+            "/-- The complete archived polynomial-row table selected by degree. -/",
+            "def v15VoightPolynomialRows : ℕ → List V15VoightPolynomialRow",
+            "  | 5 => v15VoightPolynomialRowsFive",
+            "  | 6 => v15VoightPolynomialRowsSix",
+            "  | 7 => v15VoightPolynomialRowsSeven",
+            "  | 8 => v15VoightPolynomialRowsEight",
+            "  | 9 => v15VoightPolynomialRowsNine",
+            "  | 10 => v15VoightPolynomialRowsTen",
+            "  | _ => []",
+            "",
+            "/-- Executable structural checks for a polynomial row. -/",
+            "def V15VoightPolynomialRow.structurallyValid",
+            "    (degree : ℕ) (row : V15VoightPolynomialRow) : Bool :=",
+            "  row.coefficients.length == degree + 1 &&",
+            "    row.coefficients.getLast? == some 1 &&",
+            "    0 < row.fieldDiscriminant && 0 < row.index",
+            "",
+            "/-- Maximum recorded power-order index in a row list. -/",
+            "def v15VoightMaximumIndex",
+            "    (rows : List V15VoightPolynomialRow) : ℕ :=",
+            "  rows.foldl (fun current row => max current row.index) 0",
+            "",
             "/-- One native certificate checks all row counts and the sorted order",
             "of every imported discriminant column. -/",
             "theorem v15_voightDiscriminantData_certificate :",
@@ -154,6 +329,49 @@ def render() -> str:
             "    v15VoightDiscriminantsEight.Pairwise (· ≤ ·) ∧",
             "    v15VoightDiscriminantsNine.length = 15 ∧",
             "    v15VoightDiscriminantsNine.Pairwise (· ≤ ·) := by",
+            "  native_decide",
+            "",
+            "set_option maxRecDepth 10000 in",
+            "/-- A separate native certificate checks that the generated full rows",
+            "project to the imported discriminant columns, have the advertised",
+            "shape and positive indices, and have the recorded maximum indices.",
+            "The coefficient-to-discriminant calculation is independently rerun by",
+            "the Python generator and `checks/voight_polynomial_integrity.wls`. -/",
+            "theorem v15_voightPolynomialRowData_certificate :",
+            "    v15VoightPolynomialRowsFive.length = 674 ∧",
+            "    v15VoightPolynomialRowsSix.length = 827 ∧",
+            "    v15VoightPolynomialRowsSeven.length = 301 ∧",
+            "    v15VoightPolynomialRowsEight.length = 164 ∧",
+            "    v15VoightPolynomialRowsNine.length = 15 ∧",
+            "    v15VoightPolynomialRowsTen.length = 792 ∧",
+            "    v15VoightPolynomialRowsFive.map (·.fieldDiscriminant) =",
+            "      v15VoightDiscriminantsFive ∧",
+            "    v15VoightPolynomialRowsSix.map (·.fieldDiscriminant) =",
+            "      v15VoightDiscriminantsSix ∧",
+            "    v15VoightPolynomialRowsSeven.map (·.fieldDiscriminant) =",
+            "      v15VoightDiscriminantsSeven ∧",
+            "    v15VoightPolynomialRowsEight.map (·.fieldDiscriminant) =",
+            "      v15VoightDiscriminantsEight ∧",
+            "    v15VoightPolynomialRowsNine.map (·.fieldDiscriminant) =",
+            "      v15VoightDiscriminantsNine ∧",
+            "    v15VoightPolynomialRowsFive.all",
+            "      (V15VoightPolynomialRow.structurallyValid 5) = true ∧",
+            "    v15VoightPolynomialRowsSix.all",
+            "      (V15VoightPolynomialRow.structurallyValid 6) = true ∧",
+            "    v15VoightPolynomialRowsSeven.all",
+            "      (V15VoightPolynomialRow.structurallyValid 7) = true ∧",
+            "    v15VoightPolynomialRowsEight.all",
+            "      (V15VoightPolynomialRow.structurallyValid 8) = true ∧",
+            "    v15VoightPolynomialRowsNine.all",
+            "      (V15VoightPolynomialRow.structurallyValid 9) = true ∧",
+            "    v15VoightPolynomialRowsTen.all",
+            "      (V15VoightPolynomialRow.structurallyValid 10) = true ∧",
+            "    v15VoightMaximumIndex v15VoightPolynomialRowsFive = 28 ∧",
+            "    v15VoightMaximumIndex v15VoightPolynomialRowsSix = 1651 ∧",
+            "    v15VoightMaximumIndex v15VoightPolynomialRowsSeven = 9 ∧",
+            "    v15VoightMaximumIndex v15VoightPolynomialRowsEight = 4096 ∧",
+            "    v15VoightMaximumIndex v15VoightPolynomialRowsNine = 1 ∧",
+            "    v15VoightMaximumIndex v15VoightPolynomialRowsTen = 3581 := by",
             "  native_decide",
             "",
             "theorem v15_voightDiscriminantsFive_pairwise :",
@@ -198,7 +416,10 @@ def main() -> None:
             raise SystemExit(
                 "V15VoightDiscriminantData.lean is stale; rerun the generator"
             )
-        print("Voight source tables and generated Lean data: PASS")
+        print(
+            "Voight source tables, polynomial discriminant indices, "
+            "and generated Lean data: PASS"
+        )
         return
     OUTPUT.write_text(generated, encoding="utf-8", newline="\n")
 
