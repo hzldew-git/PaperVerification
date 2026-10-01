@@ -1,0 +1,11 @@
+import TraceEuclidean.PoitouDegreeElevenClosed
+
+/-! Audit the proved numerical estimate and expose the remaining formula premise. -/
+
+#check TraceEuclidean.PoitouDegreeElevenClosed.poitouL1_upper_certificate
+#check TraceEuclidean.PoitouDegreeElevenClosed.degreeElevenRootDiscriminantInput_of_poitouFormula
+
+#print axioms TraceEuclidean.PoitouDegreeElevenClosed.firstPoitouSumUpper
+#print axioms TraceEuclidean.PoitouDegreeElevenClosed.alternatingPoitouSumUpper
+#print axioms TraceEuclidean.PoitouDegreeElevenClosed.poitouL1_upper_certificate
+#print axioms TraceEuclidean.PoitouDegreeElevenClosed.degreeElevenRootDiscriminantInput_of_poitouFormula

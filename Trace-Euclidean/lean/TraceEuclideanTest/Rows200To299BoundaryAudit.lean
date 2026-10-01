@@ -1,0 +1,20 @@
+import TraceEuclidean.DegreeSevenRows200To299SurvivorDiscriminants
+
+/-!
+# Degree-seven rows 200--299 boundary audit
+
+This focused audit checks the exact reduction count, the exceptional
+maximal-order bridge, the uniform field-discriminant lower bound, and the
+end-to-end exclusion theorem for the third block of one hundred Stage Five
+rows.
+-/
+
+#check TraceEuclidean.degreeSevenStageSevenRows200To299_reduces_to_ninetyFour
+#check TraceEuclidean.DegreeSevenRows200To299ExceptionalMaximalOrder.fieldDiscriminant_lowerBound
+#check TraceEuclidean.degreeSevenStageSevenRows200To299_fieldDiscriminant_lowerBound
+#check TraceEuclidean.degreeSevenStageSevenRows200To299_excludes_discriminant_lt
+
+#print axioms TraceEuclidean.degreeSevenStageSevenRows200To299_reduces_to_ninetyFour
+#print axioms TraceEuclidean.DegreeSevenRows200To299ExceptionalMaximalOrder.fieldDiscriminant_lowerBound
+#print axioms TraceEuclidean.degreeSevenStageSevenRows200To299_fieldDiscriminant_lowerBound
+#print axioms TraceEuclidean.degreeSevenStageSevenRows200To299_excludes_discriminant_lt

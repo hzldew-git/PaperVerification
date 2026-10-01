@@ -1,0 +1,305 @@
+import TraceEuclidean.DegreeSevenRolleStageFourCompleteness
+import TraceEuclidean.DegreeSevenRolleStageFiveRejected
+import TraceEuclidean.DegreeSevenRolleStageFiveLinks.Chunk000
+import TraceEuclidean.DegreeSevenRolleStageFiveLinks.Chunk001
+import TraceEuclidean.DegreeSevenRolleStageFiveLinks.Chunk002
+import TraceEuclidean.DegreeSevenRolleStageFiveLinks.Chunk003
+import TraceEuclidean.DegreeSevenRolleStageFiveLinks.Chunk004
+import TraceEuclidean.DegreeSevenRolleStageFiveLinks.Chunk005
+import TraceEuclidean.DegreeSevenRolleStageFiveLinks.Chunk006
+import TraceEuclidean.DegreeSevenRolleStageFiveLinks.Chunk007
+import TraceEuclidean.DegreeSevenRolleStageFiveLinks.Chunk008
+import TraceEuclidean.DegreeSevenRolleStageFiveLinks.Chunk009
+import TraceEuclidean.DegreeSevenRolleStageFiveLinks.Chunk010
+import TraceEuclidean.DegreeSevenRolleStageFiveLinks.Chunk011
+import TraceEuclidean.DegreeSevenRolleStageFiveLinks.Chunk012
+import TraceEuclidean.DegreeSevenRolleStageFiveLinks.Chunk013
+import TraceEuclidean.DegreeSevenRolleStageFiveLinks.Chunk014
+import TraceEuclidean.DegreeSevenRolleStageFiveLinks.Chunk015
+import TraceEuclidean.DegreeSevenRolleStageFiveLinks.Chunk016
+import TraceEuclidean.DegreeSevenRolleStageFiveLinks.Chunk017
+import TraceEuclidean.DegreeSevenRolleStageFiveLinks.Chunk018
+import TraceEuclidean.DegreeSevenRolleStageFiveLinks.Chunk019
+import TraceEuclidean.DegreeSevenRolleStageFiveLinks.Chunk020
+import TraceEuclidean.DegreeSevenRolleStageFiveLinks.Chunk021
+import TraceEuclidean.DegreeSevenRolleStageFiveLinks.Chunk022
+import TraceEuclidean.DegreeSevenRolleStageFiveLinks.Chunk023
+import TraceEuclidean.DegreeSevenRolleStageFiveLinks.Chunk024
+import TraceEuclidean.DegreeSevenRolleStageFiveLinks.Chunk025
+import TraceEuclidean.DegreeSevenRolleStageFiveLinks.Chunk026
+import TraceEuclidean.DegreeSevenRolleStageFiveLinks.Chunk027
+import TraceEuclidean.DegreeSevenRolleStageFiveLinks.Chunk028
+import TraceEuclidean.DegreeSevenRolleStageFiveLinks.Chunk029
+import TraceEuclidean.DegreeSevenRolleStageFiveLinks.Chunk030
+import TraceEuclidean.DegreeSevenRolleStageFiveLinks.Chunk031
+import TraceEuclidean.DegreeSevenRolleStageFiveLinks.Chunk032
+import TraceEuclidean.DegreeSevenRolleStageFiveLinks.Chunk033
+import TraceEuclidean.DegreeSevenRolleStageFiveLinks.Chunk034
+import TraceEuclidean.DegreeSevenRolleStageFiveLinks.Chunk035
+import TraceEuclidean.DegreeSevenRolleStageFiveLinks.Chunk036
+import TraceEuclidean.DegreeSevenRolleStageFiveLinks.Chunk037
+import TraceEuclidean.DegreeSevenRolleStageFiveLinks.Chunk038
+import TraceEuclidean.DegreeSevenRolleStageFiveLinks.Chunk039
+import TraceEuclidean.DegreeSevenRolleStageFiveLinks.Chunk040
+import TraceEuclidean.DegreeSevenRolleStageFiveLinks.Chunk041
+import TraceEuclidean.DegreeSevenRolleStageFiveLinks.Chunk042
+import TraceEuclidean.DegreeSevenRolleStageFiveLinks.Chunk043
+import TraceEuclidean.DegreeSevenRolleStageFiveLinks.Chunk044
+import TraceEuclidean.DegreeSevenRolleStageFiveLinks.Chunk045
+import TraceEuclidean.DegreeSevenRolleStageFiveLinks.Chunk046
+import TraceEuclidean.DegreeSevenRolleStageFiveLinks.Chunk047
+import TraceEuclidean.DegreeSevenRolleStageFiveLinks.Chunk048
+import TraceEuclidean.DegreeSevenRolleStageFiveLinks.Chunk049
+import TraceEuclidean.DegreeSevenRolleStageFiveLinks.Chunk050
+import TraceEuclidean.DegreeSevenRolleStageFiveLinks.Chunk051
+import TraceEuclidean.DegreeSevenRolleStageFiveLinks.Chunk052
+import TraceEuclidean.DegreeSevenRolleStageFiveLinks.Chunk053
+import TraceEuclidean.DegreeSevenRolleStageFiveLinks.Chunk054
+import TraceEuclidean.DegreeSevenRolleStageFiveLinks.Chunk055
+import TraceEuclidean.DegreeSevenRolleStageFiveLinks.Chunk056
+import TraceEuclidean.DegreeSevenRolleStageFiveLinks.Chunk057
+import TraceEuclidean.DegreeSevenRolleStageFiveLinks.Chunk058
+import TraceEuclidean.DegreeSevenRolleStageFiveLinks.Chunk059
+import TraceEuclidean.DegreeSevenRolleStageFiveLinks.Chunk060
+import TraceEuclidean.DegreeSevenRolleStageFiveLinks.Chunk061
+import TraceEuclidean.DegreeSevenRolleStageFiveLinks.Chunk062
+import TraceEuclidean.DegreeSevenRolleStageFiveLinks.Chunk063
+import TraceEuclidean.DegreeSevenRolleStageFiveLinks.Chunk064
+import TraceEuclidean.DegreeSevenRolleStageFiveLinks.Chunk065
+
+/-! Complete compact fifth-stage frontier for the septic Rolle search. -/
+
+namespace TraceEuclidean
+
+noncomputable section
+
+def degreeSevenStageFiveEntries :
+    List DegreeSevenStageFiveDyadicEntry :=
+  degreeSevenStageFiveAlignedEntriesChunk000 ++
+    degreeSevenStageFiveAlignedEntriesChunk001 ++
+    degreeSevenStageFiveAlignedEntriesChunk002 ++
+    degreeSevenStageFiveAlignedEntriesChunk003 ++
+    degreeSevenStageFiveAlignedEntriesChunk004 ++
+    degreeSevenStageFiveAlignedEntriesChunk005 ++
+    degreeSevenStageFiveAlignedEntriesChunk006 ++
+    degreeSevenStageFiveAlignedEntriesChunk007 ++
+    degreeSevenStageFiveAlignedEntriesChunk008 ++
+    degreeSevenStageFiveAlignedEntriesChunk009 ++
+    degreeSevenStageFiveAlignedEntriesChunk010 ++
+    degreeSevenStageFiveAlignedEntriesChunk011 ++
+    degreeSevenStageFiveAlignedEntriesChunk012 ++
+    degreeSevenStageFiveAlignedEntriesChunk013 ++
+    degreeSevenStageFiveAlignedEntriesChunk014 ++
+    degreeSevenStageFiveAlignedEntriesChunk015 ++
+    degreeSevenStageFiveAlignedEntriesChunk016 ++
+    degreeSevenStageFiveAlignedEntriesChunk017 ++
+    degreeSevenStageFiveAlignedEntriesChunk018 ++
+    degreeSevenStageFiveAlignedEntriesChunk019 ++
+    degreeSevenStageFiveAlignedEntriesChunk020 ++
+    degreeSevenStageFiveAlignedEntriesChunk021 ++
+    degreeSevenStageFiveAlignedEntriesChunk022 ++
+    degreeSevenStageFiveAlignedEntriesChunk023 ++
+    degreeSevenStageFiveAlignedEntriesChunk024 ++
+    degreeSevenStageFiveAlignedEntriesChunk025 ++
+    degreeSevenStageFiveAlignedEntriesChunk026 ++
+    degreeSevenStageFiveAlignedEntriesChunk027 ++
+    degreeSevenStageFiveAlignedEntriesChunk028 ++
+    degreeSevenStageFiveAlignedEntriesChunk029 ++
+    degreeSevenStageFiveAlignedEntriesChunk030 ++
+    degreeSevenStageFiveAlignedEntriesChunk031 ++
+    degreeSevenStageFiveAlignedEntriesChunk032 ++
+    degreeSevenStageFiveAlignedEntriesChunk033 ++
+    degreeSevenStageFiveAlignedEntriesChunk034 ++
+    degreeSevenStageFiveAlignedEntriesChunk035 ++
+    degreeSevenStageFiveAlignedEntriesChunk036 ++
+    degreeSevenStageFiveAlignedEntriesChunk037 ++
+    degreeSevenStageFiveAlignedEntriesChunk038 ++
+    degreeSevenStageFiveAlignedEntriesChunk039 ++
+    degreeSevenStageFiveAlignedEntriesChunk040 ++
+    degreeSevenStageFiveAlignedEntriesChunk041 ++
+    degreeSevenStageFiveAlignedEntriesChunk042 ++
+    degreeSevenStageFiveAlignedEntriesChunk043 ++
+    degreeSevenStageFiveAlignedEntriesChunk044 ++
+    degreeSevenStageFiveAlignedEntriesChunk045 ++
+    degreeSevenStageFiveAlignedEntriesChunk046 ++
+    degreeSevenStageFiveAlignedEntriesChunk047 ++
+    degreeSevenStageFiveAlignedEntriesChunk048 ++
+    degreeSevenStageFiveAlignedEntriesChunk049 ++
+    degreeSevenStageFiveAlignedEntriesChunk050 ++
+    degreeSevenStageFiveAlignedEntriesChunk051 ++
+    degreeSevenStageFiveAlignedEntriesChunk052 ++
+    degreeSevenStageFiveAlignedEntriesChunk053 ++
+    degreeSevenStageFiveAlignedEntriesChunk054 ++
+    degreeSevenStageFiveAlignedEntriesChunk055 ++
+    degreeSevenStageFiveAlignedEntriesChunk056 ++
+    degreeSevenStageFiveAlignedEntriesChunk057 ++
+    degreeSevenStageFiveAlignedEntriesChunk058 ++
+    degreeSevenStageFiveAlignedEntriesChunk059 ++
+    degreeSevenStageFiveAlignedEntriesChunk060 ++
+    degreeSevenStageFiveAlignedEntriesChunk061 ++
+    degreeSevenStageFiveAlignedEntriesChunk062 ++
+    degreeSevenStageFiveAlignedEntriesChunk063 ++
+    degreeSevenStageFiveAlignedEntriesChunk064 ++
+    degreeSevenStageFiveAlignedEntriesChunk065
+
+def degreeSevenStageFiveCoverages :
+    List DegreeSevenStageFiveCoverage :=
+  degreeSevenStageFiveCoveragesChunk000 ++
+    degreeSevenStageFiveCoveragesChunk001 ++
+    degreeSevenStageFiveCoveragesChunk002 ++
+    degreeSevenStageFiveCoveragesChunk003 ++
+    degreeSevenStageFiveCoveragesChunk004 ++
+    degreeSevenStageFiveCoveragesChunk005 ++
+    degreeSevenStageFiveCoveragesChunk006 ++
+    degreeSevenStageFiveCoveragesChunk007 ++
+    degreeSevenStageFiveCoveragesChunk008 ++
+    degreeSevenStageFiveCoveragesChunk009 ++
+    degreeSevenStageFiveCoveragesChunk010 ++
+    degreeSevenStageFiveCoveragesChunk011 ++
+    degreeSevenStageFiveCoveragesChunk012 ++
+    degreeSevenStageFiveCoveragesChunk013 ++
+    degreeSevenStageFiveCoveragesChunk014 ++
+    degreeSevenStageFiveCoveragesChunk015 ++
+    degreeSevenStageFiveCoveragesChunk016 ++
+    degreeSevenStageFiveCoveragesChunk017 ++
+    degreeSevenStageFiveCoveragesChunk018 ++
+    degreeSevenStageFiveCoveragesChunk019 ++
+    degreeSevenStageFiveCoveragesChunk020 ++
+    degreeSevenStageFiveCoveragesChunk021 ++
+    degreeSevenStageFiveCoveragesChunk022 ++
+    degreeSevenStageFiveCoveragesChunk023 ++
+    degreeSevenStageFiveCoveragesChunk024 ++
+    degreeSevenStageFiveCoveragesChunk025 ++
+    degreeSevenStageFiveCoveragesChunk026 ++
+    degreeSevenStageFiveCoveragesChunk027 ++
+    degreeSevenStageFiveCoveragesChunk028 ++
+    degreeSevenStageFiveCoveragesChunk029 ++
+    degreeSevenStageFiveCoveragesChunk030 ++
+    degreeSevenStageFiveCoveragesChunk031 ++
+    degreeSevenStageFiveCoveragesChunk032 ++
+    degreeSevenStageFiveCoveragesChunk033 ++
+    degreeSevenStageFiveCoveragesChunk034 ++
+    degreeSevenStageFiveCoveragesChunk035 ++
+    degreeSevenStageFiveCoveragesChunk036 ++
+    degreeSevenStageFiveCoveragesChunk037 ++
+    degreeSevenStageFiveCoveragesChunk038 ++
+    degreeSevenStageFiveCoveragesChunk039 ++
+    degreeSevenStageFiveCoveragesChunk040 ++
+    degreeSevenStageFiveCoveragesChunk041 ++
+    degreeSevenStageFiveCoveragesChunk042 ++
+    degreeSevenStageFiveCoveragesChunk043 ++
+    degreeSevenStageFiveCoveragesChunk044 ++
+    degreeSevenStageFiveCoveragesChunk045 ++
+    degreeSevenStageFiveCoveragesChunk046 ++
+    degreeSevenStageFiveCoveragesChunk047 ++
+    degreeSevenStageFiveCoveragesChunk048 ++
+    degreeSevenStageFiveCoveragesChunk049 ++
+    degreeSevenStageFiveCoveragesChunk050 ++
+    degreeSevenStageFiveCoveragesChunk051 ++
+    degreeSevenStageFiveCoveragesChunk052 ++
+    degreeSevenStageFiveCoveragesChunk053 ++
+    degreeSevenStageFiveCoveragesChunk054 ++
+    degreeSevenStageFiveCoveragesChunk055 ++
+    degreeSevenStageFiveCoveragesChunk056 ++
+    degreeSevenStageFiveCoveragesChunk057 ++
+    degreeSevenStageFiveCoveragesChunk058 ++
+    degreeSevenStageFiveCoveragesChunk059 ++
+    degreeSevenStageFiveCoveragesChunk060 ++
+    degreeSevenStageFiveCoveragesChunk061 ++
+    degreeSevenStageFiveCoveragesChunk062 ++
+    degreeSevenStageFiveCoveragesChunk063 ++
+    degreeSevenStageFiveCoveragesChunk064 ++
+    degreeSevenStageFiveCoveragesChunk065
+
+def degreeSevenStageFiveTopQuadruples :
+    List (ℤ × ℤ × ℤ × ℤ) :=
+  degreeSevenStageFiveCoverages.flatMap
+    DegreeSevenStageFiveCoverage.topQuadruples
+
+def degreeSevenStageFiveMultipleRootQuadruples :
+    List (ℤ × ℤ × ℤ × ℤ) :=
+  degreeSevenStageFiveCoverages.flatMap
+    DegreeSevenStageFiveCoverage.multipleRootQuadruples
+
+def degreeSevenStageFiveCriticalSignQuadruples :
+    List (ℤ × ℤ × ℤ × ℤ) :=
+  degreeSevenStageFiveCoverages.flatMap
+    DegreeSevenStageFiveCoverage.criticalSignQuadruples
+
+set_option maxRecDepth 100000 in
+theorem degreeSevenStageFiveCoverage_parents_checked :
+    degreeSevenStageFiveCoverages.map
+        DegreeSevenStageFiveCoverage.parent =
+      degreeSevenStageFourEntries := by
+  rfl
+
+set_option maxRecDepth 100000 in
+theorem degreeSevenStageFiveCoverageRanges_checked :
+    degreeSevenStageFiveCoverages.map
+        DegreeSevenStageFiveCoverage.rangeRecord =
+      degreeSevenStageFourExpectedRanges := by
+  rfl
+
+set_option maxRecDepth 100000 in
+theorem degreeSevenStageFiveCoverages_valid :
+    degreeSevenStageFiveCoverages.Forall
+      DegreeSevenStageFiveCoverage.Valid := by
+  simp only [degreeSevenStageFiveCoverages, List.forall_append]
+  exact ⟨⟨⟨⟨⟨⟨⟨⟨⟨⟨⟨⟨⟨⟨⟨⟨⟨⟨⟨⟨⟨⟨⟨⟨⟨⟨⟨⟨⟨⟨⟨⟨⟨⟨⟨⟨⟨⟨⟨⟨⟨⟨⟨⟨⟨⟨⟨⟨⟨⟨⟨⟨⟨⟨⟨⟨⟨⟨⟨⟨⟨⟨⟨⟨⟨degreeSevenStageFiveCoveragesChunk000_valid, degreeSevenStageFiveCoveragesChunk001_valid⟩, degreeSevenStageFiveCoveragesChunk002_valid⟩, degreeSevenStageFiveCoveragesChunk003_valid⟩, degreeSevenStageFiveCoveragesChunk004_valid⟩, degreeSevenStageFiveCoveragesChunk005_valid⟩, degreeSevenStageFiveCoveragesChunk006_valid⟩, degreeSevenStageFiveCoveragesChunk007_valid⟩, degreeSevenStageFiveCoveragesChunk008_valid⟩, degreeSevenStageFiveCoveragesChunk009_valid⟩, degreeSevenStageFiveCoveragesChunk010_valid⟩, degreeSevenStageFiveCoveragesChunk011_valid⟩, degreeSevenStageFiveCoveragesChunk012_valid⟩, degreeSevenStageFiveCoveragesChunk013_valid⟩, degreeSevenStageFiveCoveragesChunk014_valid⟩, degreeSevenStageFiveCoveragesChunk015_valid⟩, degreeSevenStageFiveCoveragesChunk016_valid⟩, degreeSevenStageFiveCoveragesChunk017_valid⟩, degreeSevenStageFiveCoveragesChunk018_valid⟩, degreeSevenStageFiveCoveragesChunk019_valid⟩, degreeSevenStageFiveCoveragesChunk020_valid⟩, degreeSevenStageFiveCoveragesChunk021_valid⟩, degreeSevenStageFiveCoveragesChunk022_valid⟩, degreeSevenStageFiveCoveragesChunk023_valid⟩, degreeSevenStageFiveCoveragesChunk024_valid⟩, degreeSevenStageFiveCoveragesChunk025_valid⟩, degreeSevenStageFiveCoveragesChunk026_valid⟩, degreeSevenStageFiveCoveragesChunk027_valid⟩, degreeSevenStageFiveCoveragesChunk028_valid⟩, degreeSevenStageFiveCoveragesChunk029_valid⟩, degreeSevenStageFiveCoveragesChunk030_valid⟩, degreeSevenStageFiveCoveragesChunk031_valid⟩, degreeSevenStageFiveCoveragesChunk032_valid⟩, degreeSevenStageFiveCoveragesChunk033_valid⟩, degreeSevenStageFiveCoveragesChunk034_valid⟩, degreeSevenStageFiveCoveragesChunk035_valid⟩, degreeSevenStageFiveCoveragesChunk036_valid⟩, degreeSevenStageFiveCoveragesChunk037_valid⟩, degreeSevenStageFiveCoveragesChunk038_valid⟩, degreeSevenStageFiveCoveragesChunk039_valid⟩, degreeSevenStageFiveCoveragesChunk040_valid⟩, degreeSevenStageFiveCoveragesChunk041_valid⟩, degreeSevenStageFiveCoveragesChunk042_valid⟩, degreeSevenStageFiveCoveragesChunk043_valid⟩, degreeSevenStageFiveCoveragesChunk044_valid⟩, degreeSevenStageFiveCoveragesChunk045_valid⟩, degreeSevenStageFiveCoveragesChunk046_valid⟩, degreeSevenStageFiveCoveragesChunk047_valid⟩, degreeSevenStageFiveCoveragesChunk048_valid⟩, degreeSevenStageFiveCoveragesChunk049_valid⟩, degreeSevenStageFiveCoveragesChunk050_valid⟩, degreeSevenStageFiveCoveragesChunk051_valid⟩, degreeSevenStageFiveCoveragesChunk052_valid⟩, degreeSevenStageFiveCoveragesChunk053_valid⟩, degreeSevenStageFiveCoveragesChunk054_valid⟩, degreeSevenStageFiveCoveragesChunk055_valid⟩, degreeSevenStageFiveCoveragesChunk056_valid⟩, degreeSevenStageFiveCoveragesChunk057_valid⟩, degreeSevenStageFiveCoveragesChunk058_valid⟩, degreeSevenStageFiveCoveragesChunk059_valid⟩, degreeSevenStageFiveCoveragesChunk060_valid⟩, degreeSevenStageFiveCoveragesChunk061_valid⟩, degreeSevenStageFiveCoveragesChunk062_valid⟩, degreeSevenStageFiveCoveragesChunk063_valid⟩, degreeSevenStageFiveCoveragesChunk064_valid⟩, degreeSevenStageFiveCoveragesChunk065_valid⟩
+
+set_option maxRecDepth 100000 in
+theorem degreeSevenStageFiveEntries_valid :
+    degreeSevenStageFiveEntries.Forall
+      DegreeSevenStageFiveDyadicEntry.Valid := by
+  simp only [degreeSevenStageFiveEntries, List.forall_append]
+  exact ⟨⟨⟨⟨⟨⟨⟨⟨⟨⟨⟨⟨⟨⟨⟨⟨⟨⟨⟨⟨⟨⟨⟨⟨⟨⟨⟨⟨⟨⟨⟨⟨⟨⟨⟨⟨⟨⟨⟨⟨⟨⟨⟨⟨⟨⟨⟨⟨⟨⟨⟨⟨⟨⟨⟨⟨⟨⟨⟨⟨⟨⟨⟨⟨⟨degreeSevenStageFiveAlignedEntriesChunk000_valid, degreeSevenStageFiveAlignedEntriesChunk001_valid⟩, degreeSevenStageFiveAlignedEntriesChunk002_valid⟩, degreeSevenStageFiveAlignedEntriesChunk003_valid⟩, degreeSevenStageFiveAlignedEntriesChunk004_valid⟩, degreeSevenStageFiveAlignedEntriesChunk005_valid⟩, degreeSevenStageFiveAlignedEntriesChunk006_valid⟩, degreeSevenStageFiveAlignedEntriesChunk007_valid⟩, degreeSevenStageFiveAlignedEntriesChunk008_valid⟩, degreeSevenStageFiveAlignedEntriesChunk009_valid⟩, degreeSevenStageFiveAlignedEntriesChunk010_valid⟩, degreeSevenStageFiveAlignedEntriesChunk011_valid⟩, degreeSevenStageFiveAlignedEntriesChunk012_valid⟩, degreeSevenStageFiveAlignedEntriesChunk013_valid⟩, degreeSevenStageFiveAlignedEntriesChunk014_valid⟩, degreeSevenStageFiveAlignedEntriesChunk015_valid⟩, degreeSevenStageFiveAlignedEntriesChunk016_valid⟩, degreeSevenStageFiveAlignedEntriesChunk017_valid⟩, degreeSevenStageFiveAlignedEntriesChunk018_valid⟩, degreeSevenStageFiveAlignedEntriesChunk019_valid⟩, degreeSevenStageFiveAlignedEntriesChunk020_valid⟩, degreeSevenStageFiveAlignedEntriesChunk021_valid⟩, degreeSevenStageFiveAlignedEntriesChunk022_valid⟩, degreeSevenStageFiveAlignedEntriesChunk023_valid⟩, degreeSevenStageFiveAlignedEntriesChunk024_valid⟩, degreeSevenStageFiveAlignedEntriesChunk025_valid⟩, degreeSevenStageFiveAlignedEntriesChunk026_valid⟩, degreeSevenStageFiveAlignedEntriesChunk027_valid⟩, degreeSevenStageFiveAlignedEntriesChunk028_valid⟩, degreeSevenStageFiveAlignedEntriesChunk029_valid⟩, degreeSevenStageFiveAlignedEntriesChunk030_valid⟩, degreeSevenStageFiveAlignedEntriesChunk031_valid⟩, degreeSevenStageFiveAlignedEntriesChunk032_valid⟩, degreeSevenStageFiveAlignedEntriesChunk033_valid⟩, degreeSevenStageFiveAlignedEntriesChunk034_valid⟩, degreeSevenStageFiveAlignedEntriesChunk035_valid⟩, degreeSevenStageFiveAlignedEntriesChunk036_valid⟩, degreeSevenStageFiveAlignedEntriesChunk037_valid⟩, degreeSevenStageFiveAlignedEntriesChunk038_valid⟩, degreeSevenStageFiveAlignedEntriesChunk039_valid⟩, degreeSevenStageFiveAlignedEntriesChunk040_valid⟩, degreeSevenStageFiveAlignedEntriesChunk041_valid⟩, degreeSevenStageFiveAlignedEntriesChunk042_valid⟩, degreeSevenStageFiveAlignedEntriesChunk043_valid⟩, degreeSevenStageFiveAlignedEntriesChunk044_valid⟩, degreeSevenStageFiveAlignedEntriesChunk045_valid⟩, degreeSevenStageFiveAlignedEntriesChunk046_valid⟩, degreeSevenStageFiveAlignedEntriesChunk047_valid⟩, degreeSevenStageFiveAlignedEntriesChunk048_valid⟩, degreeSevenStageFiveAlignedEntriesChunk049_valid⟩, degreeSevenStageFiveAlignedEntriesChunk050_valid⟩, degreeSevenStageFiveAlignedEntriesChunk051_valid⟩, degreeSevenStageFiveAlignedEntriesChunk052_valid⟩, degreeSevenStageFiveAlignedEntriesChunk053_valid⟩, degreeSevenStageFiveAlignedEntriesChunk054_valid⟩, degreeSevenStageFiveAlignedEntriesChunk055_valid⟩, degreeSevenStageFiveAlignedEntriesChunk056_valid⟩, degreeSevenStageFiveAlignedEntriesChunk057_valid⟩, degreeSevenStageFiveAlignedEntriesChunk058_valid⟩, degreeSevenStageFiveAlignedEntriesChunk059_valid⟩, degreeSevenStageFiveAlignedEntriesChunk060_valid⟩, degreeSevenStageFiveAlignedEntriesChunk061_valid⟩, degreeSevenStageFiveAlignedEntriesChunk062_valid⟩, degreeSevenStageFiveAlignedEntriesChunk063_valid⟩, degreeSevenStageFiveAlignedEntriesChunk064_valid⟩, degreeSevenStageFiveAlignedEntriesChunk065_valid⟩
+
+set_option maxRecDepth 100000 in
+set_option maxHeartbeats 0 in
+theorem degreeSevenStageFiveTopQuadruples_checked :
+    degreeSevenStageFiveEntries.map (fun entry =>
+      (entry.a6, entry.a5, entry.a4, entry.a3)) =
+        degreeSevenStageFiveTopQuadruples := by
+  simp only [degreeSevenStageFiveEntries,
+    degreeSevenStageFiveCoverages,
+    degreeSevenStageFiveTopQuadruples,
+    List.map_append, List.flatMap_append, degreeSevenStageFiveAlignedEntriesChunk000_top_checked, degreeSevenStageFiveAlignedEntriesChunk001_top_checked, degreeSevenStageFiveAlignedEntriesChunk002_top_checked, degreeSevenStageFiveAlignedEntriesChunk003_top_checked, degreeSevenStageFiveAlignedEntriesChunk004_top_checked, degreeSevenStageFiveAlignedEntriesChunk005_top_checked, degreeSevenStageFiveAlignedEntriesChunk006_top_checked, degreeSevenStageFiveAlignedEntriesChunk007_top_checked, degreeSevenStageFiveAlignedEntriesChunk008_top_checked, degreeSevenStageFiveAlignedEntriesChunk009_top_checked, degreeSevenStageFiveAlignedEntriesChunk010_top_checked, degreeSevenStageFiveAlignedEntriesChunk011_top_checked, degreeSevenStageFiveAlignedEntriesChunk012_top_checked, degreeSevenStageFiveAlignedEntriesChunk013_top_checked, degreeSevenStageFiveAlignedEntriesChunk014_top_checked, degreeSevenStageFiveAlignedEntriesChunk015_top_checked, degreeSevenStageFiveAlignedEntriesChunk016_top_checked, degreeSevenStageFiveAlignedEntriesChunk017_top_checked, degreeSevenStageFiveAlignedEntriesChunk018_top_checked, degreeSevenStageFiveAlignedEntriesChunk019_top_checked, degreeSevenStageFiveAlignedEntriesChunk020_top_checked, degreeSevenStageFiveAlignedEntriesChunk021_top_checked, degreeSevenStageFiveAlignedEntriesChunk022_top_checked, degreeSevenStageFiveAlignedEntriesChunk023_top_checked, degreeSevenStageFiveAlignedEntriesChunk024_top_checked, degreeSevenStageFiveAlignedEntriesChunk025_top_checked, degreeSevenStageFiveAlignedEntriesChunk026_top_checked, degreeSevenStageFiveAlignedEntriesChunk027_top_checked, degreeSevenStageFiveAlignedEntriesChunk028_top_checked, degreeSevenStageFiveAlignedEntriesChunk029_top_checked, degreeSevenStageFiveAlignedEntriesChunk030_top_checked, degreeSevenStageFiveAlignedEntriesChunk031_top_checked, degreeSevenStageFiveAlignedEntriesChunk032_top_checked, degreeSevenStageFiveAlignedEntriesChunk033_top_checked, degreeSevenStageFiveAlignedEntriesChunk034_top_checked, degreeSevenStageFiveAlignedEntriesChunk035_top_checked, degreeSevenStageFiveAlignedEntriesChunk036_top_checked, degreeSevenStageFiveAlignedEntriesChunk037_top_checked, degreeSevenStageFiveAlignedEntriesChunk038_top_checked, degreeSevenStageFiveAlignedEntriesChunk039_top_checked, degreeSevenStageFiveAlignedEntriesChunk040_top_checked, degreeSevenStageFiveAlignedEntriesChunk041_top_checked, degreeSevenStageFiveAlignedEntriesChunk042_top_checked, degreeSevenStageFiveAlignedEntriesChunk043_top_checked, degreeSevenStageFiveAlignedEntriesChunk044_top_checked, degreeSevenStageFiveAlignedEntriesChunk045_top_checked, degreeSevenStageFiveAlignedEntriesChunk046_top_checked, degreeSevenStageFiveAlignedEntriesChunk047_top_checked, degreeSevenStageFiveAlignedEntriesChunk048_top_checked, degreeSevenStageFiveAlignedEntriesChunk049_top_checked, degreeSevenStageFiveAlignedEntriesChunk050_top_checked, degreeSevenStageFiveAlignedEntriesChunk051_top_checked, degreeSevenStageFiveAlignedEntriesChunk052_top_checked, degreeSevenStageFiveAlignedEntriesChunk053_top_checked, degreeSevenStageFiveAlignedEntriesChunk054_top_checked, degreeSevenStageFiveAlignedEntriesChunk055_top_checked, degreeSevenStageFiveAlignedEntriesChunk056_top_checked, degreeSevenStageFiveAlignedEntriesChunk057_top_checked, degreeSevenStageFiveAlignedEntriesChunk058_top_checked, degreeSevenStageFiveAlignedEntriesChunk059_top_checked, degreeSevenStageFiveAlignedEntriesChunk060_top_checked, degreeSevenStageFiveAlignedEntriesChunk061_top_checked, degreeSevenStageFiveAlignedEntriesChunk062_top_checked, degreeSevenStageFiveAlignedEntriesChunk063_top_checked, degreeSevenStageFiveAlignedEntriesChunk064_top_checked, degreeSevenStageFiveAlignedEntriesChunk065_top_checked]
+
+set_option maxRecDepth 100000 in
+set_option maxHeartbeats 0 in
+theorem degreeSevenStageFiveMultipleRootWitnesses_checked :
+    degreeSevenStageFiveCoverages.flatMap
+        DegreeSevenStageFiveCoverage.multipleRootWitnesses =
+      degreeSevenStageFiveMultipleRootWitnesses := by
+  rfl
+
+set_option maxRecDepth 100000 in
+set_option maxHeartbeats 0 in
+theorem degreeSevenStageFiveCriticalSignWitnesses_checked :
+    degreeSevenStageFiveCoverages.flatMap
+        DegreeSevenStageFiveCoverage.criticalSignWitnesses =
+      degreeSevenStageFiveCriticalSignWitnesses := by
+  rfl
+
+set_option maxRecDepth 100000 in
+set_option maxHeartbeats 0 in
+theorem degreeSevenStageFive_entry_count :
+    degreeSevenStageFiveEntries.length = 48594 := by
+  simp only [degreeSevenStageFiveEntries, List.length_append,
+    degreeSevenStageFiveAlignedEntriesChunk000_length, degreeSevenStageFiveAlignedEntriesChunk001_length, degreeSevenStageFiveAlignedEntriesChunk002_length, degreeSevenStageFiveAlignedEntriesChunk003_length, degreeSevenStageFiveAlignedEntriesChunk004_length, degreeSevenStageFiveAlignedEntriesChunk005_length, degreeSevenStageFiveAlignedEntriesChunk006_length, degreeSevenStageFiveAlignedEntriesChunk007_length, degreeSevenStageFiveAlignedEntriesChunk008_length, degreeSevenStageFiveAlignedEntriesChunk009_length, degreeSevenStageFiveAlignedEntriesChunk010_length, degreeSevenStageFiveAlignedEntriesChunk011_length, degreeSevenStageFiveAlignedEntriesChunk012_length, degreeSevenStageFiveAlignedEntriesChunk013_length, degreeSevenStageFiveAlignedEntriesChunk014_length, degreeSevenStageFiveAlignedEntriesChunk015_length, degreeSevenStageFiveAlignedEntriesChunk016_length, degreeSevenStageFiveAlignedEntriesChunk017_length, degreeSevenStageFiveAlignedEntriesChunk018_length, degreeSevenStageFiveAlignedEntriesChunk019_length, degreeSevenStageFiveAlignedEntriesChunk020_length, degreeSevenStageFiveAlignedEntriesChunk021_length, degreeSevenStageFiveAlignedEntriesChunk022_length, degreeSevenStageFiveAlignedEntriesChunk023_length, degreeSevenStageFiveAlignedEntriesChunk024_length, degreeSevenStageFiveAlignedEntriesChunk025_length, degreeSevenStageFiveAlignedEntriesChunk026_length, degreeSevenStageFiveAlignedEntriesChunk027_length, degreeSevenStageFiveAlignedEntriesChunk028_length, degreeSevenStageFiveAlignedEntriesChunk029_length, degreeSevenStageFiveAlignedEntriesChunk030_length, degreeSevenStageFiveAlignedEntriesChunk031_length, degreeSevenStageFiveAlignedEntriesChunk032_length, degreeSevenStageFiveAlignedEntriesChunk033_length, degreeSevenStageFiveAlignedEntriesChunk034_length, degreeSevenStageFiveAlignedEntriesChunk035_length, degreeSevenStageFiveAlignedEntriesChunk036_length, degreeSevenStageFiveAlignedEntriesChunk037_length, degreeSevenStageFiveAlignedEntriesChunk038_length, degreeSevenStageFiveAlignedEntriesChunk039_length, degreeSevenStageFiveAlignedEntriesChunk040_length, degreeSevenStageFiveAlignedEntriesChunk041_length, degreeSevenStageFiveAlignedEntriesChunk042_length, degreeSevenStageFiveAlignedEntriesChunk043_length, degreeSevenStageFiveAlignedEntriesChunk044_length, degreeSevenStageFiveAlignedEntriesChunk045_length, degreeSevenStageFiveAlignedEntriesChunk046_length, degreeSevenStageFiveAlignedEntriesChunk047_length, degreeSevenStageFiveAlignedEntriesChunk048_length, degreeSevenStageFiveAlignedEntriesChunk049_length, degreeSevenStageFiveAlignedEntriesChunk050_length, degreeSevenStageFiveAlignedEntriesChunk051_length, degreeSevenStageFiveAlignedEntriesChunk052_length, degreeSevenStageFiveAlignedEntriesChunk053_length, degreeSevenStageFiveAlignedEntriesChunk054_length, degreeSevenStageFiveAlignedEntriesChunk055_length, degreeSevenStageFiveAlignedEntriesChunk056_length, degreeSevenStageFiveAlignedEntriesChunk057_length, degreeSevenStageFiveAlignedEntriesChunk058_length, degreeSevenStageFiveAlignedEntriesChunk059_length, degreeSevenStageFiveAlignedEntriesChunk060_length, degreeSevenStageFiveAlignedEntriesChunk061_length, degreeSevenStageFiveAlignedEntriesChunk062_length, degreeSevenStageFiveAlignedEntriesChunk063_length, degreeSevenStageFiveAlignedEntriesChunk064_length, degreeSevenStageFiveAlignedEntriesChunk065_length]
+
+set_option maxRecDepth 100000 in
+set_option maxHeartbeats 0 in
+theorem degreeSevenStageFive_multipleRoot_count :
+    degreeSevenStageFiveMultipleRootWitnesses.length = 100 := by
+  norm_num [degreeSevenStageFiveMultipleRootWitnesses]
+
+set_option maxRecDepth 100000 in
+set_option maxHeartbeats 0 in
+theorem degreeSevenStageFive_criticalSign_count :
+    degreeSevenStageFiveCriticalSignWitnesses.length = 16 := by
+  norm_num [degreeSevenStageFiveCriticalSignWitnesses]
+
+end
+
+end TraceEuclidean

@@ -1,0 +1,10 @@
+{
+  "checks": 1156,
+  "pass": 1156,
+  "fail": 0,
+  "classic_pairs": 24,
+  "integral_pairs": 63,
+  "gram_triples": 22,
+  "field_candidates": 9,
+  "surviving_candidates": 6
+}

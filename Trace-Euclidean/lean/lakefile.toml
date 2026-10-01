@@ -1,0 +1,63 @@
+name = "TraceEuclidean"
+version = "0.1.0"
+keywords = ["mathematics", "quadratic-lattices", "verification"]
+defaultTargets = ["TraceEuclidean", "TraceEuclideanTest"]
+
+[leanOptions]
+pp.unicode.fun = true
+relaxedAutoImplicit = false
+weak.linter.mathlibStandardSet = true
+linter.style.header = false
+
+[[require]]
+name = "mathlib"
+scope = "leanprover-community"
+rev = "v4.32.1"
+
+[[lean_lib]]
+name = "TraceEuclidean"
+
+[[lean_lib]]
+name = "DedekindZeta"
+
+[[lean_lib]]
+name = "TraceEuclideanTest"
+
+[[lean_lib]]
+name = "LeanCert"
+roots = [
+  "LeanCert.Core.DerivativeIntervals",
+  "LeanCert.Core.Dyadic",
+  "LeanCert.Core.Expr",
+  "LeanCert.Core.ExprDerivative",
+  "LeanCert.Core.Interval",
+  "LeanCert.Core.IntervalDyadic",
+  "LeanCert.Core.IntervalRat.Basic",
+  "LeanCert.Core.IntervalRat.LogReduction",
+  "LeanCert.Core.IntervalRat.Taylor",
+  "LeanCert.Core.IntervalRat.Transcendental",
+  "LeanCert.Core.IntervalRat.TrigReduced",
+  "LeanCert.Core.IntervalReal",
+  "LeanCert.Core.IntervalRealEndpoints",
+  "LeanCert.Core.Support",
+  "LeanCert.Core.Taylor",
+  "LeanCert.Core.TrigReduction",
+  "LeanCert.Engine.Eval.Core",
+  "LeanCert.Engine.Eval.Extended",
+  "LeanCert.Engine.Eval.Result",
+  "LeanCert.Engine.FinSumDyadic",
+  "LeanCert.Engine.Integrate",
+  "LeanCert.Engine.IntervalEval",
+  "LeanCert.Engine.IntervalEvalDyadic",
+  "LeanCert.Examples.EulerMascheroniBounds",
+  "LeanCert.Examples.EulerMascheroniLowerBounds",
+  "LeanCert.Tactic.Bound.Lemmas",
+  "LeanCert.Validity.Dyadic",
+  "LeanCert.Validity.DyadicBounds",
+  "LeanCert.Validity.IntegrationDyadic",
+  "LeanCert.Validity.RangeDyadic",
+  "LeanCert.Validity.TrapezoidalDyadic",
+]
+
+[[lean_lib]]
+name = "IdealArithmetic"

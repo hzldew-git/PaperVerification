@@ -1,0 +1,16 @@
+import TraceEuclidean.TraceProductCoordinates
+
+open TraceEuclidean.GlobalLatticePresentation
+
+#print axioms productTraceQuadraticForm_apply
+#print axioms productTraceQuadraticForm_associated_rationalPoint
+#print axioms productTraceQuadraticForm_posDef
+#print axioms productCoordinateFin_int_range
+#print axioms productCoordinateFin_rat_range
+#print axioms productCoordinateFormFin_posDef
+#print axioms productCoordinateFormFin_int
+#print axioms productTraceNearestValue_domain
+#print axioms productTraceNearestValue_fin_coordinates
+#print axioms productTraceNearestValue_rationalPoint
+#print axioms productTraceNearestValue_max_of_rational_coordinate_max
+#print axioms rationalTraceNearestValue_max_of_rational_coordinate_max

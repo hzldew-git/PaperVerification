@@ -1,0 +1,5 @@
+import TraceEuclidean.TraceFormUniqueness
+
+#print axioms TraceEuclidean.GlobalLatticePresentation.realTraceQuadraticForm_continuous
+#print axioms TraceEuclidean.GlobalLatticePresentation.realTraceQuadraticForm_unique
+#print axioms TraceEuclidean.GlobalLatticePresentation.realTraceQuadraticForm_transport

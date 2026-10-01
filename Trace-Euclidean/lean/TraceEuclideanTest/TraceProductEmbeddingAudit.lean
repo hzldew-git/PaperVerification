@@ -1,0 +1,4 @@
+import TraceEuclidean.TraceProductEmbedding
+
+#print axioms TraceEuclidean.realFieldEmbeddingMap_injective
+#print axioms TraceEuclidean.GlobalLatticePresentation.realVectorEmbeddingMap_injective

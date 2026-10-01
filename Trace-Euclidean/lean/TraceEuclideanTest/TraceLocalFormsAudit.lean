@@ -1,0 +1,8 @@
+import TraceEuclidean.TraceLocalForms
+
+#print axioms TraceEuclidean.GlobalLatticePresentation.localTraceForm_rationalPoint
+#print axioms TraceEuclidean.GlobalLatticePresentation.localTraceForm_continuous
+#print axioms TraceEuclidean.GlobalLatticePresentation.productTraceCost_continuous
+#print axioms TraceEuclidean.GlobalLatticePresentation.productTraceCost_rationalPoint
+#print axioms TraceEuclidean.GlobalLatticePresentation.productTraceCost_transport
+#print axioms TraceEuclidean.GlobalLatticePresentation.productTraceCost_transport_linear

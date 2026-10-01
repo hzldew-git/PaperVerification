@@ -1,0 +1,129 @@
+import TraceEuclidean.DegreeSevenRolleStageFourBase
+
+/-! Generated exact cubic root intervals, Chunk049. -/
+
+namespace TraceEuclidean
+
+set_option linter.style.longLine false
+
+def degreeSevenStageFourEntriesChunk049 :
+    List DegreeSevenStageFourEntry :=
+  [
+    ⟨(-1 : ℤ), (-4 : ℤ), (8 : ℤ), ⟨(-59 : ℚ) / 79, (-56 : ℚ) / 75⟩, ⟨(30 : ℚ) / 77, (23 : ℚ) / 59⟩, ⟨(304 : ℚ) / 387, (11 : ℚ) / 14⟩⟩,
+    ⟨(-1 : ℤ), (-4 : ℤ), (9 : ℤ), ⟨(-45 : ℚ) / 59, (-61 : ℚ) / 80⟩, ⟨(56 : ℚ) / 121, (81 : ℚ) / 175⟩, ⟨(59 : ℚ) / 81, (51 : ℚ) / 70⟩⟩,
+    ⟨(-1 : ℤ), (-3 : ℤ), (-2 : ℤ), ⟨(-21 : ℚ) / 62, (-85 : ℚ) / 251⟩, ⟨(-5 : ℚ) / 28, (-38 : ℚ) / 213⟩, ⟨(87 : ℚ) / 92, (122 : ℚ) / 129⟩⟩,
+    ⟨(-1 : ℤ), (-3 : ℤ), (-1 : ℤ), ⟨(-25 : ℚ) / 59, (-36 : ℚ) / 85⟩, ⟨(-7 : ℚ) / 96, (-4 : ℚ) / 55⟩, ⟨(37 : ℚ) / 40, (99 : ℚ) / 107⟩⟩,
+    ⟨(-1 : ℤ), (-3 : ℤ), (0 : ℤ), ⟨(-28 : ℚ) / 59, (-37 : ℚ) / 78⟩, ⟨(-1 : ℚ) / 4096, (1 : ℚ) / 4096⟩, ⟨(177 : ℚ) / 196, (28 : ℚ) / 31⟩⟩,
+    ⟨(-1 : ℤ), (-3 : ℤ), (1 : ℤ), ⟨(-37 : ℚ) / 72, (-56 : ℚ) / 109⟩, ⟨(6 : ℚ) / 95, (5 : ℚ) / 79⟩, ⟨(109 : ℚ) / 124, (80 : ℚ) / 91⟩⟩,
+    ⟨(-1 : ℤ), (-3 : ℤ), (2 : ℤ), ⟨(-41 : ℚ) / 75, (-47 : ℚ) / 86⟩, ⟨(6 : ℚ) / 49, (13 : ℚ) / 106⟩, ⟨(52 : ℚ) / 61, (81 : ℚ) / 95⟩⟩,
+    ⟨(-1 : ℤ), (-3 : ℤ), (3 : ℤ), ⟨(-42 : ℚ) / 73, (-65 : ℚ) / 113⟩, ⟨(21 : ℚ) / 116, (23 : ℚ) / 127⟩, ⟨(65 : ℚ) / 79, (79 : ℚ) / 96⟩⟩,
+    ⟨(-1 : ℤ), (-3 : ℤ), (4 : ℤ), ⟨(-122 : ℚ) / 203, (-125 : ℚ) / 208⟩, ⟨(48 : ℚ) / 199, (7 : ℚ) / 29⟩, ⟨(67 : ℚ) / 85, (41 : ℚ) / 52⟩⟩,
+    ⟨(-1 : ℤ), (-3 : ℤ), (5 : ℤ), ⟨(-123 : ℚ) / 197, (-118 : ℚ) / 189⟩, ⟨(19 : ℚ) / 62, (23 : ℚ) / 75⟩, ⟨(50 : ℚ) / 67, (53 : ℚ) / 71⟩⟩,
+    ⟨(-1 : ℤ), (-3 : ℤ), (6 : ℤ), ⟨(-135 : ℚ) / 209, (-31 : ℚ) / 48⟩, ⟨(107 : ℚ) / 278, (102 : ℚ) / 265⟩, ⟨(151 : ℚ) / 219, (20 : ℚ) / 29⟩⟩,
+    ⟨(-1 : ℤ), (-2 : ℤ), (-1 : ℤ), ⟨(-17 : ℚ) / 67, (-18 : ℚ) / 71⟩, ⟨(-18 : ℚ) / 131, (-7 : ℚ) / 51⟩, ⟨(59 : ℚ) / 72, (50 : ℚ) / 61⟩⟩,
+    ⟨(-1 : ℤ), (-2 : ℤ), (0 : ℤ), ⟨(-17 : ℚ) / 47, (-64 : ℚ) / 177⟩, ⟨(-1 : ℚ) / 4096, (1 : ℚ) / 4096⟩, ⟨(64 : ℚ) / 81, (49 : ℚ) / 62⟩⟩,
+    ⟨(-1 : ℤ), (-2 : ℤ), (1 : ℤ), ⟨(-23 : ℚ) / 55, (-97 : ℚ) / 232⟩, ⟨(14 : ℚ) / 155, (15 : ℚ) / 166⟩, ⟨(90 : ℚ) / 119, (59 : ℚ) / 78⟩⟩,
+    ⟨(-1 : ℤ), (-2 : ℤ), (2 : ℤ), ⟨(-47 : ℚ) / 102, (-41 : ℚ) / 89⟩, ⟨(31 : ℚ) / 179, (22 : ℚ) / 127⟩, ⟨(58 : ℚ) / 81, (53 : ℚ) / 74⟩⟩,
+    ⟨(-1 : ℤ), (-2 : ℤ), (3 : ℤ), ⟨(-62 : ℚ) / 125, (-61 : ℚ) / 123⟩, ⟨(13 : ℚ) / 50, (45 : ℚ) / 173⟩, ⟨(97 : ℚ) / 146, (99 : ℚ) / 149⟩⟩,
+    ⟨(-1 : ℤ), (-2 : ℤ), (4 : ℤ), ⟨(-119 : ℚ) / 226, (-10 : ℚ) / 19⟩, ⟨(22 : ℚ) / 59, (91 : ℚ) / 244⟩, ⟨(39 : ℚ) / 67, (46 : ℚ) / 79⟩⟩,
+    ⟨(-1 : ℤ), (-1 : ℤ), (0 : ℤ), ⟨(-13 : ℚ) / 59, (-24 : ℚ) / 109⟩, ⟨(-1 : ℚ) / 4096, (1 : ℚ) / 4096⟩, ⟨(24 : ℚ) / 37, (85 : ℚ) / 131⟩⟩,
+    ⟨(-1 : ℤ), (-1 : ℤ), (1 : ℤ), ⟨(-39 : ℚ) / 124, (-11 : ℚ) / 35⟩, ⟨(27 : ℚ) / 175, (25 : ℚ) / 162⟩, ⟨(73 : ℚ) / 124, (63 : ℚ) / 107⟩⟩,
+    ⟨(-1 : ℤ), (-1 : ℤ), (2 : ℤ), ⟨(-49 : ℚ) / 132, (-36 : ℚ) / 97⟩, ⟨(41 : ℚ) / 127, (31 : ℚ) / 96⟩, ⟨(41 : ℚ) / 86, (31 : ℚ) / 65⟩⟩,
+    ⟨(0 : ℤ), (-13 : ℤ), (-34 : ℤ), ⟨(-32 : ℚ) / 39, (-105 : ℚ) / 128⟩, ⟨(-67 : ℚ) / 89, (-70 : ℚ) / 93⟩, ⟨(140 : ℚ) / 89, (129 : ℚ) / 82⟩⟩,
+    ⟨(0 : ℤ), (-13 : ℤ), (-33 : ℤ), ⟨(-125 : ℚ) / 139, (-116 : ℚ) / 129⟩, ⟨(-109 : ℚ) / 163, (-111 : ℚ) / 166⟩, ⟨(127 : ℚ) / 81, (196 : ℚ) / 125⟩⟩,
+    ⟨(0 : ℤ), (-13 : ℤ), (-32 : ℤ), ⟨(-16 : ℚ) / 17, (-255 : ℚ) / 271⟩, ⟨(-97 : ℚ) / 156, (-23 : ℚ) / 37⟩, ⟨(411 : ℚ) / 263, (386 : ℚ) / 247⟩⟩,
+    ⟨(0 : ℤ), (-13 : ℤ), (-31 : ℤ), ⟨(-109 : ℚ) / 112, (-36 : ℚ) / 37⟩, ⟨(-45 : ℚ) / 77, (-52 : ℚ) / 89⟩, ⟨(95 : ℚ) / 61, (176 : ℚ) / 113⟩⟩,
+    ⟨(0 : ℤ), (-13 : ℤ), (-30 : ℤ), ⟨(-4097 : ℚ) / 4096, (-4095 : ℚ) / 4096⟩, ⟨(-37 : ℚ) / 67, (-53 : ℚ) / 96⟩, ⟨(149 : ℚ) / 96, (104 : ℚ) / 67⟩⟩
+  ]
+
+def degreeSevenStageFourExpectedRangesChunk049 :
+    List (ℤ × ℤ × ℤ × ℤ × ℤ) :=
+  [
+    ((-1 : ℤ), (-4 : ℤ), (8 : ℤ), (-6 : ℤ), (-5 : ℤ)),
+    ((-1 : ℤ), (-4 : ℤ), (9 : ℤ), (-7 : ℤ), (-8 : ℤ)),
+    ((-1 : ℤ), (-3 : ℤ), (-2 : ℤ), (0 : ℤ), (-1 : ℤ)),
+    ((-1 : ℤ), (-3 : ℤ), (-1 : ℤ), (0 : ℤ), (1 : ℤ)),
+    ((-1 : ℤ), (-3 : ℤ), (0 : ℤ), (0 : ℤ), (2 : ℤ)),
+    ((-1 : ℤ), (-3 : ℤ), (1 : ℤ), (0 : ℤ), (4 : ℤ)),
+    ((-1 : ℤ), (-3 : ℤ), (2 : ℤ), (0 : ℤ), (6 : ℤ)),
+    ((-1 : ℤ), (-3 : ℤ), (3 : ℤ), (-1 : ℤ), (5 : ℤ)),
+    ((-1 : ℤ), (-3 : ℤ), (4 : ℤ), (-1 : ℤ), (2 : ℤ)),
+    ((-1 : ℤ), (-3 : ℤ), (5 : ℤ), (-3 : ℤ), (-1 : ℤ)),
+    ((-1 : ℤ), (-3 : ℤ), (6 : ℤ), (-4 : ℤ), (-4 : ℤ)),
+    ((-1 : ℤ), (-2 : ℤ), (-1 : ℤ), (0 : ℤ), (-1 : ℤ)),
+    ((-1 : ℤ), (-2 : ℤ), (0 : ℤ), (0 : ℤ), (1 : ℤ)),
+    ((-1 : ℤ), (-2 : ℤ), (1 : ℤ), (0 : ℤ), (2 : ℤ)),
+    ((-1 : ℤ), (-2 : ℤ), (2 : ℤ), (0 : ℤ), (2 : ℤ)),
+    ((-1 : ℤ), (-2 : ℤ), (3 : ℤ), (-1 : ℤ), (-1 : ℤ)),
+    ((-1 : ℤ), (-2 : ℤ), (4 : ℤ), (-2 : ℤ), (-3 : ℤ)),
+    ((-1 : ℤ), (-1 : ℤ), (0 : ℤ), (0 : ℤ), (0 : ℤ)),
+    ((-1 : ℤ), (-1 : ℤ), (1 : ℤ), (0 : ℤ), (0 : ℤ)),
+    ((-1 : ℤ), (-1 : ℤ), (2 : ℤ), (-1 : ℤ), (-2 : ℤ)),
+    ((0 : ℤ), (-13 : ℤ), (-34 : ℤ), (-39 : ℤ), (-40 : ℤ)),
+    ((0 : ℤ), (-13 : ℤ), (-33 : ℤ), (-37 : ℤ), (-37 : ℤ)),
+    ((0 : ℤ), (-13 : ℤ), (-32 : ℤ), (-34 : ℤ), (-33 : ℤ)),
+    ((0 : ℤ), (-13 : ℤ), (-31 : ℤ), (-32 : ℤ), (-29 : ℤ)),
+    ((0 : ℤ), (-13 : ℤ), (-30 : ℤ), (-29 : ℤ), (-25 : ℤ))
+  ]
+
+set_option maxRecDepth 100000 in
+set_option maxHeartbeats 0 in
+-- Exact rational sign checks for this generated chunk require deep reduction.
+theorem degreeSevenStageFourEntriesChunk049_valid :
+    degreeSevenStageFourEntriesChunk049.Forall
+      DegreeSevenStageFourEntry.Valid := by
+  norm_num [degreeSevenStageFourEntriesChunk049,
+    DegreeSevenStageFourEntry.Valid,
+    DegreeSevenStageFourEntry.derivativeCoefficients,
+    DegreeSevenStageFourEntry.rootIntervals,
+    GeneralRationalRootIntervalCertificate.Valid,
+    integerPolynomialRationalEval, DensePolynomial.eval]
+
+set_option maxRecDepth 100000 in
+set_option maxHeartbeats 0 in
+-- Exact Horner interval evaluation for this generated chunk is kernel checked.
+theorem degreeSevenStageFourRangesChunk049_checked :
+    degreeSevenStageFourEntriesChunk049.map (fun entry =>
+      (entry.a6, entry.a5, entry.a4,
+        quarticTranslationLowerBound entry.baseCoefficients
+          (-16) 16 entry.secondRoot,
+        quarticTranslationUpperBound entry.baseCoefficients
+          entry.firstRoot entry.thirdRoot)) =
+      degreeSevenStageFourExpectedRangesChunk049 := by
+  norm_num [degreeSevenStageFourEntriesChunk049,
+    degreeSevenStageFourExpectedRangesChunk049,
+    DegreeSevenStageFourEntry.baseCoefficients,
+    quarticTranslationLowerBound, quarticTranslationUpperBound,
+    integerPolynomialRootIntervalEval,
+    integerPolynomialIntervalEval,
+    denseRationalPolynomialIntervalEval,
+    RationalRootInterval.toIntervalRat,
+    LeanCert.Core.IntervalRat.singleton,
+    LeanCert.Core.IntervalRat.add,
+    LeanCert.Core.IntervalRat.mul,
+    LeanCert.Core.IntervalRat.min4,
+    LeanCert.Core.IntervalRat.max4, min_def, max_def, Int.toNat]
+
+set_option maxRecDepth 100000 in
+set_option maxHeartbeats 0 in
+-- The finite candidate count is reduced by the Lean kernel.
+theorem degreeSevenStageFourPrefixCountChunk049 :
+    (degreeSevenStageFourEntriesChunk049.flatMap fun entry =>
+      entry.a3Candidates.toList.map fun a3 =>
+        (entry.a6, entry.a5, entry.a4, a3)).length = 57 := by
+  norm_num [degreeSevenStageFourEntriesChunk049,
+    DegreeSevenStageFourEntry.a3Candidates,
+    DegreeSevenStageFourEntry.baseCoefficients,
+    quarticTranslationCandidates, integerIcc,
+    quarticTranslationLowerBound, quarticTranslationUpperBound,
+    integerPolynomialRootIntervalEval,
+    integerPolynomialIntervalEval,
+    denseRationalPolynomialIntervalEval,
+    RationalRootInterval.toIntervalRat,
+    LeanCert.Core.IntervalRat.singleton,
+    LeanCert.Core.IntervalRat.add,
+    LeanCert.Core.IntervalRat.mul,
+    LeanCert.Core.IntervalRat.min4,
+    LeanCert.Core.IntervalRat.max4, min_def, max_def, Int.toNat]
+
+end TraceEuclidean

@@ -1,0 +1,6 @@
+import TraceEuclidean.TraceTensorRealization
+
+#print axioms TraceEuclidean.GlobalLatticePresentation.tensorRealTraceEquiv_basis
+#print axioms TraceEuclidean.GlobalLatticePresentation.tensorRealTraceEquiv_rationalPoint
+#print axioms TraceEuclidean.GlobalLatticePresentation.tensorRealTraceQuadraticForm_posDef
+#print axioms TraceEuclidean.GlobalLatticePresentation.tensorRealTraceQuadraticForm_rationalPoint

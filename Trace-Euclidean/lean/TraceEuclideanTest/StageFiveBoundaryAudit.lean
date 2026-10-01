@@ -1,0 +1,22 @@
+import TraceEuclidean.DegreeSevenLagrangeRootBound
+import TraceEuclidean.DegreeSevenRolleStageFiveCompleteness
+
+/-!
+# Degree-seven fifth-stage boundary audit
+
+This focused audit keeps the new Lagrange, compact-root, multiple-root, and
+critical-sign endpoints independently checkable while the larger recovery
+checkout is rebuilding older generated modules.
+-/
+
+#print axioms TraceEuclidean.degreeSeven_minimumHunterCandidate_root_centered_sq_le
+#print axioms TraceEuclidean.degreeSeven_minimumHunterCandidate_root_lagrange_strict_bounds
+#print axioms TraceEuclidean.degreeSeven_minimumHunterCandidate_a2_mem_of_valid_dyadic
+#print axioms TraceEuclidean.degreeSevenStageFiveMultipleRootWitness_not_separable
+#print axioms TraceEuclidean.degreeSevenStageFiveCriticalSignWitness_not_splits_and_separable
+#print axioms TraceEuclidean.degreeSevenStageFiveEntries_valid
+#print axioms TraceEuclidean.degreeSevenStageFiveCoverages_valid
+#print axioms TraceEuclidean.degreeSevenStageFiveMultipleRootWitnesses_valid
+#print axioms TraceEuclidean.degreeSevenStageFiveCriticalSignWitnesses_valid
+#print axioms TraceEuclidean.degreeSeven_minimumHunterCandidate_stageFive_complete
+#print axioms TraceEuclidean.degreeSeven_minimumHunterCandidate_a2_mem

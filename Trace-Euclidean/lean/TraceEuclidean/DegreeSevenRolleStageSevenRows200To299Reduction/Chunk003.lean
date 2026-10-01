@@ -1,0 +1,130 @@
+import TraceEuclidean.DegreeSevenRolleStageSevenRows200To299Chunks.Chunk003
+import TraceEuclidean.DegreeSevenRolleStageSevenRows200To299ReductionParts.Chunk003Part000
+import TraceEuclidean.DegreeSevenRolleStageSevenRows200To299ReductionParts.Chunk003Part001
+import TraceEuclidean.DegreeSevenRolleStageSevenRows200To299ReductionParts.Chunk003Part002
+import TraceEuclidean.DegreeSevenRolleStageSevenRows200To299ReductionParts.Chunk003Part003
+import TraceEuclidean.DegreeSevenRolleStageSevenRows200To299ReductionParts.Chunk003Part004
+import TraceEuclidean.DegreeSevenRolleStageSevenRows200To299ReductionParts.Chunk003Part005
+import TraceEuclidean.DegreeSevenRolleStageSevenRows200To299ReductionParts.Chunk003Part006
+import TraceEuclidean.DegreeSevenRolleStageSevenRows200To299ReductionParts.Chunk003Part007
+import TraceEuclidean.DegreeSevenRolleStageSevenRows200To299ReductionParts.Chunk003Part008
+import TraceEuclidean.DegreeSevenRolleStageSevenRows200To299ReductionParts.Chunk003Part009
+import TraceEuclidean.DegreeSevenRolleStageSevenRows200To299ReductionParts.Chunk003Part010
+import TraceEuclidean.DegreeSevenRolleStageSevenRows200To299ReductionParts.Chunk003Part011
+import TraceEuclidean.DegreeSevenRolleStageSevenRows200To299ReductionParts.Chunk003Part012
+import TraceEuclidean.DegreeSevenRolleStageSevenRows200To299ReductionParts.Chunk003Part013
+import TraceEuclidean.DegreeSevenRolleStageSevenRows200To299ReductionParts.Chunk003Part014
+import TraceEuclidean.DegreeSevenRolleStageSevenRows200To299ReductionParts.Chunk003Part015
+import TraceEuclidean.DegreeSevenRolleStageSevenRows200To299ReductionParts.Chunk003Part016
+import TraceEuclidean.DegreeSevenRolleStageSevenRows200To299ReductionParts.Chunk003Part017
+import TraceEuclidean.DegreeSevenRolleStageSevenRows200To299ReductionParts.Chunk003Part018
+import TraceEuclidean.DegreeSevenRolleStageSevenRows200To299ReductionParts.Chunk003Part019
+import TraceEuclidean.DegreeSevenRolleStageSevenRows200To299ReductionParts.Chunk003Part020
+import TraceEuclidean.DegreeSevenRolleStageSevenRows200To299ReductionParts.Chunk003Part021
+import TraceEuclidean.DegreeSevenRolleStageSevenRows200To299ReductionParts.Chunk003Part022
+import TraceEuclidean.DegreeSevenRolleStageSevenRows200To299ReductionParts.Chunk003Part023
+import TraceEuclidean.DegreeSevenRolleStageSevenRows200To299ReductionParts.Chunk003Part024
+import TraceEuclidean.DegreeSevenRolleStageSevenRows200To299ReductionParts.Chunk003Part025
+import TraceEuclidean.DegreeSevenRolleStageSevenRows200To299ReductionParts.Chunk003Part026
+import TraceEuclidean.DegreeSevenRolleStageSevenRows200To299ReductionParts.Chunk003Part027
+import TraceEuclidean.DegreeSevenRolleStageSevenRows200To299ReductionParts.Chunk003Part028
+
+/-! Candidate reduction for Stage Five rows 230 through 239. -/
+
+namespace TraceEuclidean
+
+noncomputable section
+
+set_option maxRecDepth 100000
+
+def degreeSevenStageSevenFinalEntryCertificatesRows200To299Chunk003 :
+    List DegreeSevenFinalEntryCertificate :=
+  degreeSevenStageSevenFinalEntryCertificatesRows200To299Chunk003Part000 ++
+    (degreeSevenStageSevenFinalEntryCertificatesRows200To299Chunk003Part001 ++
+    (degreeSevenStageSevenFinalEntryCertificatesRows200To299Chunk003Part002 ++
+    (degreeSevenStageSevenFinalEntryCertificatesRows200To299Chunk003Part003 ++
+    (degreeSevenStageSevenFinalEntryCertificatesRows200To299Chunk003Part004 ++
+    (degreeSevenStageSevenFinalEntryCertificatesRows200To299Chunk003Part005 ++
+    (degreeSevenStageSevenFinalEntryCertificatesRows200To299Chunk003Part006 ++
+    (degreeSevenStageSevenFinalEntryCertificatesRows200To299Chunk003Part007 ++
+    (degreeSevenStageSevenFinalEntryCertificatesRows200To299Chunk003Part008 ++
+    (degreeSevenStageSevenFinalEntryCertificatesRows200To299Chunk003Part009 ++
+    (degreeSevenStageSevenFinalEntryCertificatesRows200To299Chunk003Part010 ++
+    (degreeSevenStageSevenFinalEntryCertificatesRows200To299Chunk003Part011 ++
+    (degreeSevenStageSevenFinalEntryCertificatesRows200To299Chunk003Part012 ++
+    (degreeSevenStageSevenFinalEntryCertificatesRows200To299Chunk003Part013 ++
+    (degreeSevenStageSevenFinalEntryCertificatesRows200To299Chunk003Part014 ++
+    (degreeSevenStageSevenFinalEntryCertificatesRows200To299Chunk003Part015 ++
+    (degreeSevenStageSevenFinalEntryCertificatesRows200To299Chunk003Part016 ++
+    (degreeSevenStageSevenFinalEntryCertificatesRows200To299Chunk003Part017 ++
+    (degreeSevenStageSevenFinalEntryCertificatesRows200To299Chunk003Part018 ++
+    (degreeSevenStageSevenFinalEntryCertificatesRows200To299Chunk003Part019 ++
+    (degreeSevenStageSevenFinalEntryCertificatesRows200To299Chunk003Part020 ++
+    (degreeSevenStageSevenFinalEntryCertificatesRows200To299Chunk003Part021 ++
+    (degreeSevenStageSevenFinalEntryCertificatesRows200To299Chunk003Part022 ++
+    (degreeSevenStageSevenFinalEntryCertificatesRows200To299Chunk003Part023 ++
+    (degreeSevenStageSevenFinalEntryCertificatesRows200To299Chunk003Part024 ++
+    (degreeSevenStageSevenFinalEntryCertificatesRows200To299Chunk003Part025 ++
+    (degreeSevenStageSevenFinalEntryCertificatesRows200To299Chunk003Part026 ++
+    (degreeSevenStageSevenFinalEntryCertificatesRows200To299Chunk003Part027 ++
+    (degreeSevenStageSevenFinalEntryCertificatesRows200To299Chunk003Part028))))))))))))))))))))))))))))
+
+theorem degreeSevenStageSevenScaledRows200To299Chunk003_parts :
+    degreeSevenStageSevenScaledRows200To299Chunk003 =
+      degreeSevenStageSevenFinalEntryCertificatesRows200To299Chunk003.map
+        DegreeSevenFinalEntryCertificate.entry := by
+  rfl
+
+theorem degreeSevenStageSevenFinalEntryCertificatesRows200To299Chunk003_valid :
+    degreeSevenStageSevenFinalEntryCertificatesRows200To299Chunk003.Forall
+      (fun certificate => certificate.check = true) := by
+  exact List.forall_append.mpr ⟨degreeSevenStageSevenFinalEntryCertificatesRows200To299Chunk003Part000_valid,
+    List.forall_append.mpr ⟨degreeSevenStageSevenFinalEntryCertificatesRows200To299Chunk003Part001_valid,
+    List.forall_append.mpr ⟨degreeSevenStageSevenFinalEntryCertificatesRows200To299Chunk003Part002_valid,
+    List.forall_append.mpr ⟨degreeSevenStageSevenFinalEntryCertificatesRows200To299Chunk003Part003_valid,
+    List.forall_append.mpr ⟨degreeSevenStageSevenFinalEntryCertificatesRows200To299Chunk003Part004_valid,
+    List.forall_append.mpr ⟨degreeSevenStageSevenFinalEntryCertificatesRows200To299Chunk003Part005_valid,
+    List.forall_append.mpr ⟨degreeSevenStageSevenFinalEntryCertificatesRows200To299Chunk003Part006_valid,
+    List.forall_append.mpr ⟨degreeSevenStageSevenFinalEntryCertificatesRows200To299Chunk003Part007_valid,
+    List.forall_append.mpr ⟨degreeSevenStageSevenFinalEntryCertificatesRows200To299Chunk003Part008_valid,
+    List.forall_append.mpr ⟨degreeSevenStageSevenFinalEntryCertificatesRows200To299Chunk003Part009_valid,
+    List.forall_append.mpr ⟨degreeSevenStageSevenFinalEntryCertificatesRows200To299Chunk003Part010_valid,
+    List.forall_append.mpr ⟨degreeSevenStageSevenFinalEntryCertificatesRows200To299Chunk003Part011_valid,
+    List.forall_append.mpr ⟨degreeSevenStageSevenFinalEntryCertificatesRows200To299Chunk003Part012_valid,
+    List.forall_append.mpr ⟨degreeSevenStageSevenFinalEntryCertificatesRows200To299Chunk003Part013_valid,
+    List.forall_append.mpr ⟨degreeSevenStageSevenFinalEntryCertificatesRows200To299Chunk003Part014_valid,
+    List.forall_append.mpr ⟨degreeSevenStageSevenFinalEntryCertificatesRows200To299Chunk003Part015_valid,
+    List.forall_append.mpr ⟨degreeSevenStageSevenFinalEntryCertificatesRows200To299Chunk003Part016_valid,
+    List.forall_append.mpr ⟨degreeSevenStageSevenFinalEntryCertificatesRows200To299Chunk003Part017_valid,
+    List.forall_append.mpr ⟨degreeSevenStageSevenFinalEntryCertificatesRows200To299Chunk003Part018_valid,
+    List.forall_append.mpr ⟨degreeSevenStageSevenFinalEntryCertificatesRows200To299Chunk003Part019_valid,
+    List.forall_append.mpr ⟨degreeSevenStageSevenFinalEntryCertificatesRows200To299Chunk003Part020_valid,
+    List.forall_append.mpr ⟨degreeSevenStageSevenFinalEntryCertificatesRows200To299Chunk003Part021_valid,
+    List.forall_append.mpr ⟨degreeSevenStageSevenFinalEntryCertificatesRows200To299Chunk003Part022_valid,
+    List.forall_append.mpr ⟨degreeSevenStageSevenFinalEntryCertificatesRows200To299Chunk003Part023_valid,
+    List.forall_append.mpr ⟨degreeSevenStageSevenFinalEntryCertificatesRows200To299Chunk003Part024_valid,
+    List.forall_append.mpr ⟨degreeSevenStageSevenFinalEntryCertificatesRows200To299Chunk003Part025_valid,
+    List.forall_append.mpr ⟨degreeSevenStageSevenFinalEntryCertificatesRows200To299Chunk003Part026_valid,
+    List.forall_append.mpr ⟨degreeSevenStageSevenFinalEntryCertificatesRows200To299Chunk003Part027_valid,
+    degreeSevenStageSevenFinalEntryCertificatesRows200To299Chunk003Part028_valid⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩
+
+theorem degreeSevenStageSevenFinalEntryCertificatesRows200To299Chunk003_entry_count :
+    degreeSevenStageSevenFinalEntryCertificatesRows200To299Chunk003.length =
+      723 := by
+  rfl
+
+theorem degreeSevenStageSevenFinalEntryCertificatesRows200To299Chunk003_candidate_count :
+    (DegreeSevenFinalEntryCertificate.allCandidates
+      degreeSevenStageSevenFinalEntryCertificatesRows200To299Chunk003).length =
+      340 := by
+  rfl
+
+theorem degreeSevenStageSevenFinalEntryCertificatesRows200To299Chunk003_survivor_count :
+    (DegreeSevenFinalEntryCertificate.survivorCoefficients
+      degreeSevenStageSevenFinalEntryCertificatesRows200To299Chunk003).length =
+      23 := by
+  rfl
+
+end
+
+end TraceEuclidean

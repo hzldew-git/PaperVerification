@@ -1,0 +1,9 @@
+The adapted DigammaSeries.lean code is Copyright (c) 2026 Anthropic, PBC
+and is distributed under the Apache License, Version 2.0.
+
+The complete Apache License 2.0 text is included in this directory as
+sum_product_APACHE-2.0.txt. That same license text governs this adapted file.
+
+Upstream source: https://github.com/anthropics/formal-math
+Upstream commit: fbdc36bbf17d20af3fd0447c6d1a8a02773c9844
+Adapted source: zeta23/Zeta23/GammaFacts/Series.lean

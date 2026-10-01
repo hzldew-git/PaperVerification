@@ -1,0 +1,6 @@
+import TraceEuclidean.TraceRealEmbeddings
+
+#print axioms TraceEuclidean.realComplexEmbeddingsEquiv
+#print axioms TraceEuclidean.card_realEmbeddings
+#print axioms TraceEuclidean.trace_eq_sum_realEmbeddings
+#print axioms TraceEuclidean.GlobalLatticePresentation.traceQuadraticForm_eq_sum_realEmbeddings
