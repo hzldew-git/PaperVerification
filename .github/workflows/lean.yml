@@ -1,4 +1,4 @@
-name: Trace-Euclidean Lean checks
+name: Trace-Euclidean hosted checks
 
 on:
   push:
@@ -19,19 +19,21 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 360
     env:
-      LEAN_NUM_THREADS: '2'
+      LEAN_NUM_THREADS: '1'
 
     steps:
       - name: Check out the exact revision
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
 
-      - name: Build the pinned Lean project
+      - name: Build pinned core Lean targets
         uses: leanprover/lean-action@38fbc41a8c28c4cbaec22d7f7de508ec2e7c0dd9 # v1.5.0
         with:
           lake-package-directory: Trace-Euclidean/lean
           auto-config: false
           build: true
+          build-args: TraceEuclidean.TraceProductCoordinates TraceEuclidean.PoitouDegreeElevenClosed
           use-mathlib-cache: true
+          use-github-cache: false
 
       - name: Reject unfinished or non-kernel proof constructs in kernel-only modules
         shell: bash
@@ -51,261 +53,6 @@ jobs:
             echo 'Unfinished construct found in a numerical dependency.' >&2
             exit 1
           fi
-
-      - name: Check public signatures and transitive axiom sets
-        working-directory: Trace-Euclidean/lean
-        shell: bash
-        run: |
-          set -euo pipefail
-          lake env lean TraceEuclideanTest/MainTheoremAudit.lean > theorem-audit.log 2>&1
-          cat theorem-audit.log
-          python - <<'PY'
-          from pathlib import Path
-          import re
-
-          source = Path('TraceEuclideanTest/MainTheoremAudit.lean').read_text(encoding='utf-8')
-          output = ' '.join(Path('theorem-audit.log').read_text(encoding='utf-8').split())
-          names = re.findall(r'^#print axioms\s+(\S+)', source, re.M)
-          rows = re.findall(r"'([^']+)' depends on axioms: \[([^]]*)\]", output)
-          reports = dict(rows)
-          if len(rows) != len(names) or set(reports) != set(names):
-              raise SystemExit(
-                  f'Expected {len(names)} main axiom reports, found {len(rows)}'
-              )
-          standard = {'propext', 'Classical.choice', 'Quot.sound'}
-          for name in names:
-              axioms = {
-                  item.strip().rstrip('✝')
-                  for item in reports[name].split(',') if item.strip()
-              }
-              if not axioms <= standard:
-                  raise SystemExit(f'Unexpected axiom set for {name}: {axioms}')
-          print(f'MAIN AXIOM AUDIT: PASS ({len(names)} declarations)')
-          PY
-          rm theorem-audit.log
-
-      - name: Audit the numerical compiler trust boundary
-        working-directory: Trace-Euclidean/lean
-        shell: bash
-        run: |
-          set -euo pipefail
-          trap 'rm -f numerical-audit.log' EXIT
-          lake env lean TraceEuclideanTest/NumericalAxiomAudit.lean > numerical-audit.log 2>&1
-          cat numerical-audit.log
-          python - <<'PY'
-          from pathlib import Path
-          import re
-
-          source = Path('TraceEuclideanTest/NumericalAxiomAudit.lean').read_text(encoding='utf-8')
-          output = ' '.join(Path('numerical-audit.log').read_text(encoding='utf-8').split())
-          names = re.findall(r'^#print axioms\s+(\S+)', source, re.M)
-          if len(names) != 72:
-              raise SystemExit(f'Expected seventy-two numerical audit declarations, found {len(names)}')
-          standard = {'propext', 'Classical.choice', 'Quot.sound'}
-          sinh = 'TraceEuclidean.OdlyzkoNumerical.sinh_core_upper._native.native_decide.ax_1_1'
-          cosh = 'TraceEuclidean.OdlyzkoNumerical.cosh_core_upper._native.native_decide.ax_1_1'
-          gamma = 'EulerMascheroni.harmonic_N_ge._native.native_decide.ax_1_2'
-          scalar_a = 'TraceEuclidean.OdlyzkoNumerical.scalarA_strict._native.native_decide.ax_1_1'
-          scalar_b = 'TraceEuclidean.OdlyzkoNumerical.scalarB_strict._native.native_decide.ax_1_1'
-          voight = 'TraceEuclidean.voightDiscriminantData_certificate._native.native_decide.ax_1_1'
-          certificate_dir = Path('TraceEuclidean/VoightResultantCertificates')
-          certificate_names = []
-          for path in certificate_dir.glob('*.lean'):
-              certificate_names.extend(re.findall(
-                  r'^theorem\s+(\S+)', path.read_text(encoding='utf-8'), re.M
-              ))
-          voight_resultants = {
-              'TraceEuclidean.' + name + '._native.native_decide.ax_1_1'
-              for name in certificate_names
-          }
-          expected = {name: standard for name in names[:4]}
-          expected[names[4]] = standard | {sinh}
-          expected[names[5]] = standard | {cosh}
-          expected[names[6]] = standard | {sinh, cosh, gamma, scalar_a, scalar_b}
-          for name in names[7:32]:
-              expected[name] = standard | {sinh, cosh, gamma, scalar_a, scalar_b}
-          expected[names[32]] = {voight}
-          expected[names[33]] = set()
-          expected[names[34]] = standard | {voight}
-          expected[names[35]] = standard
-          for name in names[36:42]:
-              expected[name] = standard | {
-                  sinh, cosh, gamma, scalar_a, scalar_b, voight
-              }
-          for name in names[42:]:
-              expected[name] = standard | {sinh, cosh, gamma, scalar_a, scalar_b}
-          expected[names[48]] = set()
-          expected[names[49]] = standard | voight_resultants
-          for name in names[50:53]:
-              expected[name] = standard | voight_resultants
-
-          native = lambda theorem: (
-              'TraceEuclidean.' + theorem + '._native.native_decide.ax_1_1'
-          )
-          rabin_dir = Path('TraceEuclidean/VoightIrreducibilityCertificates')
-          rabin_checks = {
-              native(theorem)
-              for path in rabin_dir.glob('*.lean')
-              for theorem in re.findall(
-                  r'^theorem\s+(\S+_check)\s*:',
-                  path.read_text(encoding='utf-8'), re.M
-              )
-          }
-          umbrella_source = Path(
-              'TraceEuclidean/VoightIrreducibilityCertificates.lean'
-          ).read_text(encoding='utf-8')
-          regular_partitions = {
-              native(theorem)
-              for theorem in re.findall(
-                  r'^theorem\s+(\S+_rabin_irreducible)\s*:',
-                  umbrella_source, re.M
-              )
-          }
-          exceptional_source = Path(
-              'TraceEuclidean/VoightExceptionalIrreducibilityCertificates.lean'
-          ).read_text(encoding='utf-8')
-          multi_checks = {
-              native(theorem)
-              for theorem in re.findall(
-                  r'^theorem\s+(voightMultiPrimeCertificates\S+_check)\s*:',
-                  exceptional_source, re.M
-              )
-          }
-          special_checks = {
-              native(theorem)
-              for theorem in re.findall(
-                  r'^theorem\s+(voightSpecialEight\S+)\s*:',
-                  exceptional_source, re.M
-              )
-          }
-          exception_partitions = {
-              native(
-                  'voightRabinExceptions' + degree + '_irreducible'
-              )
-              for degree in ('Six', 'Eight', 'Nine', 'Ten')
-          }
-          all_irreducibility = (
-              rabin_checks | regular_partitions | multi_checks |
-              special_checks | exception_partitions
-          )
-          expected[names[53]] = {
-              native('allVoightPolynomialRows_length')
-          }
-          special_no_quartic = {
-              native('voightSpecialEightFactorizationThree_valid'),
-              native('voightSpecialEightFactorizationFive_valid'),
-              native('voightSpecialEight_forces_constant_three'),
-              native('voightSpecialEight_forces_constant_five'),
-          }
-          expected[names[54]] = standard | special_no_quartic
-          expected[names[55]] = standard | special_checks
-          expected[names[56]] = standard | all_irreducibility
-          total_reality_dir = Path(
-              'TraceEuclidean/VoightTotalRealityCertificates'
-          )
-          total_reality_checks = {
-              native(theorem)
-              for path in total_reality_dir.glob('*.lean')
-              for theorem in re.findall(
-                  r'^theorem\s+(\S+_check)\s*:',
-                  path.read_text(encoding='utf-8'), re.M
-              )
-          }
-          expected[names[57]] = standard | total_reality_checks
-          expected[names[58]] = (
-              standard | all_irreducibility |
-              total_reality_checks
-          )
-          expected[names[59]] = (
-              standard | voight_resultants |
-              all_irreducibility | total_reality_checks
-          )
-          expected[names[60]] = standard | {
-              native('voightSquarefreeIndexOneRows_length')
-          }
-          expected[names[61]] = expected[names[59]]
-          integral_basis_dir = Path(
-              'TraceEuclidean/VoightIntegralBasisCertificates'
-          )
-          integral_basis_checks = {
-              native(theorem)
-              for path in integral_basis_dir.glob('*.lean')
-              for theorem in re.findall(
-                  r'^theorem\s+(\S+_check)\s*:',
-                  path.read_text(encoding='utf-8'), re.M
-              )
-          }
-          integral_complete = native(
-              'voightSquarefreeNontrivialIndexCertificates_complete'
-          )
-          expected[names[62]] = standard | integral_basis_checks
-          expected[names[63]] = standard | {integral_complete}
-          expected[names[64]] = standard | {
-              native('voightSquarefreeNontrivialIndexRows_length')
-          }
-          expected[names[65]] = (
-              expected[names[59]] | integral_basis_checks |
-              {integral_complete}
-          )
-          expected[names[66]] = standard | {
-              native('voightSquarefreeFieldDiscriminantRows_length')
-          }
-          expected[names[67]] = expected[names[65]]
-          maximal_order_namespaces = set()
-          for maximal_order_dir in (
-              Path('TraceEuclidean/VoightMaximalOrderCertificates'),
-              Path('TraceEuclidean/VoightMaximalOrderIndexOneCertificates'),
-          ):
-              for path in maximal_order_dir.glob('*.lean'):
-                  maximal_order_namespaces.update(re.findall(
-                      r'^namespace\s+(VoightMaximalOrderD\d+R\d+)\s*$',
-                      path.read_text(encoding='utf-8'), re.M
-                  ))
-          if len(maximal_order_namespaces) != 1509:
-              raise SystemExit(
-                  'Expected 1509 maximal-order row namespaces, found '
-                  f'{len(maximal_order_namespaces)}'
-              )
-          maximal_order_checks = {
-              f'TraceEuclidean.{namespace}.row_mem._native.native_decide.ax_1_1'
-              for namespace in maximal_order_namespaces
-          }
-          maximal_order_checks |= {
-              f'TraceEuclidean.{namespace}.P_det_index_sq._native.native_decide.ax_1_{suffix}'
-              for namespace in maximal_order_namespaces
-              for suffix in (1, 4)
-          }
-          nonsquarefree_length = native(
-              'voightNonsquarefreeExactFieldCertificates_length'
-          )
-          nonsquarefree_complete = native(
-              'voightNonsquarefreeExactFieldCertificates_complete'
-          )
-          expected[names[68]] = (
-              expected[names[59]] | maximal_order_checks |
-              {nonsquarefree_length}
-          )
-          expected[names[69]] = (
-              expected[names[59]] | maximal_order_checks |
-              {nonsquarefree_complete}
-          )
-          expected[names[70]] = expected[names[69]]
-          expected[names[71]] = (
-              expected[names[67]] | maximal_order_checks |
-              {nonsquarefree_complete}
-          )
-          for name in names:
-              match = re.search("'" + re.escape(name) + r"' depends on axioms: \[([^]]*)\]", output)
-              if match is None:
-                  if f"'{name}' does not depend on any axioms" not in output:
-                      raise SystemExit(f'Missing axiom audit output: {name}')
-                  axioms = set()
-              else:
-                  axioms = {item.strip().rstrip('✝') for item in match.group(1).split(',')}
-              if axioms != expected[name]:
-                  raise SystemExit(f'Unexpected axiom set for {name}: {axioms}')
-          print(f'NUMERICAL AXIOM AUDIT: PASS ({len(names)} declarations)')
-          PY
 
       - name: Audit product coordinates and degree-eleven numerical proof
         working-directory: Trace-Euclidean/lean
@@ -329,10 +76,13 @@ jobs:
               names = re.findall(r'^#print axioms\s+(\S+)', source, re.M)
               rows = re.findall(r"'([^']+)' depends on axioms: \[([^]]*)\]", output)
               reports = dict(rows)
-              if not names or len(rows) != len(names) or set(reports) != set(names):
+              if not names or len(rows) != len(names):
                   raise SystemExit(f'Incomplete axiom audit for {module}')
               for name in names:
-                  axioms = {item.strip().rstrip('✝') for item in reports[name].split(',') if item.strip()}
+                  matches = [key for key in reports if key == name or key.endswith('.' + name)]
+                  if len(matches) != 1:
+                      raise SystemExit(f'Expected one axiom report for {name}, found {len(matches)}')
+                  axioms = {item.strip().rstrip('✝') for item in reports[matches[0]].split(',') if item.strip()}
                   if not axioms <= standard:
                       raise SystemExit(f'Unexpected axiom set for {name}: {axioms}')
               print(f'{module}: PASS ({len(names)} declarations)')

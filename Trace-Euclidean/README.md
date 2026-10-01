@@ -56,6 +56,14 @@ signatures and transitive axiom dependencies. The generated finite
 certificates include `native_decide`, so those proofs additionally trust
 Lean's native compiler; see `TRUST.md`.
 
+The GitHub-hosted workflow builds the product-coordinate and closed
+degree-eleven certificate modules and audits their 16 listed declarations.
+It also checks the source, generated data, and public Python certificates.
+This bounded workflow fits standard hosted runners; it is not a substitute
+for the full `lake build` and the main and numerical axiom audits above.
+A full clean build needs approximately 40 GB for `.lake`; allow at least
+45 GB of free disk space and use the memory setting below if needed.
+
 ## Troubleshooting
 
 - If `lake` selects the wrong Lean version, use the repository's
