@@ -1,11 +1,18 @@
-import TraceEuclidean.PoitouDegreeElevenClosed
+import TraceEuclidean.PoitouDegreeElevenFormulaClosed
+import TraceEuclidean.SectionFourVoightClosed
 
-/-! Audit the proved numerical estimate and expose the remaining formula premise. -/
+/-! Audit the closed Poitou formula, its numerical consequence, and its Section 4 bridge. -/
 
 #check TraceEuclidean.PoitouDegreeElevenClosed.poitouL1_upper_certificate
 #check TraceEuclidean.PoitouDegreeElevenClosed.degreeElevenRootDiscriminantInput_of_poitouFormula
+#check TraceEuclidean.PoitouKernel.poitouDegreeElevenFormulaInput_closed
+#check TraceEuclidean.PoitouKernel.degreeElevenRootDiscriminantInput_poitou_closed
+#check TraceEuclidean.sectionFourDiscriminantInput_of_voightEnumeration_poitou_closed
 
 #print axioms TraceEuclidean.PoitouDegreeElevenClosed.firstPoitouSumUpper
 #print axioms TraceEuclidean.PoitouDegreeElevenClosed.alternatingPoitouSumUpper
 #print axioms TraceEuclidean.PoitouDegreeElevenClosed.poitouL1_upper_certificate
 #print axioms TraceEuclidean.PoitouDegreeElevenClosed.degreeElevenRootDiscriminantInput_of_poitouFormula
+#print axioms TraceEuclidean.PoitouKernel.poitouDegreeElevenFormulaInput_closed
+#print axioms TraceEuclidean.PoitouKernel.degreeElevenRootDiscriminantInput_poitou_closed
+#print axioms TraceEuclidean.sectionFourDiscriminantInput_of_voightEnumeration_poitou_closed

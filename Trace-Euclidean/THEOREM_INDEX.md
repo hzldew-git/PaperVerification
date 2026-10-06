@@ -16,7 +16,7 @@ below refer to the stable public modules and declarations.
 | General binary covering radius | `reduced_gram_exact_radius`, `proposition_six_one_full` | Covers reduced Gram forms and fractional-ideal scalar cases. |
 | Odlyzko-style discriminant bound | `odlyzkoTable4DescriptionInput_closed` and `Odlyzko_discriminant_log_lower_bound` | The selected kernel, analytic continuation, explicit formula, contour, prime correction, and numerical constants are formalized. Some finite numerical certificates use `native_decide`, as disclosed in `TRUST.md`. |
 | Section 4 analytic grid | `classic_analytic_grid_iff_mem`, `integral_analytic_grid_iff_mem` | Exact finite-grid inequalities and selected rows are proved for the encoded input. |
-| Section 4 small-degree exclusions | `sectionFourDiscriminantInput_of_voightEnumeration_poitou` and `sectionFourDiscriminantInput_of_publishedVoightBounds_closed` | The first route assumes completeness of Voight's enumeration and Poitou's specialized degree-eleven explicit formula; its numerical optimization to 14.083 is proved in Lean. The second route assumes the published Odlyzko--Martinet bound directly. The archived polynomial rows have Lean certificates, but their completeness as a field list is not proved here. |
+| Section 4 small-degree exclusions | `sectionFourDiscriminantInput_of_voightEnumeration_poitou_closed` and `sectionFourDiscriminantInput_of_publishedVoightBounds_closed` | The first route proves Poitou's specialized degree-eleven formula and its numerical optimization to 14.083 in Lean; it still assumes completeness of Voight's enumeration. The second route assumes the published Odlyzko--Martinet bound directly. The archived polynomial rows have Lean certificates, but their completeness as a field list is not proved here. |
 | Archived Voight polynomial data | `allVoightPolynomialRows_present_exactTotallyRealNumberField` | Each archived row yields an actual totally real field with its recorded discriminant. Generated finite certificates use the disclosed native compiler trust boundary. |
 
 ## What is not established by compilation alone
@@ -33,11 +33,12 @@ below refer to the stable public modules and declarations.
 - The completeness of Voight's published list of fields up to the relevant
   degree and discriminant bound is an external literature input. The partial
   Hunter search formalization does not yet close all candidate ranges.
-- Poitou's specialized degree-eleven explicit formula remains a premise in
-  the route that proves the 14.083 numerical optimization internally. The
-  alternative source-facing route assumes the published Odlyzko--Martinet
-  estimate. The unconditional Table 4 bound used for global finiteness is
-  treated separately and has a Lean derivation in this project.
+- Poitou's specialized degree-eleven explicit formula and the 14.083
+  optimization are closed by `poitouDegreeElevenFormulaInput_closed` and
+  `degreeElevenRootDiscriminantInput_poitou_closed`. The alternative
+  source-facing route still assumes the published Odlyzko--Martinet estimate.
+  The unconditional Table 4 bound used for global finiteness is treated
+  separately and also has a Lean derivation in this project.
 - Independent sign-off on the exact correspondence between all manuscript
   statements and the encoded Lean theorems is still pending.
 - The author maintains the manuscript-to-public-input comparison separately.

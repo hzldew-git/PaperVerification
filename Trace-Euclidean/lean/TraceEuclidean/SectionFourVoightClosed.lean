@@ -2,7 +2,7 @@ import TraceEuclidean.SectionFourClosed
 import TraceEuclidean.VoightEnumerationBridge
 import TraceEuclidean.DegreeFiveMinimumClosed
 import TraceEuclidean.DegreeElevenSensitivity
-import TraceEuclidean.PoitouDegreeElevenClosed
+import TraceEuclidean.PoitouDegreeElevenFormulaClosed
 
 /-!
 # Section 4 with the Voight enumeration boundary
@@ -158,6 +158,52 @@ theorem integral_pair_mem_of_voightEnumeration_poitou
   integral_pair_mem_of_voightEnumerationSixToTen_poitou
     (voightEnumerationSixToTenInput_of_fiveToTen hEnum)
     hFormula c hE
+
+/-- Section 4 after closing Poitou's degree-eleven formula internally.  Only
+the stated Voight enumeration completeness input remains. -/
+theorem sectionFourDiscriminantInput_of_voightEnumerationSixToTen_poitou_closed
+    (hEnum : VoightEnumerationSixToTenInput) :
+    SectionFourDiscriminantInput :=
+  sectionFourDiscriminantInput_of_voightEnumerationSixToTen_closed hEnum
+    PoitouKernel.degreeElevenRootDiscriminantInput_poitou_closed
+
+theorem classic_pair_mem_of_voightEnumerationSixToTen_poitou_closed
+    (hEnum : VoightEnumerationSixToTenInput)
+    (c : GlobalLatticeClass)
+    (hE : c.IsClassicTraceEuclidean (c.degree : ℝ)) :
+    (c.rank, c.degree) ∈ classicAdmissiblePairs :=
+  classic_pair_mem_of_voightEnumerationSixToTen_closed hEnum
+    PoitouKernel.degreeElevenRootDiscriminantInput_poitou_closed c hE
+
+theorem integral_pair_mem_of_voightEnumerationSixToTen_poitou_closed
+    (hEnum : VoightEnumerationSixToTenInput)
+    (c : GlobalLatticeClass)
+    (hE : c.IsIntegralTraceEuclidean (c.degree : ℝ)) :
+    (c.rank, c.degree) ∈ integralAdmissiblePairs :=
+  integral_pair_mem_of_voightEnumerationSixToTen_closed hEnum
+    PoitouKernel.degreeElevenRootDiscriminantInput_poitou_closed c hE
+
+theorem sectionFourDiscriminantInput_of_voightEnumeration_poitou_closed
+    (hEnum : VoightEnumerationUpToFourteenInput) :
+    SectionFourDiscriminantInput :=
+  sectionFourDiscriminantInput_of_voightEnumerationSixToTen_poitou_closed
+    (voightEnumerationSixToTenInput_of_fiveToTen hEnum)
+
+theorem classic_pair_mem_of_voightEnumeration_poitou_closed
+    (hEnum : VoightEnumerationUpToFourteenInput)
+    (c : GlobalLatticeClass)
+    (hE : c.IsClassicTraceEuclidean (c.degree : ℝ)) :
+    (c.rank, c.degree) ∈ classicAdmissiblePairs :=
+  classic_pair_mem_of_voightEnumerationSixToTen_poitou_closed
+    (voightEnumerationSixToTenInput_of_fiveToTen hEnum) c hE
+
+theorem integral_pair_mem_of_voightEnumeration_poitou_closed
+    (hEnum : VoightEnumerationUpToFourteenInput)
+    (c : GlobalLatticeClass)
+    (hE : c.IsIntegralTraceEuclidean (c.degree : ℝ)) :
+    (c.rank, c.degree) ∈ integralAdmissiblePairs :=
+  integral_pair_mem_of_voightEnumerationSixToTen_poitou_closed
+    (voightEnumerationSixToTenInput_of_fiveToTen hEnum) c hE
 
 /-- Source-aligned Section 4 endpoint using the all-degrees
 Odlyzko--Martinet statement quoted in Voight's enumeration paper. -/

@@ -1,5 +1,5 @@
 import TraceEuclidean.Analytic.LandauPartialFraction
-import TraceEuclidean.MellinGrowth
+import TraceEuclidean.MellinGrowthCore
 
 /-!
 # Landau partial fractions for the completed Dedekind zeta

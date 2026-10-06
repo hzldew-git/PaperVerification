@@ -31,7 +31,7 @@ jobs:
           lake-package-directory: Trace-Euclidean/lean
           auto-config: false
           build: true
-          build-args: TraceEuclidean.TraceProductCoordinates TraceEuclidean.PoitouDegreeElevenClosed
+          build-args: TraceEuclidean.TraceProductCoordinates TraceEuclidean.PoitouDegreeElevenFormulaClosed
           use-mathlib-cache: true
           use-github-cache: false
 
@@ -54,7 +54,7 @@ jobs:
             exit 1
           fi
 
-      - name: Audit product coordinates and degree-eleven numerical proof
+      - name: Audit product coordinates and the closed degree-eleven proof
         working-directory: Trace-Euclidean/lean
         shell: bash
         run: |

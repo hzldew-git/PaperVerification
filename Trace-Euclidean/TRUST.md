@@ -27,11 +27,12 @@ here.
 The completeness of the archived Voight field enumeration is an external
 literature input. For the degree-eleven bound, Lean proves the strict numerical
 optimization producing 14.083, including the required infinite-sum estimate.
-Its route through Poitou's specialized explicit formula still takes that
-formula as a premise. An alternative route takes the published
-Odlyzko--Martinet degree-eleven estimate directly as a literature input.
-The degree-eleven numerical upper bound and its bridge were separately
-audited to use only the three standard logical axioms above.
+The route through Poitou's specialized explicit formula is closed by
+`poitouDegreeElevenFormulaInput_closed`; its optimized consequence is
+`degreeElevenRootDiscriminantInput_poitou_closed`. Both were separately audited
+to use only the three standard logical axioms above. An alternative route takes
+the published Odlyzko--Martinet degree-eleven estimate directly as a literature
+input.
 The archived finite rows have extensive internal Lean and independent
 computational checks, but those checks do not prove the enumeration is
 complete.

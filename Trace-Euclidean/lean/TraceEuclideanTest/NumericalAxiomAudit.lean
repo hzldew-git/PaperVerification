@@ -1,4 +1,5 @@
 import TraceEuclidean.SectionFourVoightClosed
+import TraceEuclidean.MellinGrowth
 import TraceEuclidean.VoightPolynomialBridge
 import TraceEuclidean.VoightAllIrreducible
 import TraceEuclidean.VoightTotalRealityCertificates

@@ -198,6 +198,47 @@ theorem poitouAmplitude_abs_le_three_halves (x : ℝ) :
         _ = 3 / 4 := by norm_num
     _ = 3 / 2 := by norm_num
 
+/-- The normalized bump has total mass one, so its cosine transform has
+absolute value at most one.  This sharper bound is useful when Poitou's
+hyperbolic kernel is expanded into nonnegative exponential terms. -/
+theorem poitouAmplitude_abs_le_one (x : ℝ) :
+    |poitouAmplitude x| ≤ 1 := by
+  have hbumpInt : IntervalIntegrable poitouBumpCore volume (-1) 1 := by
+    apply Continuous.intervalIntegrable
+    unfold poitouBumpCore
+    fun_prop
+  have hmajor :
+      ‖∫ t in (-1 : ℝ)..1,
+          poitouBumpCore t * Real.cos (x * t)‖ ≤
+        ∫ t in (-1 : ℝ)..1, poitouBumpCore t := by
+    apply intervalIntegral.norm_integral_le_of_norm_le (by norm_num)
+    · filter_upwards with t ht
+      rw [Real.norm_eq_abs, abs_mul]
+      have ht' : t ∈ Set.Icc (-1 : ℝ) 1 := ⟨ht.1.le, ht.2⟩
+      have htSq : t ^ 2 ≤ 1 := by
+        have htAbs : |t| ≤ 1 := abs_le.mpr ⟨by linarith [ht'.1], ht'.2⟩
+        have hp := pow_le_pow_left₀ (abs_nonneg t) htAbs 2
+        simpa only [sq_abs, one_pow] using hp
+      have hbump : 0 ≤ poitouBumpCore t := by
+        unfold poitouBumpCore
+        nlinarith
+      rw [abs_of_nonneg hbump]
+      exact mul_le_of_le_one_right hbump (Real.abs_cos_le_one (x * t))
+    · exact hbumpInt
+  have hmass : (∫ t in (-1 : ℝ)..1, poitouBumpCore t) = 1 := by
+    simpa [poitouAmplitude] using poitouAmplitude_zero
+  change |poitouAmplitude x| ≤ ∫ t in (-1 : ℝ)..1, poitouBumpCore t at hmajor
+  rw [hmass] at hmajor
+  exact hmajor
+
+/-- Poitou's source test takes values in the unit interval. -/
+theorem poitouTest_le_one (x : ℝ) : poitouTest x ≤ 1 := by
+  rw [poitouTest, ← sq_abs]
+  have h := pow_le_pow_left₀ (abs_nonneg (poitouAmplitude x))
+    (poitouAmplitude_abs_le_one x) 2
+  norm_num at h ⊢
+  exact h
+
 theorem poitouAmplitude_abs_le_six_div_sq {x : ℝ}
     (hx : 1 ≤ |x|) :
     |poitouAmplitude x| ≤ 6 / |x| ^ 2 := by

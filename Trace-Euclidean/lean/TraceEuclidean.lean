@@ -218,6 +218,7 @@ import TraceEuclidean.PoitouAdmissibility
 import TraceEuclidean.PoitouSeriesBounds
 import TraceEuclidean.PoitouFiniteSums
 import TraceEuclidean.PoitouDegreeElevenClosed
+import TraceEuclidean.PoitouDegreeElevenFormulaClosed
 
 /-!
 Public import for the machine-checked portion of the Trace-Euclidean

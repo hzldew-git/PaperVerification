@@ -12,6 +12,7 @@ the public theorem signatures and the numerical trust boundary, run:
 ```powershell
 lake env lean TraceEuclideanTest/MainTheoremAudit.lean
 lake env lean TraceEuclideanTest/NumericalAxiomAudit.lean
+lake env lean TraceEuclideanTest/PoitouDegreeElevenAudit.lean
 ```
 
 The real-product coordinate proposition is in
@@ -19,6 +20,11 @@ The real-product coordinate proposition is in
 `TraceEuclideanTest/TraceProductCoordinatesAudit.lean`. The generated
 maximal-order and finite numerical certificates are required for the full
 build. Their source files are part of this checkout.
+
+The unconditional degree-eleven Poitou endpoint is
+`TraceEuclidean/PoitouDegreeElevenFormulaClosed.lean`. Its focused audit checks
+the closed formula, the optimized root-discriminant consequence, and the
+Section 4 bridge.
 
 Third-party code and license notices are recorded in `DedekindZeta/README.md`,
 `LeanCert/VENDORED.md`, `IdealArithmetic/README.md`, and
