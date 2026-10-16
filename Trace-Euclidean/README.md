@@ -13,6 +13,9 @@ source-to-input comparison is maintained in a separate private audit.
 - Lean formalizes substantial parts of the finiteness, rank-one
   classification, and discriminant-bound arguments. See `THEOREM_INDEX.md`
   for the exact theorem names and remaining source inputs.
+- Lean proves Poitou's specialized degree-eleven explicit formula and the
+  optimized root-discriminant bound 14.083. The Section 4 route through the
+  archived Voight list still assumes that the list is complete.
 - The Python checker verifies the extracted numerical tables and finite
   rank-one candidate calculations. The Mathematica checker independently
   verifies the exact classification and Voronoi calculations.
@@ -57,7 +60,7 @@ certificates include `native_decide`, so those proofs additionally trust
 Lean's native compiler; see `TRUST.md`.
 
 The GitHub-hosted workflow builds the product-coordinate and closed
-degree-eleven certificate modules and audits their 16 listed declarations.
+degree-eleven formula modules and audits their 19 listed declarations.
 It also checks the source, generated data, and public Python certificates.
 This bounded workflow fits standard hosted runners; it is not a substitute
 for the full `lake build` and the main and numerical axiom audits above.
