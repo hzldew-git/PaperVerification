@@ -61,7 +61,7 @@ jobs:
           set -euo pipefail
           trap 'rm -f product-audit.log poitou-audit.log' EXIT
           lake env lean TraceEuclideanTest/TraceProductCoordinatesAudit.lean > product-audit.log 2>&1
-          lake env lean TraceEuclideanTest/PoitouDegreeElevenAudit.lean > poitou-audit.log 2>&1
+          lake env lean TraceEuclideanTest/PoitouFormulaHostedAudit.lean > poitou-audit.log 2>&1
           python - <<'PY'
           from pathlib import Path
           import re
@@ -69,7 +69,7 @@ jobs:
           standard = {'propext', 'Classical.choice', 'Quot.sound'}
           for module, log in (
               ('TraceProductCoordinatesAudit', 'product-audit.log'),
-              ('PoitouDegreeElevenAudit', 'poitou-audit.log'),
+              ('PoitouFormulaHostedAudit', 'poitou-audit.log'),
           ):
               source = Path(f'TraceEuclideanTest/{module}.lean').read_text(encoding='utf-8')
               output = ' '.join(Path(log).read_text(encoding='utf-8').split())

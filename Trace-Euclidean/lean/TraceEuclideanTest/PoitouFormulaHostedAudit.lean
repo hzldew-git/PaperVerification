@@ -1,0 +1,14 @@
+import TraceEuclidean.PoitouDegreeElevenFormulaClosed
+
+/-! Audit the closed Poitou formula without importing the archived field enumeration.
+The Section 4 bridge is covered by `PoitouDegreeElevenAudit` in the full build. -/
+
+#check TraceEuclidean.PoitouKernel.poitouDegreeElevenFormulaInput_closed
+#check TraceEuclidean.PoitouKernel.degreeElevenRootDiscriminantInput_poitou_closed
+
+#print axioms TraceEuclidean.PoitouDegreeElevenClosed.firstPoitouSumUpper
+#print axioms TraceEuclidean.PoitouDegreeElevenClosed.alternatingPoitouSumUpper
+#print axioms TraceEuclidean.PoitouDegreeElevenClosed.poitouL1_upper_certificate
+#print axioms TraceEuclidean.PoitouDegreeElevenClosed.degreeElevenRootDiscriminantInput_of_poitouFormula
+#print axioms TraceEuclidean.PoitouKernel.poitouDegreeElevenFormulaInput_closed
+#print axioms TraceEuclidean.PoitouKernel.degreeElevenRootDiscriminantInput_poitou_closed

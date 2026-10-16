@@ -60,10 +60,12 @@ certificates include `native_decide`, so those proofs additionally trust
 Lean's native compiler; see `TRUST.md`.
 
 The GitHub-hosted workflow builds the product-coordinate and closed
-degree-eleven formula modules and audits their 19 listed declarations.
+degree-eleven formula modules and audits their 18 listed declarations.
 It also checks the source, generated data, and public Python certificates.
 This bounded workflow fits standard hosted runners; it is not a substitute
 for the full `lake build` and the main and numerical axiom audits above.
+The full `PoitouDegreeElevenAudit` additionally checks the Section 4 bridge;
+the hosted `PoitouFormulaHostedAudit` covers the formula and its numerical bound.
 A full clean build needs approximately 40 GB for `.lake`; allow at least
 45 GB of free disk space and use the memory setting below if needed.
 
