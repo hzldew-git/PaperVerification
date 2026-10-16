@@ -5,6 +5,13 @@ This project pins Lean 4.32.1 and mathlib in `lean/lean-toolchain` and
 encoded declarations against those dependencies. The dedicated axiom audits
 show the transitive assumptions of selected endpoints.
 
+The audit of logical axioms does not discharge a theorem's explicit
+hypotheses. For example,
+`sectionFourDiscriminantInput_of_voightEnumeration_poitou_closed` still
+takes `VoightEnumerationUpToFourteenInput`. Its Poitou formula component is
+proved internally, while the completeness assumption about the archived
+field list remains visible in its signature.
+
 The new real-product coordinate theorems use only `propext`,
 `Classical.choice`, and `Quot.sound`. Some finite numerical and generated
 algebraic certificates use `native_decide`; those checks additionally trust
