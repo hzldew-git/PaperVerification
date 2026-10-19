@@ -69,6 +69,8 @@ the hosted `PoitouFormulaHostedAudit` covers the formula and its numerical bound
 A full clean build needs approximately 40 GB for `.lake`; allow at least
 45 GB of free disk space and use the memory setting below if needed.
 
+The checked release results are recorded in [RELEASE_CHECKS.md](RELEASE_CHECKS.md).
+
 ## Troubleshooting
 
 - If `lake` selects the wrong Lean version, use the repository's
