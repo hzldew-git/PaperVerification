@@ -1,0 +1,27 @@
+{
+  "code_sha256": "e19b88aba2ba79573923cb6e95ba5d2a4db71b86689c2e2e63a7d1752a9eb79b",
+  "input_sha256": "279e00f077d34db49fa00a04da1ca528904a0edb3255af6368dd6fd38259cb7e",
+  "pdf_sha256": "33f16dc526db05d0db0976c618a397c585165322ad230ea62e78979c5e3d45fd",
+  "pdf_pages": 24,
+  "source_lines": 536,
+  "results": {
+    "classification_table.json": "e2aa9c30ebcebe4a3deb9d1df0cb48e6cc5871c157a32fb47a0684a74389b64d",
+    "gram_candidates.json": "12fc0f75d0ff4b2f7575de257b27847d03731f036f24c2dab98bfe9afe5185a9",
+    "rational_certificate.json": "fd03d504e70e038ab4d0bc0999dd2bc253128d50d9d41718f8e9b0ee3939529a",
+    "section4_tables.json": "1745eb941cec844c1f73eae6447a3920d4737a8b64d2f084b887f55ae8c87897",
+    "section6_exact_checks.json": "7af5e9b002ad0c486272163abbc9e38a4c2df93618a91c003c11f253b6029056",
+    "table-S1-classic.csv": "a89f9773c57c1cbb317cb37dcb4a9312765819164f7a07f6795552337b702449",
+    "table-S2-classic.csv": "a743660bfefba88948887212c75c61b6232e0d0eeefe7e8acafbf0d52164ddfa",
+    "table-S3-integral.csv": "520ef6eacc1cffbf0a2d3837c89f72bf9772207e3c61e36ebbf8665f2bfb2db9",
+    "table-S4-integral.csv": "77f433a1fd0a695ed90b2b3ea033cdd06668ae629a7c0349c4043fcabc45491c",
+    "verification_summary.json": "418df6ac46cd05749172d44da1cbb7c50db16b9325249fb71ea09093a48efcef",
+    "voight-rows-10.json": "9e78f81e32a743afe9a96904dbab9ed4b3c6407a62b6a1542b7e6b17a23fc2d8",
+    "voight-rows-5.json": "9e9a7bc07f549286912bf4f81527e1654668c959a1aa70057a13b39c57a874a0",
+    "voight-rows-6.json": "134d76d0dc99695461667a3c5e7ea0bd413e7d7bd23d5d3ac33b6defbfca54be",
+    "voight-rows-7.json": "2bc7e5276d7f2928753bc503bc207d0dc6b5d9e9f182cc8d853d2e46c1ae2f96",
+    "voight-rows-8.json": "5cb4cc0a3940cd507096012749754d2329372b4ef4eba03ccb607fa1f209a2d5",
+    "voight-rows-9.json": "e56d61f0492086aa13644d5c022e38b881234e8372bf80c70b9790418ac0c483",
+    "voight_integrity.json": "0556a8b609b24dfe90f324130262a435984ce5477dc2b31b85b833645d120212",
+    "voronoi_certificates.json": "54665cb2683ad20d01c6c3b6e2cd2a1f7d5778e2c1e1ab3073437589379b3cf5"
+  }
+}
