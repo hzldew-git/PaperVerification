@@ -5,6 +5,18 @@ checks for selected claims of the accompanying paper. The manuscript itself
 is not distributed here. The extracted numerical inputs are public; the
 source-to-input comparison is maintained in a separate private audit.
 
+## Fixed release for reproduction
+
+Use the [fixed release of 2026-10-20](https://github.com/hzldew-git/PaperVerification/releases/tag/trace-euclidean-2026-10-20)
+for the verified source and computational supplement. It is bound to
+[commit `37b2f484f732a5edb3f82920b40f73ba3d17e09c`](https://github.com/hzldew-git/PaperVerification/tree/37b2f484f732a5edb3f82920b40f73ba3d17e09c/Trace-Euclidean)
+and includes the same-basename `.m`, `.tex`, and `.pdf` attachments and their
+SHA-256 checksum file. Use the source archive at that tag for the complete
+code and input data.
+
+This `main`-branch page may receive later updates. For reproduction, use one
+fixed release or commit and follow its recorded checks and trust statement.
+
 ## What is checked
 
 - Lean proves the stated trace-lattice coordinate construction in the product
