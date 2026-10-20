@@ -52,3 +52,29 @@ build is broader than the GitHub-hosted checks, which build and audit the
 product-coordinate and closed Poitou endpoints and run the public source,
 certificate, and Python checks. A fixed release tag identifies the files
 that should be used together.
+
+## Computational supplement
+
+The computational supplement provides `TraceEuclideanVerification.m`,
+`TraceEuclideanVerification.tex`, and `TraceEuclideanVerification.pdf` under
+`mathematica/`. They share the same basename. The 26-page PDF contains all
+four numerical tables, the recorded check outcomes, and the complete
+536-line Wolfram Language source.
+
+The report is bound by SHA-256 to the code, public inputs, and 18 JSON/CSV
+result files. Its archived Mathematica runs include 17 Section 4 assertions,
+952 rational grid decisions, 87 rounded upper bounds, 115 classification
+assertions, and checks of all 2,773 archived Voight rows. These finite checks
+retain the mathematical-input and computational-trust scope in `TRUST.md`.
+
+The report checker verifies the generated TeX blocks, all printed source
+lines, the results, the file hashes, and PDF privacy. A separate directory
+containing only the `.tex` and `.m` files reproduced the PDF text. The public
+Python and publication checks were rerun for the supplement.
+
+The complete Lean source tree, pinned dependencies, and public numerical
+inputs are identical to those at the audited proof-source commit above.
+The two full-build and four-audit results are therefore carried forward for
+that unchanged proof tree; they are not described as newly executed full
+builds for the report update. The report and its archived results have their
+own checks described in `mathematica/README.md`.

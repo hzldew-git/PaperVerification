@@ -25,9 +25,13 @@ The discriminant-bound development follows A. M. Odlyzko's
 and [table description](https://www-users.cse.umn.edu/~odlyzko/unpublished/discr.bound.tables.txt).
 The finite field data in `inputs/voight/` are attributed to John Voight's
 [totally real field enumeration](https://jvoight.github.io/articles/ANTS144-fixed-errata-052714.pdf).
-The enumeration completeness and the specialized degree-eleven formula
-premises are identified in `TRUST.md`; the numerical optimization is proved
-in Lean.
+Completeness of the field enumeration remains a literature input.
+Poitou's specialized degree-eleven explicit formula and its numerical
+optimization to 14.083 are proved in Lean by
+`poitouDegreeElevenFormulaInput_closed` and
+`degreeElevenRootDiscriminantInput_poitou_closed`. The alternative route
+using the published Odlyzko--Martinet bound retains that bound as a
+literature input. See `TRUST.md` for the precise scope.
 
 Rational attainment of the covering maximum is the conclusion of
 Clark and Jagy, [*Euclidean quadratic forms and ADC forms II: integral
