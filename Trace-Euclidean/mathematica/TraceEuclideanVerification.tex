@@ -1,0 +1,923 @@
+% !TEX program = xelatex
+% Edit the prose and layout here. build_report.py refreshes only the marked
+% GENERATED blocks from the checked JSON results. The code appendix reads
+% the sibling .m file directly. No manuscript source is needed.
+\documentclass[12pt]{amsart}
+\usepackage{amsmath,amssymb}
+\usepackage{fontspec}
+\setmainfont{Latin Modern Roman}[SmallCapsFont={lmromancaps10-regular.otf}]
+\setmonofont{Latin Modern Mono}[Scale=MatchLowercase,Ligatures=NoCommon]
+\usepackage[a4paper,textwidth=16.5cm,textheight=22cm,centering]{geometry}
+\usepackage{booktabs,longtable,array}
+\usepackage{xcolor,listings}
+\usepackage[hidelinks,pdfstartview={}]{hyperref}
+\hypersetup{
+  pdftitle={Trace-Euclidean: Mathematica Verification},
+  pdfauthor={Trace-Euclidean verification project},
+  pdfsubject={Reproducible computations, code and actual results},
+  pdfcreator={XeLaTeX}
+}
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{aspn}{Assumption}
+\newtheorem{conj}{Conjecture}[section]
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{cor}[thm]{Corollary}
+\theoremstyle{remark}
+\newtheorem{re}[thm]{Remark}
+\theoremstyle{definition}
+\newtheorem{ex}[thm]{Example}
+\newtheorem{defn}[thm]{Definition}
+\newcommand{\lhs}{\mbox{LHS}}
+\newcommand{\rhs}{\mbox{RHS}}
+\newcommand{\cls}{\mbox{cls}}
+\newcommand{\spn}{\mbox{spn}}
+\newcommand{\gen}{\mbox{gen}}
+\newcommand{\ord}{\mathrm{ord}}
+\newcommand{\co}{\mbox{Co}}
+\newcommand{\exc}{\mbox{Ex}}
+\newcommand{\ind}{\mbox{ind}}
+\newcommand{\rank}{\mbox{rank}}
+\newcommand{\gk}{\mbox{GK}}
+\newcommand{\egk}{\mbox{EGK}}
+\newcommand{\jor}{\mbox{Jor}}
+\newcommand{\tr}{\mbox{Tr}}
+\newcommand{\nr}{\mbox{N}}
+\newcommand{\ho}{\mbox{H}}
+\numberwithin{equation}{section}
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+\setlength{\LTpre}{10pt}
+\setlength{\LTpost}{10pt}
+\renewcommand{\arraystretch}{1.12}
+\lstdefinestyle{commands}{
+  basicstyle=\ttfamily\small,columns=fullflexible,keepspaces=true,
+  showstringspaces=false,breaklines=true,breakatwhitespace=false,
+  aboveskip=8pt,belowskip=8pt
+}
+\lstdefinestyle{source}{
+  style=commands,language=Mathematica,
+  basicstyle=\ttfamily\fontsize{8}{10}\selectfont,
+  numbers=left,numberstyle=\normalfont\ttfamily\fontsize{7}{9}\selectfont,
+  stepnumber=1,numberblanklines=true,numbersep=7pt,xleftmargin=2em,
+  keywordstyle=\color{black},commentstyle=\color{black},
+  stringstyle=\color{black},tabsize=2
+}
+\pagestyle{plain}
+\raggedbottom
+\setlength{\emergencystretch}{2em}
+\title{Trace-Euclidean: Mathematica verification}
+\author{Code, numerical tables and exact finite checks}
+\date{}
+\begin{document}
+\maketitle
+
+\noindent This report records the actual results of
+\texttt{TraceEuclideanVerification.m}. It contains the four numerical tables
+corresponding to Section 4 of the accompanying paper, the finite
+classification outputs, all check outcomes, and the complete Wolfram Language
+source. The calculations use the repository's public extracted inputs.
+
+% BEGIN GENERATED: overview
+\begingroup
+\small
+\begin{longtable}{L{4.3cm}L{4.5cm}L{5.5cm}}
+\caption{Recorded computation results.}\label{tab:overview}\\
+\toprule
+Component & Actual result & Meaning \\
+\midrule
+\endfirsthead
+\multicolumn{3}{l}{\textit{Continued}}\\
+\toprule
+Component & Actual result & Meaning \\
+\midrule
+\endhead
+\midrule
+\endfoot
+\bottomrule
+\endlastfoot
+Section 4 grid & 952 / 952 resolved & Exact rational interval comparisons \\
+Displayed volume bounds & 87 / 87 checked & Six significant digits, rounded upwards \\
+Retained pairs & 24 classic-integral; 63 integral & Necessary numerical conditions \\
+Classification & 115 PASS; 0 FAIL & Exact finite checks \\
+Archived Voight rows & 2,773 / 2,773 verified & Integrity of the supplied lists \\
+\end{longtable}
+\endgroup
+% END GENERATED: overview
+
+\noindent\textbf{Scope.}
+Retained pairs satisfy necessary numerical conditions; their retention does
+not assert the existence of trace-Euclidean lattices. Checking every supplied
+field polynomial does not prove that the list of fields is complete or free
+of isomorphic duplicates. General mathematical arguments and Lean dependency
+statements are documented separately in \texttt{TRUST.md} and
+\texttt{THEOREM\_INDEX.md}.
+
+\subsection*{Run identification}
+% BEGIN GENERATED: provenance
+\noindent Core run (UTC): 2026-10-20T06:15:10Z.\par
+\noindent Archived-row run (UTC): 2026-10-20T06:15:32Z.\par
+\noindent Mathematica 15.0.0 for Microsoft Windows (64-bit) (May 15, 2026).\par
+\noindent Code SHA-256:\par
+{\fontsize{8}{10}\selectfont\ttfamily e19b88aba2ba79573923cb6e95ba5d2a4db71b86689c2e2e63a7d1752a9eb79b\par}
+\noindent Public input SHA-256:\par
+{\fontsize{8}{10}\selectfont\ttfamily 279e00f077d34db49fa00a04da1ca528904a0edb3255af6368dd6fd38259cb7e\par}
+% END GENERATED: provenance
+
+The hashes identify public computation files. The report source and final
+PDF hashes are recorded in \texttt{results/artifact\_manifest.json}.
+
+\clearpage
+\section{Reproduction and interpretation}\label{sec:reproduction}
+
+Keep this directory with its parent \texttt{inputs/} directory.
+Run the following commands from \texttt{Trace-Euclidean}, using a licensed
+Mathematica or Wolfram Engine installation:
+\begin{lstlisting}[style=commands]
+wolframscript -file mathematica/run.wls
+wolframscript -file mathematica/run_voight.wls
+\end{lstlisting}
+The first command writes the table, interval and classification results.
+The second checks every archived field row and can take longer. Both commands
+return a nonzero exit status on a failed check. Missing output indicates an
+incomplete run.
+
+In an interactive Mathematica session:
+\begin{lstlisting}[style=commands]
+Get["mathematica/TraceEuclideanVerification.m"];
+TraceEuclideanVerification`RunVerification[]
+TraceEuclideanVerification`RunVoightIntegrity[]
+\end{lstlisting}
+An explicit output directory can be passed to either function. Loading the
+\texttt{.m} file does not start a computation, clear user symbols, change the
+current working directory or terminate the kernel.
+
+To refresh the report from the checked results and compile its PDF, install
+XeLaTeX and \texttt{latexmk}, then run:
+\begin{lstlisting}[style=commands]
+python -m pip install -r mathematica/requirements-report.txt
+python mathematica/build_report.py
+python tools/check_computational_report.py
+\end{lstlisting}
+The builder validates the result files and their provenance, updates only the
+marked generated blocks in this TeX file, and compiles the PDF. Text outside
+those blocks remains editable. The complete code appendix is read directly
+from the sibling \texttt{.m} file.
+
+To compile the supplied TeX without rerunning any calculation, place the
+\texttt{.tex} and \texttt{.m} files in one directory and run there:
+\begin{lstlisting}[style=commands]
+latexmk -xelatex -halt-on-error TraceEuclideanVerification.tex
+\end{lstlisting}
+This requires only those two source files and the standard TeX packages used
+in the preamble. The JSON/CSV files are needed to refresh the numerical
+content and validate the complete result manifest.
+
+\subsection*{Meaning of the computational checks}
+\begin{itemize}
+\item Logarithms, displayed $h$ values and the additional finite Gamma checks
+  use 90-digit evaluation. High precision alone is not an interval proof.
+\item Grid signs, cutoff constants and volume rounding use exact rational
+  intervals. The arithmetic interpretation of $\beta(d)$ remains a
+  mathematical input.
+\item Gram matrices, roots, discriminants and Voronoi vertices use exact
+  finite algebra in Mathematica. These checks trust its implementation.
+\item The general covering inequalities and field-list completeness have
+  separate mathematical dependencies, described in the theorem index.
+\end{itemize}
+
+\clearpage
+\section{Section 4: formulas and exact decisions}\label{sec:formulas}
+
+Let $n$ be the lattice rank and $d$ the degree of the totally real field.
+Denote the input root-discriminant lower bound by $\beta(d)$ and set
+\begin{align*}
+  V(n,d)&=\dfrac{(\pi d)^{nd}}
+  {\Gamma\!\left(\dfrac{nd}{2}+1\right)^{2}\beta(d)^{nd}}.
+\end{align*}
+The program evaluates $\log V$ to avoid numerical underflow. It retains a
+pair when $V(n,d)c^{nd}\geq 1$, where
+\begin{align*}
+  c&=
+  \begin{cases}
+    1,&\text{in the classic-integral case, or if }n=1,\\
+    2,&\text{in the integral case with }n\geq 2.
+  \end{cases}
+\end{align*}
+The displayed functions are
+\begin{align*}
+  h_{\mathrm{classic}}(n,d)&=\dfrac{\log V(n,d)}{n},\\
+  h_{\mathrm{integral}}(n,d)&=\dfrac{\log V(n,d)}{n}+d\log 2.
+\end{align*}
+The displayed integral $h$ value uses the second formula even at $n=1$;
+the rank-one retention decision still uses $c=1$.
+
+The input bounds are
+\begin{align*}
+  \beta(d)&=
+  \begin{cases}
+    D_{\min}(d)^{\frac{1}{d}},&1\leq d\leq 9,\\
+    14,&d=10,\\
+    \dfrac{14083}{1000},&d=11,\\[6pt]
+    \dfrac{36347}{1000}\exp\left(-\dfrac{10667}{1000d}\right),&d\geq 12.
+  \end{cases}
+\end{align*}
+The discriminants $D_{\min}(d)$ are listed in Table \ref{tab:discriminants}.
+% BEGIN GENERATED: discriminants
+\begingroup
+\small
+\begin{longtable}{rr}
+\caption{Input minimal discriminants in degrees one through nine.}\label{tab:discriminants}\\
+\toprule
+$d$ & $D_{\min}(d)$ \\
+\midrule
+\endfirsthead
+\multicolumn{2}{l}{\textit{Continued}}\\
+\toprule
+$d$ & $D_{\min}(d)$ \\
+\midrule
+\endhead
+\midrule
+\endfoot
+\bottomrule
+\endlastfoot
+1 & 1 \\
+2 & 5 \\
+3 & 49 \\
+4 & 725 \\
+5 & 14641 \\
+6 & 300125 \\
+7 & 20134393 \\
+8 & 282300416 \\
+9 & 9685993193 \\
+\end{longtable}
+\endgroup
+% END GENERATED: discriminants
+These values agree with the released verification data. The degree-eleven
+constant has a separate Lean proof in the repository. The numerical program
+does not discharge field-list completeness or the other general theorem
+dependencies recorded in \texttt{TRUST.md}.
+
+\subsection*{Exact grid decisions}
+We bound $\arctan(1/5)$ and $\arctan(1/239)$ by 80-term alternating series.
+Machin's identity
+\begin{align*}
+  \pi&=16\arctan\!\left(\dfrac{1}{5}\right)
+       -4\arctan\!\left(\dfrac{1}{239}\right)
+\end{align*}
+gives rational bounds for $\pi$. The positive exponential series through
+term $180$ is followed by a geometric upper bound for its tail. Endpoints
+are rounded outwards to a denominator of $10^{85}$.
+
+For even $nd$, $\Gamma(nd/2+1)$ is a factorial. For odd $nd$, the
+half-integer Gamma formula expresses its square as a rational multiple of
+$\pi$. Each value $V(n,d)$ is therefore enclosed by rational arithmetic.
+In every grid decision the whole interval lies on one side of the threshold.
+The exact endpoint comparisons also check
+\begin{align*}
+  4\pi e&<35
+  \quad\text{and}\quad
+  36.347\exp\!\left(-\dfrac{10.667}{15}\right)>2\pi e.
+\end{align*}
+Together with the analytical covering inequalities, these constants
+restrict the search to $1\leq n\leq 34$ and $1\leq d\leq 14$. The finite
+Gamma checks do not establish an inequality for all real arguments.
+% BEGIN GENERATED: margin
+Smallest absolute log feasibility margin on the grid: $0.0069289459281105771513$.
+% END GENERATED: margin
+
+\clearpage
+\setcounter{table}{0}
+\renewcommand{\thetable}{S\arabic{table}}
+\renewcommand{\theHtable}{S\arabic{table}}
+\subsection*{Table S1. Classic-integral retained pairs}
+All retained pairs are included. The $h$ column is rounded to six decimal
+places. The upper bound for $V$ is rounded upwards to six significant digits
+and compared with the rational upper endpoint. The CSV contains
+full-precision values and exact rational display values.
+% BEGIN GENERATED: s1
+\begingroup
+\small
+\begin{longtable}{rrrr}
+\caption{Classic-integral retained pairs (24 rows).}\label{tab:s1}\\
+\toprule
+$d$ & $n$ & $h(n,d)$ & Upper bound for $V(n,d)$ \\
+\midrule
+\endfirsthead
+\multicolumn{4}{l}{\textit{Continued}}\\
+\toprule
+$d$ & $n$ & $h(n,d)$ & Upper bound for $V(n,d)$ \\
+\midrule
+\endhead
+\midrule
+\endfoot
+\bottomrule
+\endlastfoot
+1 & 1 & $1.386294$ & 4 \\
+1 & 2 & $1.144730$ & 9.86961 \\
+1 & 3 & $0.954941$ & 17.546 \\
+1 & 4 & $0.798156$ & 24.3523 \\
+1 & 5 & $0.664340$ & 27.7075 \\
+1 & 6 & $0.547477$ & 26.7053 \\
+1 & 7 & $0.443662$ & 22.3235 \\
+1 & 8 & $0.350216$ & 16.4732 \\
+1 & 9 & $0.265216$ & 10.8802 \\
+1 & 10 & $0.187232$ & 6.50334 \\
+1 & 11 & $0.115173$ & 3.54985 \\
+1 & 12 & $0.048188$ & 1.78293 \\
+2 & 1 & $2.066316$ & 7.89569 \\
+2 & 2 & $1.373169$ & 15.5855 \\
+2 & 3 & $0.871810$ & 13.6731 \\
+2 & 4 & $0.477289$ & 6.7474 \\
+2 & 5 & $0.151320$ & 2.13102 \\
+3 & 1 & $2.268840$ & 9.66819 \\
+3 & 2 & $1.046447$ & 8.10835 \\
+3 & 3 & $0.199664$ & 1.82029 \\
+4 & 1 & $2.151631$ & 8.59888 \\
+4 & 2 & $0.359872$ & 2.05391 \\
+5 & 1 & $1.777311$ & 5.91394 \\
+6 & 1 & $1.423463$ & 4.15148 \\
+\end{longtable}
+\endgroup
+% END GENERATED: s1
+
+\clearpage
+\subsection*{Table S2. Classic-integral maximum rank and degree}
+Here $N(d)$ is the maximum retained rank at degree $d$, and $D(n)$ is the
+maximum retained degree at rank $n$. A zero denotes an empty retained set.
+Every entry of both summary arrays is shown.
+% BEGIN GENERATED: s2
+\begingroup
+\small
+\begin{longtable}{rrrrrr}
+\caption{Classic-integral maximum retained rank and degree.}\label{tab:s2}\\
+\toprule
+$d$ & $N(d)$ & $n$ & $D(n)$ & $n$ & $D(n)$ \\
+\midrule
+\endfirsthead
+\multicolumn{6}{l}{\textit{Continued}}\\
+\toprule
+$d$ & $N(d)$ & $n$ & $D(n)$ & $n$ & $D(n)$ \\
+\midrule
+\endhead
+\midrule
+\endfoot
+\bottomrule
+\endlastfoot
+1 & 12 & 1 & 6 & 18 & 0 \\
+2 & 5 & 2 & 4 & 19 & 0 \\
+3 & 3 & 3 & 3 & 20 & 0 \\
+4 & 2 & 4 & 2 & 21 & 0 \\
+5 & 1 & 5 & 2 & 22 & 0 \\
+6 & 1 & 6 & 1 & 23 & 0 \\
+7 & 0 & 7 & 1 & 24 & 0 \\
+8 & 0 & 8 & 1 & 25 & 0 \\
+9 & 0 & 9 & 1 & 26 & 0 \\
+10 & 0 & 10 & 1 & 27 & 0 \\
+11 & 0 & 11 & 1 & 28 & 0 \\
+12 & 0 & 12 & 1 & 29 & 0 \\
+13 & 0 & 13 & 0 & 30 & 0 \\
+14 & 0 & 14 & 0 & 31 & 0 \\
+ &  & 15 & 0 & 32 & 0 \\
+ &  & 16 & 0 & 33 & 0 \\
+ &  & 17 & 0 & 34 & 0 \\
+\end{longtable}
+\endgroup
+% END GENERATED: s2
+
+\clearpage
+\subsection*{Table S3. Integral retained pairs}
+The conventions are those of Table S1. The displayed integral $h(n,d)$
+includes $d\log 2$ at rank one, while the rank-one retention criterion uses
+$c=1$ as explained in Section \ref{sec:formulas}.
+% BEGIN GENERATED: s3
+\begingroup
+\small
+\begin{longtable}{rrrr}
+\caption{Integral retained pairs (63 rows).}\label{tab:s3}\\
+\toprule
+$d$ & $n$ & $h(n,d)$ & Upper bound for $V(n,d)$ \\
+\midrule
+\endfirsthead
+\multicolumn{4}{l}{\textit{Continued}}\\
+\toprule
+$d$ & $n$ & $h(n,d)$ & Upper bound for $V(n,d)$ \\
+\midrule
+\endhead
+\midrule
+\endfoot
+\bottomrule
+\endlastfoot
+1 & 1 & $2.079442$ & 4 \\
+1 & 2 & $1.837877$ & 9.86961 \\
+1 & 3 & $1.648088$ & 17.546 \\
+1 & 4 & $1.491303$ & 24.3523 \\
+1 & 5 & $1.357488$ & 27.7075 \\
+1 & 6 & $1.240624$ & 26.7053 \\
+1 & 7 & $1.136809$ & 22.3235 \\
+1 & 8 & $1.043364$ & 16.4732 \\
+1 & 9 & $0.958363$ & 10.8802 \\
+1 & 10 & $0.880379$ & 6.50334 \\
+1 & 11 & $0.808320$ & 3.54985 \\
+1 & 12 & $0.741335$ & 1.78293 \\
+1 & 13 & $0.678744$ & 0.829245 \\
+1 & 14 & $0.619997$ & 0.359118 \\
+1 & 15 & $0.564641$ & 0.145499 \\
+1 & 16 & $0.512302$ & 0.0553806 \\
+1 & 17 & $0.462661$ & 0.0198757 \\
+1 & 18 & $0.415452$ & 0.00674795 \\
+1 & 19 & $0.370443$ & 0.00217358 \\
+1 & 20 & $0.327436$ & 0.000665996 \\
+1 & 21 & $0.286258$ & 0.000194579 \\
+1 & 22 & $0.246758$ & 0.0000543233 \\
+1 & 23 & $0.208803$ & 0.0000145212 \\
+1 & 24 & $0.172276$ & 0.00000372326 \\
+1 & 25 & $0.137071$ & 9.17233e-7 \\
+1 & 26 & $0.103095$ & 2.17439e-7 \\
+1 & 27 & $0.070265$ & 4.9672e-8 \\
+1 & 28 & $0.038504$ & 1.09492e-8 \\
+1 & 29 & $0.007745$ & 2.33172e-9 \\
+2 & 1 & $3.452611$ & 7.89569 \\
+2 & 2 & $2.759463$ & 15.5855 \\
+2 & 3 & $2.258104$ & 13.6731 \\
+2 & 4 & $1.863584$ & 6.7474 \\
+2 & 5 & $1.537614$ & 2.13102 \\
+2 & 6 & $1.259527$ & 0.467384 \\
+2 & 7 & $1.016850$ & 0.0753125 \\
+2 & 8 & $0.801460$ & 0.00929131 \\
+2 & 9 & $0.607760$ & 0.000905695 \\
+2 & 10 & $0.431728$ & 0.0000715108 \\
+2 & 11 & $0.270373$ & 0.00000466634 \\
+2 & 12 & $0.121408$ & 2.55861e-7 \\
+3 & 1 & $4.348282$ & 9.66819 \\
+3 & 2 & $3.125888$ & 8.10835 \\
+3 & 3 & $2.279105$ & 1.82029 \\
+3 & 4 & $1.628022$ & 0.164364 \\
+3 & 5 & $1.097941$ & 0.00739092 \\
+3 & 6 & $0.650372$ & 0.000188877 \\
+3 & 7 & $0.262790$ & 0.00000300103 \\
+4 & 1 & $4.924220$ & 8.59888 \\
+4 & 2 & $3.132460$ & 2.05391 \\
+4 & 3 & $1.924347$ & 0.0784946 \\
+4 & 4 & $1.008213$ & 0.000860924 \\
+4 & 5 & $0.268749$ & 0.00000365579 \\
+5 & 1 & $5.243047$ & 5.91394 \\
+5 & 2 & $2.857502$ & 0.296275 \\
+5 & 3 & $1.278816$ & 0.00141481 \\
+5 & 4 & $0.092788$ & 0.00000138226 \\
+6 & 1 & $5.582346$ & 4.15148 \\
+6 & 2 & $2.586614$ & 0.0430868 \\
+6 & 3 & $0.631313$ & 0.0000253506 \\
+7 & 2 & $1.143409$ & 0.000600804 \\
+8 & 2 & $1.275464$ & 0.000195603 \\
+9 & 2 & $0.520141$ & 0.0000107957 \\
+\end{longtable}
+\endgroup
+% END GENERATED: s3
+
+\clearpage
+\subsection*{Table S4. Integral maximum rank and degree}
+The arrays have the same meaning as in Table S2 and include zero entries.
+% BEGIN GENERATED: s4
+\begingroup
+\small
+\begin{longtable}{rrrrrr}
+\caption{Integral maximum retained rank and degree.}\label{tab:s4}\\
+\toprule
+$d$ & $N(d)$ & $n$ & $D(n)$ & $n$ & $D(n)$ \\
+\midrule
+\endfirsthead
+\multicolumn{6}{l}{\textit{Continued}}\\
+\toprule
+$d$ & $N(d)$ & $n$ & $D(n)$ & $n$ & $D(n)$ \\
+\midrule
+\endhead
+\midrule
+\endfoot
+\bottomrule
+\endlastfoot
+1 & 29 & 1 & 6 & 18 & 1 \\
+2 & 12 & 2 & 9 & 19 & 1 \\
+3 & 7 & 3 & 6 & 20 & 1 \\
+4 & 5 & 4 & 5 & 21 & 1 \\
+5 & 4 & 5 & 4 & 22 & 1 \\
+6 & 3 & 6 & 3 & 23 & 1 \\
+7 & 2 & 7 & 3 & 24 & 1 \\
+8 & 2 & 8 & 2 & 25 & 1 \\
+9 & 2 & 9 & 2 & 26 & 1 \\
+10 & 0 & 10 & 2 & 27 & 1 \\
+11 & 0 & 11 & 2 & 28 & 1 \\
+12 & 0 & 12 & 2 & 29 & 1 \\
+13 & 0 & 13 & 1 & 30 & 0 \\
+14 & 0 & 14 & 1 & 31 & 0 \\
+ &  & 15 & 1 & 32 & 0 \\
+ &  & 16 & 1 & 33 & 0 \\
+ &  & 17 & 1 & 34 & 0 \\
+\end{longtable}
+\endgroup
+% END GENERATED: s4
+
+\clearpage
+\setcounter{table}{2}
+\renewcommand{\thetable}{\arabic{table}}
+\renewcommand{\theHtable}{\arabic{table}}
+\section{Finite rank-one classification}\label{sec:classification}
+Write
+\begin{align*}
+  q(x)&=x^{t}Gx
+  \quad\text{and}\quad
+  G=\begin{pmatrix}a&b\\b&c\end{pmatrix}.
+\end{align*}
+In this normalization the squared covering radius, named \texttt{rho}
+in the source, is
+\begin{align*}
+  R(G)&=\dfrac{ac(a+c-2b)}{4(ac-b^{2})}.
+\end{align*}
+The enumeration uses $2\leq c\leq a\leq 7$, $0\leq b\leq c/2$ and
+$R(G)<2$. An independent exact Voronoi calculation intersects rational
+supporting half-planes and evaluates $q$ at every retained vertex. Its
+search bound is computed from the parallelogram enclosed by the
+$\pm e_{i}$ constraints. This checks each enumerated instance independently
+of the radius formula.
+% BEGIN GENERATED: grams
+The maximum determinant in the following list is $21$.
+\begingroup
+\small
+\begin{longtable}{rcrrr}
+\caption{All 22 Gram candidates and independent Voronoi checks.}\label{tab:grams}\\
+\toprule
+ID & $(a,b,c)$ & $\det G$ & Exact maximum $q$ & Constraints \\
+\midrule
+\endfirsthead
+\multicolumn{5}{l}{\textit{Continued}}\\
+\toprule
+ID & $(a,b,c)$ & $\det G$ & Exact maximum $q$ & Constraints \\
+\midrule
+\endhead
+\midrule
+\endfoot
+\bottomrule
+\endlastfoot
+1 & [2, 0, 2] & 4 & 1 & 8 \\
+2 & [2, 1, 2] & 3 & 2/3 & 18 \\
+3 & [3, 0, 2] & 6 & 5/4 & 8 \\
+4 & [3, 1, 2] & 5 & 9/10 & 12 \\
+5 & [3, 0, 3] & 9 & 3/2 & 8 \\
+6 & [3, 1, 3] & 8 & 9/8 & 8 \\
+7 & [4, 0, 2] & 8 & 3/2 & 8 \\
+8 & [4, 1, 2] & 7 & 8/7 & 12 \\
+9 & [4, 0, 3] & 12 & 7/4 & 8 \\
+10 & [4, 1, 3] & 11 & 15/11 & 8 \\
+11 & [4, 1, 4] & 15 & 8/5 & 8 \\
+12 & [4, 2, 4] & 12 & 4/3 & 18 \\
+13 & [5, 0, 2] & 10 & 7/4 & 8 \\
+14 & [5, 1, 2] & 9 & 25/18 & 12 \\
+15 & [5, 1, 3] & 14 & 45/28 & 8 \\
+16 & [5, 1, 4] & 19 & 35/19 & 8 \\
+17 & [5, 2, 4] & 16 & 25/16 & 14 \\
+18 & [5, 2, 5] & 21 & 25/14 & 8 \\
+19 & [6, 1, 2] & 11 & 18/11 & 12 \\
+20 & [6, 1, 3] & 17 & 63/34 & 8 \\
+21 & [6, 2, 4] & 20 & 9/5 & 12 \\
+22 & [7, 1, 2] & 13 & 49/26 & 12 \\
+\end{longtable}
+\endgroup
+% END GENERATED: grams
+The public input orders the diagonal coefficients canonically; Table
+\ref{tab:grams} uses the computational ordering.
+
+\clearpage
+\subsection*{Nine field candidates and six survivors}
+Here $m$ is the squarefree radicand and $k$ the integer index parameter.
+The $(h,k)$ pairs solve the finite trace/norm/index equations, including
+their parity constraint. Empty solution sets exclude three rows.
+% BEGIN GENERATED: candidates
+\begingroup
+\small
+\begin{longtable}{rL{3.0cm}rrL{5.2cm}}
+\caption{Nine field candidates and their integer solutions.}\label{tab:candidates}\\
+\toprule
+$m$ & Gram triple & Norm & $R(G)$ & $(h,k)$ solutions \\
+\midrule
+\endfirsthead
+\multicolumn{5}{l}{\textit{Continued}}\\
+\toprule
+$m$ & Gram triple & Norm & $R(G)$ & $(h,k)$ solutions \\
+\midrule
+\endhead
+\midrule
+\endfoot
+\bottomrule
+\endlastfoot
+2 & [4, 0, 2] & 1 & 3/2 & [[0, 1]] \\
+3 & [4, 2, 4] & 1 & 4/3 & [[-1, 1], [0, 2], [1, 1]] \\
+5 & [3, 1, 2] & 1 & 9/10 & [[0, 1]] \\
+5 & [5, 0, 2] & 2 & 7/4 & [] \\
+5 & [4, 1, 4] & 3 & 8/5 & [] \\
+5 & [6, 2, 4] & 4 & 9/5 & [[0, 1]] \\
+13 & [7, 1, 2] & 1 & 49/26 & [[0, 1]] \\
+17 & [6, 1, 3] & 1 & 63/34 & [] \\
+21 & [5, 2, 5] & 1 & 25/14 & [[-1, 1], [1, 1]] \\
+\end{longtable}
+\endgroup
+% END GENERATED: candidates
+
+\subsection*{Constructed representatives}
+The columns give the radicand, coefficient $\alpha$, integral basis, trace
+Gram triple and exact squared covering radius. Expressions in Table
+\ref{tab:representatives} retain Wolfram Language syntax.
+% BEGIN GENERATED: representatives
+\begingroup
+\footnotesize
+\begin{longtable}{rL{3.4cm}L{6cm}L{2.1cm}r}
+\caption{Six constructed representatives.}\label{tab:representatives}\\
+\toprule
+$m$ & $\alpha$ & Basis & Gram triple & $R(G)$ \\
+\midrule
+\endfirsthead
+\multicolumn{5}{l}{\textit{Continued}}\\
+\toprule
+$m$ & $\alpha$ & Basis & Gram triple & $R(G)$ \\
+\midrule
+\endhead
+\midrule
+\endfoot
+\bottomrule
+\endlastfoot
+2 & 1 & \{Sqrt[2], 1\} & \{4, 0, 2\} & 3/2 \\
+3 & 2 + Sqrt[3] & \{1, -1 + Sqrt[3]\} & \{4, 2, 4\} & 4/3 \\
+5 & 1 & \{(1 + Sqrt[5])/2, 1\} & \{3, 1, 2\} & 9/10 \\
+5 & 2 & \{(1 + Sqrt[5])/2, 1\} & \{6, 2, 4\} & 9/5 \\
+13 & 1 & \{(1 + Sqrt[13])/2, 1\} & \{7, 1, 2\} & 49/26 \\
+21 & (5 + Sqrt[21])/2 & \{3 + (-1 - Sqrt[21])/2, 1\} & \{5, 2, 5\} & 25/14 \\
+\end{longtable}
+\endgroup
+% END GENERATED: representatives
+
+Each representative passes six checks: an integral unimodular basis, a
+totally positive integral coefficient, its trace Gram matrix, its determinant
+identity, the exact radius and the strict radius threshold. The remaining
+algebraic and elimination checks are listed in Appendix A.
+
+The general Clark--Jagy rational-farthest-point input and general
+ideal-theoretic classification arguments do not follow from this finite test
+suite. Their formalization scope is described separately in the repository.
+
+\clearpage
+\section{Archived Voight row integrity}\label{sec:voight}
+The optional run checks the digests and row counts of the six archived
+public files. For every supplied polynomial it tests shape and monicity,
+irreducibility, total reality, the positive square index equation, and the
+actual field discriminant, recomputed independently in Mathematica.
+% BEGIN GENERATED: voight
+\begingroup
+\small
+\begin{longtable}{rrrrrr}
+\caption{Checks of all 2,773 archived rows.}\label{tab:voight}\\
+\toprule
+Degree & Rows & Irreducible & Totally real & Index square & Field disc. \\
+\midrule
+\endfirsthead
+\multicolumn{6}{l}{\textit{Continued}}\\
+\toprule
+Degree & Rows & Irreducible & Totally real & Index square & Field disc. \\
+\midrule
+\endhead
+\midrule
+\endfoot
+\bottomrule
+\endlastfoot
+5 & 674 & 674 & 674 & 674 & 674 \\
+6 & 827 & 827 & 827 & 827 & 827 \\
+7 & 301 & 301 & 301 & 301 & 301 \\
+8 & 164 & 164 & 164 & 164 & 164 \\
+9 & 15 & 15 & 15 & 15 & 15 \\
+10 & 792 & 792 & 792 & 792 & 792 \\
+\end{longtable}
+\endgroup
+% END GENERATED: voight
+The final four columns of Table \ref{tab:voight} count passing rows.
+Individual outcomes follow the original input order in
+\texttt{results/voight-rows-DEGREE.json}; the defining polynomials remain
+in \texttt{inputs/voight/}.
+
+These are counts of supplied rows, not counts of distinct isomorphism
+classes. They do not prove field-list completeness. In particular, the
+degree-ten table contains known fields; the completeness input used by the
+theorem has its own precise hypotheses.
+
+\subsection*{Sources and cross-checks}
+The archived files accompany John Voight, \emph{Enumeration of totally real
+number fields of bounded root discriminant}. Bounds, archive timestamps and
+file digests are listed in \texttt{inputs/voight/README.md}. The verification
+uses those public copies.
+
+Independent comparison scripts are \path{checks/classification.wls} and
+\path{checks/voight_polynomial_integrity.wls}. The consolidated package
+preserves the 115 classification assertions and adds the Section 4 tables
+and interval calculations. The public Python checks provide a separate
+implementation.
+
+The computational supplement builds on repository revision
+\begin{center}
+\small\texttt{7f8ecd2c60b72437e6e958b60e40d2638237ee36}.
+\end{center}
+It does not change Lean theorem sources, toolchain pins or the numerical
+inputs used by the released Lean project. Mathematica's exact arithmetic
+and Lean's disclosed \texttt{native\_decide} compiler dependency are
+different computational trust assumptions.
+
+\subsection*{Troubleshooting}
+For a missing Wolfram executable or license, check the installation and
+activation. For missing inputs, restore the repository layout. For stale
+results or a hash mismatch, use the matching code and inputs and rerun the
+affected computations. If TeX compilation fails, check that XeLaTeX,
+\texttt{latexmk}, the Latin Modern fonts and the packages in the preamble are
+installed. Preserve the compiler log when investigating an error.
+
+\clearpage
+\section*{Appendix A. Complete check outcomes}
+\subsection*{Section 4 assertions}
+% BEGIN GENERATED: section_checks
+\begingroup
+\footnotesize
+\begin{longtable}{L{12cm}cc}
+\caption{All 17 Section 4 assertions.}\label{tab:section-checks}\\
+\toprule
+Assertion & Actual & Expected \\
+\midrule
+\endfirsthead
+\multicolumn{3}{l}{\textit{Continued}}\\
+\toprule
+Assertion & Actual & Expected \\
+\midrule
+\endhead
+\midrule
+\endfoot
+\bottomrule
+\endlastfoot
+\texttt{summary\_\allowbreak complete} & True & True \\
+\texttt{coarse\_\allowbreak degree\_\allowbreak cutoff\_\allowbreak exact} & True & True \\
+\texttt{coarse\_\allowbreak rank\_\allowbreak cutoff\_\allowbreak exact} & True & True \\
+\texttt{all\_\allowbreak 952\_\allowbreak comparisons\_\allowbreak separated} & True & True \\
+\texttt{expected\_\allowbreak counts} & True & True \\
+\texttt{gamma\_\allowbreak batir\_\allowbreak lower\_\allowbreak bound\_\allowbreak on\_\allowbreak grid\_\allowbreak numeric} & True & True \\
+\texttt{gamma\_\allowbreak strict\_\allowbreak consequence\_\allowbreak on\_\allowbreak grid\_\allowbreak numeric} & True & True \\
+\texttt{classic\_\allowbreak published\_\allowbreak pairs} & True & True \\
+\texttt{classic\_\allowbreak published\_\allowbreak rank\_\allowbreak bounds} & True & True \\
+\texttt{classic\_\allowbreak published\_\allowbreak degree\_\allowbreak bounds} & True & True \\
+\texttt{classic\_\allowbreak published\_\allowbreak h\_\allowbreak numeric\_\allowbreak rounding} & True & True \\
+\texttt{classic\_\allowbreak published\_\allowbreak volume\_\allowbreak upper\_\allowbreak exact} & True & True \\
+\texttt{integral\_\allowbreak published\_\allowbreak pairs} & True & True \\
+\texttt{integral\_\allowbreak published\_\allowbreak rank\_\allowbreak bounds} & True & True \\
+\texttt{integral\_\allowbreak published\_\allowbreak degree\_\allowbreak bounds} & True & True \\
+\texttt{integral\_\allowbreak published\_\allowbreak h\_\allowbreak numeric\_\allowbreak rounding} & True & True \\
+\texttt{integral\_\allowbreak published\_\allowbreak volume\_\allowbreak upper\_\allowbreak exact} & True & True \\
+\end{longtable}
+\endgroup
+% END GENERATED: section_checks
+
+\subsection*{Classification: all 115 assertions}
+% BEGIN GENERATED: classification_checks
+\begingroup
+\footnotesize
+\begin{longtable}{rL{11cm}cc}
+\caption{All 115 classification assertions.}\label{tab:classification-checks}\\
+\toprule
+ID & Assertion & Actual & Expected \\
+\midrule
+\endfirsthead
+\multicolumn{4}{l}{\textit{Continued}}\\
+\toprule
+ID & Assertion & Actual & Expected \\
+\midrule
+\endhead
+\midrule
+\endfoot
+\bottomrule
+\endlastfoot
+1 & \texttt{CJ\_\allowbreak coefficient\_\allowbreak order\_\allowbreak and\_\allowbreak formula} & True & True \\
+2 & \texttt{CJ\_\allowbreak lower\_\allowbreak bound\_\allowbreak identity} & True & True \\
+3 & \texttt{CJ\_\allowbreak polarization\_\allowbreak normalization} & True & True \\
+4 & \texttt{integer\_\allowbreak upper\_\allowbreak bound\_\allowbreak A\_\allowbreak 7} & True & True \\
+5 & \texttt{ideal\_\allowbreak index\_\allowbreak norm\_\allowbreak algebra} & True & True \\
+6 & \texttt{quadratic\_\allowbreak trace\_\allowbreak norm\_\allowbreak algebra} & True & True \\
+7 & \texttt{exactly\_\allowbreak 22\_\allowbreak reduced\_\allowbreak Gram\_\allowbreak triples} & True & True \\
+8 & \texttt{published\_\allowbreak 22\_\allowbreak reduced\_\allowbreak Gram\_\allowbreak triples} & True & True \\
+9 & \texttt{maximum\_\allowbreak determinant\_\allowbreak is\_\allowbreak 21} & True & True \\
+10 & \texttt{Gram\_\allowbreak 1\_\allowbreak exact\_\allowbreak Voronoi} & True & True \\
+11 & \texttt{Gram\_\allowbreak 1\_\allowbreak rational\_\allowbreak deep\_\allowbreak holes} & True & True \\
+12 & \texttt{Gram\_\allowbreak 2\_\allowbreak exact\_\allowbreak Voronoi} & True & True \\
+13 & \texttt{Gram\_\allowbreak 2\_\allowbreak rational\_\allowbreak deep\_\allowbreak holes} & True & True \\
+14 & \texttt{Gram\_\allowbreak 3\_\allowbreak exact\_\allowbreak Voronoi} & True & True \\
+15 & \texttt{Gram\_\allowbreak 3\_\allowbreak rational\_\allowbreak deep\_\allowbreak holes} & True & True \\
+16 & \texttt{Gram\_\allowbreak 4\_\allowbreak exact\_\allowbreak Voronoi} & True & True \\
+17 & \texttt{Gram\_\allowbreak 4\_\allowbreak rational\_\allowbreak deep\_\allowbreak holes} & True & True \\
+18 & \texttt{Gram\_\allowbreak 5\_\allowbreak exact\_\allowbreak Voronoi} & True & True \\
+19 & \texttt{Gram\_\allowbreak 5\_\allowbreak rational\_\allowbreak deep\_\allowbreak holes} & True & True \\
+20 & \texttt{Gram\_\allowbreak 6\_\allowbreak exact\_\allowbreak Voronoi} & True & True \\
+21 & \texttt{Gram\_\allowbreak 6\_\allowbreak rational\_\allowbreak deep\_\allowbreak holes} & True & True \\
+22 & \texttt{Gram\_\allowbreak 7\_\allowbreak exact\_\allowbreak Voronoi} & True & True \\
+23 & \texttt{Gram\_\allowbreak 7\_\allowbreak rational\_\allowbreak deep\_\allowbreak holes} & True & True \\
+24 & \texttt{Gram\_\allowbreak 8\_\allowbreak exact\_\allowbreak Voronoi} & True & True \\
+25 & \texttt{Gram\_\allowbreak 8\_\allowbreak rational\_\allowbreak deep\_\allowbreak holes} & True & True \\
+26 & \texttt{Gram\_\allowbreak 9\_\allowbreak exact\_\allowbreak Voronoi} & True & True \\
+27 & \texttt{Gram\_\allowbreak 9\_\allowbreak rational\_\allowbreak deep\_\allowbreak holes} & True & True \\
+28 & \texttt{Gram\_\allowbreak 10\_\allowbreak exact\_\allowbreak Voronoi} & True & True \\
+29 & \texttt{Gram\_\allowbreak 10\_\allowbreak rational\_\allowbreak deep\_\allowbreak holes} & True & True \\
+30 & \texttt{Gram\_\allowbreak 11\_\allowbreak exact\_\allowbreak Voronoi} & True & True \\
+31 & \texttt{Gram\_\allowbreak 11\_\allowbreak rational\_\allowbreak deep\_\allowbreak holes} & True & True \\
+32 & \texttt{Gram\_\allowbreak 12\_\allowbreak exact\_\allowbreak Voronoi} & True & True \\
+33 & \texttt{Gram\_\allowbreak 12\_\allowbreak rational\_\allowbreak deep\_\allowbreak holes} & True & True \\
+34 & \texttt{Gram\_\allowbreak 13\_\allowbreak exact\_\allowbreak Voronoi} & True & True \\
+35 & \texttt{Gram\_\allowbreak 13\_\allowbreak rational\_\allowbreak deep\_\allowbreak holes} & True & True \\
+36 & \texttt{Gram\_\allowbreak 14\_\allowbreak exact\_\allowbreak Voronoi} & True & True \\
+37 & \texttt{Gram\_\allowbreak 14\_\allowbreak rational\_\allowbreak deep\_\allowbreak holes} & True & True \\
+38 & \texttt{Gram\_\allowbreak 15\_\allowbreak exact\_\allowbreak Voronoi} & True & True \\
+39 & \texttt{Gram\_\allowbreak 15\_\allowbreak rational\_\allowbreak deep\_\allowbreak holes} & True & True \\
+40 & \texttt{Gram\_\allowbreak 16\_\allowbreak exact\_\allowbreak Voronoi} & True & True \\
+41 & \texttt{Gram\_\allowbreak 16\_\allowbreak rational\_\allowbreak deep\_\allowbreak holes} & True & True \\
+42 & \texttt{Gram\_\allowbreak 17\_\allowbreak exact\_\allowbreak Voronoi} & True & True \\
+43 & \texttt{Gram\_\allowbreak 17\_\allowbreak rational\_\allowbreak deep\_\allowbreak holes} & True & True \\
+44 & \texttt{Gram\_\allowbreak 18\_\allowbreak exact\_\allowbreak Voronoi} & True & True \\
+45 & \texttt{Gram\_\allowbreak 18\_\allowbreak rational\_\allowbreak deep\_\allowbreak holes} & True & True \\
+46 & \texttt{Gram\_\allowbreak 19\_\allowbreak exact\_\allowbreak Voronoi} & True & True \\
+47 & \texttt{Gram\_\allowbreak 19\_\allowbreak rational\_\allowbreak deep\_\allowbreak holes} & True & True \\
+48 & \texttt{Gram\_\allowbreak 20\_\allowbreak exact\_\allowbreak Voronoi} & True & True \\
+49 & \texttt{Gram\_\allowbreak 20\_\allowbreak rational\_\allowbreak deep\_\allowbreak holes} & True & True \\
+50 & \texttt{Gram\_\allowbreak 21\_\allowbreak exact\_\allowbreak Voronoi} & True & True \\
+51 & \texttt{Gram\_\allowbreak 21\_\allowbreak rational\_\allowbreak deep\_\allowbreak holes} & True & True \\
+52 & \texttt{Gram\_\allowbreak 22\_\allowbreak exact\_\allowbreak Voronoi} & True & True \\
+53 & \texttt{Gram\_\allowbreak 22\_\allowbreak rational\_\allowbreak deep\_\allowbreak holes} & True & True \\
+54 & \texttt{published\_\allowbreak nine\_\allowbreak field\_\allowbreak Gram\_\allowbreak candidates} & True & True \\
+55 & \texttt{exactly\_\allowbreak nine\_\allowbreak field\_\allowbreak Gram\_\allowbreak candidates} & True & True \\
+56 & \texttt{all\_\allowbreak fundamental\_\allowbreak discriminants\_\allowbreak are\_\allowbreak exhausted} & True & True \\
+57 & \texttt{candidate\_\allowbreak 1\_\allowbreak all\_\allowbreak trace\_\allowbreak norm\_\allowbreak index\_\allowbreak solutions} & True & True \\
+58 & \texttt{candidate\_\allowbreak 2\_\allowbreak all\_\allowbreak trace\_\allowbreak norm\_\allowbreak index\_\allowbreak solutions} & True & True \\
+59 & \texttt{candidate\_\allowbreak 3\_\allowbreak all\_\allowbreak trace\_\allowbreak norm\_\allowbreak index\_\allowbreak solutions} & True & True \\
+60 & \texttt{candidate\_\allowbreak 4\_\allowbreak all\_\allowbreak trace\_\allowbreak norm\_\allowbreak index\_\allowbreak solutions} & True & True \\
+61 & \texttt{candidate\_\allowbreak 5\_\allowbreak all\_\allowbreak trace\_\allowbreak norm\_\allowbreak index\_\allowbreak solutions} & True & True \\
+62 & \texttt{candidate\_\allowbreak 6\_\allowbreak all\_\allowbreak trace\_\allowbreak norm\_\allowbreak index\_\allowbreak solutions} & True & True \\
+63 & \texttt{candidate\_\allowbreak 7\_\allowbreak all\_\allowbreak trace\_\allowbreak norm\_\allowbreak index\_\allowbreak solutions} & True & True \\
+64 & \texttt{candidate\_\allowbreak 8\_\allowbreak all\_\allowbreak trace\_\allowbreak norm\_\allowbreak index\_\allowbreak solutions} & True & True \\
+65 & \texttt{candidate\_\allowbreak 9\_\allowbreak all\_\allowbreak trace\_\allowbreak norm\_\allowbreak index\_\allowbreak solutions} & True & True \\
+66 & \texttt{all\_\allowbreak possible\_\allowbreak b2\_\allowbreak values} & True & True \\
+67 & \texttt{three\_\allowbreak empty\_\allowbreak rows\_\allowbreak are\_\allowbreak excluded} & True & True \\
+68 & \texttt{six\_\allowbreak Gram\_\allowbreak candidates\_\allowbreak survive} & True & True \\
+69 & \texttt{all\_\allowbreak survivors\_\allowbreak except\_\allowbreak m3\_\allowbreak have\_\allowbreak index\_\allowbreak one} & True & True \\
+70 & \texttt{m3\_\allowbreak both\_\allowbreak values\_\allowbreak two\_\allowbreak force\_\allowbreak cross\_\allowbreak term\_\allowbreak plus\_\allowbreak or\_\allowbreak minus\_\allowbreak two} & True & True \\
+71 & \texttt{m3\_\allowbreak forced\_\allowbreak cross\_\allowbreak traces\_\allowbreak contradict\_\allowbreak B\_\allowbreak 2} & True & True \\
+72 & \texttt{m3\_\allowbreak other\_\allowbreak b\_\allowbreak values\_\allowbreak have\_\allowbreak norm\_\allowbreak one} & True & True \\
+73 & \texttt{m3\_\allowbreak conjugate\_\allowbreak coefficients\_\allowbreak are\_\allowbreak unit\_\allowbreak square\_\allowbreak equivalent} & True & True \\
+74 & \texttt{m21\_\allowbreak conjugate\_\allowbreak coefficients\_\allowbreak are\_\allowbreak unit\_\allowbreak square\_\allowbreak equivalent} & True & True \\
+75 & \texttt{published\_\allowbreak six\_\allowbreak representative\_\allowbreak Gram\_\allowbreak and\_\allowbreak radius\_\allowbreak records} & True & True \\
+76 & \texttt{representative\_\allowbreak 1\_\allowbreak unimodular\_\allowbreak integral\_\allowbreak basis} & True & True \\
+77 & \texttt{representative\_\allowbreak 1\_\allowbreak positive\_\allowbreak integral\_\allowbreak coefficient} & True & True \\
+78 & \texttt{representative\_\allowbreak 1\_\allowbreak trace\_\allowbreak Gram} & True & True \\
+79 & \texttt{representative\_\allowbreak 1\_\allowbreak determinant\_\allowbreak identity} & True & True \\
+80 & \texttt{representative\_\allowbreak 1\_\allowbreak exact\_\allowbreak covering\_\allowbreak radius} & True & True \\
+81 & \texttt{representative\_\allowbreak 1\_\allowbreak strict\_\allowbreak threshold} & True & True \\
+82 & \texttt{representative\_\allowbreak 2\_\allowbreak unimodular\_\allowbreak integral\_\allowbreak basis} & True & True \\
+83 & \texttt{representative\_\allowbreak 2\_\allowbreak positive\_\allowbreak integral\_\allowbreak coefficient} & True & True \\
+84 & \texttt{representative\_\allowbreak 2\_\allowbreak trace\_\allowbreak Gram} & True & True \\
+85 & \texttt{representative\_\allowbreak 2\_\allowbreak determinant\_\allowbreak identity} & True & True \\
+86 & \texttt{representative\_\allowbreak 2\_\allowbreak exact\_\allowbreak covering\_\allowbreak radius} & True & True \\
+87 & \texttt{representative\_\allowbreak 2\_\allowbreak strict\_\allowbreak threshold} & True & True \\
+88 & \texttt{representative\_\allowbreak 3\_\allowbreak unimodular\_\allowbreak integral\_\allowbreak basis} & True & True \\
+89 & \texttt{representative\_\allowbreak 3\_\allowbreak positive\_\allowbreak integral\_\allowbreak coefficient} & True & True \\
+90 & \texttt{representative\_\allowbreak 3\_\allowbreak trace\_\allowbreak Gram} & True & True \\
+91 & \texttt{representative\_\allowbreak 3\_\allowbreak determinant\_\allowbreak identity} & True & True \\
+92 & \texttt{representative\_\allowbreak 3\_\allowbreak exact\_\allowbreak covering\_\allowbreak radius} & True & True \\
+93 & \texttt{representative\_\allowbreak 3\_\allowbreak strict\_\allowbreak threshold} & True & True \\
+94 & \texttt{representative\_\allowbreak 4\_\allowbreak unimodular\_\allowbreak integral\_\allowbreak basis} & True & True \\
+95 & \texttt{representative\_\allowbreak 4\_\allowbreak positive\_\allowbreak integral\_\allowbreak coefficient} & True & True \\
+96 & \texttt{representative\_\allowbreak 4\_\allowbreak trace\_\allowbreak Gram} & True & True \\
+97 & \texttt{representative\_\allowbreak 4\_\allowbreak determinant\_\allowbreak identity} & True & True \\
+98 & \texttt{representative\_\allowbreak 4\_\allowbreak exact\_\allowbreak covering\_\allowbreak radius} & True & True \\
+99 & \texttt{representative\_\allowbreak 4\_\allowbreak strict\_\allowbreak threshold} & True & True \\
+100 & \texttt{representative\_\allowbreak 5\_\allowbreak unimodular\_\allowbreak integral\_\allowbreak basis} & True & True \\
+101 & \texttt{representative\_\allowbreak 5\_\allowbreak positive\_\allowbreak integral\_\allowbreak coefficient} & True & True \\
+102 & \texttt{representative\_\allowbreak 5\_\allowbreak trace\_\allowbreak Gram} & True & True \\
+103 & \texttt{representative\_\allowbreak 5\_\allowbreak determinant\_\allowbreak identity} & True & True \\
+104 & \texttt{representative\_\allowbreak 5\_\allowbreak exact\_\allowbreak covering\_\allowbreak radius} & True & True \\
+105 & \texttt{representative\_\allowbreak 5\_\allowbreak strict\_\allowbreak threshold} & True & True \\
+106 & \texttt{representative\_\allowbreak 6\_\allowbreak unimodular\_\allowbreak integral\_\allowbreak basis} & True & True \\
+107 & \texttt{representative\_\allowbreak 6\_\allowbreak positive\_\allowbreak integral\_\allowbreak coefficient} & True & True \\
+108 & \texttt{representative\_\allowbreak 6\_\allowbreak trace\_\allowbreak Gram} & True & True \\
+109 & \texttt{representative\_\allowbreak 6\_\allowbreak determinant\_\allowbreak identity} & True & True \\
+110 & \texttt{representative\_\allowbreak 6\_\allowbreak exact\_\allowbreak covering\_\allowbreak radius} & True & True \\
+111 & \texttt{representative\_\allowbreak 6\_\allowbreak strict\_\allowbreak threshold} & True & True \\
+112 & \texttt{constructed\_\allowbreak Gram\_\allowbreak matrices\_\allowbreak are\_\allowbreak exactly\_\allowbreak the\_\allowbreak six\_\allowbreak survivors} & True & True \\
+113 & \texttt{m5\_\allowbreak two\_\allowbreak F\_\allowbreak isometry\_\allowbreak classes\_\allowbreak are\_\allowbreak distinct} & True & True \\
+114 & \texttt{Corollary\_\allowbreak 1\_\allowbreak 9\_\allowbreak fields} & True & True \\
+115 & \texttt{m3\_\allowbreak twisted\_\allowbreak and\_\allowbreak standard\_\allowbreak radii} & True & True \\
+\end{longtable}
+\endgroup
+% END GENERATED: classification_checks
+
+\clearpage
+\section*{Appendix B. Complete executable .m source}
+The listing is read directly from the file whose SHA-256 digest appears
+in the run identification. Line numbers count every source line, including
+blank lines; wrapped continuations have no additional number.
+\lstinputlisting[style=source]{TraceEuclideanVerification.m}
+\end{document}

@@ -2,11 +2,17 @@
 
 - [TraceEuclideanVerification.m](TraceEuclideanVerification.m): complete,
   reusable Wolfram Language source.
+- [TraceEuclideanVerification.tex](TraceEuclideanVerification.tex): editable
+  LaTeX report, including all result tables and a direct inclusion of the
+  sibling `.m` file.
 - [TraceEuclideanVerification.pdf](TraceEuclideanVerification.pdf): mathematical
   explanations, all four Section 4 tables, classification outputs, all 115
   classification check outcomes, and the complete `.m` source.
 - `results/`: actual JSON results, four complete CSV tables, and a SHA-256
   manifest binding the report to the code and public inputs.
+
+The `.m`, `.tex` and `.pdf` files share the same basename. The PDF is compiled
+from the TeX source using XeLaTeX; no screenshots of code or results are used.
 
 Use this directory together with the parent `inputs/` directory from the
 same repository revision. The package needs Mathematica or a licensed Wolfram
@@ -49,9 +55,25 @@ An output directory may be supplied as the argument to either function.
 Loading the file does not start a check, clear user symbols, change the
 working directory, or terminate the Mathematica kernel.
 
-## Regenerate and check the PDF
+## Compile the supplied TeX
 
-After running both computation commands:
+For a PDF-only rebuild, download the `.tex` and `.m` files into the same
+directory. A TeX installation with XeLaTeX, `latexmk`, the Latin Modern fonts,
+and the packages listed in the TeX preamble is required. Run in that directory:
+
+```text
+latexmk -xelatex -halt-on-error TraceEuclideanVerification.tex
+```
+
+Neither Mathematica nor the result JSON files are needed for this command.
+The supplied numeric content is already included in the TeX source.
+The released PDF was compiled with XeTeX from TeX Live 2025; the exact
+compiler identification is recorded in the artifact manifest.
+
+## Refresh numerical content and check the report
+
+After computing new results, or to refresh the report from the supplied
+checked results, run from the `Trace-Euclidean` directory:
 
 ```text
 python -m pip install -r mathematica/requirements-report.txt
@@ -61,14 +83,30 @@ python tools/check_no_manuscripts.py
 python tools/check_public_metadata.py
 ```
 
-The PDF builder reads the exact `.m` file and its JSON outputs. It rejects
+The report builder reads the exact `.m` file and its JSON outputs. It rejects
 missing results, unsuccessful checks, and mismatched code or public-input
-hashes. The report checker also inspects PDF text, metadata, attachments,
-and the result manifest. The code and public-input SHA-256 digests appear
-on the cover; the PDF digest appears in the manifest. Regenerating a PDF
+hashes. It refreshes only the `% BEGIN GENERATED:` / `% END GENERATED:` blocks
+in the TeX file and then compiles the PDF. Prose and layout outside those
+blocks are preserved. The complete source appendix uses `\lstinputlisting`
+to read the sibling `.m` file directly. TeX intermediate files go to
+`mathematica/tmp/tex-build/`, which is excluded from Git.
+
+The report checker compares all generated TeX blocks with the JSON results
+and every printed code line with the `.m` source. It also inspects PDF text,
+metadata, attachments, all check identifiers, and the result manifest.
+The code and public-input SHA-256 digests appear in the run identification;
+the TeX and PDF digests appear in the manifest. Regenerating a PDF
 may change its binary digest through PDF creation metadata.
 The builder normalizes generated JSON and CSV line endings to LF before
 hashing, so the recorded digests also hold for a fresh Git checkout.
+
+To edit the report, change text outside the generated blocks and run
+`build_report.py` again. Changes inside those blocks will be replaced by the
+checked results. `build_report.py --tex-only` updates the TeX and CSV files
+without compiling; the PDF and manifest remain stale until a full build.
+Formatting edits do not require rerunning Mathematica when the code, inputs
+and validated JSON results are unchanged. Changes to computations or inputs
+require fresh corresponding results.
 
 The existing independent implementation can be run with:
 
@@ -104,6 +142,12 @@ The separately disclosed Lean `native_decide` dependency is unchanged.
   and investigate the named check. Do not treat a partial output as a pass.
 - **Report-library error:** install the pinned report requirements. These
   libraries format and inspect the report; Mathematica performs the computations.
+- **TeX executable, font or package missing:** install a complete TeX Live or
+  equivalent distribution and make `xelatex` and `latexmk` available. Keep the
+  `.m` beside the `.tex`, and inspect the compiler log if an error remains.
+- **Edited PDF does not match its manifest:** use `build_report.py` to compile
+  the TeX and refresh the manifest together. A manual TeX compilation alone
+  does not update the recorded PDF digest.
 
 No manuscript file, private manuscript identifier, or machine-specific path
 is required to reproduce this supplement.

@@ -1,9 +1,12 @@
 {
   "code_sha256": "e19b88aba2ba79573923cb6e95ba5d2a4db71b86689c2e2e63a7d1752a9eb79b",
+  "tex_sha256": "c3c82499de124fddfb39074a5e68e45131160cc1d5c6c7b33fa72a837bd228e1",
   "input_sha256": "279e00f077d34db49fa00a04da1ca528904a0edb3255af6368dd6fd38259cb7e",
-  "pdf_sha256": "33f16dc526db05d0db0976c618a397c585165322ad230ea62e78979c5e3d45fd",
-  "pdf_pages": 24,
+  "pdf_sha256": "1d50d7381cd4e54159aa43e67eab30432dcad09c757815da0252ac1dbf1df66a",
+  "pdf_pages": 26,
   "source_lines": 536,
+  "pdf_backend": "XeLaTeX",
+  "compiler": "XeTeX 3.141592653-2.6-0.999997 (TeX Live 2025)",
   "results": {
     "classification_table.json": "e2aa9c30ebcebe4a3deb9d1df0cb48e6cc5871c157a32fb47a0684a74389b64d",
     "gram_candidates.json": "12fc0f75d0ff4b2f7575de257b27847d03731f036f24c2dab98bfe9afe5185a9",

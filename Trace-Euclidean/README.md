@@ -74,12 +74,14 @@ The checked release results are recorded in [RELEASE_CHECKS.md](RELEASE_CHECKS.m
 ## Mathematica code and printable report
 
 The [computational supplement](mathematica/README.md) provides a reusable
-[`.m` file](mathematica/TraceEuclideanVerification.m) and a
+[`.m` file](mathematica/TraceEuclideanVerification.m),
+[editable TeX report](mathematica/TraceEuclideanVerification.tex), and a
 [PDF with code and actual results](mathematica/TraceEuclideanVerification.pdf).
 It includes all four Section 4 tables, exact rational checks of 952 grid
 decisions and 87 rounded upper bounds, the 115 classification checks, and
 an optional integrity check of all 2,773 archived Voight rows. The PDF also
-contains the complete `.m` source. JSON and CSV outputs permit independent
+is compiled from the TeX and contains the complete `.m` source. These three
+files share the basename `TraceEuclideanVerification`. JSON and CSV outputs permit independent
 inspection. The supplement explains its computational scope and remaining
 mathematical inputs.
 
