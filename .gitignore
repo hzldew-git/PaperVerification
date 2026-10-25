@@ -2,6 +2,10 @@
 **/source_snapshot/
 **/output/manuscript/
 
+# Private document sources and rendered documents.
+*.tex
+*.pdf
+
 # LaTeX intermediate files.
 **/*.aux
 **/*.fdb_latexmk

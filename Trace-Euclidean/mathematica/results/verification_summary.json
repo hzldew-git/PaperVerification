@@ -1,0 +1,13 @@
+{
+	"provenance":{
+		"tool":"15.0.0 for Microsoft Windows (64-bit) (May 15, 2026)",
+		"code_sha256":"e19b88aba2ba79573923cb6e95ba5d2a4db71b86689c2e2e63a7d1752a9eb79b",
+		"input_sha256":"279e00f077d34db49fa00a04da1ca528904a0edb3255af6368dd6fd38259cb7e",
+		"run_utc":"2026-10-20T06:15:10Z"
+	},
+	"section4_checks":17,
+	"grid_comparisons":952,
+	"upward_rounded_values":87,
+	"classification_checks":115,
+	"all_passed":true
+}

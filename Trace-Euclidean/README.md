@@ -5,6 +5,16 @@ checks for selected claims of the accompanying paper. The manuscript itself
 is not distributed here. The extracted numerical inputs are public; the
 source-to-input comparison is maintained in a separate private audit.
 
+## Fixed release for reproduction
+
+Use the [fixed release of 2026-10-25](https://github.com/hzldew-git/PaperVerification/releases/tag/trace-euclidean-2026-10-25)
+for the verified source and computational supplement. Use the source archive
+at that tag for the complete code and input data. The reusable Mathematica
+source is also available as a release attachment.
+
+This `main`-branch page may receive later updates. For reproduction, use one
+fixed release or commit and follow its recorded checks and trust statement.
+
 ## What is checked
 
 - Lean proves the stated trace-lattice coordinate construction in the product
@@ -70,6 +80,15 @@ A full clean build needs approximately 40 GB for `.lake`; allow at least
 45 GB of free disk space and use the memory setting below if needed.
 
 The checked release results are recorded in [RELEASE_CHECKS.md](RELEASE_CHECKS.md).
+
+## Mathematica code and results
+
+The [computational supplement](mathematica/README.md) provides a reusable
+[`.m` file](mathematica/TraceEuclideanVerification.m) and archived JSON and CSV
+results. It includes all four Section 4 tables, exact rational checks of 952
+grid decisions and 87 rounded upper bounds, the 115 classification checks,
+and an optional integrity check of all 2,773 archived Voight rows. The
+supplement explains its computational scope and remaining mathematical inputs.
 
 ## Troubleshooting
 
