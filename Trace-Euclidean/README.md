@@ -7,13 +7,22 @@ source-to-input comparison is maintained in a separate private audit.
 
 ## Fixed release for reproduction
 
-Use the [fixed release of 2026-10-25](https://github.com/hzldew-git/PaperVerification/releases/tag/trace-euclidean-2026-10-25)
+Use the [synchronized release of 2026-10-25](https://github.com/hzldew-git/PaperVerification/releases/tag/trace-euclidean-2026-10-25-sync)
 for the verified source and computational supplement. Use the source archive
 at that tag for the complete code and input data. The reusable Mathematica
 source is also available as a release attachment.
 
 This `main`-branch page may receive later updates. For reproduction, use one
 fixed release or commit and follow its recorded checks and trust statement.
+
+The synchronization rechecked all 66 public reference locators against the
+accompanying paper. Equation (1.2) is now located on page 4. The mathematical
+input values and the Lean proof tree are unchanged. Both Mathematica runs
+were repeated, and all 18 archived result payloads agree with the preceding
+release after excluding run provenance. The code, input and result digests
+were refreshed together. See [RELEASE_CHECKS.md](RELEASE_CHECKS.md) for the
+distinction between these new computations and the retained full Lean
+build evidence. The preceding fixed release remains available.
 
 ## What is checked
 
@@ -44,6 +53,7 @@ python -m pip install -r requirements.txt
 python tools/verify_public.py
 python tools/check_no_manuscripts.py
 python tools/check_public_metadata.py
+python tools/check_computational_results.py
 wolframscript -file checks/classification.wls
 ```
 
@@ -51,6 +61,9 @@ The expected summaries are 1,156 Python PASS and 115 Mathematica PASS, with
 zero failures. The two publication checks report PASS, confirming that the
 candidate contains no manuscript documents, internal manuscript labels, or
 local absolute paths. The numerical scripts write their summaries to `results/`.
+The computational-results check validates the archived code/input digests,
+all 18 result files, and their recorded outcomes. It also runs on every
+push and pull request.
 
 For Lean, use the pinned toolchain and dependencies in `lean/`:
 

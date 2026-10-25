@@ -3,7 +3,7 @@
    RunVoightIntegrity[] is the separate, longer archived-row check.
    All paths are relative to this file. Loading it does not run checks,
    change the working directory, or clear the user's symbols.
-   The accompanying PDF records a run of this exact source file. *)
+   Archived JSON and CSV results record runs of this exact source file. *)
 BeginPackage["TraceEuclideanVerification`"];
 RunVerification::usage =
   "RunVerification[outputDirectory] checks Section 4 and the classification.";

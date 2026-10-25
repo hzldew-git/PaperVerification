@@ -63,6 +63,13 @@ revision together. New computation outputs can be inspected separately;
 their hashes must be checked and the result manifest refreshed before they
 replace the archived results.
 
+When preparing a new archive, use the final code and input bytes for both
+runs. Normalize exported JSON/CSV files to LF line endings, as specified in
+the repository attributes, before calculating their manifest digests.
+The 2026-10-25 synchronization repeated both runs; all numerical payloads
+match the preceding archive, with refreshed run provenance and digests.
+See [RELEASE_CHECKS.md](../RELEASE_CHECKS.md) for the exact scope.
+
 The existing independent implementation can be run with:
 
 ```text

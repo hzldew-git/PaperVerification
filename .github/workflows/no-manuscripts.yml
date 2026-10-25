@@ -19,3 +19,5 @@ jobs:
         run: python tools/check_no_manuscripts.py --root .
       - name: Verify that public metadata contains no local details
         run: python Trace-Euclidean/tools/check_public_metadata.py --root Trace-Euclidean
+      - name: Verify archived computational results and provenance
+        run: python Trace-Euclidean/tools/check_computational_results.py

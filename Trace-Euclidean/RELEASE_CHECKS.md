@@ -1,23 +1,47 @@
 # Release checks
 
-The release was checked in a fresh working tree and reproduced from a separate
-checkout. Both started without project build artifacts, used the pinned
-dependencies and the official mathlib dependency cache, and completed the full
-`lake build`. No Lean or mathlib upgrade was made for this release.
+The current synchronization refreshes reference locators and the computational
+archive. Its new checks are listed first. Full Lean build and axiom-audit
+evidence is retained only for the unchanged proof tree described below;
+this synchronization is not a new full Lean build.
 
-## Environment and results
+## Synchronization checks, 2026-10-25
+
+- All 66 public reference locators were compared with the accompanying paper.
+  Only the page of equation (1.2) changed, from 5 to 4; its number is unchanged.
+- Every non-locator field in `inputs/verification_inputs.json` is unchanged
+  from commit `c101031778afa02d7631fd96712ce0a75ef53898`. The complete file
+  digest changes because the locator is part of that file.
+- Public Python checks were rerun: **1,156 PASS, 0 FAIL**.
+- Both Mathematica wrappers were rerun with Mathematica 15.0.0: 17 Section 4
+  assertions, 952 rational grid decisions, 87 rounded upper bounds, 115
+  classification assertions, and all 2,773 archived Voight rows passed.
+- All 18 JSON/CSV result payloads agree with the preceding release, excluding
+  run provenance. Archived files use the repository's LF line endings before
+  their SHA-256 digests are recorded.
+- The `.m` source changed only in its introductory documentation comment.
+  Its executable calculations are unchanged; the new code digest is bound
+  to the repeated runs.
+- The computational-result, manuscript-exclusion and public-metadata checks
+  passed. The computational-result check now also runs on every GitHub push
+  and pull request.
+
+The exact source-to-input comparison is retained in a private correspondence
+record. No manuscript file or internal manuscript identifier is distributed.
+
+## Retained full Lean build evidence
+
+The proof source at commit `72bfc64f98b11adbc0a625a95076e63c98219e79` was checked
+in a fresh working tree and reproduced from a separate checkout. Both started
+without project build artifacts, used the pinned dependencies and the official
+mathlib dependency cache, and completed the full `lake build`.
+The current `lean/` tree has the identical Git tree identifier
+`55a8e66877921be32969f68e6dfc7a65a71b3bde`, including its toolchain and dependency
+manifest. No Lean or mathlib upgrade was made.
 
 - Lean 4.32.1, with the exact dependency revisions in `lean/lake-manifest.json`.
-- Mathematica 15.0.0 on Windows.
-- Public Python checks: **1,156 PASS, 0 FAIL**.
-- Public Mathematica checks: **115 PASS, 0 FAIL**.
 - Generated Voight certificates reproduce the committed source.
-- Manuscript-exclusion and public-metadata checks: **PASS**.
 - The full Lean build and all four documented axiom audits: **PASS in both checkouts**.
-
-The audited proof sources and numerical inputs are those at commit
-`72bfc64f98b11adbc0a625a95076e63c98219e79`; subsequent changes in this release only record
-verification results and update documentation.
 
 ## Axiom audit
 
@@ -69,8 +93,10 @@ The result checker verifies the code and input digests, every archived
 result digest, and recorded outcomes. The public Python and publication
 checks were rerun for the supplement.
 
-The complete Lean source tree, pinned dependencies, and public numerical
-inputs are identical to those at the audited proof-source commit above.
-The two full-build and four-audit results are therefore carried forward for
-that unchanged proof tree. The archived computational results have their
-own checks described in `mathematica/README.md`.
+The complete Lean source tree and pinned dependencies are identical to those
+at the audited proof-source commit above. The mathematical input values are
+unchanged; reference locator metadata and the complete input-file digest have
+been refreshed as described above. The two full-build and four-audit results
+are carried forward for that unchanged proof tree. The repeated computational
+runs have their own current provenance and checks described in
+`mathematica/README.md`.

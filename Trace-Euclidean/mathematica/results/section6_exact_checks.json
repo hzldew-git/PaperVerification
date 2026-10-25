@@ -4,9 +4,9 @@
 	"scope":"Clark-Jagy normalization and lower-bound algebra; exhaustive reduced Gram matrices under A<=7; fundamental discriminant and trace-parity filters; trace\/norm\/index solutions; six constructions; independent finite Voronoi certificates. Rational attainment and the general ideal-index identity are justified in the paper and source audit, not inferred from tests.",
 	"provenance":{
 		"tool":"15.0.0 for Microsoft Windows (64-bit) (May 15, 2026)",
-		"code_sha256":"e19b88aba2ba79573923cb6e95ba5d2a4db71b86689c2e2e63a7d1752a9eb79b",
-		"input_sha256":"279e00f077d34db49fa00a04da1ca528904a0edb3255af6368dd6fd38259cb7e",
-		"run_utc":"2026-10-20T06:15:10Z"
+		"code_sha256":"f4886283a7bb26ce34a78be64a4362e4efdaa340115475f170034e125aa4c709",
+		"input_sha256":"1325d7fc7c37e12eed2a80aac731a27b5bdf58fef719300c1a742961cf790b52",
+		"run_utc":"2026-10-25T14:31:51Z"
 	},
 	"check_records":[
 		{
