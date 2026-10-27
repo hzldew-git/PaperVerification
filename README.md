@@ -4,12 +4,17 @@ This repository contains reproducible verification companions to research
 papers: computational source, selected Lean 4 formalizations, extracted inputs,
 machine-readable results, and reader-facing verification instructions.
 
-## Active package
+## Active packages
 
 - [Trace-Euclidean](Trace-Euclidean/README.md): selected Lean theorems, Python
   and Mathematica checks, and extracted numerical inputs. See the
   [theorem index](Trace-Euclidean/THEOREM_INDEX.md) and
   [trust statement](Trace-Euclidean/TRUST.md) for the exact scope.
+- [Norm-Euclidean](Norm-Euclidean/README.md): selected core Lean results on
+  class numbers, hyperbolic cancellation and fixed-field unary finiteness,
+  including nonfree lattices. See the
+  [theorem index](Norm-Euclidean/THEOREM_INDEX.md) and
+  [trust statement](Norm-Euclidean/TRUST.md) for the precise scope and exclusions.
 
 ## Manuscript exclusion policy
 

@@ -1,0 +1,128 @@
+import NormEuclidean.ChapterX.ExtensionIdeleNorm
+import NormEuclidean.ChapterX.IdelePrincipalization
+
+/-!
+# Extension principalization and actual `S`-norm subgroups
+
+The source subgroup is defined inside the actual extension idèle group. Its
+norm image has the expected base `S`-unit support. Finiteness of the extension
+class group supplies a cofinite set of base primes on which extension idèle
+principalization holds after every shrinking, as required in 65:13.
+
+No norm-index formula, equality of global and local norms, or compatibility
+of the idèle norm with the global field norm is assumed or asserted here.
+-/
+
+noncomputable section
+
+namespace NormEuclidean.ExtensionIdeleNorm
+
+open IsDedekindDomain
+open scoped NumberField
+
+universe u
+variable {K E : Type u} [Field K] [NumberField K]
+  [Field E] [NumberField E] [Algebra K E]
+
+/-- The actual extension finite places over a set of base finite places. -/
+def finitePlacesOverSet (S : Set (HeightOneSpectrum (𝓞 K))) :
+    Set (HeightOneSpectrum (𝓞 E)) :=
+  (fun w : HeightOneSpectrum (𝓞 E) ↦ w.under (𝓞 K)) ⁻¹' S
+
+/-- The actual norm sends extension `S`-idèles to base `S`-idèles. -/
+theorem extensionIdeleNorm_mem_S
+    (S : Set (HeightOneSpectrum (𝓞 K))) (j : NumberFieldIdele E)
+    (hj : j ∈ finitePlaceSIdeleSubgroup (finitePlacesOverSet (E := E) S)) :
+    extensionIdeleNorm (K := K) j ∈ finitePlaceSIdeleSubgroup S := by
+  classical
+  intro p hp
+  rw [ideleFiniteComponent_extensionIdeleNorm]
+  change Valued.v ((∏ w : FinitePlacesAbove (E := E) p,
+    finitePlaceAboveNormUnits p w (ideleFiniteComponent w.1 j) :
+      (p.adicCompletion K)ˣ) : p.adicCompletion K) = 1
+  rw [Units.coe_prod, map_prod]
+  apply Finset.prod_eq_one
+  intro w _
+  apply finitePlaceAboveNormUnits_valuation_one
+  apply hj w.1
+  change w.1.under (𝓞 K) ∈ S
+  rw [w.2]
+  exact hp
+
+omit [NumberField K] in
+/-- Some cofinite set of base primes admits extension idèle principalization,
+uniformly after every shrinking. This proves the principalization hypothesis
+of 65:13 for actual extension idèles. -/
+theorem exists_fixed_base_core_extension_principalization :
+    ∃ S₀ : Set (HeightOneSpectrum (𝓞 K)), S₀ᶜ.Finite ∧
+      ∀ S : Set (HeightOneSpectrum (𝓞 K)), S ⊆ S₀ →
+        idelePrincipalEmbedding.range ⊔
+          finitePlaceSIdeleSubgroup (finitePlacesOverSet (E := E) S) = ⊤ := by
+  obtain ⟨T₀, hfinite, hcore⟩ := exists_fixed_core_principal_Sidele_eq_top (K := E)
+  let S₀ : Set (HeightOneSpectrum (𝓞 K)) :=
+    ((fun w : HeightOneSpectrum (𝓞 E) ↦ w.under (𝓞 K)) '' T₀ᶜ)ᶜ
+  refine ⟨S₀, by simpa [S₀] using hfinite.image (fun w ↦ w.under (𝓞 K)), ?_⟩
+  intro S hS
+  apply hcore
+  intro w hw
+  by_contra hwT
+  exact hS hw ⟨w, hwT, rfl⟩
+
+/-- Base and extension principalization can be required on the same cofinite core. -/
+theorem exists_common_principalization_core :
+    ∃ S₀ : Set (HeightOneSpectrum (𝓞 K)), S₀ᶜ.Finite ∧
+      ∀ S : Set (HeightOneSpectrum (𝓞 K)), S ⊆ S₀ →
+        (idelePrincipalEmbedding.range ⊔ finitePlaceSIdeleSubgroup S = ⊤) ∧
+        (idelePrincipalEmbedding.range ⊔
+          finitePlaceSIdeleSubgroup (finitePlacesOverSet (E := E) S) = ⊤) := by
+  obtain ⟨A, hA, hbase⟩ := exists_fixed_core_principal_Sidele_eq_top (K := K)
+  obtain ⟨B, hB, hext⟩ :=
+    exists_fixed_base_core_extension_principalization (K := K) (E := E)
+  refine ⟨A ∩ B, ?_, ?_⟩
+  · rw [Set.compl_inter]
+    exact hA.union hB
+  · intro S hS
+    exact ⟨hbase S (hS.trans Set.inter_subset_left),
+      hext S (hS.trans Set.inter_subset_right)⟩
+
+/-- The actual image of extension `S`-idèles under the full idèle norm. -/
+def sIdeleNormSubgroup (S : Set (HeightOneSpectrum (𝓞 K))) :
+    Subgroup (NumberFieldIdele K) :=
+  (finitePlaceSIdeleSubgroup (finitePlacesOverSet (E := E) S)).map extensionIdeleNorm
+
+/-- The actual image of principal extension `S`-idèles under the full idèle norm. -/
+def principalSNormSubgroup (S : Set (HeightOneSpectrum (𝓞 K))) :
+    Subgroup (NumberFieldIdele K) :=
+  (idelePrincipalEmbedding.range ⊓
+    finitePlaceSIdeleSubgroup (finitePlacesOverSet (E := E) S)).map extensionIdeleNorm
+
+/-- Extension `S`-norms are base `S`-idèles and norms of actual extension idèles. -/
+theorem sIdeleNormSubgroup_le (S : Set (HeightOneSpectrum (𝓞 K))) :
+    sIdeleNormSubgroup (E := E) S ≤
+      finitePlaceSIdeleSubgroup S ⊓ (extensionIdeleNorm (K := K) (E := E)).range := by
+  rintro i ⟨j, hj, rfl⟩
+  exact ⟨extensionIdeleNorm_mem_S S j hj, ⟨j, rfl⟩⟩
+
+/-- The principal `S`-norm subgroup has both source containments. Identifying
+the second range with principal global field norms remains a separate comparison. -/
+theorem principalSNormSubgroup_le (S : Set (HeightOneSpectrum (𝓞 K))) :
+    principalSNormSubgroup (E := E) S ≤
+      sIdeleNormSubgroup (E := E) S ⊓
+        ((extensionIdeleNorm (K := K) (E := E)).comp idelePrincipalEmbedding).range := by
+  rintro i ⟨j, ⟨⟨a, rfl⟩, hj⟩, rfl⟩
+  exact ⟨⟨_, hj, rfl⟩, ⟨a, rfl⟩⟩
+
+/-- Once extension principalization holds, every extension idèle norm is
+generated by norms of principal idèles and norms of extension `S`-idèles. -/
+theorem norm_range_of_extension_principalization
+    (S : Set (HeightOneSpectrum (𝓞 K)))
+    (hS : idelePrincipalEmbedding.range ⊔
+      finitePlaceSIdeleSubgroup (finitePlacesOverSet (E := E) S) = ⊤) :
+    ((extensionIdeleNorm (K := K) (E := E)).comp idelePrincipalEmbedding).range ⊔
+      sIdeleNormSubgroup (E := E) S = (extensionIdeleNorm (K := K) (E := E)).range := by
+  have h := congrArg (Subgroup.map (extensionIdeleNorm (K := K) (E := E))) hS
+  rw [Subgroup.map_sup, MonoidHom.map_range] at h
+  rw [← MonoidHom.range_eq_map] at h
+  exact h
+
+end NormEuclidean.ExtensionIdeleNorm

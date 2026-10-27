@@ -1,0 +1,197 @@
+{
+  "status": "PASS",
+  "scope": "selected core results",
+  "static": {
+    "status": "PASS",
+    "package_files": 1433,
+    "local_proof_modules": 1413,
+    "lean_files_checked": 1415,
+    "registered_declarations": 22,
+    "proof_manifest_sha256": "5e3a7116c662940e42a2f76d27f8afd3c48b996dc865710db931762899ac23a4",
+    "dependency_lock_sha256": "5d1821a1ea1531ce481d5e255cb6c5e9b68c622aec47b17c06678aab2c9e6fb3"
+  },
+  "correspondence_status": "PROVISIONAL_MATCH",
+  "paper_wide_certificate": false,
+  "hosted_ci_claimed": false,
+  "build": "PASS",
+  "declaration_audit": "PASS",
+  "checked_declarations": [
+    {
+      "declaration": "NormEuclidean.MainClassNumber.ordinary_class_number_one",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "declaration": "NormEuclidean.MainClassNumber.class_number_theorem",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "declaration": "NormEuclidean.StableGenusDecomposition.not_isometric",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "declaration": "NormEuclidean.StableGenusDecomposition.standard_or_ideal",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "declaration": "NormEuclidean.StableGenusDecomposition.sameGenus_iff",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "declaration": "NormEuclidean.StableGenusDecomposition.genus_eq_union",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "declaration": "NormEuclidean.StableGenusDecomposition.classes_disjoint",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "declaration": "NormEuclidean.numberField_hyperbolic_cancellation_from_module",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "declaration": "NormEuclidean.IdealHyperbolic.isPrincipal_of_isometry",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "declaration": "NormEuclidean.IdealHyperbolic.cancellation_iff",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "declaration": "NormEuclidean.IdealHyperbolic.cancellation_iff_classGroup",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "declaration": "NormEuclidean.IdealHyperbolic.cancellation_from_module",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "declaration": "NormEuclidean.HilbertBinaryStabilization.proper_isometry_of_frame",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "declaration": "NormEuclidean.HilbertBinaryStabilization.proper_isometry",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "declaration": "NormEuclidean.HilbertBinaryStabilization.hyperbolic_isometry",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "declaration": "NormEuclidean.normIdeal_absNorm_lt_of_pos_finrank",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "declaration": "NormEuclidean.UnaryRankFiniteness.exists_finite_forms",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "declaration": "NormEuclidean.UnaryRankFiniteness.exists_finite_models",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "declaration": "NormEuclidean.UnaryRankFiniteness.finite_euclideanClasses",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "declaration": "NormEuclidean.BoundedVolumeFiniteness.exists_finite_models",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "declaration": "NormEuclidean.BoundedVolumeFiniteness.finite_classes",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "declaration": "NormEuclidean.BoundedVolumeFiniteness.exists_finite_representatives",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    }
+  ],
+  "checked_at_utc": "2026-10-25T23:22:57.951971+00:00"
+}

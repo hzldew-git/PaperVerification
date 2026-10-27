@@ -1,0 +1,48 @@
+name: Norm-Euclidean core checks
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'Norm-Euclidean/**'
+      - '.github/workflows/norm-euclidean.yml'
+  pull_request:
+    branches: [main]
+    paths:
+      - 'Norm-Euclidean/**'
+      - '.github/workflows/norm-euclidean.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: norm-euclidean-core-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build-and-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+    env:
+      LEAN_NUM_THREADS: '1'
+    steps:
+      - name: Check out the exact revision
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - name: Check source manifest and public boundary
+        run: python Norm-Euclidean/tools/verify_public.py --static-only
+      - name: Build pinned core Lean sources
+        uses: leanprover/lean-action@38fbc41a8c28c4cbaec22d7f7de508ec2e7c0dd9 # v1.5.0
+        with:
+          lake-package-directory: Norm-Euclidean/lean
+          auto-config: false
+          build: true
+          build-args: NormEuclidean
+          use-mathlib-cache: true
+          use-github-cache: false
+      - name: Audit exact statements and transitive axioms
+        run: python Norm-Euclidean/tools/verify_public.py --skip-build
+      - name: Check manuscript exclusion
+        run: python tools/check_no_manuscripts.py --root .
+      - name: Check unchanged tracked sources
+        run: git diff --exit-code

@@ -1,0 +1,266 @@
+@NormEuclidean.MainClassNumber.ordinary_class_number_one : ∀ {K : Type} [inst : Field K] [inst_1 : NumberField K]
+  {V : Type u_1} [inst_2 : Invertible 2] [inst_3 : AddCommGroup V] [inst_4 : Module K V] {Q : QuadraticForm K V}
+  (L : NormEuclidean.Lattice (NormEuclidean.integerSubring K) Q),
+  QuadraticMap.Anisotropic Q →
+    NormEuclidean.HasNumberFieldApproximation Q L.carrier →
+      1 ≤ Module.finrank K V → NormEuclidean.OrdinaryGenusMass.classNumber L = 1
+'NormEuclidean.MainClassNumber.ordinary_class_number_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+@NormEuclidean.MainClassNumber.class_number_theorem : ∀ {K : Type} [inst : Field K] [inst_1 : NumberField K]
+  {V : Type u_1} [inst_2 : Invertible 2] [inst_3 : AddCommGroup V] [inst_4 : Module K V] {Q : QuadraticForm K V}
+  (L : NormEuclidean.Lattice (NormEuclidean.integerSubring K) Q),
+  QuadraticMap.Anisotropic Q →
+    NormEuclidean.HasNumberFieldApproximation Q L.carrier →
+      1 ≤ Module.finrank K V →
+        (∀ (M : Submodule (↥(NormEuclidean.integerSubring K)) V),
+            L.carrier ≤ M → (∀ x ∈ M, Q x ∈ NormEuclidean.integerSubring K) → L.carrier = M) ∧
+          NormEuclidean.OrdinaryGenusMass.classNumber L = 1 ∧
+            NumberField.classNumber K = NormEuclidean.OrdinaryGenusMass.classNumber L.hyperbolic ∧
+              (3 ≤ Module.finrank K V → NumberField.classNumber K = 1) ∧
+                (Module.finrank K V = 2 →
+                    NumberField.classNumber K ≤ 2 ∧
+                      ∃ theta f,
+                        ¬IsSquare theta ∧
+                          ∃ r,
+                            r ^ 2 =
+                                (algebraMap K (SeparableClosure K))
+                                  (-((LinearMap.toMatrix₂ f.basis f.basis) (QuadraticMap.associated Q)).det) ∧
+                              NormEuclidean.HilbertClassFieldArithmetic.field K ≤ K⟮r⟯ ∧
+                                (NumberField.classNumber K = 2 ↔
+                                  NormEuclidean.HilbertClassFieldArithmetic.field K = K⟮r⟯)) ∧
+                  (Module.finrank K V = 1 →
+                    NumberField.classNumber K ≤ 2 ∧
+                      (NumberField.classNumber K = 2 ↔ ¬Module.Free ↥(NormEuclidean.integerSubring K) ↥L.carrier))
+'NormEuclidean.MainClassNumber.class_number_theorem' depends on axioms: [propext, Classical.choice, Quot.sound]
+@NormEuclidean.StableGenusDecomposition.not_isometric : ∀ {K : Type u_1} {V : Type u_2} [inst : Field K]
+  [inst_1 : NumberField K] [inst_2 : AddCommGroup V] [inst_3 : Module K V] {Q : QuadraticForm K V}
+  (L : NormEuclidean.Lattice (NormEuclidean.integerSubring K) Q),
+  QuadraticMap.Anisotropic Q →
+    NormEuclidean.HasNumberFieldApproximation Q L.carrier →
+      ∀ (I : FractionalIdeal (nonZeroDivisors ↥(NormEuclidean.integerSubring K)) K) (hI : I ≠ 0),
+        ¬(↑I).IsPrincipal →
+          ¬NormEuclidean.GloballyIsometric (NormEuclidean.Hyperbolic.form Q) L.hyperbolic
+              (NormEuclidean.IdealHyperbolic.lattice L I hI)
+'NormEuclidean.StableGenusDecomposition.not_isometric' depends on axioms: [propext, Classical.choice, Quot.sound]
+@NormEuclidean.StableGenusDecomposition.standard_or_ideal : ∀ {K : Type u_1} {V : Type u_2} [inst : Field K]
+  [inst_1 : NumberField K] [inst_2 : Invertible 2] [inst_3 : AddCommGroup V] [inst_4 : Module K V]
+  {Q : QuadraticForm K V} (L : NormEuclidean.Lattice (NormEuclidean.integerSubring K) Q),
+  QuadraticMap.Anisotropic Q →
+    NormEuclidean.HasNumberFieldApproximation Q L.carrier →
+      1 ≤ Module.finrank K V →
+        NumberField.classNumber K = 2 →
+          ∀ (I : FractionalIdeal (nonZeroDivisors ↥(NormEuclidean.integerSubring K)) K) (hI : I ≠ 0),
+            ¬(↑I).IsPrincipal →
+              ∀ (M : NormEuclidean.Lattice (NormEuclidean.integerSubring K) (NormEuclidean.Hyperbolic.form Q)),
+                NormEuclidean.SameGenus (NormEuclidean.Hyperbolic.form Q) L.hyperbolic M →
+                  NormEuclidean.GloballyIsometric (NormEuclidean.Hyperbolic.form Q) L.hyperbolic M ∨
+                    NormEuclidean.GloballyIsometric (NormEuclidean.Hyperbolic.form Q)
+                      (NormEuclidean.IdealHyperbolic.lattice L I hI) M
+'NormEuclidean.StableGenusDecomposition.standard_or_ideal' depends on axioms: [propext, Classical.choice, Quot.sound]
+@NormEuclidean.StableGenusDecomposition.sameGenus_iff : ∀ {K : Type u_1} {V : Type u_2} [inst : Field K]
+  [inst_1 : NumberField K] [inst_2 : Invertible 2] [inst_3 : AddCommGroup V] [inst_4 : Module K V]
+  {Q : QuadraticForm K V} (L : NormEuclidean.Lattice (NormEuclidean.integerSubring K) Q),
+  QuadraticMap.Anisotropic Q →
+    NormEuclidean.HasNumberFieldApproximation Q L.carrier →
+      1 ≤ Module.finrank K V →
+        NumberField.classNumber K = 2 →
+          ∀ (I : FractionalIdeal (nonZeroDivisors ↥(NormEuclidean.integerSubring K)) K) (hI : I ≠ 0),
+            ¬(↑I).IsPrincipal →
+              ∀ (M : NormEuclidean.Lattice (NormEuclidean.integerSubring K) (NormEuclidean.Hyperbolic.form Q)),
+                NormEuclidean.SameGenus (NormEuclidean.Hyperbolic.form Q) L.hyperbolic M ↔
+                  NormEuclidean.GloballyIsometric (NormEuclidean.Hyperbolic.form Q) L.hyperbolic M ∨
+                    NormEuclidean.GloballyIsometric (NormEuclidean.Hyperbolic.form Q)
+                      (NormEuclidean.IdealHyperbolic.lattice L I hI) M
+'NormEuclidean.StableGenusDecomposition.sameGenus_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+@NormEuclidean.StableGenusDecomposition.genus_eq_union : ∀ {K : Type u_1} {V : Type u_2} [inst : Field K]
+  [inst_1 : NumberField K] [inst_2 : Invertible 2] [inst_3 : AddCommGroup V] [inst_4 : Module K V]
+  {Q : QuadraticForm K V} (L : NormEuclidean.Lattice (NormEuclidean.integerSubring K) Q),
+  QuadraticMap.Anisotropic Q →
+    NormEuclidean.HasNumberFieldApproximation Q L.carrier →
+      1 ≤ Module.finrank K V →
+        NumberField.classNumber K = 2 →
+          ∀ (I : FractionalIdeal (nonZeroDivisors ↥(NormEuclidean.integerSubring K)) K) (hI : I ≠ 0),
+            ¬(↑I).IsPrincipal →
+              {M | NormEuclidean.SameGenus (NormEuclidean.Hyperbolic.form Q) L.hyperbolic M} =
+                {M | NormEuclidean.GloballyIsometric (NormEuclidean.Hyperbolic.form Q) L.hyperbolic M} ∪
+                  {M |
+                    NormEuclidean.GloballyIsometric (NormEuclidean.Hyperbolic.form Q)
+                      (NormEuclidean.IdealHyperbolic.lattice L I hI) M}
+'NormEuclidean.StableGenusDecomposition.genus_eq_union' depends on axioms: [propext, Classical.choice, Quot.sound]
+@NormEuclidean.StableGenusDecomposition.classes_disjoint : ∀ {K : Type u_1} {V : Type u_2} [inst : Field K]
+  [inst_1 : NumberField K] [inst_2 : AddCommGroup V] [inst_3 : Module K V] {Q : QuadraticForm K V}
+  (L : NormEuclidean.Lattice (NormEuclidean.integerSubring K) Q),
+  QuadraticMap.Anisotropic Q →
+    NormEuclidean.HasNumberFieldApproximation Q L.carrier →
+      ∀ (I : FractionalIdeal (nonZeroDivisors ↥(NormEuclidean.integerSubring K)) K) (hI : I ≠ 0),
+        ¬(↑I).IsPrincipal →
+          Disjoint {M | NormEuclidean.GloballyIsometric (NormEuclidean.Hyperbolic.form Q) L.hyperbolic M}
+            {M |
+              NormEuclidean.GloballyIsometric (NormEuclidean.Hyperbolic.form Q)
+                (NormEuclidean.IdealHyperbolic.lattice L I hI) M}
+'NormEuclidean.StableGenusDecomposition.classes_disjoint' depends on axioms: [propext, Classical.choice, Quot.sound]
+@NormEuclidean.numberField_hyperbolic_cancellation_from_module : ∀ {K : Type u_1} {V : Type u_2} {W : Type u_3}
+  [inst : Field K] [inst_1 : NumberField K] [inst_2 : AddCommGroup V] [inst_3 : Module K V] [inst_4 : AddCommGroup W]
+  [inst_5 : Module K W] (Q : QuadraticForm K V) (Q' : QuadraticForm K W)
+  (L : NormEuclidean.Lattice (NormEuclidean.integerSubring K) Q)
+  (L' : NormEuclidean.Lattice (NormEuclidean.integerSubring K) Q'),
+  QuadraticMap.Anisotropic Q →
+    NormEuclidean.HasNumberFieldApproximation Q L.carrier →
+      ∀
+        (φ :
+          (↥L'.carrier ×
+              ↥(NormEuclidean.integerSubring K) ×
+                ↥(NormEuclidean.integerSubring K)) ≃ₗ[↥(NormEuclidean.integerSubring K)]
+            ↥L.carrier × ↥(NormEuclidean.integerSubring K) × ↥(NormEuclidean.integerSubring K)),
+        (∀ (z : ↥L'.carrier × ↥(NormEuclidean.integerSubring K) × ↥(NormEuclidean.integerSubring K)),
+            NormEuclidean.Hyperbolic.productQ Q L.carrier (φ z) = NormEuclidean.Hyperbolic.productQ Q' L'.carrier z) →
+          ∃ ψ, ∀ (v : ↥L'.carrier), Q ↑(ψ v) = Q' ↑v
+'NormEuclidean.numberField_hyperbolic_cancellation_from_module' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+@NormEuclidean.IdealHyperbolic.isPrincipal_of_isometry : ∀ {K : Type u_1} {V : Type u_2} {W : Type u_3} [inst : Field K]
+  [inst_1 : NumberField K] [inst_2 : AddCommGroup V] [inst_3 : Module K V] [inst_4 : AddCommGroup W]
+  [inst_5 : Module K W] {Q : QuadraticForm K V} {P : QuadraticForm K W}
+  (L : NormEuclidean.Lattice (NormEuclidean.integerSubring K) Q)
+  (J : NormEuclidean.Lattice (NormEuclidean.integerSubring K) P)
+  (I : FractionalIdeal (nonZeroDivisors ↥(NormEuclidean.integerSubring K)) K) (hI : I ≠ 0),
+  QuadraticMap.Anisotropic Q →
+    NormEuclidean.HasNumberFieldApproximation Q L.carrier →
+      ∀
+        (e :
+          NormEuclidean.LatticeIsometry (NormEuclidean.Hyperbolic.form P) (NormEuclidean.Hyperbolic.form Q)
+            (NormEuclidean.IdealHyperbolic.lattice J I hI).carrier L.hyperbolic.carrier),
+        (↑I).IsPrincipal
+'NormEuclidean.IdealHyperbolic.isPrincipal_of_isometry' depends on axioms: [propext, Classical.choice, Quot.sound]
+@NormEuclidean.IdealHyperbolic.cancellation_iff : ∀ {K : Type u_1} {V : Type u_2} {W : Type u_3} [inst : Field K]
+  [inst_1 : NumberField K] [inst_2 : AddCommGroup V] [inst_3 : Module K V] [inst_4 : AddCommGroup W]
+  [inst_5 : Module K W] {Q : QuadraticForm K V} {P : QuadraticForm K W}
+  (L : NormEuclidean.Lattice (NormEuclidean.integerSubring K) Q)
+  (J : NormEuclidean.Lattice (NormEuclidean.integerSubring K) P)
+  (I : FractionalIdeal (nonZeroDivisors ↥(NormEuclidean.integerSubring K)) K) (hI : I ≠ 0),
+  QuadraticMap.Anisotropic Q →
+    NormEuclidean.HasNumberFieldApproximation Q L.carrier →
+      (Nonempty
+          (NormEuclidean.LatticeIsometry (NormEuclidean.Hyperbolic.form P) (NormEuclidean.Hyperbolic.form Q)
+            (NormEuclidean.IdealHyperbolic.lattice J I hI).carrier L.hyperbolic.carrier) ↔
+        (↑I).IsPrincipal ∧ Nonempty (NormEuclidean.LatticeIsometry P Q J.carrier L.carrier))
+'NormEuclidean.IdealHyperbolic.cancellation_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+@NormEuclidean.IdealHyperbolic.cancellation_iff_classGroup : ∀ {K : Type u_1} {V : Type u_2} {W : Type u_3}
+  [inst : Field K] [inst_1 : NumberField K] [inst_2 : AddCommGroup V] [inst_3 : Module K V] [inst_4 : AddCommGroup W]
+  [inst_5 : Module K W] {Q : QuadraticForm K V} {P : QuadraticForm K W}
+  (L : NormEuclidean.Lattice (NormEuclidean.integerSubring K) Q)
+  (J : NormEuclidean.Lattice (NormEuclidean.integerSubring K) P)
+  (I : FractionalIdeal (nonZeroDivisors ↥(NormEuclidean.integerSubring K)) K) (hI : I ≠ 0),
+  QuadraticMap.Anisotropic Q →
+    NormEuclidean.HasNumberFieldApproximation Q L.carrier →
+      (Nonempty
+          (NormEuclidean.LatticeIsometry (NormEuclidean.Hyperbolic.form P) (NormEuclidean.Hyperbolic.form Q)
+            (NormEuclidean.IdealHyperbolic.lattice J I hI).carrier L.hyperbolic.carrier) ↔
+        (ClassGroup.mk K) (Units.mk0 I hI) = 1 ∧ Nonempty (NormEuclidean.LatticeIsometry P Q J.carrier L.carrier))
+'NormEuclidean.IdealHyperbolic.cancellation_iff_classGroup' depends on axioms: [propext, Classical.choice, Quot.sound]
+@NormEuclidean.IdealHyperbolic.cancellation_from_module : ∀ {K : Type u_1} {V : Type u_2} {W : Type u_3}
+  [inst : Field K] [inst_1 : NumberField K] [inst_2 : AddCommGroup V] [inst_3 : Module K V] [inst_4 : AddCommGroup W]
+  [inst_5 : Module K W] {Q : QuadraticForm K V} {P : QuadraticForm K W}
+  (L : NormEuclidean.Lattice (NormEuclidean.integerSubring K) Q)
+  (J : NormEuclidean.Lattice (NormEuclidean.integerSubring K) P)
+  (I : FractionalIdeal (nonZeroDivisors ↥(NormEuclidean.integerSubring K)) K) (hI : I ≠ 0),
+  QuadraticMap.Anisotropic Q →
+    NormEuclidean.HasNumberFieldApproximation Q L.carrier →
+      ∀
+        (e :
+          ↥(NormEuclidean.IdealHyperbolic.lattice J I hI).carrier ≃ₗ[↥(NormEuclidean.integerSubring K)]
+            ↥L.hyperbolic.carrier),
+        (∀ (z : ↥(NormEuclidean.IdealHyperbolic.lattice J I hI).carrier),
+            (NormEuclidean.Hyperbolic.form Q) ↑(e z) = (NormEuclidean.Hyperbolic.form P) ↑z) →
+          (↑I).IsPrincipal ∧ ∃ f, ∀ (x : ↥J.carrier), Q ↑(f x) = P ↑x
+'NormEuclidean.IdealHyperbolic.cancellation_from_module' depends on axioms: [propext, Classical.choice, Quot.sound]
+@NormEuclidean.HilbertBinaryStabilization.proper_isometry_of_frame : ∀ {K : Type} [inst : Field K]
+  [inst_1 : NumberField K] {V : Type u_1} [inst_2 : Invertible 2] [inst_3 : AddCommGroup V] [inst_4 : Module K V]
+  {Q : QuadraticForm K V} (L M : NormEuclidean.Lattice (NormEuclidean.integerSubring K) Q),
+  QuadraticMap.Anisotropic Q →
+    Module.finrank K V = 2 →
+      ∀ (theta : Kˣ),
+        ¬IsSquare theta →
+          ∀ (f : NormEuclidean.BinaryNormForm.Frame Q theta) (r : SeparableClosure K),
+            r ^ 2 = (algebraMap K (SeparableClosure K)) ↑theta →
+              K⟮r⟯ = NormEuclidean.HilbertClassFieldArithmetic.field K →
+                NormEuclidean.SameGenus Q L M →
+                  NormEuclidean.ProperlyGloballyIsometric (NormEuclidean.Hyperbolic.form Q) L.hyperbolic M.hyperbolic
+'NormEuclidean.HilbertBinaryStabilization.proper_isometry_of_frame' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+@NormEuclidean.HilbertBinaryStabilization.proper_isometry : ∀ {K : Type} [inst : Field K] [inst_1 : NumberField K]
+  {V : Type u_1} [inst_2 : Invertible 2] [inst_3 : AddCommGroup V] [inst_4 : Module K V] {Q : QuadraticForm K V}
+  (L M : NormEuclidean.Lattice (NormEuclidean.integerSubring K) Q),
+  QuadraticMap.Anisotropic Q →
+    ∀ (b : Module.Basis (Fin 2) K V) (r : SeparableClosure K),
+      r ^ 2 = (algebraMap K (SeparableClosure K)) (-((LinearMap.toMatrix₂ b b) (QuadraticMap.associated Q)).det) →
+        K⟮r⟯ = NormEuclidean.HilbertClassFieldArithmetic.field K →
+          NormEuclidean.SameGenus Q L M →
+            NormEuclidean.ProperlyGloballyIsometric (NormEuclidean.Hyperbolic.form Q) L.hyperbolic M.hyperbolic
+'NormEuclidean.HilbertBinaryStabilization.proper_isometry' depends on axioms: [propext, Classical.choice, Quot.sound]
+@NormEuclidean.HilbertBinaryStabilization.hyperbolic_isometry : ∀ {K : Type} [inst : Field K] [inst_1 : NumberField K]
+  {V : Type u_1} [inst_2 : Invertible 2] [inst_3 : AddCommGroup V] [inst_4 : Module K V] {Q : QuadraticForm K V}
+  (L M : NormEuclidean.Lattice (NormEuclidean.integerSubring K) Q),
+  QuadraticMap.Anisotropic Q →
+    ∀ (b : Module.Basis (Fin 2) K V) (r : SeparableClosure K),
+      r ^ 2 = (algebraMap K (SeparableClosure K)) (-((LinearMap.toMatrix₂ b b) (QuadraticMap.associated Q)).det) →
+        K⟮r⟯ = NormEuclidean.HilbertClassFieldArithmetic.field K →
+          NormEuclidean.SameGenus Q L M →
+            NormEuclidean.GloballyIsometric (NormEuclidean.Hyperbolic.form Q) M.hyperbolic L.hyperbolic
+'NormEuclidean.HilbertBinaryStabilization.hyperbolic_isometry' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+@NormEuclidean.normIdeal_absNorm_lt_of_pos_finrank : ∀ {K : Type u_1} {V : Type u_2} [inst : Field K]
+  [inst_1 : AddCommGroup V] [inst_2 : Module K V] (Q : QuadraticForm K V) [inst_3 : NumberField K]
+  (L : NormEuclidean.Lattice (NormEuclidean.integerSubring K) Q),
+  0 < Module.finrank K V →
+    QuadraticMap.Anisotropic Q →
+      NormEuclidean.HasNumberFieldApproximation Q L.carrier → Ideal.absNorm L.normIdeal < 4 ^ Module.finrank ℚ K
+'NormEuclidean.normIdeal_absNorm_lt_of_pos_finrank' depends on axioms: [propext, Classical.choice, Quot.sound]
+NormEuclidean.UnaryRankFiniteness.exists_finite_forms : ∀ (K : Type u_2) [inst : Field K] [inst_1 : NumberField K],
+  ∃ F,
+    F.Finite ∧
+      ∀ (V : Type u_1) [inst_2 : AddCommGroup V] [inst_3 : Module K V] (Q : QuadraticForm K V)
+        (L : NormEuclidean.Lattice (NormEuclidean.integerSubring K) Q),
+        QuadraticMap.Anisotropic Q →
+          NormEuclidean.HasNumberFieldApproximation Q L.carrier →
+            Module.finrank K V = 1 → ∃ b, (∀ (i : Fin 1), b i ∈ L.carrier) ∧ QuadraticMap.basisRepr Q b ∈ F
+'NormEuclidean.UnaryRankFiniteness.exists_finite_forms' depends on axioms: [propext, Classical.choice, Quot.sound]
+NormEuclidean.UnaryRankFiniteness.exists_finite_models : ∀ (K : Type u_2) [inst : Field K] [inst_1 : NumberField K],
+  ∃ A,
+    A.Finite ∧
+      ∀ (V : Type u_1) [inst_2 : AddCommGroup V] [inst_3 : Module K V] (Q : QuadraticForm K V)
+        (L : NormEuclidean.Lattice (NormEuclidean.integerSubring K) Q),
+        QuadraticMap.Anisotropic Q →
+          NormEuclidean.HasNumberFieldApproximation Q L.carrier →
+            Module.finrank K V = 1 → ∃ M ∈ A, Nonempty (NormEuclidean.LatticeIsometry Q M.fst L.carrier M.snd.carrier)
+'NormEuclidean.UnaryRankFiniteness.exists_finite_models' depends on axioms: [propext, Classical.choice, Quot.sound]
+NormEuclidean.UnaryRankFiniteness.finite_euclideanClasses : ∀ (K : Type u_1) [inst : Field K] [inst_1 : NumberField K],
+  (NormEuclidean.UnaryRankFiniteness.euclideanClasses K).Finite
+'NormEuclidean.UnaryRankFiniteness.finite_euclideanClasses' depends on axioms: [propext, Classical.choice, Quot.sound]
+@NormEuclidean.BoundedVolumeFiniteness.exists_finite_models : ∀ {K : Type u_2} [inst : Field K] [inst_1 : NumberField K]
+  (n : ℕ) (C : ℝ),
+  ∃ A,
+    A.Finite ∧
+      ∀ (V : Type u_1) [inst_2 : AddCommGroup V] [inst_3 : Module K V] (Q : QuadraticForm K V)
+        (L : NormEuclidean.Lattice (NormEuclidean.integerSubring K) Q),
+        QuadraticMap.Anisotropic Q →
+          Module.finrank K V = n →
+            ↑(FractionalIdeal.absNorm L.volumeIdeal) ≤ C →
+              ∃ M ∈ A, Nonempty (NormEuclidean.LatticeIsometry Q M.fst L.carrier M.snd.carrier)
+'NormEuclidean.BoundedVolumeFiniteness.exists_finite_models' depends on axioms: [propext, Classical.choice, Quot.sound]
+@NormEuclidean.BoundedVolumeFiniteness.finite_classes : ∀ {K : Type u_1} [inst : Field K] [inst_1 : NumberField K]
+  (n : ℕ) (C : ℝ), (NormEuclidean.BoundedVolumeFiniteness.classes n C).Finite
+'NormEuclidean.BoundedVolumeFiniteness.finite_classes' depends on axioms: [propext, Classical.choice, Quot.sound]
+@NormEuclidean.BoundedVolumeFiniteness.exists_finite_representatives : ∀ {K : Type u_1} [inst : Field K]
+  [inst_1 : NumberField K] (n : ℕ) (C : ℝ),
+  ∃ A,
+    A.Finite ∧
+      (∀ M ∈ A, QuadraticMap.Anisotropic M.fst ∧ ↑(FractionalIdeal.absNorm M.snd.volumeIdeal) ≤ C) ∧
+        ∀ (M : NormEuclidean.FixedFieldRankFiniteness.Model K n),
+          QuadraticMap.Anisotropic M.fst →
+            ↑(FractionalIdeal.absNorm M.snd.volumeIdeal) ≤ C →
+              ∃ N ∈ A, Nonempty (NormEuclidean.LatticeIsometry M.fst N.fst M.snd.carrier N.snd.carrier)
+'NormEuclidean.BoundedVolumeFiniteness.exists_finite_representatives' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
