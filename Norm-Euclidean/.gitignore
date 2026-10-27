@@ -1,0 +1,6 @@
+lean/.lake/
+lean/.elan/
+lean/*.olean
+lean/*.ilean
+tools/__pycache__/
+results/local-*.json

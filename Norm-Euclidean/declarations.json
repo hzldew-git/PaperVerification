@@ -1,0 +1,94 @@
+{
+  "scope": "selected core results",
+  "correspondence_status": "PROVISIONAL_MATCH",
+  "declarations": [
+    {
+      "reference_result": "Theorem 1.2",
+      "declaration": "NormEuclidean.MainClassNumber.ordinary_class_number_one"
+    },
+    {
+      "reference_result": "Theorem 1.2",
+      "declaration": "NormEuclidean.MainClassNumber.class_number_theorem"
+    },
+    {
+      "reference_result": "Corollary 1.4",
+      "declaration": "NormEuclidean.StableGenusDecomposition.not_isometric"
+    },
+    {
+      "reference_result": "Corollary 1.4",
+      "declaration": "NormEuclidean.StableGenusDecomposition.standard_or_ideal"
+    },
+    {
+      "reference_result": "Corollary 1.4",
+      "declaration": "NormEuclidean.StableGenusDecomposition.sameGenus_iff"
+    },
+    {
+      "reference_result": "Corollary 1.4",
+      "declaration": "NormEuclidean.StableGenusDecomposition.genus_eq_union"
+    },
+    {
+      "reference_result": "Corollary 1.4",
+      "declaration": "NormEuclidean.StableGenusDecomposition.classes_disjoint"
+    },
+    {
+      "reference_result": "Theorem 3.1",
+      "declaration": "NormEuclidean.numberField_hyperbolic_cancellation_from_module"
+    },
+    {
+      "reference_result": "Corollary 3.2",
+      "declaration": "NormEuclidean.IdealHyperbolic.isPrincipal_of_isometry"
+    },
+    {
+      "reference_result": "Corollary 3.2",
+      "declaration": "NormEuclidean.IdealHyperbolic.cancellation_iff"
+    },
+    {
+      "reference_result": "Corollary 3.2",
+      "declaration": "NormEuclidean.IdealHyperbolic.cancellation_iff_classGroup"
+    },
+    {
+      "reference_result": "Corollary 3.2",
+      "declaration": "NormEuclidean.IdealHyperbolic.cancellation_from_module"
+    },
+    {
+      "reference_result": "Lemma 4.3",
+      "declaration": "NormEuclidean.HilbertBinaryStabilization.proper_isometry_of_frame"
+    },
+    {
+      "reference_result": "Lemma 4.3",
+      "declaration": "NormEuclidean.HilbertBinaryStabilization.proper_isometry"
+    },
+    {
+      "reference_result": "Lemma 4.3",
+      "declaration": "NormEuclidean.HilbertBinaryStabilization.hyperbolic_isometry"
+    },
+    {
+      "reference_result": "Lemma 5.1",
+      "declaration": "NormEuclidean.normIdeal_absNorm_lt_of_pos_finrank"
+    },
+    {
+      "reference_result": "Theorem 1.5(iii)",
+      "declaration": "NormEuclidean.UnaryRankFiniteness.exists_finite_forms"
+    },
+    {
+      "reference_result": "Theorem 1.5(iii)",
+      "declaration": "NormEuclidean.UnaryRankFiniteness.exists_finite_models"
+    },
+    {
+      "reference_result": "Theorem 1.5(iii)",
+      "declaration": "NormEuclidean.UnaryRankFiniteness.finite_euclideanClasses"
+    },
+    {
+      "reference_result": "Lemma 5.4",
+      "declaration": "NormEuclidean.BoundedVolumeFiniteness.exists_finite_models"
+    },
+    {
+      "reference_result": "Lemma 5.4",
+      "declaration": "NormEuclidean.BoundedVolumeFiniteness.finite_classes"
+    },
+    {
+      "reference_result": "Lemma 5.4",
+      "declaration": "NormEuclidean.BoundedVolumeFiniteness.exists_finite_representatives"
+    }
+  ]
+}

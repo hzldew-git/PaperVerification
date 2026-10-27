@@ -1,0 +1,69 @@
+import NormEuclidean
+
+-- Exact statement and transitive trust probes for the registered release scope.
+
+#check @NormEuclidean.MainClassNumber.ordinary_class_number_one
+#print axioms NormEuclidean.MainClassNumber.ordinary_class_number_one
+
+#check @NormEuclidean.MainClassNumber.class_number_theorem
+#print axioms NormEuclidean.MainClassNumber.class_number_theorem
+
+#check @NormEuclidean.StableGenusDecomposition.not_isometric
+#print axioms NormEuclidean.StableGenusDecomposition.not_isometric
+
+#check @NormEuclidean.StableGenusDecomposition.standard_or_ideal
+#print axioms NormEuclidean.StableGenusDecomposition.standard_or_ideal
+
+#check @NormEuclidean.StableGenusDecomposition.sameGenus_iff
+#print axioms NormEuclidean.StableGenusDecomposition.sameGenus_iff
+
+#check @NormEuclidean.StableGenusDecomposition.genus_eq_union
+#print axioms NormEuclidean.StableGenusDecomposition.genus_eq_union
+
+#check @NormEuclidean.StableGenusDecomposition.classes_disjoint
+#print axioms NormEuclidean.StableGenusDecomposition.classes_disjoint
+
+#check @NormEuclidean.numberField_hyperbolic_cancellation_from_module
+#print axioms NormEuclidean.numberField_hyperbolic_cancellation_from_module
+
+#check @NormEuclidean.IdealHyperbolic.isPrincipal_of_isometry
+#print axioms NormEuclidean.IdealHyperbolic.isPrincipal_of_isometry
+
+#check @NormEuclidean.IdealHyperbolic.cancellation_iff
+#print axioms NormEuclidean.IdealHyperbolic.cancellation_iff
+
+#check @NormEuclidean.IdealHyperbolic.cancellation_iff_classGroup
+#print axioms NormEuclidean.IdealHyperbolic.cancellation_iff_classGroup
+
+#check @NormEuclidean.IdealHyperbolic.cancellation_from_module
+#print axioms NormEuclidean.IdealHyperbolic.cancellation_from_module
+
+#check @NormEuclidean.HilbertBinaryStabilization.proper_isometry_of_frame
+#print axioms NormEuclidean.HilbertBinaryStabilization.proper_isometry_of_frame
+
+#check @NormEuclidean.HilbertBinaryStabilization.proper_isometry
+#print axioms NormEuclidean.HilbertBinaryStabilization.proper_isometry
+
+#check @NormEuclidean.HilbertBinaryStabilization.hyperbolic_isometry
+#print axioms NormEuclidean.HilbertBinaryStabilization.hyperbolic_isometry
+
+#check @NormEuclidean.normIdeal_absNorm_lt_of_pos_finrank
+#print axioms NormEuclidean.normIdeal_absNorm_lt_of_pos_finrank
+
+#check @NormEuclidean.UnaryRankFiniteness.exists_finite_forms
+#print axioms NormEuclidean.UnaryRankFiniteness.exists_finite_forms
+
+#check @NormEuclidean.UnaryRankFiniteness.exists_finite_models
+#print axioms NormEuclidean.UnaryRankFiniteness.exists_finite_models
+
+#check @NormEuclidean.UnaryRankFiniteness.finite_euclideanClasses
+#print axioms NormEuclidean.UnaryRankFiniteness.finite_euclideanClasses
+
+#check @NormEuclidean.BoundedVolumeFiniteness.exists_finite_models
+#print axioms NormEuclidean.BoundedVolumeFiniteness.exists_finite_models
+
+#check @NormEuclidean.BoundedVolumeFiniteness.finite_classes
+#print axioms NormEuclidean.BoundedVolumeFiniteness.finite_classes
+
+#check @NormEuclidean.BoundedVolumeFiniteness.exists_finite_representatives
+#print axioms NormEuclidean.BoundedVolumeFiniteness.exists_finite_representatives
